@@ -1,0 +1,44 @@
+.AppletStyle1 .AppletTitle{ background-color:#ffffff; color:#000000; font-weight:bold;}
+.AppletStyle1 .AppletButtons TD{ background-color:#cccccc; color:#000000}
+.AppletStyle3 .AppletTitle{ background-color:#ffffff; color:#000000; font-weight:bold;}
+.AppletStyle3 .AppletButtons TD{ background-color:#cccccc; color:#000000}
+.AppletStyle7 .AppletTitle{ background-color:#ffffff; color:#000000; font-weight:bold;}
+.AppletStyle7 .AppletButtons TD{ background-color:#cccccc; color:#000000}
+
+.threadbar  {font-size:10pt; font-weight:bold;}
+
+.tier3On    {display:none;}
+.tier3Off   {display:none;}
+.tier4On    {display:none;}
+.tier4Off   {display:none;}
+
+.minibutton {display:none;}
+
+.printBorder {border:1px solid #000000; background-color:#ffffff; color:#ffffff}
+.printHide  {visibility:hidden;}
+
+TD.Header {border:1px solid #000000; color:#000000;background-color:#ffffff;}
+
+.calendarBorder             {background-color:#ffffff; color:#000000;}
+.calendarActivityBorder     {background-color:#ffffff; color:#000000;}
+.calendarActivityBack       {background-color:#ffffff; color:#000000;}
+.calendarActivity           {background-color:#ffffff; color:#000000;}
+.calendarMultiDayActivity   {background-color:#ffffff; color:#000000;}
+.calendarInterval           {background-color:#ffffff; color:#000000; font-weight:bold; }
+.calendarDayBar             {background-color:#ffffff; color:#000000; border:1px solid #000000; font-size:10pt;}
+.calendarDay                {background-color:#ffffff; color:#000000; border:1px solid #000000;}        
+
+.calendarBorder2            {   BACKGROUND-COLOR: #ffffff; COLOR: #000000; FONT-SIZE: 10pt; FONT-WEIGHT: bold}
+.calendarTitle              {   BACKGROUND-COLOR: #ffffff; COLOR: #000000; FONT-SIZE: 10pt; FONT-WEIGHT: bold}
+.calendarLabel              {   BACKGROUND-COLOR: #ffffff; COLOR: #000000; FONT-SIZE: 8pt; FONT-WEIGHT: bold; TEXT-ALIGN: right}
+.calendarField              {   BACKGROUND-COLOR: #ffffff; COLOR: #000000; FONT-SIZE: 8pt; FONT-WEIGHT: normal}
+.calendarBlank              {   BACKGROUND-COLOR: #ffffff; COLOR: #000000; FONT-SIZE: 8pt; FONT-WEIGHT: bold}
+.calendarHeader             {   BACKGROUND-COLOR: #ffffff; COLOR: #000000; FONT-SIZE: 8pt; FONT-WEIGHT: bold}
+.calendarRow                {   BACKGROUND-COLOR: #ffffff; COLOR: #000000; FONT-SIZE: 8pt; FONT-WEIGHT: normal}
+.calendarSelect             {   BACKGROUND-COLOR: #ffffff; COLOR: #000000; FONT-SIZE: 9pt; FONT-WEIGHT: normal}
+
+.ServiceCalRow                  {background-color:#ffffff; color:#000000}
+.calendarServiceBorder          {background-color:#ffffff; color:#000000}
+.calendarServiceActivityOn      {background-color:#ffffff; color:#000000}
+.calendarServiceActivityOff     {background-color:#ffffff; color:#000000}
+.calendarServiceInterval        {background-color:#ffffff; color:#000000; font-weight:bold; }

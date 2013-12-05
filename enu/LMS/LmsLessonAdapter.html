@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+   <TITLE>Lesson</TITLE>
+<script language=javascript>
+
+// If you *must* host learning content in a different domain server than the LMS, they need to at least
+// have a common top-level domain, otherwise the lesson content will not be able to contact the API 
+// adapter, due to security constraints.
+// See http://msdn.microsoft.com/workshop/author/om/xframe_scripting_security.asp
+//
+// To enable this, change the indicated 'false's to 'true's in all Lms*.html files,
+// and your lesson content MUST also take similar action to set its domaion
+// to be the same as the API adapter's.
+
+// Change to 'true' for cross-server hosting.
+if (false)
+{
+  var s = document.domain.substring(document.domain.lastIndexOf('.')+1);
+  var d = document.domain.split(".");
+
+  if (s.length == 3) {
+    document.domain = d[d.length-2] + "." + d[d.length-1];
+  } else if (s.length == 2) {
+    document.domain = d[d.length-3] + "." + d[d.length-2] + "." + d[d.length-1];
+  }
+}
+
+var query     = getParams();
+var build     = query["BUILD"];
+var sessionId = query["SID"];
+var serverURL = query["SVCURL"];
+var c         = query["c"];
+
+validateParams();
+
+var API;
+var X;
+
+function loadIt() {
+  if (ApiFrame.loaded) {
+    clearInterval(X);
+    API = ApiFrame.APIclass;
+    var params = window.location.href.split("?")[1];
+    if (null == params) {
+      params = "";
+    } else {
+      params = "?" + params;
+    }
+    ContentFrame.document.location.href = c + params;
+  }
+}
+
+
+function getParams() {
+  loc = window.location.href;
+  params = loc.split("?")[1];
+  if (null == params) {
+    return null;
+  }
+
+  nvs = params.split("&");
+  var query = new Array();
+
+  for (a in nvs) {
+    nv = nvs[a].split("=");
+    name = nv[0];
+    value = nv[1];
+    query[name] = unescape(value);
+  }
+  return query;
+}
+
+function validateParams() {
+  if (build == undefined || sessionId == undefined || serverURL == undefined || c == undefined) {
+    msg = '<html>\n';
+    msg += '<head>\n';
+    msg += '<title>Error</title>\n';
+    msg += '</head>\n';
+    msg += '<body>\n';
+    msg += '<h4>Internal LMS Server Error: Required parameters might be missing</h4>\n';
+    msg += '</body>\n';
+    window.document.write(msg);
+  }
+}
+
+</script>
+</HEAD>
+
+<frameset onLoad="X=setInterval('loadIt()', 200);" rows="0%,0%,*" frameborder="0" framespacing="0">
+ <frame name="ScriptFrame"  id="ScriptFrameId"  src="LmsScripts.html" marginwidth="0" scrolling="no" frameborder="0" noresize>
+ <frame name="ApiFrame"     id="ApiFrameId"  src="LmsEmpty.html" marginwidth="0" scrolling="no" frameborder="0" noresize>
+ <frame name="ContentFrame" id="ContentFrameId" src="LmsEmpty.html">
+</frameset>
+
+</HTML>
+

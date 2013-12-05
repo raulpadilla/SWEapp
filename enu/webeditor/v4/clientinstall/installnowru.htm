@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- Copyright 2004 Ektron, Inc. -->
+<!-- Revision Date: 2004-Feb-19 -->
+<html>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<title>eWebEditPro Инсталляция</title>
+<script language="JavaScript1.2" src="parseinstallparams.js"></script>
+<script language="JavaScript1.2" src="../ewebeditpro.js"></script>
+<style>
+P { font-size : small; font-family : verdana, helvetica; }
+H1 { font-family : verdana, helvetica; }
+H2 { font-family : verdana, helvetica; }
+A { font-family : verdana, helvetica; }
+BODY { font-size : small; }
+</style>
+
+<script language="JavaScript1.2">
+<!--
+function OnReadyHandler()
+{
+	document.loadingMsg.style.visibility = "hidden";
+	if (top.opener && !top.opener.closed)
+	{
+		top.opener.location.reload();
+		setTimeout("self.close()", 5000);
+	}
+}
+//-->
+</script>
+
+</head>
+
+<body>
+
+<p align="center"><h2 align="center">
+eWebEditPro <br>Aвтоматически <br>Загрузка и Инсталляция
+</h2></p>
+
+<form method="post">
+<input type=hidden name="DoneMsg" value="&lt;p&gt; &lt;/p&gt;&lt;p align=center&gt;&lt;font face='Arial' size=4&gt;Инсталляция завершена.&lt;/font&gt;&lt;/p&gt;">
+<input type=hidden name="RestartMsg" value="&lt;p&gt; &lt;/p&gt;&lt;p align=center&gt;&lt;font face='Arial' size=4&gt;Пожалуйста перезапустите Windows для завершения инсталляции.&lt;/font&gt;&lt;/p&gt;">
+
+<p align="center"><font size=-1>
+<img name=loadingMsg src="loading.gif" alt="Идет загрузка, пожалуйста подождите..." width=234 height=30><br>
+<!--- Если успешно, то слова "Инсталляция завершена" появятся в рамочке ниже. --->
+Если успешно, то слова "Installation Complete" появятся в рамочке ниже.
+</font></p>
+<script language="JavaScript1.2">
+	var sCaption = "Installation Complete";//"Инсталляция завершена";
+	writeLoader(sCaption);
+</script>
+
+<p><font size=-1>
+<script language="JavaScript1.2">
+<!--
+	document.write('Если маленькое красное <font color="red"><b>X</b></font> появится, попытайтесь загрузить ');
+	document.write('<a href="' + eWebEditProDefaults.clientInstall + '">');
+	document.write('программа инсталляции клиента</a> и ее прогон. ');
+// -->
+</script>
+</font></p>
+<p><font size=-1>
+Для дополнительной помощи, посетите <a href="http://www.ektron.com/support" target="_blank">Ektron's страница поддержки</a>.
+</font></p>
+
+</form>
+
+</body>
+</html>

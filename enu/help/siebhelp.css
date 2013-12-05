@@ -1,0 +1,200 @@
+﻿/*------------------------------------------------------*/
+/* Style Sheet used for Siebel Online Help		*/
+/* Last revised on 20 August 2003    			*/
+/* Validated at http://jigsaw.w3.org/css-validator/	*/
+/*------------------------------------------------------*/
+
+body {
+    margin: 0;
+    padding: 1px 9px;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	background: none repeat scroll 0 0 #FCFCFC;
+	color: #444444;
+}
+
+p {
+	line-height: 1.5em;
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+
+a,
+a:active,
+a:focus,
+a:hover,
+a:link,
+a:visited {
+	color: #0681AA;
+	text-decoration: underline;
+	background-color: transparent;
+}
+a:hover,
+a:focus{
+	color: #39ADD3;
+}
+a:active{
+	color: #0C536B;
+}
+
+
+/*------------------------------------------------------*/
+/* Nav links in TOC and Index -to create underline	*/
+/*------------------------------------------------------*/
+
+a.tocindexlink,
+a.tocindexlink:active,
+a.tocindexlink:focus,
+a.tocindexlink:hover,
+a.tocindexlink:link,
+a.tocindexlink:visited {
+	color: #333399;
+	text-decoration: underline;
+	background-color: transparent;
+}
+
+/*------------------------------------------------------*/
+/* Italic text 						*/
+/*------------------------------------------------------*/
+span.Emphasis {
+	font-style: italic;
+}
+/*------------------------------------------------------*/
+/* Bold text 						*/
+/*------------------------------------------------------*/
+span.Bold {
+	font-weight: bold;
+}
+
+/*------------------------------------------------------*/
+/* Main Topic Titles - 1 per HTML file 			*/
+/*------------------------------------------------------*/
+h5,h4,h3,h2,h1 {
+	margin-top: 6px;
+	margin-bottom: 6px;
+	font-size: 2em;
+	color: #12546B;
+	font-weight: bold;
+	background-color: transparent;
+}
+
+/*------------------------------------------------------*/
+/* Second-level topic tites within HTML files; 		*/
+/* also used for letter navigation bars			*/
+/*------------------------------------------------------*/
+h2 {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	font-size: 1.3em;
+}
+
+/*------------------------------------------------------*/
+/* Subheadings within topics, such as See Also 		*/
+/* and Tasks; also used for group heading letters	*/
+/* in Index 						*/
+/*------------------------------------------------------*/
+h3 {
+	margin-top: 16px;
+	margin-bottom: 4px;
+	font-size: 1em;
+}
+
+/*------------------------------------------------------*/
+/* Other, lower-level headings	 			*/
+/*------------------------------------------------------*/
+h4 {
+	margin-top: 10px;
+	font-size: 1em;
+}
+
+/*------------------------------------------------------*/
+/* Used for Procedure headings - To - 			*/
+/*------------------------------------------------------*/
+h5 {
+	margin-top: 20px;
+	margin-bottom: 0px;
+	font-size: 1em;
+}
+
+/*------------------------------------------------------*/
+/* Used for Horizontal Rule Color and Size Definition	*/
+/*------------------------------------------------------*/
+hr {
+    border-color: #E5E5E5 transparent #FFFFFF;
+    border-style: solid none;
+    border-width: 1px 0;
+    margin: 8px 0;
+}
+
+/*------------------------------------------------------*/
+/* tables									 			*/
+/*------------------------------------------------------*/
+
+table {
+    border: 2px solid #aaa;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/*------------------------------------------------------*/
+/* Used to set font for text in tables 			*/
+/*------------------------------------------------------*/
+th {
+    background: none repeat scroll 0 0 #555555;
+    color: #EEEEEE;
+    font-size: 0.7em;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/*------------------------------------------------------*/
+/* Used to set font for text in tables 			*/
+/*------------------------------------------------------*/
+td {
+	font-size: 0.7em;
+    border: 1px solid #aaa;
+    background: none repeat scroll 0 0 #FFFFFF;
+    vertical-align: middle;
+}
+
+/*------------------------------------------------------*/
+/* Used to set valign to top for all table rows		*/
+/*------------------------------------------------------*/
+tr {
+	vertical-align: top;
+}
+
+/*------------------------------------------------------*/
+/* Used increase space above list 				 		*/
+/*------------------------------------------------------*/
+ol,
+ul {
+	line-height: 1.5em;
+	margin-top: 2px;
+}
+
+/*------------------------------------------------------*/
+/* Back to top navigation line in online help 			*/
+/*------------------------------------------------------*/
+p.BacktoTop {
+	margin-top: 16px;
+	margin-bottom: 0px;
+}
+
+/*------------------------------------------------------*/
+/* Used for first level index entries in siebindex.htm	*/
+/*------------------------------------------------------*/
+p.index01 {
+	text-indent: 0em;
+	margin-bottom: 2px;
+	margin-top: 2px;
+}
+/*------------------------------------------------------*/
+/* Used for second level index entries in siebindex.htm */
+/*------------------------------------------------------*/
+p.index02 {
+	text-indent: 1em;
+	margin-bottom: 2px;
+	margin-top: 2px;
+}
+

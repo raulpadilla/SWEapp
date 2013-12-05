@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- Copyright 2004 Ektron, Inc. -->
+<!-- Revision Date: 2004-Feb-19 -->
+<html>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=gb2312">
+<title>eWebEditPro 安装</title>
+<script language="JavaScript1.2" src="parseinstallparams.js"></script>
+<script language="JavaScript1.2" src="../ewebeditpro.js"></script>
+<style>
+P { font-size : small; font-family : verdana, helvetica; }
+H1 { font-family : verdana, helvetica; }
+H2 { font-family : verdana, helvetica; }
+A { font-family : verdana, helvetica; }
+BODY { font-size : small; }
+</style>
+
+<script language="JavaScript1.2">
+<!--
+function OnReadyHandler()
+{
+	document.loadingMsg.style.visibility = "hidden";
+	if (top.opener && !top.opener.closed)
+	{
+		top.opener.location.reload();
+		setTimeout("self.close()", 5000);
+	}
+}
+//-->
+</script>
+
+</head>
+
+<body>
+
+<p align="center"><h2 align="center">
+eWebEditPro <br>自动<br>下载和安装
+</h2></p>
+
+<form method="post">
+<input type=hidden name="DoneMsg" value="&lt;p&gt; &lt;/p&gt;&lt;p align=center&gt;&lt;font face='Arial' size=4&gt;&amp;#23433;&amp;#35013;&amp;#23436;&amp;#25104;&amp;#12290;&lt;/font&gt;&lt;/p&gt;">
+<input type=hidden name="RestartMsg" value="&lt;p&gt; &lt;/p&gt;&lt;p align=center&gt;&lt;font face='Arial' size=4&gt;&amp;#35831;&amp;#37325;&amp;#26032;&amp;#21551;&amp;#21160; Windows &amp;#20197;&amp;#23436;&amp;#25104;&amp;#27492;&amp;#23433;&amp;#35013;&amp;#12290;&lt;/font&gt;&lt;/p&gt;">
+
+<p align="center"><font size=-1>
+<img name=loadingMsg src="loading.gif" alt="正在下载，请稍等..." width=234 height=30><br>
+如果成功，在下面的框中将出现“安装完成”。
+</font></p>
+<script language="JavaScript1.2">
+	var sCaption = "安装完成";
+	writeLoader(sCaption);
+</script>
+
+<p><font size=-1>
+<script language="JavaScript1.2">
+<!--
+	document.write('如果出现小的红色 <font color="red"><b>X</b></font>，则尝试下载');
+	document.write('<a href="' + eWebEditProDefaults.clientInstall + '">');
+	document.write('客户机安装程序</a>并运行该程序。');
+// -->
+</script>
+</font></p>
+<p><font size=-1>
+欲获取附加的帮助，请访问 <a href="http://www.ektron.com/support" target="_blank">Ektron 的技术支持网页</a>。
+</font></p>
+
+</form>
+
+</body>
+</html>

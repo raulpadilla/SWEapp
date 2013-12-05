@@ -1,0 +1,30 @@
+<HTML>
+
+<!-- this htm is used to open a Siebel application within a popup window -->
+<!-- please save this file under \eappweb\PUBLIC\enu -->
+<!-- append file name at the end of the url-->
+<!-- for example, if the original url is http://sdc6000i029.corp.siebel.com/fins_enu -->
+<!-- open it in a popup with http://sdc6000i029.corp.siebel.com/fins_enu/popup.htm -->
+
+<SCRIPT LANGUAGE="JavaScript">
+function NewWindow()
+{
+   var the_url = this.location.href;
+   var lead_slashes = the_url.indexOf("//");	
+   var domain_start = lead_slashes + 2;	
+   var without_resource = the_url.substring(domain_start,the_url.length);
+   var str_array = without_resource.split("/");
+   var file_name = str_array[str_array.length - 1];
+   var localidx = the_url.indexOf("localhost");
+   var myurl = the_url.substring(0, the_url.length - file_name.length) + "default.htm";
+
+   window.open(myurl,"","toolbar=no,location=no,directories=no,status=yes,menubar=no,scrollbars=yes,resizable=yes,copyhistory=yes,width=1024,height=200")
+self.opener=null;self.close();return true;
+}
+</SCRIPT>
+
+<BODY onLoad="NewWindow()">
+</BODY>
+<HTML>
+
+

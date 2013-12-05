@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<pages>
+    <!--Signature Ctrl - Start Defn-->
+    <page id="LS Signature Capture Page">
+        <template id="SignatureCapturePage" >
+            <placeholder id="PH1" object="LS Sign Contact Applet" />
+            <placeholder id="PH2" object="LS Sign Sample Drop List Applet" />
+            <placeholder id="PH3" object="LS Sign Capture Applet" />
+            <placeholder id="PH4" object="LS Sign Disclaimer Applet" />
+            <placeholder id="PH5" object="LS Sign Toolbar Applet" />
+        </template>
+    </page>
+    <!--Signature Ctrl - End Defn-->
+</pages>

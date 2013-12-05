@@ -1,0 +1,1 @@
+if(typeof(SiebelApp.ClientCacheBuilder)==="undefined"){Namespace("SiebelApp.ClientCacheBuilder");SiebelApp.ClientCacheBuilder=(function(){function a(){}a.prototype.ParseAndCacheOfflineData=function(b){return};return a}())};

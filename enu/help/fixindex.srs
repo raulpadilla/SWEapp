@@ -1,0 +1,91 @@
+[Script for Search and Replace]
+[Options]
+Search_subdir=0
+Prompt_flag=0
+Max Display Chars=512
+Show Progress Dialog=1
+Count across files=0
+Replace Processing=0
+Output_File=
+Show_Files=1
+Backup Path=
+Before Hit=<
+After Hit=>
+Max Reg Expr=32767
+Write to Backup Dir=0
+Unzip Dir=C:\TEMP\
+Show Files Without Hits=0
+Display Replace String=0
+Display File Stats=1
+Show File Date and Size=0
+Reverse Filters=0
+Min Size Filter=0
+Max Size Filter=0
+Min Date Filter=
+Max Date Filter=
+Skip Files Mask=0
+Ignore Attributes=55
+Keep file time stamp=0
+One hit=0
+Sort File Names=0
+Sort Ascending=1
+Append to output file=0
+[Search]
+<H1></H1>
+[Replace]
+
+[Search]
+<P CLASS="ReturnToTop"><A HREF="#HTMLIndexerTop"
+[Replace]
+<p class="BackToTop"><br><a href="#HTMLIndexerTop"
+[Search]
+<hr></A><BR>
+[Replace]
+</a></p><hr><br>
+[Search /x]
+<A HREF="*htm*">*</A>
+[Replace]
+\<a href="%1htm%2" title="%3"\>%3\</a\>
+[Search /x]
+<A HREF="#?">*</A>
+[Replace]
+\<a href="#%1" title="Letter %1"\>%2\</a\>
+[Search /x]
+<P class="index01">*</P>
+[Replace]
+\<p class="index01"\>%1\</p\>
+[Search /b]
+  <TABLE WIDTH="100%" BORDER="0" COLS="1" RULES="NONE">
+  <TR>
+  <TD NOWRAP VALIGN="TOP">
+
+[Replace]
+
+[Search /b]
+  </TD>
+  </TR>
+  </TABLE>
+
+[Replace]
+
+[Search]
+<H3>
+[Replace]
+<h3>
+[Search]
+<\H3>
+[Replace]
+<\h3>
+[Search]
+H2
+[Replace]
+h2
+[Search]
+<A NAME=
+[Replace]
+<a name=
+[Search]
+</A>
+[Replace]
+</a>
+[End of Search and Replace Script]

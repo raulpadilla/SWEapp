@@ -1,0 +1,213 @@
+<HTML>
+<HEAD>
+<TITLE>Siebel eBusiness Demo</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<!-- ImageReady Preload Script (v11e2_app_picker_anim2_animoff.psd) -->
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+//init variables
+var isNew = 0;
+var isIE4 = 0;
+var isNN4 = 0;
+
+
+//*if at least 4th generation browser (js1.2) set browser type*/
+var brow= ((navigator.appName) + parseInt(navigator.appVersion));
+
+if (parseInt(navigator.appVersion) >=5)
+{ isNew=1; 	}
+else if (brow == "Netscape4")
+{ isNN4=1;	}
+else if (brow == "Microsoft Internet Explorer4")
+{ isIE4=1;	}
+
+
+//cross-browser object wrapper routines
+var docObj,styleObj;
+if (isNew|isNN4|isIE4)
+{	docObj = (isNN4) ? 'document' : 'document.all';
+	styleObj = (isNN4) ? ''  : '.style';			}
+	
+
+
+
+
+
+function newImage(arg) {
+	if (document.images) {
+		rslt = new Image();
+		rslt.src = arg;
+		return rslt;
+	}
+}
+
+function changeImages() {
+	if (document.images && (preloadFlag == true)) {
+		for (var i=0; i<changeImages.arguments.length; i+=2) {
+			document[changeImages.arguments[i]].src = changeImages.arguments[i+1];
+			
+			if (isIE4)
+			{
+				var objName = changeImages.arguments[i] + "Txt";
+				var obj =  eval(docObj + '.' + objName);
+				if (changeImages.arguments[i+1].indexOf("over")>-1)
+				{	obj.className = "textOn";	}
+				else
+				{	obj.className = "textOff";	}				
+			}
+			                                                                                     
+		}
+	}
+}
+
+var preloadFlag = false;
+function preloadImages() {
+	if (document.images) {
+		eSales_over = newImage("images/eSales-over.gif");
+		eMarketing_over = newImage("images/eMarketing-over.gif");
+		eService_over = newImage("images/eService-over.gif");
+		eCustomer_over = newImage("images/eCustomer-over.gif");
+		eChannel_over = newImage("images/eChannel-over.gif");
+		eBriefings_over = newImage("images/eBriefings-over.gif");
+		eTraining_over = newImage("images/eTraining-over.gif");
+		preloadFlag = true;
+	}
+}
+
+// -->
+</SCRIPT>
+<style>
+	BODY, TD {font-family:Verdana, Arial, Helvetica, Sans-Serif; font-size: 10pt; color: #6666cc; font-weight: bold;}
+	HR {color:#9999ff;}
+	
+	.textOn {color:#9999ff; }
+	.textOff {color:#6666cc;}
+</style>
+
+
+</HEAD>
+<BODY BGCOLOR="#003399" ONLOAD="preloadImages();" leftmargin=0 topmargin=0 marginwidth=0 marginheight=0 background="images/app_picker_back.gif">
+
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0>
+	<TR>
+		<TD ROWSPAN=2>
+			<IMG SRC="images/spacer.gif" WIDTH=477 HEIGHT=55></TD>
+		<TD ROWSPAN=16>
+			<IMG SRC="images/spacer.gif" WIDTH=18 HEIGHT=550></TD>
+		<TD>
+			<IMG SRC="images/spacer.gif" WIDTH=305 HEIGHT=29></TD>
+		<TD>
+			<IMG SRC="images/spacer.gif" WIDTH=1 HEIGHT=29></TD>
+	</TR>
+	<TR>
+		<TD>
+			<A HREF="/eSales"
+			   ONMOUSEOVER="changeImages('eSales', 'images/eSales-over.gif'); return true;"
+			   ONMOUSEOUT="changeImages('eSales', 'images/eSales.gif'); return true;">
+				<IMG NAME="eSales" SRC="images/eSales.gif" WIDTH=305 HEIGHT=26 BORDER=0></A></TD>
+		<TD>
+			<IMG SRC="images/spacer.gif" WIDTH=1 HEIGHT=26></TD>
+	</TR>
+	<TR>
+		<TD ROWSPAN=7>
+			<IMG SRC="images/demo_anim.gif" WIDTH="477" HEIGHT="247" border="0" alt=""></TD>
+		<TD WIDTH=305 HEIGHT=49><span id="eSalesTxt" class="textOff">Personalized storefront for business-to-business and business-to-consumer eCommerce.</span> <hr size=1 color="#9999ff"></TD>
+		<TD>
+			<IMG SRC="images/spacer.gif" WIDTH=1 HEIGHT=49></TD>
+	</TR>
+	<TR>
+		<TD>
+			<A HREF="/eMarketing"
+			   ONMOUSEOVER="changeImages('eMarketing', 'images/eMarketing-over.gif'); return true;"
+			   ONMOUSEOUT="changeImages('eMarketing', 'images/eMarketing.gif'); return true;">
+				<IMG NAME="eMarketing" SRC="images/eMarketing.gif" WIDTH=305 HEIGHT=21 BORDER=0></A></TD>
+		<TD>
+			<IMG SRC="images/spacer.gif" WIDTH=1 HEIGHT=21></TD>
+	</TR>
+	<TR>
+		<TD WIDTH=305 HEIGHT=52><span id="eMarketingTxt" class="textOff">Targeted email and web-based marketing campaigns.</span> <hr size=1 color="#9999ff"></TD>
+		<TD>
+			<IMG SRC="images/spacer.gif" WIDTH=1 HEIGHT=52></TD>
+	</TR>
+	<TR>
+		<TD>
+			<A HREF="/eService"
+			   ONMOUSEOVER="changeImages('eService', 'images/eService-over.gif'); return true;"
+			   ONMOUSEOUT="changeImages('eService', 'images/eService.gif'); return true;">
+				<IMG NAME="eService" SRC="images/eService.gif" WIDTH=305 HEIGHT=20 BORDER=0></A></TD>
+		<TD>
+			<IMG SRC="images/spacer.gif" WIDTH=1 HEIGHT=20></TD>
+	</TR>
+	<TR>
+		<TD WIDTH=305 HEIGHT=53><span id="eServiceTxt" class="textOff">Live web-based customer service, support, and collaboration.</span><hr size=1 color="#9999ff">	</TD>
+		<TD>
+			<IMG SRC="images/spacer.gif" WIDTH=1 HEIGHT=53></TD>
+	</TR>
+	<TR>
+		<TD>
+			<A HREF="/eCustomer"
+			   ONMOUSEOVER="changeImages('eCustomer', 'images/eCustomer-over.gif'); return true;"
+			   ONMOUSEOUT="changeImages('eCustomer', 'images/eCustomer.gif'); return true;">
+				<IMG NAME="eCustomer" SRC="images/eCustomer.gif" WIDTH=305 HEIGHT=20 BORDER=0></A></TD>
+		<TD>
+			<IMG SRC="images/spacer.gif" WIDTH=1 HEIGHT=20></TD>
+	</TR>
+	<TR>
+		<TD WIDTH=305 HEIGHT=52 ROWSPAN=2><span id="eCustomerTxt" class="textOff">Customer relationship portal which provides a comprehensive suite of eSales, eMarketing, and eService capabilities.</span><hr size=1 color="#9999ff"></TD>
+		<TD>
+			<IMG SRC="images/spacer.gif" WIDTH=1 HEIGHT=32></TD>
+	</TR>
+	<TR>
+		<TD ROWSPAN=7>
+			<IMG SRC="images/spacer.gif" WIDTH=477 HEIGHT=248></TD>
+		<TD>
+			<IMG SRC="images/spacer.gif" WIDTH=1 HEIGHT=20></TD>
+	</TR>
+	<TR>
+		<TD>
+			<A HREF="/eChannel"
+			   ONMOUSEOVER="changeImages('eChannel', 'images/eChannel-over.gif'); return true;"
+			   ONMOUSEOUT="changeImages('eChannel', 'images/eChannel.gif'); return true;">
+				<IMG NAME="eChannel" SRC="images/eChannel.gif" WIDTH=305 HEIGHT=18 BORDER=0></A></TD>
+		<TD>
+			<IMG SRC="images/spacer.gif" WIDTH=1 HEIGHT=18></TD>
+	</TR>
+	<TR>
+		<TD WIDTH=305 HEIGHT=53><span id="eChannelTxt" class="textOff">Partner portal that transforms distribution channels into virtual sales and service organizations.</span> <hr size=1 color="#9999ff"></TD>
+		<TD>
+			<IMG SRC="images/spacer.gif" WIDTH=1 HEIGHT=53></TD>
+	</TR>
+	<TR>
+		<TD>
+			<A HREF="/eBriefings"
+			   ONMOUSEOVER="changeImages('eBriefings', 'images/eBriefings-over.gif'); return true;"
+			   ONMOUSEOUT="changeImages('eBriefings', 'images/eBriefings.gif'); return true;">
+				<IMG NAME="eBriefings" SRC="images/eBriefings.gif" WIDTH=305 HEIGHT=21 BORDER=0></A></TD>
+		<TD>
+			<IMG SRC="images/spacer.gif" WIDTH=1 HEIGHT=21></TD>
+	</TR>
+	<TR>
+		<TD WIDTH=305 HEIGHT=52><span id="eBriefingsTxt" class="textOff">Personalized news, content, and account information tailored to your individual interests.</span> <hr size=1 color="#9999ff">
+</TD>
+		<TD>
+			<IMG SRC="images/spacer.gif" WIDTH=1 HEIGHT=52></TD>
+	</TR>
+	<TR>
+		<TD>
+			<A HREF="/eTraining"
+			   ONMOUSEOVER="changeImages('eTraining', 'images/eTraining-over.gif'); return true;"
+			   ONMOUSEOUT="changeImages('eTraining', 'images/eTraining.gif'); return true;">
+				<IMG NAME="eTraining" SRC="images/eTraining.gif" WIDTH=305 HEIGHT=21 BORDER=0></A></TD>
+		<TD>
+			<IMG SRC="images/spacer.gif" WIDTH=1 HEIGHT=21></TD>
+	</TR>
+	<TR>
+		<TD WIDTH=305 HEIGHT=63><span id="eTrainingTxt" class="textOff">Full web-based support for accessing, managing, and delivering training.</span><hr size=1 color="#9999ff"><br>&nbsp;</TD>
+		<TD>
+			<IMG SRC="images/spacer.gif" WIDTH=1 HEIGHT=63></TD>
+	</TR>
+</TABLE>
+<!-- End ImageReady Slices -->
+</BODY>
+</HTML>

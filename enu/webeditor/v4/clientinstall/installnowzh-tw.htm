@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- Copyright 2004 Ektron, Inc. -->
+<!-- Revision Date: 2004-Feb-19 -->
+<html>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=big5">
+<title>eWebEditPro 安裝</title>
+<script language="JavaScript1.2" src="parseinstallparams.js"></script>
+<script language="JavaScript1.2" src="../ewebeditpro.js"></script>
+<style>
+P { font-size : small; font-family : verdana, helvetica; }
+H1 { font-family : verdana, helvetica; }
+H2 { font-family : verdana, helvetica; }
+A { font-family : verdana, helvetica; }
+BODY { font-size : small; }
+</style>
+
+<script language="JavaScript1.2">
+<!--
+function OnReadyHandler()
+{
+	document.loadingMsg.style.visibility = "hidden";
+	if (top.opener && !top.opener.closed)
+	{
+		top.opener.location.reload();
+		setTimeout("self.close()", 5000);
+	}
+}
+//-->
+</script>
+
+</head>
+
+<body>
+
+<p align="center"><h2 align="center">
+eWebEditPro <br>自動<br>下載和安裝
+</h2></p>
+
+<form method="post">
+<input type=hidden name="DoneMsg" value="&lt;p&gt; &lt;/p&gt;&lt;p align=center&gt;&lt;font face='Arial' size=4&gt;安裝完成。&lt;/font&gt;&lt;/p&gt;">
+<input type=hidden name="RestartMsg" value="&lt;p&gt; &lt;/p&gt;&lt;p align=center&gt;&lt;font face='Arial' size=4&gt;請重新啟動 Windows 以完成安裝。&lt;/font&gt;&lt;/p&gt;">
+
+<p align="center"><font size=-1>
+<img name=loadingMsg src="loading.gif" alt="下載檔案，請稍後..." width=234 height=30><br>
+如果成功，將在下面的框中顯示 "安裝完成"。
+</font></p>
+<script language="JavaScript1.2">
+	var sCaption = "安裝完成";//"Installation Complete.";
+	writeLoader(sCaption);
+</script>
+
+<p><font size=-1>
+<script language="JavaScript1.2">
+<!--
+	document.write('如果出現小的紅色 <font color="red"><b>X</b></font>，則試著下載');
+	document.write('<a href="' + eWebEditProDefaults.clientInstall + '">');
+	document.write('客戶機版安裝程式</a> 並執行該程式。');
+// -->
+</script>
+</font></p>
+<p><font size=-1>
+進一步資訊，請訪問 <a href="http://www.ektron.com/support" target="_blank">Ektron 的技術支持網頁</a>。
+</font></p>
+
+</form>
+
+</body>
+</html>

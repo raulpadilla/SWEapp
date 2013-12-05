@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- Copyright 2004 Ektron, Inc. -->
+<!-- Revision Date: 2004-Feb-19 -->
+<html>
+<head>
+<title>Installation af eWebEditPro</title>
+<script language="JavaScript1.2" src="parseinstallparams.js"></script>
+<script language="JavaScript1.2" src="../ewebeditpro.js"></script>
+<style>
+P { font-size : small; font-family : verdana, helvetica; }
+H1 { font-family : verdana, helvetica; }
+H2 { font-family : verdana, helvetica; }
+A { font-family : verdana, helvetica; }
+BODY { font-size : small; }
+</style>
+ <script language="JavaScript1.2">
+<!--
+function OnReadyHandler()
+{
+	document.loadingMsg.style.visibility = "hidden";
+	if (top.opener && !top.opener.closed)
+	{
+		top.opener.location.reload();
+		setTimeout("self.close()", 5000);
+	}
+}
+//-->
+</script>
+ </head>
+ <body>
+ <p align="center"><h2 align="center">
+eWebEditPro <br>Automatisk <br>overførsel og installation </h2></p>
+ <form method="post">
+<input type=hidden name="DoneMsg" value="&lt;p&gt; &lt;/p&gt;&lt;p align=center&gt;&lt;font face='Arial' size=4&gt;Installationen er fuldført.&lt;/font&gt;&lt;/p&gt;">
+<input type=hidden name="RestartMsg" value="&lt;p&gt; &lt;/p&gt;&lt;p align=center&gt;&lt;font face='Arial' size=4&gt;Genstart Windows for at fuldføre installationen.&lt;/font&gt;&lt;/p&gt;">
+ <p align="center"><font size=-1>
+<img name=loadingMsg src="loading.gif" alt="Overfører, vent et øjeblik..." width=234 height=30><br>
+Hvis overførslen lykkes, vises meddelelsen "Installationen er fuldført" i boksen nedenfor. </font></p>
+<script language="JavaScript1.2">
+	var sCaption = "Installationen er fuldført";
+	writeLoader(sCaption);
+</script>
+
+<p><font size=-1>
+<script language="JavaScript1.2">
+<!--
+	document.write('Hvis et lille rødt <font color="red"><b>X</b></font> vises, kan du prøve at overføre ');
+	document.write('<a href="' + eWebEditProDefaults.clientInstall + '">');
+	document.write('klientinstallationsprogrammet</a> og køre det. ');
+// -->
+</script>
+</font></p>
+<p><font size=-1>
+Yderligere hjælp finder du ved at besøge <a href="http://www.ektron.com/support" target="_blank">Ektrons support-side</a>. </font></p>
+</form>
+ </body>
+</html>

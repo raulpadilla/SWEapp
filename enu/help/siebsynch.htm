@@ -1,0 +1,245 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-8"> 
+<link rel="stylesheet" href="siebhelp.css">
+<title>Synchronizing Data</title>
+  <!-- HTML Indexer V3.0 - Do not edit this comment block.
+    Target="#"
+        IndexAs="",SortAs="",HelpAs="",HelpTitle=""
+    Target="excludeprivateinfo"
+        IndexAs="",SortAs="",HelpAs="",HelpTitle=""
+    Target="importingexportingdata"
+        IndexAs="",SortAs="",HelpAs="",HelpTitle=""
+    Target="runningsync"
+        IndexAs="",SortAs="",HelpAs="",HelpTitle=""
+    Target="selectingsyncoptions_nonoutlook"
+        IndexAs="",SortAs="",HelpAs="",HelpTitle=""
+    Target="selectingsyncoptions_outlook"
+        IndexAs="",SortAs="",HelpAs="",HelpTitle=""
+    Target="selectingsyncoptionsmain"
+        IndexAs="",SortAs="",HelpAs="",HelpTitle=""
+    Target="synchronizingwithpalm"
+        IndexAs="",SortAs="",HelpAs="",HelpTitle=""
+    Target="top"
+        IndexAs="",SortAs="",HelpAs="",HelpTitle=""
+    Target="viewsynclog"
+        IndexAs="",SortAs="",HelpAs="",HelpTitle=""
+  HTML Indexer -->
+</head>
+
+<body>
+<a name="top"></a>
+<h1>Synchronizing Data</h1>
+<p><a href="siebstarthelp.htm" title="Contents">Contents</a> | <a href="siebindex.htm" title="Index">Index</a></p>
+
+<hr>
+
+<p>Siebel Sync is a client-based synchronization solution that allows you to synchronize Siebel with a Personal Information Manager (PIM) such as Microsoft Outlook or a Palm-Powered device.  Siebel also offers a server-based synchronization solution.  For information about this server-based solution, see <i>Siebel PIM Server Integration Guide</i> in the Siebel bookshelf.</p>
+
+<p><b>Note: </b>For information about supported PIMs and operating systems, see <i>Siebel System Requirements and Supported Platforms</i>.</p>
+
+<h3>Tasks</h3>
+<p><a href="siebsynch.htm#selectingsyncoptionsmain" title="Selecting Synchronization Options">Selecting Synchronization Options</a></p>
+<p><a href="siebsynch.htm#runningsync" title="Running Siebel Sync">Running Siebel Sync</a></p>
+<p><a href="siebsynch.htm#synchronizingwithpalm" title="Synchronizing with a Palm-Powered Device">Synchronizing with a Palm-Powered Device</a></p>
+<p><a href="siebsynch.htm#importingexportingdata" title="Importing and Exporting Data">Importing and Exporting Data</a></p>
+<p><a href="siebsynch.htm#excludeprivateinfo" title="Excluding Private Data from Siebel Applications">Excluding Private Data from Siebel Applications</a></p>
+<p><a href="siebsynch.htm#viewsynclog" title="Viewing the Siebel Sync Log">Viewing the Siebel Sync Log</a></p>
+
+<br><p class="BacktoTop"><a href="#top"><img src="top.gif" border="0" alt="Back to top" title="Back to top"></a></p>
+<hr>
+
+<h2><a name="selectingsyncoptionsmain">Selecting Synchronization Options</a></h2>
+<p>You must select the type of Siebel applications data and the PIM that you want to synchronize.</p>
+<p>Selecting synchronization options consists of two main parts: accessing the location from where you can start selecting options, and then selecting options for each type of Siebel applications data and PIM.</p>
+
+<h5>To start selecting synchronization options</h5>
+<ol>
+	<li>On the taskbar, click Start &gt; Programs &gt; Siebel Sync 7.x.x &gt; Siebel Sync.<br>
+		The Siebel Sync login dialog box appears.<br>
+		<b>Note: </b>If your Siebel administrator has set up a default connect string, that string appears in the Connect to field.</li>
+	<li>Complete the User name and Password fields.</li>
+	<li>If the Connect to field is blank, enter a connect string.<br>
+		If you are not sure which connect string to use, see your Siebel administrator.</li>
+	<li>Click OK.<br>
+		The Siebel Sync dialog box appears.</li>
+	<li>Click Configure.<br>
+		The Configure Translation dialog box appears.</li>
+	<li>Continue selecting synchronization options for your PIM:
+		<ul>
+			<li><a href="siebsynch.htm#selectingsyncoptions_outlook" title="Microsoft Outlook">Microsoft Outlook</a></li>
+			<li><a href="siebsynch.htm#selectingsyncoptions_nonoutlook" title="Non-MS Outlook">Non-MS Outlook</a></li>
+		</ul></li>
+</ol>
+
+<p>&nbsp;</p>
+<h5><a name="selectingsyncoptions_outlook">To continue selecting synchronization options for Microsoft Outlook</a></h5>
+<ol>
+	<li>In the Configure Translation dialog box, select the type of Siebel applications data for which you want to define options and click Choose.<br>
+		The Choose Translator dialog box appears.</li>
+	<li>In the Available Translators list, select MS Outlook.<br>
+		A read-only Folder Name field and a Browse button appear in the lower part of the dialog box.</li>
+	<li>Click Browse.<br>
+		The Choose Folder(s) dialog box appears. This dialog box lists the folders you have defined in MS Outlook and are available for synchronization.</li>
+	<li>Navigate to the folder that contains the data you want to synchronize.</li>
+	<li>Select the folder and click Add.<br>
+		<b>Note: </b>You can only select folders that contain data of the same type as the Siebel applications data you selected in step 1 at the Configure Translation dialog box.<br>
+		The folder you selected appears in the Selected Folder(s) list.</li>
+	<li>If other folders appear in the Selected Folder(s) list, select the folder you just added and click Default.</li>
+	<li>Click OK.<br>
+		The Choose Translator dialog box appears. The Folder Name field now contains the name of MS Outlook folder you selected.</li>
+	<li>Click OK.<br>
+		The Configure Translation dialog box appears.</li>
+	<li>Repeat steps 1 &#150; 8 for each type of Siebel applications data you want to synchronize with your PIM.</li>
+	<li>Click OK until the Siebel Sync dialog box appears, then click Cancel to close the dialog box.</li>
+</ol>
+
+<p>&nbsp;</p>
+<h5><a name="selectingsyncoptions_nonoutlook">To continue selecting synchronization options for non-MS Outlook PIMs</a></h5>
+<ol>
+	<li>In the Configure Translation dialog box, select the type of Siebel applications data for which you want to define options and click Choose.<br>
+		The Choose Translator dialog box appears.</li>
+	<li>In the Available Translators list, select the PIM you want to use for synchronization.</li>
+	<li>Click OK.<br>
+		The Configure Translation dialog box appears.</li>
+	<li>Repeat steps 1 &#150; 3 for each type of Siebel application data you want to synchronize with your PIM.</li>
+	<li>Click OK until the Siebel Sync dialog box appears, then click Cancel to close the dialog box.</li>
+</ol>
+
+<br><p class="BacktoTop"><a href="#top"><img src="top.gif" border="0" alt="Back to top" title="Back to top"></a></p>
+<hr>
+
+<h2><a name="runningsync">Running Siebel Sync</a></h2>
+<p>Siebel Sync lets you synchronize Siebel applications data with compatible Personal Information Manager (PIM) files. The types of data available for synchronization in your Siebel application are the current user&#146;s My Activities, My Calendar, My Contacts, and My Accounts information. What actually gets synchronized depends on the options set and the queries selected. For more information, see <a href="siebsynch.htm#selectingsyncoptionsmain" title="Selecting Synchronization Options">Selecting Synchronization Options</a>.</p> 
+<p>When you synchronize, Siebel Sync synchronizes the specified PIM with the selected Siebel applications data modules.</p>
+<p><b>Note: </b>Siebel Sync can synchronize activities and calendar data, but can only export account and contact data.</p>
+<p>Before the synchronization is done, you can view details about the data to be transferred between your Siebel application and your PIM. This gives you the opportunity to accept or reject changes.</p>
+
+<h5>To run Siebel Sync</h5>
+<ol>
+	<li>Make sure your Siebel application and PIM are running.<br>
+		<b>Note: </b>If the PIM is a Palm-powered device, follow the instructions in <a href="siebsynch.htm#synchronizingwithpalm" title="Synchronizing with a Palm-Powered Device">Synchronizing with a Palm-Powered Device</a>.</li>
+	<li>On the taskbar, click Start &gt; Programs &gt; Siebel Sync 7.x.x &gt; Siebel Sync.<br>
+		The Siebel Sync login dialog box appears.</li>
+	<li>Enter your user name, password, and connect string, and click OK.<br>
+		The Siebel Sync dialog box appears.</li>
+	<li>To select a query to limit the amount of information that is synchronized, do the following:
+	<ol type="a">
+		<li>In the Category column, select the Siebel application screen for which you want to select a query.</li>
+		<li>In the Siebel Query column, select a query.</li>
+	</ol></li>
+	<li>Click Synchronize.<br>
+		Siebel Sync begins synchronizing data in your Siebel application with the data in your PIM. Messages about the progress of the synchronization appear in the lower half of the dialog box. When synchronization has run, the Confirm Calendar Changes dialog box appears.</li>
+	<li>Do one of the following:
+		<ul>
+			<li>To accept the changes made during synchronization, click Accept.<br>
+				Siebel Sync completes the synchronization by writing the synchronized data to the Siebel application and PIM databases.<br>
+				If there are more modules left to synchronize, the process repeats.</li>
+			<li>To reject the changes made during synchronization, click Cancel.<br>
+				Siebel Sync prevents all changes from being written.</li>
+			<li>To view synchronization details, click Details.<br>
+				The Details for Confirm Changes dialog box appears showing changes made during synchronization. The rows in the upper list show the changes that will be made in your PIM. The rows in the lower list show the changes that will be made in your Siebel application.<br>
+				You can double-click a row in either list to see more details about the selected change.<br>
+				The Additional Details for Confirm Changes dialog box appears with more information about the selected change. An exclamation point (!) at the start of a record identifies a change to existing information. </li>
+			<li>To cancel the changes made during synchronization and synchronize again, click Re-sync.<br>
+				Siebel Sync resets the PIM database and the Siebel applications database to the way they were before synchronization, then starts the synchronization process again.</li>
+		</ul></li>
+</ol>
+
+<br><p class="BacktoTop"><a href="#top"><img src="top.gif" border="0" alt="Back to top" title="Back to top"></a></p>
+<hr>
+
+<h2><a name="synchronizingwithpalm">Synchronizing with a Palm-Powered Device</a></h2>
+<p>When your Siebel application is configured for synchronization with a Palm-powered device, the Synchronize button in the Siebel Sync dialog box is unavailable. You can only initiate synchronization with Palm-powered devices from the Palm-powered device or the device&#146;s cradle.</p>
+
+<h5>To synchronize with a Palm-powered device</h5>
+<ol>
+	<li>Connect the Palm-powered device cradle with your computer.</li>
+	<li>Put the Palm-powered device in the cradle.</li>
+	<li>Click the Hot Sync button on the Palm-powered device.<br>
+		Siebel Sync starts and the Siebel Sync login dialog box appears.</li>
+	<li>Log in to Siebel Sync and acknowledge the dialog boxes as they appear.</li>
+</ol>
+<p><b>Note: </b>For detailed information, see your Palm-powered device&#146;s documentation.</p>
+
+<br><p class="BacktoTop"><a href="#top"><img src="top.gif" border="0" alt="Back to top" title="Back to top"></a></p>
+<hr>
+
+<h2><a name="importingexportingdata">Importing and Exporting Data</a></h2>
+<p>Siebel Sync lets you perform one-way imports and exports of data between your 
+PIM and your Siebel application.</p>
+<p><b>Note: </b>You can import or export activities and calendar data, but you can only export account and contact data.</p>
+
+<h5>To import or export data</h5>
+<ol>
+	<li>On the taskbar, click Start &gt; Programs &gt; Siebel Sync 7.x.x &gt; Siebel Sync.<br>
+		The Siebel Sync login dialog box appears.</li>
+	<li>Enter your user name, password, and connect string, and click OK.<br>
+		The Siebel Sync dialog box appears.</li>
+	<li>Click Configure.<br>
+		The Configure Translation dialog box appears.</li>
+	<li>Select the type of data that you want to use for the import or export and click Choose.<br>
+		The Choose Translator dialog box appears.</li>
+	<li>In the Available Translators list, select the PIM for the import or export.</li>
+	<li>Under Operation, do one of the following:
+		<ul>
+			<li>To import data from a PIM to your Siebel application, click Import.</li>
+			<li>To export data from your Siebel application to a PIM, click Export.</li>
+		</ul></li>
+	<li>Click OK.<br>
+		The Configure Translation dialog box appears.</li>
+	<li>Click OK to close the Configure Translation dialog box.</li>
+	<li>Click Synchronize.</li>
+</ol>
+
+<br><p class="BacktoTop"><a href="#top"><img src="top.gif" border="0" alt="Back to top" title="Back to top"></a></p>
+<hr>
+
+<h2><a name="excludeprivateinfo">Excluding Private Data from Siebel Applications</a></h2>
+<p>To prevent Siebel Sync from transferring information marked Private in your PIM, you can select a predefined filter in Siebel Sync for each Siebel applications data module from which you want to exclude private PIM data. The following predefined private data filters are available in Siebel Sync for each Siebel applications module and PIM:</p>
+<ul>
+	<li>GroupWise, MS Outlook, and Palm OS: Accounts, Activities, Calendar, and Contacts</li>
+	<li>Lotus Notes: Calendar</li>
+</ul>
+
+<h5>To exclude private MS Outlook data from Siebel Sync</h5>
+<ol>
+	<li>On the taskbar, click Start &gt; Programs &gt; Siebel Sync 7.x.x &gt; Siebel Sync.<br>
+		The Siebel Sync login dialog box appears.</li>
+	<li>Enter your user name, password, and connect string, and click OK.<br>
+		The Siebel Sync dialog box appears.</li>
+	<li>Click Configure.<br>
+		The Configure Translation dialog box appears.</li>
+	<li>Select the type of data for which you want to create a filter and click Advanced.<br>
+		The Advanced Settings dialog box appears.</li>
+	<li>Click the Filters tab.</li>
+	<li>In the MS Outlook Tasks Filters list, select Exclude Private Data.</li>
+	<li>Click OK.<br>
+		The Siebel Sync dialog box appears.</li>
+</ol>
+
+<br><p class="BacktoTop"><a href="#top"><img src="top.gif" border="0" alt="Back to top" title="Back to top"></a></p>
+<hr>
+
+<h2><a name="viewsynclog">Viewing the Siebel Sync Log</a></h2>
+<p>The log shows the status of your most recent synchronization. Any synchronization errors or warning messages appear in the log. Siebel Sync refreshes the log after each synchronization, so you should view the log at the end of each synchronization.</p>
+<p>The Siebel Sync log is saved in a file named pttrace.log. This file is located in the bin folder within the Siebel Sync installation folder. For example, if you installed Siebel Sync in C:\sea\pimsync, the log file is in C:\sea\pimsync\bin\. If you are using Siebel Sync with a Palm-powered device, the log file is located in the Palm directory.</p>
+
+<h5>To view the Siebel Sync log</h5>
+<ol>
+	<li>On the taskbar, click Start &gt; Programs &gt; Siebel Sync 7.x.x &gt; Siebel Sync.<br>
+		The Siebel Sync login dialog box appears.</li>
+	<li>Enter your user name, password, and connect string, and click OK.<br>
+		The Siebel Sync dialog box appears.</li>
+	<li>Click the Log tab.<br>
+		The Log tab shows the start and finish times of your last synchronization, and any error messages. </li>
+</ol>
+
+<br><p class="BacktoTop"><a href="#top"><img src="top.gif" border="0" alt="Back to top" title="Back to top"></a></p>
+<hr>
+<p><a href="siebstarthelp.htm" title="Contents">Contents</a> | <a href="siebindex.htm" title="Index">Index</a></p>
+
+
+</body>
+</html>

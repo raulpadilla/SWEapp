@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--    
+eWebEditPro 2 XML Information Schema
+Date: Jul 17, 2002
+Copyright 2000-2002, Ektron, Inc.
+-->
+<!--XML Information-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:simpleType name="yesnoType">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="true"/>
+			<xs:enumeration value="false"/>
+			<xs:enumeration value="yes"/>
+			<xs:enumeration value="no"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="customtag">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="tagdefinitions">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="tagdefault">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="glyph" type="glyphType" minOccurs="0" maxOccurs="1"/>
+										<xs:element name="simtaglist" type="simtaglistType" minOccurs="0" maxOccurs="1"/>
+									</xs:sequence>
+									<xs:attribute name="dstyle" type="xs:string"/>
+									<xs:attribute name="astyle" type="xs:string"/>
+									<xs:attribute name="ashow" type="yesnoType"/>
+									<xs:attribute name="edit" type="yesnoType"/>
+									<xs:attribute name="enabled" type="yesnoType"/>
+									<xs:attribute name="render" type="yesnoType"/>
+									<xs:attribute name="style" type="xs:string"/>
+									<xs:attribute name="type" use="required">
+										<xs:simpleType>
+											<xs:restriction base="xs:NMTOKEN">
+												<xs:enumeration value="empty"/>
+												<xs:enumeration value="nonempty"/>
+												<xs:enumeration value="vertical"/>
+												<xs:enumeration value="horizontal"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="visible" type="yesnoType"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="tagspec" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="caption" minOccurs="0" maxOccurs="1">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute name="enabled" type="yesnoType"/>
+														<xs:attribute name="localeRef" type="xs:string"/>
+														<xs:attribute name="visible" type="yesnoType"/>
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="glyph" type="glyphType" minOccurs="0" maxOccurs="1"/>
+										<xs:element name="simtaglist" type="simtaglistType" minOccurs="0" maxOccurs="1"/>
+									</xs:sequence>
+									<xs:attribute name="dstyle" type="xs:string"/>
+									<xs:attribute name="astyle" type="xs:string"/>
+									<xs:attribute name="ashow" type="yesnoType"/>
+									<xs:attribute name="edit" type="yesnoType"/>
+									<xs:attribute name="enabled" type="yesnoType"/>
+									<xs:attribute name="name" type="xs:string" use="required"/>
+									<xs:attribute name="render" type="yesnoType"/>
+									<xs:attribute name="style" type="xs:string"/>
+									<xs:attribute name="type" use="required">
+										<xs:simpleType>
+											<xs:restriction base="xs:NMTOKEN">
+												<xs:enumeration value="empty"/>
+												<xs:enumeration value="nonempty"/>
+												<xs:enumeration value="vertical"/>
+												<xs:enumeration value="horizontal"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+									<xs:attribute name="visible" type="yesnoType"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="enabled" type="yesnoType"/>
+						<xs:attribute name="name" type="xs:string" use="required"/>
+						<xs:attribute name="src" type="xs:string"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="docxml" minOccurs="0" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="transform" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:attribute name="onload" type="xs:string"/>
+									<xs:attribute name="onsave" type="xs:string"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="loadsch" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="xsd" minOccurs="1" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:attribute name="status" default="idle">
+													<xs:simpleType>
+														<xs:restriction base="xs:NMTOKEN">
+															<xs:enumeration value="idle"/>
+															<xs:enumeration value="active"/>
+															<xs:enumeration value="disabled"/>
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:attribute>
+												<xs:attribute name="src" type="xs:string"/>
+												<xs:attribute name="ns" type="xs:string"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="enabled" type="yesnoType"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="enabled" type="yesnoType"/>
+						<xs:attribute name="reqfill" type="yesnoType"/>
+						<xs:attribute name="showroot" type="yesnoType"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="enabled" type="yesnoType"/>
+			<xs:attribute name="tagsenabled" type="yesnoType"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="glyphType">
+		<xs:attribute name="height" type="xs:string"/>
+		<xs:attribute name="src" type="xs:string" use="required"/>
+		<xs:attribute name="visible" type="yesnoType"/>
+		<xs:attribute name="width" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="simtaglistType">
+		<xs:sequence>
+			<xs:element name="simtag" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="glyph" type="xs:string"/>
+							<xs:attribute name="localeRef" type="xs:string"/>
+							<xs:attribute name="name" type="xs:string" use="required"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="enabled" type="yesnoType"/>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+	</xs:complexType>
+</xs:schema>
