@@ -1,0 +1,553 @@
+<html>
+<head>
+<script>
+</script>
+<script src="../jd/header.js">
+</script>
+<script language="JavaScript">
+<!--
+var TRANSACT_CODESET_VER = "1.0";
+var SAVE_NAME;
+var SAVE_ID;
+var CUR_QUOTE_ID;
+var LAST_PCKG;
+var LAST_ARGS;
+var OM_PACKAGE_ID = null;
+var OM_ORDER_ID = null;
+var OM_SESSION_ID = null;
+var LINKBACK_ID = null;
+function RestoreConfig(inLink) {
+var restore_ok = true;
+var data_obj = getDataState();
+if (typeof OL.COP_BeforeRestoreConfig != "undefined" ) {
+restore_ok = OL.COP_BeforeRestoreConfig(data_obj, inLink);
+}
+if (restore_ok) {
+OL.Load("linkback", inLink.href, OLStr + ".transact_wrkspc");
+}
+}
+function ShowCart(view_only, quoteID) {
+var show_ok = true;
+var data_obj = getDataState();
+var target = OL.GetConfigVar("TRANSACT", "CART_TARGET");
+var mars_on = OL.GetConfigVar("TRANSACT", "ACTIVE");
+if (mars_on) {
+var third_party = OL.GetConfigVar("TRANSACT", "THIRD_PARTY_CART");
+var winargs = OL.GetConfigVar("TRANSACT", "CART_WINARGS");
+var url;
+if (third_party) {
+url = OL.GetConfigVar("TRANSACT", "SHOW_CART_URL");
+if (target == "_new") {
+var win = window.open("", "marscart", winargs);
+win.location.replace(url);
+}
+else {
+target.location.replace(url);
+}
+}
+else {
+url = OL.GetConfigVar("TRANSACT", "URL");
+if ((typeof view_only == "undefined") || (view_only == false)) {
+if (typeof quoteID != "undefined") {
+CUR_QUOTE_ID = quoteID;
+}
+url += "?action=ShoppingCart.jsp&quote_id="+CUR_QUOTE_ID;
+}
+else {
+if (typeof quoteID == "undefined") {
+quoteID = CUR_QUOTE_ID;
+}
+url += "?action=ViewQuote.jsp&quote_id="+quoteID;
+target="_new";
+}
+if (target == "_new") {
+if ((typeof view_only == "undefined") || (view_only == false)) {
+var win = window.open("", "marscart", winargs);
+}
+else {
+var win = window.open("", "viewmarscart", winargs);
+}
+win.location.replace(url);
+}
+else {
+target = OLStr + "." + target;
+OL.Load("shoppingcart", url, target);
+}
+}
+}
+else {
+TransactNotActive();
+}
+}
+function ConfigList(target) {
+var list_ok = true;
+var data_obj = getDataState();
+var mars_on = OL.GetConfigVar("TRANSACT", "ACTIVE");
+if (mars_on) {
+var url = OL.GetConfigVar("TRANSACT", "URL");
+url += "?action=ConfigList.jsp&noCache=" + escape(new Date());
+url += "&OL_FXN=" + OLStr + ".SetLoaded(\'configlist\');opener." + OLStr + ".ConfigList(\'"+target+"\')";
+url += "&OL_UNLOCK="+ OLStr + ".SetLoaded(\'configlist\');";
+target = OLStr + "." + target;
+OL.Load("configlist", url, target);
+return false;
+}
+else {
+TransactNotActive();
+return false;
+}
+}
+function SaveGeneric(inStr, inID) {
+var save_ok = true;
+var data_obj = getDataState();
+var mars_on = OL.GetConfigVar("TRANSACT", "ACTIVE");
+if (mars_on) {
+var url = OL.GetConfigVar("TRANSACT", "URL");
+url += "?action=SaveGenericElem&noCache=" + escape((new Date()).toLocaleString());
+url += "&OL_FXN=" + OLStr + ".SetLoaded(\'savegeneric\');opener." + OLStr + ".SaveGeneric(\'"+inStr+"\'";
+url += "&OL_UNLOCK="+ OLStr + ".SetLoaded(\'savegeneric\');";
+if (typeof inID != "undefined") {
+url += ",\'"+inID+"\')&element_id=" + inID;
+}
+else {
+url += ")";
+}
+url += "&element_data=" + escape(inStr);
+OL.Load("savegeneric", url, OLStr + ".transact_wrkspc");
+return false;
+}
+else {
+TransactNotActive();
+return false;
+}
+}
+function RestoreGeneric(inID) {
+var open_ok = true;
+var data_obj = getDataState();
+var mars_on = OL.GetConfigVar("TRANSACT", "ACTIVE");
+if (mars_on) {
+var url = OL.GetConfigVar("TRANSACT", "URL");
+url += "?action=OpenGenericElem&noCache=" + escape((new Date()).toLocaleString());
+url += "&OL_FXN=" + OLStr + ".SetLoaded(\'opengeneric\');opener." + OLStr + ".RestoreGeneric(\'"+inID+"\')";
+url += "&OL_UNLOCK="+ OLStr + ".SetLoaded(\'opengeneric\');";
+url += "&id=" + inID;
+OL.Load("opengeneric", url, OLStr + ".transact_wrkspc");
+return false;
+}
+else {
+TransactNotActive();
+return false;
+}
+}
+function DeleteGeneric(inID) {
+var del_ok = true;
+var data_obj = getDataState();
+var mars_on = OL.GetConfigVar("TRANSACT", "ACTIVE");
+if (mars_on) {
+var url = OL.GetConfigVar("TRANSACT", "URL");
+url += "?action=DeleteGenericElem&noCache=" + escape((new Date()).toLocaleString());
+url += "&OL_FXN=" + OLStr + ".SetLoaded(\'deletegeneric\');opener." + OLStr + ".DeleteGeneric(\'"+inID+"\')";
+url += "&OL_UNLOCK="+ OLStr + ".SetLoaded(\'deletegeneric\');";
+url += "&element_id=" + inID;
+OL.Load("deletegeneric", url, OLStr + ".transact_wrkspc");
+return false;
+}
+else {
+TransactNotActive();
+return false;
+}
+}
+function AddToCart() {
+var add_ok = true;
+var data_obj = getDataState();
+if (typeof OL.COP_BeforeAddToCart != "undefined") {
+add_ok = OL.COP_BeforeAddToCart(data_obj);
+}
+if ((typeof OL.OR_AddToCart == "undefined") && (add_ok)){
+var mars_on = OL.GetConfigVar("TRANSACT", "ACTIVE");
+if (mars_on) {
+if ((typeof OL.PEP_BeforeADD_ITEM == "undefined") || (OL.PEP_BeforeADD_ITEM(data_obj, 'ADD_ITEM', window, 'add', target))) {
+OL.SendEvent('ADD_ITEM', window, 'add');
+}
+}
+else {
+TransactNotActive();
+}
+}
+}
+function GotSaveConfigName(config_name, is_new) {
+var data_obj = getDataState();
+if (config_name != null) {
+var action = 'save';
+if ((typeof OL.PEP_BeforeADD_ITEM == "undefined") || (OL.PEP_BeforeADD_ITEM(data_obj, 'ADD_ITEM', window, action, config_name, is_new))) {
+OL.SendEvent('ADD_ITEM',window,action,config_name, is_new);
+}
+}
+}
+function GetSaveConfigName() {
+var config_name = "";
+var config_name_temp="";
+var save_prompt = OL.GetConfigVar("TRANSACT", "SAVE_CONFIG_PROMPT");
+if (save_prompt == null) save_prompt = "Save this configuration as: ";
+if (SAVE_NAME != null){
+var i;
+for (i=0;i<SAVE_NAME.length;i++)
+{
+if (SAVE_NAME.charAt(i)=='\"')
+config_name_temp+="&quot;";
+else
+config_name_temp+=SAVE_NAME.charAt(i);
+}
+config_name = config_name_temp;
+}
+tmp_win = window.open("", "SaveConfig", "height=100,width=350,resizable");
+tmp_doc = tmp_win.document.open();
+tmp_doc.writeln("<html><head>");
+tmp_doc.writeln("<script language=\"JavaScript\">");
+tmp_doc.writeln("function entrevous(keypressed) { ");
+tmp_doc.writeln("var key;");
+tmp_doc.writeln("if (document.all) {");
+tmp_doc.writeln("key=window.event.keyCode;}else {key=keypressed.which;};");
+tmp_doc.writeln("if (key==13) {opener." + OLStr + ".GotSaveConfigName(document.SAVE_FORM.save_name.value, true);window.close();}}");
+tmp_doc.write("</" + "script>");
+tmp_doc.writeln("</head><body><form name=\"SAVE_FORM\">");
+tmp_doc.writeln(save_prompt + "<input type=text size=15 name=\"save_name\" value=\"" + config_name + "\"><br><br>");
+tmp_doc.writeln("<center>");
+if (config_name != "") {
+tmp_doc.write("<input type=\"button\" name=\"SAVE_NEW\" value=\"Save New\" onClick=\"if (SAVE_FORM.save_name.value != ''){ opener." + OLStr + ".GotSaveConfigName(document.SAVE_FORM.save_name.value, true); window.close();} else { alert('Please enter a name for the configuration.'); }\">\n");
+tmp_doc.writeln("&nbsp;\n<input type=\"button\" name=\"SAVE\" value=\"Overwrite\" onClick=\"if (SAVE_FORM.save_name.value != '') { opener." + OLStr + ".GotSaveConfigName(document.SAVE_FORM.save_name.value, false); window.close(); } else { alert('Please enter a name for the configuration.'); }\">\n&nbsp;<input type=\"button\" value=\"Cancel\" onClick=\"window.close();\">\n<br></form>");
+}
+else {
+tmp_doc.writeln("<input type=\"button\" name=\"SAVE_NEW\" value=\"Save\" onClick=\"if (document.SAVE_FORM.save_name.value != ''){ opener." + OLStr + ".GotSaveConfigName(document.SAVE_FORM.save_name.value, true); window.close();} else { alert('Please enter a name for the configuration.'); }\">\n");
+tmp_doc.writeln("<input type=\"button\" name=\"CANCEL\" value=\"Cancel\" onClick=\"window.close();\">\n<br></form>");
+}
+tmp_doc.writeln("<script language=\"JavaScript\">");
+tmp_doc.writeln("document.SAVE_FORM.save_name.onkeypress=entrevous;");
+tmp_doc.write("</" + "script>");
+tmp_doc.writeln("</center></body></html>");
+tmp_doc.close();
+}
+function TransactNotActive() {
+var data_obj = getDataState();
+if (typeof OL.OR_TransactNotActive != "undefined") {
+OL.OR_TransactNotActive(data_obj);
+}
+else {
+var msg = OL.GetConfigVar("TRANSACT", "NOT_ACTIVE_MSSG");
+if (msg != null) {
+alert(msg);
+}
+else {
+alert("Sorry, the action you have requested is currently unavailable.\n Please contact your system administrator.\n");
+}
+}
+}
+function SaveConfig() {
+var data_obj = getDataState();
+active = OL.GetConfigVar("TRANSACT", "ACTIVE");
+if (active == true) {
+var sendEvent = true;
+var name;
+if (typeof OL.COP_BeforeSaveConfig != "undefined") {
+OL.COP_BeforeSaveConfig(data_obj);
+}
+if (typeof OL.PEP_BeforeSaveConfig != "undefined") {
+sendEvent = OL.PEP_BeforeSaveConfig(data_obj, 'ADD_ITEM', window, 'save');
+}
+if (sendEvent == true) {
+if (typeof OL.OR_GetSaveConfigName != "undefined") {
+OL.OR_GetSaveConfigName(data_obj);
+}
+else {
+GetSaveConfigName();
+}
+}
+}
+else {
+TransactNotActive();
+}
+}
+function ParseUrlParam(query, param) {
+var pos, endpos, retval;
+pos = query.indexOf(param);
+if (pos != -1) {
+endpos = query.indexOf('&', pos);
+if (endpos == -1) {
+endpos = query.length;
+}
+retval = query.substring(pos+param.length+1, endpos);
+}
+else {
+retval = null;
+}
+return retval
+}
+function OpenFromUrl(query) {
+var data_obj = getDataState();
+var quote_id, config_id;
+var mars_active = OL.GetConfigVar("TRANSACT", "ACTIVE");
+if (mars_active == true) {
+var target = OL.GetConfigVar("TRANSACT", "CART_TARGET");
+OM_ORDER_ID = ParseUrlParam(query, 'om_order_id');
+OM_SESSION_ID = ParseUrlParam(query, 'om_session_id');
+OM_PACKAGE_ID = ParseUrlParam(query, 'om_lineitem_id');
+quote_id = ParseUrlParam(query, 'quote_id');
+if (quote_id != null) {
+if ((typeof target == "undefined") || (target == "")){
+target = "_new";
+}
+CUR_QUOTE_ID = quote_id;
+ShowCart(false);
+}
+else {
+config_id = ParseUrlParam(query, 'config_id');
+if (config_id != null) {
+LINKBACK_ID = config_id;
+var inLink = new Object();
+var url = OL.GetConfigVar("TRANSACT", "URL");
+inLink.href = url + "?action=OpenPackage&id=" + config_id;
+RestoreConfig(inLink);
+}
+}
+}
+else {
+TransactNotActive();
+}
+}
+function ServerLinkback(name, id, linkback_obj) {
+var data_obj = getDataState();
+if (name != null) {
+SAVE_NAME = name;
+}
+if (id != null) {
+SAVE_ID = id;
+}
+if ((typeof OL.PEP_BeforePACKAGE_IN == "undefined") || (OL.PEP_BeforePACKAGE_IN(data_obj, 'PACKAGE_IN', window, linkback_obj))){
+OL.SendEvent('PACKAGE_IN', window, linkback_obj);
+}
+}
+function getDataState() {
+var data_obj = new Object();
+data_obj.SAVE_NAME = SAVE_NAME;
+data_obj.SAVE_ID = SAVE_ID;
+data_obj.CUR_QUOTE_ID = CUR_QUOTE_ID;
+data_obj.LAST_PCKG = LAST_PCKG;
+data_obj.LAST_ARGS = LAST_ARGS;
+data_obj.TRANSACT_CODESET_VER = TRANSACT_CODESET_VER;
+data_obj.OM_SESSION_ID = OM_SESSION_ID;
+data_obj.OM_ORDER_ID = OM_ORDER_ID;
+data_obj.OM_PACKAGE_ID = OM_PACKAGE_ID;
+return data_obj;
+}
+function ProtectQuotes(value)
+{
+if (typeof value == "string") {
+value = value.toString();
+var retstr=value;
+if(value.indexOf('"')!=-1){
+retstr = value.replace(/"/g, "&quot;");
+}
+return retstr;
+}
+else {
+return value;
+}
+}
+function WriteItems(doc, item, prefix, ct) {
+for(var key in item){
+if ((typeof item[key] == "string") || (typeof item[key] == "number")){
+doc.writeln("<input type=\"hidden\" name=\"" + prefix + "_" + ct + "_" + key + "\" value=\"" + ProtectQuotes(item[key]) + "\">");
+}
+}
+doc.write("<input type=\"hidden\" name=\"" + prefix + "_"  + ct + "_DATA\" value=\"");
+for(var x in item.data){
+doc.write(x + "~|" + ProtectQuotes(item.data[x]) + "~|");
+}
+doc.writeln("\">");
+var childct = 0;
+for(var x in item.children){
+WriteItems(doc, item.children[x], prefix + "_" + ct, childct);
+childct ++;
+}
+}
+function WriteLinkbackObj(doc, pckg) {
+var ct;
+var index = -1;
+for(var ct in pckg.linkBack) {
+index ++;
+for(var i in pckg.linkBack[ct]){
+if ((typeof pckg.linkBack[ct][i] == "string") || (typeof pckg.linkBack[ct][i] == "number")) {
+doc.writeln("<input type=\"hidden\" name=\"LINKBACK_" + index + "_" + i + "\" value=\"" + ProtectQuotes(pckg.linkBack[ct][i]) + "\">");
+}
+}
+doc.write("<input type=\"hidden\" name=\"LINKBACK_" + index + "_INPUTS\" value=\"");
+for(var x in pckg.linkBack[ct]["inputSelections"]){
+doc.write(x + "~|" + escape(ProtectQuotes(pckg.linkBack[ct]["inputSelections"][x])) + "~|");
+}
+doc.writeln("\">");
+}
+}
+function PostPackage(pckg, win, arglist) {
+if (pckg == null) {
+pckg = LAST_PCKG;
+arglist = LAST_ARGS;
+LAST_PCKG = null;
+LAST_ARGS = null;
+}
+else {
+LAST_PCKG = pckg;
+LAST_ARGS = arglist;
+}
+action = arglist[0];
+if ((typeof arglist[3] != "undefined") && (arglist[3] == true)) {
+cancel_save = true;
+}
+else {
+cancel_save = false;
+}
+var mars_on = OL.GetConfigVar("TRANSACT", "ACTIVE");
+if (mars_on) {
+if (!cancel_save) {
+var doc = OL.transact_wrkspc.document.open();
+var url = OL.GetConfigVar("TRANSACT", "URL");
+doc.write("<html><body><form name=\"mars_frm\" method=\"POST\"");
+if (action == "save") {
+var save_name = arglist[1];
+var save_new = arglist[2];
+save_name=escape(save_name);
+doc.writeln("action=\"" + url + "?action=SavePackage\">");
+doc.write("<input type=\"hidden\" name=\"OL_FXN\" value=\"" + OLStr + ".transact.PostPackage(null, null, null)\">");
+if (name != null) {
+doc.writeln("<input type=\"hidden\" name=\"SAVE_NAME\" value=\"" + save_name + "\">");
+}
+if (OM_SESSION_ID != null) {
+doc.writeln("<input type=\"hidden\" name=\"OM_SESSION_ID\" value=\"" + OM_SESSION_ID + "\">");
+}
+if (OM_ORDER_ID != null) {
+doc.writeln("<input type=\"hidden\" name=\"OM_ORDER_ID\" value=\"" + OM_ORDER_ID + "\">");
+}
+if (save_new != true && SAVE_ID != null) {
+if ((OM_PACKAGE_ID != null)&& (SAVE_ID == LINKBACK_ID)){
+doc.writeln("<input type=\"hidden\" name=\"OM_PACKAGE_ID\" value=\"" + OM_PACKAGE_ID + "\">");
+}
+doc.writeln("<input type=\"hidden\" name=\"SAVE_ID\" value=\"" + SAVE_ID + "\">");
+}
+}
+else {
+var third_party = OL.GetConfigVar("TRANSACT", "THIRD_PARTY_CART");
+var winargs = OL.GetConfigVar("TRANSACT", "CART_WINARGS");
+var target = OL.GetConfigVar("TRANSACT", "CART_TARGET");
+doc.writeln("action=\"" + url + "?action=AddToCart\">");
+doc.writeln("<input type=\"hidden\" name=\"OL_FXN\" value=\"" + OLStr + ".transact.PostPackage(null, null, null)\">");
+doc.writeln("<input type=\"hidden\" name=\"TARGET\" value=\"" + target + "\">");
+doc.writeln("<input type=\"hidden\" name=\"WINARGS\" value=\"" + winargs + "\">");
+if (CUR_QUOTE_ID != null) {
+doc.writeln("<input type=\"hidden\" name=\"CUR_QUOTE_ID\" value=\"" + CUR_QUOTE_ID + "\">");
+}
+}
+WriteLinkbackObj(doc, pckg);
+WriteItems(doc, pckg.items, "ITEM", 0);
+doc.writeln("<input type=\"hidden\" name=\"FORM_END\" value=\"END\"></form></body></html>");
+doc.close()
+OL.transact_wrkspc.document.mars_frm.submit();
+} 
+}
+else {
+if (typeof OL.TransactNotActive != "undefined") {
+OL.TransactNotActive();
+}
+else {
+alert("Sorry, the action you have requested is currently unavailable.\n Please contact your system administrator.\n");
+}
+}
+}
+function QuoteList(target) {
+var mars_on = OL.GetConfigVar("TRANSACT", "ACTIVE");
+if (mars_on) {
+var url = OL.GetConfigVar("TRANSACT", "URL");
+url += "?action=QuoteList.jsp&noCache=" + escape(new Date());
+url += "&OL_FXN=" + OLStr + ".SetLoaded(\'quotelist\');opener." + OLStr + ".QuoteList('"+target+"')";
+url += "&OL_UNLOCK="+ OLStr + ".SetLoaded(\'quotelist\');";
+target = OLStr + "." + target;
+OL.Load("quotelist", url, target);
+return false;
+}
+else {
+TransactNotActive();
+return false;
+}
+}
+function RestoreQuote(quoteID, inLink) {
+var target = OL.GetConfigVar("TRANSACT", "CART_TARGET");
+var data_obj = getDataState();
+if (typeof OL.COP_BeforeRestoreQuote != "undefined") {
+OL.COP_BeforeRestoreQuote(data_obj, quote_id, inLink);
+}
+var mars_on = OL.GetConfigVar("TRANSACT", "ACTIVE");
+if (mars_on) {
+var third_party = OL.GetConfigVar("TRANSACT", "THIRD_PARTY_CART");
+var winargs = OL.GetConfigVar("TRANSACT", "CART_WINARGS");
+var url;
+if (third_party) {
+url = OL.GetConfigVar("TRANSACT", "SHOW_CART_URL");
+if (target == "_new") {
+var win = window.open("", "marscart", winargs);
+win.location.replace(url);
+}
+else {
+target.location.replace(url);
+}
+}
+else {
+if (typeof CUR_QUOTE_ID != "undefined" && CUR_QUOTE_ID !=  null && CUR_QUOTE_ID != quoteID) {
+if (typeof OL.OR_GetQuoteConfirmation != "undefined") {
+OL.OR_GetQuoteConfirmation(data_obj, quoteID, inLink.href);
+}
+else {
+GetQuoteConfirmation(quoteID, inLink.href)
+}
+}
+else if (typeof CUR_QUOTE_ID == "undefined" && typeof quoteID != "undefined" && quoteID !=null)
+{
+GetQuoteConfirmation(quoteID, inLink.href);
+}
+else
+{
+ShowCart(false, quoteID);
+}
+}
+}
+else {
+TransactNotActive();
+}
+}
+function GetQuoteConfirmation(quoteID, url) {
+var save_prompt = OL.GetConfigVar("TRANSACT", "OPEN_QUOTE_PROMPT");
+if (save_prompt == null) save_prompt = "You already have an active quote open. Would you like to edit this quote instead (you will lose any unsaved changes), or would you like to open this quote view-only?";
+tmp_win = window.open("", "OpenQuote", "height=100,width=350,resizable");
+tmp_doc = tmp_win.document.open();
+tmp_doc.writeln("<html><head><title>Restore Quote</title></head><body><form name=\"OpenQuoteDialog\">");
+tmp_doc.writeln(save_prompt + "<br><br>");
+tmp_doc.writeln("<center>");
+tmp_doc.writeln("<input type=\"button\" name=\"Edit\" value=\"Edit\" onClick=\"opener."+OLStr+".ShowCart(false, " + quoteID + ");window.close()\"> ");
+tmp_doc.writeln("<input type=\"button\" name=\"View\" value=\"View\" onClick=\"opener."+OLStr+".ShowCart(true, " + quoteID + "); window.close()\"> ");
+tmp_doc.writeln("<input type=\"button\" name=\"Cancel\" value=\"Cancel\" onClick=\"window.close()\">");
+tmp_doc.writeln("</center></body></html>");
+tmp_doc.close();
+}
+// -->
+</script>
+</head>
+<body onload="OL.SetLoaded('transact');" onUnload="if(!OL['MAC']){return;}OL.SetUnloaded('transact');return;">
+<form>
+Mars<br>
+<INPUT type="button" value="Save Config" id=button1 name=button1 onClick="OL.SaveConfig();"><br>
+<INPUT type="button" value="Add To Cart" id=button1 name=button1 onClick="OL.AddToCart('_new');"><br>
+<input type="button" value="Open Generic" id=button2 name=button2 onClick="OL.DeleteGeneric(-1);"><br>
+<a href="" onClick="OL.ConfigList('ol_ui.mainArea');return false;" >List Configs</a><br>
+<a href="" onClick="OL.QuoteList('ol_ui.mainArea');return false;">List Quotes</a><br>
+<input type="button" value="Save Generic" id=button2 name=button2 onClick="OL.SaveGeneric('megstring');"><br>
+<a href="" onClick="OL.ShowCart(); return false;">Show Cart</a>
+</form>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<HTML>
+<HEAD>
+<SCRIPT></SCRIPT>
+<script src = "../jd/header.js">
+</script>
+<script>
+function ReloadFile() {
+OL.SetUnloaded("historyMiddle");
+OL.Load("back_ui", OL.GetCSURL()+'back_ui.htm', OL.GetDisplayArea()+'.backFix');
+}
+function Init() {
+if (typeof OL == "undefined") return;
+OL.SetLoaded('historyMiddle');
+if (history.length==OL.START_HISTORY && OL.COUNT < 5) {
+setTimeout("ReloadFile()",Math.pow(10,OL.COUNT+1));
+OL.COUNT++;
+}
+}
+</script>
+</HEAD>
+<BODY onload = "Init()" >
+middle
+</BODY>
+</HTML>

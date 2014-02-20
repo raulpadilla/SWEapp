@@ -1,0 +1,18 @@
+﻿<HTML><HEAD><TITLE></TITLE><SCRIPT></SCRIPT>
+<SCRIPT language=Javascript src="../jd/header.js"></SCRIPT>
+<SCRIPT language=Javascript src="../ds/defend_x.js"></SCRIPT>
+<SCRIPT>
+var IMT=OL.InitMetaTable;
+var IMTS=OL.InitMetaTables;
+var SMT=OL.SetMetaTable;
+OL.StartMeta('defend');
+
+function TAS_DEFEND(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var TAS_DEFEND_t=new Array(1);
+TAS_DEFEND_t[0]=new TAS_DEFEND('10','Yes','DEFAULT');
+IMTS(1);
+SMT('TAS_DEFEND',TAS_DEFEND_t);
+</SCRIPT></HEAD><BODY onload="OL.EndMeta('defend')"></BODY></HTML>

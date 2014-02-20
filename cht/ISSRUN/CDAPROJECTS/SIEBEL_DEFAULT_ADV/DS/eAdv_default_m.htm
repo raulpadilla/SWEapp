@@ -1,0 +1,127 @@
+<HTML><HEAD><TITLE></TITLE><SCRIPT></SCRIPT>
+<SCRIPT language=Javascript src="../jd/header.js"></SCRIPT>
+<SCRIPT language=Javascript src="../ds/eAdv_default_x.js"></SCRIPT>
+<SCRIPT>
+var IMT=OL.InitMetaTable;
+var IMTS=OL.InitMetaTables;
+var SMT=OL.SetMetaTable;
+OL.StartMeta('eAdv_default');
+
+function ROLE(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var ROLE_t=new Array(6);
+ROLE_t[0]=new ROLE('CEO','CEO','default');
+ROLE_t[1]=new ROLE('CIO','CIO','');
+ROLE_t[2]=new ROLE('VP_SM','VP Sales or VP Marketing','');
+ROLE_t[3]=new ROLE('OTHER','Other executive role','');
+ROLE_t[4]=new ROLE('ITMGR','IT Manager','');
+ROLE_t[5]=new ROLE('ECOM','eCommerce Manager','');
+
+function BUSINESS(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var BUSINESS_t=new Array(8);
+BUSINESS_t[0]=new BUSINESS('NONE','Please Select','default');
+BUSINESS_t[1]=new BUSINESS('HITECH','Hi-Tech and Electronics Manufacturing','');
+BUSINESS_t[2]=new BUSINESS('TELE','Telecommunications','');
+BUSINESS_t[3]=new BUSINESS('AUTO','Automotive','');
+BUSINESS_t[4]=new BUSINESS('FIN','Financial Services','');
+BUSINESS_t[5]=new BUSINESS('HOSP','Hospitality','');
+BUSINESS_t[6]=new BUSINESS('GOV','Public Sector or Government','');
+BUSINESS_t[7]=new BUSINESS('PHARMA','Pharmaceuticals','');
+
+function REVENUES(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var REVENUES_t=new Array(6);
+REVENUES_t[0]=new REVENUES('NONE','Please Select','default');
+REVENUES_t[1]=new REVENUES('G20','Greater than $20 Billion','');
+REVENUES_t[2]=new REVENUES('1B_20B','Between $1 Billion and $20 Billion','');
+REVENUES_t[3]=new REVENUES('200M_1B','Between $200 Million and 1 Billion','');
+REVENUES_t[4]=new REVENUES('150M_200M','Between $150 Million to $200 Million','');
+REVENUES_t[5]=new REVENUES('L50','Less than $50 Million','');
+
+function EMPLOYEES(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var EMPLOYEES_t=new Array(5);
+EMPLOYEES_t[0]=new EMPLOYEES('NONE','Please Select','default');
+EMPLOYEES_t[1]=new EMPLOYEES('G5000','More than 5000','');
+EMPLOYEES_t[2]=new EMPLOYEES('1_5','Between 1000 and 5000','');
+EMPLOYEES_t[3]=new EMPLOYEES('2_1','Between 250 and 1000','');
+EMPLOYEES_t[4]=new EMPLOYEES('L250','Less than 250','');
+
+function EFFORTS(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var EFFORTS_ACQ_t=new Array(2);
+EFFORTS_ACQ_t[0]=new EFFORTS('MKT','Marketing','default');
+EFFORTS_ACQ_t[1]=new EFFORTS('SELL','Selling','');
+var EFFORTS_SERV_t=new Array(2);
+EFFORTS_SERV_t[0]=new EFFORTS('SRM','Service Request Management','default');
+EFFORTS_SERV_t[1]=new EFFORTS('WR','Workflow and Resolution','');
+var EFFORTS_ERM_t=new Array(4);
+EFFORTS_ERM_t[0]=new EFFORTS('EMP_PRO','Employee Productivity','default');
+EFFORTS_ERM_t[1]=new EFFORTS('EMP_REV','Employee Review Process','');
+EFFORTS_ERM_t[2]=new EFFORTS('EMP_TRAIN','Employee Training','');
+EFFORTS_ERM_t[3]=new EFFORTS('EMP_SELF','Employee Self-Service','');
+
+function CHANNEL(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var CHANNEL_ACQ_SERV_t=new Array(4);
+CHANNEL_ACQ_SERV_t[0]=new CHANNEL('WEB','Web and/or eMail','');
+CHANNEL_ACQ_SERV_t[1]=new CHANNEL('TELE','Telephone/Telemarketing','default');
+CHANNEL_ACQ_SERV_t[2]=new CHANNEL('PO','Partner Organization','');
+CHANNEL_ACQ_SERV_t[3]=new CHANNEL('SALES','Sales Organizations','');
+
+function ACTIVITIES(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var ACTIVITIES_ACQ_SERV_t=new Array(2);
+ACTIVITIES_ACQ_SERV_t[0]=new ACTIVITIES('DIRECT','Directly by my company','default');
+ACTIVITIES_ACQ_SERV_t[1]=new ACTIVITIES('PARTNER','Jointly with partners','');
+var ACTIVITIES_EMP_t=new Array(1);
+ACTIVITIES_EMP_t[0]=new ACTIVITIES('NA','Does not apply','default');
+
+function CHALLENGES(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var CHALLENGES_t=new Array(3);
+CHALLENGES_t[0]=new CHALLENGES('ACQ','Customer Acquistion','default');
+CHALLENGES_t[1]=new CHALLENGES('SERV','Customer Service','');
+CHALLENGES_t[2]=new CHALLENGES('EMP_MGMT','Employee Management','');
+
+function SATISFACTION(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var SATISFACTION_t=new Array(5);
+SATISFACTION_t[0]=new SATISFACTION('NONE','Please Select','default');
+SATISFACTION_t[1]=new SATISFACTION('VS','Very satisfied','');
+SATISFACTION_t[2]=new SATISFACTION('SS','Somewhat satisfied','');
+SATISFACTION_t[3]=new SATISFACTION('DS','Dissatisfied','');
+SATISFACTION_t[4]=new SATISFACTION('UNS','Unsure','');
+IMTS(9);
+SMT('ROLE',ROLE_t);
+SMT('BUSINESS',BUSINESS_t);
+SMT('REVENUES',REVENUES_t);
+SMT('EMPLOYEES',EMPLOYEES_t);
+SMT('CHALLENGES',CHALLENGES_t);
+OL.SetTriggerTable('CHALLENGES','EFFORTS',new Array(EFFORTS_ACQ_t,EFFORTS_SERV_t,EFFORTS_ERM_t));
+SMT('EFFORTS',EFFORTS_ACQ_t);
+OL.SetTriggerTable('CHALLENGES','ACTIVITIES',new Array(ACTIVITIES_ACQ_SERV_t,ACTIVITIES_ACQ_SERV_t,ACTIVITIES_EMP_t));
+SMT('ACTIVITIES',ACTIVITIES_ACQ_SERV_t);
+OL.SetTriggerTable('CHALLENGES','CHANNEL',new Array(CHANNEL_ACQ_SERV_t,CHANNEL_ACQ_SERV_t,CHANNEL_ACQ_SERV_t));
+SMT('CHANNEL',CHANNEL_ACQ_SERV_t);
+SMT('SATISFACTION',SATISFACTION_t);
+</SCRIPT></HEAD><BODY onload="OL.EndMeta('eAdv_default')"></BODY></HTML>

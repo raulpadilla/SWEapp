@@ -1,0 +1,157 @@
+<Component_Def>
+<Component Id="SURVEY" Title="IDS_SURVEY_TITLE" H="X" W="">
+	<Control Id="QUE_PANEL" Title="IDS_PANEL_TITLE"/>
+	<Control Id="BTN_CLOSE" Title="IDS_BTNCLOSE_TITLE"/>
+</Component>
+<Component Id="PASSWORD_DLG" Title="IDS_PWD_TITLE" H="200" W="220">
+	<Control Id="SHORT_ERR" Title="IDS_PWDSHORT_ERROR"/>
+	<Control Id="LONG_ERR" Title="IDS_PWDLONG_ERROR"/>
+	<Control Id="MIN_LEN" Value="5"/>
+	<Control Id="MAX_LEN" Value="10"/>
+	<Control Id="PWDTXT_LBL" Title="IDS_PWDTXT_LBL"/>
+	<Control Id="PWDTXT_MSG" Title="IDS_PWDTXT_MSG"/>
+	<Control Id="PWDERROR_MSG" Title="IDS_PWDERROR_MSG"/>
+	<Control Id="ERRORTEXT_WIDTH" Value="130"/>
+	<Control Id="ERRORTEXT_HEIGHT" Value="37"/>
+	<Control Id="ERRORTEXT_COLOR" Value="red"/>
+	<Control Id="INFOTEXT_COLOR"  Value="blue"/>
+</Component>
+<Component Id="SIGNATURE" Title="IDS_SIGN_TITLE" H="200" W="220">
+	<Control Id="GRID_COL1" Title="IDS_SIGN_COL1_TITLE"/>
+	<Control Id="GRID_COL2" Title="IDS_SIGN_COL2_TITLE"/>
+	<Control Id="GRID_COL3" Title="IDS_SIGN_COL3_TITLE"/>
+	<Control Id="GRID_COL4" Title="IDS_SIGN_COL4_TITLE"/>
+	<Control Id="GRID_COL5" Title="IDS_SIGN_COL5_TITLE"/>
+	<Control Id="SIGNBLANK_TITLE" Title="IDS_SIGNBLANK_TITLE"/>
+	<Control Id="SIGNBLANK_ERR" Title="IDS_SIGNBLANK_ERROR"/>
+</Component>
+<Component Id="PREFERENCE" Title="IDS_PREFERENCE_TITLE" H="200" W="220">
+	<Control Id="DOCK_PREF" Title="IDS_DOCK_PREF_TITLE"/>
+	<Control Id="HIDE_PREF" Title="IDS_HIDE_PREF_TITLE"/>
+	<Control Id="HEIGHT_PREF" Title="IDS_HEIGHT_PREF_TITLE"/>
+	<Control Id="WIDTH_PREF" Title="IDS_WIDTH_PREF_TITLE"/>
+	<Control Id="BTN_OK_PREF" Title="IDS_OK_PREF_TITLE"/>
+	<Control Id="BTN_CANCLE_PREF" Title="IDS_CANCLE_PREF_TITLE"/>
+	<Control Id="INT_HEIGHT_ERR" Title="IDS_INT_HEIGHT_ERR_MSG"/>
+	<Control Id="INT_WIDTH_ERR" Title="IDS_INT_WIDTH_ERR_MSG"/>
+	<Control Id="MIN_ERR" Title="IDS_MIN_ERR_TITLE"/>
+	<Control Id="MAX_HEIGHT_ERR" Title="IDS_MAX_HEIGHT_ERR_TITLE"/>
+	<Control Id="MAX_WIDTH_ERR" Title="IDS_MAX_WIDTH_ERR_TITLE"/>
+	<Control Id="NEG_ERR" Title="IDS_NEG_ERR_TITLE"/>
+</Component>
+<Component Id="SEARCH_TITLE_MP" Title="IDS_SEARCH_CONTAINER_TITLE" H="" W="">	
+	<Control Id="NAME" Title="IDS_NAME_FIELD_TITLE" DataType="DTYPE_TEXT" BCField="Name" ChildBCField=""/>
+	<Control Id="TYPE" Title="IDS_TYPE_FIELD_TITLE" DataType="DTYPE_TEXT" BCField="Message_spcPlan_spcType" ChildBCField=""/>	
+	<Control Id="PRODUCT" Title="IDS_PRODUCT_FIELD_TITLE" DataType="DTYPE_TEXT" BCField="Product" ChildBCField=""/>
+	<Control Id="TRAGETSEGMENTCODE" Title="IDS_TARGETSEGMENTCODE_FIELD_TITLE" DataType="DTYPE_TEXT" BCField="Segment_spcCode" ChildBCField=""/>	
+	<Control Id="MYFLAG" Title="IDS_MYFLAG_FIELD_TITLE" DataType="DTYPE_BOOL" BCField="Owner" ChildBCField=""/>
+	<Control Id="STARTDATE" Title="IDS_STARTDATE_FIELD_TITLE" DataType="DTYPE_DATE" BCField="Start_spcDate" ChildBCField=""/>
+	<Control Id="ENDDATE" Title="IDS_ENDDATE_FIELD_TITLE" DataType="DTYPE_DATE" BCField="End_spcDate" ChildBCField=""/>	
+	<Control Id="RELEASEDATE" Title="IDS_RELEASEDATE_FIELD_TITLE" DataType="DTYPE_DATE" BCField="Release_spcDate" ChildBCField=""/>
+</Component>
+<Component Id="SEARCH_TITLE_ID" Title="IDS_SEARCH_CONTAINER_TITLE" H="" W="">	
+	<Control Id="NAME" Title="IDS_NAME_FIELD_TITLE" DataType="DTYPE_TEXT" BCField="Name" ChildBCField=""/>
+	<Control Id="SUBTYPE" Title="IDS_TYPE_FIELD_TITLE" DataType="DTYPE_TEXT" BCField="SubType" ChildBCField=""/>
+	<Control Id="PRODUCTDETAIL" Title="IDS_PRODUCT_FIELD_TITLE" DataType="DTYPE_TEXT" BCField="Product_spcDetail_spcName" ChildBCField=""/>
+	<Control Id="EXTERNALAUTHOR" Title="IDS_EXTERNALAUTHOR_FIELD_TITLE" DataType="DTYPE_TEXT" BCField="External_spcAuthor" ChildBCField=""/>
+	<Control Id="ASSESSMENTTEMPLATE" Title="IDS_SURVEY_TITLE" DataType="DTYPE_TEXT" BCField="Assessment_spcTemplate" ChildBCField=""/>
+	<Control Id="INDICATION" Title="IDS_INDICATION" DataType="DTYPE_TEXT" BCField="" ChildBCField="Indication"/>
+	<Control Id="DECISIONISSUE" Title="IDS_DECISIONISSUE" DataType="DTYPE_TEXT" BCField="" ChildBCField="Product_spcIssue"/>
+	<Control Id="RATING" Title="IDS_RATING_FIELD_TITLE" DataType="DTYPE_PICKLIST" BCField="" ChildBCField=""/>
+	<Control Id="RELEASEDATE" Title="IDS_RELEASEDATE_FIELD_TITLE" DataType="DTYPE_DATE" BCField="Release_spcDate" ChildBCField=""/>
+	<Control Id="EXPIRYDATE" Title="IDS_EXPIREDATE_FIELD_TITLE" DataType="DTYPE_DATE" BCField="Expire_spcDate" ChildBCField=""/>	
+	<Control Id="LASTUPDATEDDATE" Title="IDS_LASTUPDATEDDATE_FIELD_TITLE" DataType="DTYPE_DATE" BCField="Updated" ChildBCField=""/>	
+</Component>
+<Component Id="FEEDBACK_DLG" Title="IDS_FEEDBACK_POPUP_TITLE" H="" W="">	
+	<Control Id="MIN_LEN" Value="5"/>
+	<Control Id="MAX_LEN" Value="10"/>	
+	<Control Id="FEEDBACK_TOOLTIP" Value="No"/>
+</Component>
+<Component Id="VERIFY_POPUP" Title="IDS_MESSAGEVERIFY_LABEL" H="" W="">	
+	<Control Id="CONFIRMATIONMSG" Value="IDS_CONFIRMATIONMESSAGE_LABEL"/>
+</Component>
+<Component Id="FROM_DATE" Title="IDS_DATE_FROM_LABEL" H="" W="">	
+	<Control Id="MIN_LEN" Value="5"/>
+	<Control Id="MAX_LEN" Value="10"/>	
+</Component>
+<Component Id="TO_DATE" Title="IDS_DATE_TO_LABEL" H="" W="">	
+	<Control Id="MIN_LEN" Value="5"/>
+	<Control Id="MAX_LEN" Value="10"/>	
+</Component>
+<Component Id="RHS_MORE_INFO_WND" Title="IDS_MORE_INFO_WND" H="" W="">	
+	<Control Id="MORE_INFO" Title="IDS_MOREINFO_TITLE_MOREINFO"/>
+	<Control Id="FILTER" Title="IDS_MOREINFO_TITLE_FILTER"/>	
+	<Control Id="SPEAKER_NOTES" Title="IDS_SPEAKER_NOTES"/>
+	<Control Id="SYNOPSIS" Title="IDS_MOREINFO_LABEL_SYNOPSIS"/>	
+	<Control Id="SUBTYPE" Title="IDS_MOREINFO_LABEL_SUBTYPE"/>
+	<Control Id="PRODUCT_DETAIL_NAME" Title="IDS_MOREINFO_LABEL_PROD_DETAIL_NAME"/>	
+	<Control Id="NAME" Title="IDS_NAME_FIELD_TITLE"/>	
+	<Control Id="DESCRIPTION" Title="IDS_MOREINFO_LABEL_DESCRIPTION"/>
+	<Control Id="AUDIENCE" Title="IDS_MOREINFO_LABEL_AUDIENCE"/>	
+	<Control Id="POPUP_DLG_WIDTH" Value="200"/>	
+	<Control Id="POPUP_DLG_HEIGHT" Value="100"/>	
+</Component>
+<Component Id="MENU_OPTION" Title="IDS_MENU_OPTION" H="" W="">	
+	<Control Id="MESSAGE" Title="IDS_MENU_OPTION_MESSAGE"/>
+	<Control Id="DETAIL" Title="IDS_MENU_OPTION_DETAIL"/>	
+	<Control Id="SPEAKER_NOTES" Title="IDS_SPEAKER_NOTES"/>
+	<Control Id="LAST_VIEWED" Title="IDS_MENU_OPTION_LAST_VIEWED"/>	
+	<Control Id="SETTING" Title="IDS_MENU_OPTION_SETTING"/>
+	<Control Id="LIBRARY" Title="IDS_MENU_OPTION_LIBRARY"/>	
+</Component>
+<Component Id="MENU_WHITEBOARD">	
+	<Control Id="ERASE_ALL" Title="IDS_MENU_WHITEBOARD_ERASE"/>
+	<Control Id="POINTER" Title="IDS_MENU_WHITEBOARD_POINTER"/>	
+	<Control Id="COLOR" Title="IDS_MENU_WHITEBOARD_COLOR"/>		
+</Component>
+<Component Id="LEFT_PANEL">	
+	<Control Id="PLAN" Title="IDS_LEFT_PANEL_PLAN"/>
+	<Control Id="LIBRARY" Title="IDS_LEFT_PANEL_LIBRARY"/>	
+	<Control Id="TAB_ONE" Title="IDS_MP_TAB_ONE"/>
+	<Control Id="TAB_TWO" Title="IDS_MP_TAB_TWO"/>
+</Component>
+<Component Id="MESSAGE_THUMBNAIL" SelectedColor="yellow" MultiSelectColor="#ea4d00" BGColor="white" HiddenBGColor="0xAAB3B3">
+	<Control Id="SHOW_BTN" Title="IDS_TN_SHOW_BTN" tooltip="IDS_TN_SHOW_TIP" icon=""/>
+	<Control Id="HIDE_BTN" Title="IDS_TN_HIDE_BTN" tooltip="IDS_TN_HIDE_TIP" icon=""/>
+</Component>
+<Component Id="MP_LIST">
+	<Control Id="MP_LIST_TYPE" Value="RECOMMENDED"/>
+</Component>
+<Component Id="ADD_CONTACT_SAVE_DLG">
+	<Control Id="CONTACT_BOX_BACKGROUNDCOLOR" Value="#d9e5ef"/>
+</Component>
+<Component Id="POPUP_WND_ADD_CONTACT">
+	<Control Id="BACKGROUNDCOLOR" Value="#eaeff5"/>
+</Component>
+<Component Id="ADD_PHYSICIAN">
+	<Control Id="STATUS_LABLE_TEXT" Title="IDS_SAVE_ADD_CONTACT_STATUS"/>
+	<Control Id="FONT_SIZE" Value="9"/>
+	<Control Id="GRID_ROW_HT" Value="17"/>
+	<Control Id="PERCENT_HT" Value="55"/>
+	<Control Id="PERCENT_WT" Value="80"/>
+	<Control Id="SEARCHBAR_PERCENT_WT" Value="50"/>
+	<Control Id="CONTACT_LST_MAX_COL" Value="6"/>
+</Component>
+<Component Id="CHANGE_PROFESSIONAL">
+	<Control Id="FONT_SIZE" Value="9"/>
+	<Control Id="GRID_ROW_HT" Value="17"/>
+	<Control Id="PERCENT_HT" Value="55"/>
+	<Control Id="PERCENT_WT" Value="65"/>
+	<Control Id="SEARCHBAR_PERCENT_WT" Value="98"/>
+	<Control Id="CONTACT_LST_MAX_COL" Value="6"/>
+</Component>
+<Component Id="ASSESSMENT_DLG">
+	<Control Id="FONT_SIZE" Value="15"/>
+	<Control Id="COMMENT_FIELD_HEIGHT" Value="20"/>
+</Component>
+<Component Id="ALPHA_TABS" Title="" H="" W="">	
+	<Control Id="NO_OF_ALPHABETS" Value="26"/>	
+</Component>
+<Component Id="LFS_PROPERTIES_PCD" Title="" H="" W="">	
+	<Control Id="PCD_TAG" Value="PCD."/>	
+</Component>
+<Component Id="LOV_COMM_RESPONSE_TYPE">	
+	<Control Id="START_RATING_ORDER" Value="42"/>
+	<Control Id="END_RATING_ORDER" Value="45"/>
+</Component>
+</Component_Def>

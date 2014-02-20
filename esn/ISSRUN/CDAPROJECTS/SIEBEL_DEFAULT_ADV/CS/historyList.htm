@@ -1,0 +1,291 @@
+<HTML>
+<HEAD>
+<TITLE>History List Code</TITLE>
+<SCRIPT></SCRIPT>
+<SCRIPT SRC="../jd/header.js"></SCRIPT>
+<SCRIPT>
+var ENGINE_RESULTS = null;
+function NBackLink(url,preconfigObj,returntext) {
+if (typeof OL["ORP_NBackLink"] != "undefined") {
+return OL.ORP_NBackLink(url,preconfigObj,returntext);
+}
+var optArgs = new Object();
+var historyArgs = new Object();
+OL.History_ModifyPagesetLink(OL.History_GetPagesetName(OL.History_GetCurrentIndex()), OL.ConvertToDynDefObj(ENGINE_RESULTS.inputState), optArgs, historyArgs);
+optArgs = new Object();
+if (returntext == null || typeof returntext == "undefined") {
+returntext = "";
+}
+optArgs.returntext = returntext;
+OL.LoadPageset(url, preconfigObj, optArgs);
+}
+function NBackLinkWithDynDefObj(url,preconfigObj,returntext) {
+if (typeof OL["ORP_NBackLinkWithDynDefObj"] != "undefined") {
+return OL.ORP_NBackLinkWithDynDefObj(url,preconfigObj,returntext);
+}
+var optArgs = new Object();
+var historyArgs = new Object();
+OL.History_ModifyPagesetLink(OL.History_GetPagesetName(OL.History_GetCurrentIndex()), OL.ConvertToDynDefObj(ENGINE_RESULTS.inputState), optArgs, historyArgs);
+optArgs = new Object();
+if (returntext == null || typeof returntext == "undefined") {
+returntext = "";
+}
+optArgs.returntext = returntext;
+OL.LoadPagesetWithDynDefObj(url, preconfigObj, optArgs);
+}
+function NBackGrabEngineResults(engineResults) {
+ENGINE_RESULTS = engineResults;
+}
+function History_Obj() {
+this.currPointer = -1;
+this.stack = new Array();
+}
+History_Obj.prototype.GoBack = History_GoBack;
+History_Obj.prototype.GoForward = History_GoForward;
+History_Obj.prototype.ReplayCurrent = History_ReplayCurrent;
+History_Obj.prototype.AddItem = History_AddItem;
+History_Obj.prototype.ModifyItem = History_ModifyItem;
+History_Obj.prototype.AddPagesetLink = History_AddPagesetLink;
+History_Obj.prototype.ModifyPagesetLink = History_ModifyPagesetLink;
+History_Obj.prototype.GetItemAtIndex = History_GetItemAtIndex;
+History_Obj.prototype.GetCurrentItem = History_GetCurrentItem;
+History_Obj.prototype.GetPreviousItem = History_GetPreviousItem;
+History_Obj.prototype.GetNextItem = History_GetNextItem;
+History_Obj.prototype.GetCurrentIndex = History_GetCurrentIndex;
+History_Obj.prototype.GetLength = History_GetLength;
+History_Obj.prototype.Clear = History_Clear;
+History_Obj.prototype.GetPagesetName = History_GetPagesetName;
+History_Obj.prototype.GetPagesetDynDefObj = History_GetPagesetDynDefObj;
+History_Obj.prototype.GetPagesetOptArgs = History_GetPagesetOptArgs;
+History_Obj.prototype.GetItemHistoryArgs = History_GetItemHistoryArgs;
+function History_GoBack() {
+if (this.currPointer <= 0 || this.currPointer > this.stack.length) {
+return;
+}
+this.currPointer--;
+this.stack[this.currPointer].fn.Run();
+}
+function History_GoForward() {
+if (this.currPointer < 0 || this.currPointer > this.stack.length-1) {
+return;
+}
+this.currPointer++;
+this.stack[this.currPointer].fn.Run();
+}
+function History_ReplayCurrent() {
+if (this.currPointer < 0 || this.currPointer > this.stack.length-1) {
+return;
+}
+this.stack[this.currPointer].fn.Run();
+}
+function History_AddItem(obj, index) {
+if (typeof index == "undefined") {
+index = this.currPointer+1;
+}
+this.ModifyItem(obj, index);
+this.stack.length = index+1;
+this.currPointer = index;
+}
+function History_ModifyItem(obj, index) {
+if (typeof index == "undefined") {
+index = this.currPointer;
+}
+if (index < 0 || index > this.stack.length) {
+return;
+}
+this.stack[index] = obj;
+}
+function History_AddPagesetLink(pagesetName, dyndefObj, optArgs, historyArgs) {
+var obj = new Object();
+if (typeof optArgs == "undefined" || optArgs ==null) {
+optArgs = new Object;
+}
+optArgs.noHistory = true;
+obj.fn = new OL.Function_Obj(OL, "LoadPagesetWithDynDefObj", pagesetName, dyndefObj, optArgs);
+obj.historyArgs = historyArgs;
+this.AddItem(obj);
+}
+function History_ModifyPagesetLink(pagesetName, dyndefObj, optArgs, historyArgs) {
+var obj = new Object();
+optArgs.noHistory = true;
+var oldOptArgs = this.GetItemAtIndex(this.GetCurrentIndex()).fn.args[2];
+if (oldOptArgs == null || typeof oldOptArgs == "undefined") {
+oldOptArgs = optArgs;
+} else if (optArgs == null || typeof optArgs == "undefined") {
+for (var elem in optArgs) {
+oldOptArgs[elem] = optArgs[elem];
+}
+}
+obj.fn = new OL.Function_Obj(OL, "LoadPagesetWithDynDefObj", pagesetName, dyndefObj, oldOptArgs);
+obj.historyArgs = historyArgs;
+this.ModifyItem(obj);
+}
+function History_GetCurrentIndex() {
+return this.currPointer;
+}
+function History_GetLength() {
+return this.stack.length;
+}
+function History_Clear() {
+this.currPointer = -1;
+this.stack = new Array();
+}
+function History_GetPagesetName(index) {
+var item = this.GetItemAtIndex(index);
+if (item != null) {
+return item.fn.args[0];
+} else return item;
+}
+function History_GetPagesetDynDefObj(index) {
+var item = this.GetItemAtIndex(index);
+if (item != null) {
+return item.fn.args[1];
+} else return item;
+}
+function History_GetPagesetOptArgs(index) {
+var item = this.GetItemAtIndex(index);
+if (item != null) {
+return item.fn.args[2];
+} else return item;
+}
+function History_GetItemHistoryArgs(index) {
+var item = this.GetItemAtIndex(index);
+if (item != null) {
+return item.historyArgs;
+} else return item;
+}
+function History_GetItemAtIndex(index) {
+if (index >= 0 && index < this.stack.length) {
+return this.stack[index];
+} else {
+return null;
+}
+}
+function History_GetCurrentItem() {
+if (this.currPointer < 0 || this.currPointer >= this.stack.length) return null;
+return this.GetItemAtIndex(this.currPointer);
+}
+function History_GetPreviousItem() {
+if (this.currPointer-1 < 0 || this.currPointer-1 >= this.stack.length) return null;
+return this.GetItemAtIndex(this.currPointer-1);
+}
+function History_GetNextItem() {
+if (this.currPointer+1 < 0 || this.currPointer+1 >= this.stack.length) return null;
+return this.GetItemAtIndex(this.currPointer+1);
+}
+OL.HISTORY_LIST = new History_Obj();
+function LogHistory(event, sender, optArg) {
+if (typeof OL["ORP_LogProductHistory"] != "undefined") {
+OL.ORP_LogProductHistory(event, sender, optArg);
+return;
+}
+if (typeof optArg != "undefined" && optArg.noHistory != true) {
+if (OL.GetConfigVarWithDefault("APP", "ALWAYS_KEEP_BACK_STATE", false) && OL.History_GetCurrentIndex() >= 0) {
+OL.History_ModifyPagesetLink(OL.History_GetPagesetName(OL.History_GetCurrentIndex()), OL.ConvertToDynDefObj(OL.GetInputState()), new Object(), new Object());
+}
+var prod = optArg.product;
+if (typeof optArg.product != "undefined" && optArg.product.indexOf("|") == -1) {
+prod = OL.GetCurrentProject()+"|"+optArg.product;
+}
+OL.History_AddPagesetLink(prod, optArg.dynDefObj, optArg, new Object());
+}
+}
+function GoBack() {
+if (typeof OL["ORP_GoBack"] != "undefined") {
+OL.ORP_GoBack();
+return;
+}
+if (OL.HISTORY_LIST.GetCurrentIndex() > 0) {
+if (OL.GetConfigVarWithDefault("APP", "ALWAYS_KEEP_BACK_STATE", false)) {
+OL.HISTORY_LIST.ModifyPagesetLink(OL.History_GetPagesetName(OL.History_GetCurrentIndex()), OL.ConvertToDynDefObj(OL.GetInputState()), new Object(), new Object());
+}
+OL.HISTORY_LIST.GoBack();
+if (OL.MAC!=null && OL.BROWSER == "Netscape") {
+OL.Load("historyMiddle", OL.GetCSURL()+"historyMiddle.htm", OL.GetDisplayArea()+".backFix", true);
+} else {
+OL.setTimeout('OL.Load("historyMiddle", OL.GetCSURL()+"historyMiddle.htm", OL.GetDisplayArea()+".backFix", true);', 100); 
+}
+} else {
+OL.DecrementHistorySessionNum();
+HistoryBack();
+}
+}
+function GoForward() {
+if (typeof OL["ORP_GoForward"] != "undefined") {
+OL.ORP_GoForward();
+return;
+}
+if (OL.HISTORY_LIST.GetCurrentIndex()+1 < OL.HISTORY_LIST.GetLength()) {
+if (OL.GetConfigVarWithDefault("APP", "ALWAYS_KEEP_BACK_STATE", false)) {
+OL.HISTORY_LIST.ModifyPagesetLink(OL.History_GetPagesetName(OL.History_GetCurrentIndex()), OL.ConvertToDynDefObj(OL.GetInputState()), new Object(), new Object());
+}
+OL.HISTORY_LIST.GoForward();
+HistoryBack();
+} else {
+if ((OL.START_HISTORY+2) < history.length) {
+HistoryForward();
+} else {
+HistoryBack();
+}
+}
+}
+function HistoryForward() {
+if (OL.BROWSER == "NETSCAPE") {
+eval(OL.GetDisplayArea()).backFix.forward();
+} else {
+eval(OL.GetDisplayArea()).backFix.history.forward();
+}
+}
+function HistoryBack(numLevels) {
+if (typeof numLevels == "undefined") numLevels = 1;
+for (var i= 0; i < numLevels; i++) {
+if (OL.BROWSER == "NETSCAPE") {
+eval(OL.GetDisplayArea()).backFix.back();
+} else {
+eval(OL.GetDisplayArea()).backFix.history.back();
+}
+}
+}
+var HISTORY_SESSION_NUM = -1;
+var HISTORY_SESSIONS = new Array();
+function GetCurrentHistorySessionNum() {
+return HISTORY_SESSION_NUM;
+}
+function GetHistorySessionLength() {
+return HISTORY_SESSIONS.length;
+}
+function NewHistorySession(showContents) {
+var currSessionNum = GetCurrentHistorySessionNum();
+if (currSessionNum < 0) currSessionNum = 0; 
+HISTORY_SESSIONS[currSessionNum] = new History_Obj();
+HISTORY_SESSIONS.length = currSessionNum+1;
+OL.HISTORY_LIST = HISTORY_SESSIONS[currSessionNum];
+OL.HISTORY_LIST.showContents = (typeof showContents == "undefined" || showContents);
+}
+function IncrementHistorySessionNum() {
+HISTORY_SESSION_NUM++;
+}
+function DecrementHistorySessionNum() {
+HISTORY_SESSION_NUM--;
+}
+function SetHistorySession(num) {
+if (num>=0 && num < GetHistorySessionLength()) {
+OL.HISTORY_LIST = HISTORY_SESSIONS[num];
+} else {
+OL.HISTORY_LIST = null;
+}
+}
+function GetHistorySession(num) {
+if (num>=0 && num < GetHistorySessionLength()) {
+return HISTORY_SESSIONS[num];
+} else {
+return null;
+}
+}
+</SCRIPT>
+</HEAD>
+<BODY onLoad="OL.SetLoaded('historyList');">
+History
+Code
+</BODY>
+</HTML>

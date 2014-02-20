@@ -1,0 +1,23 @@
+﻿<HTML><HEAD><TITLE></TITLE><SCRIPT></SCRIPT>
+<SCRIPT language=Javascript src="../jd/header.js"></SCRIPT>
+<SCRIPT language=Javascript src="../ds/tas6_x.js"></SCRIPT>
+<SCRIPT>
+var IMT=OL.InitMetaTable;
+var IMTS=OL.InitMetaTables;
+var SMT=OL.SetMetaTable;
+OL.StartMeta('tas6');
+
+function TAS_Q6(inC,inD,inRESDESC,inCHILD,inLINK,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+this.RESDESC=inRESDESC;
+this.CHILD=inCHILD;
+this.LINK=inLINK;
+}
+var TAS_Q6_t=new Array(3);
+TAS_Q6_t[0]=new TAS_Q6('5','Please Select...','<br><br><table border="1" bordercolor="#6666cc" cellpadding="5" cellspacing="0"><tr><td class="static">At this point you have determined that either there is no opportunity at present or you cannot compete. If you have established a position in the account through previous projects and the account is valuable to you, you will want to protect it. If this is the case, pick \'Yes&quot;. If it is not, pick &quot;No&quot;</td></tr></table>','null','','DEFAULT');
+TAS_Q6_t[1]=new TAS_Q6('10','Yes','<br><br><table border="1" bordercolor="#6666cc" cellpadding="5" cellspacing="0"><tr><td class="static">At this point you have determined that either there is no opportunity at present or you cannot compete. If you have established a position in the account through previous projects and the account is valuable to you, you will want to protect it. If this is the case, pick "Yes". If it is not, pick "No"</td></tr><tr><td class="dynamic"><span class="solutiontitle">You answered "Yes"</span><Br><br>Continue and the TAS Coach will recommend a strategy for you.</td></tr></table>','defend','Continue </a>','');
+TAS_Q6_t[2]=new TAS_Q6('20','No','<br><br><table border="1" bordercolor="#6666cc" cellpadding="5" cellspacing="0"><tr><td class="static">At this point you have determined that either there is no opportunity at present or you cannot compete. If you have established a position in the account through previous projects and the account is valuable to you, you will want to protect it. If this is the case, pick "Yes". If it is not, pick "No"</td></tr></table>','tas7','Continue </a>','');
+IMTS(1);
+SMT('TAS_Q6',TAS_Q6_t);
+</SCRIPT></HEAD><BODY onload="OL.EndMeta('tas6')"></BODY></HTML>

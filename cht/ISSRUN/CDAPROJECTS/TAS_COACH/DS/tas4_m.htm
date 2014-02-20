@@ -1,0 +1,23 @@
+﻿<HTML><HEAD><TITLE></TITLE><SCRIPT></SCRIPT>
+<SCRIPT language=Javascript src="../jd/header.js"></SCRIPT>
+<SCRIPT language=Javascript src="../ds/tas4_x.js"></SCRIPT>
+<SCRIPT>
+var IMT=OL.InitMetaTable;
+var IMTS=OL.InitMetaTables;
+var SMT=OL.SetMetaTable;
+OL.StartMeta('tas4');
+
+function TAS_Q4(inC,inD,inRESDESC,inCHILD,inLINK,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+this.RESDESC=inRESDESC;
+this.CHILD=inCHILD;
+this.LINK=inLINK;
+}
+var TAS_Q4_t=new Array(3);
+TAS_Q4_t[0]=new TAS_Q4('5','Please Select...','<br><br><table border="1" bordercolor="#6666cc" cellpadding="5" cellspacing="0"><tr><td class="static">If you don\'t have an overwhelming advantage based on the current buying criteria, you\'ll need to look for ways to influence the criteria in your favor. This will mean either changing or expanding the buying criteria.<br><br>In other words, don\'t play by the rules if you can change them to favor your solution.</td></tr></table>','null','','DEFAULT');
+TAS_Q4_t[1]=new TAS_Q4('10','Yes','<Br><br><table border="1" bordercolor="#6666cc" cellpadding="5" cellspacing="0"><tr><td class="static">If you don\'t have an overwhelming advantage based on the current buying criteria, you\'ll need to look for ways to influence the criteria in your favor. This will mean either changing or expanding the buying criteria.<br><Br>In other words, don\'t play by the rules, if you can change them to favor your solution.</td></tr><tr><td class="dynamic"><span class="solutiontitle">You answered "Yes"</span><Br><br>Make sure the new criteria adds value for the customer.</td></tr></table>','flanking','Continue </a>','');
+TAS_Q4_t[2]=new TAS_Q4('20','No','<br><br><table border="1" bordercolor="#6666cc" cellpadding="5" cellspacing="0"><tr><td class="static">If you don\'t have an overwhelming advantage based on the current buying criteria, you\'ll need to look for ways to influence the criteria in your favor. This will mean either changing or expanding the buying criteria.<br><br>In other words, don\'t play by the rules, if you can change them to favor your solution.</td></tr><tr><td class="dynamic"><span class="solutiontitle">You answered "No"</span><Br><br>Make certain you have thoroughly examined all your capabilities to find unique ways you could address the customer’s compelling event, thus changing the buying criteria.<br><br>Here are some examples of common buying criteria:<br><br><ul><li>Service Level Agreements</li><li>Scalability to meet future needs</li><li>Time to make fully deployable and operational</li></ul></td></tr></table>','tas5','Continue </a>','');
+IMTS(1);
+SMT('TAS_Q4',TAS_Q4_t);
+</SCRIPT></HEAD><BODY onload="OL.EndMeta('tas4')"></BODY></HTML>

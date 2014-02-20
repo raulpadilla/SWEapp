@@ -1,0 +1,17 @@
+<style type="text/css">
+.test {  font-family: Arial, Helvetica, sans-serif; font-size: 8px; font-weight: bold; color: #000000}
+.questions1 {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #000000}
+.questions {  font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold; color: #6666CC}
+.static {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #000000; background-color: #f0f0f0}
+.dynamic {  font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #000000; background-color: #ccccff}
+.firstline { font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold; color: #333399 }
+.questionlabel {font-family: Arial, Helvetica, sans-serif; font-size: 18px; font-weight: bold; color: #6666CC}
+.solutiontitle {font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #333399}
+.solutionbold {font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #000000}
+.solutionreg {font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: regular; color: #000000}
+.continue {font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #6666cc}
+.solutionreg {font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: regular; color: #000000}
+.rec_strategy {font-family: Arial, Helvetica, sans-serif; font-size: 24px; font-weight: regular; color: #6666CC}
+.tas_recs {font-family: Arial, Helvetica, sans-serif; font-size: 18px; font-weight: regular; color: #6666CC}
+.solutiontable {background: "#f0f0f0"; bordercolor: #63639c}
+</style>

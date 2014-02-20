@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+<!-- Inserted by TRADOS: --><META HTTP-EQUIV="content-type" CONTENT="text/html; charset=windows-1252">
+
+      <title>Acerca da Siebel</title>
+      <link href="files/main.css" rel="stylesheet" />
+      <script>
+	
+		function createBackControl()
+		{
+			var btn = ''+
+				'<span height="16" class="minibuttonOn">' +
+				'<nobr><a href="javascript: void window.close();">OK</a></nobr>' +
+				'</span>';			
+				
+			var help_lnk = '<a href="javascript:void window.history.back();">Back To Help</a>'
+			var back_lnk = '<a href="javascript:void window.history.back();">Back</a>'
+			
+			/*history.length=0 means we've arrived here via the About Siebel 
+				application menu so show the OK button which onclick will close the window*/
+	            if (window.opener!=null && (window.history.length==0 || (document.layers==null && window.history.length==1)))
+			{	document.write(btn);	}	
+			/*window.opener==null means we've arrived here through the about link on the login page so show the back link*/
+			else if (window.opener==null)		
+			{	/*12-COSTP3 Do not show "Back" button if the history is empty*/
+				/* (which happens when about screen is called from tray bar icon menu)*/
+				if (window.history.length!=0) 
+				 {document.write(back_lnk);}
+			}
+			/*otherwise we've arrived here through help so show the back to help link*/
+			else
+			{	document.write(help_lnk);	}
+			
+		}
+		
+		function resizeMe()
+		{	if (window.opener ) 
+			{	
+				if	(document.layers==null)
+				{	window.resizeTo(460,560);		}
+			}	
+		}
+		
+		function createDivHeader()
+		{
+                        // 12-OEEHNC/12-OEJIEV use fixed pixel for scroll bar as workaround for Mozilla defect
+                        var MOZILLA14_DIV = '<div style="width:100%;height:300px;overflow:auto;padding:5 10 5 20" class="loginText">';
+			var IE_DIV = '<div style="width:100%;height:92%;overflow:auto;padding:5 10 5 20" class="loginText">';
+			var NS6_DIV = '<div style="width:auto;height:auto;overflow:auto;padding:5 10 5 20" class="loginText">';
+
+                        if ((navigator.userAgent.indexOf("Mozilla/5.0") >= 0) && 
+                             (navigator.userAgent.indexOf("rv:1.4") >= 0)) // Mozilla 1.4
+                        {
+                           document.write(MOZILLA14_DIV);
+                        }
+			else if (document.layers != null)  // NS 4.7
+  				{ document.write(IE_DIV); }
+  			else if (document.all != null) // IE
+  				{ document.write(IE_DIV); }
+  			else
+  				{ document.write(NS6_DIV); } // NS6
+            	}				
+	
+	
+      </script>
+   </head>
+   <body class="loginBody" leftmargin="0" topmargin="4" marginwidth="0" marginheight="0" onload="resizeMe()" style="overflow:hidden">
+      <table width="440" height="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="border:1px solid #000000" ID="Table1">
+         <tr height="168px">
+            <TD style="background-image: url('images/about_siebel_d.gif')">
+               <table cellspacing="0" cellpadding="0" ID="Table2">
+                  <tr>
+                     <td colspan="3" style="height:70px"><IMG src="images/spacer.gif" alt=""></td>
+                  </tr>
+                  <tr height="98">
+                     <td style="width:20px">&nbsp;</td>
+                     <td valign="top" style="width:260px;color:#ffffff;font-weight:bold;font-size:14pt">
+                        Acerca das Aplica&ccedil;&otilde;es de Gest&atilde;o das Rela&ccedil;&otilde;es com os Clientes
+                     </td>
+                     <td style="width:160">&nbsp;</td>
+                  </tr>
+               </table>
+            </TD>
+         </tr>
+         <tr>
+            <td style="background-color:#6699cc">
+               <script>createDivHeader();</script>
+               <br> &copy;1994, 2012, <A style="TEXT-DECORATION: underline" href="http://www.oracle.com/">Oracle Corporation</A>.
+               <p>
+               As bem sucedidas solu&ccedil;&otilde;es de gest&atilde;o das rela&ccedil;&otilde;es com os clientes CRM (Customer Relationship Management) complementam e expandem estrat&eacute;gias e processos comerciais existentes, integrando-se com as aplica&ccedil;&otilde;es de front-office existentes. Como l&iacute;der em aplica&ccedil;&otilde;es comerciais, a Oracle encontra-se numa posi&ccedil;&atilde;o &uacute;nica para ajudar as empresas a implementar solu&ccedil;&otilde;es completas que auxiliam a pessoa certa, na altura certa, a tomar decis&otilde;es mais bem informadas e mais rapidamente. 
+               <p>
+               As Siebel CRM Applications da Oracle auxiliam as organiza&ccedil;&otilde;es a aproveitar as tecnologias Web para angariar novos clientes e melhorar todo o tipo de relacionamentos existentes com clientes. Estas aplica&ccedil;&otilde;es, muito abrangentes, assentam em padr&otilde;es de ind&uacute;stria actuais e em desenvolvimento, fornecendo-lhe funcionalidades prontas a usar, uma arquitectura expans&iacute;vel e baseada na Web, para al&eacute;m de capacidades de personaliza&ccedil;&atilde;o flex&iacute;vel das aplica&ccedil;&otilde;es.
+               <p>
+               Com solu&ccedil;&otilde;es adaptadas &agrave;s necessidades espec&iacute;ficas de mais de 20 ind&uacute;strias, a Siebel tem capacidades de an&aacute;lise projectiva que fornecem informa&ccedil;&atilde;o em tempo real, maior flexibilidade no suporte a J2EE e .NET e um custo total de propriedade inferior.
+               <p></p>
+               <BR> &copy;1994, 2012, Oracle. Todos os direitos reservados.
+               <p>
+               Os Programas (que incluem o software e a documenta&ccedil;&atilde;o) cont&ecirc;m informa&ccedil;&otilde;es sujeitas a direitos de propriedade; s&atilde;o fornecidos ao abrigo de um contrato de licen&ccedil;a que inclui restri&ccedil;&otilde;es de utiliza&ccedil;&atilde;o e divulga&ccedil;&atilde;o e est&atilde;o tamb&eacute;m protegidos por direitos de autor, de patentes e por outros direitos de propriedade intelectual e industrial. A engenharia inversa, desmontagem ou descompila&ccedil;&atilde;o dos Programas, excepto no &acirc;mbito necess&aacute;rio &agrave; obten&ccedil;&atilde;o de interoperabilidade com outro software criado de forma independente ou se exigido por lei, &eacute; proibida.
+               <p>
+               Se os Programas forem distribu&iacute;dos ao Governo dos Estados Unidos ou a algu&eacute;m com licen&ccedil;a ou que utilize os Programas em nome do Governo dos Estados Unidos, aplica-se o seguinte aviso:
+               <P>
+                  DIREITOS DO GOVERNO DOS E.U.A.<br> Os programas, software e bases de dados e respectiva documenta&ccedil;&atilde;o e dados t&eacute;cnicos distribu&iacute;dos a clientes do Governos dos E.U.A. s&atilde;o &quot;software inform&aacute;tico comercial&quot; ou &quot;dados t&eacute;cnicos comerciais&quot; de acordo com Federal Acquisition Regulation e regulamentos suplementares espec&iacute;ficos de ag&ecirc;ncias aplic&aacute;veis. Assim, a utiliza&ccedil;&atilde;o, duplica&ccedil;&atilde;o, divulga&ccedil;&atilde;o, modifica&ccedil;&atilde;o e adapta&ccedil;&atilde;o dos Programas, incluindo a documenta&ccedil;&atilde;o e os dados t&eacute;cnicos est&atilde;o sujeitos &agrave;s restri&ccedil;&otilde;es de licenciamento estabelecidas no contrato de licen&ccedil;a aplic&aacute;vel da Oracle e se se aplicar, aos direitos adicionais estabelecidos no FAR 52.227-19, Commercial Computer Software--Restricted Rights (Junho de 1987). Oracle USA, Inc., 500 Oracle Parkway, Redwood City, CA 94065.
+               <p>
+               Os Programas n&atilde;o se destinam a utiliza&ccedil;&atilde;o em aplica&ccedil;&otilde;es nucleares, aeron&aacute;uticas, de transportes p&uacute;blicos, m&eacute;dicas ou outras de natureza perigosa. &Eacute; da responsabilidade do licenciado tomar todas as medidas adequadas &agrave; prova de falhas, c&oacute;pias de seguran&ccedil;a e redund&acirc;ncia e outras medidas para garantir a seguran&ccedil;a na utiliza&ccedil;&atilde;o de tais aplica&ccedil;&otilde;es caso os Programas sejam utilizados para esses fins e renunciamos a qualquer responsabilidade por quaisquer danos decorrentes da utiliza&ccedil;&atilde;o dos Programas.
+               <P>
+               Oracle, JD Edwards, PeopleSoft, e Siebel s&atilde;o marcas registadas da Oracle Corporation e/ou respectivas filiais. Os outros nomes poder&atilde;o ser marcas comerciais dos respectivos propriet&aacute;rios.
+               <P>
+                  Caso tenha recebido este software por engano, notifique a Oracle de imediato.
+<P>
+                              <BR>
+               ©1994, 2012, Oracle. All rights reserved.
+               <p>
+               The Programs (which include both the software and documentation) contain 
+               proprietary information; they are provided under a license agreement containing 
+               restrictions on use and disclosure and are also protected by copyright, patent, 
+               and other intellectual and industrial property laws. Reverse engineering, 
+               disassembly, or decompilation of the Programs, except to the extent required to 
+               obtain interoperability with other independently created software or as 
+               specified by law, is prohibited.
+               <p>
+               If the Programs are delivered to the United States Government or anyone 
+               licensing or using the Programs on behalf of the United States Government, the 
+               following notice is applicable:
+               <P>
+                  U.S. GOVERNMENT RIGHTS<br>
+               Programs, software, databases, and related documentation and technical data 
+               delivered to U.S. Government customers are "commercial computer software" or 
+               "commercial technical data" pursuant to the applicable Federal Acquisition 
+               Regulation and agency-specific supplemental regulations. As such, use, 
+               duplication, disclosure, modification, and adaptation of the Programs, 
+               including documentation and technical data, shall be subject to the licensing 
+               restrictions set forth in the applicable Oracle license agreement, and, to the 
+               extent applicable, the additional rights set forth in FAR 52.227-19, Commercial 
+               Computer Software--Restricted Rights (June 1987). Oracle USA, Inc., 500 Oracle 
+               Parkway, Redwood City, CA 94065.
+               <p>
+               The Programs are not intended for use in any nuclear, aviation, mass transit, 
+               medical, or other inherently dangerous applications. It shall be the licensee's 
+               responsibility to take all appropriate fail-safe, backup, redundancy and other 
+               measures to ensure the safe use of such applications if the Programs are used 
+               for such purposes, and we disclaim liability for any damages caused by such use 
+               of the Programs.
+               <P>
+               Oracle, JD Edwards, PeopleSoft, and Siebel are registered trademarks of Oracle 
+               Corporation and/or its affiliates. Other names may be trademarks of their 
+               respective owners.
+               <P>
+                  If you have received this software in error, please notify Oracle 
+                  immediately.</div>
+                  <table cellspacing="0" cellpadding="0" width="100%" style="background-color:#000000" ID="Table3">
+                     <tr>
+                        <td align="right" width="100%"><img src="images/spacer.gif" height="1" width="1" alt=""></td>
+                     </tr>
+                  </table>
+                  <table cellpadding="4" width="100%" height="33" style="background-color:#cccccc" ID="Table4">
+                     <tr>
+                        <td align="right" width="100%" height="30">
+                           <script>createBackControl();</script>
+                        </td>
+                        <td>&nbsp;</td>
+                     </tr>
+                  </table>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

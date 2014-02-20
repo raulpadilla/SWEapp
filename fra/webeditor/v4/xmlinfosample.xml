@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<customtag>
+	<!-- Individual Tag Definitions - Allows control over the look of each tag. -->
+	<tagdefinitions name="custtags">
+		<!-- This default tag defines the values to use when a custom tag is encountered that
+			 is not defined in this section.  It also defines values to use when a tag does
+			 not define a value in its definition section.  
+		Valid types: "vertical", "horizontal", "nonempty", "empty".
+		Note: vertical and horizontal are blocking tags; nonempty is nonblocking.
+		-->
+		<tagdefault type="vertical" visible="true" style="font-family:arial; font-weight:bold; background-color:#cccccc; border:solid blue 1pt; margin:2px; width:95%;" dstyle="font-family:arial; font-weight:normal; background-color:white; padding:4px" astyle="font-size:normal;font-weight:normal" ashow="true">
+			<!-- The simtaglist is a quick list of tags that follow the default items above.
+				  The only offered deviation is the glyph that can be specified.  If no glyph is given
+				 then the default glyph is used. -->
+			<glyph src="[eWebEditProPath]/tagcalendar.gif" visible="true" width="0" height="0"/>
+			<simtaglist name="deftaglist">
+				<simtag name="mymemo">Memo</simtag>
+				<simtag name="myps">P.S.</simtag>
+				<simtag name="x:catalog">Catalog of Books</simtag>
+				<simtag name="book">Book Item</simtag>
+				<simtag name="author">Author of Book</simtag>
+				<simtag name="title">Title of Book</simtag>
+				<simtag name="genre">Genre of Story</simtag>
+				<simtag name="price">Selling Price</simtag>
+				<simtag name="publish_date">Publishing Date</simtag>
+				<simtag name="description">Story Description</simtag>
+			</simtaglist>
+		</tagdefault>
+		<!-- These are sample tags.  Your own tags must be defined here.
+			 Attributes not included here will derive their values from the tagdefault defined above. 
+		-->
+		<tagspec name="mysubject" type="horizontal" visible="true" style="font-family:arial; font-weight:bold; background-color:#cccccc; border:solid blue 1pt; margin:2px; width:95%;" dstyle="font-family:arial; font-weight:normal; background-color:white; padding:2px; width:95%;" astyle="font-size:normal;font-weight:normal" ashow="true">
+			<!-- If a caption is not given, the name of the tag is used as the caption. -->
+			<caption>Subject:</caption>
+			<simtaglist name="deftaglist">
+				<simtag name="myto">To:</simtag>
+				<simtag name="mycc">Cc:</simtag>
+			</simtaglist>
+		</tagspec>
+		<tagspec name="myname" type="nonempty" dstyle="background-color:#ccccff; text-decoration:underline;" edit="true">
+			<caption>Name</caption>
+			<glyph src="[eWebEditProPath]/tagcalendar.gif" visible="false" width="0" height="0"/>
+		</tagspec>
+		<tagspec name="mydate" type="nonempty" dstyle="background-color:transparent;">
+			<caption>Date</caption>
+			<glyph src="[eWebEditProPath]/tagcalendar.gif" visible="true" width="0" height="0"/>
+		</tagspec>
+		<tagspec name="mysignature" type="empty" visible="false" style="background-color:transparent">
+			<caption>Signature</caption>
+			<glyph src="[eWebEditProPath]/tagsignature.gif" visible="true" width="0" height="0"/>
+		</tagspec>
+		<tagspec name="mylegal" type="empty" visible="true" style="font-family:Courier New; background-color:white; font-size:10pt;">
+			<caption>Legal Notice</caption>
+		</tagspec>
+	</tagdefinitions>
+	<docxml enabled="true" reqfill="true" showroot="true">
+		<transform onload="" onsave=""/>
+		<loadsch enabled="true">
+			<!-- A ns value of "" means a namespace will be determined
+				based on the path or an internal namespace.
+				The status values are:
+						active - used for offering valid options to user
+						idle - stored for later selection or use (default)
+						disabled - entry is ignored and not loaded
+				- If more than one entry is selected as active then the first entry is used.
+				- If no entry is active then the first file is used.
+			-->
+			<!-- The files shown here are only given to illustrate how
+			      the names are specified.  If the paths are not relative
+			      then the fully qualified path is required..
+			-->
+			<xsd status="active" src="samples/xml/schemas/bookinfo.xsd" ns="urn:bookinfo"/>
+			<xsd src="locale.xsd" ns=""/>
+		</loadsch>
+	</docxml>
+</customtag>

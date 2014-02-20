@@ -1,0 +1,500 @@
+<html>
+<head>
+<meta NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<title></title>
+<script></script> 
+<script src="../jd/header.js"></script>
+<script src = "widgetState.js"></script>
+<script language="JavaScript1.2">
+var MDATA = null;
+var FEATURE_DATA = null;
+var PRODUCT = null;
+var TRIGGERS = null;
+var WIDGET_STATE = new Object;
+var FIRST_CHANGED_WIDGETS = null;
+var CURRINSTANCE = null;
+var RESULTS = null;
+var UI_CHANGED = false;
+OL.PAGE_UI_ELEMENTS = new Object();
+OL.ELEMENT_LOCS =  new Object();
+LOC = new Object();
+var DEFAULT_TIMEOUT = (OL.GetConfigVarWithDefault("APP","DEFAULT_TIMEOUT",10000)*1.5);
+function ContinueUIWait(frame){
+var result = confirm(OL.ErrIntern("ISSCDA_UI_WAITING_FOR_FRAME"));
+if(!result){
+OL.UnlockResource(frame);
+}
+return true;
+}
+function Page_Elements_Obj() {
+this.elements = new Object();
+this.hasTargets = false;
+}
+function RegisterUIElement(element, frame, isTarget) {
+var frameName = OL.FrameToOLString(frame);
+if (typeof OL.PAGE_UI_ELEMENTS[frameName] == "undefined") {
+OL.PAGE_UI_ELEMENTS[frameName] = new Page_Elements_Obj();
+}
+OL.PAGE_UI_ELEMENTS[frameName].elements[element] = null;
+if (isTarget) {
+OL.PAGE_UI_ELEMENTS[frameName].hasTargets = true;
+}
+else {
+OL.PAGE_UI_ELEMENTS[frameName].hasInputs = true;
+}		
+if (typeof OL.ELEMENT_LOCS[element] == "undefined") {
+OL.ELEMENT_LOCS[element] = new Array();
+}
+OL.ELEMENT_LOCS[element][OL.ELEMENT_LOCS[element].length] = frameName;
+}
+function SetFrameSet(frName, pg, frame) {
+OL.ui_name = frName;  
+LOC = new Object();
+LOC.page = new Array();
+}
+function UI_ShowIntermediatePage() {
+if (OL.GetConfigVarWithDefault("APP", "SHOW_DATA_LOADING_PAGE", true)) {
+if (typeof OL.uiFrame != "undefined") {
+OL.LockResource(new OL.Function_Obj(window, "WriteDataLoading", OL.uiFrame), OL.uiFrame);
+}
+}
+}
+function WriteDataLoading(frameName) {
+var fr = OL.ParseFrame(frameName);
+var str;
+if (typeof fr != "undefined") {
+var doc = fr.document;
+OL.OpenDocument(doc,'text/html',true);
+str = "<br><br><br><br><br><center><b><font size = +1>";
+str += OL.GetConfigVarWithDefault("APP", "DATA_LOADING_PAGE_STR", OL.ErrIntern("ISSCDA_DEFAULT_DATA_LOAD_STR"));
+str += "</font></b></center>";
+if (typeof OL.COP_BeforeDisplayDataLoadString != "undefined") {
+str = OL.COP_BeforeDisplayDataLoadString(str);
+}
+doc.writeln(str);
+doc.close();
+}
+OL.UnlockResource(frameName);
+}
+function RegisterUIInfo(uiInfo, frArray) {
+if(typeof LOC == "undefined" || LOC == null){return;}
+OL.LockResource(new OL.Function_Obj(window, "LockedRegisterUIInfo", uiInfo), "UI_LOCK", new OL.Function_Obj(window,"ContinueUIWait","UI_LOCK"),DEFAULT_TIMEOUT);
+}
+function LockedRegisterUIInfo(uiInfo) {
+var fr = OL.ParseFrame(OL.uiFrame)			
+for (i = 0; i < fr.frames.length; i++) {
+OL.SetUnloaded(fr.frames[i].name);
+}
+UI_ShowIntermediatePage();
+var data = uiInfo.uiTables;
+RegFrameSet(data.frameSet[0], data.frameSet[1], data.frameSet[2], data.frameSet[3]);
+for (i=0; i<data.pageLocation.length; i++) {
+RegPageLocation(data.pageLocation[i][0], data.pageLocation[i][1], data.pageLocation[i][2], data.pageLocation[i][3]);
+}
+RegPriorityPages(data.priorityPageStr);
+RegExceptionFrames(data.exceptionFrameStr);
+RegContentsListFrame(data.contentsListFrame);
+if (typeof uiInfo.argList.frameState != "undefined" && uiInfo.argList.frameState != null) {
+for (pg in LOC.page) {
+for (i=1; i<LOC.page[pg].length; i++) {
+if (typeof uiInfo.argList.frameState[LOC.page[pg][i]] != "undefined") {
+LOC.page[pg][0] = uiInfo.argList.frameState[LOC.page[pg][i]];
+}
+}
+}
+}
+UI_CHANGED = true;
+OL.UnlockResource("UI_LOCK");
+}
+function RegContentsListFrame(frame) {
+if (typeof frame != "undefined" && frame != null && frame != "") {	
+OL.prodlistFrame = frame;
+OL.ShowContentsList(OL.prodlistFile);
+}
+}
+function RegFrameSet(name, frameSetName, frameLoc, path) {
+var uiFrame = eval(OL.uiFrame);
+var fullFileName = "";
+if (typeof path == "undefined") {
+fullFileName = OL.GetPGPath()+frameSetName;
+}
+else {
+var fullpath = OL.CheckPath(path);		
+fullFileName = fullpath+frameSetName;
+}
+SetFrameSet(name,frameSetName,frameLoc);
+OL.SetUnloaded(name);
+OL.Load(name, fullFileName, frameLoc);
+}
+function RegPageLocation(pg, frame, bVisib, path) {
+if (typeof LOC.page[pg] == "undefined" || LOC.page[pg] == null) {
+LOC.page[pg] = new Array();
+var fullFileName = "";
+if (typeof path == "undefined") {
+fullFileName = OL.GetPGPath()+pg;
+}
+else {
+var fullpath = OL.CheckPath(path);
+fullFileName = fullpath+pg;
+}
+LOC.page[pg][0] = fullFileName;			
+}
+LOC.page[pg][LOC.page[pg].length] = (bVisib.toUpperCase()=="TRUE") ? frame : null;
+}
+function RegPriorityPages(pg) {
+var pages = pg.replace(/\s/g,"");	
+pages = pages.split(",");
+LOC.input = new Array();
+if (pages.length == 0 || pages[0]=="") {
+LOC.input = null;
+}
+else {
+for (i=0; i<pages.length; i++) {
+LOC.input[pages[i]]=LOC.page[pages[i]];
+}
+}
+}
+function RegExceptionFrames(fr) {
+var excStr = fr.replace(/\s/g,"");	
+excStr = excStr.split(",");
+LOC.exc = new Array();
+for (i=0; i < excStr.length; i++) {
+LOC.exc[i] = excStr[i];
+}
+}
+function StartTemplate(frameName) {
+}
+function EndTemplate(frameName) {
+var frame = null;
+OL.SetLoaded(frameName);
+}
+function DataSetLoaded(event, sender, dataSet) {  
+OL.LockResource(new OL.Function_Obj(window, "LockedDataSetLoaded", dataSet), "UI_LOCK", new OL.Function_Obj(window,"ContinueUIWait","UI_LOCK"),DEFAULT_TIMEOUT);
+}
+function LockedDataSetLoaded(dataSet) {
+SetUpDataSet(dataSet);
+SetUpUI(dataSet);
+}
+function UnlockUI() {
+OL.UnlockResource("UI_LOCK")
+}
+function RegisterDisplayElements(elements) {
+for (var i = 0; i < elements.length; i++) {
+OL.semaphore.ClearDone(elements[i]);
+}
+OL.semaphore.Wait(new OL.Function_Obj(window, "UnlockUI"), elements.join("&&"));
+}
+function  SetDisplayElementDone(element) {
+OL.semaphore.Signal(element);
+}
+function SetUpUI(dataSet) {
+OL.PAGE_UI_ELEMENTS = new Object();
+OL.ELEMENT_LOCS =  new Object();
+PRODUCT = dataSet.product;
+UI_CHANGED = false;
+CURRINSTANCE = dataSet.instanceName;
+var results = (typeof WIDGET_STATE.results == "undefined")? null:WIDGET_STATE.results;
+if (results != null) results.first = true;
+OL.SendEvent("UI_RESULTS_DONE", window, results, LOC);
+}
+function SetUpDataSet(data){ 
+MDATA = data.featureTables;
+FEATURE_DATA = data.featureTables;
+TRIGGERS = data.triggerTables;
+var pageData = data.infoTables;  
+var first = false;
+if (data.instanceName == "TOP") {
+RESULTS = null;
+WIDGET_STATE = new InputState_Obj();
+first = true;
+}
+WIDGET_STATE.SetUpInstanceState(data.instanceName, data.product, data.parent, data.featureTables, data.triggerTables, data.dynDefObj, data );
+var autoLoad = OL.GetConfigVar("APP", "AUTO_LOAD_RESULTS");
+if ((autoLoad==true||first == false) && WIDGET_STATE.IsReady()) { 
+FIRST_CHANGED_WIDGETS=null;  
+OL.WaitForModules(new OL.Function_Obj(window, "SendWCEvent", WIDGET_STATE, PRODUCT, CURRINSTANCE), OL.ui_name);
+}
+else {	 
+FIRST_CHANGED_WIDGETS=WIDGET_STATE.changedInputs;
+}
+}
+function InfoOnlyLoaded(event, sender, dataSet) {  
+OL.LockResource(new OL.Function_Obj(window, "LockedInfoOnlyLoaded", dataSet), "UI_LOCK", new OL.Function_Obj(window,"ContinueUIWait","UI_LOCK"),DEFAULT_TIMEOUT);
+}
+function LockedInfoOnlyLoaded(dataSet) {
+SetUpUI(dataSet);
+}
+function DataOnlyLoaded(event, sender, dataSet) {
+if (dataSet.argList.inputState != WIDGET_STATE) {
+if (OL.Debug_UILocking) OL.logIt("DataOnlyLoaded. child parent "+dataSet.argList.inputState.GetInstanceInputs(dataSet.parent).product+ " no longer loaded.");
+return;
+}
+SetUpDataSet(dataSet)
+}
+function LoadFile(frameName, fileName, path) {
+if(typeof LOC == "undefined" || LOC == null){return;}
+var fullFileName = fullFrameName = "";
+var loadStr ="";
+var loadArray = null;
+if (typeof path == "undefined") {
+fullFileName = OL.GetPGPath()+fileName;	
+}
+else {
+var fullpath = OL.CheckPath(path);		
+fullFileName = fullpath+fileName;
+}
+if (typeof frameName == "object") {
+fullFrameName = OL.FrameToOLString(frameName);
+loadStr = frameName.name;
+}
+else {
+var loadArray = frameName.split(".");
+loadStr = loadArray[loadArray.length-1];
+fullFrameName = frameName;
+}
+OL.Load(loadStr, fullFileName, fullFrameName);
+if (typeof LOC.page != "undefined") {
+for (pg in LOC.page) {
+for (i=1; i<LOC.page[pg].length; i++) {
+if (LOC.page[pg][i] == fullFrameName && typeof LOC.page[fileName] != "undefined") {
+LOC.page[pg][0] = fullFileName;
+}
+}
+}
+OL.PAGE_UI_ELEMENTS = new Object();
+OL.ELEMENT_LOCS =  new Object();
+var frames = new Object();
+frames[fullFrameName]=fullFileName;
+var product = WIDGET_STATE.GetInstanceInputs(CURRINSTANCE).product;
+WIDGET_STATE.GetInstanceInputs(CURRINSTANCE).inp[product]=frames;
+}
+OL.SendEvent("UI_LOAD_FILE", window, loadStr, fullFileName, fullFrameName);
+}
+function LoadFramesInOrder(frFirst,frLast) {
+if ((typeof frLast == "undefined") || (frLast == null)) {
+if (OL.IsLoaded(OL.ui_name)) {
+LoadResultsPage(frFirst);
+}
+else {
+OL.WaitForModules(new OL.Function_Obj(window, "LoadResultsPage", frFirst), OL.ui_name);
+}
+}
+else {
+if (OL.IsLoaded(OL.ui_name)) {
+LoadInputsPage(frFirst,frLast);
+}
+else {
+OL.WaitForModules(new OL.Function_Obj(window, "LoadInputsPage", frFirst,frLast), OL.ui_name);
+}
+}
+}
+function SendWCEvent(wState, product, instance) {
+if(typeof OL["PEP_INPUT_CHANGED"] == "undefined" || OL.PEP_INPUT_CHANGED(window, PRODUCT, wState,instance) == true){
+WriteCalcMessage();
+OL.SendEvent("INPUT_CHANGED", window, product, wState, instance);
+}
+}
+function SendDispEvent(result) {
+if(typeof OL["PEP_UI_RESULTS_DONE"] == "undefined" || OL.PEP_UI_RESULTS_DONE(window, result, LOC) == true){
+OL.SendEvent("UI_RESULTS_DONE", window, result, LOC);
+}
+}
+function LoadInputsPage(inpFrame,resFrame){
+var frames = new Array();
+var InputStr = "";
+for (pg in inpFrame) {
+if (inpFrame[pg][1] != null) {	
+for (j = 1; j < inpFrame[pg].length; j++) {
+var name = inpFrame[pg][j].split(".");
+OL.Load(name[name.length-1],  inpFrame[pg][0], inpFrame[pg][j]);
+frames[inpFrame[pg][j]]=inpFrame[pg][0];
+InputStr += name[name.length-1]+"&&";
+}
+}
+}
+OL.WaitForModules(new OL.Function_Obj(window, "LoadResultsPage", resFrame), InputStr);
+WIDGET_STATE.GetInstanceInputs(CURRINSTANCE).inp = new Object();
+WIDGET_STATE.GetInstanceInputs(CURRINSTANCE).inp[PRODUCT] = frames;
+}
+function LoadResultsPage(resFrame){
+var frames = new Array();
+for (pg in resFrame) {
+if (resFrame[pg][1] != null && resFrame[pg][1] != "undefined") {		
+for (j = 1; j < resFrame[pg].length; j++) {
+var name = resFrame[pg][j].split(".");
+OL.Load(name[name.length-1], resFrame[pg][0], resFrame[pg][j]);
+frames[resFrame[pg][j]]=resFrame[pg][0];
+}
+}
+}
+WIDGET_STATE.GetInstanceInputs(CURRINSTANCE).inp = new Object();
+WIDGET_STATE.GetInstanceInputs(CURRINSTANCE).inp[PRODUCT] = frames;
+}
+function DisplayResults(result) {
+if(typeof WIDGET_STATE == "undefined" || WIDGET_STATE == null){return;}
+if (typeof result == "undefined" ||WIDGET_STATE != result.inputState||UI_CHANGED) return;
+OL.LockResource(new OL.Function_Obj(window, "DisplayQueuedResults", result),"UI_LOCK", new OL.Function_Obj(window,"ContinueUIWait","UI_LOCK"),DEFAULT_TIMEOUT);
+}
+function DisplayQueuedResults(result)
+{
+if(OL["COP_AfterConfigEngineDone"]){
+OL.COP_AfterConfigEngineDone(result);
+}
+if (typeof result == "undefined" ||WIDGET_STATE != result.inputState||UI_CHANGED) {
+OL.UnlockResource("UI_LOCK");
+return;
+}
+WIDGET_STATE.results= result;
+if (result.IsValid()) {
+WIDGET_STATE.outputs = result.GetOutputs(CURRINSTANCE);
+}
+if(OL["COP_BeforeDisplayResults"]){
+OL.COP_BeforeDisplayResults(result);
+}
+OL.WaitForModules(new OL.Function_Obj(window, "SendDispEvent", result), OL.ui_name);
+}
+function WriteCalcMessage()
+{
+if(OL.GetConfigVarWithDefault("APP", "SHOW_CALC_PAGE", true) == true){
+if(typeof LOC["exc"] == "object" && typeof LOC["exc"][0] == "string"){
+OL.LockResource(new OL.Function_Obj(window,"LockedWriteCalcMessage", LOC.exc[0]),LOC.exc[0],new OL.Function_Obj(OL,"ContinueFrameWait",LOC.exc[0],LOC.exc[0]),OL.DEFAULT_TIMEOUT);
+}
+}
+}
+function LockedWriteCalcMessage(excFrameStr)
+{
+var str = "<html><head></head><body bgcolor=#ffffff><table height=50% width=100%><tr><td valign=middle align=center><font size=3 color=#aaaaaa><b>";
+str += OL.GetConfigVarWithDefault("APP", "CALC_PAGE_STR", OL.ErrIntern("ISSCDA_DEFAULT_CALC_PAGE_STR"));
+str += "</b></font></td></tr></table></body></html>";
+if (typeof OL.COP_BeforeDisplayCalcMessageString != "undefined") {
+str = OL.COP_BeforeDisplayCalcMessageString(str);
+}
+excFrame = OL.ParseFrame(excFrameStr);
+if (excFrame != null) {
+OL.OpenDocument(excFrame.document,'text/html',true);
+excFrame.document.writeln(str);
+excFrame.document.close();
+}	
+OL.UnlockResource(excFrameStr);
+}
+function SetInputValue(table,selIndex) {
+WriteCalcMessage();
+if(OL["COP_BeforeInputValueSet"]){
+OL.COP_BeforeInputValueSet(table,selIndex);
+}
+var fullName = CURRINSTANCE+OL.GetInstanceDelimeterStr()+table;
+var inputArray = WIDGET_STATE.SetValue(OL.GetKeyFromInstKey(fullName), OL.GetInstanceFromInstKey(fullName), selIndex);
+if(OL["COP_AfterInputValueSet"]){
+OL.COP_AfterInputValueSet(table,selIndex);
+}
+if (FIRST_CHANGED_WIDGETS != null) {
+WIDGET_STATE.changedInputs = FIRST_CHANGED_WIDGETS;
+FIRST_CHANGED_WIDGETS = null;
+}
+if (inputArray.length != 0)	{
+OL.LockResource(new OL.Function_Obj(window, "LockedTriggerChange", inputArray), "UI_LOCK", new OL.Function_Obj(window,"ContinueUIWait","UI_LOCK"),DEFAULT_TIMEOUT);
+}
+if (WIDGET_STATE.IsReady()) {
+OL.SendEvent("INPUT_CHANGED", window, WIDGET_STATE.GetInstanceInputs(CURRINSTANCE).product, WIDGET_STATE, CURRINSTANCE);
+}
+}
+function LockedTriggerChange(inputArray) {
+if(OL["COP_BeforeTriggerAdjustments"]){
+OL.COP_BeforeTriggerAdjustments(inputArray);
+}
+if (typeof inputArray[0] != "undefined") {
+var fr = OL.ParseFrame(OL.uiFrame)
+var triggerStr = "";
+for (i = 0; i < fr.frames.length; i++) {
+var frName = (fr.frames[i].name).split(".");
+var frNameStr = frName[frName.length-1];
+triggerStr += "&&"+frNameStr;
+}
+OL.SendEvent("UI_TRIGGER_CHANGE", window, inputArray, LOC);
+}
+if(OL["COP_AfterTriggerAdjustments"]){
+OL.COP_AfterTriggerAdjustments(inputArray);
+}
+}
+/*
+function SelectProduct(pageSet) {
+if(OL["COP_BeforeSelectProduct"]){
+OL.COP_BeforeSelectProduct(pageSet);
+}
+if(typeof OL["PEP_SelectProduct"] == "undefined" || PEP_SelectProduct(window,pageSet) == true){
+OL.LoadPageset(pageSet, null)
+}
+}
+*/
+function GetInputValue(wName) {
+var fullName = CURRINSTANCE+OL.GetInstanceDelimeterStr()+wName;
+var retVal = WIDGET_STATE.GetValue(OL.GetKeyFromInstKey(fullName), OL.GetInstanceFromInstKey(fullName));
+if (retVal == null || typeof retVal == "undefined") {
+return "";
+}
+return retVal;
+}
+function GetResultsValue(wName) {
+if ( typeof WIDGET_STATE == "undefined" || WIDGET_STATE == null || typeof WIDGET_STATE.results == "undefined") return "";
+var fullName = CURRINSTANCE+OL.GetInstanceDelimeterStr()+wName;
+var retVal = WIDGET_STATE.results.GetValue(OL.GetKeyFromInstKey(fullName), OL.GetInstanceFromInstKey(fullName));
+if (retVal == null || typeof retVal == "undefined") {
+return "";
+}
+return retVal;
+}
+function GetInputState() {
+if (typeof WIDGET_STATE != "undefined" ){
+return WIDGET_STATE;
+}
+}
+function GetMetaData() {
+if (typeof WIDGET_STATE.featuredata[CURRINSTANCE] != "undefined" ){
+return WIDGET_STATE.featuredata[CURRINSTANCE];
+}
+}
+function GetFeatureData() {
+if (typeof FEATURE_DATA != "undefined" ){
+return FEATURE_DATA;
+}
+}
+function GetProductName() {
+if (typeof PRODUCT != "undefined" ){
+return PRODUCT;
+}
+}
+function GetFrameState(inst, product) {
+var frState = WIDGET_STATE.GetInstanceInputs(inst);
+if (typeof frState.inp == "undefined" || frState.inp == null) {
+return null;
+}
+else {
+return 	WIDGET_STATE.GetInstanceInputs(inst).inp[product];
+}
+}
+function LinkToSubConfig(tableName, window, objArg) {
+var data = new Object();
+var instanceName;
+var product;
+instanceName = OL.GetInstanceName(CURRINSTANCE+":"+tableName);
+var instanceState = WIDGET_STATE.GetInstanceInputs(instanceName)
+if (instanceState == null || typeof instanceState == "undefined") return;
+product = instanceState.product;
+if (typeof objArg == "undefined") {
+objArg = new Object();
+}
+objArg.frameState = GetFrameState(instanceName,product);
+OL.LoadDisplayPages(instanceName, product, objArg);
+}
+/*
+function GetResultsValue(tableName) {
+WIDGET_STATE.outputs.GetValue(tableName+".CHILD", CURRINSTANCE);
+}
+*/
+</script>
+</head>
+<body onLoad="OL.SetLoaded('uicode');" onUnload="if(!OL['MAC']){return;}OL.SetUnloaded('uicode');">
+UICODE
+<p>&nbsp;</p>
+</body>
+</html>

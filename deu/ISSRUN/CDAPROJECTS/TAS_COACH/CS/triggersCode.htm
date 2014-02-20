@@ -1,0 +1,247 @@
+<HTML>
+<HEAD>
+<TITLE>TRIGGERS CODE FILE - ONLINK CTO GROUP</TITLE>
+<SCRIPT></SCRIPT>
+<SCRIPT SRC="../jd/header.js">
+</SCRIPT>
+<SCRIPT>
+var CASCADETAG="CASCADE_";
+var cascadeObj = new Object();
+var mvarObj = new Object();
+function RegisterMVar(mvarName) {
+if (!mvarObj.mvars[mvarName]) {
+mvarObj.mvars[mvarName] = new Object();
+mvarObj.isActive=true;
+mvarObj.elementsRegistered=false;
+}
+}
+function RegisterCascade(cascadeName) {
+if (!cascadeObj.cascades[cascadeName]) {
+cascadeObj.cascades[cascadeName] = new Object();
+cascadeObj.isActive=true;
+cascadeObj.displayQueue = new Array();
+}
+}
+function Triggers_PreDatasetLoaded(event,window,data) {
+if (cascadeObj.isActive) {
+initializeCascades(data);
+}
+if (mvarObj.isActive) {
+storeMVarPreconfig(data);
+}
+OL.SendEvent(event,window,data);
+}
+function Triggers_AfterInputValueSet(table,selIndex) {
+if (cascadeObj.isActive && isCascadeWidget(table)) {
+doCascadeChanged(table,selIndex);
+OL.SendEvent("UI_TRIGGER_CHANGE", window, cascadeObj.displayQueue, OL.uicode.LOC);
+cascadeObj.displayQueue=new Array();
+}
+}
+function Triggers_EngineResultsGenerated(event,window,results) {
+if (mvarObj.isActive) {
+doMVarAfterEngine(results);
+}
+OL.SendEvent(event,window,results);
+}
+function ClearTriggers(event,win,arglist) {
+clearMVars();
+clearCascades();
+}
+function getPreConfigIndex(ftbls,wName,preconfigObj,instance) {
+var retval = null;
+var tbl = ftbls.GetTable(wName);
+if (preconfigObj != null) {
+retval = tbl.GetRowNumFromCode(preconfigObj.GetValue(wName,instance));
+}
+if (retval == null) {
+retval = tbl.GetDefaultRowNum();
+}
+return retval;
+}
+function clearMVars() {
+mvarObj.mvars = new Array();
+mvarObj.isActive=false;
+mvarObj.elementsRegistered=false;
+mvarObj.preconfigObj=null;
+}
+function storeMVarPreconfig(data) {
+if (typeof data!="undefined" && data != null) {
+mvarObj.preconfigObj=data;
+}
+}
+function checkPreconfig(changedMVars,results) {
+var allChanged=new Array();
+var curInst=OL.GetCurrInstance();
+if (typeof results.inputState.instanceInputs[curInst].triggerData == "undefined" && results.inputState.instanceInputs[curInst].triggerData == null) {
+allChanged = changedMVars;
+}
+else {
+for (var m=0; m<changedMVars.length; m++) {
+allChanged[allChanged.length]=m;
+var trigger = results.inputState.instanceInputs[curInst].triggerData.GetTable(changedMVars[m]);
+if (trigger != null && typeof trigger != "undefined") {
+for (var i = 0; i < trigger.length; i++) {
+var targ=trigger[i].GetTarget();
+var targIndex=getPreConfigIndex(mvarObj.preconfigObj.featureTables,targ,mvarObj.preconfigObj.dynDefObj,mvarObj.preconfigObj.instanceName);
+if (targIndex != OL.GetInputValue(targ)) {
+var fullName = curInst+OL.GetInstanceDelimeterStr()+targ;
+OL.uicode.WIDGET_STATE.SetValue(OL.GetKeyFromInstKey(fullName), OL.GetInstanceFromInstKey(fullName), targIndex);
+allChanged[allChanged.length]=targ;
+}
+}
+}
+}
+}
+mvarObj.preconfigObj=null;
+return allChanged;
+}
+function getChangedMVars() {
+var retval=null;
+var changedMVars=new Array();
+for (var m in mvarObj.mvars) {
+var curval=OL.GetInputValue(m);
+if (mvarObj.mvars[m].startval != curval) {
+changedMVars[changedMVars.length] = m;
+mvarObj.mvars[m].startval = curval;
+}
+}
+if (changedMVars.length>0) {
+retval=changedMVars;
+}
+return retval;
+}
+function registerMVarElements() {
+for (var m in mvarObj.mvars) {
+for (var i in OL.uicode.LOC.input) {
+OL.RegisterUIElement(m, OL.ParseFrame(OL.uicode.LOC.input[i][1]),false);
+}
+}
+mvarObj.elementsRegistered = true;
+}
+function doMVarAfterEngine(results) {
+var changedMVars=getChangedMVars();
+if (mvarObj.preconfigObj != null) {
+changedMVars=checkPreconfig(changedMVars,results);
+}
+if (changedMVars!=null) {
+if (!mvarObj.elementsRegistered) {
+registerMVarElements();
+}
+else {
+OL.SendEvent("UI_TRIGGER_CHANGE", window, changedMVars, OL.uicode.LOC);
+}
+var curInst=OL.GetCurrInstance();
+var prefix=curInst+OL.GetInstanceDelimeterStr();
+for (var m=0; m<changedMVars.length; m++) {
+results.inputState.changedInputs[results.inputState.changedInputs.length] = prefix+changedMVars[m];
+if (typeof results.inputState.instanceInputs[curInst].triggerData != "undefined" && results.inputState.instanceInputs[curInst].triggerData != null) {
+var trigger = results.inputState.instanceInputs[curInst].triggerData.GetTable(changedMVars[m]);
+if (trigger != null && typeof trigger != "undefined") {
+for (var i = 0; i < trigger.length; i++) {
+results.inputState.changedInputs[results.inputState.changedInputs.length]=prefix+trigger[i].GetTarget();
+}
+}
+}
+}
+results.valid = OL.configEngine.EvaluateInstance(OL.GetTopInstanceStr(), results.inputState);
+results.inputState.ClearChangedInputs();
+}
+}
+function clearCascades() {
+cascadeObj.cascades = new Array();
+cascadeObj.isActive=false;
+cascadeObj.displayQueue = new Array();
+}
+function isCascadeWidget(wName) {
+var retval = false;
+for (var c in cascadeObj.cascades) {
+for (var n=0; n<cascadeObj.cascades[c].tables.length; n++) {
+if (cascadeObj.cascades[c].tables[n] == wName) {
+retval=true;
+break;
+}
+}
+if (retval) {
+break;
+}
+}
+return retval;
+}
+function doCascadeChanged(wName,wIndex) {
+var len=CASCADETAG.length;
+var ftbls = OL.GetFeatureData();
+var trig = ftbls.GetTable(wName);
+var trow = trig.GetRow(0);
+var cTables=new Array();
+var targ;
+for (var field in trow) {
+if (field.substr(0,len) == CASCADETAG) {
+var targ=field.substr(len);
+var targTbl = getCascadeTargTable(trig,wIndex,field);
+OL.SetMetaTable(targ,targTbl);
+var targIndex=getPreConfigIndex(ftbls,targ,null);
+cTables[targ]=targIndex;
+cascadeObj.displayQueue[cascadeObj.displayQueue.length] = targ;
+doCascadeChanged(targ,targIndex);
+}
+}
+for (targ in cTables) {
+var fullName = OL.GetCurrInstance()+OL.GetInstanceDelimeterStr()+targ;
+OL.uicode.WIDGET_STATE.SetValue(OL.GetKeyFromInstKey(fullName), OL.GetInstanceFromInstKey(fullName), cTables[targ]);
+}
+}
+function getCascadeTargTable(trig,cIndex,field) {
+var retval = null;
+var targName = trig.GetTableCell(cIndex,field) + '_t';
+var frame = OL.ParseFrame(OL.dataloadcode.DATA["files"]["featureData"]["frame"]);
+if (typeof frame[targName] != "undefined") {
+retval = frame[targName];
+}
+return retval;
+}
+function initCascade(cName,cIndex,data) {
+var len=CASCADETAG.length;
+var trig = data.featureTables.GetTable(cName);
+var trow = trig.GetRow(0);
+var cTables=new Array();
+for (var field in trow) {
+if (field.substr(0,len) == CASCADETAG) {
+var targ=field.substr(len);
+var targTbl = getCascadeTargTable(trig,cIndex,field);
+OL.SetMetaTable(targ,targTbl);
+var targIndex=getPreConfigIndex(data.featureTables,targ,data.dynDefObj,data.instanceName);
+initCascade(targ,targIndex,data);
+}
+}
+}
+function constructCascade(cascadeName,data) {
+var dtbl = data.featureTables.GetTable(cascadeName);
+if (dtbl != null) {
+cascadeObj.cascades[cascadeName].tables = new Array();
+var num=0;
+var len=CASCADETAG.length;
+var row = dtbl.GetRow(0);
+for (var field in row) {
+if (field.substr(0,len) == CASCADETAG) {
+cascadeObj.cascades[cascadeName].tables[num] = dtbl.GetTableCell(0,field);
+num++;
+}
+}
+}
+}
+function initializeCascades(data) {
+for (var c in cascadeObj.cascades) {
+constructCascade(c,data);
+if (cascadeObj.cascades[c].tables.length>0) {
+var cName=cascadeObj.cascades[c].tables[0];
+var cIndex=getPreConfigIndex(data.featureTables,cName,data.dynDefObj,data.instanceName);
+initCascade(cName,cIndex,data);
+}
+}
+}
+</SCRIPT>
+</HEAD>
+<BODY onLoad="OL.SetLoaded('triggerscode');">
+</BODY>
+</HTML>

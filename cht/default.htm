@@ -1,0 +1,30 @@
+﻿<html>
+
+<head>
+<script>
+function GotoUrl(url)
+{
+	
+ 
+   
+
+   // Append the current hostname to the server request so that the server has
+   // the top level host name. This is needed to support reverse proxy servers.
+   url += "&SWEHo=" + this.location.hostname;
+   var fullUrl = unescape(this.location.pathname) + url;
+   top.location.replace(fullUrl);
+
+}
+GotoUrl('start.swe?SWECmd=Start');
+</script>
+</head>
+
+<body>
+<p>指令碼被用來管理 Siebel 伺服器/Web 伺服器與使用者介面之間的資料互動。因此，必須在網路瀏覽器中啟用 JavaScript。</p>
+<p>要在 Internet Explorer 中做此設定，請依下列步驟進行。</p>
+<p>選擇「工具」&gt;「網際網路選項」&gt;「安全性」&gt;「雜項」&gt; 將「Active Scripting」設為 「提示」或「啟用」</p>
+<p>選擇「工具」&gt;「網際網路選項」&gt;「安全性」&gt;「雜項」&gt; 將「JavaApplets 的指令碼化」設為 「提示」或「啟用」</p>
+<p>其它瀏覽器請依照同類指示啟用 JavaScript 的使用，以及令 Java Applet 可以與 JavaScript 互動。</p>
+</body>
+
+</html>

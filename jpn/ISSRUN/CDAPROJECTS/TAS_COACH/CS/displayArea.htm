@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<TITLE>Display Area</TITLE>
+<SCRIPT></SCRIPT><SCRIPT src = "../jd/header.js"></SCRIPT>
+<SCRIPT>
+function InitProject() {
+OL.ol_ui = window.ol_ui;
+OL.COUNT = 0;
+if (OL.CLEARED_KERNEL) {		
+OL.ReleaseResources();
+OL.ModuleRegistrationComplete();
+}
+if (OL.isMacIE) {
+if (!OL.moduleLoad.IsLoaded("back_ui")) {
+OL.Load("back_ui", OL.GetCSURL()+'back_ui.htm', OL.GetDisplayArea()+'.backFix');
+} else {
+OL.Load("historyMiddle", OL.GetCSURL()+"historyMiddle.htm", OL.GetDisplayArea()+".backFix");
+}
+}
+if (!OL.moduleLoad.IsLoading("displayArea")) {
+if (OL.BACK_HIT) {
+OL.IncrementHistorySessionNum();
+}	else {
+}
+OL.SetHistorySession(OL.GetCurrentHistorySessionNum());
+if (typeof OL.GetHistorySession(OL.GetCurrentHistorySessionNum()) != "undefined" && OL.GetHistorySession(OL.GetCurrentHistorySessionNum()) != null) {
+if (typeof OL.GetHistorySession(OL.GetCurrentHistorySessionNum()).project != "undefined" && OL.GetHistorySession(OL.GetCurrentHistorySessionNum()).project != OL.GetCurrentProject()) {
+OL.ChangeProject(OL.GetHistorySession(OL.GetCurrentHistorySessionNum()).project);
+} 
+if (OL.isMacIE || (OL.BROWSER == "NETSCAPE" && OL.NN_VERSION >= 5)) {
+OL.Load("ol_ui", OL.GetUIURL()+'ol_ui.htm', OL.GetDisplayArea()+'.ol_ui');
+}
+if (OL.GetHistorySession(OL.GetCurrentHistorySessionNum()).showContents) {
+OL.WaitForModules(new OL.Function_Obj(OL,"ShowContentsList"), "ol_ui");
+}
+OL.WaitForModules(new OL.Function_Obj(OL,"History_ReplayCurrent"), "ol_ui");
+}
+} else {
+OL.IncrementHistorySessionNum();
+var contentsOn = (typeof OL.GetCDAEntryArgs() != "undefined" && OL.GetCDAEntryArgs() != null && OL.GetCDAEntryArgs().showContents);
+OL.NewHistorySession(contentsOn);
+}
+if (! OL.SessionKeepAliveOn()) {
+var sleepInterval = (OL.GetConfigVarWithDefault("APP", "SESSION_LENGTH", 15)/2.0)*60000;
+OL.setInterval(OLStr + ".SimulateSession();", sleepInterval);
+}
+}
+</SCRIPT>
+</HEAD>
+<FRAMESET rows = "100%,*" onLoad = "if (typeof OL != 'undefined') {InitProject(); OL.SetLoaded('displayArea');}" onUnload = "if (typeof OL != 'undefined') {if ((top.window.innerWidth == OL.ORIGWIDTH && top.window.innerHeight == OL.ORIGHEIGHT)) { OL.DISPLAY_SetUnloaded();}else{OL.ORIGWIDTH=top.window.innerWidth;OL.ORIGHEIGHT=top.window.innerHeight;}}">
+<FRAME name="ol_ui" marginwidth=0 marginheight=0 src="javascript:''" scrolling="auto">
+<FRAME name="backFix" marginwidth=0 marginheight=0 src="back_ui.htm" scrolling="auto">
+</FRAMESET>
+</HTML>

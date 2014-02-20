@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<script></script>
+<script src="../jd/header.js"></script>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<TITLE></TITLE>
+<script language="JavaScript">
+var LISTTG = OL.prodlistcode;
+var DATA_LOC = OL.prodlistdata.T;
+var FRAME = eval (OL.prodlistFrame);
+var LISTSTATE = new Array(0,0,0,0,0,0);
+var	LIST = null;
+function SelectItem() {
+OL.Load("prodlistui",OL.GetCSPath()+"prodlistui.htm",OL.prodlistFrame);
+}
+function SelectListItem(listID,pageNum) {
+LIST = eval(OL.prodlistdata.T);
+FRAME = eval (OL.prodlistFrame);
+if (document.all) {
+OL.scrollPosX = FRAME.document.body.scrollLeft;
+OL.scrollPosY = FRAME.document.body.scrollTop;
+}
+else{
+OL.scrollPosX = FRAME.window.pageXOffset;
+OL.scrollPosY = FRAME.window.pageYOffset;
+}
+if (LIST[listID+1]&&(LIST[listID+1][0]>LIST[listID][0])) {
+LISTSTATE[listID] = !LISTSTATE[listID];
+for (var i=1; LIST[listID+i] && LIST[listID+i][0]!=1 && LIST[listID+i][0]!=LIST[listID][0] ; i++){
+if(!LISTSTATE[listID]){
+LISTSTATE[listID+i] = false;
+}
+}
+SelectItem();
+}
+OL.SendEvent("LIST_ITEM_SELECT",window, LIST[listID][1]);
+if (pageNum&&(pageNum.length>0)) {
+var htmlpage=pageNum.search(/\.htm/i);
+if(htmlpage!= -1){
+var locStr = pageNum.replace(/\s/g,"");
+locStr = locStr.split(",");
+var frName = "";
+if (locStr.length < 2) {
+frName = OL.uiFrame.split(".");
+OL.Load(frName[frName.length-1],OL.GetPGPath()+locStr[0], OL.uiFrame);
+}
+else {
+frName = locStr[1].split(".");
+OL.Load(frName[frName.length-1],OL.GetPGPath()+locStr[0], locStr[1]);
+}
+}
+else{
+if (listID) {	
+var prodListFrame = eval (OL.prodlistFrame);
+if (typeof prodListFrame != "undefined" && prodListFrame != null) {
+prodListFrame.Flyover(listID,true);
+}
+}
+OL.LoadPagesetWithDynDefObj(pageNum, null);
+}
+}
+}
+function GetListState() {
+if (LISTSTATE != null) {
+return LISTSTATE;
+}
+return null;
+}
+function empty(colVal)
+{
+return (colVal==null)||(colVal=='');
+}
+function ScrollList() {
+var fr = eval(OL.prodlistFrame);
+if (typeof OL.scrollPosX != "undefined") {
+fr.scroll(OL.scrollPosX,OL.scrollPosY);
+}
+else {
+fr.scroll(0,0);
+}
+}
+function InitList(scrollPosX,scrollPosY)
+{
+if(OL["COP_BeforeContentsListDisplay"]){
+OL.COP_BeforeContentsListDisplay();
+}
+OL.Load("prodlistui",OL.GetCSPath()+"prodlistui.htm",OL.prodlistFrame);
+}
+</script>
+</HEAD>
+<BODY onLoad ="OL.SetLoaded('prodlistcode');" onUnload="if(!OL['MAC']){return;}OL.SetUnloaded('prodlistcode');" >
+<!--BODY onLoad ="OL.SetLoaded('prodlistcode');InitList(0,0)"-->
+Original product LIST code<P>&nbsp;</P>
+<script>
+</script>
+</BODY>
+</HTML>

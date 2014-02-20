@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<applets>
+    <!--Signature Ctrl - Start Defn-->
+    <applet id="LS Sign Contact Applet" bc="Pharma Professional Call">
+        <template id="SignatureContactDetail">
+            <placeholder id="PH11" object="Full Name" type="Label14" text="IDS_FULL_NAME"/>
+            <placeholder id="PH12" object="ChangeProfessional" type="ISDToolbar" text="ChangeProfessional"/>
+            <placeholder id="PH2" object="Street Address" type="Label" text="IDS_STREET_ADDR"/>
+            <placeholder id="PH3" object="Street Address2" type="Label" text="IDS_STREET_ADDR"/>
+            <placeholder id="PH4" object="Start Date" type="DateField_ReadOnly" text="Start Date"/>
+            <placeholder id="PH51" type="Label" text="IDS_LIC_NUM"/>
+            <placeholder id="PH52" object="License" type="Label" text="IDS_LIC_NUM"/>
+			<placeholder id="PH61" type="Label" text="IDS_DEA_NUM"/>
+            <placeholder id="PH62" object="DEA" type="Label" text="IDS_DEA_NUM"/>
+        </template>
+    </applet>
+    <applet id="LS Sign Sample Drop List Applet" bc="LS Sample Drop BC" type="list">
+        <template id="A_T_CustomList">
+            <placeholder id="PHn" object="" type="template">
+                <template id="Sign_Sample_8Col">
+                    <placeholder id="PH1" object="Name" type="Label" text="IDS_NAME_FIELD_TITLE"/>
+                    <placeholder id="PH2" type="Label" text="IDS_QTY"/>
+                    <placeholder id="PH3" object="Quantity" type="Number" text="Quantity"/>
+                    <placeholder id="PH4" type="Label" text="IDS_LOT"/>
+                    <placeholder id="PH5" object="Lot Name" type="ngComboBox" text="Lot Name"/>
+                    <placeholder id="PH6" object="Delete" type="ISDToolbar" text="Delete"/>
+                </template>
+            </placeholder>
+        </template>
+    </applet>
+    <applet id="LS Sign Capture Applet" object="LS Sign Capture Applet">
+        <template id="Signature_Control">
+            <placeholder id="PH1" object="SignatureCanvas" type="CustomCtrl" Text="Signature Canvas"/>
+        </template>
+    </applet>
+    <applet id="LS Sign Disclaimer Applet" bc="LS Pharma Disclaimer BC">
+        <template id="Signature_Disclaimer">
+            <placeholder id="PH1" object="Disclaimer" type="Text" text="Disclaimer"/>
+        </template>
+    </applet>
+    <applet id="LS Sign Toolbar Applet">
+        <template id="Signature_Toolbar">
+            <placeholder id="PH1" object="SignatureCtrlToolbar" type="ISDToolbar" text="SignatureCtrlToolbar"/>
+        </template>
+    </applet>
+  <!--Signature Ctrl - End Defn-->
+</applets>

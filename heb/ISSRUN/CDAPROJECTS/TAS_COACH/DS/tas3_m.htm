@@ -1,0 +1,23 @@
+﻿<HTML><HEAD><TITLE></TITLE><SCRIPT></SCRIPT>
+<SCRIPT language=Javascript src="../jd/header.js"></SCRIPT>
+<SCRIPT language=Javascript src="../ds/tas3_x.js"></SCRIPT>
+<SCRIPT>
+var IMT=OL.InitMetaTable;
+var IMTS=OL.InitMetaTables;
+var SMT=OL.SetMetaTable;
+OL.StartMeta('tas3');
+
+function TAS_Q3(inC,inD,inRESDESC,inCHILD,inLINK,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+this.RESDESC=inRESDESC;
+this.CHILD=inCHILD;
+this.LINK=inLINK;
+}
+var TAS_Q3_t=new Array(3);
+TAS_Q3_t[0]=new TAS_Q3('5','Please Select...','<br><br><table border="1" bordercolor="#6666cc" cellpadding="5" cellspacing="0"><tr><td class="static">A 3:1 advantage is when the customer perceives that you are three times better than your competition in product or service functions, sales resources, price or other critical selection criteria.<br><Br>Remember it\'s the customer\'s perception of your advantage that matters, not your perception.</span></td></tr></table>','null','','DEFAULT');
+TAS_Q3_t[1]=new TAS_Q3('10','Yes','<br><br><table border="1" bordercolor="#6666cc" cellpadding="5" cellspacing="0"><tr><td class="static">A 3:1 advantage is when the customer perceives that you are three times better than your competition in product or service functions, sales resources, price or other critical selection criteria.<br><br>Remember it\'s the customer\'s perception of your advantage that matters, not your perception.</td></tr><tr><td class="dynamic"><span class="solutiontitle">You answered "Yes"</span><Br><br>Try testing your answer by writing out exactly where you have a 3:1 advantage.  Then try to quantify your advantage.<br>If you find this difficult, consider how difficult it will be for your customer.</td></tr></table>','frontal','Continue </a>','');
+TAS_Q3_t[2]=new TAS_Q3('20','No','<br><br><table border="1" bordercolor="#6666cc" cellpadding="5" cellspacing="0"><tr><td class="static">A 3:1 advantage is when the customer perceives that you are three times better than your competition in product or service functions, sales resources, price or other critical selection criteria.<br><Br>Remember it\'s the customer\'s perception of your advantage that matters, not your perception.</span></td></tr></table>','tas4','Continue </a>','');
+IMTS(1);
+SMT('TAS_Q3',TAS_Q3_t);
+</SCRIPT></HEAD><BODY onload="OL.EndMeta('tas3')"></BODY></HTML>

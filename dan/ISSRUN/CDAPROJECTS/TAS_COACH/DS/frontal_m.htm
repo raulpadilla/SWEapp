@@ -1,0 +1,18 @@
+﻿<HTML><HEAD><TITLE></TITLE><SCRIPT></SCRIPT>
+<SCRIPT language=Javascript src="../jd/header.js"></SCRIPT>
+<SCRIPT language=Javascript src="../ds/frontal_x.js"></SCRIPT>
+<SCRIPT>
+var IMT=OL.InitMetaTable;
+var IMTS=OL.InitMetaTables;
+var SMT=OL.SetMetaTable;
+OL.StartMeta('frontal');
+
+function FRONTAL(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var FRONTAL_t=new Array(1);
+FRONTAL_t[0]=new FRONTAL('10','x','DEFAULT');
+IMTS(1);
+SMT('FRONTAL',FRONTAL_t);
+</SCRIPT></HEAD><BODY onload="OL.EndMeta('frontal')"></BODY></HTML>

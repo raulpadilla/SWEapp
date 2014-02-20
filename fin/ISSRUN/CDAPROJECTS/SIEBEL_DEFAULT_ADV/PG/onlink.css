@@ -1,0 +1,44 @@
+.bullet1
+{
+    BACKGROUND-IMAGE: url(../pg/pl_bullet1.gif);
+    BACKGROUND-POSITION: left top;
+    BACKGROUND-REPEAT: no-repeat;
+    FONT-FAMILY: Verdana, 'MS Sans Serif';
+    FONT-SIZE: x-small;
+    MARGIN-LEFT: 0px;
+    TEXT-INDENT: 20px
+}
+.bullet2
+{
+    BACKGROUND-IMAGE: url(../pg/pl_bullet2.gif);
+    BACKGROUND-POSITION: left top;
+    BACKGROUND-REPEAT: no-repeat;
+    FONT-FAMILY: Verdana, 'MS Sans Serif';
+    FONT-SIZE: x-small;
+    MARGIN-LEFT: 10px;
+    TEXT-INDENT: 20px
+}
+.bullet3
+{
+    BACKGROUND-IMAGE: url(../pg/pl_bullet3.gif);
+    BACKGROUND-POSITION: left top;
+    BACKGROUND-REPEAT: no-repeat;
+    FONT-FAMILY: Verdana, 'MS Sans Serif';
+    FONT-SIZE: x-small;
+    MARGIN-LEFT: 20px;
+    TEXT-INDENT: 20px
+}
+.bullet4
+{
+    BACKGROUND-IMAGE: url(../pg/pl_bullet4.gif);
+    BACKGROUND-POSITION: left top;
+    BACKGROUND-REPEAT: no-repeat;
+    FONT-FAMILY: Verdana, 'MS Sans Serif';
+    FONT-SIZE: x-small;
+    MARGIN-LEFT: 30px;
+    TEXT-INDENT: 20px
+}
+.MacPadding
+{
+    PADDING-LEFT: 20px
+}

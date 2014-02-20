@@ -1,0 +1,12 @@
+<HTML>
+<HEAD>
+<SCRIPT>
+var loc = window.location.search.slice(1);
+if (loc.charAt(0)=="/"&&loc.charAt(1)=="/") loc = loc.slice(1);
+if (loc != "" && (loc.search(/^([\w\.\~\-\=\&\?\%\/\\]+)$/) == -1))
+loc="../kernel.htm";
+</SCRIPT>
+</HEAD>
+<BODY onload = "window.location.replace(loc);">
+</BODY>
+</HTML>

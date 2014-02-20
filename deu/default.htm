@@ -1,0 +1,30 @@
+<html>
+
+<head>
+<script>
+function GotoUrl(url)
+{
+	
+ 
+   
+
+   // Append the current hostname to the server request so that the server has
+   // the top level host name. This is needed to support reverse proxy servers.
+   url += "&SWEHo=" + this.location.hostname;
+   var fullUrl = unescape(this.location.pathname) + url;
+   top.location.replace(fullUrl);
+
+}
+GotoUrl('start.swe?SWECmd=Start');
+</script>
+</head>
+
+<body>
+<p>Zur Verwaltung von Dateninteraktionen zwischen dem Siebel Server/Web-Server und der Benutzerschnittstelle werden Skripte verwendet. Daher muss JavaScript im Web-Browser aktiviert sein. </p>
+<p>Im Internet Explorer können Sie JavaScript folgendermaßen aktivieren.</p>
+<p>Wählen Sie Extras > Internetoptionen > Sicherheit > Internet, klicken Sie auf die Schaltfläche „Stufe anpassen ...“, und setzen Sie „Active Scripting“ auf „Aktivieren“ oder „Eingabeaufforderung“ </p>
+<p>Wählen Sie Extras > Internetoptionen > Sicherheit > Internet, klicken Sie auf die Schaltfläche „Stufe anpassen ...“, und setzen Sie „Scripting von Java-Applets“ auf „Aktivieren“ oder „Eingabeaufforderung“ </p>
+<p>Bei anderen Browsern folgen Sie zur Aktivierung von JavaScript und der Interaktion zwischen Java-Applets und JavaScript den entsprechenden Anweisungen. </p>
+</body>
+
+</html>

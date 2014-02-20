@@ -1,0 +1,30 @@
+﻿<html>
+
+<head>
+<script>
+function GotoUrl(url)
+{
+	
+ 
+   
+
+   // Append the current hostname to the server request so that the server has
+   // the top level host name. This is needed to support reverse proxy servers.
+   url += "&SWEHo=" + this.location.hostname;
+   var fullUrl = unescape(this.location.pathname) + url;
+   top.location.replace(fullUrl);
+
+}
+GotoUrl('start.swe?SWECmd=Start');
+</script>
+</head>
+
+<body>
+<p>Il linguaggio di scripting viene utilizzato per la gestione delle interazioni dei dati tra il server Siebel/server Web e l'interfaccia utente. Questo linguaggio richiede l'attivazione di JavaScript nel browser Web. </p>
+<p>Per l'impostazione dello scripting in Internet Explorer, eseguire le operazioni riportate di seguito.</p>
+<p>Scegliere Strumenti > Opzioni Internet > Protezione > Varie >, imposta "Active Scripting" su Attiva o Chiedi conferma </p>
+<p>Scegliere Strumenti > Opzioni Internet > Protezione > Varie >, imposta "Scripting delle applet Java" su Attiva o Chiedi conferma </p>
+<p>Per altri browser, seguire le istruzioni equivalenti per l'abilitazione di JavaScript e per fare in modo che le applet Java interagiscano con JavaScript. </p>
+</body>
+
+</html>

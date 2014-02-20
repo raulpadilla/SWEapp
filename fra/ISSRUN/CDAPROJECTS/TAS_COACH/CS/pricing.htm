@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<TITLE>Pricing Code</TITLE>
+<SCRIPT SRC="../jd/header.js"></SCRIPT>
+<SCRIPT>
+var hPriceWin;	
+function DisplayPrice(arPriceObj) {
+var headers   = OL.GetConfigVarWithDefault("APP","PRICE_HEADERS",new Array('Name','Net Price','List Price','Comments'));
+var cols      = OL.GetConfigVarWithDefault("APP","PRICE_DATA",new Array('Product Name','Current Price','Original List Price','Pricing Comments'));
+var title     = OL.GetConfigVarWithDefault("APP","PRICE_TITLE_ATTR","Pricing Window");
+var body      = OL.GetConfigVarWithDefault("APP","PRICE_BODY_ATTR","bgcolor='#ffffff'");
+var font      = OL.GetConfigVarWithDefault("APP","PRICE_FONT_ATTR","face='Verdana, Arial' size=2 color='blue'");
+var table     = OL.GetConfigVarWithDefault("APP","PRICE_TABLE_ATTR","border=0 cellpadding=2 cellspacing=2 width=100%");
+var close     = OL.GetConfigVarWithDefault("APP","PRICE_CLOSE_ATTR",OL.ErrIntern("ISSCDA_PRICE_CLOSE_STR"));
+var winAttr   = OL.GetConfigVarWithDefault("APP","PRICE_WIN_ATTR", "status=0,scrollbars=1,resizable=1,width=450,height=200");
+if (typeof OL.ORP_DisplayPrice != "undefined") {
+OL.ORP_DisplayPrice(arPriceObj, cols, title, body, font, table, close, hPriceWin, 'PriceWin', winAttr);
+return;
+}
+if (typeof arPriceObj != "undefined" && arPriceObj != null) {
+var s = "<html><head><title>"+title+"</title></head><body "+body+">";
+s += "<font "+font+">";
+s += "<table "+table+">";
+s += "<tr>";
+if (headers.length>0) {
+for (var i=0;i<headers.length;i++) {
+s += "<td><font "+font+">"+headers[i]+"</font></td>";
+}
+}
+s += "</tr>";
+s += "<tr>";
+if (cols.length>0) {
+for (var i=0;i<cols.length;i++) {
+if (typeof arPriceObj.GetField(cols[i]) != "undefined") {
+s += "<td><font "+font+">"+arPriceObj.GetField(cols[i])+"</font></td>";
+} else {
+s += "<td>&nbsp;</td>";
+}
+}
+}
+s += "</tr>";
+if (typeof arPriceObj.GetField("error") != "undefined") {
+s += "<tr><td colspan="+cols.length+"><font "+font+">"+arPriceObj.GetField("error")+"</font></td></tr>";
+}
+s += "</table>";
+if (close != "") s += "<br><br><a href='javascript:void(0)' onclick=self.close()>"+close+"</a>";
+s += "</font>";
+s += "</body></html>";
+if (typeof OL.COP_BeforeDisplayPriceString != "undefined") {
+s = OL.COP_BeforeDisplayPriceString(arPriceObj, s, cols, font, body, title, table, close);
+}
+if (typeof OL.ORP_DisplayPriceString != "undefined") {
+hPriceWin = OL.ORP_DisplayPriceString(arPriceObj, s, hPriceWin, 'PriceWin', winAttr);
+return;
+}
+if (!hPriceWin || hPriceWin.closed) {
+hPriceWin = window.open('','PriceWin', winAttr);
+} else {
+if (typeof hPriceWin.location.href == "unknown") {
+hPriceWin.location="about:blank";	
+}
+}
+OL.OpenDocument(hPriceWin.document,'text/html',true);
+hPriceWin.document.write(s);
+hPriceWin.document.close();
+hPriceWin.focus();
+}
+}
+</SCRIPT>
+</HEAD>
+<BODY onLoad="OL.SetLoaded('pricing');">
+Pricing Code
+</BODY>
+</HTML>

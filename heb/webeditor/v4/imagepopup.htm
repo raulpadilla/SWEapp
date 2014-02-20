@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!--
+	Ektron, Inc.
+	Copyright 2003
+	Revision Date: 2003-05-22
+-->
+<html>
+<head>
+<title>Image Selection</title>
+<script language="JavaScript1.2" type="text/javascript" src="eweputil.js"></script>
+<script language="JavaScript1.2" type="text/javascript">
+<!--
+// This function performs the actual insertion of a selected image file.
+// The line containing the insertMediaFile function call is
+// the important line.  All others are error checking and housekeeping.
+function selectImage(sImageFile, sDescription) 
+{ 
+ 	var objInstance = eWebEditProUtil.getOpenerInstance();
+	if (objInstance && objInstance.isEditor())
+	{
+		if (!eWebEditProUtil.isOpenerAvailable())
+		{
+			alert("Your image could not be inserted because the editor page has been closed.");
+			return;
+		}
+	    if (0 == sImageFile.length) 
+	    { 
+	        alert("Please select a file to insert."); 
+	        return; 
+	    } 
+ 
+		// Here is where the insert actually happens.
+		objInstance.insertMediaFile(sImageFile, false, sDescription, "IMAGE", 0, 0); 
+ 
+    	top.close();  
+	}
+}
+
+var imageList = 
+[
+	{ text:"IE Options (Arabic)", 				url:top.opener.eWebEditPro.parameters.path + "clientinstall/ieoptions2ar.gif" }
+,	{ text:"IE Options (Chinese, Simplified)", 	url:top.opener.eWebEditPro.parameters.path + "clientinstall/ieoptions2zh.gif" }
+,	{ text:"IE Options (Chinese, Traditional)",	url:top.opener.eWebEditPro.parameters.path + "clientinstall/ieoptions2zh-tw.gif" }
+,	{ text:"IE Options (Danish)", 				url:top.opener.eWebEditPro.parameters.path + "clientinstall/ieoptions2da.gif" }
+,	{ text:"IE Options (Dutch)", 				url:top.opener.eWebEditPro.parameters.path + "clientinstall/ieoptions2nl.gif" }
+,	{ text:"IE Options (English)", 				url:top.opener.eWebEditPro.parameters.path + "clientinstall/ieoptions2.gif" }
+,	{ text:"IE Options (French)", 				url:top.opener.eWebEditPro.parameters.path + "clientinstall/ieoptions2fr.gif" }
+,	{ text:"IE Options (German)", 				url:top.opener.eWebEditPro.parameters.path + "clientinstall/ieoptions2de.gif" }
+,	{ text:"IE Options (Italian)", 				url:top.opener.eWebEditPro.parameters.path + "clientinstall/ieoptions2it.gif" }
+,	{ text:"IE Options (Japanese)", 			url:top.opener.eWebEditPro.parameters.path + "clientinstall/ieoptions2ja.gif" }
+,	{ text:"IE Options (Korean)", 				url:top.opener.eWebEditPro.parameters.path + "clientinstall/ieoptions2ko.gif" }
+,	{ text:"IE Options (Portuguese)", 			url:top.opener.eWebEditPro.parameters.path + "clientinstall/ieoptions2pt.gif" }
+,	{ text:"IE Options (Spanish)", 				url:top.opener.eWebEditPro.parameters.path + "clientinstall/ieoptions2es.gif" }
+,	{ text:"IE Options (Swedish)", 				url:top.opener.eWebEditPro.parameters.path + "clientinstall/ieoptions2sv.gif" }
+];
+//-->
+</script>
+</head>
+<body onload="javascript:self.focus()" bgcolor="Silver">
+
+<form> 
+
+<h1>Image Selection Example</h1>
+
+<p>Please select an image to insert.</p>
+
+<select name="ImageSelect" title="Select an image to insert" 
+		onchange="var i = this.selectedIndex - 1; if (i >= 0) selectImage(imageList[i].url, imageList[i].text)">
+	<script language="JavaScript1.2" type="text/javascript">
+	<!--
+	// Create list of option values. This could be written using server-side script, such as ASP, JSP, or PHP.
+	document.writeln("<option>-- Select Image --</option>");
+	for (var i = 0; i < imageList.length; i++)
+	{
+		document.writeln("<option>" + imageList[i].text + "</option>");
+	}
+	// -->
+	</script>
+</select>
+<br><br>
+<input type="button" value="Cancel" onclick="top.close()">
+
+</form> 
+
+</body>
+</html>

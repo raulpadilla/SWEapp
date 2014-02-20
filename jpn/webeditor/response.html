@@ -1,0 +1,47 @@
+<html>
+<head>
+	<title>Resources</title>
+	<link href="browser.css" type="text/css" rel="stylesheet">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript">
+
+
+function GetUrlParam( paramName )
+{
+	var oRegex = new RegExp( '[\?&]' + paramName + '=([^&]+)', 'i' ) ;
+	var oMatch = oRegex.exec( window.location) ;
+
+	if ( oMatch && oMatch.length > 1 )
+		return decodeURIComponent( oMatch[1] ) ;
+	else
+		return '' ;
+}
+
+
+function OpenFile(  )
+{
+
+	//PATCH: Using CKEditors API we set the file in preview window.
+
+	funcNum = GetUrlParam('CKEditorFuncNum') ;
+
+	fileUrl = GetUrlParam('fileUrl') ;
+
+    //fixed the issue: images are not displayed in preview window when filename contain spaces due encodeURI encoding already encoded fileUrl
+	window.top.opener.CKEDITOR.tools.callFunction( funcNum, fileUrl);
+
+
+
+	///////////////////////////////////
+	window.top.close() ;
+	window.top.opener.focus() ;
+
+
+
+}
+
+</script>
+<body onload="OpenFile()">
+</body>
+</html>

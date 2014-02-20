@@ -1,0 +1,127 @@
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<TITLE></TITLE>
+<SCRIPT></SCRIPT>
+<script>
+if (typeof top.onlink == "undefined") {
+var is_version=parseFloat((navigator.appVersion.substr(navigator.appVersion.indexOf("MSIE"),9)).substr(4,7));
+if (window.parent == window) {
+var default_proj_path = /\/issrun\/cdaprojects\/DefaultProject\/kernel.htm$/i;
+if (window.parent.location.href.match(default_proj_path)) {
+var sieb_app_url = window.parent.location.href.replace(default_proj_path,"/");
+top.location.replace(sieb_app_url);
+} else {
+var path = window.location.pathname.replace(/kernel.htm$/,"home.htm");
+window.location.replace(path);
+}
+} else if (navigator.appName == "Microsoft Internet Explorer" && is_version == 5.5) {
+if (window.parent.location.pathname.match(/\/home.htm$/)) {
+window.parent.location.replace("cs/temp.htm?"+window.parent.location.pathname+window.parent.location.search);
+}
+} else {
+window.parent.location.reload(true);
+}
+}
+</script>
+<script>
+top.onlink=window;
+</script>
+<script src = "jd/header.js">
+</script>
+<script>
+var DISPLAY_AREA_FRAME_STR;
+function SetDisplayArea(frStr) {
+DISPLAY_AREA_FRAME_STR = frStr;
+}
+if (typeof top.swe != "undefined" && typeof top.swe.contentFrame != "undefined") {
+OL.SetDisplayArea(top.swe.contentFrame);
+}
+function GetDisplayArea() {
+if (typeof DISPLAY_AREA_FRAME_STR != "undefined") {
+return DISPLAY_AREA_FRAME_STR;
+} else {
+return OL.GetConfigVarWithDefault("APP", "DISPLAY_AREA_FRAME", OLStr+".displayArea");
+}
+}
+</script>
+<SCRIPT src="cs/codeset_config.js">
+</script>
+<script src="custom/app_config.js">
+</script>
+<script>
+if (OL.APP_SIEBEL_INTEGRATION_ON) {
+document.write('<script src="cs/siebelIntegrationAPI.js"></'+'script>');
+}  
+</script>
+<script src="jd/intl.js">
+</script>
+<script src="cs/utils.js">
+</script>
+<script src = "cs/semaphore.js">
+</script>
+<script src = "cs/event.js">
+</script>
+<script src = "cs/moduleLoad.js">
+</script>
+<script src = "cs/publicAPI.js">
+</script>
+<SCRIPT src="cs/config.js">
+</script>
+<script src="cs/dataLoadAPI.js">
+</script>
+<script src="cs/prodlistAPI.js">
+</script>
+<script src="cs/uicodeAPI.js">
+</script>
+<script src="custom/customCode.js">
+</script>
+<script src="cs/transactAPI.js">
+</script>
+<script src="cs/start_activeAPI.js">
+</script>
+<script src="cs/historyAPI.js">
+</script>
+<script src="cs/sessionSimAPI.js">
+</script>
+<script src="cs/serverComAPI.js">
+</script>
+<script src="cs/pricingAPI.js">
+</script>
+<script>
+var MAC=navigator.userAgent.toUpperCase().match(/MAC/);
+var BROWSER=navigator.appName.toUpperCase();
+var NN_VERSION =(BROWSER=="NETSCAPE")?parseFloat(navigator.appVersion.substring(0,navigator.appVersion.indexOf(" "))):null;
+ORIGWIDTH = top.window.innerWidth;
+ORIGHEIGHT = top.window.innerHeight;
+</script>
+</HEAD>
+<FRAMESET cols="100%,*,*" border=0 frameborder=0 framespacing=0 onload="StartApp();" onUnload="if(typeof MAC != 'undefined' && MAC!=null && BROWSER=='NETSCAPE'){if ((top.window.innerWidth != ORIGWIDTH || top.window.innerHeight != ORIGHEIGHT)) {window.parent.location.reload(true);}}">
+<FRAME name="displayArea" marginwidth=0 marginheight=0 src="javascript:''" scrolling="auto">
+<FRAME marginwidth=0 marginheight=0 src="javascript:''" name="cust_ui" scrolling="no">
+<FRAMESET rows="*,*,*,*,*,*,*,*,*,25%,*,*,*,*,*,*,*,*,*,*,*,*" border=0 frameborder=0 framespacing=0>
+<FRAME marginwidth=0 marginheight=0 src="javascript:''" name="prodlistdata" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="javascript:''" name="prodlistcode" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="javascript:''" name="featureData" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="javascript:''" name="configData" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="javascript:''" name="infoData" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="javascript:''" name="configEngine" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="javascript:''" name="uicode" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="javascript:''" name="dataloadcode" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="javascript:''" name="ordercode" scrolling="yes">
+<FRAME marginwidth=0 marginheight=0 src="javascript:''" name="surveyor" scrolling="yes">
+<FRAME marginwidth=0 marginheight=0 src="javascript:''" name="transact" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="javascript:''" name="transact_wrkspc" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="javascript:''" name="registry" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="javascript:''" name="start_activecode" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="javascript:''" name="soa_formframe" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="javascript:''" name="historyList" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="javascript:''" name="sessionSim" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="javascript:''" name="serverComCode" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="javascript:''" name="session_pingframe" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="javascript:''" name="pricing" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="javascript:''" name="sebl_wrkspc" scrolling="yes">
+<FRAME marginwidth=0 marginheight=0 src="cs/dataFrame.htm" name="dataFrame" scrolling="no">
+</FRAMESET>
+</FRAMESET>
+</HTML>

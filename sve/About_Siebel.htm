@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <title>Om Siebel</title> <link href="files/main.css" rel="stylesheet" />
+      
+<script>
+
+		function createBackControl()
+		{
+			var btn = ''+
+				'<span height="16" class="minibuttonOn">' +
+				'<nobr><a href="javascript: void window.close();">OK</a></nobr>' +
+				'</span>';
+
+			var help_lnk = '<a href="javascript:void window.history.back();">Back To Help</a>'
+			var back_lnk = '<a href="javascript:void window.history.back();">Back</a>'
+
+			/*history.length=0 means we've arrived here via the About Siebel
+				application menu so show the OK button which onclick will close the window*/
+	            if (window.opener!=null && (window.history.length==0 || (document.layers==null && window.history.length==1)))
+			{	document.write(btn);	}
+			/*window.opener==null means we've arrived here through the about link on the login page so show the back link*/
+			else if (window.opener==null)
+			{	/*12-COSTP3 Do not show "Back" button if the history is empty*/
+				/* (which happens when about screen is called from tray bar icon menu)*/
+				if (window.history.length!=0)
+				 {document.write(back_lnk);}
+			}
+			/*otherwise we've arrived here through help so show the back to help link*/
+			else
+			{	document.write(help_lnk);	}
+
+		}
+
+		function resizeMe()
+		{	if (window.opener )
+			{
+				if	(document.layers==null)
+				{	window.resizeTo(460,560);		}
+			}
+		}
+
+		function createDivHeader()
+		{
+                        // 12-OEEHNC/12-OEJIEV use fixed pixel for scroll bar as workaround for Mozilla defect
+                        var MOZILLA14_DIV = '<div style="width:100%;height:300px;overflow:auto;padding:5 10 5 20" class="loginText">';
+			var IE_DIV = '<div style="width:100%;height:92%;overflow:auto;padding:5 10 5 20" class="loginText">';
+			var NS6_DIV = '<div style="width:auto;height:auto;overflow:auto;padding:5 10 5 20" class="loginText">';
+
+                        if ((navigator.userAgent.indexOf("Mozilla/5.0") >= 0) &&
+                             (navigator.userAgent.indexOf("rv:1.4") >= 0)) // Mozilla 1.4
+                        {
+                           document.write(MOZILLA14_DIV);
+                        }
+			else if (document.layers != null)  // NS 4.7
+  				{ document.write(IE_DIV); }
+  			else if (document.all != null) // IE
+  				{ document.write(IE_DIV); }
+  			else
+  				{ document.write(NS6_DIV); } // NS6
+            	}
+
+
+      </script>
+   </head>
+   <body class="loginBody" leftmargin="0" topmargin="4" marginwidth="0" marginheight="0" onload="resizeMe()" style="overflow:hidden">
+      <table width="440" height="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="border:1px solid #000000" ID="Table1">
+         <tr height="168px">
+            <TD style="background-image: url('images/about_siebel_d.gif')">
+               <table cellspacing="0" cellpadding="0" ID="Table2">
+                  <tr>
+                     <td colspan="3" style="height:70px"><IMG src="images/spacer.gif" alt=""></td>
+                  </tr>
+                  <tr height="98">
+                     <td style="width:20px">&nbsp;</td>
+                     <td valign="top" style="width:260px;color:#ffffff;font-weight:bold;font-size:14pt"> Om Siebel Customer Relationship Management-applikationer
+                     </td>
+                     <td style="width:160">&nbsp;</td>
+                  </tr>
+               </table>
+            </TD>
+         </tr>
+         <tr>
+            <td style="background-color:#6699cc">
+               <script>createDivHeader();</script> <br> &copy;1994, 2012, <A style="TEXT-DECORATION: underline" href="http://www.oracle.com/">Oracle Corporation</A>.
+               <p> Framg&aring;ngsrika CRM-l&ouml;sningar (Customer Relationship Management) kompletterar och utvidgar befintliga aff&auml;rsstrategier och -processer genom att de integreras med befintliga kundhanteringsprogram. Som ledande leverant&ouml;r av aff&auml;rsapplikationer innehar Oracle en unik position f&ouml;r att kunna hj&auml;lpa f&ouml;retag att implementera kompletta l&ouml;sningar s&aring; att r&auml;tt information n&aring;r fram till r&auml;tt person i r&auml;tt tid. Det leder i sin tur till snabbare, b&auml;ttre och mer genomt&auml;nkta beslut.
+               <p> Oracles Siebel-applikationer f&ouml;r CRM hj&auml;lper organisationer att anv&auml;nda webbteknik f&ouml;r att vinna nya kunder och f&ouml;rdjupa befintliga kundrelationer. De h&auml;r omfattande applikationerna bygger p&aring; aktuell och kommande datorstandard och har en l&auml;ttinstallerad, skalbar, webbaserad produktarkitektur som g&ouml;r det m&ouml;jligt till en flexibel anpassning av applikationerna
+               <p> Siebels l&ouml;sningar, som &auml;r skr&auml;ddarsydda f&ouml;r specifika behov inom mer &auml;n 20 olika branscher, har bland annat funktioner f&ouml;r prognostiserande analyser och realtidsinformation och ger en st&ouml;rre flexibilitet genom att de har st&ouml;d f&ouml;r b&aring;de J2EE och .NET samt s&auml;nker den totala &auml;gandekostnaden.
+               <p></p>
+               <BR> &copy;1994, 2012, Oracle. Med ensamr&auml;tt.
+               <p> Programmen (som omfattar b&aring;de programvaran och dokumentationen) inneh&aring;ller information om &auml;gander&auml;tt; de levereras i enlighet med ett licensavtal som inneb&auml;r begr&auml;nsningar f&ouml;r anv&auml;ndning och r&ouml;jande av information och skyddas &auml;ven av upphovsr&auml;tt, patent, och &ouml;vriga immaterialr&auml;ttsliga lagar. Reverse engineering, is&auml;rtagande eller dekompilering av Programmen, med undantag f&ouml;r vad som &auml;r n&ouml;dv&auml;ndigt f&ouml;r att erh&aring;lla interoperabilitet med annan frist&aring;ende utvecklad programvara eller som anges i lagstiftning, &auml;r f&ouml;rbjuden.
+               <p> Om Programmen levereras till amerikanska myndigheter eller n&aring;gon annan som licensierar eller anv&auml;nder Programmen f&ouml;r amerikanska myndigheters r&auml;kning, &auml;r f&ouml;ljande meddelande till&auml;mpligt:
+               <P> U.S. GOVERNMENT RIGHTS<br> Program, programvara, databaser och tillh&ouml;rande dokumentation och tekniska data som levererats till kunder inom amerikanska myndigheter &auml;r "kommersiell dataprogramvara" eller "kommersiella tekniska data" i enlighet med till&auml;mpliga federala uppk&ouml;psbest&auml;mmelser samt myndighetsspecifika till&auml;ggsbest&auml;mmelser. F&ouml;ljaktligen skall anv&auml;ndning, kopiering, r&ouml;jande av information, modifiering och anpassning av Programmen, inklusive dokumentation och tekniska data, omfattas av licensbegr&auml;nsningar som framst&auml;llts i till&auml;mpligt Oracle-licensavtal och, i till&auml;mplig utstr&auml;ckning, de ytterligare villkor som framst&auml;llts i FAR 52.227.19, Commercial Computer Software--Restricted Rights (Juni 1987). Oracle USA, Inc., 500 Oracle Parkway, Redwood City, CA 94065.
+               <p> Programmen &auml;r inte avsedda f&ouml;r anv&auml;ndning i nukle&auml;ra till&auml;mpningar, luftfart, masstransport, medicin eller andra potentiellt farliga till&auml;mpningar. Det &auml;r licenstagarens ansvar att g&ouml;ra l&auml;mplig fels&auml;kring, s&auml;kerhetskopiering, redundans och andra &aring;tg&auml;rder f&ouml;r att s&auml;kerst&auml;lla s&auml;ker anv&auml;ndning av s&aring;dana applikationer om Programmen anv&auml;nds f&ouml;r s&aring;dana syften, och vi friskriver oss fr&aring;n ansvar f&ouml;r all skada som uppst&aring;r till f&ouml;ljd av s&aring;dan anv&auml;ndning av Programmen.
+               <P> Oracle, JD Edwards, PeopleSoft och Siebel &auml;r registrerade varum&auml;rken som tillh&ouml;r Oracle Corporation och/eller dess dotterbolag. Andra namn kan vara varum&auml;rken som tillh&ouml;r sina respektive &auml;gare.
+               <P> Om du har tagit emot denna programvara av misstag, v&auml;nligen meddela Oracle genast.
+                              <p></p>
+               <BR>
+               ©1994, 2012, Oracle. All rights reserved.
+               <p>
+               The Programs (which include both the software and documentation) contain 
+               proprietary information; they are provided under a license agreement containing 
+               restrictions on use and disclosure and are also protected by copyright, patent, 
+               and other intellectual and industrial property laws. Reverse engineering, 
+               disassembly, or decompilation of the Programs, except to the extent required to 
+               obtain interoperability with other independently created software or as 
+               specified by law, is prohibited.
+               <p>
+               If the Programs are delivered to the United States Government or anyone 
+               licensing or using the Programs on behalf of the United States Government, the 
+               following notice is applicable:
+               <P>
+                  U.S. GOVERNMENT RIGHTS<br>
+               Programs, software, databases, and related documentation and technical data 
+               delivered to U.S. Government customers are "commercial computer software" or 
+               "commercial technical data" pursuant to the applicable Federal Acquisition 
+               Regulation and agency-specific supplemental regulations. As such, use, 
+               duplication, disclosure, modification, and adaptation of the Programs, 
+               including documentation and technical data, shall be subject to the licensing 
+               restrictions set forth in the applicable Oracle license agreement, and, to the 
+               extent applicable, the additional rights set forth in FAR 52.227-19, Commercial 
+               Computer Software--Restricted Rights (June 1987). Oracle USA, Inc., 500 Oracle 
+               Parkway, Redwood City, CA 94065.
+               <p>
+               The Programs are not intended for use in any nuclear, aviation, mass transit, 
+               medical, or other inherently dangerous applications. It shall be the licensee's 
+               responsibility to take all appropriate fail-safe, backup, redundancy and other 
+               measures to ensure the safe use of such applications if the Programs are used 
+               for such purposes, and we disclaim liability for any damages caused by such use 
+               of the Programs.
+               <P>
+               Oracle, JD Edwards, PeopleSoft, and Siebel are registered trademarks of Oracle 
+               Corporation and/or its affiliates. Other names may be trademarks of their 
+               respective owners.
+               <P>
+                  If you have received this software in error, please notify Oracle 
+                  immediately.</div>
+                  <table cellspacing="0" cellpadding="0" width="100%" style="background-color:#000000" ID="Table3">
+                     <tr>
+                        <td align="right" width="100%"><img src="images/spacer.gif" height="1" width="1" alt=""></td>
+                     </tr>
+                  </table>
+                  <table cellpadding="4" width="100%" height="33" style="background-color:#cccccc" ID="Table4">
+                     <tr>
+                        <td align="right" width="100%" height="30">
+                           <script>createBackControl();</script>
+                        </td>
+                        <td>&nbsp;</td>
+                     </tr>
+                  </table>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

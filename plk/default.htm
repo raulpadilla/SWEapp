@@ -1,0 +1,31 @@
+﻿<html>
+
+<head>
+
+<script>
+function GotoUrl(url)
+{
+	
+ 
+   
+
+   // Append the current hostname to the server request so that the server has
+   // the top level host name. This is needed to support reverse proxy servers.
+   url += "&SWEHo=" + this.location.hostname;
+   var fullUrl = unescape(this.location.pathname) + url;
+   top.location.replace(fullUrl);
+
+}
+GotoUrl('start.swe?SWECmd=Start');
+</script>
+</head>
+
+<body>
+<p>Obsługa skrypt&oacute;w jest używana do zarządzania interakcjami danych między serwerem Siebel/serwerem internetowym a interfejsem użytkownika. Wymaga to włączenia obsługi języka JavaScript w przeglądarce internetowej. </p>
+<p>Aby skonfigurować te ustawienia w programie Internet Explorer, należy wykonać następujące czynności:</p>
+<p>Z menu Narzędzia wybrać polecenie Opcje internetowe, przejść na kartę Zabezpieczenia i kliknąć przycisk Poziom niestandardowy, a następnie w sekcji &ldquo;Wykonywanie aktywnych skrypt&oacute;w&rdquo; wybrać opcję &quot;Monituj&quot; lub &quot;Włącz&quot;. </p>
+<p>Z menu Narzędzia wybrać polecenie Opcje internetowe, przejść na kartę Zabezpieczenia i kliknąć przycisk Poziom niestandardowy, a następnie w sekcji &quot;Wykonywanie skrypt&oacute;w aplet&oacute;w języka Java&rdquo; wybrać opcję &quot;Monituj&quot; lub &quot;Włącz&quot;. </p>
+<p>W przypadku innych przeglądarek proszę wykonać adekwatne r&oacute;wnoważne instrukcje, aby włączyć używanie języka JavaScript i zezwolić na interakcje aplet&oacute;w Java z językiem JavaScript. </p>
+</body>
+
+</html>

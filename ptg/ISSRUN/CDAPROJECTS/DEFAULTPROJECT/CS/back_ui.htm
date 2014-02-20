@@ -1,0 +1,25 @@
+<HTML>
+<HEAD>
+<TITLE>Previous Item</TITLE>
+<SCRIPT></SCRIPT>
+<script src = "../jd/header.js">
+</script>
+<SCRIPT>
+function Init() {
+if (OL.isMacIE && !OL.moduleLoad.IsLoading("back_ui") && !OL.IsLoaded("historyMiddle")) {return;}
+OL.SetLoaded('back_ui');
+OL.BACK_HIT = true;
+if(typeof OL.IsLoaded("historyMiddle") == "undefined" ||  OL.IsLoaded("historyMiddle") == false){
+OL.START_HISTORY = history.length;
+OL.Load("historyMiddle", OL.GetCSURL()+"historyMiddle.htm", OL.GetDisplayArea()+".backFix", true);
+}
+else {
+OL.GoBack();
+}
+}
+</SCRIPT>
+</HEAD>
+<BODY bgcolor="white" onload = "Init();">
+Back
+</BODY>
+</HTML>

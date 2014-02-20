@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <title>关于 Siebel</title>
+      <link href="files/main.css" rel="stylesheet" />
+      <script>
+	
+		function createBackControl()
+		{
+			var btn = ''+
+				'<span height="16" class="minibuttonOn">' +
+				'<nobr><a href="javascript: void window.close();">确定</a></nobr>' +
+				'</span>';			
+				
+			var help_lnk = '<a href="javascript:void window.history.back();">返回至帮助</a>'
+			var back_lnk = '<a href="javascript:void window.history.back();">后退</a>'
+			
+			/*history.length=0 means we've arrived here via the About Siebel 
+				application menu so show the OK button which onclick will close the window*/
+	            if (window.opener!=null && (window.history.length==0 || (document.layers==null && window.history.length==1)))
+			{	document.write(btn);	}	
+			/*window.opener==null means we've arrived here through the about link on the login page so show the back link*/
+			else if (window.opener==null)		
+			{	/*12-COSTP3 如果历史记录为空，则不显示“后退”按钮*/
+				/* (which happens when about screen is called from tray bar icon menu)*/
+				if (window.history.length!=0) 
+				 {document.write(back_lnk);}
+			}
+			/*otherwise we've arrived here through help so show the back to help link*/
+			else
+			{	document.write(help_lnk);	}
+			
+		}
+		
+		function resizeMe()
+		{	if (window.opener ) 
+			{	
+				if	(document.layers==null)
+				{	window.resizeTo(460,560);		}
+			}	
+		}
+		
+		function createDivHeader()
+		{
+                        // 12-OEEHNC/12-OEJIEV use fixed pixel for scroll bar as workaround for Mozilla defect
+                        var MOZILLA14_DIV = '<div style="width:100%;height:300px;overflow:auto;padding:5 10 5 20" class="loginText">';
+			var IE_DIV = '<div style="width:100%;height:92%;overflow:auto;padding:5 10 5 20" class="loginText">';
+			var NS6_DIV = '<div style="width:auto;height:auto;overflow:auto;padding:5 10 5 20" class="loginText">';
+
+                        if ((navigator.userAgent.indexOf("Mozilla/5.0") >= 0) && 
+                             (navigator.userAgent.indexOf("rv:1.4") >= 0)) // Mozilla 1.4
+                        {
+                           document.write(MOZILLA14_DIV);
+                        }
+			else if (document.layers != null)  // NS 4.7
+  				{ document.write(IE_DIV); }
+  			else if (document.all != null) // IE
+  				{ document.write(IE_DIV); }
+  			else
+  				{ document.write(NS6_DIV); } // NS6
+            	}				
+	
+	
+      </script>
+   </head>
+   <body class="loginBody" leftmargin="0" topmargin="4" marginwidth="0" marginheight="0" onload="resizeMe()" style="overflow:hidden">
+      <table width="440" height="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="border:1px solid #000000" ID="Table1">
+         <tr height="168px">
+            <TD style="background-image: url('images/about_siebel_d.gif')">
+               <table cellspacing="0" cellpadding="0" ID="Table2">
+                  <tr>
+                     <td colspan="3" style="height:70px"><IMG src="images/spacer.gif" alt=""></td>
+                  </tr>
+                  <tr height="98">
+                     <td style="width:20px">&nbsp</td>
+                     <td valign="top" style="width:260px;color:#ffffff;font-weight:bold;font-size:14pt">
+                        关于 Siebel Customer Relationship Management 应用程序
+                     </td>
+                     <td style="width:160">&nbsp;</td>
+                  </tr>
+               </table>
+            </TD>
+         </tr>
+         <tr>
+            <td style="background-color:#6699cc">
+               <script>createDivHeader();</script>
+               <br>
+               ©1994, 2012, <A style="TEXT-DECORATION: underline" href="http://www.oracle.com/">Oracle Corporation</A>。
+               <p>
+               成功的客户关系管理 (CRM) 解决方案通过与现有前端办公应用程序相集成，实现对现有商务策略和过程的补充和扩展。作为业务应用程序的领先者，Oracle 能够以独特的方式帮助各家公司实施完整的解决方案，这些解决方案有助于在恰当的时间为恰当的人员提供洞察力，以更快、更好地作出英明的决策。
+               <p>
+               Oracle Siebel CRM 应用程序帮助组织利用 Web 技术吸收新客户，增强与每个现有客户的关系。这些全面的应用程序基于当前新兴的计算标准，提供随时可用的功能、基于网络的可扩展产品体系结构以及灵活多样的应用程序定制功能。
+               <p>
+               Siebel 具有针对 20 多个行业的特定需要量身定做的解决方案，提供具有实时信息、更大灵活性（通过同时支持 J2EE 和 .NET）和更低总拥有成本的预示分析功能。
+               <p></p>
+               ©1994, 2012, Oracle。保留所有权利。
+               <p>
+               本程序（包括软件和文档）包含专有信息；它们是根据许可证协议提供的，该许可证协议中规定了关于使用和公开本程序的各种限制，并受版权、专利和其它知识产权法律以及工业产权法律的保护。除非需要与其它自主生产的软件之间实现互操作，或者通过法律明确授权，否则严禁对本程序进行逆向工程设计、反汇编或反编译。
+               <p>
+               如果将本程序交付给美国政府，或者交付给以美国政府名义获得许可证或使用本程序的任何机构，必须符合以下规定：
+               <P>
+                  美国 政府权利：<br>
+               按照《联邦采购法案》和具体机构的补充法案，提供给美国政府客户的程序、软件、数据库以及相关文档和技术数据是“商业计算机软件”或“商业技术数据”。对本程序（包括文档和技术数据）的使用、复制、公开、修改和改编，应符合适用的 Oracle 许可协议中规定的许可限制条款，并在适用的情况下，符合 FAR 52.227-19《商业计算机软件 - 限制权利》（1987 年 6 月）中规定的其它权利条款。Oracle Corporation, 500 Oracle Parkway, Redwood City, CA 94065。
+               <p>
+               本程序并不适合在任何有关原子能、航天、交通运输、医疗或其它存在潜在危险的应用领域内使用。如果在上述领域应用本程序，被许可人应负责采取所有适当的防范措施，包括备份、冗余和其它确保在此类领域内安全使用的措施。对于因上述目的而使用本程序所造成的一切损失或损害，我们概不负责。
+               <P>
+               Oracle、JD Edwards、PeopleSoft 和 Siebel 是 Oracle Corporation 和/或其附属公司的注册商标。其它名称可能是各自所有者的商标。
+               <P>
+                  如果您收到的本软件出现错误，请立即通知 Oracle。
+                  <br>
+                  <br>
+               ©1994, 2012, <A style="TEXT-DECORATION: underline" href="http://www.oracle.com/">Oracle 
+                  Corporation</A>.
+               <p>
+               Successful customer relationship management (CRM) solutions both complement and 
+               extend existing business strategies and processes by integrating with existing 
+               front office applications. As the leader in business applications, Oracle is in 
+               a unique position to help companies implement complete solutions that help 
+               provide insight to the right person at the right time, leading to faster, 
+               better informed decisions.
+               <p>
+               Oracle’s Siebel CRM Applications help organizations to leverage Web 
+               technologies to bring in new customers and enhance each and every existing 
+               customer relationship. These comprehensive applications are built on current 
+               and emerging computing standards and provide out-of-the-box functionality, 
+               scalable Web-based product architecture, and flexible application customization 
+               capabilities.
+               <p>
+               With solutions tailored to the specific needs of more than 20 industries, 
+               Siebel provides predictive analytics capabilities that deliver real-time 
+               intelligence, greater flexibility through support of both J2EE and .NET, and a 
+               lower total cost of ownership.
+               <p></p>
+               ©1994, 2012, Oracle. All rights reserved.
+               <p>
+               The Programs (which include both the software and documentation) contain 
+               proprietary information; they are provided under a license agreement containing 
+               restrictions on use and disclosure and are also protected by copyright, patent, 
+               and other intellectual and industrial property laws. Reverse engineering, 
+               disassembly, or decompilation of the Programs, except to the extent required to 
+               obtain interoperability with other independently created software or as 
+               specified by law, is prohibited.
+               <p>
+               If the Programs are delivered to the United States Government or anyone 
+               licensing or using the Programs on behalf of the United States Government, the 
+               following notice is applicable:
+               <P>
+                  U.S. GOVERNMENT RIGHTS<br>
+               Programs, software, databases, and related documentation and technical data 
+               delivered to U.S. Government customers are "commercial computer software" or 
+               "commercial technical data" pursuant to the applicable Federal Acquisition 
+               Regulation and agency-specific supplemental regulations. As such, use, 
+               duplication, disclosure, modification, and adaptation of the Programs, 
+               including documentation and technical data, shall be subject to the licensing 
+               restrictions set forth in the applicable Oracle license agreement, and, to the 
+               extent applicable, the additional rights set forth in FAR 52.227-19, Commercial 
+               Computer Software--Restricted Rights (June 1987). Oracle USA, Inc., 500 Oracle 
+               Parkway, Redwood City, CA 94065.
+               <p>
+               The Programs are not intended for use in any nuclear, aviation, mass transit, 
+               medical, or other inherently dangerous applications. It shall be the licensee's 
+               responsibility to take all appropriate fail-safe, backup, redundancy and other 
+               measures to ensure the safe use of such applications if the Programs are used 
+               for such purposes, and we disclaim liability for any damages caused by such use 
+               of the Programs.
+               <P>
+               Oracle, JD Edwards, PeopleSoft, and Siebel are registered trademarks of Oracle 
+               Corporation and/or its affiliates. Other names may be trademarks of their 
+               respective owners.
+               <P>
+                  If you have received this software in error, please notify Oracle 
+                  immediately.</div>
+                  <table cellspacing="0" cellpadding="0" width="100%" style="background-color:#000000" ID="Table3">
+                     <tr>
+                        <td align="right" width="100%"><img src="images/spacer.gif" height="1" width="1" alt=""></td>
+                     </tr>
+                  </table>
+                  <table cellpadding="4" width="100%" height="33" style="background-color:#cccccc" ID="Table4">
+                     <tr>
+                        <td align="right" width="100%" height="30">
+                           <script>createBackControl();</script>
+                        </td>
+                        <td>&nbsp;</td>
+                     </tr>
+                  </table>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

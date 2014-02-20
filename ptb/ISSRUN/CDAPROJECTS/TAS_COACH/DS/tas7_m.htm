@@ -1,0 +1,23 @@
+﻿<HTML><HEAD><TITLE></TITLE><SCRIPT></SCRIPT>
+<SCRIPT language=Javascript src="../jd/header.js"></SCRIPT>
+<SCRIPT language=Javascript src="../ds/tas7_x.js"></SCRIPT>
+<SCRIPT>
+var IMT=OL.InitMetaTable;
+var IMTS=OL.InitMetaTables;
+var SMT=OL.SetMetaTable;
+OL.StartMeta('tas7');
+
+function TAS_Q7(inC,inD,inRESDESC,inCHILD,inLINK,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+this.RESDESC=inRESDESC;
+this.CHILD=inCHILD;
+this.LINK=inLINK;
+}
+var TAS_Q7_t=new Array(3);
+TAS_Q7_t[0]=new TAS_Q7('5','Please Select...','<br><br><table border="1" bordercolor="#6666cc" cellpadding="5" cellspacing="0"><tr><td class="static">Even though you do not have a position in the account now, you might feel that the account promises to present significant opportunities in the future. If these opportunities are likely to generate significant revenue and/or provide strategic value for the company, pick Yes.<br><br>Remember, the strategic value can come in many forms: product innovation, value to strategic partners, market prestige, etc.</td></tr></table>','null','','DEFAULT');
+TAS_Q7_t[1]=new TAS_Q7('10','Yes','<br><br><table border="1" bordercolor="#6666cc" cellpadding="5" cellspacing="0"><tr><td class="static">Even though you do not have a position in the account now, you might feel that the account promises to present significant opportunities in the future. If these opportunities are likely to generate significant revenue and/or provide strategic value for the company, pick Yes.<br><br>Remember, the strategic value can come in many forms: product innovation, value to strategic partners, market prestige, etc.</td></tr><tr><td class="dynamic"><span class="solutiontitle">You answered "Yes"</span><br><br>Continue and the TAS Coach will recommend a strategy for you.</td></tr></table>','develop','Continue </a>','');
+TAS_Q7_t[2]=new TAS_Q7('20','No','<br><br><table border="1" bordercolor="#6666cc" cellpadding="5" cellspacing="0"><tr><td class="static">Even though you do not have a position in the account now, you might feel that the account promises to present significant opportunities in the future. If these opportunities are likely to generate significant revenue and/or provide strategic value for the company, pick Yes.<br><br>Remember, the strategic value can come in many forms: product innovation, value to strategic partners, market prestige, etc.</td></tr></table>','disengage','Continue </a>','');
+IMTS(1);
+SMT('TAS_Q7',TAS_Q7_t);
+</SCRIPT></HEAD><BODY onload="OL.EndMeta('tas7')"></BODY></HTML>

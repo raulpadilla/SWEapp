@@ -1,0 +1,30 @@
+﻿<html>
+
+<head>
+<script>
+function GotoUrl(url)
+{
+	
+ 
+   
+
+   // Append the current hostname to the server request so that the server has
+   // the top level host name. This is needed to support reverse proxy servers.
+   url += "&SWEHo=" + this.location.hostname;
+   var fullUrl = unescape(this.location.pathname) + url;
+   top.location.replace(fullUrl);
+
+}
+GotoUrl('start.swe?SWECmd=Start');
+</script>
+</head>
+
+<body>
+<p>סקריפטינג משמש לניהול אינטראקציות בין נתוני שרת Siebel/ שרת האינטרנט של Siebel לבין נתוני ממשק המשתמש. פעולה זו מחייבת שהגדרת JavaScript תהיה מופעלת בדפדפן האינטרנט. </p>
+<p>כדי להגדיר זאת בדפדפן Internet Explorer, בצע את הפעולות הבאות.</p>
+<p>בחר כלים > אפשרויות אינטרנט > אבטחה > שונות > הגדר את האפשרות " Scripting פעיל" למצב 'אפשר' או 'הצג הודעה'  </p>
+<p>בחר כלים > אפשרויות אינטרנט > אבטחה > שונות > הגדר את האפשרות " Scripting של יישומוני Java" למצב 'אפשר' או 'הצג הודעה'  </p>
+<p>במקרה של דפדפנים אחרים, פעל לפי ההוראות המתאימות להם כדי לאפשר שימוש ב-JavaScript וכדי לאפשר ליישומוני Java לתקשר עם JavaScript. </p>
+</body>
+
+</html>

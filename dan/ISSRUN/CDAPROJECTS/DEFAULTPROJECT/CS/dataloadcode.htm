@@ -1,0 +1,569 @@
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<TITLE></TITLE><SCRIPT></SCRIPT>
+<script src="../jd/header.js">
+</script>
+<SCRIPT>  
+var DATA = null;
+function DataLoad_Obj()
+{
+this.files = new Object();
+this.product = null;
+this.data = new Object();
+this.linkbackVersion = null;
+this.sendEvent = null;
+this.dynDefObj = null;
+this.parent = null;
+this.instanceName = null;
+this.argList = null;
+}
+DataLoad_Obj.prototype.GetPageExtensions = DataLoad_GetPageExtensions;
+DataLoad_Obj.prototype.LoadData = DataLoad_LoadData;
+DataLoad_Obj.prototype.AddFile = DataLoad_AddFile;
+function DataLoad_LoadData()
+{
+var str = "";
+for(var fileName in this.files){
+this.files[fileName].Load();
+if(str.length>0){str+="&&";}
+str+=this.files[fileName].moduleName;
+}
+OL.WaitForModules(new OL.Function_Obj(window, "SendLoadedEvent"), str);
+}
+function DataLoad_GetPageExtensions(dataName, product)
+{
+var dataFileInfo = OL.GetConfigVar("APP", dataName.toUpperCase());
+if(dataFileInfo == null || dataFileInfo == ""){
+dataFileInfo = GetDefaults(dataName)
+}
+return dataFileInfo;
+}
+function DataLoad_AddFile(dataName,dataFileInfo)
+{
+var dataFileURL = dataFileInfo[3]+this.product+dataFileInfo[2];
+this.files[dataName] = OL.DefineFile(dataName, dataFileURL, dataFileInfo[1]);	
+}
+function GetDefaults(dataName)
+{
+if(dataName=="configData"){
+return new Array("configData", OLStr+".configData", "_00.htm",OL.GetDSURL());
+}
+if(dataName == "infoData"){
+return new Array("infoData", OLStr+".infoData","_i.htm",OL.GetPGURL());
+}
+if(dataName=="featureData"){
+return new Array("featureData", OLStr+".featureData","_m.htm",OL.GetDSURL());
+}
+}
+function SendLoadedEvent()
+{
+var data = DATA.data;
+data["dynDefObj"] = DATA.dynDefObj;
+for(var field in DATA){
+if(typeof DATA[field] == "string"){
+data[field] = DATA[field];
+}
+}
+data.argList = DATA.argList;
+if(DATA.linkbackVersion != null && DATA.linkbackVersion != DATA.data.infoTables.version && typeof OL["COP_PagesetVersionCheck"] != "undefined"){
+data.linkbackVersion = DATA.linkbackVersion;
+if(!OL.COP_PagesetVersionCheck(data)){
+CleanUp();
+return;
+}
+}
+if(typeof OL["PEP_DATASET_LOADED"] == "undefined" || OL.PEP_DATASET_LOADED(DATA.sendEvent, window,data) == true){
+OL.SendEvent(DATA.sendEvent,window,data);
+}
+CleanUp();
+return;
+}
+function CleanUp()
+{
+if(DATA.sendEvent == "DATASET_LOADED" || DATA.sendEvent == "DATAONLY_LOADED"){
+TOP_DATA_LOADING--;
+}
+OL.UnlockResource("dataloadlock");
+}
+var TOP_DATA_LOADING = 0;
+function DataSelected(event,win,argList)
+{
+if(typeof argList["instanceName"] == "undefined" || argList["instanceName"] == null || argList["instanceName"] == OL.GetTopInstanceStr()){
+argList["instanceName"] = OL.GetTopInstanceStr();
+if(typeof argList["sendEvent"] != "undefined" && (argList["sendEvent"] == "DATASET_LOADED" || argList["sendEvent"] == "DATAONLY_LOADED")){
+TOP_DATA_LOADING++;
+}
+}
+else if(TOP_DATA_LOADING > 0){
+return;
+}
+OL.LockResource(new OL.Function_Obj(window,"LockedDataSelected",event,argList),"dataloadlock",new OL.Function_Obj(OL,"ContinueFrameWait","dataloadlock","dataloadlock"),(3*OL.DEFAULT_TIMEOUT));
+}
+function LockedDataSelected(event,argList)
+{
+DATA = new DataLoad_Obj();
+DATA["argList"] = argList;
+DATA["instanceName"] = argList.instanceName;
+typeof argList["product"] != "undefined" ? DATA.product = argList["product"] : DATA.product = null;
+typeof argList["fileList"] != "undefined" ? DATA.fileList = argList["fileList"] : DATA.fileList = null;
+typeof argList["sendEvent"] != "undefined" ? DATA.sendEvent = argList["sendEvent"] : DATA.sendEvent = "DATASET_LOADED";
+typeof argList["parent"] != "undefined" ? DATA.parent = argList["parent"] : DATA.parent = null;
+typeof argList["dynDefObj"] != "undefined" ? DATA.dynDefObj = argList["dynDefObj"] : DATA.dynDefObj = null;
+(typeof argList["dynDefObj"] != "undefined" && argList["dynDefObj"] != null && typeof argList.dynDefObj.GetValue("OL_Pageset_Version",argList["instanceName"]) != "undefined")? DATA.linkbackVersion = argList.dynDefObj.GetValue("OL_Pageset_Version",argList["instanceName"]) : DATA.linkbackVersion = null;
+if(argList["fileList"] == null || typeof argList["fileList"] == "undefined"){
+DATA.AddFile("featureData",DATA.GetPageExtensions("featureData", argList["product"]));
+DATA.AddFile("infoData",DATA.GetPageExtensions("infoData",argList["product"]));
+DATA.AddFile("configData",DATA.GetPageExtensions("configData",argList["product"]));
+}
+else{
+for(var i=0;i<argList["fileList"].length;i++){
+DATA.AddFile(argList["fileList"][i],DATA.GetPageExtensions(argList["fileList"][i],argList["product"]));	
+}	
+}
+if(OL["COP_BeforeDataLoad"]){
+OL.COP_BeforeDataLoad(DATA, argList);
+}
+DATA.LoadData(); 
+}
+function MetaTableArray_Obj(numTables)
+{
+this.tables = new Array(numTables);
+}
+MetaTableArray_Obj.prototype.SetTable = MetaTableArray_SetTable;
+MetaTableArray_Obj.prototype.GetAllTables = MetaTableArray_GetAllTables;
+MetaTableArray_Obj.prototype.GetTable = MetaTableArray_GetTable;
+function MetaTableArray_SetTable(tableName,metaTableRows)
+{
+var defRow = 0
+for(var i = 0; i<metaTableRows.length;i++){
+if(metaTableRows[i]["DEFAULT"].toUpperCase() == "DEFAULT"){
+defRow = i;
+break;
+}
+}		
+this.tables[tableName] = new MetaTable_Obj(metaTableRows,defRow);
+}
+function MetaTableArray_GetAllTables()
+{
+return this.tables;
+}
+function MetaTableArray_GetTable(tablename)
+{
+if(typeof this.tables[tablename] != "undefined"){
+return this.tables[tablename];
+}
+else{return null;}
+}
+function InitMetaTables(numTables)
+{
+if(DATA == null){return;}
+DATA.data["featureTables"] = new MetaTableArray_Obj(numTables);
+}
+function SetMetaTable(tableName,metaTable)
+{
+if(DATA == null){return;}
+DATA.data.featureTables.SetTable(tableName,metaTable);
+}
+function StartMeta(pagesetName)
+{
+if(DATA == null){return;}
+DATA.data.triggerTables = new TriggerTableArray_Obj();
+DATA.data.featureTables = new MetaTableArray_Obj();
+DATA.data.busCompColumns = new BusCompArray_Obj();
+DATA.data.attributeColumns = new AttributeArray_Obj();
+}
+function EndMeta(pagesetName)
+{
+if(DATA == null){return;}
+var data = new Object();
+data.product = DATA.product;
+data.featureTables = DATA.data.featureTables;
+data.triggerTables = DATA.data.triggerTables;
+data.busCompColumns = DATA.data.busCompColumns;
+data.attributeColumns = DATA.data.attributeColumns;
+data.dynDefObj = DATA.data.dynDefObj;
+data.argList = DATA.argList;
+OL.SendEvent("FEATUREDATA_LOADED",window,data);
+OL.SetLoaded('featureData');
+}
+function SetBusCompColumns(colType, colList)
+{
+DATA.data["busCompColumns"].SetColumns(colType, colList);
+}
+function SetAttributeColumns(attributeList)
+{
+DATA.data["attributeColumns"].SetAttributes(attributeList);
+}
+function BusCompArray_Obj()
+{
+this.columns = new Object();
+}
+BusCompArray_Obj.prototype.SetColumns = BusCompArray_SetColumns;
+BusCompArray_Obj.prototype.GetAllColumns = BusCompArray_GetAllColumns;
+BusCompArray_Obj.prototype.GetColumn = BusCompArray_GetColumn;
+function BusCompArray_SetColumns(colType, colList)
+{	
+this.columns[colType] = new Array();
+this.columns[colType]= colList;
+}
+function BusCompArray_GetAllColumns()
+{
+return this.columns;
+}
+function BusCompArray_GetColumn(colName)
+{
+if(typeof colName != "undefined" && typeof this.columns[colName]!="undefined"){
+return this.columns[colName];
+}
+}
+function AttributeArray_Obj()
+{
+this.attributes = new Array();
+}
+AttributeArray_Obj.prototype.SetAttributes = AttributeArray_SetAttributes;
+AttributeArray_Obj.prototype.GetAttributes = AttributeArray_GetAttributes;
+function AttributeArray_SetAttributes(attributeList)
+{
+this.attributes = attributeList;
+}
+function AttributeArray_GetAttributes()
+{
+return this.attributes;
+}
+function MetaTable_Obj(rowArray,defaultRow)
+{
+this.rows = rowArray;
+this.defaultRow = defaultRow;
+}
+MetaTable_Obj.prototype.GetRows = MetaTable_GetRows;
+MetaTable_Obj.prototype.GetRow = MetaTable_GetRow;
+MetaTable_Obj.prototype.GetDefaultRow = MetaTable_GetDefaultRow;
+MetaTable_Obj.prototype.GetDefaultRowNum = MetaTable_GetDefaultRowNum;
+MetaTable_Obj.prototype.GetRowCode = MetaTable_GetRowCode;
+MetaTable_Obj.prototype.GetRowDesc = MetaTable_GetRowDesc;
+MetaTable_Obj.prototype.GetRowNumFromCode = MetaTable_GetRowNumFromCode;
+MetaTable_Obj.prototype.GetTableCell = MetaTable_GetTableCell;
+MetaTable_Obj.prototype.SetTableCell = MetaTable_SetTableCell;
+function MetaTable_GetRows()
+{
+return this.rows;
+}
+function MetaTable_GetRow(index)
+{
+if(this.rows[index] != null){
+return this.rows[index];
+}
+else{return null;}
+}
+function MetaTable_GetDefaultRow()
+{
+if(this.defaultRow >= 0 && this.rows[this.defaultRow] != null){
+return this.rows[this.defaultRow];
+}
+else{return null;}
+}
+function MetaTable_GetDefaultRowNum()
+{
+if(this.defaultRow >= 0 && this.rows[this.defaultRow] != null){
+return this.defaultRow;
+}
+else{return null;}
+}
+function MetaTable_GetRowCode(rowNum)
+{
+if(this.GetRow(rowNum) != null){
+return this.GetRow(rowNum)[OL.GetCodeStr()];
+}
+else{return null;}
+}
+function MetaTable_GetRowDesc(rowNum)
+{
+if(this.GetRow(rowNum) != null){
+return this.GetRow(rowNum)["DESC"];
+}
+else{return null;}
+}
+function MetaTable_GetRowNumFromCode(code)
+{
+if(typeof code == "undefined" || code == null){return null;}
+var topCode = OL.GetCodeStr();
+for(var i=0;i<this.rows.length;i++){
+if(typeof this.rows[i][topCode] != "undefined" && this.rows[i][topCode] == code){
+return i;
+}
+}
+return null;
+}
+function MetaTable_GetTableCell(rowNum, colName)
+{
+if(typeof rowNum == "undefined" || typeof colName == "undefined"){return null;}
+if(rowNum == null || colName == null){return null;}
+if(rowNum < 0 || rowNum >= this.rows.length){return null;}
+if(typeof this.rows[rowNum][colName] != "undefined"){
+return this.rows[rowNum][colName];
+}
+return null;
+}
+function MetaTable_SetTableCell(rowNum, colName, newVal)
+{
+if(typeof rowNum == "undefined" || typeof colName == "undefined" || typeof newVal == "undefined"){return;}
+if(rowNum == null || colName == null || newVal == null){return;}
+if(rowNum < 0 || rowNum >= this.rows.length){return;}
+if(typeof this.rows[rowNum][colName] != "undefined"){
+this.rows[rowNum][colName] = newVal;
+}
+}
+function MetaTableRow_Obj(inCODE, inDESC, optDEFAULT)
+{
+this.CODE = inCODE;
+this.DESC = inDESC;
+this.DEFAULT = optDEFAULT;
+}
+function InitMetaTable(Obj,inCODE, inDESC, optDEFAULT)
+{
+Obj.constructor = MetaTableRow_Obj;
+Obj.constructor(inCODE,inDESC,optDEFAULT);
+}
+function MetaTableRow_IsDefault()
+{
+if(this["DEFAULT"] != null){
+return true;
+}
+else{return false;}
+}
+function TriggerTableArray_Obj()
+{
+this.tables = new Array();
+}
+TriggerTableArray_Obj.prototype.SetTable = TriggerTableArray_SetTable;
+TriggerTableArray_Obj.prototype.GetAllTables = TriggerTableArray_GetAllTables;
+TriggerTableArray_Obj.prototype.GetTable = TriggerTableArray_GetTable;
+function TriggerTableArray_GetAllTables()
+{
+return this.tables;
+}
+function TriggerTableArray_GetTable(triggerName)
+{
+if(typeof this.tables[triggerName] != "undefined"){
+return this.tables[triggerName];
+}
+else{return null;}	
+}
+function TriggerTableArray_SetTable(triggerWidget,triggerObj)
+{
+if(DATA == null){return;}
+if(DATA.data.triggerTables.GetTable(triggerWidget) == null){
+this.tables[triggerWidget] = new Array();
+}
+this.tables[triggerWidget][this.tables[triggerWidget].length] = triggerObj;
+}
+function SetTriggerTable(triggerWidget,targetWidget,metaTable) 
+{
+if(DATA == null){return;}
+if(DATA.data.triggerTables == null){
+DATA.data.triggerTables = new TriggerTableArray_Obj();
+}
+var trigger =  new Trigger_Obj(triggerWidget,targetWidget,metaTable);
+DATA.data.triggerTables.SetTable(triggerWidget,trigger);	
+}
+function Trigger_Obj(inTRIGGER,inTARGET,inTARGTABLE)
+{
+this.trigger = inTRIGGER;
+this.target = inTARGET;
+this.targetTable = inTARGTABLE;
+this.lastSel = -1;
+}
+Trigger_Obj.prototype.GetTrigger = Trigger_GetTrigger;
+Trigger_Obj.prototype.GetTarget = Trigger_GetTarget;
+Trigger_Obj.prototype.GetTargetTable = Trigger_GetTargetTable;
+function Trigger_GetTrigger()
+{
+return this.trigger;
+}
+function Trigger_GetTarget()
+{
+return this.target;
+}
+function Trigger_GetTargetTable(selection)
+{
+return this.targetTable[selection];
+}
+function DataTableArray_Obj()
+{
+this.tables = new Array();
+}
+DataTableArray_Obj.prototype.SetTable = DataTableArray_SetTable;
+DataTableArray_Obj.prototype.GetAllTables = DataTableArray_GetAllTables;
+DataTableArray_Obj.prototype.GetTable = DataTableArray_GetTable;
+function DataTableArray_GetAllTables()
+{
+return this.tables;
+}
+function DataTableArray_GetTable(tableName)
+{
+if(typeof this.tables[tableName] != "undefined"){
+return this.tables[tableName];
+}
+else{return null;}
+}
+function DataTableArray_SetTable(tableName, tableObj)
+{
+if(tableObj != null){
+this.tables[tableName] = tableObj;
+}
+else{
+this.tables[tableName] = tableName;
+}
+}
+function StartData(pagesetName)
+{
+if(DATA == null){return;}
+DATA.data["configTables"] = new DataTableArray_Obj();
+}
+function SetOrthTable(tableName)
+{
+if(DATA == null){return;}
+DATA.data.configTables.SetTable(tableName);
+}
+function EndData(pagesetName)
+{
+if(DATA == null){return;}
+var dataPg = OL.ParseFrame(DATA.files.configData.frame);
+var tables = DATA.data.configTables.GetAllTables();
+var mainTable = new DataTable_Obj(dataPg["T"],dataPg["X"],dataPg["V"],dataPg["H"]);
+DATA.data.configTables.SetTable("MAIN", mainTable);
+for(var field in tables){
+if(field != "MAIN"){
+tableObj = new DataTable_Obj(dataPg[field+"_T"],dataPg[field+"_X"],dataPg[field+"_V"],dataPg[field+"_H"]);
+DATA.data.configTables.SetTable(field,tableObj);
+}
+}
+var data = new Object();
+data.product = DATA.product;
+data.configTables = DATA.data.configTables;
+data.dynDefObj = DATA.dynDefObj;
+data.argList = DATA.argList;
+OL.SendEvent("CONFIGDATA_LOADED",window,data);
+OL.SetLoaded('configData');
+}
+function DataTable_Obj(t,x,v,h)
+{
+this.body = t;
+this.exc = x;			 
+this.colType = v;
+this.header = h;
+}
+DataTable_Obj.prototype.GetBody = DataTable_GetBody;
+DataTable_Obj.prototype.GetException = DataTable_GetException;
+DataTable_Obj.prototype.GetColType = DataTable_GetColType;
+DataTable_Obj.prototype.GetHeader = DataTable_GetHeader;
+function DataTable_GetBody()
+{
+return this.body;
+}
+function DataTable_GetException()
+{
+return this.exc;
+}
+function DataTable_GetColType()
+{
+return this.colType;
+}
+function DataTable_GetHeader()
+{
+return this.header;
+}
+function StartUIInfo(pagesetName)
+{
+if(DATA == null){return;}
+DATA.data["uiTables"] = new UI_Obj();
+OL.ClearAllOverrideFunctions();
+}
+function UI_Obj()
+{
+this.frameSet = null;
+this.pageLocation = new Array();
+this.priorityPageStr = "";
+this.exceptionFrameStr = "";
+this.contentsListFrame = "";
+}
+function RegisterFrameSet(name, frameSetName, frameLoc, path) {
+if(DATA == null){return;}
+DATA.data.uiTables.frameSet = new Array(name,frameSetName,frameLoc,path);
+}
+function RegisterPageLocation(pageName, frameName, bVisib, path) {
+if(DATA == null){return;}
+DATA.data.uiTables.pageLocation[DATA.data.uiTables.pageLocation.length] = new Array(pageName,frameName,bVisib,path);
+}
+function RegisterPriorityPages(pageNames) {
+if(DATA == null){return;}
+DATA.data.uiTables.priorityPageStr = pageNames;
+}
+function RegisterExceptionFrames(frameNames) {
+if(DATA == null){return;}
+DATA.data.uiTables.exceptionFrameStr = frameNames;
+}
+function SetContentsListFrame(frameName)
+{
+if(DATA == null){return;}
+DATA.data.uiTables.contentsListFrame = frameName;
+}
+function Info_Obj()
+{
+this.version = "";
+this.desc = "";
+this.itemized = "";
+this.alt_oms_url = "";
+}
+function EndUIInfo(pagesetName)
+{
+if(DATA == null){return;}
+var data = new Object();
+data.product = DATA.product;
+data.dynDefObj = DATA.dynDefObj;	
+data.uiTables = DATA.data.uiTables;
+data.argList = DATA.argList;
+OL.SendEvent("UIINFODATA_LOADED",window,data);
+OL.SetLoaded('infoData');
+}
+function StartXInfo(pagesetName)
+{
+if(DATA == null){return;}
+DATA.data["infoTables"] = new Info_Obj();
+}
+function EndXInfo(pagesetName)
+{
+if(DATA == null){return;}
+var data = new Object();
+data.product = pagesetName;
+data.infoTables = DATA.data["infoTables"];
+data.argList = DATA.argList;
+OL.SendEvent("XINFO_LOADED", window, data);
+}
+function InitPagesetVersion(version)
+{
+if(DATA == null){return;}
+DATA.data.infoTables.version = version;
+}
+function InitPagesetDesc(descStr)
+{
+if(DATA == null){return;}
+DATA.data.infoTables.desc = descStr;
+}
+function InitPagesetItemized(isItemized)
+{
+if(DATA == null){return;}
+DATA.data.infoTables.itemized = isItemized;
+}
+function InitAltOMSUrl(url)
+{
+if(DATA == null){return;}
+DATA.data.infoTables.alt_oms_url = url;
+}
+</SCRIPT>
+</HEAD>
+<BODY onLoad ="OL.SetLoaded('dataloadcode');" onUnload="if(!OL['MAC']){return;}OL.SetUnloaded('dataloadcode');">
+data load code<P>&nbsp;</P>
+</BODY>
+</HTML>

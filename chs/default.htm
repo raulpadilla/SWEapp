@@ -1,0 +1,30 @@
+﻿<html>
+
+<head>
+<script>
+function GotoUrl(url)
+{
+	
+ 
+   
+
+   // Append the current hostname to the server request so that the server has
+   // the top level host name. This is needed to support reverse proxy servers.
+   url += "&SWEHo=" + this.location.hostname;
+   var fullUrl = unescape(this.location.pathname) + url;
+   top.location.replace(fullUrl);
+
+}
+GotoUrl('start.swe?SWECmd=Start');
+</script>
+</head>
+
+<body>
+<p>脚本用于管理 Siebel 服务器/Web 服务器与用户界面之间的数据交互。它要求在 Web 浏览器中启用 JavaScript。</p>
+<p>要在 Internet Explorer 中设置此项，请执行以下操作。</p>
+<p>选择“工具”>“Internet 选项”>“安全”>“其它”> 将“活动脚本”设置为提示或启用</p>
+<p>选择“工具”>“Internet 选项”>“安全”>“其它”>将“Java Applet 的脚本”设置为提示或启用</p>
+<p>如果使用其它浏览器，请遵循相同说明以启用 JavaScript 并允许 Java applet 与 JavaScript 进行交互。</p>
+</body>
+
+</html>

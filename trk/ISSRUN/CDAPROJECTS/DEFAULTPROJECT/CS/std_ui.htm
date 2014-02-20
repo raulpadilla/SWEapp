@@ -1,0 +1,628 @@
+<html>
+<head>
+<meta NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<title></title>
+<script></script> 
+<script src="../jd/header.js"></script>
+<script language="JavaScript1.2">
+function TriggerChange(wArray,loc) {
+trigger = new Object();
+trigger.isTrigger = true;
+trigger.wArray = wArray;
+DisplayRes(trigger,loc);
+}
+function SetElement(frames) {
+var WaitArr=new Array();
+for (pg in frames) {
+if (frames[pg][1] != null) {		
+for (j = 1; j < frames[pg].length; j++) {
+var fr = frames[pg][j].split(".");
+WaitArr[WaitArr.length]=fr[fr.length-1];	
+}	
+}
+}
+return WaitArr;
+}
+var DISPLAY_ELEMENT = new Array();
+function DisplayRes(result,loc) { 
+var resFrames = new Array();
+var inpFrames = new Array();
+var hasObjects = false;
+DISPLAY_ELEMENT = new Array();
+if (result == null) { 
+OL.PAGE_UI_ELEMENTS = new Object();
+OL.ELEMENT_LOCS = new Object();
+} 
+else if (typeof result.first != "undefined" && result.first == true) {
+var newResFrames = new Array();
+for (pg in loc.page) {					
+newResFrames[pg] = new Array();
+for (i=0; i<loc.page[pg].length; i++) {
+var temp = loc.page[pg][i];
+newResFrames[pg][i] = temp;
+}
+}
+for (pg in loc.input) {
+delete newResFrames[pg];
+}
+if (!result.IsValid()) {
+for (pg in newResFrames) {
+for (i=1; i<newResFrames[pg].length; i++) {
+if (newResFrames[pg][i] ==	loc.exc[0]) {	
+delete newResFrames[pg];
+break;
+}				
+}
+}	
+}	
+DISPLAY_ELEMENT = DISPLAY_ELEMENT.concat(SetElement(inpFrames));
+DISPLAY_ELEMENT = DISPLAY_ELEMENT.concat(SetElement(newResFrames));
+OL.RegisterDisplayElements(DISPLAY_ELEMENT);
+OL.LoadFramesInOrder(loc.input,newResFrames);
+if (!result.IsValid()) {
+DisplayExc(result,loc);
+}	
+result.first = false;
+return;
+}	
+if (result == null) { 
+if (loc.input == null) {
+DISPLAY_ELEMENT = SetElement(loc.page);
+OL.RegisterDisplayElements(DISPLAY_ELEMENT);
+OL.LoadFramesInOrder(loc.page);		
+}
+else {
+DISPLAY_ELEMENT = SetElement(loc.input);
+OL.RegisterDisplayElements(DISPLAY_ELEMENT);
+OL.LoadFramesInOrder(loc.input);	
+}	
+}
+else if (result.isTrigger == true){		
+for (pg in loc.page) {
+for (i=0; i<result.wArray.length; i++) {
+if (loc.page[pg][1] != null) {
+for (j=1; j<loc.page[pg].length; j++) {
+if (typeof OL.PAGE_UI_ELEMENTS[loc.page[pg][j]] == "undefined") continue;
+if (typeof OL.PAGE_UI_ELEMENTS[loc.page[pg][j]].elements[result.wArray[i]] != "undefined") {
+resFrames[pg] = loc.page[pg];
+hasObjects = true;
+}
+}	
+}	
+}  
+}	
+if (hasObjects == true) {
+DISPLAY_ELEMENT = SetElement(resFrames);
+OL.RegisterDisplayElements(DISPLAY_ELEMENT);
+OL.LoadFramesInOrder(resFrames);
+} else {
+OL.RegisterDisplayElements(new Array());
+}	
+}
+else {	
+for (pg in loc.page) {
+resFrames[pg] = loc.page[pg];
+if (loc.page[pg][1] != null) {
+for (i=1; i<loc.page[pg].length; i++) {
+if (typeof OL.PAGE_UI_ELEMENTS[loc.page[pg][i]] == "undefined") {
+}
+else if (OL.PAGE_UI_ELEMENTS[loc.page[pg][i]].hasTargets == true) {
+resFrames[pg] = loc.page[pg];
+}
+else if (OL.PAGE_UI_ELEMENTS[loc.page[pg][i]].hasTargets == false) {
+inpFrames[pg] = loc.page[pg];
+delete resFrames[pg];
+}	
+}	
+}	
+}	
+if (result.IsValid()==true) {
+if (loc.exc != null) {
+var bExcMatch = false;
+for (pg in resFrames) {
+for (k = 1; k < resFrames[pg].length; k++) {
+if (resFrames[pg][k] == loc.exc[0])  
+bExcMatch = true;
+break;
+}		
+}
+if (!bExcMatch) {
+for (j = 0; j < loc.exc.length; j++) {
+var Str = loc.exc[j].split(".");
+var WaitStr = Str[Str.length - 1];
+DISPLAY_ELEMENT[DISPLAY_ELEMENT.length] = "exc_"+WaitStr;
+OL.WaitForModules(new OL.Function_Obj(window, "locWrite", " ",loc.exc[j],WaitStr), OL.ui_name);
+}	
+}
+} 
+if (OL.GetConfigVar("APP", "RELOAD_ALL") == true) {
+DISPLAY_ELEMENT = DISPLAY_ELEMENT.concat(SetElement(inpFrames));
+DISPLAY_ELEMENT = DISPLAY_ELEMENT.concat(SetElement(resFrames));
+OL.RegisterDisplayElements(DISPLAY_ELEMENT);
+OL.LoadFramesInOrder(inpFrames,resFrames);
+}	
+else {
+DISPLAY_ELEMENT = DISPLAY_ELEMENT.concat(SetElement(resFrames));
+OL.RegisterDisplayElements(DISPLAY_ELEMENT);
+OL.LoadFramesInOrder(resFrames);
+}
+}
+else {
+var pgElement = false;
+for (pg in OL.PAGE_UI_ELEMENTS) {
+if (typeof OL.PAGE_UI_ELEMENTS[pg] != "undefined") {
+pgElement = true;
+break;
+} 
+}
+if ((OL.GetConfigVar("APP", "RELOAD_ALL") == true ||OL.GetConfigVar("APP", "RELOAD_INPUTS_ON_EXC") == true) && pgElement == true) {
+var newResFrames = new Array();
+for (pg in loc.page) {					
+newResFrames[pg] = new Array();
+for (i=1; i<loc.page[pg].length; i++) {
+if (loc.page[pg][i] == null) break;
+if (typeof OL.PAGE_UI_ELEMENTS[loc.page[pg][i]] != "undefined" && (typeof OL.PAGE_UI_ELEMENTS[loc.page[pg][i]].hasInputs != "undefined")) {
+var file = loc.page[pg][0];
+var temp = loc.page[pg][i];
+newResFrames[pg][0] = file;
+newResFrames[pg][i] = temp;
+}
+}
+}
+for (pg in newResFrames) {
+if (newResFrames[pg].length == 0) {
+delete newResFrames[pg];
+continue;
+}	
+for (i=1; i<newResFrames[pg].length; i++) {
+if (newResFrames[pg][i] ==	loc.exc[0]) {	
+newResFrames[pg][i] = null;
+}				
+}
+}	
+DISPLAY_ELEMENT = DISPLAY_ELEMENT.concat(SetElement(newResFrames));
+OL.RegisterDisplayElements(DISPLAY_ELEMENT);
+OL.LoadFramesInOrder(newResFrames);
+}	
+DisplayExc(result,loc);
+}	
+}			
+}	
+function DisplayExc(result,loc) {
+var exc = result.GetExceptions();
+var excCount = 0;
+var excArray = new Array();
+for (var inst in exc) {
+if (typeof exc[inst][0] != "undefined") {
+for (j=0; j<exc[inst].length; j++) {
+if (typeof exc == "object") {
+excArray[excCount++] = exc[inst][j].exception;
+OL.SendEvent("EXCEPTION_DISPLAY",window,exc[inst][j].exception,exc[inst][j].table,exc[inst][j].row);
+}
+else {
+excArray[excCount++] = exc;
+}
+}	
+}
+}
+var numExc = OL.GetConfigVar("APP", "EXC_DISPLAY_NUM"); 
+if (typeof numExc == "undefined" || numExc == null) numExc = 1;
+numExc = (numExc > excCount) ? excCount: numExc;
+for (i = 0; i < loc.exc.length; i++) {
+var excNewArray = new Array();
+for (j = 0; j < numExc; j++) {
+excNewArray[j] = excArray[j];
+}	
+var excMsg="";	
+excMsg = excNewArray.join("<br>");
+var Str = loc.exc[i].split(".");
+var WaitStr = Str[Str.length - 1];
+DISPLAY_ELEMENT[DISPLAY_ELEMENT.length] = "exc_"+WaitStr;
+if (OL.IsLoaded(OL.ui_name)) {		
+locWrite(excMsg,loc.exc[i],WaitStr);
+}
+else {
+OL.WaitForModules(new OL.Function_Obj(window, "locWrite", excMsg,loc.exc[i],WaitStr), OL.ui_name);
+}	
+}
+OL.RegisterDisplayElements(DISPLAY_ELEMENT);
+}
+function locWrite(exc,fr,WaitStr) {
+OL.LockResource(new OL.Function_Obj(window, "docWrite", exc, fr, WaitStr), fr);		
+}
+function docWrite(exc,fr,WaitStr) {
+var frame = OL.ParseFrame(fr);  
+OL.OpenDocument(frame.document,'text/html',true);
+frame.document.writeln(exc);
+frame.document.close();
+OL.UnlockResource(fr);
+OL.UnlockResource("exc_"+WaitStr);
+OL.SetDisplayElementDone("exc_"+WaitStr,1);
+}
+function BuildWidget(type) {
+var args = BuildWidget.arguments;
+type = type.toUpperCase();
+switch(type) {
+case("LISTBOX"): {
+return BuildListboxWidget(args[1],args[2],args[3],args[4],args[5]);
+break;
+}
+case("TEXT"): {
+return BuildTextWidget(args[1],args[2],args[3]);
+break;
+}
+case("TEXTAREA"): {
+return BuildTextareaWidget(args[1],args[2],args[3],args[4]);
+break;
+}
+case("GETTEXT"): {
+return BuildGetTextWidget(args[1],args[2],args[3]);
+break;
+}
+case("GETTEXTTARGET"): {
+return BuildGetTextTargetWidget(args[1],args[2],args[3]);
+break;
+}
+case("RADIO"): {
+return BuildRadioWidget(args[1],args[2],args[3],args[4]);
+break;
+}
+case("CHECKBOX"): {
+return BuildCheckboxWidget(args[1],args[2],args[3]);
+break;
+}
+case("MAP"): {
+return BuildMapWidget(args[1],args[2],args[3],args[4],args[5],args[6]);
+break;
+}
+case("AREA"): {
+return BuildAreaWidget(args[1],args[2],args[3],args[4],args[5]);
+break;
+}
+default:
+return "";
+}
+return "";	
+}
+function BuildMapWidget(winObj, widgetName, mapName, targetPict, shape, coord) {
+OL.RegisterUIElement(widgetName, winObj, false);
+var label = new OL.Label_Obj(widgetName);
+var index = OL.GetInputValue(widgetName); 
+var nlabel = label.GetNumLabels();	
+if (nlabel == 0) return "";	
+var src = label.GetLabelName(index,targetPict);	
+if (src == null || typeof src == "undefined") src = targetPict;	
+var s = '<img name="' + mapName + 'Img' + '" SRC="'+src+'" USEMAP="#' + mapName + '" border=0>';
+s += '<map name="' + mapName + '">';
+var str="";
+for (index=0; index < nlabel; index++) {
+var inCoord = label.GetLabelName(index,coord);
+var inShape = label.GetLabelName(index,shape);
+src = label.GetLabelName(index,targetPict);		
+if (src == null || typeof src == "undefined") src = targetPict;	
+str += '\n';
+str += '<AREA SHAPE="' + inShape + '" COORDS="' + inCoord + '" ';
+str +=' href="javascript:OL.SetImage(this'+ ',\'' + mapName +'\',\''+ widgetName + '\',' + index + ',\'' + src + '\')">';
+}
+return(s + str + '\n</MAP>');
+}
+function BuildAreaWidget(winObj,shape,coord,widgetName,index)
+{
+OL.RegisterUIElement(widgetName, winObj, false);
+var presel = OL.GetInputValue(widgetName);
+var s = "<AREA SHAPE='" + shape + "' COORDS='" + coord + "' ";
+s += " language='JavaScript' onclick=OL.SetInputValue(";
+s += "'"+widgetName+"',"+index+")";
+s += " href='javascript:void(0);'>";
+return s;
+}
+function BuildCustomWidget(winObj, widgetName,widgetRows, widgetCols, tag, widgetHandler) {
+OL.RegisterUIElement(widgetName, winObj, false);
+s = "<" + tag + ">";
+s += widgetHandler;
+s += "</" + tag + ">";
+return s;
+}
+function BuildListboxWidget(winObj,widgetName,widgetRows,widgetCols,prefill)
+{
+OL.RegisterUIElement(widgetName, winObj, false);
+var label = new OL.Label_Obj(widgetName);
+var nlabel = label.GetNumLabels();
+if (nlabel == 0) {	
+return "";
+}
+var s = '<SELECT name="'+widgetName;
+s += '" size='+widgetRows;
+s += ' language="JavaScript" onchange=OL.SetInputValue(';
+s += "'"+widgetName+"',selectedIndex)>";
+var spacer = '';
+var presel = undefined(OL.GetInputValue(widgetName))? null : OL.GetInputValue(widgetName);
+if (typeof widgetCols != "undefined" && widgetCols != null) {
+var label0 = label.GetLabelName(0);	
+numspaces = (prefill == true)?(2*widgetCols/3)-label.GetLabelName(0).length:0;
+if (widgetCols > 0) {
+for (count = 0; count < numspaces; count++) {
+spacer = spacer+'&nbsp;';
+}	
+}
+}
+s += ((0==presel) ? "<OPTION SELECTED>":"<OPTION>") + label0 + spacer + "</OPTION>";
+for (count=1; count < nlabel; count++)	{
+s += ((count==presel) ? "<OPTION SELECTED>":"<OPTION>") + label.GetLabelName(count) + "</OPTION>";
+}
+s += '</SELECT>';
+return s;
+}
+function BuildTextWidget(winObj, widgetName, widgetSize)	{
+OL.RegisterUIElement(widgetName, winObj, false);
+var label = new OL.Label_Obj(widgetName);
+var s = '<INPUT type="TEXT" name="';
+s += widgetName;
+s += '" size=';
+s += widgetSize;
+s += '" value="';
+s += label.GetLabelName[widgetName];
+s += '" language="JavaScript" onchange="OL.SetInputValue(widgetName)">';
+return (s);
+}
+function BuildTextareaWidget(winObj, widgetName, widgetRows, widgetCols)	{
+OL.RegisterUIElement(widgetName, winObj, false);
+var label = new OL.Label_Obj(widgetName);
+var s = '<TEXTAREA name="';
+s += widgetName;
+s += '" rows=';
+s += widgetRows;
+s += ' cols=';
+s += widgetCols;
+s += '" value="';
+s += label.GetLabelName[widgetName];
+s += '" wrap="virtual" language="JavaScript" onchange="OL.SetInputValue(widgetName)">';
+s += '</TEXTAREA>';
+return (s);
+}
+function BuildGetTextWidget(winObj, widgetName, widgetSize)	{
+OL.RegisterUIElement(widgetName, winObj, false);
+var presel = OL.GetInputValue(widgetName); 
+var s = '<INPUT type=text name="'+widgetName+'" size='+widgetSize;
+if (presel != null && !undefined(presel)) {
+s += '" value="'+presel.replace(/\"/g, "&quot;")+'"';
+}
+/*		else {
+s += ' value=';
+s += '"' + presel.replace(/\"/g, "&quot;") + '"';
+}
+*/
+s += ' language="JavaScript" onChange="OL.SetInputValue(';
+s += '\''+widgetName+'\',';
+s += 'this.form.'+widgetName+'.value';
+s += ',true);">';
+return s;
+}
+function BuildGetTextTargetWidget(winObj, widgetName, widgetSize)	{
+OL.RegisterUIElement(widgetName, winObj, false);
+var presel = null;
+presel = OL.GetInputValue(widgetName); 
+var s = '<INPUT type=text name="'+widgetName+'" size='+widgetSize;
+if (presel != null) {
+s += '" value="'+presel+'"';
+}else{
+if (presel != null){
+s += ' value=';
+s += '"' + presel + '"';
+}
+}
+s += ' language="JavaScript" onChange=(\'OL.SetInputValue(';
+s += '"'+widgetName+'",';
+s += 'this.form.'+widgetName+'.value';
+s += ',true)\',1);>';
+return s;
+}
+function BuildRadioWidget(winObj,widgetName,index,pict)
+{
+OL.RegisterUIElement(widgetName, winObj, false);
+var bPict = false;
+if (typeof pict != "undefined") {
+bPict = true;
+var label = new OL.Label_Obj(widgetName);
+var src = label.GetLabelName(index,pict);	
+if (src == null || typeof src == "undefined") {
+src = pict;
+}		
+}
+var presel = OL.GetInputValue(widgetName);
+if (presel == null && typeof presel == "undefined") { return "";}
+var s = '<INPUT type=radio name="'+widgetName+'" value='+index;
+if (presel==index) {
+s += ' CHECKED';
+}
+s += ' language="JavaScript" onclick=OL.SetInputValue(';
+s += '"'+widgetName+'",'+index;
+s += ')>';
+if (bPict == true) {
+s += '<IMG align="absmiddle" src='+src+'></IMG>';
+}
+return s;
+}
+function BuildCheckboxWidget(winObj,widgetName,widgetChecked)
+{
+OL.RegisterUIElement(widgetName, winObj, false);
+var presel = (OL.GetInputValue(widgetName)==1);
+var s = '<INPUT type=checkbox name="'+widgetName+'"';
+if (presel||widgetChecked) {
+s += ' CHECKED';
+}
+s += ' language="JavaScript" onclick="OL.SetInputValue(';
+s += "'"+widgetName+"',";
+s += '(checked) ? 1:0)">';
+return s;
+}
+function BuildTarget(type,winObj,name,arg3,arg4,arg5,arg6,arg7,arg8,arg9)
+{
+var results = OL.GetResultsValue(name);
+type = type.toUpperCase();
+switch(type) 
+{
+case("TEXT"): {
+OL.RegisterUIElement(name, winObj, true);
+return BuildTextTarget(results,arg3);  
+break;
+}
+case("PICT"): {
+OL.RegisterUIElement(name, winObj, true);
+return BuildPictTarget(results,arg3,arg4);
+break;
+}
+case("LINK"): {
+OL.RegisterUIElement(name, winObj, true);
+return BuildLinkTarget(results,arg3,arg4,arg5);
+break;
+}
+case("SUBCONFIG_LINK"): {
+OL.RegisterUIElement(name, winObj, true);
+return BuildLinkToInstanceTarget(name, arg3);
+break;
+}
+case("OPT_SUBCONFIG_LINK"): {
+OL.RegisterUIElement(name, winObj, true);
+return BuildOptionalLink(name,arg3,arg4);
+break;
+}
+case("NB_LINK"): {
+OL.RegisterUIElement(arg3, winObj, true);		
+return BuildNBLinkTarget(name,arg3,arg4,arg5);
+break;
+}
+case("NB_RETURN"): {
+OL.RegisterUIElement("nb_return", winObj, true);
+return BuildNBReturnTarget(name);
+}
+default:
+return "";
+break;
+}	
+return "";
+}
+function BuildTextTarget(targetVal, formatFunc)  
+{
+var retStr = "";
+if (typeof(formatFunc) == "function") {
+retStr = formatFunc(targetVal);
+}	
+retStr = empty(retStr)? targetVal: retStr;
+return retStr;
+}
+function BuildPictTarget(targetPict, widgetWidth, widgetHeight)
+{
+var retStr = "";
+if (targetPict == "") return retStr;
+retStr = '<IMG src="'+targetPict+'" border=0';
+if (!undefined(widgetWidth)) {
+retStr += ' width='+widgetWidth;
+}
+if (!undefined(widgetHeight)) {
+retStr += ' height='+widgetHeight;
+}
+retStr += '>';
+return retStr;
+}
+function BuildOptionalLink(instanceName, preText, postText) {
+if(!OL.IsLoaded('uicode') || OL.uicode.WIDGET_STATE == null){return "";}
+var instanceWidgets = OL.uicode.WIDGET_STATE.GetInstanceInputs(OL.GetInstanceName(OL.uicode.CURRINSTANCE+":"+instanceName));
+if (instanceWidgets == null || typeof instanceWidgets == "undefined") {	
+return "";
+}
+return preText+BuildLinkToInstanceTarget(instanceName)+postText;
+}
+function BuildLinkToInstanceTarget(instanceName)
+{
+var retStr = "";
+var args = BuildLinkToInstanceTarget.arguments;
+OL.SendEvent("LINK_CREATED", window, instanceName, args[1]);
+retStr = '<A href="';
+retStr += 'javascript:OL.InstanceWrapper(\'';
+retStr +=  instanceName + '\''+',window';
+retStr +=  ')">';
+return retStr;
+}
+function BuildLinkTarget(targetHRef, isPage)
+{
+var retStr = "";
+var args = BuildLinkTarget.arguments;
+OL.SendEvent("LINK_CREATED", window, targetHRef, args[3]);
+retStr = '<A href="';
+if (isPage) {
+retStr += 'javascript:OL.PagesetWrapper(\'';
+retStr +=  targetHRef + '\'';
+if (args[2] != null) {		
+var objStr = OL.GetResultsValue(args[2]); 
+retStr += ',\''+ objStr + '\'';
+}
+retStr +=  ')">';
+}
+else {
+retStr +=  (targetHRef + ((targetHRef.length > 0) && (targetHRef.charAt(targetHRef.length-1)=='"')? '>' : '">'));
+}
+return retStr;
+}
+function BuildNBLinkTarget(linktext, pagesetcol, tokencol, returntext) {
+var targHRef = OL.GetResultsValue(pagesetcol);
+var retStr = "";
+if (targHRef != "") {
+retStr = '<A href="javascript:void(0)" onClick="';
+retStr += 'javascript:OL.NBLinkWrapper(\'';
+retStr +=  targHRef + '\'';
+if (tokencol != null && tokencol != "") {
+var tokvals = OL.GetResultsValue(tokencol);
+retStr += ',\''+ tokvals + '\'';
+} else {
+retStr += ',\'\'';
+}
+if (returntext != null && typeof returntext != "undefined") {
+retStr += ',\''+ returntext + '\'';
+}
+retStr += ')">';
+retStr += linktext + '</A>';
+}
+return retStr;
+}
+function BuildNBReturnTarget(linktext) {
+var retStr="";
+var index = OL.History_GetCurrentIndex();
+if (index != null) {
+var retLink = OL.History_GetPagesetOptArgs(OL.History_GetCurrentIndex()).returntext;
+}
+if (retLink != null && typeof retLink != "undefined") {		
+if (retLink == "") {
+retLink = linktext;
+}
+retStr += '<A href=\'javascript:void(0)\' onClick=\'OL.History_GoBack()\'>';
+retStr += retLink + '</A>';
+}
+return retStr;
+}
+function PagesetWrapper(url, preConfigObj, optArgObj)
+{
+OL.SendEvent("LINK_SELECTED", window, url);
+OL.LoadPageset(url, preConfigObj,optArgObj);
+}
+OL.PagesetWrapper = PagesetWrapper;
+function InstanceWrapper(tableName, window)
+{
+OL.SendEvent("LINK_SELECTED", window, tableName);
+OL.LinkToSubConfig(tableName, window);
+}
+OL.InstanceWrapper = InstanceWrapper;
+function empty(colVal)
+{
+return (colVal==null)||(colVal=='')||(typeof(colVal)=="undefined");
+}
+function undefined(anExpr)
+{
+return (typeof(anExpr)=="undefined");
+}
+</script>
+</head>
+<body onload="OL.SetLoaded('cust_ui');" onUnload="if(!OL['MAC']){return;}if(parseFloat(navigator.appVersion.substring(22,25))>=5){window.parent.location.reload(true);}else{OL.SetUnloaded('cust_ui');}">
+<p>&nbsp;</p>
+</body>
+</html>

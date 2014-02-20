@@ -1,0 +1,49 @@
+<html>
+<head>
+<script>
+</script>
+<script src="header.js"></script>
+<script src="configEngineEvents.js"></script>
+<script src="uiEvent.js">
+</script>
+<script src="dataloadEvent.js">
+</script>
+<script src="orderEvent.js">
+</script>
+<script src="transactEvent.js">
+</script>
+<script src="historyEvent.js">
+</script>
+<script src="sessionSimEvent.js">
+</script>
+<script src="serverComEvent.js">
+</script>
+<script src="complexProductEvent.js">
+</script>
+<!-- <script src="pricingEvent.js"> -->
+<!-- </script> -->
+<!--ADD EVENT FILES HERE-->
+<!--END ADD EVENT FILES HERE-->
+<script>
+OL.RegisterModule("uicode", OL.GetCSPath()+"uicode.htm", OLStr+".uicode", 2);
+OL.RegisterModule("dataloadcode", OL.GetCSPath()+"dataloadcode.htm", OLStr+".dataloadcode",3);
+OL.RegisterModule("configEngine", OL.GetCSPath()+"configEngineCode.htm", OLStr+".configEngine", 4);
+OL.RegisterModule("cust_ui", OL.GetCSPath()+"std_ui.htm", OLStr+".cust_ui", 2);
+OL.RegisterModule("historyList", OL.GetCSPath()+"historyList.htm", OLStr+".historyList", 1);
+OL.RegisterModule("start_activecode",OL.GetCSPath()+"start_activeCode.htm",OLStr+".start_activecode",OL.ON_DEMAND);
+if (OL.GetConfigVarWithDefault("APP", "SIEBEL_INTEGRATION_ON", false)) {
+OL.RegisterModule("sessionSim", OL.GetCSPath()+"sessionSimCode.htm", OLStr+".sessionSim", 6);
+OL.RegisterModule("complexProductCode", OL.GetCSPath()+"complexProductCode.htm", OLStr+".ordercode",OL.ON_DEMAND);
+OL.RegisterModule("serverComCode", OL.GetCSPath()+"serverComCode.htm", OLStr+".serverComCode", 5);
+OL.RegisterModule("pricing", OL.GetCSPath()+"pricing.htm", OLStr+".pricing", OL.ON_DEMAND);
+} else {
+OL.RegisterModule("ordercode", OL.GetCSPath()+"ordercode.htm", OLStr+".ordercode", OL.ON_DEMAND);
+OL.RegisterModule("transact", OL.GetCSPath()+"transactCode.htm", OLStr+".transact", OL.ON_DEMAND);
+}
+OL.ModuleRegistrationComplete();
+</script>
+</head>
+<body onLoad = "OL.SetLoaded('moduleRegistry');" onUnload="if(!OL['MAC']){return;}OL.SetUnloaded('moduleRegistry');">
+Module Registry
+</body>
+</html>

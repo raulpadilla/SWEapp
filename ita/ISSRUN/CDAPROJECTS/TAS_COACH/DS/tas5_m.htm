@@ -1,0 +1,21 @@
+﻿<HTML><HEAD><TITLE></TITLE><SCRIPT></SCRIPT>
+<SCRIPT language=Javascript src="../jd/header.js"></SCRIPT>
+<SCRIPT language=Javascript src="../ds/tas5_x.js"></SCRIPT>
+<SCRIPT>
+var IMT=OL.InitMetaTable;
+var IMTS=OL.InitMetaTables;
+var SMT=OL.SetMetaTable;
+OL.StartMeta('tas5');
+
+function TAS_Q5(inC,inD,inRESDESC,inCHILD,inLINK,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+this.RESDESC=inRESDESC;
+this.CHILD=inCHILD;
+this.LINK=inLINK;
+}
+var TAS_Q5_t=new Array(1);
+TAS_Q5_t[0]=new TAS_Q5('5','','<br><br><table border="1" bordercolor="#6666cc" cellpadding="5" cellspacing="0"><tr><td class="static">You\'ve determined that you don\'t have an overwhelming advantage and you can\'t change the rules to favor your solution. So, your only choice is to look for some subset of the deal you can win.</td></tr></table>','fragment','Continue</a>','DEFAULT');
+IMTS(1);
+SMT('TAS_Q5',TAS_Q5_t);
+</SCRIPT></HEAD><BODY onload="OL.EndMeta('tas5')"></BODY></HTML>

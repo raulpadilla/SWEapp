@@ -1,0 +1,194 @@
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<TITLE></TITLE>
+<script></script>
+<script src="../jd/header.js">
+</script>
+<script src="integrationString.js">
+</script>
+<script src="sharedOrderCode.js">
+</script>
+<SCRIPT>
+var USE_SUBVAR = false;
+var ID_COLS = null;
+var ATTR_COLS = null;
+var SUBTABLE_LIST = new Array();
+var ROOT_PROD_TABLE = "";
+function Complex_Item_Obj(prodID,qty,data, relationship)
+{
+this.relationship = relationship;
+this.prodID = prodID;
+this.qty = qty;
+this.data = data;
+this.attributes = new Object();
+this.children = new Array();
+}
+function SetColumnValues(item)
+{
+ROOT_PROD_TABLE = "";
+ID_COLS = new Object();
+ATTR_COLS = new Object();
+if(typeof item.dataSet["busCompColumns"] != "undefined"){
+var prods = item.dataSet.busCompColumns.columns["Internal Product"];
+if(prods.length > 0 && typeof prods[0] != "undefined"){
+ID_COLS["TOP"] = prods[0];
+if(prods[0].indexOf(".") != -1){
+ROOT_PROD_TABLE = prods[0].substring(0,prods[0].indexOf(".")+1);
+}
+}
+for(var i=1; i<prods.length; i++){
+if(i==1 || prods[i].substring(0, prods[i].indexOf(".")) != prods[i-1].substring(0, prods[i-1].indexOf("."))){
+if(prods[i].substring(0,prods[i].indexOf(".")+1) != ROOT_PROD_TABLE){
+ID_COLS[prods[i].substring(0,prods[i].indexOf("."))] = prods[i];
+}
+}
+}
+}
+if(typeof item.dataSet["attributeColumns"] != "undefined"){
+var attr = item.dataSet.attributeColumns.attributes;
+for(var i=0; i<attr.length; i++){
+var split = attr[i].split("=");
+if(split[0].indexOf(".") == -1){
+if(typeof ATTR_COLS["TOP"] == "undefined"){
+ATTR_COLS["TOP"] = new Array();
+}
+ATTR_COLS["TOP"][split[0]] = split[1];
+}
+else{
+var tableName = split[0].substring(0,attr[i].indexOf("."));
+if(typeof ATTR_COLS[tableName] == "undefined"){
+ATTR_COLS[tableName] = new Array();
+}
+ATTR_COLS[tableName][split[0]] = split[1];
+}
+}
+}
+}
+function AddAttributes(item)
+{
+var attributes = new Object();
+for(featureTable in ATTR_COLS){
+if(featureTable.indexOf("TOP") == 0 || typeof ID_COLS[featureTable] == "undefined"){
+for(attr in ATTR_COLS[featureTable]){
+attributes[ATTR_COLS[featureTable][attr]] = item.data[attr]
+}
+}
+}
+item.attributes = attributes;
+}
+function CreateItem(engineResults,item)
+{
+var prods = item.dataSet.busCompColumns.columns["Internal Product"];
+if(typeof prods == "undefined" || prods == null){
+if(item.instanceName == "TOP"){
+OL.alert(OL.ErrIntern("ISSCDA_NO_INTERNAL_PRODUCT_LIST"));
+}
+return null;
+}
+SetColumnValues(item);
+var pagesetVersion = item.infoTables["version"]; 
+var pagesetName = item["product"];
+var qty = 1;
+var relationship = "";
+var data = item["outputs"];
+var instanceName = item["instanceName"];
+if(typeof data[ROOT_PROD_TABLE + "QUANTITY"] != "undefined" && data[ROOT_PROD_TABLE + "QUANTITY"] != null){
+qty = data[ROOT_PROD_TABLE + "QUANTITY"];
+}
+if(typeof data[ROOT_PROD_TABLE + "QTY"] != "undefined" && data[ROOT_PROD_TABLE + "QTY"] != null){
+qty = data[ROOT_PROD_TABLE + "QTY"];
+}
+var partID = "";
+if(typeof data[prods[0]] != "undefined" && data[prods[0]] != null){
+partID = data[prods[0]];	
+}
+if(typeof data[ROOT_PROD_TABLE + "RELATIONSHIP"] != "undefined" && data[ROOT_PROD_TABLE + "RELATIONSHIP"] != null){
+relationship = data[ROOT_PROD_TABLE + "RELATIONSHIP"];
+}
+if(typeof data["RELATIONSHIP"] != "undefined"){
+relationship = data["RELATIONSHIP"];
+}
+var newItem = new Complex_Item_Obj(partID,qty,data, relationship);
+var subitems =AddSubitems(data, newItem);
+AddAttributes(newItem);
+var subProducts = AddSubConfig(engineResults,item);
+if(subitems != null){
+for (var i in subitems){
+newItem.children[i] = subitems[i];
+}
+}
+if(subProducts != null){
+for (var x in subProducts){
+newItem.children[x] = subProducts[x];
+}
+}
+return newItem;
+}
+function RemoveNullChildren(item){
+if(item["children"] != null){
+for(var child in item["children"]){
+if(typeof item["children"][child] == "undefined" || item["children"][child] == null || item["children"][child]["prodID"] == ""){
+delete item["children"][child];
+}
+else if(typeof item["children"][child] == "object"){
+RemoveNullChildren(item["children"][child]);
+}
+}
+}
+return item;
+}
+function CreatePackage(linkback, prodStr, argArray, results)
+{	
+var pckg = null;
+var engineResults = null;
+if(typeof results != "undefined" && results != null){
+engineResults = results;
+}
+if (linkback==true || (typeof prodStr != "undefined" && prodStr!=null)){
+if(engineResults == null || typeof engineResults == "undefined" || !engineResults.IsValid()){
+if(typeof OL["COP_InvalidItemAdded"] != "undefined"){
+OL.COP_InvalidItemAdded(engineResults);
+}
+return;
+}
+if(typeof OL["COP_ValidItemAdded"] != "undefined"){
+if(OL.COP_ValidItemAdded(engineResults) == false){return;}
+}
+pckg = new Package_Obj();
+if(linkback == true){
+pckg.linkBack = CreateLinkBack(engineResults);
+}
+if(typeof prodStr == "undefined" || prodStr == "complex" || prodStr=="simple"){
+pckg.items = CreateItemTree(engineResults);
+if(pckg.items == null){
+return;
+}
+else if(typeof pckg.items["prodID"] == "undefined" || pckg.items["prodID"] == null || pckg.items["prodID"] == ""){
+OL.alert(OL.ErrIntern("ISSCDA_NO_INTERNAL_PRODUCT_LIST"));
+}
+argArray.prodType = prodStr;
+}
+else {
+if (prodStr.indexOf("prodID") == -1){
+prodStr = OL.BuildProductStr(prodStr);
+}
+pckg.items = prodStr;
+}
+}
+else{
+pckg = new Package_Obj();
+pckg.items = prodStr;
+}
+if(typeof pckg.items == "object" && pckg.items != null){
+pckg.items = RemoveNullChildren(pckg.items);
+}
+SendPackage(pckg, argArray);
+return;
+}
+</SCRIPT>
+</HEAD>
+<BODY onLoad ="OL.SetLoaded('complexProductCode');">
+complex order<P>&nbsp;</P>
+</BODY>
+</HTML>

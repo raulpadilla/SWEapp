@@ -1,0 +1,161 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Siebel 정보</TITLE>
+<LINK href="files/main.css" rel="stylesheet"   />
+<SCRIPT>
+	
+		function createBackControl()
+		{
+			var btn = ''+
+				'<span height="16" class="minibuttonOn">' +
+				'<nobr><a href="javascript: void window.close();">OK</a></nobr>' +
+				'</span>';			
+				
+			var help_lnk = '<a href="javascript:void window.history.back();">Back To Help</a>'
+			var back_lnk = '<a href="javascript:void window.history.back();">Back</a>'
+			
+			/*history.length=0 means we've arrived here via the About Siebel 
+				application menu so show the OK button which onclick will close the window*/
+	            if (window.opener!=null && (window.history.length==0 || (document.layers==null && window.history.length==1)))
+			{	document.write(btn);	}	
+			/*window.opener==null means we've arrived here through the about link on the login page so show the back link*/
+			else if (window.opener==null)		
+			{	/*12-COSTP3 Do not show "Back" button if the history is empty*/
+				/* (which happens when about screen is called from tray bar icon menu)*/
+				if (window.history.length!=0) 
+				 {document.write(back_lnk);}
+			}
+			/*otherwise we've arrived here through help so show the back to help link*/
+			else
+			{	document.write(help_lnk);	}
+			
+		}
+		
+		function resizeMe()
+		{	if (window.opener ) 
+			{	
+				if	(document.layers==null)
+				{	window.resizeTo(460,560);		}
+			}	
+		}
+		
+		function createDivHeader()
+		{
+                        // 12-OEEHNC/12-OEJIEV use fixed pixel for scroll bar as workaround for Mozilla defect
+                        var MOZILLA14_DIV = '<div style="width:100%;height:300px;overflow:auto;padding:5 10 5 20" class="loginText">';
+			var IE_DIV = '<div style="width:100%;height:92%;overflow:auto;padding:5 10 5 20" class="loginText">';
+			var NS6_DIV = '<div style="width:auto;height:auto;overflow:auto;padding:5 10 5 20" class="loginText">';
+
+                        if ((navigator.userAgent.indexOf("Mozilla/5.0") >= 0) && 
+                             (navigator.userAgent.indexOf("rv:1.4") >= 0)) // Mozilla 1.4
+                        {
+                           document.write(MOZILLA14_DIV);
+                        }
+			else if (document.layers != null)  // NS 4.7
+  				{ document.write(IE_DIV); }
+  			else if (document.all != null) // IE
+  				{ document.write(IE_DIV); }
+  			else
+  				{ document.write(NS6_DIV); } // NS6
+            	}				
+	
+	
+      </SCRIPT>
+</head>
+   <body class="loginBody" leftmargin="0" topmargin="4" marginwidth="0" marginheight="0" onload="resizeMe()" style="overflow:hidden">
+      <table width="440" height="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="border:1px solid #000000" ID="Table1">
+         <tr height="168px">
+            <TD style="background-image: url('images/about_siebel_d.gif')">
+               <table cellspacing="0" cellpadding="0" ID="Table2">
+                  <tr>
+                     <td colspan="3" style="height:70px"><IMG src="images/spacer.gif" alt=""></td>
+                  </tr>
+                  <tr height="98">
+                     <td style="width:20px">&nbsp</td>
+                     <td valign="top" style="width:260px;color:#ffffff;font-weight:bold;font-size:14pt">Siebel Customer Relationship Management 애플리케이션 정보t 
+                   </TD>
+          <TD style="WIDTH: 160px">&nbsp;</TD></TR></TABLE></TD></TR>
+  <TR>
+    <TD style="BACKGROUND-COLOR: #6699cc">
+      <SCRIPT>createDivHeader();</SCRIPT>
+      <BR>1994, 2012, <A style="TEXT-DECORATION: underline" 
+      href="http://www.oracle.com/">Oracle Corporation</A>. 
+      <P>성공적인 고객 관계 관리CRM (Customer Relationship Management) 솔루션은 기존 프런트 오피스 애플리케이션과의 통합을 통해 기존 비즈니스 전략과 프로세스를 
+      보완하는 동시에 확장합니다. 비즈니스 애플리케이션 분야의 리더 Oracle은, 기업에서 의사 결정이 더욱 합리적으로 신속히 이루어질 
+      수 있도록 적절한 인물에게 깊이 있는 정보를 제공하는 데 유용한 완벽한 솔루션 구축 지원 서비스에서 독보적인 위치를 확보하고 
+      있습니다. 
+      <P>Oracle의 Siebel CRM 애플리케이션은 기업에서 웹 기술을 바탕으로 새로운 고객을 유치하고 기존의 모든 고객 관계를 
+      강화하는 데 유용한 솔루션입니다. 이 솔루션의 다양한 애플리케이션들은 새로이 각광 받고 있는 최신 컴퓨팅 표준을 바탕으로 제작되었고 
+      별도의 작업 없이 즉시 기능을 이용할 수 있으며, 확장 가능한 웹 기반 제품 아키텍처와 유연한 애플리케이션 사용자 지정 기능을 갖추고 
+      있습니다. 
+      <P>Siebel은 각 업종의 특수한 요건에 맞게 제작된 솔루션을 20종 이상 보유하고 있으며, 이를 통해 실시간 인텔리전스가 가능한 
+      예측 분석 기능, J2EE 및 .NET을 모두 지원하는 향상된 유연성, TCO 절감 효과를 제공합니다. 
+      <P></P>
+      <BR>1994, 2012, Oracle. All rights reserved. 
+      <P>본 프로그램(소프트웨어와 설명서 모두 포함)에 포함된 비공개 정보는 사용 및 공개 제한 조건이 수록된 사용권 계약에 따라 
+      제공되며 저작권법, 특허법, 그리고 기타 지적 재산 및 산업 재산에 관한 법률로 보호됩니다. 독립적으로 제작된 타 소프트웨어와의 
+      호환성 확보에 필요한 범위 또는 법률에 명시된 범위를 제외하고 본 프로그램에 대한 분석, 분해, 해체 또는 리버스 엔지니어링은 
+      금지되어 있습니다. 
+      <P>본 프로그램이 미국 정부에게 제공되거나, 미국 정부를 대신하여 본 프로그램을 사용권을 얻었거나 사용하는 자에게 제공되는 경우에는 
+      아래 내용이 적용됩니다. 
+      <P>미합중국 정부의 권리<BR>미국 정부를 고객으로 하여 제공되는 프로그램, 소프트웨어, 데이터베이스 및 관리 설명서와 기술 
+      데이터는 '상용 컴퓨터 소프트웨어' 또는 '상용 기술 데이터'로서 관련 '연방 취득 규정'과 기관별 보충 규정의 적용을 받습니다. 
+      따라서 설명서와 기술 데이터를 포함하여 본 프로그램을 사용, 복제, 공개, 수정, 개정하는 행위는 관련 Oracle 사용권 계약에 
+      수록된 사용권 제한 규정과, 'AR 52.227-19, Commercial Computer Software--Restricted 
+      Rights (June 1987). Oracle USA, Inc., 500 Oracle Parkway, Redwood City, CA 
+      94065.'의 기타 권리 규정의 적용을 받습니다. 
+      <P>본 프로그램은 핵 분야, 항공 분야, 대량 수송, 의료 분야 또는 기타 위험이 내재된 응용 분야에서 사용되도록 제작되지 
+      않았습니다. 본 프로그램을 그와 같은 용도로 사용하는 경우, 오류 방지나 백업, 이중화 등 안전 확보를 위한 모든 조치를 취할 책임은 
+      사용권 보유자에게 있으며, 저희는 그로 인해 발생하는 어떠한 손해에 대해서도 책임이 없습니다. 
+      <P>Oracle, JD Edwards, PeopleSoft, Siebel은 Oracle Corporation 및 그 자회사의 등록 
+      상표입니다. 기타 명칭들은 각 해당 소유자의 상표입니다. 
+      <P>실수로 인해 본 소프트웨어를 입수한 경우에는 즉시 Oracle에 알려주시기 바랍니다. 
+      <P>
+      <BR>©1994, 2012, Oracle. All rights reserved. 
+      <P>The Programs (which include both the software and documentation) 
+      contain proprietary information; they are provided under a license 
+      agreement containing restrictions on use and disclosure and are also 
+      protected by copyright, patent, and other intellectual and industrial 
+      property laws. Reverse engineering, disassembly, or decompilation of the 
+      Programs, except to the extent required to obtain interoperability with 
+      other independently created software or as specified by law, is 
+      prohibited. 
+      <P>If the Programs are delivered to the United States Government or anyone 
+      licensing or using the Programs on behalf of the United States Government, 
+      the following notice is applicable: 
+      <P>U.S. GOVERNMENT RIGHTS<BR>Programs, software, databases, and related 
+      documentation and technical data delivered to U.S. Government customers 
+      are "commercial computer software" or "commercial technical data" pursuant 
+      to the applicable Federal Acquisition Regulation and agency-specific 
+      supplemental regulations. As such, use, duplication, disclosure, 
+      modification, and adaptation of the Programs, including documentation and 
+      technical data, shall be subject to the licensing restrictions set forth 
+      in the applicable Oracle license agreement, and, to the extent applicable, 
+      the additional rights set forth in FAR 52.227-19, Commercial Computer 
+      Software--Restricted Rights (June 1987). Oracle USA, Inc., 500 Oracle 
+      Parkway, Redwood City, CA 94065. 
+      <P>The Programs are not intended for use in any nuclear, aviation, mass 
+      transit, medical, or other inherently dangerous applications. It shall be 
+      the licensee's responsibility to take all appropriate fail-safe, backup, 
+      redundancy and other measures to ensure the safe use of such applications 
+      if the Programs are used for such purposes, and we disclaim liability for 
+      any damages caused by such use of the Programs. 
+      <P>Oracle, JD Edwards, PeopleSoft, and Siebel are registered trademarks of 
+      Oracle Corporation and/or its affiliates. Other names may be trademarks of 
+      their respective owners. 
+      <P>If you have received this software in error, please notify Oracle 
+      immediately.
+      </DIV>
+      <TABLE id=Table3 style="BACKGROUND-COLOR: #000000" cellSpacing=0 
+      cellPadding=0 width="100%">
+        <TBODY>
+        <TR>
+          <TD align=right width="100%"><IMG height=1 
+            src="About_Siebel.files/spacer.gif" width=1 alt=""></TD></TR></TBODY></TABLE>
+      <TABLE id=Table4 style="BACKGROUND-COLOR: #cccccc" height=33 cellPadding=4 
+      width="100%">
+        <TBODY>
+        <TR>
+          <TD align=right width="100%" height=30>
+            <SCRIPT>createBackControl();</SCRIPT>
+          </TD>
+          <TD>&nbsp;</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></BODY></HTML>

@@ -1,0 +1,18 @@
+﻿<HTML><HEAD><TITLE></TITLE><SCRIPT></SCRIPT>
+<SCRIPT language=Javascript src="../jd/header.js"></SCRIPT>
+<SCRIPT language=Javascript src="../ds/flanking_x.js"></SCRIPT>
+<SCRIPT>
+var IMT=OL.InitMetaTable;
+var IMTS=OL.InitMetaTables;
+var SMT=OL.SetMetaTable;
+OL.StartMeta('flanking');
+
+function TAS_FLANKING(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var TAS_FLANKING_t=new Array(1);
+TAS_FLANKING_t[0]=new TAS_FLANKING('10','Yes','DEFAULT');
+IMTS(1);
+SMT('TAS_FLANKING',TAS_FLANKING_t);
+</SCRIPT></HEAD><BODY onload="OL.EndMeta('flanking')"></BODY></HTML>

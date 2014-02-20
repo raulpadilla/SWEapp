@@ -1,0 +1,35 @@
+<HTML>
+<HEAD>
+<TITLE>Layout Template</TITLE>
+<SCRIPT></SCRIPT><SCRIPT src="../jd/header.js"></SCRIPT>
+<SCRIPT language=javascript>
+OL.StartTemplate(window.name);
+</SCRIPT>
+<SCRIPT language="JavaScript">
+<!--
+function defWindow(definition){
+var windowOpen=open(definition,"defwindow","width=470,height=600,toolbar=no,menubar=no,status=no,scrollbars=no,resizable=no");
+}
+//-->
+</SCRIPT>
+
+
+</HEAD>
+
+<BODY onLoad="OL.EndTemplate(window.name)">
+<FORM onSubmit="return false;">
+	<!-- TODO: BuildWidget/BuildTarget -->
+
+
+
+<table border="0" width="500" cellpadding="10" cellspacing="0">
+
+<SCRIPT>
+document.write(OL.BuildTarget("TEXT",window,"RECOMMEND"));
+</SCRIPT>
+
+</table>
+<br>
+
+</FORM>
+</BODY>

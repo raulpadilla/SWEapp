@@ -1,0 +1,3112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<toolbars>
+    <toolbar toolbarId="Detailer - Standard" defaultState="DEFAULT" firstChangeInternal="false" buttonId="1">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+        </respectStates>
+        <button buttonId="2">
+            <label/>
+            <toolTip>IDS_LOCK_VIEW</toolTip>
+            <icon/>
+            <disabledIcon>DS_Lock_disabled</disabledIcon>
+            <downIcon>DS_Lock_down</downIcon>
+            <upIcon>DS_Lock_up</upIcon>
+            <overIcon>DS_Lock_over</overIcon>
+            <selectedDisabledIcon>DS_Lock_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>DS_Lock_sdown</selectedDownIcon>
+            <selectedUpIcon>DS_Lock_sup</selectedUpIcon>
+            <selectedOverIcon>DS_Lock_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <disablestates>
+                <state name="READONLY"/>
+                <state name="LOCKED"/>
+            </disablestates>
+            <event name="eventLock" state="LOCKED" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>32</height>
+            <width>32</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey>Ctrl+8</shortcutKey>
+        </button>
+        <button buttonId="3">
+            <label/>
+            <toolTip>IDS_UNLOCK_VIEW</toolTip>
+            <icon/>
+            <disabledIcon>DS_Unlock_disabled</disabledIcon>
+            <downIcon>DS_Unlock_down</downIcon>
+            <upIcon>DS_Unlock_up</upIcon>
+            <overIcon>DS_Unlock_over</overIcon>
+            <selectedDisabledIcon>DS_Unlock_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>DS_Unlock_sdown</selectedDownIcon>
+            <selectedUpIcon>DS_Unlock_sup</selectedUpIcon>
+            <selectedOverIcon>DS_Unlock_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <disablestates>
+                <state name="DEFAULT"/>
+                <state name="READONLY"/>
+                <state name="WHITEBOARD_ON"/>
+                <state name="WHITEBOARD_OFF"/>
+                <state name="WHITEBOARD_ON_1"/>
+                <state name="WHITEBOARD_ON_2"/>
+            </disablestates>
+            <event name="eventUnLock" state="LOCKED" propogateTo="ALL_CONTAINERS" restorePrevState="true"/>
+            <height>32</height>
+            <width>32</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey>ctrl+6</shortcutKey>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="Whiteboard" defaultState="DEFAULT" firstChangeInternal="false">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+        </respectStates>
+        <button buttonId="1">
+            <label/>
+            <toolTip>IDS_MARKUP_MODE_TOOLTIP</toolTip>
+            <icon/>
+            <disabledIcon>WB_Whiteboard_disabled</disabledIcon>
+            <downIcon>WB_Whiteboard_down</downIcon>
+            <upIcon>WB_Whiteboard_up</upIcon>
+            <overIcon>WB_Whiteboard_over</overIcon>
+            <selectedDisabledIcon>WB_Whiteboard_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>WB_Whiteboard_sdown</selectedDownIcon>
+            <selectedUpIcon>WB_Whiteboard_sup</selectedUpIcon>
+            <selectedOverIcon>WB_Whiteboard_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <event name="enableWB" state="WHITEBOARD_ON" propogateTo="ALL_CONTAINERS" restorePrevState="true"/>
+            <disablestates>
+                <state name="PAUSEPCD"/>
+                <state name="WHITEBOARD_ON"/>
+                <state name="WHITEBOARD_ON_1"/>
+                <state name="WHITEBOARD_ON_2"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="DEFAULT" type="INACTIVE"/>
+            </disablestates>
+            <height>32</height>
+            <width>32</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey>ctrl+m</shortcutKey>
+        </button>
+        <button buttonId="2">
+            <label/>
+            <toolTip>IDS_POINTER_MODE_TOOLTIP</toolTip>
+            <icon/>
+            <disabledIcon>WB_Pointer_disabled</disabledIcon>
+            <downIcon>WB_Pointer_down</downIcon>
+            <upIcon>WB_Pointer_up</upIcon>
+            <overIcon>WB_Pointer_over</overIcon>
+            <selectedDisabledIcon>WB_Pointer_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>WB_Pointer_sdown</selectedDownIcon>
+            <selectedUpIcon>WB_Pointer_sup</selectedUpIcon>
+            <selectedOverIcon>WB_Pointer_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <event name="disableWB" state="WHITEBOARD_OFF" propogateTo="ALL_CONTAINERS" restorePrevState="true"/>
+            <disablestates>
+                <state name="DEFAULT"/>
+                <state name="READONLY"/>
+                <state name="LOCKED"/>
+                <state name="WHITEBOARD_OFF"/>
+                <state name="PAUSEPCD"/>
+            </disablestates>
+            <height>32</height>
+            <width>32</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey>ctrl+i</shortcutKey>
+        </button>
+        <button buttonId="3">
+            <label/>
+            <toolTip>IDS_MARKER_COLOR_TOOLTIP</toolTip>
+            <icon/>
+            <disabledIcon/>
+            <downIcon/>
+            <upIcon/>
+            <overIcon/>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon/>
+            <type>ColorPicker</type>
+            <event name="selectColor" state="WHITEBOARD_ON_1" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <disablestates>
+                <state name="DEFAULT"/>
+                <state name="READONLY"/>
+                <state name="LOCKED"/>
+                <state name="WHITEBOARD_OFF"/>
+                <state name="PAUSEPCD"/>
+            </disablestates>
+            <height>32</height>
+            <width>32</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey>ctrl+o</shortcutKey>
+        </button>
+        <button buttonId="4">
+            <label/>
+            <toolTip>IDS_ERASE_MARKUP_TOOLTIP</toolTip>
+            <icon/>
+            <disabledIcon>WB_Erase_disabled</disabledIcon>
+            <downIcon>WB_Erase_down</downIcon>
+            <upIcon>WB_Erase_up</upIcon>
+            <overIcon>WB_Erase_over</overIcon>
+            <selectedDisabledIcon>WB_Erase_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>WB_Erase_sdown</selectedDownIcon>
+            <selectedUpIcon>WB_Erase_sup</selectedUpIcon>
+            <selectedOverIcon>WB_Erase_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <event name="clearWB" state="WHITEBOARD_ON_2" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <disablestates>
+                <state name="DEFAULT" type="INACTIVE"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="WHITEBOARD_OFF" type="INACTIVE"/>
+                <state name="PAUSEPCD" type="INACTIVE"/>
+            </disablestates>
+            <height>32</height>
+            <width>32</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey>ctrl+e</shortcutKey>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="Index Navigation" defaultState="FIRSTITEM" firstChangeInternal="false">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+        </respectStates>
+        <button buttonId="first">
+            <label/>
+            <toolTip>IDS_FIRST</toolTip>
+            <icon/>
+            <disabledIcon>CN_First_disabled</disabledIcon>
+            <downIcon>CN_First_down</downIcon>
+            <upIcon>CN_First_up</upIcon>
+            <overIcon>CN_First_over</overIcon>
+            <selectedDisabledIcon>CN_First_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>CN_First_sdown</selectedDownIcon>
+            <selectedUpIcon>CN_First_sup</selectedUpIcon>
+            <selectedOverIcon>CN_First_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="DEFAULT" type="INACTIVE"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="FIRSTITEM" type="INACTIVE"/>
+                <state name="WHITEBOARD_ON" type="INACTIVE"/>
+                <state name="WHITEBOARD_ON_1" type="INACTIVE"/>
+                <state name="WHITEBOARD_ON_2" type="INACTIVE"/>
+            </disablestates>
+            <event name="FIRSTITEM" state="FIRSTITEM" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>24</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+        <button buttonId="prev">
+            <label/>
+            <toolTip>IDS_PREVIOUS</toolTip>
+            <icon/>
+            <disabledIcon>CN_Previous_disabled</disabledIcon>
+            <downIcon>CN_Previous_down</downIcon>
+            <upIcon>CN_Previous_up</upIcon>
+            <overIcon>CN_Previous_over</overIcon>
+            <selectedDisabledIcon>CN_Previous_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>CN_Previous_sdown</selectedDownIcon>
+            <selectedUpIcon>CN_Previous_sup</selectedUpIcon>
+            <selectedOverIcon>CN_Previous_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="DEFAULT" type="INACTIVE"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="FIRSTITEM" type="INACTIVE"/>
+                <state name="WHITEBOARD_ON" type="INACTIVE"/>
+                <state name="WHITEBOARD_ON_1" type="INACTIVE"/>
+                <state name="WHITEBOARD_ON_2" type="INACTIVE"/>
+            </disablestates>
+            <event name="PREVITEM" state="PREVITEM" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>24</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+        <button buttonId="next">
+            <label/>
+            <toolTip>IDS_NEXT</toolTip>
+            <icon/>
+            <disabledIcon>CN_Next_disabled</disabledIcon>
+            <downIcon>CN_Next_down</downIcon>
+            <upIcon>CN_Next_up</upIcon>
+            <overIcon>CN_Next_over</overIcon>
+            <selectedDisabledIcon>CN_Next_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>CN_Next_sdown</selectedDownIcon>
+            <selectedUpIcon>CN_Next_sup</selectedUpIcon>
+            <selectedOverIcon>CN_Next_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="DEFAULT" type="INACTIVE"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="LASTITEM" type="INACTIVE"/>
+                <state name="WHITEBOARD_ON" type="INACTIVE"/>
+                <state name="WHITEBOARD_ON_1" type="INACTIVE"/>
+                <state name="WHITEBOARD_ON_2" type="INACTIVE"/>
+            </disablestates>
+            <event name="NEXTITEM" state="NEXTITEM" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>24</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+        <button buttonId="last">
+            <label/>
+            <toolTip>IDS_LAST</toolTip>
+            <icon/>
+            <disabledIcon>CN_Last_disabled</disabledIcon>
+            <downIcon>CN_Last_down</downIcon>
+            <upIcon>CN_Last_up</upIcon>
+            <overIcon>CN_Last_over</overIcon>
+            <selectedDisabledIcon>CN_Last_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>CN_Last_sdown</selectedDownIcon>
+            <selectedUpIcon>CN_Last_sup</selectedUpIcon>
+            <selectedOverIcon>CN_Last_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="DEFAULT" type="INACTIVE"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="LASTITEM" type="INACTIVE"/>
+                <state name="WHITEBOARD_ON" type="INACTIVE"/>
+                <state name="WHITEBOARD_ON_1" type="INACTIVE"/>
+                <state name="WHITEBOARD_ON_2" type="INACTIVE"/>
+            </disablestates>
+            <event name="LASTITEM" state="LASTITEM" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>24</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="ISD Navigation" defaultState="STARTPCD" firstChangeInternal="true">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+        </respectStates>
+        <button buttonId="PreviousSlide">
+            <label/>
+            <toolTip>IDS_PREV_TOOLTIP</toolTip>
+            <icon/>
+            <disabledIcon>CN_Previous_disabled</disabledIcon>
+            <downIcon>CN_Previous_down</downIcon>
+            <upIcon>CN_Previous_up</upIcon>
+            <overIcon>CN_Previous_over</overIcon>
+            <selectedDisabledIcon>CN_Previous_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>CN_Previous_sdown</selectedDownIcon>
+            <selectedUpIcon>CN_Previous_sup</selectedUpIcon>
+            <selectedOverIcon>CN_Previous_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="PAUSEPCD" type="INACTIVE"/>
+                <state name="FIRSTPCD" type="INACTIVE"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="SIGN" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="STARTPCD" type="INACTIVE"/>
+                <state name="NOMSG" type="INACTIVE"/>
+                <state name="ATFIRST" type="INACTIVE"/>
+            </disablestates>
+            <event name="PREVPCD" state="PREVPCD" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>32</height>
+            <width>32</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey>Ctrl+9</shortcutKey>
+        </button>
+        <button buttonId="M1">
+            <label/>
+            <toolTip>IDS_MARKUP_MODE_TOOLTIP</toolTip>
+            <icon/>
+            <disabledIcon>WB_Whiteboard_disabled</disabledIcon>
+            <downIcon>WB_Whiteboard_down</downIcon>
+            <upIcon>WB_Whiteboard_up</upIcon>
+            <overIcon>WB_Whiteboard_over</overIcon>
+            <selectedDisabledIcon>WB_Whiteboard_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>WB_Whiteboard_sdown</selectedDownIcon>
+            <selectedUpIcon>WB_Whiteboard_sup</selectedUpIcon>
+            <selectedOverIcon>WB_Whiteboard_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <event name="wbMenu" state="SHOW_MENU" propogateTo="ALL_CONTAINERS" restorePrevState="true"/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="SIGN" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="PAUSEPCD" type="INACTIVE"/>
+                <state name="WHITEBOARD_ON"/>
+                <state name="WHITEBOARD_ON_1"/>
+                <state name="WHITEBOARD_ON_2"/>
+            </disablestates>
+            <height>32</height>
+            <width>32</width>
+            <readonlystates/>
+            <readonly>True</readonly>
+            <shortcutKey>ctrl+m</shortcutKey>
+        </button>
+        <readonlystates/>
+        <button buttonId="NextSlide">
+            <label/>
+            <toolTip>IDS_NEXT_TOOLTIP</toolTip>
+            <icon/>
+            <disabledIcon>CN_Next_disabled</disabledIcon>
+            <downIcon>CN_Next_down</downIcon>
+            <upIcon>CN_Next_up</upIcon>
+            <overIcon>CN_Next_over</overIcon>
+            <selectedDisabledIcon>CN_Next_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>CN_Next_sdown</selectedDownIcon>
+            <selectedUpIcon>CN_Next_sup</selectedUpIcon>
+            <selectedOverIcon>CN_Next_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="PAUSEPCD" type="INACTIVE"/>
+                <state name="LASTPCD" type="INACTIVE"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="SIGN" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="NOMSG" type="INACTIVE"/>
+                <state name="ATLAST" type="INACTIVE"/>
+            </disablestates>
+            <event name="NEXTPCD" state="NEXTPCD" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>32</height>
+            <width>32</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey>ctrl+0</shortcutKey>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="ISD Navigation Preview" defaultState="STARTPCD" firstChangeInternal="true">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+        </respectStates>
+        <button buttonId="PreviousSlide">
+            <label/>
+            <toolTip>IDS_PREV_TOOLTIP</toolTip>
+            <icon/>
+            <disabledIcon>CN_Previous_disabled</disabledIcon>
+            <downIcon>CN_Previous_down</downIcon>
+            <upIcon>CN_Previous_up</upIcon>
+            <overIcon>CN_Previous_over</overIcon>
+            <selectedDisabledIcon>CN_Previous_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>CN_Previous_sdown</selectedDownIcon>
+            <selectedUpIcon>CN_Previous_sup</selectedUpIcon>
+            <selectedOverIcon>CN_Previous_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="PAUSEPCD" type="INACTIVE"/>
+                <state name="FIRSTPCD" type="INACTIVE"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="SIGN" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="STARTPCD" type="INACTIVE"/>
+                <state name="NOMSG" type="INACTIVE"/>
+                <state name="ATFIRST" type="INACTIVE"/>
+            </disablestates>
+            <event name="PREVPCD" state="PREVPCD" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>32</height>
+            <width>32</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey>Ctrl+9</shortcutKey>
+        </button>
+        <button buttonId="M1">
+            <label/>
+            <toolTip>IDS_MARKUP_MODE_TOOLTIP</toolTip>
+            <icon/>
+            <disabledIcon>WB_Whiteboard_disabled</disabledIcon>
+            <downIcon>WB_Whiteboard_down</downIcon>
+            <upIcon>WB_Whiteboard_up</upIcon>
+            <overIcon>WB_Whiteboard_over</overIcon>
+            <selectedDisabledIcon>WB_Whiteboard_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>WB_Whiteboard_sdown</selectedDownIcon>
+            <selectedUpIcon>WB_Whiteboard_sup</selectedUpIcon>
+            <selectedOverIcon>WB_Whiteboard_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <event name="" state="" propogateTo="ALL_CONTAINERS" restorePrevState="true"/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="SIGN" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="STARTPCD" type="INACTIVE"/>
+                <state name="NEXTPCD" type="INACTIVE"/>
+                <state name="PREVPCD" type="INACTIVE"/>
+                <state name="ATFIRST" type="INACTIVE"/>
+                <state name="ATLAST" type="INACTIVE"/>
+                <state name="NOMSG" type="INACTIVE"/>
+            </disablestates>
+            <height>32</height>
+            <width>32</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey>ctrl+m</shortcutKey>
+        </button>
+        <readonlystates/>
+        <button buttonId="NextSlide">
+            <label/>
+            <toolTip>IDS_NEXT_TOOLTIP</toolTip>
+            <icon/>
+            <disabledIcon>CN_Next_disabled</disabledIcon>
+            <downIcon>CN_Next_down</downIcon>
+            <upIcon>CN_Next_up</upIcon>
+            <overIcon>CN_Next_over</overIcon>
+            <selectedDisabledIcon>CN_Next_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>CN_Next_sdown</selectedDownIcon>
+            <selectedUpIcon>CN_Next_sup</selectedUpIcon>
+            <selectedOverIcon>CN_Next_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="PAUSEPCD" type="INACTIVE"/>
+                <state name="LASTPCD" type="INACTIVE"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="SIGN" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="NOMSG" type="INACTIVE"/>
+                <state name="ATLAST" type="INACTIVE"/>
+            </disablestates>
+            <event name="NEXTPCD" state="NEXTPCD" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>32</height>
+            <width>32</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey>Ctrl+0</shortcutKey>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="Options" defaultState="OPTIONS_DEFAULT" firstChangeInternal="false">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+        </respectStates>
+        <button buttonId="userperf">
+            <label/>
+            <toolTip>IDS_OPTIONS</toolTip>
+            <icon/>
+            <disabledIcon>Settings_disabled</disabledIcon>
+            <downIcon>Settings_down</downIcon>
+            <upIcon>Settings_up</upIcon>
+            <overIcon>Settings_over</overIcon>
+            <selectedDisabledIcon>Settings_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>Settings_sdown</selectedDownIcon>
+            <selectedUpIcon>Settings_sup</selectedUpIcon>
+            <selectedOverIcon>Settings_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="DEFAULT" type="INACTIVE"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="FIRSTITEM" type="INACTIVE"/>
+                <state name="WHITEBOARD_ON" type="INACTIVE"/>
+                <state name="WHITEBOARD_ON_1" type="INACTIVE"/>
+                <state name="WHITEBOARD_ON_2" type="INACTIVE"/>
+            </disablestates>
+            <event name="PERSONALIZE" state="PERSONALIZE" propogateTo="ALL_CONTAINERS" restorePrevState="true"/>
+            <height>20</height>
+            <width>30</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="SKB-SalesRep" defaultState="DEFAULT">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+        </respectStates>
+        <button buttonId="create3p">
+            <label/>
+            <toolTip/>
+            <icon/>
+            <disabledIcon/>
+            <downIcon/>
+            <upIcon/>
+            <overIcon/>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon/>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="CREATE3P"/>
+                <state name="SAVE"/>
+            </disablestates>
+            <event name="CREATE3P" state="CREATE3P" propogateTo="ALL_CONTAINERS" restorePrevState="true"/>
+            <height>20</height>
+            <width>100</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+        <button buttonId="Save3P">
+            <label/>
+            <toolTip/>
+            <icon/>
+            <disabledIcon>GN_Save_disabled</disabledIcon>
+            <downIcon>GN_Save_down</downIcon>
+            <upIcon>GN_Save_up</upIcon>
+            <overIcon>GN_Save_over</overIcon>
+            <selectedDisabledIcon>GN_Save_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>GN_Save_sdown</selectedDownIcon>
+            <selectedUpIcon>GN_Save_sup</selectedUpIcon>
+            <selectedOverIcon>GN_Save_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="DEFAULT"/>
+            </disablestates>
+            <event name="SAVE" state="SAVE" propogateTo="ALL_CONTAINERS" restorePrevState="true"/>
+            <height>20</height>
+            <width>30</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+        <button buttonId="cancel">
+            <label>IDS_BTNCANCEL_TITLE</label>
+            <toolTip>IDS_BTNCANCEL_TITLE</toolTip>
+            <icon/>
+            <disabledIcon/>
+            <downIcon/>
+            <upIcon/>
+            <overIcon/>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon/>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="DEFAULT"/>
+            </disablestates>
+            <event name="CANCEL" state="DEFAULT" propogateTo="ALL_CONTAINERS" restorePrevState="true"/>
+            <height>20</height>
+            <width>80</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="Ok Cancel" defaultState="DEFAULT" firstChangeInternal="false">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+        </respectStates>
+        <button buttonId="OK">
+            <label>IDS_BTNOK_TITLE</label>
+            <toolTip>IDS_BTNOK_TITLE</toolTip>
+            <icon/>
+            <disabledIcon/>
+            <downIcon/>
+            <upIcon/>
+            <overIcon/>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon/>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="READONLY" type="INACTIVE"/>
+				<state name="DEFAULT" type="INACTIVE"/>                
+            </disablestates>
+            <event name="eventOK" state="INVALIDPWD" propogateTo="SELF" restorePrevState="true"/>
+            <height>20</height>
+            <width>30</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+        <button buttonId="Cancel">
+            <label>IDS_BTNCANCEL_TITLE</label>
+            <toolTip>IDS_BTNCANCEL_TITLE</toolTip>
+            <icon/>
+            <disabledIcon/>
+            <downIcon/>
+            <upIcon/>
+            <overIcon/>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon/>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="READONLY" type="INACTIVE"/>
+            </disablestates>
+            <event name="eventCancel" state="CANCEL" propogateTo="SELF" restorePrevState="true"/>
+            <height>20</height>
+            <width>50</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="MP-Admin-Save" defaultState="MPSAVE">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+        </respectStates>
+        <button buttonId="savenewsk">
+            <label/>
+            <toolTip>IDS_SAVE</toolTip>
+            <icon/>
+            <disabledIcon>GN_Save_disabled</disabledIcon>
+            <downIcon>GN_Save_down</downIcon>
+            <upIcon>GN_Save_up</upIcon>
+            <overIcon>GN_Save_over</overIcon>
+            <selectedDisabledIcon>GN_Save_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>GN_Save_sdown</selectedDownIcon>
+            <selectedUpIcon>GN_Save_sup</selectedUpIcon>
+            <selectedOverIcon>GN_Save_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates/>
+            <event name="UPDATE_MP" state="UPDATE_MP" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>30</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey>ctrl+shift+s</shortcutKey>
+        </button>      
+    </toolbar>
+    <toolbar toolbarId="MP-Admin" defaultState="SADETAIL">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+        </respectStates>  
+        <button buttonId="saveas">
+            <label/>
+            <toolTip>IDS_SAVE_AS</toolTip>
+            <icon/>
+            <disabledIcon>GN_Save_As_disabled</disabledIcon>
+            <downIcon>GN_Save_As_down</downIcon>
+            <upIcon>GN_Save_As_up</upIcon>
+            <overIcon>GN_Save_As_over</overIcon>
+            <selectedDisabledIcon>GN_Save_As_disabled</selectedDisabledIcon>
+            <selectedDownIcon>GN_Save_As_down</selectedDownIcon>
+            <selectedUpIcon>GN_Save_As_up</selectedUpIcon>
+            <selectedOverIcon>GN_Save_As_over</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates/>
+            <event name="SAVE_NEW_MP" state="SAVE_AS" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>30</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>        
+        <button buttonId="clear">
+            <label/>
+            <toolTip>IDS_CLEAR</toolTip>
+            <icon/>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates/> 
+            <event name="CLEAR" state="MP_CLEAR" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>30</width>
+            <disabledIcon>WB_Erase_disabled</disabledIcon>
+            <downIcon>WB_Erase_down</downIcon>
+            <upIcon>WB_Erase_up</upIcon>
+            <overIcon>WB_Erase_over</overIcon>
+            <selectedDisabledIcon>WB_Erase_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>WB_Erase_sdown</selectedDownIcon>
+            <selectedUpIcon>WB_Erase_sup</selectedUpIcon>
+            <selectedOverIcon>WB_Erase_sover</selectedOverIcon>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+        <button buttonId="close">
+            <label/>
+            <toolTip>IDS_BTNCLOSE_TITLE</toolTip>
+            <icon/>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates/>
+            <event name="CLOSESKB" state="SADETAIL" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>30</width>
+            <disabledIcon>DS_Close_disabled</disabledIcon>
+            <upIcon>DS_Close_up</upIcon>
+            <overIcon>DS_Close_over</overIcon>
+            <selectedDisabledIcon>DS_Close_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>DS_Close_sdown</selectedDownIcon>
+            <selectedUpIcon>DS_Close_sup</selectedUpIcon>
+            <selectedOverIcon>DS_Close_sover</selectedOverIcon>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="Go Search" defaultState="DEFAULT" firstChangeInternal="false">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+        </respectStates>
+        <button buttonId="Go">
+            <label/>
+            <toolTip>IDS_BTNOK_TITLE</toolTip>
+            <icon/>
+            <disabledIcon>GN_Search_disabled</disabledIcon>
+            <downIcon>GN_Search_down</downIcon>
+            <upIcon>GN_Search_up</upIcon>
+            <overIcon>GN_Search_over</overIcon>
+            <selectedDisabledIcon>GN_Search_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>GN_Search_sdown</selectedDownIcon>
+            <selectedUpIcon>GN_Search_sup</selectedUpIcon>
+            <selectedOverIcon>GN_Search_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+            </disablestates>
+            <event name="eventGo" state="SEARCHGO" propogateTo="SELF" restorePrevState="true"/>
+            <height>20</height>
+            <width>45</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+        <button buttonId="All">
+            <label>IDS_RESET</label>
+            <toolTip>IDS_RESET</toolTip>
+            <icon/>
+            <disabledIcon/>
+            <downIcon/>
+            <upIcon/>
+            <overIcon/>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon/>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+            </disablestates>
+            <event name="eventAll" state="RESETALL" propogateTo="SELF" restorePrevState="true"/>
+            <height>20</height>
+            <width>45</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>        
+    </toolbar>
+    <toolbar toolbarId="SurveyBar" defaultState="STARTSURVEY">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+        </respectStates>
+        <button buttonId="surveyb">
+            <label/>
+            <toolTip>IDS_OPEN_SURVEY</toolTip>
+            <icon/>
+            <disabledIcon>SU_Take_Survey_disabled</disabledIcon>
+            <downIcon>SU_Take_Survey_down</downIcon>
+            <upIcon>SU_Take_Survey_up</upIcon>
+            <overIcon>SU_Take_Survey_over</overIcon>
+            <selectedDisabledIcon>SU_Take_Survey_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>SU_Take_Survey_sdown</selectedDownIcon>
+            <selectedUpIcon>SU_Take_Survey_sup</selectedUpIcon>
+            <selectedOverIcon>SU_Take_Survey_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="STARTSURVEY" type="INACTIVE"/>
+                <state name="SDONE"/>
+                <state name="THRU"/>
+                <state name="MODIFY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="READONLY" type="INACTIVE"/>
+            </disablestates>
+            <event name="SURVEY" state="SDONE" propogateTo="ALL_CONTAINERS" restorePrevState="true"/>
+            <height>32</height>
+            <width>32</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey>ctrl+5</shortcutKey>
+        </button>
+        <button buttonId="redob">
+            <label/>
+            <toolTip>IDS_REOPEN_SURVEY</toolTip>
+            <icon/>
+            <disabledIcon>SU_Finished_Survey_disabled</disabledIcon>
+            <downIcon>SU_Finished_Survey_down</downIcon>
+            <upIcon>SU_Finished_Survey_up</upIcon>
+            <overIcon>SU_Finished_Survey_over</overIcon>
+            <selectedDisabledIcon>SU_Finished_Survey_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>SU_Finished_Survey_sdown</selectedDownIcon>
+            <selectedUpIcon>SU_Finished_Survey_sup</selectedUpIcon>
+            <selectedOverIcon>SU_Finished_Survey_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="STARTSURVEY"/>
+                <state name="READONLY"/>
+                <state name="THRU" type="INACTIVE"/>
+                <state name="LOCKED"/>
+                <state name="MODIFY"/>
+                <state name="REDO"/>
+            </disablestates>
+            <event name="SURVEY" state="SDONE" propogateTo="ALL_CONTAINERS" restorePrevState="true"/>
+            <height>32</height>
+            <width>32</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="FeedBackBar" defaultState="GetFeedBack">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+        </respectStates>
+        <button buttonId="01">
+            <label/>
+            <toolTip/>
+            <icon>FB_UnSelected_Edit</icon>
+            <disabledIcon>FB_Selected_Edit</disabledIcon>
+            <downIcon/>
+            <upIcon/>
+            <overIcon>FB_Selected_Edit</overIcon>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon>FB_Selected_Edit</selectedOverIcon>
+            <type>ISDImage</type>
+            <visible>false</visible>
+            <disablestates>
+                <state name="GetFeedBack" type="INACTIVE"/>
+                <state name="DisWorst"/>
+                <state name="EnbWorst"/>
+                <state name="DisBad"/>
+                <state name="EnbBad"/>
+                <state name="DisAvg"/>
+                <state name="EnbAvg"/>
+                <state name="DisGood"/>
+                <state name="EnbGood"/>
+                <state name="DisExcl"/>
+                <state name="EnbExcl"/>
+                <state name="MODIFY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="01"/>
+                <state name="10"/>
+                <state name="02"/>
+                <state name="20"/>
+                <state name="03"/>
+                <state name="30"/>
+                <state name="04"/>
+                <state name="40"/>
+                <state name="05"/>
+                <state name="50"/>
+                <state name="06"/>
+                <state name="60"/>
+                <state name="07"/>
+                <state name="70"/>
+                <state name="08"/>
+                <state name="80"/>
+                <state name="09"/>
+                <state name="90"/>
+                <state name="010"/>
+                <state name="100"/>
+                <state name="MODIFY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="READONLY" type="INACTIVE"/>
+            </disablestates>
+            <event name="event01" state="01" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>25</width>
+            <shortcutKey/>
+        </button>
+        <button buttonId="10">
+            <label/>
+            <toolTip/>
+            <icon>FB_Selected_Edit</icon>
+            <disabledIcon>FB_UnSelected_Edit</disabledIcon>
+            <downIcon/>
+            <upIcon/>
+            <overIcon>FB_Selected_Edit</overIcon>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon>FB_UnSelected_Edit</selectedOverIcon>
+            <type>ISDImage</type>
+            <visible>false</visible>
+            <disablestates>
+                <state name="GetFeedBack"/>
+                <state name="01" type="INACTIVE"/>
+                <state name="10" type="INACTIVE"/>
+                <state name="02" type="INACTIVE"/>
+                <state name="20" type="INACTIVE"/>
+                <state name="03" type="INACTIVE"/>
+                <state name="30" type="INACTIVE"/>
+                <state name="04" type="INACTIVE"/>
+                <state name="40" type="INACTIVE"/>
+                <state name="05" type="INACTIVE"/>
+                <state name="50" type="INACTIVE"/>
+                <state name="06" type="INACTIVE"/>
+                <state name="60" type="INACTIVE"/>
+                <state name="07" type="INACTIVE"/>
+                <state name="70" type="INACTIVE"/>
+                <state name="08" type="INACTIVE"/>
+                <state name="80" type="INACTIVE"/>
+                <state name="09" type="INACTIVE"/>
+                <state name="90" type="INACTIVE"/>
+                <state name="010" type="INACTIVE"/>
+                <state name="100" type="INACTIVE"/>
+                <state name="MODIFY" type="INACTIVE"/>
+                <state name="LOCKED"/>
+                <state name="READONLY" type="INACTIVE"/>
+            </disablestates>
+            <event name="event10" state="10" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>25</width>
+            <shortcutKey/>
+        </button>
+        <button buttonId="02">
+            <label/>
+            <toolTip/>
+            <icon>FB_UnSelected_Edit</icon>
+            <disabledIcon>FB_Selected_Edit</disabledIcon>
+            <downIcon/>
+            <upIcon/>
+            <overIcon>FB_Selected_Edit</overIcon>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon>FB_Selected_Edit</selectedOverIcon>
+            <type>ISDImage</type>
+            <visible>false</visible>
+            <disablestates>
+                <state name="GetFeedBack" type="INACTIVE"/>
+                <state name="DisWorst" type="INACTIVE"/>
+                <state name="EnbWorst" type="INACTIVE"/>
+                <state name="DisBad"/>
+                <state name="EnbBad"/>
+                <state name="DisAvg"/>
+                <state name="EnbAvg"/>
+                <state name="DisGood"/>
+                <state name="EnbGood"/>
+                <state name="DisExcl"/>
+                <state name="EnbExcl"/>
+                <state name="MODIFY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="01" type="INACTIVE"/>
+                <state name="10" type="INACTIVE"/>
+                <state name="02"/>
+                <state name="20"/>
+                <state name="03"/>
+                <state name="30"/>
+                <state name="04"/>
+                <state name="40"/>
+                <state name="05"/>
+                <state name="50"/>
+                <state name="06"/>
+                <state name="60"/>
+                <state name="07"/>
+                <state name="70"/>
+                <state name="08"/>
+                <state name="80"/>
+                <state name="09"/>
+                <state name="90"/>
+                <state name="010"/>
+                <state name="100"/>
+                <state name="MODIFY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="READONLY" type="INACTIVE"/>
+            </disablestates>
+            <event name="event02" state="02" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>25</width>
+            <shortcutKey/>
+        </button>
+        <button buttonId="20">
+            <label/>
+            <toolTip/>
+            <icon>FB_Selected_Edit</icon>
+            <disabledIcon>FB_UnSelected_Edit</disabledIcon>
+            <downIcon/>
+            <upIcon/>
+            <overIcon>FB_Selected_Edit</overIcon>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon>FB_UnSelected_Edit</selectedOverIcon>
+            <type>ISDImage</type>
+            <visible>false</visible>
+            <disablestates>
+                <state name="GetFeedBack"/>
+                <state name="DisWorst"/>
+                <state name="EnbWorst"/>
+                <state name="DisBad" type="INACTIVE"/>
+                <state name="EnbBad" type="INACTIVE"/>
+                <state name="DisAvg" type="INACTIVE"/>
+                <state name="EnbAvg" type="INACTIVE"/>
+                <state name="DisGood" type="INACTIVE"/>
+                <state name="EnbGood" type="INACTIVE"/>
+                <state name="DisExcl" type="INACTIVE"/>
+                <state name="EnbExcl" type="INACTIVE"/>
+                <state name="MODIFY" type="INACTIVE"/>
+                <state name="LOCKED"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="01"/>
+                <state name="10"/>
+                <state name="02" type="INACTIVE"/>
+                <state name="20" type="INACTIVE"/>
+                <state name="03" type="INACTIVE"/>
+                <state name="30" type="INACTIVE"/>
+                <state name="04" type="INACTIVE"/>
+                <state name="40" type="INACTIVE"/>
+                <state name="05" type="INACTIVE"/>
+                <state name="50" type="INACTIVE"/>
+                <state name="06" type="INACTIVE"/>
+                <state name="60" type="INACTIVE"/>
+                <state name="07" type="INACTIVE"/>
+                <state name="70" type="INACTIVE"/>
+                <state name="08" type="INACTIVE"/>
+                <state name="80" type="INACTIVE"/>
+                <state name="09" type="INACTIVE"/>
+                <state name="90" type="INACTIVE"/>
+                <state name="010" type="INACTIVE"/>
+                <state name="100" type="INACTIVE"/>
+                <state name="MODIFY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="READONLY" type="INACTIVE"/>
+            </disablestates>
+            <event name="event20" state="20" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>25</width>
+            <shortcutKey/>
+        </button>
+        <button buttonId="03">
+            <label/>
+            <toolTip/>
+            <icon>FB_UnSelected_Edit</icon>
+            <disabledIcon>FB_Selected_Edit</disabledIcon>
+            <downIcon/>
+            <upIcon/>
+            <overIcon>FB_Selected_Edit</overIcon>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon>FB_Selected_Edit</selectedOverIcon>
+            <type>ISDImage</type>
+            <visible>false</visible>
+            <disablestates>
+                <state name="GetFeedBack" type="INACTIVE"/>
+                <state name="MODIFY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="01" type="INACTIVE"/>
+                <state name="10" type="INACTIVE"/>
+                <state name="02" type="INACTIVE"/>
+                <state name="20" type="INACTIVE"/>
+                <state name="03"/>
+                <state name="30"/>
+                <state name="04"/>
+                <state name="40"/>
+                <state name="05"/>
+                <state name="50"/>
+                <state name="06"/>
+                <state name="60"/>
+                <state name="07"/>
+                <state name="70"/>
+                <state name="08"/>
+                <state name="80"/>
+                <state name="09"/>
+                <state name="90"/>
+                <state name="010"/>
+                <state name="100"/>
+            </disablestates>
+            <event name="event03" state="03" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>25</width>
+            <shortcutKey/>
+        </button>
+        <button buttonId="30">
+            <label/>
+            <toolTip/>
+            <icon>FB_Selected_Edit</icon>
+            <disabledIcon>FB_UnSelected_Edit</disabledIcon>
+            <downIcon/>
+            <upIcon/>
+            <overIcon>FB_Selected_Edit</overIcon>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon>FB_UnSelected_Edit</selectedOverIcon>
+            <type>ISDImage</type>
+            <visible>false</visible>
+            <disablestates>
+                <state name="GetFeedBack"/>
+                <state name="MODIFY" type="INACTIVE"/>
+                <state name="LOCKED"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="01"/>
+                <state name="10"/>
+                <state name="02"/>
+                <state name="20"/>
+                <state name="03" type="INACTIVE"/>
+                <state name="30" type="INACTIVE"/>
+                <state name="04" type="INACTIVE"/>
+                <state name="40" type="INACTIVE"/>
+                <state name="05" type="INACTIVE"/>
+                <state name="50" type="INACTIVE"/>
+                <state name="06" type="INACTIVE"/>
+                <state name="60" type="INACTIVE"/>
+                <state name="07" type="INACTIVE"/>
+                <state name="70" type="INACTIVE"/>
+                <state name="08" type="INACTIVE"/>
+                <state name="80" type="INACTIVE"/>
+                <state name="09" type="INACTIVE"/>
+                <state name="90" type="INACTIVE"/>
+                <state name="010" type="INACTIVE"/>
+                <state name="100" type="INACTIVE"/>
+            </disablestates>
+            <event name="event30" state="30" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>25</width>
+            <shortcutKey/>
+        </button>
+        <button buttonId="04">
+            <label/>
+            <toolTip/>
+            <icon>FB_UnSelected_Edit</icon>
+            <disabledIcon>FB_Selected_Edit</disabledIcon>
+            <downIcon/>
+            <upIcon/>
+            <overIcon>FB_Selected_Edit</overIcon>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon>FB_Selected_Edit</selectedOverIcon>
+            <type>ISDImage</type>
+            <visible>false</visible>
+            <disablestates>
+                <state name="GetFeedBack" type="INACTIVE"/>
+                <state name="MODIFY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="01" type="INACTIVE"/>
+                <state name="10" type="INACTIVE"/>
+                <state name="02" type="INACTIVE"/>
+                <state name="20" type="INACTIVE"/>
+                <state name="03" type="INACTIVE"/>
+                <state name="30" type="INACTIVE"/>
+                <state name="04"/>
+                <state name="40"/>
+                <state name="05"/>
+                <state name="50"/>
+                <state name="06"/>
+                <state name="60"/>
+                <state name="07"/>
+                <state name="70"/>
+                <state name="08"/>
+                <state name="80"/>
+                <state name="09"/>
+                <state name="90"/>
+                <state name="010"/>
+                <state name="100"/>
+            </disablestates>
+            <event name="event04" state="04" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>25</width>
+            <shortcutKey/>
+        </button>
+        <button buttonId="40">
+            <label/>
+            <toolTip/>
+            <icon>FB_Selected_Edit</icon>
+            <disabledIcon>FB_UnSelected_Edit</disabledIcon>
+            <downIcon/>
+            <upIcon/>
+            <overIcon>FB_Selected_Edit</overIcon>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon>FB_UnSelected_Edit</selectedOverIcon>
+            <type>ISDImage</type>
+            <visible>false</visible>
+            <disablestates>
+                <state name="GetFeedBack"/>
+                <state name="MODIFY" type="INACTIVE"/>
+                <state name="LOCKED"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="01"/>
+                <state name="10"/>
+                <state name="02"/>
+                <state name="20"/>
+                <state name="03"/>
+                <state name="30"/>
+                <state name="04" type="INACTIVE"/>
+                <state name="40" type="INACTIVE"/>
+                <state name="05" type="INACTIVE"/>
+                <state name="50" type="INACTIVE"/>
+                <state name="06" type="INACTIVE"/>
+                <state name="60" type="INACTIVE"/>
+                <state name="07" type="INACTIVE"/>
+                <state name="70" type="INACTIVE"/>
+                <state name="08" type="INACTIVE"/>
+                <state name="80" type="INACTIVE"/>
+                <state name="09" type="INACTIVE"/>
+                <state name="90" type="INACTIVE"/>
+                <state name="010" type="INACTIVE"/>
+                <state name="100" type="INACTIVE"/>
+            </disablestates>
+            <event name="event40" state="40" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>25</width>
+            <shortcutKey/>
+        </button>
+        <button buttonId="05">
+            <label/>
+            <toolTip/>
+            <icon>FB_UnSelected_Edit</icon>
+            <disabledIcon>FB_Selected_Edit</disabledIcon>
+            <downIcon/>
+            <upIcon/>
+            <overIcon>FB_Selected_Edit</overIcon>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon>FB_Selected_Edit</selectedOverIcon>
+            <type>ISDImage</type>
+            <visible>false</visible>
+            <disablestates>
+                <state name="GetFeedBack" type="INACTIVE"/>
+                <state name="MODIFY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="01" type="INACTIVE"/>
+                <state name="10" type="INACTIVE"/>
+                <state name="02" type="INACTIVE"/>
+                <state name="20" type="INACTIVE"/>
+                <state name="03" type="INACTIVE"/>
+                <state name="30" type="INACTIVE"/>
+                <state name="04" type="INACTIVE"/>
+                <state name="40" type="INACTIVE"/>
+                <state name="05"/>
+                <state name="50"/>
+                <state name="06"/>
+                <state name="60"/>
+                <state name="07"/>
+                <state name="70"/>
+                <state name="08"/>
+                <state name="80"/>
+                <state name="09"/>
+                <state name="90"/>
+                <state name="010"/>
+                <state name="100"/>
+            </disablestates>
+            <event name="event05" state="05" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>25</width>
+            <shortcutKey/>
+        </button>
+        <button buttonId="50">
+            <label/>
+            <toolTip/>
+            <icon>FB_Selected_Edit</icon>
+            <disabledIcon>FB_UnSelected_Edit</disabledIcon>
+            <downIcon/>
+            <upIcon/>
+            <overIcon>FB_Selected_Edit</overIcon>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon>FB_UnSelected_Edit</selectedOverIcon>
+            <type>ISDImage</type>
+            <visible>false</visible>
+            <disablestates>
+                <state name="GetFeedBack"/>
+                <state name="MODIFY" type="INACTIVE"/>
+                <state name="LOCKED"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="01"/>
+                <state name="10"/>
+                <state name="02"/>
+                <state name="20"/>
+                <state name="03"/>
+                <state name="30"/>
+                <state name="04"/>
+                <state name="40"/>
+                <state name="05" type="INACTIVE"/>
+                <state name="50" type="INACTIVE"/>
+                <state name="06" type="INACTIVE"/>
+                <state name="60" type="INACTIVE"/>
+                <state name="07" type="INACTIVE"/>
+                <state name="70" type="INACTIVE"/>
+                <state name="08" type="INACTIVE"/>
+                <state name="80" type="INACTIVE"/>
+                <state name="09" type="INACTIVE"/>
+                <state name="90" type="INACTIVE"/>
+                <state name="010" type="INACTIVE"/>
+                <state name="100" type="INACTIVE"/>
+            </disablestates>
+            <event name="event50" state="50" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>25</width>
+            <shortcutKey/>
+        </button>
+        <button buttonId="06">
+            <label/>
+            <toolTip/>
+            <icon>FB_UnSelected_Edit</icon>
+            <disabledIcon>FB_Selected_Edit</disabledIcon>
+            <downIcon/>
+            <upIcon/>
+            <overIcon>FB_Selected_Edit</overIcon>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon>FB_Selected_Edit</selectedOverIcon>
+            <type>ISDImage</type>
+            <visible>false</visible>
+            <disablestates>
+                <state name="GetFeedBack" type="INACTIVE"/>
+                <state name="MODIFY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="01" type="INACTIVE"/>
+                <state name="10" type="INACTIVE"/>
+                <state name="02" type="INACTIVE"/>
+                <state name="20" type="INACTIVE"/>
+                <state name="03" type="INACTIVE"/>
+                <state name="30" type="INACTIVE"/>
+                <state name="04" type="INACTIVE"/>
+                <state name="40" type="INACTIVE"/>
+                <state name="05" type="INACTIVE"/>
+                <state name="50" type="INACTIVE"/>
+                <state name="06"/>
+                <state name="60"/>
+                <state name="07"/>
+                <state name="70"/>
+                <state name="08"/>
+                <state name="80"/>
+                <state name="09"/>
+                <state name="90"/>
+                <state name="010"/>
+                <state name="100"/>
+            </disablestates>
+            <event name="event06" state="06" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>25</width>
+            <shortcutKey/>
+        </button>
+        <button buttonId="60">
+            <label/>
+            <toolTip/>
+            <icon>FB_Selected_Edit</icon>
+            <disabledIcon>FB_UnSelected_Edit</disabledIcon>
+            <downIcon/>
+            <upIcon/>
+            <overIcon>FB_Selected_Edit</overIcon>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon>FB_UnSelected_Edit</selectedOverIcon>
+            <type>ISDImage</type>
+            <visible>false</visible>
+            <disablestates>
+                <state name="GetFeedBack"/>
+                <state name="MODIFY" type="INACTIVE"/>
+                <state name="LOCKED"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="01"/>
+                <state name="10"/>
+                <state name="02"/>
+                <state name="20"/>
+                <state name="03"/>
+                <state name="30"/>
+                <state name="04"/>
+                <state name="40"/>
+                <state name="05"/>
+                <state name="50"/>
+                <state name="06" type="INACTIVE"/>
+                <state name="60" type="INACTIVE"/>
+                <state name="07" type="INACTIVE"/>
+                <state name="70" type="INACTIVE"/>
+                <state name="08" type="INACTIVE"/>
+                <state name="80" type="INACTIVE"/>
+                <state name="09" type="INACTIVE"/>
+                <state name="90" type="INACTIVE"/>
+                <state name="010" type="INACTIVE"/>
+                <state name="100" type="INACTIVE"/>
+            </disablestates>
+            <event name="event60" state="60" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>25</width>
+            <shortcutKey/>
+        </button>
+        <button buttonId="07">
+            <label/>
+            <toolTip/>
+            <icon>FB_UnSelected_Edit</icon>
+            <disabledIcon>FB_Selected_Edit</disabledIcon>
+            <downIcon/>
+            <upIcon/>
+            <overIcon>FB_Selected_Edit</overIcon>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon>FB_Selected_Edit</selectedOverIcon>
+            <type>ISDImage</type>
+            <visible>false</visible>
+            <disablestates>
+                <state name="GetFeedBack" type="INACTIVE"/>
+                <state name="MODIFY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="01" type="INACTIVE"/>
+                <state name="10" type="INACTIVE"/>
+                <state name="02" type="INACTIVE"/>
+                <state name="20" type="INACTIVE"/>
+                <state name="03" type="INACTIVE"/>
+                <state name="30" type="INACTIVE"/>
+                <state name="04" type="INACTIVE"/>
+                <state name="40" type="INACTIVE"/>
+                <state name="05" type="INACTIVE"/>
+                <state name="50" type="INACTIVE"/>
+                <state name="06" type="INACTIVE"/>
+                <state name="60" type="INACTIVE"/>
+                <state name="07"/>
+                <state name="70"/>
+                <state name="08"/>
+                <state name="80"/>
+                <state name="09"/>
+                <state name="90"/>
+                <state name="010"/>
+                <state name="100"/>
+            </disablestates>
+            <event name="event07" state="07" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>25</width>
+            <shortcutKey/>
+        </button>
+        <button buttonId="70">
+            <label/>
+            <toolTip/>
+            <icon>FB_Selected_Edit</icon>
+            <disabledIcon>FB_UnSelected_Edit</disabledIcon>
+            <downIcon/>
+            <upIcon/>
+            <overIcon>FB_Selected_Edit</overIcon>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon>FB_UnSelected_Edit</selectedOverIcon>
+            <type>ISDImage</type>
+            <visible>false</visible>
+            <disablestates>
+                <state name="GetFeedBack"/>
+                <state name="MODIFY" type="INACTIVE"/>
+                <state name="LOCKED"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="01"/>
+                <state name="10"/>
+                <state name="02"/>
+                <state name="20"/>
+                <state name="03"/>
+                <state name="30"/>
+                <state name="04"/>
+                <state name="40"/>
+                <state name="05"/>
+                <state name="50"/>
+                <state name="06"/>
+                <state name="60"/>
+                <state name="07" type="INACTIVE"/>
+                <state name="70" type="INACTIVE"/>
+                <state name="08" type="INACTIVE"/>
+                <state name="80" type="INACTIVE"/>
+                <state name="09" type="INACTIVE"/>
+                <state name="90" type="INACTIVE"/>
+                <state name="010" type="INACTIVE"/>
+                <state name="100" type="INACTIVE"/>
+            </disablestates>
+            <event name="event70" state="70" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>25</width>
+            <shortcutKey/>
+        </button>
+        <button buttonId="08">
+            <label/>
+            <toolTip/>
+            <icon>FB_UnSelected_Edit</icon>
+            <disabledIcon>FB_Selected_Edit</disabledIcon>
+            <downIcon/>
+            <upIcon/>
+            <overIcon>FB_Selected_Edit</overIcon>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon>FB_Selected_Edit</selectedOverIcon>
+            <type>ISDImage</type>
+            <visible>false</visible>
+            <disablestates>
+                <state name="GetFeedBack" type="INACTIVE"/>
+                <state name="MODIFY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="01" type="INACTIVE"/>
+                <state name="10" type="INACTIVE"/>
+                <state name="02" type="INACTIVE"/>
+                <state name="20" type="INACTIVE"/>
+                <state name="03" type="INACTIVE"/>
+                <state name="30" type="INACTIVE"/>
+                <state name="04" type="INACTIVE"/>
+                <state name="40" type="INACTIVE"/>
+                <state name="05" type="INACTIVE"/>
+                <state name="50" type="INACTIVE"/>
+                <state name="06" type="INACTIVE"/>
+                <state name="60" type="INACTIVE"/>
+                <state name="07" type="INACTIVE"/>
+                <state name="70" type="INACTIVE"/>
+                <state name="08"/>
+                <state name="80"/>
+                <state name="09"/>
+                <state name="90"/>
+                <state name="010"/>
+                <state name="100"/>
+            </disablestates>
+            <event name="event08" state="08" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>25</width>
+            <shortcutKey/>
+        </button>
+        <button buttonId="80">
+            <label/>
+            <toolTip/>
+            <icon>FB_Selected_Edit</icon>
+            <disabledIcon>FB_UnSelected_Edit</disabledIcon>
+            <downIcon/>
+            <upIcon/>
+            <overIcon>FB_Selected_Edit</overIcon>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon>FB_UnSelected_Edit</selectedOverIcon>
+            <type>ISDImage</type>
+            <visible>false</visible>
+            <disablestates>
+                <state name="GetFeedBack"/>
+                <state name="MODIFY" type="INACTIVE"/>
+                <state name="LOCKED"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="01"/>
+                <state name="10"/>
+                <state name="02"/>
+                <state name="20"/>
+                <state name="03"/>
+                <state name="30"/>
+                <state name="04"/>
+                <state name="40"/>
+                <state name="05"/>
+                <state name="50"/>
+                <state name="06"/>
+                <state name="60"/>
+                <state name="07"/>
+                <state name="70"/>
+                <state name="08" type="INACTIVE"/>
+                <state name="80" type="INACTIVE"/>
+                <state name="09" type="INACTIVE"/>
+                <state name="90" type="INACTIVE"/>
+                <state name="010" type="INACTIVE"/>
+                <state name="100" type="INACTIVE"/>
+            </disablestates>
+            <event name="event80" state="80" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>25</width>
+            <shortcutKey/>
+        </button>
+        <button buttonId="09">
+            <label/>
+            <toolTip/>
+            <icon>FB_UnSelected_Edit</icon>
+            <disabledIcon>FB_Selected_Edit</disabledIcon>
+            <downIcon/>
+            <upIcon/>
+            <overIcon>FB_Selected_Edit</overIcon>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon>FB_Selected_Edit</selectedOverIcon>
+            <type>ISDImage</type>
+            <visible>false</visible>
+            <disablestates>
+                <state name="GetFeedBack" type="INACTIVE"/>
+                <state name="MODIFY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="01" type="INACTIVE"/>
+                <state name="10" type="INACTIVE"/>
+                <state name="02" type="INACTIVE"/>
+                <state name="20" type="INACTIVE"/>
+                <state name="03" type="INACTIVE"/>
+                <state name="30" type="INACTIVE"/>
+                <state name="04" type="INACTIVE"/>
+                <state name="40" type="INACTIVE"/>
+                <state name="05" type="INACTIVE"/>
+                <state name="50" type="INACTIVE"/>
+                <state name="06" type="INACTIVE"/>
+                <state name="60" type="INACTIVE"/>
+                <state name="07" type="INACTIVE"/>
+                <state name="70" type="INACTIVE"/>
+                <state name="08" type="INACTIVE"/>
+                <state name="80" type="INACTIVE"/>
+                <state name="09"/>
+                <state name="90"/>
+                <state name="010"/>
+                <state name="100"/>
+            </disablestates>
+            <event name="event09" state="09" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>25</width>
+            <shortcutKey/>
+        </button>
+        <button buttonId="90">
+            <label/>
+            <toolTip/>
+            <icon>FB_Selected_Edit</icon>
+            <disabledIcon>FB_UnSelected_Edit</disabledIcon>
+            <downIcon/>
+            <upIcon/>
+            <overIcon>FB_Selected_Edit</overIcon>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon>FB_UnSelected_Edit</selectedOverIcon>
+            <type>ISDImage</type>
+            <visible>false</visible>
+            <disablestates>
+                <state name="GetFeedBack"/>
+                <state name="MODIFY" type="INACTIVE"/>
+                <state name="LOCKED"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="01"/>
+                <state name="10"/>
+                <state name="02"/>
+                <state name="20"/>
+                <state name="03"/>
+                <state name="30"/>
+                <state name="04"/>
+                <state name="40"/>
+                <state name="05"/>
+                <state name="50"/>
+                <state name="06"/>
+                <state name="60"/>
+                <state name="07"/>
+                <state name="70"/>
+                <state name="08"/>
+                <state name="80"/>
+                <state name="09" type="INACTIVE"/>
+                <state name="90" type="INACTIVE"/>
+                <state name="010" type="INACTIVE"/>
+                <state name="100" type="INACTIVE"/>
+            </disablestates>
+            <event name="event90" state="90" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>25</width>
+            <shortcutKey/>
+        </button>
+        <button buttonId="010">
+            <label/>
+            <toolTip/>
+            <icon>FB_UnSelected_Edit</icon>
+            <disabledIcon>FB_Selected_Edit</disabledIcon>
+            <downIcon/>
+            <upIcon/>
+            <overIcon>FB_Selected_Edit</overIcon>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon>FB_Selected_Edit</selectedOverIcon>
+            <type>ISDImage</type>
+            <visible>false</visible>
+            <disablestates>
+                <state name="GetFeedBack" type="INACTIVE"/>
+                <state name="MODIFY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="01" type="INACTIVE"/>
+                <state name="10" type="INACTIVE"/>
+                <state name="02" type="INACTIVE"/>
+                <state name="20" type="INACTIVE"/>
+                <state name="03" type="INACTIVE"/>
+                <state name="30" type="INACTIVE"/>
+                <state name="04" type="INACTIVE"/>
+                <state name="40" type="INACTIVE"/>
+                <state name="05" type="INACTIVE"/>
+                <state name="50" type="INACTIVE"/>
+                <state name="06" type="INACTIVE"/>
+                <state name="60" type="INACTIVE"/>
+                <state name="07" type="INACTIVE"/>
+                <state name="70" type="INACTIVE"/>
+                <state name="08" type="INACTIVE"/>
+                <state name="80" type="INACTIVE"/>
+                <state name="09" type="INACTIVE"/>
+                <state name="90" type="INACTIVE"/>
+                <state name="010"/>
+                <state name="100"/>
+            </disablestates>
+            <event name="event010" state="010" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>25</width>
+            <shortcutKey/>
+        </button>
+        <button buttonId="100">
+            <label/>
+            <toolTip/>
+            <icon>FB_Selected_Edit</icon>
+            <disabledIcon>FB_UnSelected_Edit</disabledIcon>
+            <downIcon/>
+            <upIcon/>
+            <overIcon>FB_Selected_Edit</overIcon>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon>FB_UnSelected_Edit</selectedOverIcon>
+            <type>ISDImage</type>
+            <visible>false</visible>
+            <disablestates>
+                <state name="GetFeedBack"/>
+                <state name="MODIFY" type="INACTIVE"/>
+                <state name="LOCKED"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="01"/>
+                <state name="10"/>
+                <state name="02"/>
+                <state name="20"/>
+                <state name="03"/>
+                <state name="30"/>
+                <state name="04"/>
+                <state name="40"/>
+                <state name="05"/>
+                <state name="50"/>
+                <state name="06"/>
+                <state name="60"/>
+                <state name="07"/>
+                <state name="70"/>
+                <state name="08"/>
+                <state name="80"/>
+                <state name="09"/>
+                <state name="90"/>
+                <state name="010" type="INACTIVE"/>
+                <state name="100" type="INACTIVE"/>
+            </disablestates>
+            <event name="event100" state="100" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>25</width>
+            <shortcutKey/>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="AttachmentBar" defaultState="NOATTACH">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+        </respectStates>
+        <button buttonId="AttBtn">
+            <label/>
+            <toolTip>IDS_RELCONTENT_CANVAS_TITLE</toolTip>
+            <icon/>
+            <disabledIcon>related_content_disabled</disabledIcon>
+            <downIcon>related_content_down</downIcon>
+            <upIcon>related_content_up</upIcon>
+            <overIcon>related_content_over</overIcon>
+            <selectedDisabledIcon>related_content_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>related_content_sdown</selectedDownIcon>
+            <selectedUpIcon>related_content_sup</selectedUpIcon>
+            <selectedOverIcon>related_content_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover>true</onHover>
+            <visible>false</visible>
+            <disablestates>
+                <state name="NOATTACH" type="INACTIVE"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+            </disablestates>
+            <event name="ATTACH" state="ATTACH" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>32</height>
+            <width>32</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey>ctrl+7</shortcutKey>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="Physician-Save" defaultState="ContactsIncomplete">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+        </respectStates>
+        <button buttonId="OkBtn">
+            <label>IDS_SAVE</label>
+            <toolTip>IDS_SAVE</toolTip>
+            <icon/>
+            <disabledIcon>GN_Save_disabled</disabledIcon>
+            <downIcon>GN_Save_down</downIcon>
+            <upIcon>GN_Save_up</upIcon>
+            <overIcon>GN_Save_over</overIcon>
+            <selectedDisabledIcon>GN_Save_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>GN_Save_sdown</selectedDownIcon>
+            <selectedUpIcon>GN_Save_sup</selectedUpIcon>
+            <selectedOverIcon>GN_Save_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="ContactsIncomplete" type="INACTIVE"/>
+            </disablestates>
+            <event name="SAVE_PHYSICIAN_DATA" state="CLOSE" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>21</height>
+            <width>60</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+        <button buttonId="CancelBtn">
+            <label>IDS_BTNCANCEL_TITLE</label>
+            <toolTip>IDS_BTNCANCEL_TITLE</toolTip>
+            <icon/>
+            <disabledIcon/>
+            <downIcon/>
+            <upIcon/>
+            <overIcon/>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon/>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates/>
+            <event name="CANCEL_PHYSICIAN_DATA" state="CLOSE" propogateTo="ALL_CONTAINERS" restorePrevState="true"/>
+            <height>21</height>
+            <width>50</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+        <button buttonId="Reset">
+            <label>IDS_RESET</label>
+            <toolTip/>
+            <icon/>
+            <disabledIcon/>
+            <downIcon/>
+            <upIcon/>
+            <overIcon/>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon/>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+            </disablestates>
+            <event name="eventResetHolders" state="RESETHOLDERS" propogateTo="SELF" restorePrevState="true"/>
+            <height>20</height>
+            <width>50</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="MP-Save" defaultState="DOFILTER">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+        </respectStates>
+        <button buttonId="OkBtn">
+            <label>IDS_SAVE</label>
+            <toolTip>IDS_SAVE</toolTip>
+            <icon/>
+            <disabledIcon>GN_Save_disabled</disabledIcon>
+            <downIcon>GN_Save_down</downIcon>
+            <upIcon>GN_Save_up</upIcon>
+            <overIcon>GN_Save_over</overIcon>
+            <selectedDisabledIcon>GN_Save_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>GN_Save_sdown</selectedDownIcon>
+            <selectedUpIcon>GN_Save_sup</selectedUpIcon>
+            <selectedOverIcon>GN_Save_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates/>
+            <event name="SAVE_NEW_MP_CONFIRM" state="NEWMP" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>21</height>
+            <width>60</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+        <button buttonId="CancelBtn">
+            <label>IDS_BTNCANCEL_TITLE</label>
+            <toolTip>IDS_BTNCANCEL_TITLE</toolTip>
+            <icon/>
+            <disabledIcon/>
+            <downIcon/>
+            <upIcon/>
+            <overIcon/>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon/>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates/>
+            <event name="CANCEL_SAVE" state="NEWMP" propogateTo="ALL_CONTAINERS" restorePrevState="true"/>
+            <height>21</height>
+            <width>60</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="SKB-MoreInfo" defaultState="HIDEMOREINFO">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+        </respectStates>
+        <button buttonId="MoreInfoBtn">
+            <label>IDS_MOREINFO_TITLE_MOREINFO</label>
+            <toolTip>IDS_MOREINFO_TITLE_MOREINFO</toolTip>
+            <icon/>
+            <disabledIcon/>
+            <downIcon/>
+            <upIcon/>
+            <overIcon/>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon/>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="HIDEMOREINFO" type="INACTIVE"/>
+            </disablestates>
+            <event name="MoreInfo" state="MOREINFO" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>21</height>
+            <width>70</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="Close" defaultState="" firstChangeInternal="false">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+        </respectStates>
+        <button buttonId="1">
+            <label>IDS_SAVE</label>
+            <toolTip>IDS_SAVE_CLOSE</toolTip>
+            <icon/>
+            <disabledIcon>GN_Save_icon</disabledIcon>
+            <downIcon>GN_Save_icon</downIcon>
+            <upIcon>GN_Save_icon</upIcon>
+            <overIcon>GN_Save_icon</overIcon>
+            <selectedDisabledIcon>GN_Save_icon</selectedDisabledIcon>
+            <selectedDownIcon>GN_Save_icon</selectedDownIcon>
+            <selectedUpIcon>GN_Save_icon</selectedUpIcon>
+            <selectedOverIcon>GN_Save_icon</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <disablestates>
+                <state name="LOCKED" type="INACTIVE"/>
+            </disablestates>
+            <event name="eventClose" state="CLOSE" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>60</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey>ctrl+4</shortcutKey>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="NoSaveClose" defaultState="" firstChangeInternal="false">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+        </respectStates>
+        <button buttonId="1">
+            <label>IDS_BTNCLOSE_TITLE</label>
+            <toolTip>IDS_NOSAVE_CLOSE</toolTip>
+            <icon/>
+            <disabledIcon/>
+            <downIcon/>
+            <upIcon/>
+            <overIcon/>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon/>
+            <type>ISDButton</type>
+            <onHover/>
+            <disablestates>
+                <state name="LOCKED" type="INACTIVE"/>
+            </disablestates>
+            <event name="eventNoSaveClose" state="CLOSE" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>60</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="Sign" defaultState="" firstChangeInternal="false">
+        <respectStates>
+			<toolbar name="Sign"/>
+            <toolbar name="Detailer - Standard"/>
+        </respectStates>
+        <button buttonId="1">
+            <label>IDS_BTNSIGN_TITLE</label>            
+            <toolTip>IDS_BTNSIGN_TITLE</toolTip>
+            <icon/>
+            <disabledIcon>DS_Sign_disabled</disabledIcon>
+            <downIcon>DS_Sign_down</downIcon>
+            <upIcon>DS_Sign_up</upIcon>
+            <overIcon>DS_Sign_over</overIcon>
+            <selectedDisabledIcon>DS_Sign_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>DS_Sign_sdown</selectedDownIcon>
+            <selectedUpIcon>DS_Sign_sup</selectedUpIcon>
+            <selectedOverIcon>DS_Sign_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <disablestates>
+               <state name="LOCKED" type="INACTIVE"/>
+				<state name="SIGN_DISABLED" type="INACTIVE"/>
+            </disablestates>
+            <event name="eventLoadSignCtrl" state="SIGN" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <!-- For old sign functionality change event name to "eventSign" -->
+            <height>20</height>
+            <width>60</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey>ctrl+i</shortcutKey>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="Save and Cancel" defaultState="DEFAULT" firstChangeInternal="false">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+        </respectStates>
+        <button buttonId="Save">
+            <label>IDS_SAVE</label>
+            <toolTip>IDS_SAVE</toolTip>
+            <icon/>
+            <disabledIcon>GN_Save_disabled</disabledIcon>
+            <downIcon>GN_Save_down</downIcon>
+            <upIcon>GN_Save_up</upIcon>
+            <overIcon>GN_Save_over</overIcon>
+            <selectedDisabledIcon>GN_Save_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>GN_Save_sdown</selectedDownIcon>
+            <selectedUpIcon>GN_Save_sup</selectedUpIcon>
+            <selectedOverIcon>GN_Save_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+            </disablestates>
+            <event name="eventSaveFeedback" state="SAVEFEEDBACK" propogateTo="SELF" restorePrevState="true"/>
+            <height>20</height>
+            <width>60</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+        <button buttonId="Cancel">
+            <label>IDS_BTNCANCEL_TITLE</label>
+            <toolTip>IDS_BTNCANCEL_TITLE</toolTip>
+            <icon/>
+            <disabledIcon/>
+            <downIcon/>
+            <upIcon/>
+            <overIcon/>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon/>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+            </disablestates>
+            <event name="eventCancelFeedback" state="CANCELFEEDBACK" propogateTo="SELF" restorePrevState="true"/>
+            <height>20</height>
+            <width>50</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="AddPhysician" defaultState="DEFAULT" firstChangeInternal="false">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+            <toolbar name="Preview and Close"/>
+        </respectStates>
+        <button buttonId="AddPhyBtn">
+            <label/>
+            <toolTip>IDS_ADD_PHYSICIAN_TOOLTIP</toolTip>
+            <icon/>
+            <disabledIcon>DS_Add_Physician_disabled</disabledIcon>
+            <downIcon>DS_Add_Physician_down</downIcon>
+            <upIcon>DS_Add_Physician_up</upIcon>
+            <overIcon>DS_Add_Physician_over</overIcon>
+            <selectedDisabledIcon>DS_Add_Physician_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>DS_Add_Physician_sdown</selectedDownIcon>
+            <selectedUpIcon>DS_Add_Physician_sup</selectedUpIcon>
+            <selectedOverIcon>DS_Add_Physician_sover</selectedOverIcon>
+            <type>ISDCounterButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="DEFAULT" type="INACTIVE"/>
+            </disablestates>
+            <event name="eventAddPhysician" state="ADDPHYSICIAN" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>32</height>
+            <width>32</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey>ctrl+shift+y</shortcutKey>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="AddPhysicianPreview" defaultState="DEFAULT">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+            <toolbar name="Preview and Close"/>
+        </respectStates>
+        <button buttonId="AddPhyBtn">
+            <label/>
+            <toolTip>IDS_ADD_PHYSICIAN_TOOLTIP</toolTip>
+            <icon/>
+            <disabledIcon>DS_Add_Physician_disabled</disabledIcon>
+            <downIcon>DS_Add_Physician_down</downIcon>
+            <upIcon>DS_Add_Physician_up</upIcon>
+            <overIcon>DS_Add_Physician_over</overIcon>
+            <selectedDisabledIcon>DS_Add_Physician_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>DS_Add_Physician_sdown</selectedDownIcon>
+            <selectedUpIcon>DS_Add_Physician_sup</selectedUpIcon>
+            <selectedOverIcon>DS_Add_Physician_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="LOCKED"/>
+                <state name="DEFAULT" type="INACTIVE"/>
+            </disablestates>
+            <event name="eventAddPhysician" state="ADDPHYSICIAN" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>32</height>
+            <width>32</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="ThumbTack" defaultState="TOGGLE" firstChangeInternal="false">
+        <respectStates/>
+        <button buttonId="ThumbTackButton">
+            <label/>
+            <toolTip>IDS_THUMBTACK_TIP</toolTip>
+            <icon/>
+            <disabledIcon>library_disabled</disabledIcon>
+            <downIcon>library_down</downIcon>
+            <upIcon>library_up</upIcon>
+            <overIcon>library_over</overIcon>
+            <selectedDisabledIcon>library_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>library_sdown</selectedDownIcon>
+            <selectedUpIcon>library_sup</selectedUpIcon>
+            <selectedOverIcon>library_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+            </disablestates>
+            <event name="ThumbTackClick" state="TOGGLE" propogateTo="SELF" restorePrevState="true"/>
+            <height>32</height>
+            <width>32</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="Success or Failed" defaultState="TOGGLE" firstChangeInternal="false">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+        </respectStates>
+        <button buttonId="Success">
+            <label>IDS_SUCCESS_LABEL</label>
+            <toolTip>IDS_SUCCESS_LABEL</toolTip>
+            <icon/>
+            <disabledIcon/>
+            <downIcon/>
+            <upIcon/>
+            <overIcon/>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon/>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+            </disablestates>
+            <event name="eventSuccess" state="SUCCESS" propogateTo="SELF" restorePrevState="true"/>
+            <height>20</height>
+            <width>60</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+        <button buttonId="Failed">
+            <label>IDS_FAILED_LABEL</label>
+            <toolTip>IDS_FAILED_LABEL</toolTip>
+            <icon/>
+            <disabledIcon/>
+            <downIcon/>
+            <upIcon/>
+            <overIcon/>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon/>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+            </disablestates>
+            <event name="eventFailed" state="FAILED" propogateTo="SELF" restorePrevState="true"/>
+            <height>20</height>
+            <width>60</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="Preview and Close" defaultState="PREVIEW" firstChangeInternal="false">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+        </respectStates>
+        <button buttonId="1">
+            <label>IDS_BTNCLOSE_TITLE</label>
+            <toolTip>IDS_SAVE_CLOSE</toolTip>
+            <icon/>
+            <disabledIcon>GN_Save_icon</disabledIcon>
+            <downIcon>GN_Save_icon</downIcon>
+            <upIcon>GN_Save_icon</upIcon>
+            <overIcon>GN_Save_icon</overIcon>
+            <selectedDisabledIcon>GN_Save_icon</selectedDisabledIcon>
+            <selectedDownIcon>GN_Save_icon</selectedDownIcon>
+            <selectedUpIcon>GN_Save_icon</selectedUpIcon>
+            <selectedOverIcon>GN_Save_icon</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <disablestates>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="PREVIEW"/>
+            </disablestates>
+            <event name="eventClose" state="CLOSE" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>60</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+        <button buttonId="2">
+            <label>IDS_PREVIEW_CLOSE</label>
+            <toolTip>IDS_PREVIEW_CLOSE</toolTip>
+            <icon/>
+            <disabledIcon>DS_Close_disabled</disabledIcon>
+            <downIcon>DS_Close_down</downIcon>
+            <upIcon>DS_Close_up</upIcon>
+            <overIcon>DS_Close_over</overIcon>
+            <selectedDisabledIcon>DS_Close_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>DS_Close_sdown</selectedDownIcon>
+            <selectedUpIcon>DS_Close_sup</selectedUpIcon>
+            <selectedOverIcon>DS_Close_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <disablestates>
+                <state name="LOCKED"/>
+                <state name="LIVE"/>
+                <state name="CLOSE"/>                
+            </disablestates>
+            <event name="eventGoLive" state="LIVE" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>150</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey>ctrl+v</shortcutKey>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="Message Help" defaultState="READONLY" firstChangeInternal="false">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+        </respectStates>
+        <button buttonId="Help">
+            <label/>
+            <toolTip>IDS_HELP_TIP</toolTip>
+            <icon/>
+            <disabledIcon>Help_disabled</disabledIcon>
+            <downIcon>Help_down</downIcon>
+            <upIcon>Help_up</upIcon>
+            <overIcon>Help_over</overIcon>
+            <selectedDisabledIcon>Help_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>Help_sdown</selectedDownIcon>
+            <selectedUpIcon>Help_sup</selectedUpIcon>
+            <selectedOverIcon>Help_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="NOHELP" type="INACTIVE"/>
+            </disablestates>
+            <event name="eventShowHelp" state="showHelp" propogateTo="SELF" restorePrevState="true"/>
+            <height>32</height>
+            <width>32</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey>ctrl+1</shortcutKey>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="AddPhysicianDisc" defaultState="DEFAULT">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+        </respectStates>
+        <button buttonId="AddPhyDiscBtn">
+            <label/>
+            <toolTip>IDS_ADD_PHYSICIAN_DISCLAIMER_TOOLTIP</toolTip>
+            <icon/>
+            <disabledIcon>Show_Disclaimer_disabled</disabledIcon>
+            <downIcon>Show_Disclaimer_down</downIcon>
+            <upIcon>Show_Disclaimer_up</upIcon>
+            <overIcon>Show_Disclaimer_over</overIcon>
+            <selectedDisabledIcon>Show_Disclaimer_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>Show_Disclaimer_sdown</selectedDownIcon>
+            <selectedUpIcon>Show_Disclaimer_sup</selectedUpIcon>
+            <selectedOverIcon>Show_Disclaimer_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="NoDisclosureMessage" type="INACTIVE"/>  
+            </disablestates>
+            <event name="eventAddPhysicianDisclaimer" state="ADDPHYSICIANDISCLAIMER" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>32</height>
+            <width>32</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="SwitchPlan" defaultState="DEFAULT" firstChangeInternal="false">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+        </respectStates>
+        <button buttonId="Plan">
+            <label/>
+            <toolTip>IDS_MP_TAB_TWO</toolTip>
+            <icon/>
+            <disabledIcon>switch_plan_disabled</disabledIcon>
+            <downIcon>switch_plan_down</downIcon>
+            <upIcon>switch_plan_up</upIcon>
+            <overIcon>switch_plan_over</overIcon>
+            <selectedDisabledIcon>switch_plan_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>switch_plan_sdown</selectedDownIcon>
+            <selectedUpIcon>switch_plan_sup</selectedUpIcon>
+            <selectedOverIcon>switch_plan_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover>true</onHover>
+            <visible>false</visible>
+            <disablestates>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+            </disablestates>
+            <event name="eventNextPlan" state="NextPlan" propogateTo="SELF" restorePrevState="true"/>
+            <height>32</height>
+            <width>32</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey>ctrl+3</shortcutKey>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="LastMessage" defaultState="DEFAULT">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+        </respectStates>
+        <button buttonId="LastMessageBtn">
+            <label/>
+            <toolTip/>
+            <icon/>
+            <disabledIcon>SK_Last_Viewed_disabled</disabledIcon>
+            <downIcon>SK_Last_Viewed_down</downIcon>
+            <upIcon>SK_Last_Viewed_up</upIcon>
+            <overIcon>SK_Last_Viewed_over</overIcon>
+            <selectedDisabledIcon>SK_Last_Viewed_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>SK_Last_Viewed_sdown</selectedDownIcon>
+            <selectedUpIcon>SK_Last_Viewed_sup</selectedUpIcon>
+            <selectedOverIcon>SK_Last_Viewed_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover>true</onHover>
+            <visible>false</visible>
+            <disablestates>
+                <state name="LOCKED" type="INACTIVE"/>
+            </disablestates>
+            <event name="eventLastMessage" state="LASTMESSAGE" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>32</height>
+            <width>32</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="DetailMessage" defaultState="NoNextDetailMessage">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+        </respectStates>
+        <button buttonId="DetailMsgBtn">
+            <label/>
+            <toolTip>IDS_DETAILEDMSGS_CANVAS_TITLE</toolTip>
+            <icon/>
+            <disabledIcon>detail_messages_disabled</disabledIcon>
+            <downIcon>detail_messages_down</downIcon>
+            <upIcon>detail_messages_up</upIcon>
+            <overIcon>detail_messages_over</overIcon>
+            <selectedDisabledIcon>detail_messages_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>detail_messages_sdown</selectedDownIcon>
+            <selectedUpIcon>detail_messages_sup</selectedUpIcon>
+            <selectedOverIcon>detail_messages_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover>true</onHover>
+            <visible>false</visible>
+            <disablestates>
+                <state name="NoNextDetailMessage" type="INACTIVE"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+            </disablestates>
+            <event name="eventDetailMessage" state="NextDetailMessage" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>32</height>
+            <width>32</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey>ctrl+2</shortcutKey>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="ISD Previous" defaultState="STARTPCD" firstChangeInternal="false">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+            <toolbar name="ISD Next"/>
+        </respectStates>
+        <button buttonId="PreviousSlide">
+            <label/>
+            <toolTip>IDS_PREV_TOOLTIP</toolTip>
+            <icon/>
+            <disabledIcon>CN_Previous_disabled</disabledIcon>
+            <downIcon>CN_Previous_down</downIcon>
+            <upIcon>CN_Previous_up</upIcon>
+            <overIcon>CN_Previous_over</overIcon>
+            <selectedDisabledIcon>CN_Previous_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>CN_Previous_sdown</selectedDownIcon>
+            <selectedUpIcon>CN_Previous_sup</selectedUpIcon>
+            <selectedOverIcon>CN_Previous_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="PAUSEPCD" type="INACTIVE"/>
+                <state name="FIRSTPCD" type="INACTIVE"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="SIGN" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="STARTPCD" type="INACTIVE"/>
+                <state name="NOMSG" type="INACTIVE"/>
+                <state name="ATFIRST" type="INACTIVE"/>
+            </disablestates>
+            <event name="PREVPCD" state="PREVPCD" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>50</height>
+            <width>50</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey>Ctrl+shift+p</shortcutKey>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="ISD Next" defaultState="STARTPCD" firstChangeInternal="false">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+            <toolbar name="ISD Previous"/>
+        </respectStates>
+        <button buttonId="NextSlide">
+            <label/>
+            <toolTip>IDS_NEXT_TOOLTIP</toolTip>
+            <icon/>
+            <disabledIcon>CN_Next_disabled</disabledIcon>
+            <downIcon>CN_Next_down</downIcon>
+            <upIcon>CN_Next_up</upIcon>
+            <overIcon>CN_Next_over</overIcon>
+            <selectedDisabledIcon>CN_Next_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>CN_Next_sdown</selectedDownIcon>
+            <selectedUpIcon>CN_Next_sup</selectedUpIcon>
+            <selectedOverIcon>CN_Next_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="PAUSEPCD" type="INACTIVE"/>
+                <state name="LASTPCD" type="INACTIVE"/>
+                <state name="READONLY" type="INACTIVE"/>
+                <state name="SIGN" type="INACTIVE"/>
+                <state name="LOCKED" type="INACTIVE"/>
+                <state name="NOMSG" type="INACTIVE"/>
+                <state name="ATLAST" type="INACTIVE"/>
+            </disablestates>
+            <event name="NEXTPCD" state="NEXTPCD" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>50</height>
+            <width>50</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey>ctrl+shift+n</shortcutKey>
+        </button>
+    </toolbar>
+    <toolbar toolbarId="KeyPadRowOne" defaultState="DEFAULT" firstChangeInternal="false">
+        <respectStates>
+            <toolbar name="KeyPadRowOne"/>
+        </respectStates>
+        <button buttonId="1">
+            <label>IDS_BTNONE_TITLE</label>
+            <toolTip>IDS_BTNONE_TITLE</toolTip>
+            <icon/>
+            <disabledIcon/>
+            <downIcon/>
+            <upIcon/>
+            <overIcon/>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon/>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="READONLY" type="INACTIVE"/>
+            </disablestates>
+            <event name="inputNumber" state="OK" propogateTo="SELF" restorePrevState="true"/>
+            <height>20</height>
+            <width>30</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+        <button buttonId="2">
+            <label>IDS_BTNTWO_TITLE</label>
+            <toolTip>IDS_BTNTWO_TITLE</toolTip>
+            <icon/>
+            <disabledIcon/>
+            <downIcon/>
+            <upIcon/>
+            <overIcon/>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon/>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="READONLY" type="INACTIVE"/>
+            </disablestates>
+            <event name="inputNumberTwo" state="OK" propogateTo="SELF" restorePrevState="true"/>
+            <height>20</height>
+            <width>30</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+            <button buttonId="3">
+            <label>IDS_BTNTHREE_TITLE</label>
+            <toolTip>IDS_BTNTHREE_TITLE</toolTip>
+            <icon/>
+            <disabledIcon/>
+            <downIcon/>
+            <upIcon/>
+            <overIcon/>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon/>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="READONLY" type="INACTIVE"/>
+            </disablestates>
+            <event name="inputNumberThree" state="OK" propogateTo="SELF" restorePrevState="true"/>
+            <height>20</height>
+            <width>30</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>                
+        </toolbar>
+        <toolbar toolbarId="KeyPadRowTwo" defaultState="DEFAULT" firstChangeInternal="false">
+        <respectStates>
+            <toolbar name="KeyPadRowTwo"/>
+        </respectStates>
+        <button buttonId="1">
+            <label>IDS_BTNFOUR_TITLE</label>
+            <toolTip>IDS_BTNFOUR_TITLE</toolTip>
+            <icon/>
+            <disabledIcon/>
+            <downIcon/>
+            <upIcon/>
+            <overIcon/>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon/>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="READONLY" type="INACTIVE"/>
+            </disablestates>
+            <event name="inputNumberFour" state="OK" propogateTo="SELF" restorePrevState="true"/>
+            <height>20</height>
+            <width>30</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+        <button buttonId="2">
+            <label>IDS_BTNFIVE_TITLE</label>
+            <toolTip>IDS_BTNFIVE_TITLE</toolTip>
+            <icon/>
+            <disabledIcon/>
+            <downIcon/>
+            <upIcon/>
+            <overIcon/>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon/>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="READONLY" type="INACTIVE"/>
+            </disablestates>
+            <event name="inputNumberFive" state="OK" propogateTo="SELF" restorePrevState="true"/>
+            <height>20</height>
+            <width>30</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+            <button buttonId="3">
+            <label>IDS_BTNSIX_TITLE</label>
+            <toolTip>IDS_BTNSIX_TITLE</toolTip>
+            <icon/>
+            <disabledIcon/>
+            <downIcon/>
+            <upIcon/>
+            <overIcon/>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon/>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="READONLY" type="INACTIVE"/>
+            </disablestates>
+            <event name="inputNumberSix" state="OK" propogateTo="SELF" restorePrevState="true"/>
+            <height>20</height>
+            <width>30</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>                
+        </toolbar>
+        <toolbar toolbarId="KeyPadRowThree" defaultState="DEFAULT" firstChangeInternal="false">
+        <respectStates>
+            <toolbar name="KeyPadRowThree"/>
+        </respectStates>
+        <button buttonId="1">
+            <label>IDS_BTNSEVEN_TITLE</label>
+            <toolTip>IDS_BTNSEVEN_TITLE</toolTip>
+            <icon/>
+            <disabledIcon/>
+            <downIcon/>
+            <upIcon/>
+            <overIcon/>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon/>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="READONLY" type="INACTIVE"/>
+            </disablestates>
+            <event name="inputNumberSeven" state="OK" propogateTo="SELF" restorePrevState="true"/>
+            <height>20</height>
+            <width>30</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+        <button buttonId="2">
+            <label>IDS_BTNEIGHT_TITLE</label>
+            <toolTip>IDS_BTNEIGHT_TITLE</toolTip>
+            <icon/>
+            <disabledIcon/>
+            <downIcon/>
+            <upIcon/>
+            <overIcon/>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon/>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="READONLY" type="INACTIVE"/>
+            </disablestates>
+            <event name="inputNumberEight" state="OK" propogateTo="SELF" restorePrevState="true"/>
+            <height>20</height>
+            <width>30</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+            <button buttonId="3">
+            <label>IDS_BTNNINE_TITLE</label>
+            <toolTip>IDS_BTNNINE_TITLE</toolTip>
+            <icon/>
+            <disabledIcon/>
+            <downIcon/>
+            <upIcon/>
+            <overIcon/>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon/>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="READONLY" type="INACTIVE"/>
+            </disablestates>
+            <event name="inputNumberNine" state="OK" propogateTo="SELF" restorePrevState="true"/>
+            <height>20</height>
+            <width>30</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>                
+        </toolbar>
+        <!--Signature Ctrl - Start Defn-->
+        <toolbar toolbarId="SignatureCtrlToolbar" defaultState="DEFAULT" firstChangeInternal="false">
+        <respectStates>
+        	<toolbar name="SignatureCtrlToolbar"/>
+        </respectStates>
+        <button buttonId="Save">
+            <label>IDS_SAVE</label>
+            <toolTip>IDS_SAVE</toolTip>
+            <icon/>
+            <disabledIcon>GN_Save_disabled</disabledIcon>
+            <downIcon>GN_Save_down</downIcon>
+            <upIcon>GN_Save_up</upIcon>
+            <overIcon>GN_Save_over</overIcon>
+            <selectedDisabledIcon>GN_Save_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>GN_Save_sdown</selectedDownIcon>
+            <selectedUpIcon>GN_Save_sup</selectedUpIcon>
+            <selectedOverIcon>GN_Save_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="DEFAULT" type="INACTIVE"/>
+            </disablestates>
+            <event name="eventSaveSign" state="OK" propogateTo="SELF" restorePrevState="true"/>
+            <height>20</height>
+            <width>60</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+        <button buttonId="clear">
+            <label>IDS_CLEAR</label>
+            <toolTip>IDS_CLEAR</toolTip>
+            <icon>WB_Erase_icon</icon>
+            <disabledIcon>WB_Erase_disabled</disabledIcon>
+            <downIcon/>
+            <upIcon/>
+            <overIcon/>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon/>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>true</visible>
+            <disablestates>
+                <state name="DEFAULT" type="INACTIVE"/>
+            </disablestates>
+            <event name="eventClearSign" state="DEFAULT" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>60</width>
+            <disabledIcon>WB_Erase_disabled</disabledIcon>
+            <downIcon>WB_Erase_down</downIcon>
+            <upIcon>WB_Erase_up</upIcon>
+            <overIcon>WB_Erase_over</overIcon>
+            <selectedDisabledIcon>WB_Erase_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>WB_Erase_sdown</selectedDownIcon>
+            <selectedUpIcon>WB_Erase_sup</selectedUpIcon>
+            <selectedOverIcon>WB_Erase_sover</selectedOverIcon>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+        <button buttonId="cancel">
+            <label>IDS_BTNCANCEL_TITLE</label>
+            <toolTip>IDS_BTNCANCEL_TITLE</toolTip>
+            <icon/>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates/> 
+            <event name="eventCancelSign" state="OK" propogateTo="SELF" restorePrevState="false"/>
+            <height>20</height>
+            <width>80</width>
+            <disabledIcon>SC_Cancel_icon</disabledIcon>
+            <downIcon>SC_Cancel_down</downIcon>
+            <upIcon>SC_Cancel_up</upIcon>
+            <overIcon>SC_Cancel_over</overIcon>
+            <selectedDisabledIcon>SC_Cancel_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>SC_Cancel_sdown</selectedDownIcon>
+            <selectedUpIcon>SC_Cancel_sup</selectedUpIcon>
+            <selectedOverIcon>SC_Cancel_sover</selectedOverIcon>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>        
+        </toolbar>
+        <toolbar toolbarId="ChangeProfessional" defaultState="DEFAULT" firstChangeInternal="false">
+        <respectStates>
+        </respectStates>
+        <button buttonId="ChngProf">
+            <label></label>
+            <toolTip>IDS_CHNG_PROF</toolTip>
+            <icon></icon>
+            <disabledIcon>Switch_Physician_disabled</disabledIcon>
+            <downIcon>Switch_Physician_down</downIcon>
+            <upIcon>Switch_Physician_up</upIcon>
+            <overIcon>Switch_Physician_over</overIcon>
+            <selectedDisabledIcon>Switch_Physician_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>Switch_Physician_sdown</selectedDownIcon>
+            <selectedUpIcon>Switch_Physician_sup</selectedUpIcon>
+            <selectedOverIcon>Switch_Physician_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+                <state name="READONLY" type="INACTIVE"/>
+            </disablestates>
+            <event name="eventChngProf" state="OK" propogateTo="SELF" restorePrevState="true"/>
+            <height>20</height>
+            <width>30</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+        </toolbar>
+        <toolbar toolbarId="Delete" defaultState="DEFAULT" firstChangeInternal="false">
+        <respectStates>
+        </respectStates>
+        <button buttonId="DelSample">
+            <label></label>
+            <toolTip>IDS_DEL_SAMP</toolTip>
+            <icon>trash_icon</icon>
+            <disabledIcon>trash_disabled</disabledIcon>
+            <downIcon/>
+            <upIcon/>
+            <overIcon/>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon/>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>true</visible>            
+            <event name="eventDelSample" state="Delete" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>30</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+        </toolbar>
+        <toolbar toolbarId="SelectContact" defaultState="DEFAULT">
+        <respectStates>
+            <toolbar name="Detailer - Standard"/>
+        </respectStates>
+        <button buttonId="SelectContact">
+            <label>IDS_SELECT</label>
+            <toolTip>IDS_SELECT</toolTip>
+            <icon/>
+            <disabledIcon>GN_Save_disabled</disabledIcon>
+            <downIcon>GN_Save_down</downIcon>
+            <upIcon>GN_Save_up</upIcon>
+            <overIcon>GN_Save_over</overIcon>
+            <selectedDisabledIcon>GN_Save_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>GN_Save_sdown</selectedDownIcon>
+            <selectedUpIcon>GN_Save_sup</selectedUpIcon>
+            <selectedOverIcon>GN_Save_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+            </disablestates>
+            <event name="eventSelectContact" state="CLOSE" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>21</height>
+            <width>65</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+        <button buttonId="CancelBtn">
+            <label>IDS_BTNCANCEL_TITLE</label>
+            <toolTip>IDS_BTNCANCEL_TITLE</toolTip>
+            <icon/>
+            <disabledIcon/>
+            <downIcon/>
+            <upIcon/>
+            <overIcon/>
+            <selectedDisabledIcon/>
+            <selectedDownIcon/>
+            <selectedUpIcon/>
+            <selectedOverIcon/>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates/>
+            <event name="CANCEL" state="CANCEL" propogateTo="ALL_CONTAINERS" restorePrevState="true"/>
+            <height>21</height>
+            <width>50</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+        </toolbar>
+        <toolbar toolbarId="NextPrev" defaultState="ContactsIncomplete">
+        <button buttonId="prev">
+            <label/>
+            <toolTip>IDS_PREVIOUS</toolTip>
+            <icon/>
+            <disabledIcon>CN_Previous_disabled</disabledIcon>
+            <downIcon>CN_Previous_down</downIcon>
+            <upIcon>CN_Previous_up</upIcon>
+            <overIcon>CN_Previous_over</overIcon>
+            <selectedDisabledIcon>CN_Previous_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>CN_Previous_sdown</selectedDownIcon>
+            <selectedUpIcon>CN_Previous_sup</selectedUpIcon>
+            <selectedOverIcon>CN_Previous_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+            </disablestates>
+            <event name="PREV" state="PREV" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>24</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+        <button buttonId="next">
+            <label/>
+            <toolTip>IDS_NEXT</toolTip>
+            <icon/>
+            <disabledIcon>CN_Next_disabled</disabledIcon>
+            <downIcon>CN_Next_down</downIcon>
+            <upIcon>CN_Next_up</upIcon>
+            <overIcon>CN_Next_over</overIcon>
+            <selectedDisabledIcon>CN_Next_sdisabled</selectedDisabledIcon>
+            <selectedDownIcon>CN_Next_sdown</selectedDownIcon>
+            <selectedUpIcon>CN_Next_sup</selectedUpIcon>
+            <selectedOverIcon>CN_Next_sover</selectedOverIcon>
+            <type>ISDButton</type>
+            <onHover/>
+            <visible>false</visible>
+            <disablestates>
+            </disablestates>
+            <event name="NEXT" state="NEXT" propogateTo="ALL_CONTAINERS" restorePrevState="false"/>
+            <height>20</height>
+            <width>24</width>
+            <readonlystates/>
+            <readonly/>
+            <shortcutKey/>
+        </button>
+        </toolbar>
+        <!--Signature Ctrl - End Defn-->
+</toolbars>

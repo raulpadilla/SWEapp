@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<TITLE></TITLE>
+<SCRIPT></SCRIPT>
+<script src="../jd/header.js">
+</script>
+<script src="sharedOrderCode.js">
+</script>
+<SCRIPT>
+var USE_SUBVAR = true;
+function Item_Obj(version,name, itemized,desc,partno,qty,price,data, instanceName,alt_oms_url)
+{
+this.pagesetVersion = version;
+this.pagesetName = name;
+this.pagesetItemized = itemized;
+this.desc = desc;
+this.partno = partno;
+this.qty = qty;
+this.price = price;
+this.data = data;
+this.instanceName = instanceName;
+this.alt_oms_url = alt_oms_url;
+this.children = new Array();
+}
+function CreateItem(engineResults,item)
+{
+var subvar = OL.GetConfigVar("ORDER","SUBVAR");
+var pagesetVersion = item.infoTables["version"]; 
+var pagesetDesc = item.infoTables["desc"];
+var pagesetName = item["product"];
+var pagesetItemized =item.infoTables["itemized"];
+var alt_oms_url = item.infoTables["alt_oms_url"];
+var qty = 1;
+var data = item["outputs"];
+var instanceName = item["instanceName"];
+if(typeof data["QUANTITY"] != "undefined" && data["QUANTITY"] != null){
+qty = data["QUANTITY"];
+}
+if(typeof data["QTY"] != "undefined" && data["QTY"] != null){
+qty = data["QTY"];
+}
+var price = data["PRICE"];
+var partno = data[subvar];
+OL.SendEvent('ITEM_ADDED',window, qty, price, pagesetDesc, partno);
+var newItem = new Item_Obj(pagesetVersion,pagesetName,pagesetItemized,pagesetDesc,partno,qty,price,data,instanceName,alt_oms_url);
+var subitems =AddSubitems(data, newItem);
+var subProducts = AddSubConfig(engineResults,item);
+if(subitems != null){
+for (var i in subitems){
+newItem.children[i] = subitems[i];
+}
+}
+if(subProducts != null){
+for (var x in subProducts){
+newItem.children[x] = subProducts[x];
+}
+}
+return newItem;
+}
+function CreatePackage(argArray, results)
+{
+var pckg = null;
+var engineResults = null;
+if(typeof results != "undefined" && results != null){
+engineResults = results;
+}
+if(engineResults == null || typeof engineResults == "undefined" || !engineResults.IsValid()){
+if(typeof OL["COP_InvalidItemAdded"] != "undefined"){
+OL.COP_InvalidItemAdded(engineResults);
+}
+return;
+}
+if(engineResults.inputState.changedInputs.length > 0 || !engineResults.inputState.IsReady()){return;}
+if(typeof OL["COP_ValidItemAdded"] != "undefined"){
+if(OL.COP_ValidItemAdded(engineResults) == false){return;}
+}
+pckg = new Package_Obj();
+pckg.items = CreateItemTree(engineResults);
+pckg.linkBack = CreateLinkBack(engineResults);
+if(pckg.linkBack == null){return;}
+SendPackage(pckg, argArray);
+return;
+}
+</SCRIPT>
+</HEAD>
+<BODY onLoad ="OL.SetLoaded('ordercode');" onUnload="if(!OL['MAC']){return;}OL.SetUnloaded('ordercode');">
+order<P>&nbsp;</P>
+</BODY>
+</HTML>

@@ -1,0 +1,144 @@
+<HTML>
+<HEAD>
+<TITLE>OnLink Sales(tm): Launcher</TITLE>
+<!--   Ver 4.0 		20000907	-->
+<SCRIPT language="javascript">
+<!--
+function LaunchBrowserVersion(demoDir) {
+var nav=navigator.userAgent.toUpperCase();
+var showWarn=false;
+var support_IE_PC  = "Microsoft IE 4.x-6.0 for PC";
+var support_IE_Mac = "Microsoft IE 4.5-5.0 for Mac";
+var support_NN_PC  = "Netscape Navigator 4.x and 6.0 for PC";
+var support_NN_Mac = "Netscape Navigator 4.5-4.73 and 6.0 for Macintosh";
+var support_AOL_PC = "AOL 4-6 for PC";
+var NOT4HtmlMsg="This application works best when viewed with one of the following browsers:<BR><BR>"+support_IE_PC+"<BR>"+support_IE_Mac+"<BR>"+support_NN_PC+"<BR>"+support_NN_Mac+"<BR>"+support_AOL_PC+"<BR><BR>It appears you are using the following browser:"+nav+"<BR><BR>Since this application does not support your current browser, we encourage you to try again using one of the browsers listed above.<BR><BR>Please contact our webmaster if you have any questions.";
+var saleswarn="This application works best when viewed with one of the following browsers:\n\n"+support_IE_PC+"\n"+support_IE_Mac+"\n"+support_NN_PC+"\n"+support_NN_Mac+"\n"+support_AOL_PC+"\n\nIt appears you are using the following browser:"+nav+"\n\nIf you experience difficulty using this application with your current browser, we encourage you to try again using one of the browsers listed above.\n\nPlease contact our webmaster if you have any questions.";
+var w2kwarn="This application works best with the Windows 2000 OS\nwhen viewed using either Internet Explorer 5.x or Netscape Navigator 6.0";
+var max_ie=6.0;
+var min_ie=4.0;
+var max_nn=5.1;
+var min_nn=4.0;
+var max_aol=6.0;
+var min_aol=4.0;
+var macie_maxver=5.0;
+var macie_minver=4.5;
+var macnn_maxver=5.1;
+var macnn_minver=4.5;
+var is_w2k=navigator.appVersion.indexOf("Windows NT 5.0");
+var launchpage = "";
+var browser=navigator.appName;
+var nn="Netscape";
+var msie="Microsoft Internet Explorer";
+var is_major=parseInt(navigator.appVersion);
+var aol=nav.match(/(AOL)\s(\d\.\d)/);
+if(aol!=null){var aol_version=parseInt(aol[2]);}
+var mac=nav.match(/MAC/);
+if(aol!=null){
+if(mac!=null && showWarn==true){
+WrtNonSupMsg(NOT4HtmlMsg);
+return;
+}
+if ((max_aol<aol_version || aol_version<min_aol)&& showWarn==true){
+WrtNonSupMsg(NOT4HtmlMsg);
+return;
+}
+}
+if(is_major<4 && showWarn==true){
+WrtNonSupMsg(NOT4HtmlMsg);
+return;
+}
+if(browser==msie){
+var is_version=parseFloat((navigator.appVersion.substr(navigator.appVersion.indexOf("MSIE"),9)).substr(4,7));
+if (min_ie<=is_version && is_version<=max_ie){
+if(is_w2k!=-1 && is_version<5 && showWarn==true){
+alert(w2kwarn);
+}
+if ((mac!=null) && (macie_minver>is_version || is_version>macie_maxver)){
+if(showWarn==true){
+alert(saleswarn);
+}
+}
+}
+else {
+if(showWarn==true){
+alert(saleswarn);
+}
+}
+launchpage="kernel.htm";
+}
+else {
+var is_version=parseFloat(navigator.appVersion.substring(0,navigator.appVersion.indexOf(" ")));
+if (mac!=null && browser==nn && (macnn_minver>is_version || is_version>max_nn)){
+if(showWarn==true){
+alert(saleswarn);
+}
+}
+else if(is_w2k!=-1 && is_version<5 && browser==nn && showWarn==true){
+alert(w2kwarn);
+}
+else if ((browser!=nn) || !(min_nn<=is_version && is_version<=max_nn)){
+if(showWarn==true){
+alert(saleswarn);
+}
+}
+launchpage ="kernel.htm";
+}
+location.replace(launchpage);
+}
+function WrtNonSupMsg(message){
+document.open();
+document.write(message);
+document.close();
+}
+function LoadOnPoint()
+{
+top.onlink = window;
+LaunchBrowserVersion();
+}
+// -->
+</SCRIPT>
+</HEAD>
+<BODY bgcolor=#FFFFFF onLoad="LoadOnPoint()" >
+<!-- The following will be displayed when the users' Javascript support is turned
+off or when their browser is nonstandard. Content may be custom edited -->
+<NOSCRIPT>
+<TABLE width=100% border=0 cellspacing=0 cellpadding=0>
+<TR>
+<TD width=8>
+<IMG src="trans.gif" width=8 height=1 border=0 hspace=0 vspace=0>
+</TD>
+<TD width=*>
+<IMG src="trans.gif" width=1 height=8 border=0 hspace=0 vspace=0><BR>
+<FONT color="FF2400" size=+1><B>
+Javascript Support Required
+</B></FONT>
+<P>
+<FONT size=3>
+To function correctly, this application must be viewed using a JavaScript-enabled browser.  Currently, your browser is not JavaScript-enabled.
+<BR><BR>
+Almost all browsers are JavaScript-enabled by default.  JavaScript support in your browser may have been manually disabled.  Please check your browser settings, and if appropriate re-enable JavaScript support.
+<BR><BR>
+Please contact our webmaster if you have any questions.
+</FONT>
+</P>
+</TD>
+<TD width=8>
+<IMG src="trans.gif" width=8 height=1 border=0 hspace=0 vspace=0>
+</TD>
+</TR>
+</TABLE>
+</NOSCRIPT>
+<TABLE height="100%" width="100%">
+<TR>
+<TD valign=middle align=center>
+<FONT size=5><B>
+<SCRIPT language="javascript"><!--
+document.write("Application Loading...");
+//--></SCRIPT>
+</B></FONT>
+</TD>
+</TR>
+</TABLE>
+</BODY>
+</HTML>

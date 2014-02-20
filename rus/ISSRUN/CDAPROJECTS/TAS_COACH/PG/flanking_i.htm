@@ -1,0 +1,16 @@
+<HTML>
+<HEAD>
+<TITLE>Interface Template</TITLE>
+<SCRIPT></SCRIPT><SCRIPT src="../jd/header.js"></SCRIPT>
+<SCRIPT language=javascript>
+OL.StartUIInfo('flanking');
+OL.RegisterFrameSet("oc_default_ui", "oc_default_ui.htm", OL.GetPagesetDisplayArea());
+OL.RegisterPageLocation("flanking_1.htm",OL.GetPagesetDisplayArea()+".oc_frame1","true");
+OL.RegisterPageLocation("flanking_2.htm",OL.GetPagesetDisplayArea()+".oc_frame2","true");
+OL.RegisterPriorityPages("flanking_1.htm");
+OL.RegisterExceptionFrames(OL.GetPagesetDisplayArea()+".oc_frame2");
+</SCRIPT>
+</HEAD>
+<BODY onLoad="OL.EndUIInfo('flanking')">
+</BODY>
+</HTML>

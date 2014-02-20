@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<buscomps>
+    <!--Signature Ctrl - Start Defn-->
+    <buscomp id="Pharma Professional Call" xmlDataRootTag="ListOfPharmaProfessionalCallIO">
+        <field id="Row Id" XMLTag ="Activity_spcUId"/>
+        <field id="Full Name" XMLTag ="Full_undName"/>
+        <field id="Contact Id" XMLTag ="Contact_spcId" pickListBC="LS Pharma Contact List"  constrainField="Contact Id" constrainDestField="Contact Id">
+        	<pickmap >
+        		<pickfield source="Full Name" destination="Full Name" />        		
+        	</pickmap>
+        </field>
+        <field id="Street Address" XMLTag ="Street_spcAddress"/>
+        <field id="Street Address2" XMLTag ="Street_spcAddress2"/>        
+        <field id="License" XMLTag ="License_spcNumber_spcState"/>
+		<field id="DEA" XMLTag ="DEA_pnd"/>
+        <field id="Start Date" XMLTag ="Planned"/>
+    </buscomp>
+    <buscomp id="LS Sample Drop BC" xmlDataRootTag="ListOfPharma_spcCall_spcSample_spcDropped" xmlExternalRootTag="PharmaCallSampleDropped"   parentBcId="Pharma Professional Call">         
+        <field id="Name" XMLTag = "Name" ExternalXMLTag="Name2" />  		
+        <field id="Quantity" XMLTag ="Quantity" ExternalXMLTag="Quantity" />        
+        <field id="Lot Name" XMLTag = "Lot_spcName" ExternalXMLTag="LotName" pickListBC="Pharma Sample Stocked Lots" pickListBCField="Lot Name" constrainField="Name" constrainDestField="Parent Product"  />             
+        <field id="Parent Id" XMLTag ="Activity_spcId" ExternalXMLTag="ActivityId" />
+        <field id="Product Id" XMLTag ="Product_spcId" ExternalXMLTag="ProductId" />
+        <field id="Product Allocation Id" XMLTag ="Product_spcAllocation_spcId" ExternalXMLTag="ProductAllocationId" />
+        <field id="Row Id" XMLTag ="Id" ExternalXMLTag="Id" />
+    </buscomp>
+    <buscomp id="Pharma Sample Stocked Lots" xmlDataRootTag="ListOfPharmaSampleStockedLotsIo">       		
+	  	<field id="Parent Product" XMLTag ="Parent_spcProduct" />
+	  	<field id="Lot Name" XMLTag ="Lot_spcName" />
+	  	<field id="Product Id" XMLTag ="Product_spcId" />	  	  	  		  	
+    </buscomp>
+    <buscomp id="LS Pharma Disclaimer BC" xmlDataRootTag="ListOfPharmaSignatureDisclaimerIO">
+        <field id="Disclaimer" XMLTag ="Disclaimer" />
+    </buscomp>
+    <buscomp id="LS Pharma Contact List" xmlDataRootTag="ListOfPharmaCallContactListIO">
+        <field id="Full Name" XMLTag ="Full_spcName" />
+        <field id="Contact Id" XMLTag ="Contact_spcId"/>
+    </buscomp>
+    <!--Signature Ctrl - End Defn-->
+</buscomps>

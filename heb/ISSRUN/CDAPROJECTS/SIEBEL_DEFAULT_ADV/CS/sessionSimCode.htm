@@ -1,0 +1,33 @@
+<html>
+<head>
+<script></script>
+<script src="../jd/header.js"></script>
+<script>
+var keepAlive = false;
+var simulatorOn = false;
+function SessionKeepAlive(aliveState) {
+keepAlive = aliveState;
+if (!simulatorOn) {
+sleepInterval = (OL.GetConfigVarWithDefault("APP", "SESSION_LENGTH", 15.0)/2.0)*60000;
+window.setInterval("SimulateSession();", sleepInterval);
+simulatorOn = true;	
+}
+}
+function SessionKeepAliveOn() {
+return simulatorOn;
+}
+function SimulateSession() {
+var url;
+simulatorOn = true;
+if (keepAlive) {
+url = OL.GetConfigVarWithDefault("APP", "PING_SERVER_URL", OL.GetSiebelServerURL()+"?SWECmd=Ping&noCache=" + escape((new Date()).toLocaleString()));
+url += "?noCache=" + escape((new Date()).toLocaleString());
+OL.session_pingframe.location.replace(url);
+SessionKeepAlive(false);
+}
+} 
+</script>
+</head>
+<body onload="OL.SetLoaded('sessionSim');" onUnload="if(!OL['MAC']){return;}OL.SetUnloaded('sessionSim');return;">
+</body>
+</html>

@@ -1,0 +1,86 @@
+/* Oliver Seidel */
+/* please do not modify */
+
+/* App Menu */
+
+#_swescrnbar {
+}
+
+#_swescrnbar div {
+}
+
+#_swescrnbar #s_sctrl {
+}
+
+#sidebarCloseButton{
+    display: none;
+}
+/* drop downs for extra menu items */
+
+.siebui-subview-navs select.siebui-nav-screenlist,
+.siebui-subview-navs select.siebui-nav-viewlist,
+select#j_s_sctrl_tabScreen,
+select#j_s_sctrl_tabView {
+    font-size: 1.1em;
+    color: #fafafa;
+    border: 0 none;
+    box-shadow: none;
+    height: 16px;
+    line-height: 1.3em;
+    margin: 3px 0 0 1px;
+    padding: 0;
+    vertical-align: middle;
+    width: 15px;
+
+    background: #363636 url(../images/jumpTabSelectBG.png) no-repeat 80% 100%;
+    text-indent: -9999px;
+}
+.siebui-subview-navs select.siebui-nav-screenlist option,
+.siebui-subview-navs select.siebui-nav-viewlist option,
+select#j_s_sctrl_tabScreen option,
+select#j_s_sctrl_tabView option{
+    background: #363636;
+    color: #fafafa;    
+    text-indent: 0;
+    }
+#s_sctrl_tabScreen select{
+    margin-top: 6px;
+}
+.siebui-subview-navs select.siebui-nav-screenlist,
+.siebui-subview-navs select.siebui-nav-viewlist{ 
+    margin-top: 4px;
+    color: #fafafa;
+    __position: absolute;
+}
+.siebui-subview-navs select.siebui-nav-viewlist{ 
+    margin-top: 1px;
+}
+
+.siebui-subview-navs .siebui-nav-tabView {
+    margin-top: 1px;
+}
+
+/* Content */
+
+#_swecontent {
+    top: 149px;
+    border: 1px solid #ccc;
+    border-top: 0;
+    background: none repeat scroll 0 0 #F4F4F4;
+}
+
+#_swecontent > div{
+    margin: 0;
+    padding: 7px 3px 3px;
+}
+
+/* hide parent for sidebar nav */
+
+#openSidebarButton {
+    display: none;
+}
+
+.sidebarTreeNav {
+    display: none
+}
+

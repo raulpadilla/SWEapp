@@ -1,0 +1,23 @@
+﻿<HTML><HEAD><TITLE></TITLE><SCRIPT></SCRIPT>
+<SCRIPT language=Javascript src="../jd/header.js"></SCRIPT>
+<SCRIPT language=Javascript src="../ds/TAS1_x.js"></SCRIPT>
+<SCRIPT>
+var IMT=OL.InitMetaTable;
+var IMTS=OL.InitMetaTables;
+var SMT=OL.SetMetaTable;
+OL.StartMeta('TAS1');
+
+function TAS_Q1(inC,inD,inRESDESC,inCHILD,inLINK,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+this.RESDESC=inRESDESC;
+this.CHILD=inCHILD;
+this.LINK=inLINK;
+}
+var TAS_Q1_t=new Array(3);
+TAS_Q1_t[0]=new TAS_Q1('10','Please Select...','<table border="1" bordercolor="#6666cc" cellpadding="5" cellspacing="0"><tr><td class="static">A compelling event is a mission-critical event (usually tied to a specific date) that forces the customer to make a decision. There are consequences if they delay and/or significant payback if the right decision is made.</td></tr></table>','null','','DEFAULT');
+TAS_Q1_t[1]=new TAS_Q1('20','Yes','<table border="1" bordercolor="#6666cc" cellpadding="5" cellspacing="0"><tr><td class="static">A compelling event is a mission-critical event (usually tied to a specific date) that forces the customer to make a decision. There are consequences if they delay and/or significant payback if the right decision is made.</td></tr></table><table border="1" bordercolor="#6666cc" cellpadding="5" cellspacing="0"><tr><td class="dynamic"><span class="solutiontitle">You Answered "Yes"</span><br><br>Please confirm that you are able to answer most of these questions:<ul><li>Why does the customer have to act?</li><li>What is the deadline for a customer to make a decision?</li><li>What are the consequences if the project is delayed?</li><li>What is the payback if the project is completed on time?</li><li>What will be the measurable impact on the customer\'s business?</li></ul></td></tr></table>','tas2','<span class="continue">Continue</span></a>','');
+TAS_Q1_t[2]=new TAS_Q1('30','No','<table border="1" bordercolor="#6666cc" cellpadding="5" cellspacing="0"><tr><td class="static">A compelling event is a mission-critical event (usually tied to a specific date) that forces the customer to make a decision. There are consequences if they delay and/or significant payback if the right decision is made.</td></tr></table><table border="1" bordercolor="#6666cc" cellpadding="5" cellspacing="0"><tr><td class="dynamic"><span class="solutiontitle">You Answered "No"</span><br><br>A "no"answer means you had significant problems answering the questions shown below and that you don’t believe you can help the customer develop a sense of urgency about the project. Please confirm that this is the case before you move on.<ul><li>Why does the customer have to act?</li><li>What is the deadline for a customer to make a decision?</li><li>What are the consequences if the project is delayed?</li><li>What is the payback if the project is completed on time?</li><li>What will be the measurable impact on the customer\'s business?</li></ul><A HREF=javascript:defWindow("po_tiptas1.htm")>Click here for tips</a></td></tr></table>','tas6','<span class="continue">Continue</span></a>','');
+IMTS(1);
+SMT('TAS_Q1',TAS_Q1_t);
+</SCRIPT></HEAD><BODY onload="OL.EndMeta('TAS1')"></BODY></HTML>

@@ -1,0 +1,35 @@
+<HTML>
+<HEAD>
+<TITLE>Layout Template</TITLE>
+<SCRIPT></SCRIPT><SCRIPT src="../jd/header.js"></SCRIPT>
+<SCRIPT language=javascript>
+OL.StartTemplate(window.name);
+</SCRIPT>
+<link rel="stylesheet" href="onlink.css" type="text/css">
+</HEAD>
+
+<BODY onLoad="OL.EndTemplate(window.name)">
+<FORM onSubmit="return false;">
+<TABLE Width=100% cellpadding=0 cellspacing=0 align=center>
+<TR><TD bgcolor="#6666CC"><FONT color="#FFFFFF" face="Arial"><b><center>TAS Coach</center></b></Font></TD>
+</Table>
+<!-- BEGIN GENERATE HTML: BuildWidget/BuildTarget will be insert after this line -->
+<TABLE width=350 border=0 cellpadding=0 cellspacing=0>
+<TR><TD><img src="trans.gif" height=75>
+<TR><TD>
+<B><div class="questionlabel">Question 2</B>
+<TR><TD><img src="mini_bar.gif">
+<TR><TD>
+<div class="questions">Do you have a position in the account that you need to protect?</B>
+<TR><TD align=right>
+<SCRIPT>
+document.write(OL.BuildWidget("LISTBOX",window,"TAS_Q6",1,32,true));
+</SCRIPT>
+</TD></TR>
+
+</TABLE>
+<!-- END GENERATE HTML: BuildWidget/BuildTarget will be insert before this line -->
+
+</FORM>
+</BODY>
+</HTML>

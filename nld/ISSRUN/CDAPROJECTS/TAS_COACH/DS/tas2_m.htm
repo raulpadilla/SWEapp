@@ -1,0 +1,23 @@
+﻿<HTML><HEAD><TITLE></TITLE><SCRIPT></SCRIPT>
+<SCRIPT language=Javascript src="../jd/header.js"></SCRIPT>
+<SCRIPT language=Javascript src="../ds/tas2_x.js"></SCRIPT>
+<SCRIPT>
+var IMT=OL.InitMetaTable;
+var IMTS=OL.InitMetaTables;
+var SMT=OL.SetMetaTable;
+OL.StartMeta('tas2');
+
+function TAS_Q2(inC,inD,inRESDESC,inCHILD,inLINK,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+this.RESDESC=inRESDESC;
+this.CHILD=inCHILD;
+this.LINK=inLINK;
+}
+var TAS_Q2_t=new Array(3);
+TAS_Q2_t[0]=new TAS_Q2('10','Please Select','<br><br><table border="1" bordercolor="#6666cc" cellpadding="5" cellspacing="0"><tr><td class="static">The question &quot; Can you compete &quot; is dealt with in Opportunity Assessment criteria #6-#10. These are:<br><ol start="6"><li>Formal Decision Criteria</li><li>Solution Fit</li><li>Sales Resource Requirement</li><li>Current Relationship</li><li>Unique Business Value</li></ol>All five of these criteria are important, but #10 Unique Business Value is the most critical. Without a plus here, you should probably answer "no" unless you are confident you can develop <A HREF=javascript:defWindow("ubv_def.htm")>Unique Business Value</a> in the short term.  If this the case, most of the remaining four criteria should be assessed as positive.</td></tr></table>','null','','DEFAULT');
+TAS_Q2_t[1]=new TAS_Q2('20','Yes','<br><br><table border="1" bordercolor="#6666cc" cellpadding="5" cellspacing="0"><tr><td class="static">The question &quot; Can you compete &quot; is dealt with in Opportunity Assessment criteria #6-#10. These are:<br><ol start="6"><li>Formal Decision Criteria</li><li>Solution Fit</li><li>Sales Resource Requirement</li><li>Current Relationship</li><li>Unique Business Value</li></ol>All five of these criteria are important, but #10 Unique Business Value is the most critical. Without a plus here, you should probably answer "no" unless you are confident you can develop <A HREF=javascript:defWindow("ubv_def.htm")>Unique Business Value</a> in the short term.  If this the case, most of the remaining four criteria should be assessed as positive.<br><br></td></tr><tr><td class="dynamic"><span class="solutiontitle">You answered "Yes"</span><br><br>Please confirm that you have a plus (+) rating for Unique Business Value or that you have a good chance of establishing Unique Business Value in the short term.  A plus (+) for Unique Business Value means you have <i>customer-confirmed</i> answers for all the following questions.<br><Br><ul><li>What is the specific or measurable business result that we will deliver?</li><li>How does the customer define value? How will they measure it?</li><li>How does this value differentiate us from our competitors?</li></ul></td></tr></table>','tas3','<span class="continue">Continue</span></a>','');
+TAS_Q2_t[2]=new TAS_Q2('30','No','<br><br><table border="1" bordercolor="#6666cc" cellpadding="5" cellspacing="0"><tr><td class="static">The question &quot; Can you compete &quot; is dealt with in Opportunity Assessment criteria #6-#10. These are:<Br><ol start="6"><li>Formal Decision Criteria</li><li>Solution Fit</li><li>Sales Resource Requirement</li><li>Current Relationship</li><li>Unique Business Value</li></ol>All five of these criteria are important, but #10 Unique Business Value is the most critical. Without a plus here, you should probably answer "no" unless you are confident you can develop <A HREF="javascript:defWindow(\'ubv_def.htm\')">Unique Business Value</a> in the short term.  If this the case, most of the remaining four criteria should be assessed as positive.<br><Br></td></tr><tr><td class="dynamic"><span class="solutiontitle">You answered "No"</span><Br><br>Please confirm that you have a minus (-) rating for Unique Business Value and that you do not have a good chance of establishing Unique Business Value in the short term.  A minus (-) for Unique Business Value means you do not have customer-confirmed answers for all the following questions.<br><br><ul><li>What is the specific or measurable business result that we will deliver?</li><li>How does the customer define value? How will they measure it?</li><li>How does this value differentiate us from our competitors?</li></ul><A HREF=javascript:defWindow("po_tiptas2.htm")>Click here for tips</a></td></tr></table>','tas6','<span class="continue">Continue</span></a>','');
+IMTS(1);
+SMT('TAS_Q2',TAS_Q2_t);
+</SCRIPT></HEAD><BODY onload="OL.EndMeta('tas2')"></BODY></HTML>

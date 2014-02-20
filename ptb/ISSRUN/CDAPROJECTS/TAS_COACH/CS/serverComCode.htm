@@ -1,0 +1,78 @@
+<HTML>
+<HEAD>
+<script src="../jd/header.js">
+</script>
+<script></script>
+<SCRIPT>
+function SWEComm(action, serviceName, methodName, target)
+{
+this.m_action = action;
+this.m_serviceName = serviceName;
+this.m_methodName = methodName;
+this.m_target = target;
+this.m_name = new Array();
+this.m_value = new Array();
+this.m_totalArgs = 0;
+this.AddArg = AddArg;
+this.InvokeService = InvokeService;
+}
+function AddArg(name, value)
+{
+if ( name != null )
+{
+this.m_name[this.m_totalArgs] = name;
+this.m_value[this.m_totalArgs] = value;
+this.m_totalArgs++;
+}
+}
+function InvokeService()
+{
+var str = "";
+if (OL.GetConfigVarWithDefault("APP", "SIEBEL_INTEGRATION_ON", false) && top.SWEIsHighInteract) {
+str+="<html><head><script>var siebelObj={SWEService:\"" + this.m_serviceName + "\",SWECmd:\"InvokeMethod\",SWEMethod:\"" + this.m_methodName + "\"};</scr"+"ipt></head>";
+str+="<body onLoad='top.SWESubmitForm(document.SWECOMM,siebelObj,\"\",\"\");'>";
+} else {
+str+="<html><head></head><body onLoad='document.SWECOMM.submit();'>";
+}
+str+="<form name=\"SWECOMM\" method=\"post\" target=\"" + (eval(this.m_target).name) + "\" action=\"" + this.m_action + "\">";
+str+="<input type=hidden name=\"TargetFrame\" value=\"" + this.m_target + "\">";
+str+="<input type=hidden name=\"SWEService\" value=\"" + this.m_serviceName + "\">";
+str+="<input type=hidden name=\"SWECmd\" value=\"InvokeMethod\">";
+str+="<input type=hidden name=\"SWEMethod\" value=\"" + this.m_methodName + "\">";
+str+="<input type=hidden name=\"SWESP\" value=\"\">";
+str+="<input type=hidden name=\"SWEPOC\" value=\"\">";
+var total = this.m_name.length;
+for ( var i = 0; i < total; i++ )
+{
+str+= "<input type=hidden name=\"" + this.m_name[i] + "\" value=\"" + this.m_value[i] + "\">";
+}
+str+="</form>";
+str+="</body></html>";
+var win = OL.GetWorkspace();
+if(win != null){
+var doc=win.document.open('text/html', 'replace');
+doc.writeln(str);
+doc.close();
+}
+}
+function WriteToWorkSpc(serviceName, method, data)
+{
+var target = OL.GetDisplayArea();
+if ( typeof data.target != "undefined" && data.target != null )
+{
+target = data.target;
+}
+var swecommObj = new SWEComm(OL.GetSiebelServerURL(), serviceName, method, target);
+for (var elem in data) {
+if (elem != "target") {
+swecommObj.AddArg(elem, data[elem]);
+}
+}
+swecommObj.InvokeService();
+}
+</SCRIPT>
+</HEAD>
+<BODY onLoad="OL.SetLoaded('serverComCode');">
+Server communicaton module
+</BODY>
+</HTML>

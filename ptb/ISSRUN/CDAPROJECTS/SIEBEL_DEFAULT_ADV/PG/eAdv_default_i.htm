@@ -1,0 +1,18 @@
+<HTML>
+<HEAD>
+<TITLE>Interface Template</TITLE>
+<SCRIPT></SCRIPT><SCRIPT src="../jd/header.js"></SCRIPT>
+<SCRIPT language=javascript>
+OL.StartUIInfo('eAdv_default');
+OL.RegisterFrameSet("oc_default_ui", "oc_default_ui.htm", OLStr+".ol_ui.mainArea");
+OL.RegisterPageLocation("eAdv_default_1.htm",OLStr+".ol_ui.mainArea.oc_frame1","true");
+OL.RegisterPageLocation("eAdv_default_2.htm",OLStr+".ol_ui.mainArea.oc_frame2","true");
+OL.RegisterPageLocation("eAdv_default_chall.htm",OLStr+".ol_ui.mainArea.oc_frame1","false");
+OL.RegisterPageLocation("eAdv_default_3.htm",OLStr+".ol_ui.mainArea.oc_frame2","false");
+OL.RegisterPriorityPages("eAdv_default_1.htm");
+OL.RegisterExceptionFrames(OLStr+".ol_ui.mainArea.oc_frame2");
+</SCRIPT>
+</HEAD>
+<BODY onLoad="OL.EndUIInfo('eAdv_default')">
+</BODY>
+</HTML>

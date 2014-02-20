@@ -1,0 +1,973 @@
+<HTML>
+<HEAD>
+<TITLE></TITLE>
+</HEAD>
+<script></script>
+<script src = "../jd/header.js"></script>
+<script>
+var	RULE_COL = GetRuleColStr();
+var	TEST_COL = GetTestColStr();
+var	MAIN_TABLE = GetMainTableStr();
+var	GATE_COND_TABLE = GetGateCondTableStr();
+var	CODE = OL.GetCodeStr();
+var	TOP = OL.GetTopInstanceStr();
+var	PARENT = OL.GetParentInstanceStr();
+var	INST_DELIM = OL.GetInstanceDelimeterStr();
+function Evaluator_Obj(results, product, instanceName, featureData, configData, infoData, parent, mainTable) {
+this.allResults = results; 
+this.product = product;
+this.instanceName = (typeof instanceName == "undefined"||instanceName == null)?OL.GetTopInstanceStr():instanceName;
+this.featureData = featureData;
+this.configData = configData;
+this.infoData = infoData;
+this.tables = new Array();
+this.exceptions = new Array();
+this.outputs = new Array();
+this.inputs = new Array();
+this.valid = UNDEFINED;
+this.time = 0;
+this.mainTable = mainTable
+this.needToRun = new Object();
+this.markedForReeval = false;
+this.parent = (typeof parent == "undefined")?null:parent;
+this.EvalLookup = new Array();
+this.CellFnLookup = new Array();
+this.PrefixLookup = new	Array();
+this.SubTablesLookup = new Array();
+this.pagesetReferrals = new Object();
+this.featureCellFns = new Array();
+this.SetUpLookupTables();
+}
+Evaluator_Obj.prototype.Evaluate = Evaluator_Evaluate;
+Evaluator_Obj.prototype.GetAllTables = Evaluator_GetAllTables;
+Evaluator_Obj.prototype.GetTable = Evaluator_GetTable;
+Evaluator_Obj.prototype.IsTableValid = Evaluator_IsTableValid;
+Evaluator_Obj.prototype.GetTableValue = Evaluator_GetTableValue;
+Evaluator_Obj.prototype.GetTableExceptionValue = Evaluator_GetTableExceptionValue;
+Evaluator_Obj.prototype.GetOneColValue = Evaluator_GetOneColValue;
+Evaluator_Obj.prototype.GetPreCondValue = Evaluator_GetPreCondValue;
+Evaluator_Obj.prototype.IsTableIncluded = Evaluator_IsTableIncluded;
+Evaluator_Obj.prototype.SetUpLookupTables = Evaluator_SetUpLookupTables;
+Evaluator_Obj.prototype.AddException = Evaluator_AddException;
+Evaluator_Obj.prototype.ClearException = Evaluator_ClearException;
+Evaluator_Obj.prototype.GetTime = Evaluator_GetTime;
+Evaluator_Obj.prototype.MarkTable = Evaluator_MarkTable;
+Evaluator_Obj.prototype.SetUpTable = Evaluator_SetUpTable;
+Evaluator_Obj.prototype.RunMarkedTables = Evaluator_RunMarkedTables;
+Evaluator_Obj.prototype.CheckGatingConditions = Evaluator_CheckGatingConditions;
+Evaluator_Obj.prototype.MarkTablesForEval = Evaluator_MarkTablesForEval;
+Evaluator_Obj.prototype.InsertRowValues = Evaluator_InsertRowValues;
+Evaluator_Obj.prototype.InsertLookup = Evaluator_InsertLookup;
+function Evaluator_SetUpLookupTables() {
+this.orderedTables = new Array();
+this.SetUpTable(this.mainTable);
+GATE_COND_TABLE = GetGateCondTableStr();
+var ol_cond = this.configData.GetTable(GATE_COND_TABLE);
+if (typeof ol_cond != "undefined" && ol_cond != null) {
+this.gateConditions = new GateCond_Obj(this, GATE_COND_TABLE, ol_cond);
+}
+if (OL.GetConfigVarWithDefault("APP","EVALUATE_ALL_TABLES", true)) {
+for (var table in this.configData.GetAllTables()) {
+if (typeof this.tables[table] == "undefined") {
+this.SetUpTable(table);
+}
+}
+}
+}
+function Evaluator_InsertLookup(tableName, lookupTable, parents) {
+if (parents == null || typeof parents == "undefined" || parents.length ==0) {
+return;
+}
+var myP;
+var w;
+var parent;
+var pre;
+var inputSelection;
+for (var myP=0; myP < parents.length; myP++) {
+parent = this.tables[parents[myP].table];
+for (w=0; w<parent.oneCols.length; w++) {
+inputSelection = parent.oneCols[w];
+if (typeof this.PrefixLookup[inputSelection] == "undefined") {
+this.PrefixLookup[inputSelection] = new Array();
+}
+this.PrefixLookup[inputSelection][this.PrefixLookup[inputSelection].length] = tableName;
+}
+for (pre=0; pre < parent.preconditions; pre++) {
+this.InsertLookup(tableName, lookupTable, parent.preconditions[pre]);
+}
+}
+}
+function Evaluator_SetUpTable(tableName, myParents) {
+var col;
+var colType;
+var header;
+var oneCols = new Array();
+var table = this.configData.GetTable(tableName);
+if (typeof table == "undefined" || table == null) {
+return;
+}
+colType = table.GetColType();
+header = table.GetHeader();
+if (typeof myParents == "undefined" || myParents == null) { myParents = new Array(); }
+var subs = new Array();
+this.InsertLookup(tableName, this.PrefixLookup, myParents);
+for (col = 0; col < colType.length; col++) {
+if (colType[col] == 1) { oneCols[oneCols.length] = header[col]; }
+}
+var p;
+var parentStr;
+var columnParents;
+var iDelim = OL.GetInstanceDelimeterStr();
+for (col = 0; col < colType.length; col++) {
+switch (colType[col]) {
+case 0:	
+break;
+case 1: 
+if (typeof this.EvalLookup[header[col]] == "undefined") {
+this.EvalLookup[header[col]] = new Array();
+}
+this.EvalLookup[header[col]][this.EvalLookup[header[col]].length] = tableName;
+if (header[col].indexOf(iDelim) != -1) {
+columnParents = header[col].split(iDelim);
+parentStr = "";
+for (p = columnParents.length-2; p >=0; p--) {
+parentStr = columnParents[p] + ((parentStr!= "")?iDelim:"") + parentStr;
+if (typeof this.EvalLookup[parentStr] == "undefined") {
+this.EvalLookup[parentStr] = new Array();
+}
+this.EvalLookup[parentStr][this.EvalLookup[parentStr].length] = tableName;
+}
+}
+break;
+case 99: 
+var subTableName;
+var newParents;
+for (var i = 0; i < table.GetBody().length; i++) {
+newParents = new Array();
+for (p=0; p < myParents.length; p++) {
+newParents[p] = myParents[p];
+}
+if (oneCols.length > 0) {
+newParents[newParents.length] = new Precondition_Obj(tableName, i);
+}
+subTableName = table.GetBody()[i][col]
+if (typeof this.SubTablesLookup[subTableName] == "undefined") {
+this.SubTablesLookup[subTableName] = new Array();
+}
+this.SubTablesLookup[subTableName][this.SubTablesLookup[subTableName].length] = tableName;
+subs[subs.length] = new OL.Function_Obj(this, "SetUpTable", subTableName, newParents);
+}
+break;
+default: 
+break;
+}
+}
+var addToOrdered = true;
+if (typeof this.tables[tableName] == "undefined") {
+this.tables[tableName] = new Table_Obj(this, tableName, this.configData.GetTable(tableName), oneCols, myParents, new Array());
+} else {
+this.tables[tableName].AddPrecondition(myParents);
+addToOrdered = false;
+}
+for (var subI = 0; subI < subs.length; subI++) {
+subs[subI].Run();
+}
+if (addToOrdered) {
+this.orderedTables[this.orderedTables.length] = this.tables[tableName];
+}
+}
+var ONE_COL = 1;
+var SUBTABLES = 2;
+var PREFIX = 3;
+function Evaluator_MarkTable(table, markType) {
+switch (markType) {
+case 1:	this.tables[table].reevalOneCols = this.GetTime();
+break;
+case 2:	this.tables[table].reevalSubTables = this.GetTime();
+break;
+case 3:	this.tables[table].reevalPreconditions = this.GetTime();
+break;
+}
+}
+function Evaluator_InsertRowValues(featureName, featureRow, insertTable, inputsTable, featureTableCellFns, changedCells) {
+var featureProp = null;
+var subconfig = false;
+if (featureRow == null) { return false; }
+insertTable[featureName] = featureRow[CODE];
+if (insertTable[featureName] != null && insertTable[featureName].charAt(0) == '(') {
+featureTableCellFns[featureName] = insertTable[featureName];
+}
+inputsTable[featureName] = insertTable[featureName];
+var key;
+for (featureProp in featureRow) {
+if (featureProp != "constructor") {
+key = featureName+"."+featureProp;
+insertTable[key] = featureRow[featureProp];
+if (insertTable[key] != null && insertTable[key].charAt(0) == '(') {
+featureTableCellFns[key] = insertTable[key];
+changedCells[changedCells.length] = key;
+} else {
+delete featureTableCellFns[key];
+}
+inputsTable[key] = insertTable[key];
+}
+}
+return false;
+}
+function Evaluator_MarkTablesForEval(inputSelections,changedInputs,featureTableCellFns, inputState,changedFeatureCellFns) {
+var inputSelection = "";
+var featureTable = null;
+var featureRow = null;
+var needToWait = false;
+var instanceMatch = -1;
+var iNameLength = this.instanceName.length;
+var inputPrefix;
+if (typeof this.instanceName != "undefined" && this.instanceName != null) {
+inputPrefix = this.instanceName.slice(this.instanceName.indexOf(this.instanceName)+iNameLength);
+} else {
+inputPrefix = "";
+}
+if (inputPrefix != "") {inputPrefix+=":";}
+for (var inputIndex = 0; inputIndex < changedInputs.length; inputIndex++) {
+inputSelection = changedInputs[inputIndex];
+instanceMatch = inputSelection.indexOf(this.instanceName);
+if (instanceMatch != -1) {
+inputSelection = inputSelection.slice(instanceMatch+iNameLength+1);
+MarkInstancesForReeval(evaluators, this.instanceName);
+if (inputPrefix == "") {
+featureTable = this.featureData.GetTable(inputSelection);
+if (featureTable != null) {
+featureRow = featureTable.GetRow(inputSelections[inputSelection]);
+if (featureRow == null) {
+featureRow = featureTable.GetRow(featureTable.defaultRow);
+}
+this.InsertRowValues(inputSelection, featureRow, this.outputs, this.inputs, featureTableCellFns,changedFeatureCellFns);
+}
+}
+if (typeof this.EvalLookup[inputSelection] != "undefined") {
+for (var i = 0; i < this.EvalLookup[inputSelection].length; i++) {
+this.MarkTable(this.EvalLookup[inputSelection][i], ONE_COL);
+}
+}
+if (typeof this.PrefixLookup[inputSelection] != "undefined" && this.PrefixLookup[inputSelection].length > 0) {
+for (var t =0; t<this.PrefixLookup[inputSelection].length; t++) {
+this.MarkTable(this.PrefixLookup[inputSelection][t], PREFIX);
+}
+}
+}
+}
+}
+function MarkInstancesForReeval(evaluators, instanceName) {
+if (evaluators[instanceName].markedForReeval) return;
+evaluators[instanceName].markedForReeval = true;
+if (evaluators[instanceName].parent != null) {
+MarkInstancesForReeval(evaluators, evaluators[instanceName].parent);
+}
+}
+function Evaluator_RunMarkedTables(inputs, inputSelections, inputState) {
+var realChangedInputs = inputState.changedInputs;
+inputState.ClearChangedInputs();
+var i = 0;
+for (var tableIndex = 0; tableIndex < this.orderedTables.length; tableIndex++) {
+if (this.orderedTables[tableIndex].IsMarked()) {
+if (typeof this.SubTablesLookup[this.orderedTables[tableIndex].name] != "undefined") {
+for (i = 0; i < this.SubTablesLookup[this.orderedTables[tableIndex].name].length; i++) {
+this.MarkTable(this.SubTablesLookup[this.orderedTables[tableIndex].name][i], SUBTABLES);
+}
+}
+this.orderedTables[tableIndex].Evaluate(this.allResults, this.instanceName);
+}
+}
+this.valid = this.tables[this.mainTable].IsValid();
+EvaluateCellFunctions(evaluators, this.allResults, this.instanceName, this.configData, this.featureData, this.infoData, inputs, inputSelections, inputState, this.outputs, this.tables, this.orderedTables, this.mainTable);
+inputState.changedInputs =  realChangedInputs;
+return this.valid;
+}
+function EvaluateCellFunctions(evaluators, allResults, instanceName, configData, featureData, infoData, inputs, inputSelections, inputState, outputs, tables, orderedTables, mainTable) {
+evaluators[instanceName].MarkTablesForEval(inputSelections, inputState.changedInputs, inputs, inputState, new Array());
+if (tables[mainTable].IsValid() && evaluators[instanceName].childrenValid) {
+for (var input in inputs) {
+outputs[input] = EvaluateCell(inputs[input], allResults, instanceName);
+}
+for (var tableIndex = 0; tableIndex < orderedTables.length; tableIndex++) {
+orderedTables[tableIndex].EvaluateCellFunctions(allResults);
+}
+}
+}
+function GetRowByCode(table, code) {
+for (var rowIndex = 0; rowIndex < table.GetRows().length; rowIndex++) {
+if (table.GetRowCode(rowIndex) == code) {
+return rowIndex;
+}
+}
+return -1;
+}
+function Evaluator_CheckGatingConditions(inputs, inputSelections, inputState) {
+if (typeof this.gateConditions != "undefined" && this.gateConditions != null) {
+this.gateConditions.Evaluate(this.allResults);
+return this.gateConditions.IsValid();
+} else {
+return true;
+}
+}
+function Evaluator_Evaluate(inputSelections, changedInputs, otherData, inputState, childrenValid) {
+this.inputState = inputState;
+this.childrenValid = childrenValid;
+if (typeof otherData != "undefined" && otherData != null) {
+for (var key in otherData) {
+this.outputs[key] = otherData[key];
+}
+}
+this.MarkTablesForEval(inputSelections, changedInputs, this.featureCellFns, inputState, new Array());
+if (!this.markedForReeval) { return this.valid;}
+this.RunMarkedTables(this.featureCellFns, inputSelections, inputState);
+this.CheckGatingConditions(this.featureCellFns, inputSelections, inputState);
+if (typeof this.gateConditions != "undefined" && this.gateConditions != null) {
+this.valid = (this.valid && this.gateConditions.IsValid());
+}
+if (typeof OL.COP_AfterValidityCheck != "undefined") {OL.COP_AfterValidityCheck(evaluators,  this.allResults, this.instanceName, this.configData, this.featureData, this.infoData, inputState, this.outputs, this.exceptions, this.tables); }
+this.time++;
+this.markedForReeval = false;
+return this.valid;
+}
+function Evaluator_GetAllTables() {
+return this.tables;
+}
+function Evaluator_GetTable(table) {
+return this.tables[table];
+}
+function Evaluator_IsTableValid(table) {
+return this.tables[table].IsValid();
+}
+function Evaluator_GetTableValue(table) {
+return this.tables[table].GetValue();
+}
+function Evaluator_GetTableExceptionValue(table) {
+return this.tables[table].GetExceptionValue();
+}
+function Evaluator_GetOneColValue(table, inputs, instanceName) {
+if (typeof this.tables[table] == "undefined" || this.tables[table] == null) { return true;}
+return this.tables[table].GetOneColValue(inputs, instanceName);
+}
+function Evaluator_GetPreCondValue(table, inputs, instanceName) {
+if (typeof this.tables[table] == "undefined" || this.tables[table] == null) {return true;}
+return this.tables[table].GetPreCondValue(inputs, instanceName);
+}
+function Evaluator_IsTableIncluded(table) {
+return this.tables[table].IsIncluded();
+}
+function Evaluator_GetTime() {
+return this.time;
+}
+function Evaluator_AddException(table, row, excValue) {
+var exc = new Object();
+exc.table = table;
+exc.row = row;
+exc.exception = excValue;
+exc.timeStamp = this.GetTime();
+this.exceptions[table] = exc;
+}
+function Evaluator_ClearException(table) {
+this.exceptions[table] = null;
+}
+function GateCond_Obj(mEval, tableName, table) {
+this.name = tableName;
+this.table = table;
+this.evaluator = mEval;
+this.valid = UNDEFINED;
+this.value = UNDEFINED;
+var tableHeader = table.GetHeader();
+this.testCol = UNDEFINED;
+this.ruleCol = UNDEFINED;
+for (var col = 0; col < tableHeader.length; col++) {
+if (tableHeader[col] == TEST_COL){
+this.testCol = col;
+}
+if (tableHeader[col] == RULE_COL){
+this.ruleCol = col;
+}
+}
+if (this.testCol != UNDEFINED && this.ruleCol != UNDEFINED) {
+this.conditions = table.GetBody();
+}
+}
+GateCond_Obj.prototype.Evaluate = GateCond_Evaluate;
+GateCond_Obj.prototype.IsValid = GateCond_IsValid;
+function MatchConditional(condTest, outputs, instanceName) {
+return EvaluateCell(condTest, outputs, instanceName);
+}
+function GateCond_Evaluate(results) {
+this.evaluator.ClearException(this.name);
+if (!this.evaluator.tables[this.evaluator.mainTable].IsValid() || !this.evaluator.childrenValid) return UNDEFINED;
+if (this.testCol == UNDEFINED || this.ruleCol == UNDEFINED ||typeof this.conditions == "undefined" || this.conditions == null){
+this.valid = true;
+return true;
+}
+this.valid = true;
+var row;
+for (row = 0; row < this.conditions.length; row++) {
+if (MatchConditional(this.conditions[row][this.testCol], results, this.evaluator.instanceName)) {
+this.value = row;
+this.valid = false;
+this.evaluator.AddException(this.name, this.value, this.conditions[this.value][this.ruleCol])
+return this.valid;
+}
+}
+return this.valid;
+}
+function GateCond_IsValid() {
+return this.valid;
+}
+var UNDEFINED = null;
+var NOT_INCLUDED = -1;
+var NO_MATCH = -1;
+function Table_Obj(evaluator, tableName, table, oneCols, preConditions, subTables) {
+this.name = tableName;
+this.table = table;
+this.evaluator = evaluator;
+this.value = UNDEFINED;
+this.oneColsValue = 0; 
+this.matchArea = UNDEFINED; 
+this.oneCols = oneCols;
+this.preconditions = new Array();
+this.preconditions[0] = preConditions;
+this.precondValue = true;
+this.subTables = subTables;
+this.subTableValue = true;
+this.valid = UNDEFINED;
+this.reevalOneCols = evaluator.GetTime();
+this.reevalSubTables = evaluator.GetTime();
+this.reevalPreconditions = evaluator.GetTime();
+this.cellFnCols = null;
+}
+Table_Obj.prototype.Evaluate = Table_Evaluate;
+Table_Obj.prototype.EvaluateOneCols = Table_EvaluateOneCols;
+Table_Obj.prototype.EvaluateExceptions = Table_EvaluateExceptions;
+Table_Obj.prototype.EvaluatePreconditions = Table_EvaluatePreconditions;
+Table_Obj.prototype.EvaluateCellFunctions = Table_EvaluateCellFunctions;
+Table_Obj.prototype.EvaluateSubTablesValue = Table_EvaluateSubTablesValue;
+Table_Obj.prototype.IsValid = Table_IsValid;
+Table_Obj.prototype.GetValue = Table_GetValue;
+Table_Obj.prototype.GetExceptionValue = Table_GetExceptionValue;
+Table_Obj.prototype.GetOneColValue = Table_GetOneColValue;
+Table_Obj.prototype.GetPreCondValue = Table_GetPreCondValue
+Table_Obj.prototype.IsIncluded = Table_IsIncluded;
+Table_Obj.prototype.IsMarked = Table_IsMarked;
+Table_Obj.prototype.AddPrecondition = Table_AddPrecondition
+function Table_AddPrecondition(parents) {
+this.preconditions[this.preconditions.length] = parents;
+}
+function Table_IsMarked() {	
+return (this.reevalSubTables == this.evaluator.GetTime() 
+|| this.reevalOneCols == this.evaluator.GetTime()
+|| this.reevalPreconditions == this.evaluator.GetTime());
+}
+function Table_GetOneColValue(inputs, instanceName) {
+if (this.reevalOneCols == this.evaluator.GetTime()) {
+this.oneColsValue = this.EvaluateOneCols(inputs, instanceName);
+}
+this.reevalOneCols--; 
+return this.oneColsValue;
+}
+function Table_GetPreCondValue(inputs, instanceName) {
+if (this.reevalPreconditions == this.evaluator.GetTime()) {
+this.precondValue = this.EvaluatePreconditions(inputs, instanceName);
+}
+this.reevalPreconditions--; 
+return this.precondValue;
+}
+function Table_Evaluate(inputs, instanceName) {
+if (!this.IsMarked()) {
+return this.valid;
+}
+this.evaluator.ClearException(this.name);
+if (this.reevalPreconditions == this.evaluator.GetTime()) {
+this.precondValue = this.EvaluatePreconditions(inputs, instanceName);
+}
+this.GetOneColValue(inputs, instanceName);
+if (this.oneColsValue != NO_MATCH) {
+this.subTableValue = this.EvaluateSubTablesValue(inputs, instanceName);
+}
+if (this.subTableValue == false || this.oneColsValue == NO_MATCH) {
+this.exceptionValue = this.EvaluateExceptions(inputs, instanceName);
+if (this.exceptionValue != NO_MATCH && this.precondValue == true) {
+var ruleCol = GetRuleCol(this.evaluator.configData.GetTable(this.name).GetHeader())
+this.evaluator.AddException(this.name, this.exceptionValue, this.evaluator.configData.GetTable(this.name).GetException()[this.exceptionValue][ruleCol]);
+}
+this.valid = false;
+} else {
+this.valid = true;
+}
+if (this.precondValue == false) {
+return NOT_INCLUDED;
+} else {
+if (this.valid) {
+var colTypes =this.evaluator.configData.GetTable(this.name).GetColType();
+var body = this.evaluator.configData.GetTable(this.name).GetBody()[this.oneColsValue];
+var header = this.evaluator.configData.GetTable(this.name).GetHeader();
+this.cellFnCols = new Array();
+var featureTable, rowIndex;
+for (var i = 0; i < colTypes.length; i++) {
+if (colTypes[i] == 0) {
+if (body[i].length > 0 && (body[i].charAt(0) == "("||body[i].charAt(0) == "[")) {
+this.cellFnCols[this.cellFnCols.length] = i;
+} else {
+this.evaluator.outputs[header[i]] = body[i];
+featureTable = this.evaluator.featureData.GetTable(header[i]);
+if (featureTable != null) {
+rowIndex = GetRowByCode(featureTable,this.evaluator.outputs[header[i]]);
+if (rowIndex != -1) {
+this.evaluator.allResults.inputState.SetValue(header[i], this.evaluator.instanceName, rowIndex);
+}
+}	
+}
+}
+}
+}
+return this.valid;
+}
+}
+function Table_IsValid() {
+return this.valid;
+}
+function Table_GetExceptionValue() {
+if (this.IsValid()) return NO_MATCH;
+return this.exceptionValue;
+}
+function Table_GetValue() {
+if (this.precondValue == false) {
+return NOT_INCLUDED;
+} 
+if (this.oneColsValue != NO_MATCH && this.subTableValue) {
+return this.oneColsValue;
+} else {
+return NO_MATCH;
+}
+}
+function Table_IsIncluded() {
+return this.precondValue;
+}
+function Table_EvaluateOneCols(inputs, instanceName) {
+return MatchRow(this.evaluator.configData.GetTable(this.name), inputs, instanceName, this.evaluator.featureData, true);
+}
+function GetRuleCol(header) {
+for (var i = 0; i < header.length; i++) {
+if (header[i] == RULE_COL) {
+return i;
+}
+}
+alert(OL.ErrIntern("ISSCDA_COLUMN_NOT_FOUND",RULE_COL));
+return header.length-1;
+}
+function Table_EvaluateExceptions(inputs, instanceName) {
+var row = MatchRow(this.evaluator.configData.GetTable(this.name), inputs, instanceName, this.evaluator.featureData, false);
+return row
+}
+function Table_EvaluatePreconditions(inputs, instanceName) {
+var precondVal = true;
+var parentOneColRow;
+var i;
+if (typeof this.preconditions == "undefined") { return true;}
+for (var option = 0; option < this.preconditions.length; option++) {
+if (typeof this.preconditions[option] == "undefined") { return true;}
+thisValid = true;
+for (var i = 0; i < this.preconditions[option].length; i++) {
+parentOneColRow = this.evaluator.GetOneColValue(this.preconditions[option][i].table,inputs, instanceName);
+precondVal = (parentOneColRow !=NO_MATCH && parentOneColRow==this.preconditions[option][i].value);
+if (precondVal == false) {
+break;
+}
+}
+if (precondVal == true) { return true;}
+}
+return precondVal;
+}
+function CStr(str) {
+str = str.toString();
+var firstChar = str.charAt(0);
+if (firstChar == "\"") {
+if (str.charAt(str.length-1) == "\"") {
+return str;
+}
+} else if (firstChar == "'") {
+if (str.charAt(str.length-1) == "'") {
+return str;
+}
+}
+return ("\""+str+"\"");
+}
+function LookupToken(outputs, token, instanceName) {
+if (token == ":") return token;
+var result = outputs.GetValue(token, instanceName);
+if (typeof result != "undefined") {
+result = (result != null && ((typeof result == "string" && (result == "")) || (result.length > 0 && isNaN(result) && result.charAt(0) != '"'  
+&&  result.indexOf("'") != 0  &&  result.charAt(result.length-1) != '"'  
+&&  result.indexOf("'") != result.length - 1)))?'"'+result+'"':result;
+return result;
+} else {
+return token;
+}
+}
+function c(token,optInstance) {
+if (typeof optInstance == "undefined") {
+optInstance = currInstance;
+} else {
+optInstance = currInstance+":"+optInstance;
+}
+var value = LookupToken(RESULTS, token, optInstance);
+if (value=="") {
+return value;
+} else {
+return eval(value);
+}
+}
+function EvaluateCell(cellFn, outputs, instanceName) {
+if (!isNaN(cellFn)) {
+return cellFn;
+}
+if (cellFn.charAt(0) != '(') return cellFn;
+cellFn = cellFn.slice(1,cellFn.length-1);		
+var fn = "";
+var tokens = cellFn.match(/('(\\\'|[^'])*')|("(\\\"|[^"])*")|[^"'\w\.\:\_]+|[\w\.\:\_]*/g);
+for (var i=0;i<tokens.length;i++) {
+if (tokens[i].search(/^[A-Z0-9\.\:\_]+$/) != "-1") {
+fn += LookupToken(outputs, tokens[i], instanceName);
+} else {
+fn += tokens[i];
+}
+}
+return eval(fn);
+}
+function Table_EvaluateCellFunctions(results) {
+if (this.precondValue == false) { return; }
+var table = this.evaluator.configData.GetTable(this.name);
+var header = table.GetHeader();
+var colType = table.GetColType();
+var tableValue = "";
+var featureTable = null;
+var rowIndex = -1;
+if (typeof OL.ORP_EvaluateTableCells != "undefined") { OL.ORP_EvaluateTableCells(evaluators, results, this.evaluator.instanceName, this.evaluator.outputs, table, this.name, this.oneColsValue); }
+else {
+var col;
+if (this.valid) {
+for (var i = 0; i < this.cellFnCols.length; i++) {
+col = this.cellFnCols[i];
+this.evaluator.outputs[header[col]] = EvaluateCell(table.GetBody()[this.oneColsValue][col], results, this.evaluator.instanceName);
+featureTable = this.evaluator.featureData.GetTable(header[col]);
+if (featureTable != null) {
+rowIndex = GetRowByCode(featureTable,this.evaluator.outputs[header[col]]);
+if (rowIndex != -1) {
+results.inputState.SetValue(header[col], this.evaluator.instanceName, rowIndex);
+}
+}	
+}
+}
+}
+}
+function Table_EvaluateSubTablesValue(inputs, instanceName) {
+var table = this.evaluator.configData.GetTable(this.name);
+var colType = table.GetColType();
+for (var col=0; col < colType.length; col++) {
+if (colType[col] == 99) {
+if (!this.evaluator.IsTableValid(table.GetBody()[this.oneColsValue][col])) {
+return false;
+}
+}
+}
+return true;
+}
+function MatchRow(table, inputs, instanceName, featureData, isBody) {
+var tableHeader = table.GetHeader();
+var tableColType = table.GetColType();
+var rows = table.rows;
+var cols = table.cols;
+var tableData = null;
+if (isBody) {
+tableData = table.GetBody();
+} else {
+tableData = table.GetException();
+}
+var match;
+var dynaRow;
+var datatableVal;
+var col;
+for (var row=0; row < tableData.length; row++) {
+match = true;
+dynaRow = tableData[row];
+for (var col=0; col < tableHeader.length; col++) {
+if (tableColType[col] == 1) {
+datatableVal = inputs.GetValue(tableHeader[col],instanceName);
+if (datatableVal == null) datatableVal = "null";
+if ((isBody || (dynaRow[col].length > 0)) 
+&& ((!EvalKeyCol(dynaRow[col], datatableVal)))){
+match = false;
+break;
+}
+}
+}
+if (match) {
+return row;
+}
+}
+return NO_MATCH
+}	
+function InRange (range, value) {
+if (range.charAt(0) != '='){
+alert(OL.ErrIntern("ISSCDA_INVALID_RANGE", range));
+return (false);
+}
+if (range.charAt(1) == '*') {
+return true;
+}
+range = range.replace(/,[ ]+/g,"," );
+var unprocessedValues = range.substring(1);
+var rangeIndex = -1;
+var min = 0;
+var max = 0;
+var fValue = parseFloat(value);  
+var singleValues = unprocessedValues.split(',');
+for (var i = 0; i < singleValues.length; i++) {
+rangeIndex = singleValues[i].indexOf('-');
+if ( rangeIndex != -1 ) {
+min = parseFloat(singleValues[i].substring(0, rangeIndex));
+max = parseFloat(singleValues[i].substring(rangeIndex + 1));
+if ( (min <= fValue) && (fValue <= max) ) { return (true); }
+}
+else {
+if ( singleValues[i] == value ) { return (true);}
+}
+}
+return false;
+}
+function EvalKeyCol(cellEntry, value) {
+if (cellEntry == value || cellEntry.length ==0) { return true;}
+if ((cellEntry.length > 0)&&(cellEntry.charAt(0)=='(')&&(cellEntry.charAt(cellEntry.length-1)==')')) {
+if (cellEntry.charAt(1)=='=') {
+return (InRange (cellEntry.substring(1, (cellEntry.length-1)), value));
+}
+if (cellEntry.indexOf("!=") == 1) {
+return (!InRange (cellEntry.substring(2, (cellEntry.length-1)), value));
+} else {
+return (false);
+}
+}
+else {
+return (false);
+}
+}
+function GetInputValue(inputSelections, inputSelectionName) {
+inputSelections.GetInputValue(inputSelectionName);
+}
+function Precondition_Obj(table, value) {
+this.table = table;
+this.value = value;
+}
+var evaluators = new Object();
+var results;
+var curEvaluator = null;
+function DataSetLoadedHandler(event, sender, dataSet) {
+if (typeof dataSet.instanceName == "undefined") { dataSet.instanceName = OL.GetTopInstanceStr(); }
+var ws;
+if (dataSet.parent == null) {
+evaluators = new Object();
+RESULTS = new Results_Obj();
+}
+evaluators[dataSet.instanceName] = new Evaluator_Obj(RESULTS ,dataSet.product, dataSet.instanceName, dataSet.featureTables, dataSet.configTables, dataSet.infoTables, dataSet.parent, MAIN_TABLE);
+evaluators[dataSet.instanceName]["dataSet"] = dataSet;
+currEvaluator = evaluators[dataSet.instanceName];
+}
+function OrderExceptions(exceptions, ordering) {
+var excs = new Array();
+for (var i = 0; i < ordering.length; i++) {
+if (typeof exceptions[ordering[i].name] != "undefined" && exceptions[ordering[i].name] != null) {
+excs[excs.length] = exceptions[ordering[i].name];
+}
+}
+var found = false;
+var e = 0;
+for (var t in exceptions) {
+if (exceptions[t] != null) {
+found = false;
+for (e = 0; e < excs.length; e++) {
+if (excs[e] == exceptions[t]) {
+found = true;
+break;
+}
+} 
+if (!found) {
+excs[excs.length] = exceptions[t];
+}
+}
+}
+return excs;
+}
+function InputChanged(evaluator, product, instanceState, changedInputs, inputState, childrenValid) {
+var result = new Object();
+result.product = evaluator.product;
+result.instanceName = evaluator.instanceName;
+result.parent = evaluator.parent;
+result.inputState = instanceState;
+result.configTables = evaluator.configData;
+result.featureTables = evaluator.featureData;
+result.infoTables = evaluator.infoData;
+result.pagesetReferrals = evaluator.pagesetReferrals;
+result.outputs = evaluator.outputs;
+result.exceptions = new Array();
+result.evaluator = evaluator;
+result.dataSet = evaluator.dataSet;
+RESULTS.AddResult(result, evaluator.instanceName);
+if (typeof OL.COP_BeforeConfiguration != "undefined") {OL.COP_BeforeConfiguration(evaluators, evaluator.allResults, evaluator.instanceName, evaluator.configData, evaluator.featureData, evaluator.infoData, inputState, evaluator.outputs, evaluator.tables); }
+result.isValid = evaluator.Evaluate(instanceState.inputSelections, changedInputs, instanceState.dataValues, inputState, childrenValid);
+if (result.isValid == false) {
+result.outputs = evaluator.inputs; 
+result.exceptions = OrderExceptions(evaluator.exceptions, evaluator.orderedTables);
+}
+result.outputs.VALID = result.isValid;
+result.outputs[PARENT] = (result.parent==null)?"":result.parent.instanceName;
+result.outputs.TOP = TOP;
+if (typeof OL.COP_AfterConfiguration != "undefined") {OL.COP_AfterConfiguration(evaluators, evaluator.allResults, evaluator.instanceName, evaluator.configData, evaluator.featureData, evaluator.infoData, inputState, evaluator.outputs, evaluator.tables); }
+return result;
+}
+function GetRuleColStr() {
+return OL.GetConfigVarWithDefault("APP", "RULE_COLUMN", "RULE");
+}
+function GetTestColStr() {
+return OL.GetConfigVarWithDefault("APP", "TEST_COLUMN", "TEST");
+}
+function GetMainTableStr() {
+return OL.GetConfigVarWithDefault("APP", "MAIN_TABLE", "MAIN");
+}
+function GetGateCondTableStr() {
+return OL.GetConfigVarWithDefault("APP", "GATE_COND_TABLE", "OL_CONDITIONS");
+}
+function InputChangedHandler(event, sender, product, inputState) {
+OL.ENGINE_RUNNING = true;
+RULE_COL = GetRuleColStr();
+TEST_COL = GetTestColStr();
+MAIN_TABLE = GetMainTableStr();
+GATE_COND_TABLE = GetGateCondTableStr();
+CODE = OL.GetCodeStr();
+TOP = OL.GetTopInstanceStr();
+PARENT = OL.GetParentInstanceStr();
+INST_DELIM = OL.GetInstanceDelimeterStr();
+for (var result in RESULTS.results) {
+if (inputState.GetInstanceInputs(result) == null) {
+RESULTS.AddResult(null, result);
+}
+}
+RESULTS = new Results_Obj();
+RESULTS.inputState = inputState;
+inputState.results = RESULTS;
+RESULTS.valid = EvaluateInstance(TOP, inputState);
+inputState.ClearChangedInputs();
+OL.ENGINE_RUNNING = false;
+if (typeof OL.PEP_ENGINE_RESULTS_GENERATED == "undefined" || OL.PEP_ENGINE_RESULTS_GENERATED("ENGINE_RESULTS_GENERATED", window, RESULTS) != false) {
+OL.SendEvent("ENGINE_RESULTS_GENERATED", window, RESULTS);
+}
+}
+function EvaluateInstance(instanceName, inputState) {
+var instanceState = inputState.GetInstanceInputs(instanceName);
+if (instanceState == null) return true;
+var isValid = true;
+for (var i = 0; i < instanceState.children.length; i++) {
+isValid = EvaluateInstance(instanceState.children[i], inputState) && isValid;
+}
+currInstance = instanceName;
+if (typeof evaluators[instanceName] == "undefined" || evaluators[instanceName] == null) {
+return false;
+}
+if (evaluators[instanceName].product != inputState.GetInstanceInputs(instanceName).product) {
+return false;
+}
+evaluators[instanceName].allResults = RESULTS;
+var result = InputChanged(evaluators[instanceName], instanceState.product, instanceState, inputState.changedInputs, inputState, isValid);
+return (isValid && result.isValid);
+}
+var currInstance = TOP;
+function Results_Obj() {
+this.results = new Object();
+this.inputState = null;
+this.valid = false
+}
+Results_Obj.prototype.AddResult = Results_AddResult;
+Results_Obj.prototype.GetResults = Results_GetResults;
+Results_Obj.prototype.GetAllResults = Results_GetAllResults;
+Results_Obj.prototype.IsValid = Results_IsValid;
+Results_Obj.prototype.GetExceptions = Results_GetExceptions;
+Results_Obj.prototype.GetOutputs = Results_GetOutputs;
+Results_Obj.prototype.GetValue = Results_GetValue;	
+function Results_AddResult(result, instanceName) {
+if (typeof instanceName == "undefined" || instanceName == null) {
+instanceName = currInstance;
+}
+this.results[instanceName] = result;
+}
+function Results_GetResults(instanceName) {
+if (typeof instanceName == "undefined" || instanceName == null) {
+instanceName = currInstance;
+}
+return this.results[instanceName];
+}
+function Results_GetAllResults(instanceName) {
+return this.results;
+}
+function Results_GetValue(key, instanceName) {
+if (typeof instanceName == "undefined") {
+instanceName = currInstance;
+}
+var result = this.results[instanceName];
+var val = null;
+if (result != null) {
+val = result.outputs[key];
+if (typeof val != "undefined") {
+return val;
+}
+}
+if (key.indexOf(TOP+INST_DELIM) != -1) {
+return this.GetValue(key.slice(key.indexOf(TOP)+TOP.length+INST_DELIM.length), this.results[instanceName].outputs[TOP]);
+}
+if (key.indexOf(PARENT+INST_DELIM) == 0) {
+return this.GetValue(key.slice(PARENT.length+INST_DELIM.length), (this.results[instanceName].parent==null)?"":this.results[instanceName].outputs[PARENT]);
+}
+key = instanceName+INST_DELIM+key;
+var lookupLoc = key.lastIndexOf(INST_DELIM);
+result = this.results[key.slice(0, lookupLoc)];
+if (result == null) { return null; }
+val = result.outputs[key.slice(lookupLoc+INST_DELIM.length)];
+if (typeof val == "undefined" && key.slice(0, lookupLoc) != currInstance) { 
+return null;
+} else {
+return val;
+}
+}
+function Results_IsValid(instanceName) {
+if (typeof instanceName == "undefined" || instanceName == null) {
+return this.valid;
+} else {
+return this.results[instanceName].isValid;
+}
+}
+function Results_GetExceptions(instanceName) {
+if (typeof instanceName == "undefined" || instanceName == null) {
+var exceptions = new Object;
+for (var result in this.results) {
+if (this.results[result] != null) {
+exceptions[result] = this.results[result].exceptions;
+}
+}
+return exceptions;
+} else {
+return this.results[instanceName].exceptions;
+}
+}
+function Results_GetOutputs(instanceName) {
+if (typeof instanceName == "undefined" || instanceName == null) {
+instanceName = TOP;
+}
+return this.results[instanceName].outputs;
+}
+</script>
+<BODY onLoad = "OL.SetLoaded('configEngine');" onUnload="if(!OL['MAC']){return;}OL.SetUnloaded('configEngine');return;" bgColor = Teal text=Silver>
+<P>Config Engine Code</P>
+</BODY>
+</HTML>

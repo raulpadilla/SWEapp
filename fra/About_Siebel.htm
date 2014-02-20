@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <title>A propos de Siebel</title>
+      <link href="files/main.css" rel="stylesheet" />
+      <script>
+	
+		function createBackControl()
+		{
+			var btn = ''+
+				'<span height="16" class="minibuttonOn">' +
+				'<nobr><a href="javascript: void window.close();">OK</a></nobr>' +
+				'</span>';			
+				
+			var help_lnk = '<a href="javascript:void window.history.back();">Back To Help</a>'
+			var back_lnk = '<a href="javascript:void window.history.back();">Back</a>'
+			
+			/*history.length=0 means we've arrived here via the About Siebel 
+				application menu so show the OK button which onclick will close the window*/
+	            if (window.opener!=null && (window.history.length==0 || (document.layers==null && window.history.length==1)))
+			{	document.write(btn);	}	
+			/*window.opener==null means we've arrived here through the about link on the login page so show the back link*/
+			else if (window.opener==null)		
+			{	/*12-COSTP3 Do not show "Back" button if the history is empty*/
+				/* (which happens when about screen is called from tray bar icon menu)*/
+				if (window.history.length!=0) 
+				 {document.write(back_lnk);}
+			}
+			/*otherwise we've arrived here through help so show the back to help link*/
+			else
+			{	document.write(help_lnk);	}
+			
+		}
+		
+		function resizeMe()
+		{	if (window.opener ) 
+			{	
+				if	(document.layers==null)
+				{	window.resizeTo(460,560);		}
+			}	
+		}
+		
+		function createDivHeader()
+		{
+                        // 12-OEEHNC/12-OEJIEV use fixed pixel for scroll bar as workaround for Mozilla defect
+                        var MOZILLA14_DIV = '<div style="width:100%;height:300px;overflow:auto;padding:5 10 5 20" class="loginText">';
+			var IE_DIV = '<div style="width:100%;height:92%;overflow:auto;padding:5 10 5 20" class="loginText">';
+			var NS6_DIV = '<div style="width:auto;height:auto;overflow:auto;padding:5 10 5 20" class="loginText">';
+
+                        if ((navigator.userAgent.indexOf("Mozilla/5.0") >= 0) && 
+                             (navigator.userAgent.indexOf("rv:1.4") >= 0)) // Mozilla 1.4
+                        {
+                           document.write(MOZILLA14_DIV);
+                        }
+			else if (document.layers != null)  // NS 4.7
+  				{ document.write(IE_DIV); }
+  			else if (document.all != null) // IE
+  				{ document.write(IE_DIV); }
+  			else
+  				{ document.write(NS6_DIV); } // NS6
+            	}				
+	
+	
+      </script>
+   </head>
+   <body class="loginBody" leftmargin="0" topmargin="4" marginwidth="0" marginheight="0" onload="resizeMe()" style="overflow:hidden">
+      <table width="440" height="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="border:1px solid #000000" ID="Table1">
+         <tr height="168px">
+            <TD style="background-image: url('images/about_siebel_d.gif')">
+               <table cellspacing="0" cellpadding="0" ID="Table2">
+                  <tr>
+                     <td colspan="3" style="height:70px"><IMG src="images/spacer.gif" alt=""></td>
+                  </tr>
+                  <tr height="98">
+                     <td style="width:20px">&nbsp</td>
+                     <td valign="top" style="width:260px;color:#ffffff;font-weight:bold;font-size:14pt">
+                        A propos des applications de gestion de la relation client (CRM) de Siebel
+                     </td>
+                     <td style="width:160">&nbsp;</td>
+                  </tr>
+               </table>
+            </TD>
+         </tr>
+         <tr>
+            <td style="background-color:#6699cc">
+               <script>createDivHeader();</script>
+               <br>
+               ©1994, 2012, <A style="TEXT-DECORATION: underline" href="http://www.oracle.com/">Oracle Corporation</A>.
+               <p>
+               Les solutions CRM les plus performantes complètent et étendent la gamme existante de stratégies et processus commerciaux en s'intégrant avec les applications de guichet existantes. En tant que leader des applications commerciales, Oracle est en position unique pour aider les entreprises à mettre en place des solutions complètes qui permettent de trouver la bonne personne au bon moment, et donc de prendre plus rapidement de meilleures décisions.
+               <p>
+               Les applications CRM Siebel d'Oracle permettent aux organisations de tirer le meilleur parti des technologies Web afin de développer leur clientèle et d'améliorer les relations existant avec chacun de leurs clients. Ces applications complètes, basées sur des normes informatiques actuelles et émergentes, fournissent des fonctionnalités prêtes à utiliser, une architecture produit évolutive basée sur le Web et sont aisément personnalisables.
+               <p>
+               Avec des solutions adaptées aux besoins spécifiques de plus de 20 secteurs d'activité, Siebel met à la disposition de ses clients des capacités d'analyse prédictive qui fournissent une intelligence en temps réel, une flexibilité accrue grâce à la prise en charge de J2EE et de .NET, tout en réduisant les coûts totaux d'exploitation.
+               <p></p>
+               ©1994, 2012, Oracle. Tous droits réservés.
+               <p>
+               Ce produit (logiciel et documentation) contient des informations qui sont la propriété d'Oracle Corporation. Fourni sous accord de licence, il est soumis à des restrictions relatives à l'utilisation et à la publication, et est protégé par les lois relatives aux droits d'auteur, aux brevets, et à la propriété intellectuelle et industrielle. Il est interdit de procéder à l’ingénierie inverse du logiciel, de le désassembler ou de le décompiler, excepté à des fins d'interopérabilité avec des logiciels tiers ou tel que prescrit par la loi.
+               <p>
+               Si le produit a été livré au Gouvernement des Etats-Unis, ou à une entité qui délivre la licence de ce produit ou l'utilise pour le compte du Gouvernement des Etats-Unis, la notice suivante s'applique&nbsp;:
+               <P>
+                  U.S. GOVERNMENT RIGHTS<br>
+               Programs, software, databases, and related documentation and technical data delivered to U.S. Government customers are "commercial computer software" or "commercial technical data" pursuant to the applicable Federal Acquisition Regulation and agency-specific supplemental regulations. As such, use, duplication, disclosure, modification, and adaptation of the Programs, including documentation and technical data, shall be subject to the licensing restrictions set forth in the applicable Oracle license agreement, and, to the extent applicable, the additional rights set forth in FAR 52,227-19, Commercial Computer Software--Restricted Rights (June 1987). Oracle USA, Inc., 500 Oracle Parkway, Redwood City, CA 94065.
+               <p>
+               Ce produit n'a pas été conçu en vue d'être utilisé dans des applications nucléaires, aéronautiques, médicales, de transport de masse ou autres applications dangereuses. Si tel devait être le cas, il est de la responsabilité du titulaire de la licence 
+               de prendre toutes les mesures (système de secours, sauvegarde, redondance, etc.) 
+               nécessaires à son utilisation dans des conditions optimales de sécurité. 
+               Oracle décline toute responsabilité en cas de dommages entraînés par une telle utilisation 
+               du produit.
+               <P>
+               Oracle, JD Edwards, PeopleSoft et Siebel sont des marques déposées d'Oracle Corporation et/ou de ses filiales. Tout autre nom mentionné peut correspondre à des marques appartenant à d'autres propriétaires qu'Oracle.
+               <P>
+                  Si ce logiciel vous a été adressé par erreur, veuillez en informer immédiatement Oracle.
+                  <br><br>
+               ©1994, 2012, <A style="TEXT-DECORATION: underline" href="http://www.oracle.com/">Oracle 
+                  Corporation</A>.
+               <p>
+               Successful customer relationship management (CRM) solutions both complement and 
+               extend existing business strategies and processes by integrating with existing 
+               front office applications. As the leader in business applications, Oracle is in 
+               a unique position to help companies implement complete solutions that help 
+               provide insight to the right person at the right time, leading to faster, 
+               better informed decisions.
+               <p>
+               Oracle’s Siebel CRM Applications help organizations to leverage Web 
+               technologies to bring in new customers and enhance each and every existing 
+               customer relationship. These comprehensive applications are built on current 
+               and emerging computing standards and provide out-of-the-box functionality, 
+               scalable Web-based product architecture, and flexible application customization 
+               capabilities.
+               <p>
+               With solutions tailored to the specific needs of more than 20 industries, 
+               Siebel provides predictive analytics capabilities that deliver real-time 
+               intelligence, greater flexibility through support of both J2EE and .NET, and a 
+               lower total cost of ownership.
+               <p></p>
+               ©1994, 2012, Oracle. All rights reserved.
+               <p>
+               The Programs (which include both the software and documentation) contain 
+               proprietary information; they are provided under a license agreement containing 
+               restrictions on use and disclosure and are also protected by copyright, patent, 
+               and other intellectual and industrial property laws. Reverse engineering, 
+               disassembly, or decompilation of the Programs, except to the extent required to 
+               obtain interoperability with other independently created software or as 
+               specified by law, is prohibited.
+               <p>
+               If the Programs are delivered to the United States Government or anyone 
+               licensing or using the Programs on behalf of the United States Government, the 
+               following notice is applicable:
+               <P>
+                  U.S. GOVERNMENT RIGHTS<br>
+               Programs, software, databases, and related documentation and technical data 
+               delivered to U.S. Government customers are "commercial computer software" or 
+               "commercial technical data" pursuant to the applicable Federal Acquisition 
+               Regulation and agency-specific supplemental regulations. As such, use, 
+               duplication, disclosure, modification, and adaptation of the Programs, 
+               including documentation and technical data, shall be subject to the licensing 
+               restrictions set forth in the applicable Oracle license agreement, and, to the 
+               extent applicable, the additional rights set forth in FAR 52.227-19, Commercial 
+               Computer Software--Restricted Rights (June 1987). Oracle USA, Inc., 500 Oracle 
+               Parkway, Redwood City, CA 94065.
+               <p>
+               The Programs are not intended for use in any nuclear, aviation, mass transit, 
+               medical, or other inherently dangerous applications. It shall be the licensee's 
+               responsibility to take all appropriate fail-safe, backup, redundancy and other 
+               measures to ensure the safe use of such applications if the Programs are used 
+               for such purposes, and we disclaim liability for any damages caused by such use 
+               of the Programs.
+               <P>
+               Oracle, JD Edwards, PeopleSoft, and Siebel are registered trademarks of Oracle 
+               Corporation and/or its affiliates. Other names may be trademarks of their 
+               respective owners.
+               <P>
+                  If you have received this software in error, please notify Oracle 
+                  immediately.
+                  </div>
+                  <table cellspacing="0" cellpadding="0" width="100%" style="background-color:#000000" ID="Table3">
+                     <tr>
+                        <td align="right" width="100%"><img src="images/spacer.gif" height="1" width="1" alt=""></td>
+                     </tr>
+                  </table>
+                  <table cellpadding="4" width="100%" height="33" style="background-color:#cccccc" ID="Table4">
+                     <tr>
+                        <td align="right" width="100%" height="30">
+                           <script>createBackControl();</script>
+                        </td>
+                        <td>&nbsp;</td>
+                     </tr>
+                  </table>
+            </td>
+         </tr>
+      </table>
+   </body>
+</html>

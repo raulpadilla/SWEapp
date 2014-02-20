@@ -1,0 +1,176 @@
+<HTML>
+<HEAD>
+<TITLE>START ON ACTIVE CODE FILE - ONLINK CTO GROUP</TITLE>
+<SCRIPT></SCRIPT>
+<SCRIPT SRC="../jd/header.js">
+</SCRIPT>
+<SCRIPT>
+var defaultStartPg = '';
+var defaultIsActive = false;
+var queryPattern = /\?(\S+)/;
+var configPathPattern = /(config_file_path)=([^&]+)/i;
+var pagesetPattern = /pagesetid=([^&]+)/i;
+var configvarsPattern = /configvars=([^&]+)&+(\S+)/i;
+var dyndefsPattern = /dyndefs=([^&]+)/i;
+var paramsPattern = /pagesetid=([^&]+)&+(\S+)/i;
+OL.SOADefaultStartPg = defaultStartPg;
+function SOALoadPageset(defaultPg,isActive) {
+defaultStartPg=defaultPg;
+if (isActive) defaultIsActive=isActive;
+if (typeof OL["ORP_SOALoadPageset"] != "undefined") {
+OL.ORP_SOALoadPageset(defaultPg,isActive);
+return;
+}
+var parmStr = GetParmStr();
+if (parmStr != null) {
+StartActive(parmStr);
+}
+else {
+LoadDefault();
+}
+}
+function SOAPassDynaObject()
+{
+if (typeof OL["ORP_SOAPassDynaObject"] != "undefined") {
+OL.ORP_SOAPassDynaObject();
+return;
+}
+var parmString = "";
+var doc=OL.soa_formframe.document;
+for (var i=0;i<doc.forms[0].elements.length;i++)
+{
+parmString += doc.forms[0].elements[i].name
+parmString += "=" + doc.forms[0].elements[i].value;
+if (i<doc.forms[0].elements.length-1) {
+parmString += "&";
+}
+}
+StartActive(parmString);
+}
+function LoadDefault() {
+if (defaultStartPg != '') {
+if (defaultIsActive) {
+OL.LoadPageset(defaultStartPg);
+}
+else {
+OL.ParseFrame(OL.uiFrame).location.replace(defaultStartPg);
+}
+}
+}
+function GetParmStr() {
+if (typeof OL["ORP_SOAGetParmStr"] != "undefined") {
+return OL.ORP_SOAGetParmStr();
+}
+var retval = null;
+var TopLoc = OL.GetConfigVar("APP","SOA_TOP_LOC");
+if(typeof TopLoc=="undefined" || TopLoc==null){
+var parm = top.location.search.match(queryPattern);
+}
+else{
+var parm = TopLoc.location.search.match(queryPattern);
+}
+if (parm) {
+retval=CleanQuery(parm[1]);
+}
+return retval;
+}
+function StartActive(parmStr) {
+if (typeof OL["ORP_SOAStartActive"] != "undefined") {
+OL.ORP_SOAStartActive(parmStr);
+return;
+}
+var frameParms = parmStr.match(configPathPattern);
+if (frameParms != null) {
+LoadSOAFrame(frameParms[2]);
+}
+else {
+var pg = GetPagesetID(parmStr);
+if (pg != '') {
+var configObj = GetConfigObj(parmStr);
+if (configObj != null) {
+OL.LoadPagesetWithDynDefObj(pg,configObj);
+}
+else {
+OL.LoadPageset(pg);
+}
+}
+else {
+LoadDefault();
+}
+}
+}
+function GetPagesetID(parmStr) {
+if (typeof OL["ORP_SOAGetPagesetID"] != "undefined") {
+return OL.ORP_SOAGetPagesetID(parmStr);
+}
+var retval = '';
+var pg = parmStr.match(pagesetPattern);
+if (pg != null) {
+retval=pg[1];
+}
+return retval;
+}
+function GetConfigObj(parmStr) {
+if (typeof OL["ORP_SOAGetConfigObj"] != "undefined") {
+return OL.ORP_SOAGetConfigObj(parmStr);
+}
+var retval = null;
+var pattern = parmStr.match(configvarsPattern);
+if (pattern != null) {
+if ((pattern[1].toLowerCase().indexOf("true")==0) && (pattern[2] != null)){
+retval = GetParamListObject(pattern[2]);
+}
+}
+else {
+pattern=parmStr.match(dyndefsPattern);
+if (pattern != null) {
+retval = GetDynDefsObject(pattern[1]);
+}
+else {
+pattern=parmStr.match(paramsPattern);
+if (pattern != null) {
+retval = GetParamListObject(pattern[2]);
+}
+}
+}
+return retval;
+}
+function GetParamListObject(dynDefs) {
+var preconfig = new OL.DynDef_Obj();
+var keypairs = dynDefs.split("&");
+for (var i=0;i<keypairs.length;i++) {
+var values = keypairs[i].split("=");
+preconfig.GetInstanceObjFromKey(values[0],values[1]);
+}
+return preconfig;
+}
+function GetDynDefsObject(dynDefs) {
+var preconfig = new OL.DynDef_Obj();
+var keypairs = dynDefs.split("+");
+for (var i=0;i<keypairs.length;i++) {
+preconfig.GetInstanceObjFromKey(keypairs[i],keypairs[++i]);
+}
+return preconfig;
+}
+function LoadSOAFrame(fileLoc) {
+if (typeof OL["ORP_LoadSOAFrame"] != "undefined") {
+OL.ORP_LoadSOAFrame(fileLoc);
+return;
+}
+OL.soa_formframe.location.href = fileLoc;
+}
+function CleanQuery(qStr) {
+if (typeof OL["ORP_SOACleanQuery"] != "undefined") {
+return OL.ORP_SOACleanQuery(qStr);
+}
+qStr = qStr.replace(/%7C/g,'|');
+qStr = qStr.replace(/%22/g,'"');
+qStr = qStr.replace(/%5C/g,'\\');
+qStr = qStr.replace(/%26/g,'&');
+return qStr;
+}
+</SCRIPT>
+</HEAD>
+<BODY onLoad="OL.SetLoaded('start_activecode');">
+</BODY>
+</HTML>

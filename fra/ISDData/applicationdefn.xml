@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<application id="SignatureControl" categoryDisplayType="TabNavigator">
+    <!--Signature Ctrl - Start Defn-->
+    <category id="Signatures" label="Signatures" visible="true" startPage="LS Product List Page">
+        <page id="LS Signature Capture Page" label="Signature" visible="false" threadLabel="Signature" threadVisible="true"/>
+    </category>
+    <!--Signature Ctrl - End Defn-->
+</application>

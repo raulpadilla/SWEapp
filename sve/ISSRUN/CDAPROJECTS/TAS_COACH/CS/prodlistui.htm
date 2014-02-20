@@ -1,0 +1,129 @@
+<HTML>
+<HEAD>
+<script></script>
+<script src="../jd/header.js"></script>
+<link rel="stylesheet" type="text/css" href="../pg/onlink.css">
+<script language="JavaScript">
+if (typeof OL != "undefined") {
+var xfly=eval(OL.GetDisplayArea());
+var FLYPG=null;
+if (typeof xfly.ol_ui !="undefined"){
+if (typeof xfly.ol_ui.flyover !="undefined"){
+FLYPG = xfly.ol_ui.flyover;	
+var URLPREFIX = OL.GetUIPath();	
+var LASTFLY = 0;
+}
+}
+}
+if((navigator.userAgent.match(/mac/i))&&(navigator.appName=="Microsoft Internet Explorer")){
+var is_mac=true;
+}
+function PaintList(dd) {
+var LIST = RefList();
+if (LIST == null) return;
+var liststate = OL.GetContentsListState();
+var indentstate = new Array(true);
+var curindent = 0;
+OL.OpenDocument(dd,'text/html',true);
+dd.writeln('<layer id="nnLayer" visibility="hidden">');
+for (i=0; i < LIST.length; i++) {
+if (!empty(LIST[i])) {
+var indent = LIST[i][0];
+if (indent > curindent) {
+indentstate[indent] = (indentstate[curindent] && liststate[i]);
+}
+curindent = indent;
+if (((curindent==0)||indentstate[curindent-1]) && indent != 0) {
+PaintListItem(i,LIST[i],dd);
+}
+}
+}
+dd.writeln('</layer>');
+dd.close();
+if (!document.all && !document.getElementById) {
+var frName = OL.FrameToOLString(window);
+OL.OL_SetTimeout(frName+".refresh()",1);
+}
+}
+function PaintListItem(listID,listItem,dd) {
+var indent = listItem[0];
+var entry = listItem[1];
+var link = (listItem[2]==null) ? '':listItem[2];
+var flyover = listItem[3];
+dd.write('<DIV CLASS="bullet'+indent+'">');
+if(is_mac){dd.write('<P CLASS="MacPadding">');}
+dd.write('		<A href="javascript:void(0)" onClick="javascript:'+OLStr+'.prodlistcode.SelectListItem(',listID,',\'',link,'\');return false" onMouseOver="Flyover(',listID,')">'+entry+'</A><BR>');
+if(is_mac){dd.write('<\/P>');}
+dd.writeln('    </DIV>');
+}
+function RefList() {
+retVal = OL.RefContentsList();
+return ((typeof retVal == "undefined" || retVal == null)? null: retVal);
+}
+function Flyover(flyID,forceFly) {
+var LIST = RefList(); if (!LIST) { return; }
+var fly = parseInt(flyID); if (isNaN(fly)) { return; }
+if ((fly>=0)&&(fly<LIST.length)&&(LIST[fly])) {
+if (!forceFly) {
+fly=FindFlyCat(fly,LIST);
+}
+if ((LASTFLY==fly)||!LIST[fly]||!LIST[fly][3]) {
+return;
+}
+if (LIST[fly][3].length>0) {
+LASTFLY=fly;
+var fobj = RefFlyover();
+if (fobj) {
+fobj.src = URLPREFIX + LIST[fly][3];
+}
+}
+}
+}
+function FindFlyCat(flyID,LIST) {
+var cat=0;
+for (var i=flyID;i>0;i--) {
+if (LIST[i][0]&&(LIST[i][0]==1)) {
+cat = i;
+break;
+}
+}
+return cat;
+}
+function RefFlyover() {
+if(FLYPG==null){
+return null;
+}
+return (FLYPG&&FLYPG.document["FLYOVER"]&&FLYPG.document.FLYOVER["src"]) ? FLYPG.document.FLYOVER : null;
+}
+function ScrollList() {
+var fr=window;
+if (typeof fr != "undefined") {
+if (typeof OL.scrollPosX != "undefined") {
+fr.scroll(OL.scrollPosX,OL.scrollPosY);
+}
+else {
+fr.scroll(0,0);
+}
+}
+}
+function empty(colVal)
+{
+return (colVal==null)||(colVal=='');
+}
+function refresh() {
+document.nnLayer.visibility='show';
+}
+</script>
+</HEAD>
+<BODY onLoad ="if (typeof OL != 'undefined') {OL.SetLoaded('prodlistui');ScrollList();}" onUnload="if(typeof OL != 'undefined' && OL['MAC']){OL.SetUnloaded('prodlistui');}">
+<SCRIPT>
+if (typeof OL != "undefined") {
+var fr=window;
+if (typeof fr != "undefined") {
+var dd = fr.document;
+PaintList(dd);
+}
+}
+</SCRIPT>
+</BODY>
+</HTML>
