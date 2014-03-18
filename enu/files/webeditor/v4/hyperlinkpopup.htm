@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!--
+	Ektron, Inc.
+	Copyright 2000-2003
+	Revision Date: 2003-05-22
+-->
+<html>
+<head>
+<title>Hyperlink</title>
+<script language="JavaScript1.2" type="text/javascript" src="eweputil.js"></script>
+<script language="JavaScript1.2" type="text/javascript">
+	<!--
+	var selectedText;
+	var selectedHTML;
+	
+	function loadselectedtext() {
+		var testimage;
+		var objInstance = eWebEditProUtil.getOpenerInstance();
+		if (objInstance && objInstance.isEditor())
+		{
+			selectedText = objInstance.editor.getSelectedText();
+			selectedHTML = objInstance.editor.getSelectedHTML();
+			testimage = selectedHTML.substring(0, 4);
+			if (testimage.toLowerCase() == "<img"){
+			  document.frmHyperlinks.text2.value = selectedHTML;
+			}
+			else
+			{
+			  document.frmHyperlinks.text2.value = selectedText;
+			}
+		}
+	}
+	
+	function movelink() {
+		var hyperlinkvalue;
+		var pastevalue;
+		hyperlinkvalue = document.frmHyperlinks.hyperlinklist.options[document.frmHyperlinks.hyperlinklist.selectedIndex].value;
+		document.frmHyperlinks.httpLink.value = hyperlinkvalue;		
+	}
+	
+	function inserthyperlink() {
+		if (!eWebEditProUtil.isOpenerAvailable()){
+			alert("Your hyperlink could not be inserted because the editor page has been closed.");
+		}
+		else if (document.frmHyperlinks.text2.value == ''){
+			alert("Your hyperlink text is blank and would create an empty link.");
+		}
+		else{
+			var hyperlinkvalue;
+			var pastevalue;
+			var targetvalue;
+			var targetvaluepaste
+			targetvalue = document.frmHyperlinks.Target.options[document.frmHyperlinks.Target.selectedIndex].value;
+			if (targetvalue == "") {
+				targetvaluepaste = "";
+			}
+			else {
+				targetvaluepaste = "target=" + targetvalue;
+			}
+			hyperlinkvalue = document.frmHyperlinks.httpLink.value
+			pastevalue = '<A HREF="' + hyperlinkvalue + '" ' + targetvaluepaste +'>' + document.frmHyperlinks.text2.value + '</a>';
+			eWebEditProUtil.getOpenerInstance().editor.pasteHTML(pastevalue);
+			self.close();
+		}
+	}
+	//-->
+</script>
+</head>
+<body onload="JavaScript:self.focus()" bgcolor="Silver">
+
+<form name="frmHyperlinks"> 
+<table cellspacing="2" cellpadding="2" border="0">
+<tr>
+    <td>Link:</td>
+    <td><INPUT type="text" name="httpLink" size="60" maxlength="1000" value="http://"></td>
+</tr>
+<tr>
+    <td>Text:</td>
+    <td><INPUT type="text" name="text2" size="60" maxlength="1000" value=""></td>
+</tr>
+<tr>
+    <td>Target Frame:</td>
+    <td>
+		<select name="Target">
+			<option value="" SELECTED></option>
+			<option value="_blank">New Window (_blank)</option>
+			<option value="_self">Same Window (_self)</option>
+			<option value="_parent">Parent Window (_parent)</option>
+			<option value="_top">Browser Window (_top)</option>
+		</select>
+	</td>
+</tr>
+<tr>
+    <td>Quick Links </td>
+	<td>
+	<!-- This should by Dynamically created. -->
+	<select name="hyperlinklist" size="1" onchange="movelink()">
+		<option value=""></option>
+		<option value="http://www.ektron.com">Ektron</option>
+		<option value="http://www.ektron.com/products">Ektron Products</option>		
+		<option value="http://www.ektron.com/ewebeditpro">Ektron eWebEditPro</option>
+	</select>	
+</td>
+</tr>
+<tr>
+    <td colspan="2" align="center"><input type="button" value="OK" onClick="inserthyperlink();">&nbsp;<input type="button" name="Cancel" value="Cancel" onclick="self.close()"></td>
+</tr>
+</table>
+   </form> 
+	<script language="JavaScript1.2" type="text/javascript">
+	<!--
+	loadselectedtext();
+	//-->
+	</script>
+</body>
+</html>

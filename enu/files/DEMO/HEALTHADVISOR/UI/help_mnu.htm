@@ -1,0 +1,201 @@
+<html>
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<title>Help Menu</title>
+
+<SCRIPT LANGUAGE="JavaScript"><!--
+
+var browser=false;
+if((navigator.appName=="Netscape")&&(parseInt(navigator.appVersion)>=3))
+browser=true;
+
+if (browser){
+var object=new Array();
+
+object['image1']= new objectdata(73,16,"help_1a.gif","help_1.gif","");
+object['image2']= new objectdata(71,16,"help_2a.gif","help_2.gif","");
+object['image3']= new objectdata(81,16,"help_3a.gif","help_3.gif","");
+object['image4']= new objectdata(65,16,"help_4a.gif","help_4.gif","");
+
+// add more objects above this line
+}
+
+function objectdata(hsize,vsize,replaceimg,restoreimg,mess)
+{if(browser)
+{                this.mess=mess;
+                        this.simg=new Image(hsize,vsize);
+                        this.simg.src=replaceimg;
+                        this.rimg=new Image(hsize,vsize);
+                        this.rimg.src=restoreimg;
+}}
+
+function ReplaceOrig(name)
+{if(browser)
+{window.status=object[name].mess;
+document[name].src=object[name].simg.src;}}
+
+function RestoreOrig(name)
+{if(browser)
+{window.status="";
+document[name].src=object[name].rimg.src;}}
+
+// End of JavaScript -->
+</SCRIPT>
+
+</head>
+
+
+
+<body bgcolor=#e5e5ff link="#003399" alink="#ff0000" vlink"#333333">
+
+
+<TABLE border=0 cellspacing=0 cellpadding=10>
+<TR>
+<TD align=left>
+<CENTER>
+	<IMG src="helpbak.gif" border=0 hspace=0 vspace=0></A><BR>
+	<img src="trans.gif" height=60 width=1 border=0 hspace=0 vspace=0><BR>
+</CENTER>
+
+<!--
+	<A href="help_ovr.htm" target="help_txt" OnMouseOver="ReplaceOrig('image1');return true;" OnMouseOut="RestoreOrig('image1');">
+	<IMG src="help_1.gif" name="image1" width="73" height="16" border="0" naturalsizeflag="0"></A><BR>
+	<img src="trans.gif" height=10 width=1 border=0 hspace=0 vspace=0><BR>
+
+	<A href="help_fea.htm" target="help_txt" OnMouseOver="ReplaceOrig('image2');return true;" OnMouseOut="RestoreOrig('image2');">
+	<IMG src="help_2.gif" name="image2" width="71" height="16" border="0" naturalsizeflag="0"></A><BR>
+	<img src="trans.gif" height=10 width=1 border=0 hspace=0 vspace=0><BR>
+
+	<A href="help_nav.htm" target="help_txt" OnMouseOver="ReplaceOrig('image3');return true;" OnMouseOut="RestoreOrig('image3');">
+	<IMG src="help_3.gif" name="image3" width="81" height="16" border="0" naturalsizeflag="0"></A><BR>
+	<img src="trans.gif" height=10 width=1 border=0 hspace=0 vspace=0><BR>
+
+	<A href="help_con.htm" target="help_txt" OnMouseOver="ReplaceOrig('image4');return true;" OnMouseOut="RestoreOrig('image4');">
+	<IMG src="help_4.gif" name="image4" width="65" height="16" border="0" naturalsizeflag="0"></A><BR>
+-->
+
+	<FONT face="verdana,helvetica" size=1>
+	<B>Information<BR>Display Area</B>
+
+	<TABLE width="100%" border=0 cellspacing=0 cellpadding=0>
+	<TR>
+	<TD width="1%" align=left valign=top>
+		<IMG src="help_dot.gif" border=0 hspace=0 vspace=0><BR>
+	</TD>
+	<TD width="99%" align=left valign=top>
+		<FONT face="verdana,helvetica" size=1>
+  		<A HREF="help_nav.htm#prodlist" target="help_txt">Contents List</A><BR>
+	</TD>
+	</TR>
+	<TR>
+		<TD width="1%" align=left valign=top>
+		<IMG src="help_dot.gif" border=0 hspace=0 vspace=0><BR>
+	</TD>
+	<TD width="99%" align=left valign=top>
+		<FONT face="verdana,helvetica" size=1>
+  		<A HREF="help_nav.htm#prodinfoarea" target="help_txt">Results area</A><BR>
+	</TD>
+	</TR>
+	<TR>
+	<TD width="1%" align=left valign=top>
+		<IMG src="help_dot.gif" border=0 hspace=0 vspace=0><BR>
+	</TD>
+	<TD width="99%" align=left valign=top>
+		<FONT face="verdana,helvetica" size=1>
+  		<A HREF="help_nav.htm#custreq" target="help_txt">Inputs area</A><BR>
+	</TD>
+	</TR>
+	</TABLE>
+
+
+	<BR><B>Buttons</B>
+
+	<TABLE width="100%" border=0 cellspacing=0 cellpadding=0>
+	<TR>
+	<TD width="1%" align=left valign=top>
+		<IMG src="help_dot.gif" border=0 hspace=0 vspace=0><BR>
+	</TD>
+	<TD width="99%" align=left valign=top>
+		<FONT face="verdana,helvetica" size=1>
+  		<A HREF="help_nav.htm#orderbtn" target="help_txt">Order</A><BR>
+	</TD>
+	</TR>
+	<TR>
+	<TD width="1%" align=left valign=top>
+		<IMG src="help_dot.gif" border=0 hspace=0 vspace=0><BR>
+	</TD>
+	<TD width="99%" align=left valign=top>
+		<FONT face="verdana,helvetica" size=1>
+  		<A HREF="help_nav.htm#prodlistbtn" target="help_txt">Contents list</A><BR>
+	</TD>
+	</TR>
+	<TR>
+	<TD width="1%" align=left valign=top>
+		<IMG src="help_dot.gif" border=0 hspace=0 vspace=0><BR>
+	</TD>
+	<TD width="99%" align=left valign=top>
+		<FONT face="verdana,helvetica" size=1>
+  		<A HREF="help_nav.htm#helpbtn" target="help_txt">Help</A><BR>
+	</TD>
+	</TR>
+	<TR>
+	<TD width="1%" align=left valign=top>
+		<IMG src="help_dot.gif" border=0 hspace=0 vspace=0><BR>
+	</TD>
+	<TD width="99%" align=left valign=top>
+		<FONT face="verdana,helvetica" size=1>
+  		<A HREF="help_nav.htm#aboutbtn" target="help_txt">About</A><BR>
+	</TD>
+	</TR>
+	</TABLE>
+
+	<BR><B>Selection Controls</B>
+
+	<TABLE width="100%" border=0 cellspacing=0 cellpadding=0>
+	<TR>
+	<TD width="1%" align=left valign=top>
+		<IMG src="help_dot.gif" border=0 hspace=0 vspace=0><BR>
+	</TD>
+	<TD width="99%" align=left valign=top>
+		<FONT face="verdana,helvetica" size=1>
+  		<A HREF="help_nav.htm#selgroup" target="help_txt">Single-selection group</A><BR>
+	</TD>
+	</TR>
+	<TR>
+	<TD width="1%" align=left valign=top>
+		<IMG src="help_dot.gif" border=0 hspace=0 vspace=0><BR>
+	</TD>
+	<TD width="99%" align=left valign=top>
+		<FONT face="verdana,helvetica" size=1>
+  		<A HREF="help_nav.htm#sellist" target="help_txt">Single-selection list</A><BR>
+	</TD>
+	</TR>
+	<TR>
+	<TD width="1%" align=left valign=top>
+		<IMG src="help_dot.gif" border=0 hspace=0 vspace=0><BR>
+	</TD>
+	<TD width="99%" align=left valign=top>
+		<FONT face="verdana,helvetica" size=1>
+  		<A HREF="help_nav.htm#seldrop" target="help_txt">Single-selection dropdown list</A><BR>
+	</TD>
+	</TR>
+	<TR>
+	<TD width="1%" align=left valign=top>
+		<IMG src="help_dot.gif" border=0 hspace=0 vspace=0><BR>
+	</TD>
+	<TD width="99%" align=left valign=top>
+		<FONT face="verdana,helvetica" size=1>
+  		<A HREF="help_nav.htm#mselgroup" target="help_txt">Multiple-selection group</A><BR>
+	</TD>
+	</TR>
+	</TABLE>
+
+</TD>
+</TABLE>
+</TD>
+</TR>
+</TABLE>
+
+</body>
+</html>

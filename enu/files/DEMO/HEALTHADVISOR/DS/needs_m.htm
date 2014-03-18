@@ -1,0 +1,191 @@
+<HTML><HEAD><TITLE></TITLE><SCRIPT language=Javascript>
+var OL=top.onlink;
+var IMT=top.onlink.InitMetaTable;
+var IMTS=top.onlink.InitMetaTables;
+var SMT=top.onlink.SetMetaTable;
+OL.StartMeta('needs');
+
+function MONTHLY_PREMIUM_RANGE(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var MONTHLY_PREMIUM_RANGE_t=new Array(3);
+MONTHLY_PREMIUM_RANGE_t[0]=new MONTHLY_PREMIUM_RANGE('0','Low $55 - $85','');
+MONTHLY_PREMIUM_RANGE_t[1]=new MONTHLY_PREMIUM_RANGE('1','Medium $85 - $140','');
+MONTHLY_PREMIUM_RANGE_t[2]=new MONTHLY_PREMIUM_RANGE('2','High $140 - $175','');
+
+function PROVIDER_ACCESS(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var PROVIDER_ACCESS_t=new Array(2);
+PROVIDER_ACCESS_t[0]=new PROVIDER_ACCESS('0','Yes','');
+PROVIDER_ACCESS_t[1]=new PROVIDER_ACCESS('1','No','');
+
+function SELF_REFERRAL(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var SELF_REFERRAL_t=new Array(2);
+SELF_REFERRAL_t[0]=new SELF_REFERRAL('0','Yes','');
+SELF_REFERRAL_t[1]=new SELF_REFERRAL('1','No','');
+
+function PREVENTIVE_CARE(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var PREVENTIVE_CARE_t=new Array(2);
+PREVENTIVE_CARE_t[0]=new PREVENTIVE_CARE('0','Yes','');
+PREVENTIVE_CARE_t[1]=new PREVENTIVE_CARE('1','No','');
+
+function PHARMACEUTICAL_COPAY(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var PHARMACEUTICAL_COPAY_t=new Array(2);
+PHARMACEUTICAL_COPAY_t[0]=new PHARMACEUTICAL_COPAY('0','Yes','');
+PHARMACEUTICAL_COPAY_t[1]=new PHARMACEUTICAL_COPAY('1','No','');
+
+function PRIMARY_CARE_COPAY(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var PRIMARY_CARE_COPAY_t=new Array(3);
+PRIMARY_CARE_COPAY_t[0]=new PRIMARY_CARE_COPAY('0','Low - No Charge','');
+PRIMARY_CARE_COPAY_t[1]=new PRIMARY_CARE_COPAY('1','Medium - $25 - $35','');
+PRIMARY_CARE_COPAY_t[2]=new PRIMARY_CARE_COPAY('2','High - $35 - $45','');
+
+function CATASTROPHIC_COVERAGE(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var CATASTROPHIC_COVERAGE_t=new Array(2);
+CATASTROPHIC_COVERAGE_t[0]=new CATASTROPHIC_COVERAGE('0','Yes','');
+CATASTROPHIC_COVERAGE_t[1]=new CATASTROPHIC_COVERAGE('1','No','');
+
+function ZIPCODE(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var ZIPCODE_t=new Array(2);
+ZIPCODE_t[0]=new ZIPCODE('0','90210','');
+ZIPCODE_t[1]=new ZIPCODE('1','94061','');
+
+function PROVIDER_ACCESS_MESSAGE(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var PROVIDER_ACCESS_MESSAGE_t=new Array(2);
+PROVIDER_ACCESS_MESSAGE_t[0]=new PROVIDER_ACCESS_MESSAGE('0','<LI>Our family of PPO plans offer coverage for Preferred and Non-Preferred Providers.  If your physician is not a Preferred Provider you can still receive coverage through an increased copay.</LI>','');
+PROVIDER_ACCESS_MESSAGE_t[1]=new PROVIDER_ACCESS_MESSAGE('1','<LI>By selecting a personal physician within the Onlink network, you will pay fixed out of pocket costs for medical coverage.  Our Access+ HMO plan provides an excellent network of doctors and hospitals.  Alternatively, our family of PPO plans offer the ability to select your own providers each time you seek medical care at the expense of a higher copay.</LI>','default');
+
+function SELF_REFERRAL_MESSAGE(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var SELF_REFERRAL_MESSAGE_t=new Array(2);
+SELF_REFERRAL_MESSAGE_t[0]=new SELF_REFERRAL_MESSAGE('0','<LI>Self referral to a specialist enables you to make an appointment without first visiting your primary care physician.  The Access+ HMO plan is California\'s first HMO to offer self-referral to most specialists.</LI>','');
+SELF_REFERRAL_MESSAGE_t[1]=new SELF_REFERRAL_MESSAGE('1','<LI>By going through the normal referral process, secondary care visits cost $10.  Self referral within our Access+  HMO plan raises the cost to $30 but allows you to see a specialist without first visiting your primary care physician</LI>','');
+
+function ZIPCODE_MESSAGE(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var ZIPCODE_MESSAGE_t=new Array(2);
+ZIPCODE_MESSAGE_t[0]=new ZIPCODE_MESSAGE('0','<LI>Our Preferred Provider (PPO) network offers an excellent choice of physicians and hospitals in the Los Angeles area.</LI>','');
+ZIPCODE_MESSAGE_t[1]=new ZIPCODE_MESSAGE('1','<LI>Both our Access+ HMO and (PPO) Preferred Provider networks offer an excellent choice of physicians and hospitals in the Redwood City area.</LI>','');
+
+function DEDUCTIBLE(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var DEDUCTIBLE_t=new Array(2);
+DEDUCTIBLE_t[0]=new DEDUCTIBLE('0','Yes','');
+DEDUCTIBLE_t[1]=new DEDUCTIBLE('1','No','');
+
+function PREVENTIVE_CARE_MESSAGE(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var PREVENTIVE_CARE_MESSAGE_t=new Array(2);
+PREVENTIVE_CARE_MESSAGE_t[0]=new PREVENTIVE_CARE_MESSAGE('0','<LI>Preventitive care benefits are important to you in a plan.  The <FONT COLOR=blue>Access+ HMO</FONT> plan provides the following preventitive care at No Charge: Scheduled Routine Physical Exams, Annual Routine Well-Woman Exams, Well-Baby and Well-Child Care, and Immunizations.</LI>','');
+PREVENTIVE_CARE_MESSAGE_t[1]=new PREVENTIVE_CARE_MESSAGE('1','<LI>On average, healthy people under the age of 30 can bypass standard coverage for preventitive care benefits.  However, all of our plans offer coverage for Preventitive Care benefits.  Our PPO plans will require a copay but reduce monthly premiums.</LI>','');
+
+function PHARMACEUTICAL_COPAY_MESSAGE(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var PHARMACEUTICAL_COPAY_MESSAGE_t=new Array(2);
+PHARMACEUTICAL_COPAY_MESSAGE_t[0]=new PHARMACEUTICAL_COPAY_MESSAGE('0','<LI>If you require frequent prescription fills, our <FONT color=orange>Access+ HMO</FONT>, <FONT color=blue>Copay Plan (PPO)</FONT> and <FONT color=green>Deductible Plan (PPO)</FONT> plans offer a copay for respective Generic and Brand Name Formulary drugs.  Our <FONT color=blue>Copay Plan (PPO)</FONT> and <FONT color=green>Deductible Plan (PPO)</FONT>offer a copay for Non-Formulary drugs.</LI>','');
+PHARMACEUTICAL_COPAY_MESSAGE_t[1]=new PHARMACEUTICAL_COPAY_MESSAGE('1','<LI>If you infrequently require prescription medication, our <FONT color=purple>Preferred Savings (PPO)</FONT> pays for 80% of the drug cost at any pharmacy after your deductible is met.</LI>','');
+
+function MONTHLY_PREMIUM_RANGE_MESSAGE(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var MONTHLY_PREMIUM_RANGE_MESSAGE_t=new Array(3);
+MONTHLY_PREMIUM_RANGE_MESSAGE_t[0]=new MONTHLY_PREMIUM_RANGE_MESSAGE('0','<LI>A low monthly premium is important to you.  Both our <FONT color=green>Deductible Plan (PPO)</FONT> and <FONT color=blue>Copay Plan  (PPO)</FONT> offer low monthly premiums.  The Copay Plan has a higher monthly premium but covers more services without requiring that you meet your deductible.</LI>','');
+MONTHLY_PREMIUM_RANGE_MESSAGE_t[1]=new MONTHLY_PREMIUM_RANGE_MESSAGE('1','<LI>Your budget can support a medium range monthly premium.  Our <FONT color=blue>Copay Plan (PPO)</FONT> offers a $35 Copay plan that falls within your premium budget.</LI>','');
+MONTHLY_PREMIUM_RANGE_MESSAGE_t[2]=new MONTHLY_PREMIUM_RANGE_MESSAGE('2','<LI>A higher monthly premium can eliminate the need for deductible payments.  Further, you will pay litttle to no charges on most services.  Our <FONT color=orange>Access+ HMO High Option</FONT> offers these benefits.</LI>','');
+
+function PRIMARY_CARE_COPAY_MESSAGE(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var PRIMARY_CARE_COPAY_MESSAGE_t=new Array(3);
+PRIMARY_CARE_COPAY_MESSAGE_t[0]=new PRIMARY_CARE_COPAY_MESSAGE('0','<LI>A low primary care copay is important to you.  Our <FONT color=orange>Access+ HMO</FONT> offers no charge for many services.  Alternatively, our <FONT color=blue>Copay Plan (PPO)</FONT> offers a low $25 copay option.</LI>','');
+PRIMARY_CARE_COPAY_MESSAGE_t[1]=new PRIMARY_CARE_COPAY_MESSAGE('1','<LI>Your budget can support a medium range primary care copay.  <FONT color=blue>Our Copay Plan (PPO)</FONT> offers the option of a $35 copay on a full range of services.</LI>','');
+PRIMARY_CARE_COPAY_MESSAGE_t[2]=new PRIMARY_CARE_COPAY_MESSAGE('2','<LI>Paying a high primary care copay will offer lower monthly premiums.  Our <FONT color=blue>Copay Plan (PPO)</FONT> offers a $45 dollar copay which will reduce your monthly premium relative to lower copay options.  Alternatively, our <FONT color=green>Deductible Plan (PPO)</FONT> and <FONT color=purple>Preferred Savings Plan (PPO)</FONT> offer a percentage copay.  A percentage copay can result in a larger out of pocket expense than a fixed dollar amount copay.</LI>  ','');
+
+function DEDUCTIBLE_MESSAGE(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var DEDUCTIBLE_MESSAGE_t=new Array(2);
+DEDUCTIBLE_MESSAGE_t[0]=new DEDUCTIBLE_MESSAGE('0','<LI>Your budget allows for a deductible in return for lower monthly premiums.  Our Access+ HMO offers the Value Option with a $1500 deductible.  Alternatively, our Deductible Plan (PPO) offers two deductible options, $1000 and $2000.</LI>','');
+DEDUCTIBLE_MESSAGE_t[1]=new DEDUCTIBLE_MESSAGE('1','<LI>Your budget does <EM>not</EM> allow for a deductible in return for lower monthly premiums.  Our Copay Plan (PPO) offers no deductible with Preferred Providers.  Alternatively, our Access+ HMO High Option also offers no deductible.</LI>','');
+
+function CATASTROPHIC_COVERAGE_MESSAGE(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var CATASTROPHIC_COVERAGE_MESSAGE_t=new Array(2);
+CATASTROPHIC_COVERAGE_MESSAGE_t[0]=new CATASTROPHIC_COVERAGE_MESSAGE('0','<LI>You are looking for "catastrophic" coverage and at the lowest monthly premium.  Our Preferred Savings (PPO) "high-deductible" plans insure against major health expenses.</LI>','');
+CATASTROPHIC_COVERAGE_MESSAGE_t[1]=new CATASTROPHIC_COVERAGE_MESSAGE('1','<LI>If you do not anticipate the need  for "catastrophic" coverage, our Access+ HMO and family of PPO plans offer full health care service coverage.  In the event of serious disease or illness, you will still be covered but your out of pocket expenses will have no cap.</LI>','');
+
+function CONTROL_OUTPUT(inC,inD,inINPUT_PAGE,inACCESS,inCOST,inBENEFITS,inSUMMARY,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+this.INPUT_PAGE=inINPUT_PAGE;
+this.ACCESS=inACCESS;
+this.COST=inCOST;
+this.BENEFITS=inBENEFITS;
+this.SUMMARY=inSUMMARY;
+}
+var CONTROL_OUTPUT_t=new Array(4);
+CONTROL_OUTPUT_t[0]=new CONTROL_OUTPUT('ACCESS','ACCESS','needs','(\'\')','(\'<\' + \'!-- \')','(\'<\' + \'!-- \')','(\'<\' + \'!-- \')','');
+CONTROL_OUTPUT_t[1]=new CONTROL_OUTPUT('COST','COST','needs_cost','(\'<\' + \'!-- \')','(\'\')','(\'<\' + \'!-- \')','(\'<\' + \'!-- \')','');
+CONTROL_OUTPUT_t[2]=new CONTROL_OUTPUT('BENEFITS','BENEFITS','needs_benefits','(\'<\' + \'!-- \')','(\'<\' + \'!-- \')','(\'\')','(\'<\' + \'!-- \')','');
+CONTROL_OUTPUT_t[3]=new CONTROL_OUTPUT('SUMMARY','SUMMARY','summary','(\'<\' + \'!-- \')','(\'<\' + \'!-- \')','(\'<\' + \'!-- \')','(\'\')','');
+IMTS(19);
+SMT('MONTHLY_PREMIUM_RANGE',MONTHLY_PREMIUM_RANGE_t);
+SMT('PROVIDER_ACCESS',PROVIDER_ACCESS_t);
+SMT('SELF_REFERRAL',SELF_REFERRAL_t);
+SMT('PREVENTIVE_CARE',PREVENTIVE_CARE_t);
+SMT('PHARMACEUTICAL_COPAY',PHARMACEUTICAL_COPAY_t);
+SMT('PRIMARY_CARE_COPAY',PRIMARY_CARE_COPAY_t);
+SMT('CATASTROPHIC_COVERAGE',CATASTROPHIC_COVERAGE_t);
+SMT('ZIPCODE',ZIPCODE_t);
+SMT('PROVIDER_ACCESS_MESSAGE',PROVIDER_ACCESS_MESSAGE_t);
+SMT('SELF_REFERRAL_MESSAGE',SELF_REFERRAL_MESSAGE_t);
+SMT('ZIPCODE_MESSAGE',ZIPCODE_MESSAGE_t);
+SMT('DEDUCTIBLE',DEDUCTIBLE_t);
+SMT('PREVENTIVE_CARE_MESSAGE',PREVENTIVE_CARE_MESSAGE_t);
+SMT('PHARMACEUTICAL_COPAY_MESSAGE',PHARMACEUTICAL_COPAY_MESSAGE_t);
+SMT('MONTHLY_PREMIUM_RANGE_MESSAGE',MONTHLY_PREMIUM_RANGE_MESSAGE_t);
+SMT('PRIMARY_CARE_COPAY_MESSAGE',PRIMARY_CARE_COPAY_MESSAGE_t);
+SMT('DEDUCTIBLE_MESSAGE',DEDUCTIBLE_MESSAGE_t);
+SMT('CATASTROPHIC_COVERAGE_MESSAGE',CATASTROPHIC_COVERAGE_MESSAGE_t);
+SMT('CONTROL_OUTPUT',CONTROL_OUTPUT_t);
+OL.EndMeta();
+</SCRIPT></HEAD><BODY></BODY></HTML>

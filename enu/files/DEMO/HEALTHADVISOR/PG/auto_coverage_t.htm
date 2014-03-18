@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<TITLE>Results Layout Template</TITLE>
+</HEAD>
+
+<BODY text="#000000" bgcolor=#FFFFFF onLoad="top.onlink.EndResults()">
+<FORM method="POST" name="targetForm" onSubmit="return false;">
+<Img src=trans.gif height=15><BR>
+		<TABLE width=450 border=0 cellpadding=5 cellspacing=0>
+			<TR>
+			<TD align=center valign=middle>
+			<A href="#" onClick="top.onlink.BringUpPO(); return false;">
+			<IMG src="../ui/btn_ord.gif" border=0 alt="Click here to order" hspace=0 vspace=0></A><BR>
+			</TD>
+			</TR>
+<TR><TD>
+<TABLE border=1 cellpadding=2 cellspacing=0>
+
+<TR><TD align=right>
+Bodily Injury: $
+</TD><TD align=right><SCRIPT>
+document.write(top.onlink.BuildTarget("TEXT",window,"BODILY_INJ.PRICE_MSG"));
+</SCRIPT>
+</TD></TR><TR><TD align=right>
+
+Collision: $
+</TD><TD align=right><SCRIPT>
+document.write(top.onlink.BuildTarget("TEXT",window,"COLLISION.PRICE_MSG"));
+</SCRIPT>
+</TD></TR><TR><TD align=right>
+
+Collision Deductible Waiver: $
+</TD><TD align=right><SCRIPT>
+document.write(top.onlink.BuildTarget("TEXT",window,"COLLISION_DED_WAIVER.PRICE_MSG"));
+</SCRIPT>
+</TD></TR><TR><TD align=right>
+
+Comprehensive: $
+</TD><TD align=right><SCRIPT>
+document.write(top.onlink.BuildTarget("TEXT",window,"COMPREHENSIVE.PRICE_MSG"));
+</SCRIPT>
+</TD></TR><TR><TD align=right>
+
+Medical Payments: $
+</TD><TD align=right><SCRIPT>
+document.write(top.onlink.BuildTarget("TEXT",window,"MEDICAL_PAYMENTS.PRICE_MSG"));
+</SCRIPT>
+</TD></TR><TR><TD align=right>
+
+Property Damage: $
+</TD><TD align=right><SCRIPT>
+document.write(top.onlink.BuildTarget("TEXT",window,"PROPERTY_DAMAGE.PRICE_MSG"));
+</SCRIPT>
+</TD></TR><TR><TD align=right>
+
+Rental Car Reimbursement: $
+</TD><TD align=right><SCRIPT>
+document.write(top.onlink.BuildTarget("TEXT",window,"RENTAL_CAR.PRICE_MSG"));
+</SCRIPT>
+</TD></TR><TR><TD align=right>
+
+Uninsured Motorist Property Damage: $
+</TD><TD align=right><SCRIPT>
+document.write(top.onlink.BuildTarget("TEXT",window,"UNINSURED_PROP_DAM.PRICE_MSG"));
+</SCRIPT>
+</TD></TR><TR><TD align=right>
+
+Uninsured/Underinsured Motorist Bodily Injury: $
+</TD><TD align=right><SCRIPT>
+document.write(top.onlink.BuildTarget("TEXT",window,"UNINSURED_BODILY_INJ.PRICE_MSG"));
+</SCRIPT>
+
+<TR><TD align=right>
+<B>Price:</B>			$
+</TD><TD align=right><SCRIPT><!--
+			document.write(top.onlink.BuildTarget("TEXT",window,"PRICE"));
+			//--></SCRIPT>.00
+</TD></TR>
+</TABLE>
+
+</TD></TR>
+</TABLE>
+
+</FORM>
+</BODY>
+</HTML>

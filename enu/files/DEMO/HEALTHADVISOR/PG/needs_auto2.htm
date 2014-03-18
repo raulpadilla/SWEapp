@@ -1,0 +1,99 @@
+<HTML>
+<HEAD>
+<TITLE>Inputs Layout Template</TITLE>
+<!--  Ver xxx -->
+<SCRIPT language="javascript">
+	<!--
+	top.onlink.StartTemplate('needs_auto',true);
+	var FAMILY_DESCR = 'Needs_Auto';
+	var FAMILY_PICT = 'needs_auto.jpg';
+	var FAMILY_PAGE = 'needs_auto';
+
+	//--- SpecialCase Override Points ---//
+	function initPage()
+	{
+		top.onlink.EndTemplate();
+	}
+	//-->
+</SCRIPT>
+</HEAD>
+
+
+<BODY bgcolor="#FFFFFF" onLoad="initPage()">
+	<FORM name="WidgetForm" onSubmit="return false;">
+  <table width="340" border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td>&nbsp;</td>
+    </tr>
+    <tr> 
+      <td> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="5"><b> 
+          Automobile Insurance</b></font></div>
+      </td>
+    </tr>
+  </table>
+  <table width=340 bgcolor="#e5e5e5" border=0 cellpadding=10 cellspacing=0>
+    <tr> 
+      <td> 
+        <p><b><font face="Arial, Helvetica, sans-serif" size="2" color="#003399">(Collision</font></b><font face="Arial, Helvetica, sans-serif" size="2" color="#003399">)</font><font face="Arial, Helvetica, sans-serif" size="2"><br>
+          <b>If your car were damaged in a collision with another car, would you 
+          rather pay a larger deductible or increase your premiums?</b><br>
+          <script>document.write(top.onlink.BuildWidget("RADIO",window,"COLLISION",0));</script>
+          Minimize premiums<br>
+          <script language="">
+document.write(top.onlink.BuildWidget("RADIO",window,"COLLISION",1));
+</script>
+          Balance premium with moderate deductable<br>
+          <script language="">
+document.write(top.onlink.BuildWidget("RADIO",window,"COLLISION",2));
+</script>
+          Minimize deductable<br>
+          <script>document.write(top.onlink.BuildWidget("RADIO",window,"COLLISION",3));</script>
+          None<br>
+          <br>
+          <b><font color="#003399">(Comprehensive</font></b><font color="#003399">)</font><br>
+          <b>For non-collision related damage, would you like to keep you premiums 
+          to a minimum or pay a lower deductible?</b><br>
+          <script language="">
+document.write(top.onlink.BuildWidget("RADIO",window,"COMPREHENSIVE",0));
+</script>
+          Minimize premiums<br>
+          <script language="">
+document.write(top.onlink.BuildWidget("RADIO",window,"COMPREHENSIVE",1));
+</script>
+          Balance premium with moderate deductable<br>
+          <script language="">
+document.write(top.onlink.BuildWidget("RADIO",window,"COMPREHENSIVE",2));
+</script>
+          Minimize deductable <br>
+          <script language="">
+document.write(top.onlink.BuildWidget("RADIO",window,"COMPREHENSIVE",3));
+</script>
+          None <br>
+          <br>
+          <b><font color="#003399">(Uninsured Property Damage</font></b><font color="#003399">)</font><br>
+          <b>If your auto is damaged by an uninsured motorist in non-collision 
+          related accident, would you like to protect yourself?</b><br>
+          <script language="">
+document.write(top.onlink.BuildWidget("RADIO",window,"UNINSURED_PROPERTY",0));
+</script>
+          No<br>
+          <script language="">
+document.write(top.onlink.BuildWidget("RADIO",window,"UNINSURED_PROPERTY",1));
+</script>
+          Yes </font></p>
+      </td>
+    </tr>
+  </table>
+
+  <table width="340" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td><font face="Arial, Helvetica, sans-serif"><b><a href="needs_auto.htm">PREVIOUS</a></b></font></td>
+      <td> 
+        <div align="right"><b><font face="Arial, Helvetica, sans-serif"><a href="needs_auto3.htm">NEXT</a></font></b></div>
+      </td>
+    </tr>
+  </table>
+</FORM>
+</BODY>
+</HTML>

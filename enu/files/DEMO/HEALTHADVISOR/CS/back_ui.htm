@@ -1,0 +1,28 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY bgcolor="white">
+<SCRIPT>
+var OL = top.onlink;
+var uiFile = "";
+OL.BTYPE.indexOf("NS") == -1 ? uiFile = "../ui/i4_ui.htm" : uiFile = "../ui/n_ui.htm";
+if(typeof OL.UIPresent == "undefined" ||  OL.UIPresent == false ){
+window.location = uiFile;
+}
+else if(top.onlink.config.GetConfigVar("APP","BACK_ENABLED")){
+if(typeof OL.UIPresent != "undefined" &&  OL.UIPresent == true ){
+document.write('Because an OnLink Application is active, the "Back" button provides enhanced functionality:<BR>');
+var strings = top.onlink.config.GetConfigVar("APP", "BACK_STRINGS");
+if(typeof strings != "undefined"){
+for(var i=0;i<strings.length;i++){
+document.writeln(strings[i] + "<BR>");
+}
+}		
+}
+}
+else{
+window.top.location.reload();
+}
+</SCRIPT>
+</BODY>
+</HTML>

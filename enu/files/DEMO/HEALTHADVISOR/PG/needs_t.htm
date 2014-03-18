@@ -1,0 +1,188 @@
+<HTML>
+<HEAD>
+<script language="JavaScript">
+<!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+<TITLE>Results Layout Template</TITLE>
+</HEAD>
+
+<BODY text="#000000" bgcolor=#FFFFFF onLoad="top.onlink.EndResults()">
+<FORM method="POST" name="targetForm" onSubmit="return false;">
+  <table width="400" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td>
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="4" color="#003399">Information</font></div>
+      </td>
+    </tr>
+  </table>
+  <SCRIPT>
+/*
+Start Section: ACCESS
+Next line optionally produces comment that removes entire section.
+*/
+document.write(top.onlink.BuildTarget("TEXT",window,"CONTROL_OUTPUT.ACCESS")+ " ");
+</SCRIPT>
+  <table width="400" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td><font face="Arial, Helvetica, sans-serif" size="3"><b><img src="../images/trans.gif" width="25" height="10"></b></font><font face="Arial, Helvetica, sans-serif" size="3"><b>Access</b></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td> <font face="Arial, Helvetica, sans-serif" size="2">
+        <UL>
+<script>
+document.write(top.onlink.BuildTarget("TEXT",window,"ZIPCODE_MESSAGE.DESC"));
+</script>
+        <script>
+document.write(top.onlink.BuildTarget("TEXT",window,"PROVIDER_ACCESS_MESSAGE.DESC"));
+</script>
+        <script>
+document.write(top.onlink.BuildTarget("TEXT",window,"SELF_REFERRAL_MESSAGE.DESC"));
+</script>
+</UL>
+        </font> </td>
+    </tr>
+  </table>
+  <!-- DO NOT REMOVE - End Section:   ACCESS -->
+  <SCRIPT>
+/*
+Start Section: BENEFITS
+Next line optionally produces comment that removes entire section.
+*/
+document.write(top.onlink.BuildTarget("TEXT",window,"CONTROL_OUTPUT.BENEFITS")+ " ");
+</SCRIPT>
+  <table width="400" border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td width="40">&nbsp;</td>
+      <td><font face="Arial, Helvetica, sans-serif" size="3"><b><img src="../images/trans.gif" width="25" height="10">Benefits</b></font> 
+      </td>
+    </tr>
+  
+    <tr> 
+      <td width="40">&nbsp;</td>
+      <td> <font face="Arial, Helvetica, sans-serif" size="2"> 
+        <UL>
+          <script>
+document.write(top.onlink.BuildTarget("TEXT",window,"PREVENTIVE_CARE_MESSAGE.DESC"));
+</script> <script>
+document.write(top.onlink.BuildTarget("TEXT",window,"PHARMACEUTICAL_COPAY_MESSAGE.DESC"));
+</script> 
+        </UL>
+        </font> </td>
+    </tr>
+  </table>
+  <!-- DO NOT REMOVE - End Section:   BENEFITS-->
+  <SCRIPT>
+/*
+Start Section: COST
+Next line optionally produces comment that removes entire section.
+*/
+document.write(top.onlink.BuildTarget("TEXT",window,"CONTROL_OUTPUT.COST")+ " ");
+</SCRIPT>
+
+  <table width="400" border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td width="40">&nbsp;</td>
+      <td><font face="Arial, Helvetica, sans-serif" size="3"><b><img src="../images/trans.gif" width="25" height="10">Cost</b></font> 
+        <br>
+        <img src="trans.gif" width="6" height="6"> </td>
+    </tr>
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td> <img src="trans.gif" width="30" align="left"> 
+        <table width="90%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td bgcolor="#000000"><img src="trans.gif" width="2"></td>
+            <td bgcolor="#000000"><img src="trans.gif" width="2"></td>
+             <td bgcolor="#000000"><img src="trans.gif" width="2"></td>
+          </tr>
+          <tr> 
+             <td bgcolor="#000000"><img src="trans.gif" width="2"></td>
+            <td bgcolor="#CCCC99"> <b><font face="verdana, Arial, Helvetica, sans-serif" size="1"><SCRIPT>
+			  document.write(top.onlink.BuildTarget("TEXT",window,"MSG_PREM"));
+			  </SCRIPT> </font></b></td>
+             
+            <td bgcolor="#000000"><img src="trans.gif" width="2" ></td>
+          </tr>
+          <tr> 
+            <td bgcolor="#000000"><img src="trans.gif" width="2"></td>
+           <td bgcolor="#000000"><img src="trans.gif" width="2"></td>
+            <td bgcolor="#000000"><img src="trans.gif" width="2"></td>
+          </tr>
+        </table><img src="trans.gif" width="6" height="6"></td>
+    </tr>
+    <tr> 
+      <td width="40">&nbsp;</td>
+      <td> <font face="Arial, Helvetica, sans-serif" size="2"> 
+        <UL>
+          <script>
+document.write(top.onlink.BuildTarget("TEXT",window,"MONTHLY_PREMIUM_RANGE_MESSAGE.DESC"));
+</script> <script>
+document.write(top.onlink.BuildTarget("TEXT",window,"PRIMARY_CARE_COPAY_MESSAGE.DESC"));
+</script> <script>
+document.write(top.onlink.BuildTarget("TEXT",window,"DEDUCTIBLE_MESSAGE.DESC"));
+</script> <script>
+document.write(top.onlink.BuildTarget("TEXT",window,"CATASTROPHIC_COVERAGE_MESSAGE.DESC"));
+</script> 
+        </UL>
+        </font></td>
+    </tr>
+  </table>
+  <!-- DO NOT REMOVE - End Section:   BENEFITS-->
+  <SCRIPT>
+/*
+Start Section: SUMMARY
+Next line optionally produces comment that removes entire section.
+*/
+document.write(top.onlink.BuildTarget("TEXT",window,"CONTROL_OUTPUT.SUMMARY")+ " ");
+</SCRIPT>
+  <table width="400" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td colspan="2"><font face="Arial, Helvetica, sans-serif" size="3"><b><img src="../images/trans.gif" width="25" height="10">Summary</b></font>
+      </td>
+    </tr>
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td> <font face="Arial, Helvetica, sans-serif" size="2"> <BR>
+        <BR>
+        <BR>
+        <BR>
+        </font><br>
+       <img src="../images/trans.gif" width="25" height="10">
+		 </td>
+      <td>
+		<font face="Arial, Helvetica, sans-serif" size="2">
+      <BR>
+		<script>
+document.write(top.onlink.BuildTarget("TEXT",window,"RECOMMEND_MESSAGE"));
+</script>
+</font>
+
+		  </td>
+    </tr>
+  </table>
+
+  <!-- DO NOT REMOVE - End Section:   SUMMARY-->
+</FORM>
+</BODY>
+</HTML>

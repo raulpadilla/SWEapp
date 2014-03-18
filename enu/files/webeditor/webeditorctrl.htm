@@ -1,0 +1,294 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<title>Sample CKEditor Site</title>
+	<script type="text/javascript" src="ckeditor.js"></script>
+	<script type="text/javascript" src="/webeditor/adapters/jquery.js"></script>
+</head>
+<body>
+	<form method="post">
+		<p>
+
+
+
+			<textarea id="editor1" name="editor1"></textarea>
+			<script type="text/javascript" id="EditorScript">
+
+			 var gfilebrowserBrowseUrl;
+			 var gfilebrowserImageBrowseUrl;
+			 var gfilebrowserFlashBrowseUrl;
+			 var gfilebrowserUploadUrl;
+			 var gfilebrowserImageUploadUrl;
+			 var gfilebrowserFlashUploadUrl;
+			 var gfilebrowserWindowWidth=700;
+			 var gfilebrowserWindowHeight=400;
+
+             window.g_arrCategory     = new Array ();
+             window.g_arrItem         = new Array ();
+             window.g_arrRule         = new Array ();
+             window.g_arrRuleMap      = new Array ();
+             window.g_arrOperator     = new Array ();
+             window.g_arrOperatorMap  = new Array ();
+             window.g_arrStr          = new Array ();
+             window.g_iMergeField     = 0;
+
+             var g_strOfferType  = 'Email';
+		     var g_editorLang    = '';
+		     var g_templates     = new Array();
+             var g_strContent    = '';
+             var g_strEditorName;
+
+            function createEditor(){
+
+            
+
+                CKEDITOR.replace( 'editor1',{
+                extraPlugins: 'mergefieldsblock,contentruleblock',
+				filebrowserBrowseUrl      : gfilebrowserBrowseUrl,
+				filebrowserImageBrowseUrl : gfilebrowserImageBrowseUrl,
+				filebrowserFlashBrowseUrl : gfilebrowserFlashBrowseUrl,
+				filebrowserWindowWidth    : gfilebrowserWindowWidth,
+				filebrowserWindowHeight   : gfilebrowserWindowHeight,
+				language: getLanguage(),
+				toolbar:  getToolBar(),
+				template_files : g_templates
+				}
+				);
+
+			}
+
+
+
+            function DoInitialize ()
+            {
+
+                // get custom contorl information
+                var pConfig = window.external.GetCtrlConfig();
+
+                // get editor content
+                g_strContent = pConfig.GetProperty("Content");
+
+
+                g_strOfferType = pConfig.GetProperty("OfferType");
+
+
+
+				g_editorLang   = pConfig.GetProperty("Language");
+				g_templates      = pConfig.GetProperty("Templates");
+
+				gfilebrowserBrowseUrl      = pConfig.GetProperty("filebrowserBrowseUrl");
+				gfilebrowserImageBrowseUrl = pConfig.GetProperty("filebrowserImageBrowseUrl");
+				gfilebrowserFlashBrowseUrl = pConfig.GetProperty("filebrowserFlashBrowseUrl");
+				gfilebrowserUploadUrl      = pConfig.GetProperty("filebrowserUploadUrl");
+				gfilebrowserImageUploadUrl = pConfig.GetProperty("filebrowserImageUploadUrl");
+				gfilebrowserFlashUploadUrl = pConfig.GetProperty("filebrowserFlashUploadUrl");
+				gfilebrowserWindowWidth    = pConfig.GetProperty("filebrowserWindowWidth");
+				gfilebrowserWindowHeight   = pConfig.GetProperty("filebrowserWindowHeight");
+
+
+                for (var nIndex = 0; nIndex < pConfig.GetChildCount (); nIndex++)
+                {
+                    var name;
+                    var child = pConfig.GetChild(nIndex);
+                    var type = child.GetType ();
+                    if (type == "Person")
+                    {
+                        // get personalization item tool bar info
+                        var mergeFieldVal = child.GetProperty("MergeFieldVal");
+
+                        for (var nIndex1 = 0; nIndex1 < child.GetChildCount (); nIndex1++)
+                        {
+                            var item = child.GetChild (nIndex1);
+                            var itemType = item.GetType ();
+                            g_arrCategory[nIndex1] = itemType;
+                            g_arrItem[nIndex1] = new Array();
+                            AddPropertyToArray (item, g_arrItem[nIndex1], true);
+
+                            if (itemType == mergeFieldVal)
+                            g_iMergeField = nIndex1;
+                        }
+                    }
+                    else if (type == "Rule")
+                    {
+                        // get if/else rule tool bar info
+                        for (var nIndex1 = 0; nIndex1 < child.GetChildCount (); nIndex1++)
+                        {
+                            var rule = child.GetChild (nIndex1);
+                            var type = rule.GetType ();
+                            if (type == "R") // rule type
+                            {
+                            AddChildPropertyToArray (rule, g_arrRule, true);
+                            AddChildPropertyToArray (rule, g_arrRuleMap, false);
+                            }
+                            else if (type == "O") // operator
+                            {
+                            AddChildPropertyToArray (rule, g_arrOperator, true);
+                            AddChildPropertyToArray (rule, g_arrOperatorMap, false);
+                            }
+                        }
+                    }
+                    else if (type == "Caption")
+                    {
+                        // get tool bar caption
+                        AddPropertyToArray (child, g_arrStr, false);
+                    }
+                }
+
+		        createEditor();
+
+            }
+
+
+
+
+
+
+	        function getToolBar(){  
+	        
+	            if(!g_strOfferType || 0 === g_strOfferType.length)
+			      g_strOfferType = "Base";
+			      
+	            return  g_strOfferType +'Block';
+			}
+
+			function getLanguage(){
+
+			    var langMap = {};
+
+			    langMap["ENU"] = "en"; //English
+				langMap["ARA"] = "ar"; //Arabic
+				langMap["PRC"] = "zh"; // chinese traditional 
+				langMap["CNT"] = "zh-cn"; //Chinese (Taiwan) 
+				langMap["CSY"] = "cs"; //Czech
+			    langMap["DAN"] = "da"; //Danish
+			    langMap["DEU"] = "de"; //German
+			    langMap["ENG"] = "en-gb"; //English British
+				langMap["ESN"] = "esn"; //Spanish (Modern)
+				langMap["ESP"] = "es"; //Spanish 
+				langMap["FIN"] = "fi"; //Finnish
+				langMap["FRA"] = "fr"; //French
+				langMap["HEB"] = "he"; //Hebrew
+				langMap["ITA"] = "it"; //Italian
+				langMap["JPN"] = "ja"; //Japenese
+				langMap["KOR"] = "ko"; //Korean
+				langMap["NLD"] = "nl"; //Dutch
+				langMap["PL"]  = "pl"; //Polish
+			    langMap["PTB"] = "pt-br"; //Portuguese-Brazilian  
+			    langMap["PTG"] = "pt"; //Portuguese
+				langMap["RUS"] = "ru"; //Russian
+				langMap["SVE"] = "sv"; //Swedish
+				langMap["THA"] = "th"; //Thailand
+	            langMap["TRK"] = "tr"; //Turkish
+
+	            return langMap[g_editorLang];
+           }
+
+		   CKEDITOR.on('instanceReady',function(){
+                         
+                          SetContent(g_strContent);
+                  });
+
+            function AddChildPropertyToArray (propSet, array, bNameOnly)
+            {
+                var nIndex2 = 0;
+                var name;
+                for (var nIndex = 0; nIndex < propSet.GetChildCount (); nIndex++)
+                {
+                    var child = propSet.GetChild(nIndex);
+                    // there is only one property per child
+                    if ((name = child.EnumProperties (true)) != null && name != "")
+                    {
+                        if (bNameOnly)
+                        {
+                            array[nIndex2] = name;
+                            nIndex2++;
+                        }
+                        else
+                        {
+                            array[name] = child.GetProperty(name);
+                        }
+                    }
+                }
+            }
+
+            function AddPropertyToArray (propSet, array, bNameOnly)
+            {
+                var name;
+                if ((name = propSet.EnumProperties (true)) != null && name != "")
+                {
+                    do
+                    {
+                        if (bNameOnly)
+                        {
+                            array[propSet.GetProperty(name)] = name;
+                        }
+                        else
+                        {
+                            array[name] = propSet.GetProperty(name);
+                        }
+                    } while ((name = propSet.EnumProperties (false)) != null && name != "");
+                }
+            }
+
+			function GetContent(editor)
+			{
+				var strContent;
+				strContent = CKEDITOR.instances.editor1.getData();
+
+				var pPropset = window.external.NewPropertySet();
+				pPropset.SetProperty("Content", strContent);
+
+				if (g_strOfferType == "Email")
+				{
+					// add text content for email offer
+					var strContentText='';
+					var e = CKEDITOR.instances.editor1;
+					strContentText= e.document.getBody().getText();
+            
+					CKEDITOR.tools.trim(strContentText);
+					
+
+					pPropset.SetProperty("ContentText", strContentText);
+				}
+
+				var bRtn = window.external.GetContent(pPropset);
+			}
+
+
+
+	     	function SetContent(strContent)
+            {
+
+				CKEDITOR.instances.editor1.setData(strContent);
+			}
+
+			function NotifyGeneric(args)
+			{
+				var pPropSet = window.external.NewPropertySet();
+				pPropSet.DecodeFromString(args);
+				var type = pPropSet.GetType ();
+
+				switch (type)
+				{
+					case "SetContent":
+					{
+						SetContent (pPropSet.GetProperty ("0"));
+						break;
+					}
+					case "ResetToolBar":
+					{
+    					    //  DoInitialize();
+						break;
+					}
+				}
+			}
+
+
+			</script>
+		</p>
+		<p>
+
+		</p>
+	</form>
+</body>
+</html>

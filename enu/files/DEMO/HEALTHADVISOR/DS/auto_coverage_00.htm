@@ -1,0 +1,37 @@
+<HTML><HEAD><TITLE></TITLE><SCRIPT language=Javascript>
+top.onlink.StartData('auto_coverage');
+var T=new Array(1);
+var X=new Array(3);
+var V=new Array(99,99,0,0);
+var H=new Array('UNI_PROP_DAM_CHECK','BODILY_INJ_CHECK','PRICE','RULE');
+T[0]=new Array('UNI_PROP_DAM_CHECK','BODILY_INJ_CHECK','(BODILY_INJ.PRICE + COLLISION.PRICE + COLLISION_DED_WAIVER.PRICE + COMPREHENSIVE.PRICE + MEDICAL_PAYMENTS.PRICE + PROPERTY_DAMAGE.PRICE + RENTAL_CAR.PRICE + UNINSURED_BODILY_INJ.PRICE + UNINSURED_PROP_DAM.PRICE)','');
+X[0]=new Array('','','','DEBUG MAIN');
+X[1]=new Array('','','','');
+X[2]=new Array('','','','');
+top.onlink.SetOrthTable('UNI_PROP_DAM_CHECK');
+var UNI_PROP_DAM_CHECK_T=new Array(4);
+var UNI_PROP_DAM_CHECK_X=new Array(3);
+var UNI_PROP_DAM_CHECK_V=new Array(1,1,1,0);
+var UNI_PROP_DAM_CHECK_H=new Array('COLLISION','COMPREHENSIVE','UNINSURED_PROP_DAM','RULE');
+UNI_PROP_DAM_CHECK_T[0]=new Array('(!=0)','(!=0)','0','');
+UNI_PROP_DAM_CHECK_T[1]=new Array('0','0','1','');
+UNI_PROP_DAM_CHECK_T[2]=new Array('0','(=*)','0','');
+UNI_PROP_DAM_CHECK_T[3]=new Array('(=*)','0','0','');
+UNI_PROP_DAM_CHECK_X[0]=new Array('(!=0)','(!=0)','1','<TABLE><TR><TD><FONT face="verdana,helvetica" size=2>If you live in California you can only buy<B>uninsured motorist property damage</B> coverage when you <B>do not</B> purchase <B>Collision or Comprehensive</B> coverages.<P>You have two options:<UL><LI>Select "None" for Uninsured Motorist Property Damage<BR>or<LI>Select "None" for both <B>Comprehensive and Collision</B></UL></TD></TR></TABLE>');
+UNI_PROP_DAM_CHECK_X[1]=new Array('(!=0)','','1','<TABLE><TR><TD><FONT face="verdana,helvetica" size=2>If you live in California you can only buy<B>uninsured motorist property damage</B> coverage when you <B>do not</B> purchase <B>Collision or Comprehensive</B> coverages.<P>You have two options:<UL><LI>Select "None" for Uninsured Motorist Property Damage<BR>or<LI>Select "None" for <B>Collision</B></UL></TD></TR></TABLE>');
+UNI_PROP_DAM_CHECK_X[2]=new Array('','(!=0)','1','<TABLE><TR><TD><FONT face="verdana,helvetica" size=2>If you live in California you can only buy<B>uninsured motorist property damage</B> coverage when you <B>do not</B> purchase <B>Collision or Comprehensive</B> coverages.<P>You have two options:<UL><LI>Select "None" for Uninsured Motorist Property Damage<BR>or<LI>Select "None" for <B>Comprehensive</B></UL></TD></TR></TABLE>');
+top.onlink.SetOrthTable('BODILY_INJ_CHECK');
+var BODILY_INJ_CHECK_T=new Array(5);
+var BODILY_INJ_CHECK_X=new Array(3);
+var BODILY_INJ_CHECK_V=new Array(1,1,0);
+var BODILY_INJ_CHECK_H=new Array('BODILY_INJ','UNINSURED_BODILY_INJ','RULE');
+BODILY_INJ_CHECK_T[0]=new Array('0','(=0-1)','');
+BODILY_INJ_CHECK_T[1]=new Array('1','(=0-2)','');
+BODILY_INJ_CHECK_T[2]=new Array('2','(=0-3)','');
+BODILY_INJ_CHECK_T[3]=new Array('3','(=0-4)','');
+BODILY_INJ_CHECK_T[4]=new Array('4','(=0-4)','');
+BODILY_INJ_CHECK_X[0]=new Array('0','(=2-4)','<B>Uninsured/Underinsured Motorist Bodily Injury</B> coverage cannot be greater than <B> Bodily Injury</B> coverage.<P> Please reduce your <B>Uninsured/Underinsured Motorist Bodily Injury</B> coverage to <B>$15,000/$30,000</B> or less.');
+BODILY_INJ_CHECK_X[1]=new Array('1','(=3-4)','<B>Uninsured/Underinsured Motorist Bodily Injury</B> coverage cannot be greater than <B> Bodily Injury</B> coverage.<P> Please reduce your <B>Uninsured/Underinsured Motorist Bodily Injury</B> coverage to <B>$25,000/$50,000</B> or less.');
+BODILY_INJ_CHECK_X[2]=new Array('2','4','<B>Uninsured/Underinsured Motorist Bodily Injury</B> coverage cannot be greater than <B> Bodily Injury</B> coverage.<P> Please reduce your <B>Uninsured/Underinsured Motorist Bodily Injury</B> coverage to <B>$50,000/$100,000</B> or less.');
+top.onlink.EndData();
+</SCRIPT></HEAD><BODY></BODY></HTML>

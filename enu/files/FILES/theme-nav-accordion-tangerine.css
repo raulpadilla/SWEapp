@@ -1,0 +1,38 @@
+/*<ORACLECOPYRIGHT>
+* Copyright (C) 1994-2013 Oracle and/or its affiliates. All rights reserved.
+* Oracle and Java are registered trademarks of Oracle and/or its affiliates.
+* Other names may be trademarks of their respective owners.
+* UNIX is a registered trademark of The Open Group.
+*
+* This software and related documentation are provided under a license agreement
+* containing restrictions on use and disclosure and are protected by intellectual property laws.
+* Except as expressly permitted in your license agreement or allowed by law, you may not use, copy,
+* reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+* or display any part, in any form, or by any means. Reverse engineering, disassembly,
+* or decompilation of this software, unless required by law for interoperability, is prohibited.
+*
+* The information contained herein is subject to change without notice and is not warranted to be error-free.
+* If you find any errors, please report them to us in writing.
+*
+* U.S. GOVERNMENT RIGHTS Programs, software, databases, and related documentation and technical data delivered to U.S.
+* Government customers are "commercial computer software" or "commercial technical data" pursuant to the applicable
+* Federal Acquisition Regulation and agency-specific supplemental regulations.
+* As such, the use, duplication, disclosure, modification, and adaptation shall be subject to the restrictions and
+* license terms set forth in the applicable Government contract, and, to the extent applicable by the terms of the
+* Government contract, the additional rights set forth in FAR 52.227-19, Commercial Computer Software License
+* (December 2007). Oracle America, Inc., 500 Oracle Parkway, Redwood City, CA 94065.
+*
+* This software or hardware is developed for general use in a variety of information management applications.
+* It is not developed or intended for use in any inherently dangerous applications, including applications that
+* may create a risk of personal injury. If you use this software or hardware in dangerous applications,
+* then you shall be responsible to take all appropriate fail-safe, backup, redundancy,
+* and other measures to ensure its safe use. Oracle Corporation and its affiliates disclaim any liability for any
+* damages caused by use of this software or hardware in dangerous applications.
+*
+* This software or hardware and documentation may provide access to or information on content,
+* products, and services from third parties. Oracle Corporation and its affiliates are not responsible for and
+* expressly disclaim all warranties of any kind with respect to third-party content, products, and services.
+* Oracle Corporation and its affiliates will not be responsible for any loss, costs,
+* or damages incurred due to your access to or use of third-party content, products, or services.
+</ORACLECOPYRIGHT>*/
+#_swescrnbar,#_swecontent{margin:0;border:0;padding:0;border-top:1px solid #aaa;__background:#f4f4f4 url("../images/TreeNavMainContentBGShadow.png") repeat-x 0 0;background:#f4f4f4;top:96px;bottom:5px;position:absolute;-webkit-box-shadow:1px 0 0 0 #fefefe,0 1px 3px #aaa inset;box-shadow:1px 0 0 0 #fefefe,0 1px 3px #aaa inset}#_swescrnbar{left:0;width:200px;height:auto;z-index:1}#_swecontent{top:;left:199px;right:0;min-width:825px;z-index:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}#_swecontent.maxWidth{__width:100%;left:0}#_swecontent>div{margin:0;padding:0}#_sweview{padding:15px 10px}select#j_s_sctrl,.siebui-subview-navs select{font-size:.9em;color:#fafafa;float:left;border:0 none;box-shadow:none;height:16px;line-height:1.3em;margin:0 0 0 21px;padding:0;vertical-align:middle;width:16px;background:#363636 url(../images/jumpTabSelectBG.png) no-repeat 80% 100%;text-indent:-9999px}.siebui-subview-navs select{margin:3px 0 0 1px;__position:absolute}select#j_s_sctrl option,.siebui-subview-navs select option{background:#363636;color:#fafafa;text-indent:0}.siebui-editLayout{margin-top:-3px}div.siebui-chat-pane,#SS_ChatUI,div.TaskAssistant,div.siebui-task-pane,#SS_TaskUIPane,#Dashboard{margin:0 5px 0 2px;border-radius:0 0 4px 4px;-webkit-box-shadow:1px 0 3px #777;-moz-box-shadow:1px 0 3px #777;box-shadow:1px 0 3px #777}.maxWidth div.siebui-chat-pane,.maxWidth #SS_ChatUI,.maxWidth #SS_OpenUIReportPane,.maxWidth div.TaskAssistant,.maxWidth div.siebui-task-pane,.maxWidth #SS_TaskUIPane{border-radius:0 4px 4px 0;margin:18px 5px 0 0}.siebui-sub-applets{clear:both;border:1px solid #d5d5d5;border-radius:0 10px 0 0}#_swescrnbar>div{padding-top:23px;background:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}.tier1Back,#s_sctrl{height:100%;overflow:hidden}.tier1Back{background:0}#s_sctrl{padding-bottom:23px;background:0;height:100%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}#_swescrnbar.treeClosed{width:14px;height:14px;-webkit-box-shadow:none;box-shadow:none;border:0;background:0}#_swescrnbar.treeClosed>div{display:none}a#openSidebarButton,a#sidebarCloseButton{border:1px solid transparent;border-radius:2px 2px 2px 2px;color:#888;display:block;font-size:16px;font-weight:bold;height:14px;line-height:12px;margin:0;overflow:hidden;padding:0 3px;position:absolute;right:7px;text-decoration:none;top:2px;-webkit-transition:all .25s ease 0s;-moz-transition:all .25s ease 0s;transition:all .25s ease 0s}a#openSidebarButton:hover,a#sidebarCloseButton:hover{text-decoration:none;color:#333}a#openSidebarButton{right:auto;left:0}a#openSidebarButton.hidden{display:none}#_swescrnbar ul.dynatree-container span.dynatree-node{position:relative;display:block}#_swescrnbar ul.dynatree-container span.dynatree-root-tag{display:none}#_swescrnbar ul,#_swescrnbar ul li{margin:0;padding:0;border:0;border-radius:0;background:0;font-size:1em;overflow:hidden}#_swescrnbar ul.dynatree-container{margin:0 7px 0 0;padding:0;max-height:100%;overflow-y:auto;overflow-x:hidden}#_swescrnbar ul.dynatree-container ul>li{padding:0 20px 0 14px;margin:1px 0 0}#_swescrnbar ul.dynatree-container ul>li li{padding:0 0 0 5px}#_swescrnbar ul.dynatree-container>li a{font-size:.9em;display:block;font-family:Arial;color:#777;padding:3px 10px 3px 30px;margin:0;white-space:normal;line-height:1.2em;font-weight:normal}#_swescrnbar ul.dynatree-container>li>ul>li>span>a{padding:5px 30px 5px 30px}#_swescrnbar ul.dynatree-container a:focus,#_swescrnbar ul.dynatree-container a:hover,#_swescrnbar ul.dynatree-container span.dynatree-active a{outline:none!important;background-color:#d0dde8!important;border-radius:2px 2px 2px 2px;border:0;color:white!important}#_swescrnbar ul.dynatree-container span.dynatree-active a{background-color:#5783b7!important}#_swescrnbar ul.dynatree-container img{height:auto;margin-left:7px;margin-top:3px;padding-right:10px;position:absolute}#_swescrnbar ul.dynatree-container span.dynatree-expander{display:none;height:100%;margin:0;position:absolute;right:0;width:20px;background:url(../images/mainMenuArrows.png) no-repeat 0 5px}#_swescrnbar ul.dynatree-container span.dynatree-expander:hover{background-position:0 -18px}#_swescrnbar ul.dynatree-container .dynatree-expanded span.dynatree-expander{background-position:-17px 5px}#_swescrnbar ul.dynatree-container .dynatree-expanded span.dynatree-expander:hover{background-position:-17px -18px}

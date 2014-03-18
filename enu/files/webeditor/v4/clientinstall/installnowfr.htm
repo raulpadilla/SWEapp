@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- Copyright 2004 Ektron, Inc. -->
+<!-- Revision Date: 2004-Feb-19 -->
+<html>
+<head>
+<title>Installation de eWebEditPro</title>
+<script language="JavaScript1.2" src="parseinstallparams.js"></script>
+<script language="JavaScript1.2" src="../ewebeditpro.js"></script>
+<style>
+P { font-size : small; font-family : verdana, helvetica; }
+H1 { font-family : verdana, helvetica; }
+H2 { font-family : verdana, helvetica; }
+A { font-family : verdana, helvetica; }
+BODY { font-size : small; }
+</style>
+ <script language="JavaScript1.2">
+<!--
+function OnReadyHandler()
+{
+	document.loadingMsg.style.visibility = "hidden";
+	if (top.opener && !top.opener.closed)
+	{
+		top.opener.location.reload();
+		setTimeout("self.close()", 5000);
+	}
+}
+//-->
+</script>
+ </head>
+ <body>
+ <p align="center"><h2 align="center">
+Chargement <br>automatique et <br>installation de eWebEditPro </h2></p>
+ <form method="post">
+<input type=hidden name="DoneMsg" value="&lt;p&gt; &lt;/p&gt;&lt;p align=center&gt;&lt;font face='Arial' size=4&gt;Installation terminée.&lt;/font&gt;&lt;/p&gt;">
+<input type=hidden name="RestartMsg" value="&lt;p&gt; &lt;/p&gt;&lt;p align=center&gt;&lt;font face='Arial' size=4&gt;Redémarrez Windows pour terminer l’installation.&lt;/font&gt;&lt;/p&gt;">
+ <p align="center"><font size=-1>
+<img name=loadingMsg src="loading.gif" alt="Chargement en cours, patientez..." width=234 height=30><br>
+Si le chargement réussi, « Installation terminée » s'affichera dans la case ci-dessous. </font></p>
+<script language="JavaScript1.2">
+	var sCaption = "Installation terminée";
+	writeLoader(sCaption);
+</script>
+
+<p><font size=-1>
+<script language="JavaScript1.2">
+<!--
+	document.write('Si un petit <font color="red"><b>X</b></font> rouge apparaît, essayez de charger le ');
+	document.write('<a href="' + eWebEditProDefaults.clientInstall + '">');
+	document.write('programme d’installation client</a> et de l’exécuter. ');
+// -->
+</script>
+</font></p>
+<p><font size=-1>
+Pour obtenir une aide, visitez la page <a href="http://www.ektron.com/support" target="_blank">Assistance de Ektron</a>. </font></p>
+</form>
+ </body>
+</html>

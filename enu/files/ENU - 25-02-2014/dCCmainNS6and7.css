@@ -1,0 +1,45 @@
+
+/* This file overwrites some of the properties set in dCCmain.css to workaround a netscape bug */
+
+/*------------------*/
+/*Tier 1 Definitions*/
+/*------------------*/
+
+
+.tier1On {border-color:#ffffff #333399 #ffffff #ffffff; border-style: groove groove groove groove; border-width: 2px 1px 0px 2px;}
+.tier1On A:visited,
+.tier1On A:link,
+.tier1On A:hover {height:18px; border-width: 0px 0px 0px 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;}
+
+.tier1On A:hover { color:#6666cc;}
+
+.tier1Off {border-color:#ccccff #333399 #ccccff #ccccff; border-style:  groove groove groove groove; border-width: 2px 1px 0px 2px;}
+.tier1Off A,
+.tier1Off A:visited,
+.tier1Off A:link,
+.tier1Off A:hover{ height:18px; border-width: 0px 0px 0px 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;}
+ 
+.tier1Off A:hover { background-color:#d6d6ee;color:#6666cc;}
+
+/*--------*/
+/* Tier 3 */
+/*--------*/
+
+.tier3On { border-color:#ffffff #333399 #ffffff #ffffff; border-style: groove groove groove groove; border-width: 2px 1px 0px 2px; }
+.tier3on A,
+.tier3on A:visited,
+.tier3on A:hover 
+{ height:18px; border-width: 0px 0px 0px 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px; }
+
+.tier3On A:hover {color:#6666cc;}
+
+.tier3Off { border-color:#ccccff #333399 #ccccff #ccccff; border-style: groove groove groove groove; border-width: 2px 1px 0px 2px; }
+.tier3Off A,
+.tier3Off A:visited,
+.tier3Off A:hover 
+{ height:18px; border-width: 0px 0px 0px 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px; }
+
+.tier3Off A:hover { background-color:#d6d6ee;color:#6666cc;}
+
+.minibuttonOff
+{padding:0px 0px 0px 0px;}

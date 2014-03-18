@@ -1,0 +1,151 @@
+<HTML>
+<HEAD>
+<TITLE>OnLink Sales(tm): Launcher</TITLE>
+<!--   Ver 3.4.1 (Build 10)		20000531		-->
+<SCRIPT language="javascript">
+<!--
+function LaunchBrowserVersion(demoDir) {
+var launchpage = "";
+var nav = navigator.userAgent.toUpperCase();
+var browser=navigator.appName.toUpperCase();
+var nn="Netscape Navigator ";
+var msie="Microsoft Internet Explorer ";
+var is_ie="MICROSOFT INTERNET EXPLORER";
+var is_nn="NETSCAPE";
+var max_ie=5.4;
+var min_ie=4.0;
+var max_nn=4.8;
+var min_nn=4.0;
+var maxie_dis=5.0;
+var maxnn_dis=4.7;
+var min_aol=4.0;
+var max_aol=5.0;
+var max_aolmsie=5.0;
+var aol=nav.match(/(AOL)\s(\d\.\d)/);
+var mac=nav.match(/MAC/);
+var macie_ver=4.5;
+var macnn_minver=4.5;
+var macnn_maxver=4.73;
+var beginwarn="<FONT SIZE=4>OnLink Sales(tm) does not support";
+var spaces="<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+var upgrade=".<br>You will need to upgrade your browser to run OnLink Sales(tm).<br>Supported versions include:"+spaces+msie+min_ie+" - "+maxie_dis+spaces+nn+min_nn+" - "+maxnn_dis +spaces+"AOL Versions "+min_aol+" - "+max_aol+" with "+msie+min_ie+" - "+max_aolmsie+spaces+"Macintosh with "+msie+macie_ver+" or "+nn+macnn_minver+" - "+macnn_maxver;
+var rmswarn="OnLink Sales(tm) Warning\n\n";
+var proceed=".\nProceeding may render this session unstable.";
+var supportmsie="\nSupported versions include:\n"+msie+min_ie+" - "+maxie_dis+" and "+macie_ver+" for Macintosh";
+var supportnn="\n"+nn+min_nn+" - "+maxnn_dis+" and "+nn+"for Macintosh "+macnn_minver+" - "+macnn_maxver;
+if (aol!=null){
+if(mac!=null){
+document.open();
+document.write(beginwarn+" the AOL browser running on a Macintosh. Please minimize the AOL window and launch "+msie+"from your start menu");
+document.close();
+return;
+}
+aol_version=parseInt(aol[2]);
+if (max_aol<aol_version || aol_version<min_aol){
+document.open();
+document.write(beginwarn+" this version of AOL.<br><br>AOL browser type:"+nav+upgrade);
+document.close();
+return;
+}
+}
+var is_major = parseInt(navigator.appVersion); 
+if(is_major < 4){
+document.open();
+document.write(beginwarn+" your browser.<br><br>Unknown browser type: "+nav+upgrade);
+document.close();
+return;
+}
+if(browser==is_ie){
+var is_version=parseFloat((navigator.appVersion.substr(navigator.appVersion.indexOf("MSIE"),9)).substr(4,7));
+if (min_ie<=is_version && is_version<=max_ie){
+if(is_version==4.0){
+
+}
+if (mac!=null && is_version!=macie_ver){
+alert(rmswarn+"This application only supports "+msie+"version "+macie_ver+" on the Macintosh "+proceed);
+}
+}
+else {
+alert(rmswarn+"Unknown "+msie+"browser version: "+nav+proceed+supportmsie);
+}
+if((aol!=null) && (browser==is_ie) && (top.MAC_LOADED != true)){
+launchpage="cs\/onl_mn.htm";
+top.MAC_LOADED = true;
+}
+else{
+launchpage="i4_pnt.htm";
+}
+}
+else {
+var is_version=parseFloat(navigator.appVersion.substring(0,navigator.appVersion.indexOf(" ")));
+if (mac!=null && (macnn_minver>is_version || is_version>max_nn)){
+alert(rmswarn+"\nThis application only supports "+nn+"versions "+macnn_minver+" - "+macnn_maxver+" on the Macintosh"+proceed);
+}
+else if ((browser!=is_nn) || !(min_nn<=is_version && is_version<=max_nn)){
+alert(rmswarn+"Unknown browser type: "+nav+proceed+supportmsie+supportnn);
+}
+launchpage ="n_pnt.htm";
+}
+if((mac!=null) && (browser==is_nn) && (top.MAC_LOADED != true)){
+top.onlink=window;
+self.location.replace("cs\/onl_mn.htm");
+top.MAC_LOADED = true;
+}
+else {
+location.replace(launchpage);
+}
+}
+function LoadOnPoint()
+{
+top.onlink = window;
+LaunchBrowserVersion();
+}
+// -->
+</SCRIPT>
+</HEAD>
+<BODY bgcolor=#FFFFFF onLoad="LoadOnPoint()" onresize="if ( navigator.userAgent.toUpperCase().match(/MAC/) && navigator.appName.toUpperCase().match(/NETSCAPE/)) {self.location.replace('cs/onl_mn.htm');}"> 
+<!-- The following will be displayed when the users' Javascript support is turned
+off or when their browser is nonstandard. Content may be custom edited -->
+<NOSCRIPT>
+<TABLE width=100% border=0 cellspacing=0 cellpadding=0>
+<TR>
+<TD width=8>
+<IMG src="trans.gif" width=8 height=1 border=0 hspace=0 vspace=0>
+</TD>
+<TD width=*>
+<IMG src="trans.gif" width=1 height=8 border=0 hspace=0 vspace=0><BR>
+<FONT face="times roman" color="FF2400" size=+1><B>
+This OnLink Sales(tm) Application Requires Javascript Support
+</B></FONT>
+<P>
+<FONT face="times roman" size=3>
+JavaScript may have been manually disabled in your browser.
+OnLink's front end OnLink Sales(tm) technology requires JavaScript support to provide full functionality.
+</FONT>
+<BR>
+<IMG src="ui/trans.gif" width=1 height=10 border=0 hspace=0 vspace=0><BR>
+<FONT face="times roman" size=3>
+Please modify your browser settings to turn JavaScript back on.  Re-enabling JavaScript can be done directly from within your browser, and does not require a 	restart of your machine.
+</FONT>
+<BR>
+<P>
+</TD>
+<TD width=8>
+<IMG src="trans.gif" width=8 height=1 border=0 hspace=0 vspace=0>
+</TD>
+</TR>
+</TABLE>
+</NOSCRIPT>
+<TABLE height="100%" width="100%">
+<TR>
+<TD valign=middle align=center>
+<FONT size=5><B>
+<SCRIPT language="javascript"><!--
+document.write("Application Loading...");
+//--></SCRIPT>
+</B></FONT>
+</TD>
+</TR>
+</TABLE>
+</BODY>
+</HTML>

@@ -1,0 +1,1047 @@
+<HTML>
+<HEAD>
+<TITLE>On-Link Sales: Netscape Kernel</TITLE>
+<!--   Ver 3.4.1 (Build 10)		20000531		-->
+<SCRIPT>
+if(typeof top.onlink == "undefined"){
+window.parent.location.reload();
+}
+</SCRIPT>
+<SCRIPT SRC="cs/codeset_config.js">
+</SCRIPT>
+<SCRIPT SRC="ui/app_config.js">
+</SCRIPT>
+<SCRIPT SRC="cs/user_config.js">
+</SCRIPT>
+<SCRIPT language="JavaScript">
+<!--
+var HELPPAGE = "../ui/helpset.htm";
+var ABOUTPAGE = "../ui/about.htm";
+var BTYPE = (navigator.userAgent.indexOf("Mozilla/4.0") >= 0) ? "NS4" : "NS3";
+var mac=navigator.userAgent.toUpperCase().match(/MAC/);
+var HTM_EXT = ".htm";
+var TOP_LOC = document.location.pathname.slice(0, document.location.pathname.lastIndexOf('/')+1);
+var PG_LOC = "pg/";
+var UI_LOC = "ui/";
+var CS_LOC = "cs/";
+var DS_LOC = "ds/";
+var ORDER_LOC = "order/"
+var FR_PREFIX = "nf_";
+var CS_PREFIX = "nc_";
+var CS = "codeset";
+var DM = "metadata";
+var DP = "pagedata";
+var DL = "listdata";
+var PG = "catpage";
+var DY = "dynawin";
+var IT = "items";
+var SV = "surveyor";
+var FL = "flyover";
+var WG = "widgets";
+var EC = "errorcode";
+var ES = "errorstrings";
+var OL_UI = "ol_ui";
+var PR = "preload";
+var ERRS = null;
+var ERRC = null;
+var LTARG = DY;
+var TopPresent = false;
+var CodesetPresent = false;
+var ErrorCodesetPresent = false;
+var ErrorStringsPresent = false;
+var UIPresent = false;
+function GetTopDir() {
+return (TOP_LOC);
+}
+function Err(errMsg)
+{
+alert("\nOnLink Sales(tm) Message\n\n"+errMsg);
+}
+function InheritFrom(anObj,ancestorName,inhObj)
+{
+if ((anObj==null)||(ancestorName==null)) { ERRC.ErrAlert(ERRS.INVALID_OBJ, "InheritFrom"); return null; }
+if (inhObj!=null) {
+anObj.InheritedConstructor = inhObj;
+}
+else {
+anObj.InheritedConstructor = this[CS].GetObjConstructor(ancestorName);
+}
+return anObj.InheritedConstructor;
+}
+function InitMetaTable(descendantObj,inCODE, inDESC, optDEFAULT)
+{
+if (!InheritFrom(descendantObj,'',MetaTable_Obj)) { ERRC.ErrAlert(ERRS.INVALID_MT, "InitMetaTable"); return; }
+descendantObj.InheritedConstructor(inCODE,inDESC,optDEFAULT);
+}
+function MetaTable_Obj(inCODE, inDESC, optDEFAULT)
+{
+this.CODE = inCODE;
+this.DESC = inDESC;
+this.DEFAULT = optDEFAULT;
+this.IsDefault = MetaTable_IsDefault;
+}
+function MetaTable_IsDefault()
+{
+return ((this["DEFAULT"]!=null) && this.DEFAULT);
+}
+function ClearPageState()
+{
+COMPLETE_FLAG = false;
+DYNAOBJ=null;
+TRIGGERTABLE = null;
+ALL_COMPLETE_FLAG = false;
+ALL_COMPLETE_TIMEOUT = 0;
+RELOADING = 0;
+REBUILD_PAGE = false;
+PAGE[PG].Clear();
+PAGE[DM].Clear();
+PAGE[DP].Clear();
+Unblock(BLOCKONLOAD_ID);
+if (Loaded(CS)) {
+top.onlink.codeset.ClearCodeset();
+}
+}
+function Dyna_Obj()
+{
+this.VALID = false;
+this.PARTNO = '';
+this.DESCR = '';
+this.NOTE = '';
+this.FAMILY_VERSION = null;
+this.APP_DATA_VERSION = null;
+}
+var DYNAOBJ = null;
+function CreateDynaObj(version,dataversion) {
+DYNAOBJ = new Dyna_Obj();
+DYNAOBJ["FAMILY_VERSION"] = version;
+DYNAOBJ["APP_DATA_VERSION"] = dataversion;
+}
+function RefDynaObj() {
+return DYNAOBJ;
+}
+function Preconfig_Obj(){
+this.CopyObject = ObjectCopyMethod;
+}
+function ObjectCopyMethod(object){
+for (var field in object) {
+this[field] = object[field];
+}
+}
+function SetConditionTable(tableName,condCol,msgCol){
+this[CS].GATE_COND = new top.onlink.codeset.ConditionTableObj(tableName, condCol, msgCol);
+}
+function Table_Obj(inNAME,inTABLE,inEXCTABLE)
+{
+this.NAME = inNAME;
+this.HEADER = null;
+this.VARS = null;
+this.TABLE = inTABLE;
+this.EXCTABLE = inEXCTABLE;
+this.CONDTABLE = null;
+this.SetHeader = Table_SetHeader;
+this.SetVars = Table_SetVars;
+this.SetDataTable = Table_SetTable;
+this.SetExcTable = Table_SetExcTable;
+this.SetCondTable = Table_SetCondTable;
+}
+function Table_SetHeader(inHeader)
+{
+this.HEADER = inHeader;
+}
+function Table_SetVars(inVars)
+{
+this.VARS = inVars;
+}
+function Table_SetTable(inTable)
+{
+this.TABLE = inTable;
+}
+function Table_SetExcTable(inTable)
+{
+this.EXCTABLE = inTable;
+}
+function Table_SetCondTable(inTable)
+{
+this.CONDTABLE = inTable;
+}
+var MAINTABLE = new Table_Obj('DYNATABLE');
+function RefMainTable() {
+return MAINTABLE;
+}
+function RefHeader() {
+var maintab = RefMainTable();
+if (maintab == null) {
+return null;
+}
+else {
+return maintab.HEADER;
+}
+}
+function RefDynaTable() {
+var maintab = RefMainTable();
+if (maintab == null) {
+return null;
+}
+else {
+return maintab.TABLE;
+}
+}
+function RefExcTable() {
+var maintab = RefMainTable();
+if (maintab == null) {
+return null;
+}
+else {
+return maintab.EXCTABLE;
+}
+}
+var CURRENTROWS = null;
+function InitCurrentRows()
+{
+CURRENTROWS = new Array();
+}
+function RefCurrentRows() {
+return CURRENTROWS;
+}
+function SetCurrentRows(tableName, row)
+{
+CURRENTROWS[tableName] = row;
+}
+var ORTHTABLES = null;
+function InitOrthTables()
+{
+ORTHTABLES = new Array();
+}
+function RefOrthTables() {
+return ORTHTABLES;
+}
+function SetOrthTable(tableName)
+{
+ORTHTABLES[tableName] = tableName;
+}
+var DATATABLES = null;
+var DEFAULTTABLES = null;
+var TABLENAMES = null;
+var TRIGGERTABLE = null;
+function Trigger_Obj(inTRIGGER,inTARGET,inTARGTABLE)
+{
+this.TRIGGER = inTRIGGER;
+this.TARGET = inTARGET;
+this.TARGTABLE = inTARGTABLE;
+this.LASTSEL = -1;
+}
+function InitMetaTables(numTables)
+{
+DATATABLES = new Array(numTables);
+DEFAULTTABLES = new Array(numTables);
+TABLENAMES = new Array(numTables);
+}
+function SetMetaTable(tableName,metaTable,defTable)
+{
+DATATABLES[tableName] = metaTable;
+DEFAULTTABLES[tableName] = defTable;
+TABLENAMES[TABLENAMES.length] = tableName;
+SetCurrentRows(tableName,-1);
+}
+function SetTriggerTable(triggerWidget,targetWidget,metaTable)
+{
+if (!TRIGGERTABLE) {
+TRIGGERTABLE = new Array();
+}
+TRIGGERTABLE[TRIGGERTABLE.length] = new Trigger_Obj(triggerWidget,targetWidget,metaTable);
+}
+function RefDataTables() {
+return DATATABLES;
+}
+function RefDataTable(tableName) {
+return DATATABLES[tableName];
+}
+function RefDefaultTable(tableName) {
+return DEFAULTTABLES[tableName];
+}
+function RefTriggerTable() {
+return TRIGGERTABLE;
+}
+function getPageName(baseName)
+{
+return PG_LOC+baseName+HTM_EXT;
+}
+function getFrameName(baseName)
+{
+return UI_LOC+FR_PREFIX+baseName+HTM_EXT;
+}
+function getCodeName(baseName)
+{
+return CS_LOC+CS_PREFIX+baseName+HTM_EXT;
+}
+function GetDataName(baseName,extName)
+{
+return DS_LOC+baseName+"_"+((extName) ? extName:"m")+HTM_EXT;
+}
+function LinkPage(pageNum, preconfigObj, listID)
+{
+if (top.onlink[SV] && (typeof(top.onlink[SV].RegisterEvent) != "undefined"))
+{
+top.onlink[SV].RegisterEvent("103",pageNum,"");
+top.onlink[SV].PostEvents();
+}
+GotoPage(pageNum,preconfigObj,listID);
+}
+function GotoPage(pageNum, preconfigObj, listID, version, dataversion)
+{
+top.onlink[CS].CATPG = (top.onlink[OL_UI])[PG];
+if (pageNum == "") {
+ERRC.ErrAlert(ERRS.UDEF_PGNUM, "GotoPage");
+return;
+}
+if (listID) {
+top.onlink[CS].Flyover(listID,true);
+}
+DoGotoPage(pageNum,preconfigObj,version, dataversion);
+}
+var PRECONFIG_OBJ = null;
+function DoGotoPage(pageNum,preconfigObj,version, dataversion)
+{
+Debug("DoGotoPage");
+if(PAGE[PG].IsLoading()){
+Debug("Page frame is still loading");
+return;
+}
+ClearPageState();
+PAGE[PG].SetLoadState(false);
+CreateDynaObj(version, dataversion);
+if (preconfigObj) {
+PRECONFIG_OBJ = new Preconfig_Obj();
+PRECONFIG_OBJ.CopyObject(preconfigObj);
+}
+else {
+PRECONFIG_OBJ = null;
+}
+setTimeout("TimedGotoPg('"+pageNum+"','"+version+"','"+dataversion+"')",1);
+}
+function CheckVersion()
+{
+var version = DYNAOBJ["FAMILY_VERSION"];
+var dataversion = DYNAOBJ["APP_DATA_VERSION"];   
+var familyversion = top.onlink[OL_UI][PG]["FAMILY_VERSION"];
+var appversion = top.onlink.config.GetConfigVar("APP","DATA_VERSION"); 
+if(version == null && dataversion == null){return}
+if(!familyversion && !appversion){return}
+if(familyversion && version!= familyversion || appversion && dataversion != appversion){
+if(top.onlink[OL_UI]["SpecialCaseVersionCheck"]){
+top.onlink[OL_UI].SpecialCaseVersionCheck(version,dataversion);
+DYNAOBJ["FAMILY_VERSION"] =   top.onlink[OL_UI][PG]["FAMILY_VERSION"];
+DYNAOBJ["APP_DATA_VERSION"] =  top.onlink.config.GetConfigVar("APP","DATA_VERSION");
+}
+}
+}
+function TimedGotoPg(pageNum,version, dataversion)
+{
+top.onlink[PR].location.replace(getPageName(pageNum));
+ClearLoadFrameOnBlock();
+}
+function FetchPageData(pageNum, fromTop)
+{
+if (pageNum=="") {
+ERRC.ErrAlert(ERRS.UDEF_PG,"FetchPageData");
+return;
+}
+top.onlink[DM].location.replace(((fromTop) ? "":"../")+GetDataName(pageNum));
+var configDataLocation = ((fromTop) ? "":"./")+GetDataName(pageNum,'00');
+var timeoutAction = 'FetchPageConfigData("' + configDataLocation + '")';
+setTimeout(timeoutAction, 100);
+}
+function FetchPageMetaData(pageNum, fromTop)
+{
+if (pageNum=="") {
+ERRC.ErrAlert(ERRS.UDEF_PG,"FetchPageMetaData");
+return;
+}
+top.onlink[DM].location.replace(((fromTop) ? "":"../")+GetDataName(pageNum));
+}
+function FetchPageConfigData(location)
+{
+top.onlink[DP].location.replace(location);
+}
+function TokenStringToObject(tokenStr){
+var tokenArray = tokenStr.split(' ');
+var evaluatedStr = '';
+var dobj = RefDynaObj();
+if ((tokenStr == "") && (tokenStr.length == 0)){
+return tokenStr;
+}
+for (i=0;i<tokenArray.length;i++){
+evaluatedStr += top.onlink.codeset.EvalToken( dobj, tokenArray[i]);
+if (i != (tokenArray.length - 1)){
+evaluatedStr += ' ';
+}
+}
+return StringToObject( evaluatedStr );
+}
+function StringToObject(nameValueString){
+var object = new Object();
+var nameValueArray = nameValueString.split(' ');
+for (i=0;i<(nameValueArray.length);i+=2){
+object[nameValueArray[i]] = nameValueArray[i+1];
+}
+return object;
+}
+var UNLOADED = 0;
+var LOADING = 1;
+var LOADED = 2;
+function Load_Obj(segName)
+{
+this.Clear = Load_Clear;
+this.Clear();
+this.SegmentName = segName;
+this.IsLoaded = Load_IsLoaded;
+this.IsLoading = Load_IsLoading;
+this.SetLoadState = Load_SetLoadState;
+this.SetPageName = Load_SetPageName;
+}
+function Load_IsLoaded()
+{
+return (this.LoadState==LOADED);
+}
+function Load_IsLoading()
+{
+return (this.LoadState==LOADING);
+}
+function Load_SetLoadState(loaded)
+{
+if (loaded) {
+this.LoadState=LOADED;
+}
+else {
+this.LoadState=LOADING;
+}
+}
+function Load_SetPageName(pageName)
+{
+this.PageName = pageName;
+}
+function Load_Clear(pageName)
+{
+this.LoadState = UNLOADED;
+this.PageName = "";
+}
+function Pageload_Obj(segName)
+{
+InheritFrom(this,'',Load_Obj);
+this.InheritedConstructor(segName);
+this.IsLoaded = Pageload_IsLoaded;
+}
+function Pageload_IsLoaded()
+{
+return ((this.PageName==GetCurPg()) && (this.LoadState==LOADED));
+}
+var PAGE = new Array(4);
+PAGE[CS] = new Load_Obj(CS);
+PAGE[PG] = new Load_Obj(PG);
+PAGE[DM] = new Pageload_Obj(DM);
+PAGE[DP] = new Pageload_Obj(DP);
+PAGE[DL] = new Pageload_Obj(DL);
+function GetCurPg()
+{
+return PAGE[PG].PageName;
+}
+function Loaded(pg)
+{
+return PAGE[pg].IsLoaded();
+}
+function Loading(pg)
+{
+return PAGE[pg].IsLoading();
+}
+function SetLoaded(win,toVal)
+{
+if (win["name"] == null) {
+ERRC.ErrAlert(ERRS.INV_WDOBJ, "SetLoaded");
+return;
+}
+if (PAGE[win.name] == null) {
+ERRC.ErrAlert(ERRS.UNDEF_WDLD, win.name, "SetLoaded");
+return;
+}
+PAGE[win.name].SetLoadState(toVal);
+}
+function InitiateInputTemplate(pageName)
+{
+PAGE[PG].SetPageName(pageName);
+}
+function StartTemplate(pageName,fetchData)
+{
+if (fetchData && (GetCurPg()!=pageName)) {
+InitCurrentRows();
+FetchPageData(pageName);
+}
+InitiateInputTemplate(pageName);
+}
+function EndTemplate()
+{
+if (!Blocking(BLOCKONLOAD_ID)) {
+setTimeout('Thread_ReloadParent()',0);
+return;
+}
+top.onlink[CS].SetFamilyInfoFromPageVars();
+PAGE[PG].SetLoadState(true);
+if (RELOADING == 1) RELOADING = 2; 
+}
+function EndResults()
+{
+return true;
+}
+function StartMeta(pageName)
+{
+PAGE[DM].SetLoadState(false);
+PAGE[DM].SetPageName(pageName);
+}
+function EndMeta()
+{
+PAGE[DM].SetLoadState(true);
+InitWidgets();
+}
+function InitWidgets()
+{
+if (!this[CS]||!Loaded(CS)) {
+Err("Unable to initialize widgets - codeset not loaded");
+return;
+}
+this[CS].InitWidgetStateLayer();
+}
+function StartData(pageName)
+{
+PAGE[DP].SetLoadState(false);
+PAGE[DP].SetPageName(pageName);
+InitOrthTables();
+}
+function EndData()
+{
+PAGE[DP].SetLoadState(true);
+var dppg = top.onlink[DP];
+if (dppg["H"]==null) { ERRC.ErrAlert(ERRS.MS_HD_RO, dppg.location);	}
+else {
+RefMainTable().SetHeader(dppg.H);
+}
+if (dppg["V"]==null) { ERRC.ErrAlert(ERRS.MS_VR_RO, dppg.location);	}
+else {
+RefMainTable().SetVars(dppg.V);
+}
+if (dppg["T"]==null) { ERRC.ErrAlert(ERRS.MS_MNTBL, dppg.location);	}
+else {
+RefMainTable().SetDataTable(dppg.T);
+}
+if (dppg["X"]==null) { ERRC.ErrAlert(ERRS.MS_XTBL, dppg.location);	}
+else {
+RefMainTable().SetExcTable(dppg.X);
+}
+if (dppg["OL_CONDITIONS_T"]!=null){
+this[CS].GATE_COND = new top.onlink.codeset.ConditionTableObj('OL_CONDITIONS','TEST','RULE');
+}
+var tableObjects = new Array();
+var tableName;
+tableObjects[0] = new Array(RefMainTable().NAME,RefMainTable());
+var orthtables = RefOrthTables();
+for (var table in orthtables){
+tableObjects[tableObjects.length] = new Array(table,top.onlink[CS].GetOrthogonalTable(table));
+}
+var tableVars;
+var tableHdr;
+var tableRows;
+var dCache = top.onlink[CS].RefTableCache();
+if (top.onlink.config.GetConfigVar("APP","CASE_ANALYSIS_FIX_ACTIVE")== true) {
+top.onlink[CS].caseAnalysis = new Array();
+top.onlink[CS].NEED_TO_CLEAR = false;
+}
+for ( i=(tableObjects.length - 1); i>=0; i--){
+tableVars = tableObjects[i][1].VARS;
+tableHdr = tableObjects[i][1].HEADER;
+var keyCols = new Array();
+var subTableNames = new Array();
+SetCurrentRows(tableObjects[i][1].NAME,-1);
+for( j=0; j<tableVars.length; j++){
+if (tableVars[j] == 1){
+keyCols[keyCols.length] = tableHdr[j];
+}
+else if (tableVars[j] == 99){
+tableRows = tableObjects[i][1].TABLE;
+dCache.AddKeyCols(tableObjects[i][0], new Array());
+for ( r=0; r<tableRows.length; r++){
+if (top.onlink[CS].undefined(subTableNames[tableRows[r][j]])){
+subTableNames[tableRows[r][j]] = null;
+dCache.CopyKeyCols(tableRows[r][j],tableObjects[i][0]);
+}
+if (top.onlink.config.GetConfigVar("APP","CASE_ANALYSIS_FIX_ACTIVE") == true) {
+if ((tableVars[j] == 99) && (r > 0) && (tableRows[r][j] != tableRows[r-1][j])) {
+top.onlink[CS].caseAnalysis[tableObjects[i][0]] = true;
+}
+}
+}
+}
+}
+dCache.AddKeyCols(tableObjects[i][1].NAME, keyCols);
+}
+if (top.onlink[SV] && typeof(top.onlink[SV].RegisterEvent)!= "undefined")
+{
+var data = "";
+data = top.onlink[SV].TableRowToData(RefCurrentRows(),true);
+top.onlink[SV].RegisterEvent("2",PAGE[DP].PageName,data);
+top.onlink[SV].PostEvents();
+}
+if (Thread_Checkfault()) {
+PagesetComplete();
+}
+}
+function StartList(pageName)
+{
+PAGE[DL].SetLoadState(false);
+PAGE[DL].SetPageName(pageName);
+}
+function EndList()
+{
+PAGE[DL].SetLoadState(true);
+}
+function Thread_CheckAllLoaded()
+{	
+return (Thread_Checkfault() && Loaded(PG) && (!REBUILD_PAGE||RELOADING==2));
+}
+var ALL_COMPLETE_FLAG = false;
+var ALL_COMPLETE_TIMEOUT = 0;
+var RELOADING = 0;
+var REBUILD_PAGE = false;
+function LoadResults() {
+if (!Thread_CheckAllLoaded()) { setTimeout(LoadResults, 100); return;}
+setTimeout("top.onlink.codeset.AdjustToState()", 1);
+}
+function DatasetComplete() {
+if (!ALL_COMPLETE_FLAG) {
+if (!Thread_CheckAllLoaded()) {
+if (ALL_COMPLETE_TIMEOUT >= 500) {return;}
+ALL_COMPLETE_TIMEOUT++;
+setTimeout("DatasetComplete()", 100); 
+return;
+}
+ALL_COMPLETE_FLAG = true;
+var UIPG = top.onlink[OL_UI];
+if (UIPG["SpecialCaseDatasetComplete"]) {
+UIPG.SpecialCaseDatasetComplete(PAGE[PG].PageName, PRECONFIG_OBJ);
+}
+CheckVersion();
+if (top.onlink.config.GetConfigVar("APP","AUTO_LOAD_RESULTS")) LoadResults();
+}
+}
+var COMPLETE_FLAG = false;
+function PagesetComplete() {
+if (!COMPLETE_FLAG) {
+COMPLETE_FLAG = true;
+var UIPG = top.onlink[OL_UI];
+if (UIPG["SpecialCasePagesetComplete"]) {
+UIPG.SpecialCasePagesetComplete(PAGE[PG].PageName,PRECONFIG_OBJ);
+}
+}
+DatasetComplete();
+}
+var LOADTHREAD = new Array();
+var BLOCKONLOAD_ID = 1;
+function Thread_Obj(threadID,parentWin,waitInterval,waitTimeout)
+{
+this.ID = threadID;
+this.Parent = parentWin;
+this.ParentLocation = ""+parentWin.location;
+this.WaitTimer = null;
+this.WaitCount = 0;
+this.WaitInterval = waitInterval;
+this.WaitTimeout = waitTimeout;
+this.IterateThreadWrapper = 'THREAD_ITERATE_WRAPPER('+threadID+')';
+this.StartThread = Thread_Start;
+this.IterateThread = Thread_Iterate;
+this.CleanupThread = Thread_Cleanup;
+this.TimeoutQuery = Thread_TimeoutQuery;
+this.ThreadComplete = Thread_Checkfault;
+this.SuccessfullyTerminate = Thread_ReloadParent;
+}
+function Thread_Start()
+{
+WaitTimer = setTimeout(this.IterateThreadWrapper,this.WaitInterval);
+}
+function THREAD_ITERATE_WRAPPER(threadID)
+{
+if (LOADTHREAD[threadID]!=null) LOADTHREAD[threadID].IterateThread();
+}
+function Thread_Iterate()
+{
+with (this) {
+if (!ThreadComplete()) {
+WaitCount++;
+if (WaitCount >= WaitTimeout) {
+if (!TimeoutQuery()) {
+CleanupThread();
+return;
+}
+WaitCount = 0;
+}
+WaitTimer = setTimeout(IterateThreadWrapper,WaitInterval);
+return;
+}
+CleanupThread(true);
+}
+}
+function Thread_Cleanup(successFlag)
+{
+with (this) {
+if (successFlag) {
+SuccessfullyTerminate();
+if (Thread_Checkfault()) {
+PagesetComplete();
+}
+}
+var deadid = this.ID;
+LOADTHREAD[deadid] = null;
+}
+}
+function Thread_TimeoutQuery()
+{
+return this.Parent.confirm("\nONLINK SALES(tm) NOTIFICATION\n\nRequested Page Still Not Loaded\n\nOnLink Sales(tm) is attempting to load the page you requested\nfrom the web server. The server is taking a long time to respond.\nThis may be due to a slow connection, a slow server,\nor may simply be due to the size of the page. \nYou may want to Cancel the load and request the page again.\n\nTo continue waiting press OK,\nor press Cancel to stop loading this page.")
+}
+function Thread_Checkfault()
+{
+var csload = Loaded(CS);
+var dmload = Loaded(DM);
+var dpload = Loaded(DP);
+var hpload = Loaded(PG);
+return (csload && dmload && dpload && hpload);
+}
+function Thread_MetaCheckfault()
+{
+var csload = Loaded(CS);
+var dmload = Loaded(DM);
+return (csload && dmload);
+}
+function Thread_ReloadParent()
+{
+RELOADING = 1;
+(top.onlink[OL_UI])[PG].location.replace(getPageName(GetCurPg()));
+}
+var BLOCKING = new Array();
+function Blocking(blockFn)
+{
+if (blockFn==null) {
+ERRC.ErrAlert(ERRS.NUL_VAL,"Blocking");
+return true;
+}
+var retval = true;
+if (BLOCKING[blockFn]==null) {
+BLOCKING[blockFn] = true;
+retval = false;
+}
+return retval;
+}
+function Unblock(blockFn)
+{
+if (blockFn==null) {
+ERRC.ErrAlert(ERRS.NUL_VAL,"Unblock");
+return;
+}
+BLOCKING[blockFn] = null;
+}
+var LOADFAULT_INTERVAL = 1000;
+var LOADFAULT_TIMEOUT = 30;
+function BlockOnLoadFault(winObj)
+{
+if (winObj.name != PR) { return true; }
+if (Blocking(BLOCKONLOAD_ID)) { return false; }
+if(window.top.onlink.config["APP_CONFIG_LOADED"] && (typeof 		window.top.onlink.config.GetConfigVar("APP","SET_INTERVAL")=="number")){
+var LOADFAULT_INTERVAL = 	window.top.onlink.config.GetConfigVar("APP","SET_INTERVAL");
+}
+else{
+var LOADFAULT_INTERVAL = 1000;
+}
+var thread = new Thread_Obj(BLOCKONLOAD_ID,winObj,LOADFAULT_INTERVAL,LOADFAULT_TIMEOUT);
+if (!thread) { ERRC.ErrAlert(ERRS.THD_FL,"BlockOnLoadFault"); return false; }
+if (BlockOnLoadFault.arguments.length > 1) {
+thread.ThreadComplete = BlockOnLoadFault.arguments[1];
+}
+LOADTHREAD[BLOCKONLOAD_ID] = thread;
+thread.StartThread();
+return false;
+}
+function ClearLoadFrameOnBlock()
+{
+(top.onlink[OL_UI])[PG].document.location.replace("about:blank");
+setTimeout('LoadWaitMsgOnBlock()',1);
+}
+var CALC_WAIT_MSG = "";
+var LOAD_WAIT_MSG = "";
+function SetCalcWaitMsg(newText){
+CALC_WAIT_MSG = newText;
+return true;
+}
+function SetLoadWaitMsg(newText){
+LOAD_WAIT_MSG = newText;
+return true;
+}
+function LoadWaitMsgOnBlock()
+{
+var dd = (top.onlink[OL_UI])[PG].document;
+dd.close();
+dd.open('text/html','replace');
+dd.write(LOAD_WAIT_MSG);
+dd.close();
+}
+function BuildWidget(type,winObj,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9)
+{
+if (!BlockOnLoadFault(winObj)) {REBUILD_PAGE = true; return ""; }
+return top.onlink.codeset.BuildWidget(type,winObj,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9);
+}
+function BuildTarget(type,winObj,name,arg3,arg4,arg5,arg6,arg7,arg8,arg9)
+{
+return top.onlink.codeset.BuildTarget(type,name,arg3,arg4,arg5,arg6,arg7,arg8,arg9);
+}
+var ADD_FLAG;
+function BringUpPO(viewOnly) {
+if(top.onlink.items["ORDER_ACTIVE"] == true){
+alert("\nOnLink Sales(tm) Message\nThe order system is busy!\n");
+return;
+}
+ADD_FLAG = (viewOnly) ? false : true;
+if (Loaded(CS)) {
+if (viewOnly) {
+this[CS].OpenPO();
+}
+else {
+this[CS].AddToPO();
+}
+}
+}
+function BringUpQuote() {
+if (Loaded(CS)) {
+this[CS].OpenQuote();
+}
+}
+function BringUpHelp() {
+if(top.onlink.config["APP_CONFIG_LOADED"] && top.onlink.config.GetConfigVar("APP","HELP_WIN_ARGS")!=null){
+var winargs = top.onlink.config.GetConfigVar("APP","HELP_WIN_ARGS");
+}
+else{
+var winargs = 'status=0,scrollbars=0,resizable=0,menubar=1,width=525,height=375';
+}
+var helpwin = window.open('../ui/helpset.htm','HelpWin',winargs);
+if (helpwin != null) {
+helpwin.location.href = '../ui/helpset.htm';
+helpwin.focus();
+}
+}
+function BringUpAbout() {
+if(top.onlink.config["APP_CONFIG_LOADED"] && top.onlink.config.GetConfigVar("APP","ABOUT_WIN_ARGS")!=null){
+var winargs = top.onlink.config.GetConfigVar("APP","ABOUT_WIN_ARGS");
+}
+else{
+var winargs = 'status=0,scrollbars=1,resizable=0,width=450,height=300';
+}
+var aboutwin = window.open('../ui/about.htm','AboutWin',winargs);
+if (aboutwin != null) {
+aboutwin.location.href = '../ui/about.htm';
+aboutwin.focus();
+}
+}
+var PAINT_LDNG = true;
+function TurnPaintLoading(onOrOff){
+if ((onOrOff != 'ON') && (onOrOff != 'OFF')){
+return false;
+}
+PAINT_LDNG = (onOrOff == 'ON') ? true : false;
+return true;
+}
+function SetProdListTarget(newTargWin){
+if ((top.onlink[OL_UI])[newTargWin] != null){
+LTARG = newTargWin;
+if (CodesetPresent){
+this[CS].LISTTG = (top.onlink[OL_UI])[newTargWin];
+}
+}
+return true;
+}
+function RefItems()
+{
+var items = null;
+if (this["items"]&&this.items["RefItems"]) {
+items = this.items.RefItems();
+}
+else {
+ERRC.ErrAlert(ERRS.NO_ACS_IT);
+}
+return items;
+}
+function InitPage() {
+TopPresent = true;
+OnTopLoad();
+}
+function RegisterCodeset() {
+CodesetPresent = true;
+OnTopLoad();
+}
+function RegisterErrorCodeset() {
+ErrorCodesetPresent = true;
+OnTopLoad();
+}
+function RegisterErrorStrings() {
+ErrorStringsPresent = true;
+OnTopLoad();
+}
+var SAVED_OBJ = null;
+function InitAppVars(){
+ERRS = top.onlink[ES];
+ERRC = top.onlink[EC];
+if (CALC_WAIT_MSG == ""){
+CALC_WAIT_MSG = ERRC.ExtString(ERRS.CALC_WAIT_MSG);
+}
+if (LOAD_WAIT_MSG == ""){
+LOAD_WAIT_MSG = ERRC.ExtString(ERRS.LOAD_WAIT_MSG);
+}
+}
+var STARTPG = null;
+function OnTopLoad()
+{
+if (!TopPresent||!CodesetPresent||!ErrorCodesetPresent||!ErrorStringsPresent||!UIPresent) {
+return;
+}
+if ((!this[CS]) || (!this[CS]["OnTopLoad"])) {
+if ((!this[ES])||(!this[EC])){
+Err("Unable to load Codeset");
+}
+else {
+ERRC.ErrAlert(ERRS.NO_LD_CS);
+}
+return;
+}
+InitAppVars();
+top.onlink.codeset.OnTopLoad(TOP_LOC+'ui/');
+if(STARTPG != null){
+GotoPage(STARTPG,SAVED_OBJ);	
+}
+setTimeout('DelayedLoad()', 500);
+}
+function RegisterUI(startPg) {
+UIPresent = true;
+if(typeof startPg != "undefined"){
+STARTPG = startPg;
+}
+StopBack();
+OnTopLoad();
+}
+var DEBUG = new Array();
+var ORGDATE = new Date();
+function Debug(msg)
+{
+curdate = new Date();
+DEBUG[DEBUG.length] = (curdate-ORGDATE)+" | "+msg;
+return '';
+}
+function DebugClear()
+{
+DEBUG = new Array();
+}
+function DebugShow()
+{
+var DEBUGWIN = window.open('about:blank','debug','width=350,height=700,status=0,scrollbars=1,resizable=1');
+if (!DEBUGWIN) {
+alert("DEBUG ERROR - Unable to open Debug Window!");
+return;
+}
+var dd = DEBUGWIN.document;
+dd.open("text/html","replace");
+dd.writeln('<HTML><HEAD><TITLE>DEBUG</TITLE></HEAD><BODY bgcolor=#FFFFFF>');
+for (var i=1; i < DEBUG.length; i++) {
+dd.writeln(DEBUG[i],'<BR>');
+}
+dd.writeln('</BODY></HTML>');
+}
+var config = top.onlink;
+function GetConfigVar(module, item)
+{
+if(CheckConfigModuleLoaded(module)){
+var itemVar = module + "_" + item;
+if(typeof top.onlink.config[itemVar] != "undefined"){
+return top.onlink.config[itemVar];
+}
+}
+return null;
+}
+function SetConfigVar(module, item, newValue)
+{
+if(CheckConfigModuleLoaded(module)){
+var itemVar = module + "_" + item;
+if(typeof top.onlink.config[itemVar] != "undefined"){
+top.onlink.config[itemVar] = newValue;
+return true;
+}
+}
+return false;
+}
+function CheckConfigModuleLoaded(module)
+{
+var fileVar = module+"_CONFIG_LOADED";
+if(!top.onlink.config[fileVar]){
+return false;
+}
+return true;
+}
+function DelayedLoad() {  
+if(typeof top.onlink.items["ITEMS_LOADED"] == "undefined"){
+window.top.onlink.items.location.replace("cs/nc_items.htm");
+}
+if(typeof top.onlink.surveyor["Active"] == "undefined"){
+window.top.onlink.surveyor.location.replace("cs/surveyor.htm");
+}
+}
+var CONFIG_LOADED = true;
+function MacOrderAlert(){
+if ((mac!=null) && ((!window.top.onlink.config["APP_CONFIG_LOADED"] || (window.top.onlink.config.GetConfigVar("APP","MAC_MSG"))==true) || (window.top.onlink.config.GetConfigVar("APP","MAC_MSG")==null)||(typeof window.top.onlink.config.GetConfigVar("APP","MAC_MSG")!="boolean")))
+{
+if(window.top.onlink.config["APP_CONFIG_LOADED"] && (typeof window.top.onlink.config.GetConfigVar("APP","MAC_MSG_TEXT")=="string")){
+var macmessage = window.top.onlink.config.GetConfigVar("APP","MAC_MSG_TEXT");
+}
+else{
+var macmessage = "OnLink Sales(tm) does not support online ordering on a Macintosh.";
+}
+alert(macmessage);
+}
+}  
+function StopBack()
+{
+if(GetCurPg() != ""){
+STARTPG = GetCurPg();
+}
+if(RefDynaObj() != null){
+SAVED_OBJ = RefDynaObj();
+}
+}
+function GoBackToConfig()
+{
+top.onlink.ol_ui.location="../ui/n_ui.htm";
+}
+//-->
+</SCRIPT>
+</HEAD>
+<FRAMESET cols="100%,*" border=0 frameborder=0 framespacing=0 onLoad="InitPage();MacOrderAlert()">
+<FRAME marginwidth=0 marginheight=0 src="cs/back_ui.htm" name="ol_ui" scrolling="no">
+<FRAMESET rows="*,*,*,*,*,*,*,*,*,*,*,*" border=0 frameborder=0 framespacing=0>
+<FRAME marginwidth=0 marginheight=0 src="cs/nc_main.htm" name="codeset" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="ui/nf_white.htm" name="metadata" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="ui/nf_white.htm" name="pagedata" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="ds/l0_00.htm" name="listdata" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="ui/nf_white.htm" name="widgets" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="ui/nf_white.htm" name="items" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="cs/error_cs.htm" name="errorcode" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="cs/error_str.htm" name="errorstrings" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="ui/nf_white.htm" name="engine" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="ui/nf_white.htm" name="preload" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="ui/nf_white.htm" name="surveyor" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="ui/nf_white.htm" name="order" scrolling="no">
+</FRAMESET>
+</FRAMESET>
+<NOFRAMES>
+<BODY>
+</BODY>
+</NOFRAMES>
+</HTML>

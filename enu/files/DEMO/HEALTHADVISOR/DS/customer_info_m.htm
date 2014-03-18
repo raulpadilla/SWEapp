@@ -1,0 +1,19 @@
+<HTML><HEAD><TITLE></TITLE><SCRIPT language=Javascript>
+var OL=top.onlink;
+var IMT=top.onlink.InitMetaTable;
+var IMTS=top.onlink.InitMetaTables;
+var SMT=top.onlink.SetMetaTable;
+OL.StartMeta('customer_info');
+
+function PLAN_TYPE(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var PLAN_TYPE_t=new Array(3);
+PLAN_TYPE_t[0]=new PLAN_TYPE('0','HMO','DEFAULT');
+PLAN_TYPE_t[1]=new PLAN_TYPE('1','PPO','');
+PLAN_TYPE_t[2]=new PLAN_TYPE('2','POS','');
+IMTS(1);
+SMT('PLAN_TYPE',PLAN_TYPE_t);
+OL.EndMeta();
+</SCRIPT></HEAD><BODY></BODY></HTML>

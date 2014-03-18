@@ -1,0 +1,28 @@
+<HTML>
+<HEAD>
+<TITLE>Rainmaker Sales(tm): Internet Explorer 4.0 UI Definition</TITLE>
+<!--   Ver 1.5	4/12/99	Adam Grancell	-->
+
+<SCRIPT language="JavaScript">
+var OL = top.onlink;
+</SCRIPT>
+
+<!-- Required line for multiple output pages -->
+<SCRIPT SRC="./control_output.js"></SCRIPT>
+
+</HEAD>
+
+<FRAMESET rows="72,*" border=1 frameborder=0 framespacing=0>
+<FRAME marginwidth=0 marginheight=0 src="if_fly.htm" name="flyover" scrolling="no">
+		<FRAMESET cols="0,360,*" border=1 frameborder=0 framespacing=0 onLoad="OL.SetProdListTarget('contents');OL.RegisterUI()">
+		<FRAME marginwidth=0 marginheight=0 src="nf_white.htm"  name="contents" scrolling="no">
+   	<FRAME marginwidth=0 marginheight=0 src="../pg/p2.htm" name="catpage" scrolling="auto">
+		<FRAME marginwidth=0 marginheight=0 src="../pg/p1.htm"  name="dynawin" scrolling="auto">
+		</FRAMESET>
+</FRAMESET>
+
+<NOFRAMES>
+	<BODY>
+	</BODY>
+</NOFRAMES>
+</HTML>

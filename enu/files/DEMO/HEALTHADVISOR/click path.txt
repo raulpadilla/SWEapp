@@ -1,0 +1,22 @@
+HMO
+
+1. 94061
+2. no
+3. yes
+4. low
+5. low
+6. yes
+7. no
+8. no
+9. yes
+
+Copay PPO
+1. 94061
+2. yes
+3. yes
+4. low
+5. med
+6. no
+7. no
+8. no
+9. yes

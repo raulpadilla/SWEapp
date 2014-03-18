@@ -1,0 +1,144 @@
+/* global style */
+body, td    {font-family:arial;
+             font-size:8pt;}
+.click0     {cursor:default;}
+.click1     {cursor:pointer;}
+.control0   {display:none;}
+.control1   {display:inline;}
+
+/* task list header style */
+.titlebar   {background-color:#d7e1f5;}
+.titleBox   {padding:0px 0px 0px 4px;}
+.taskTitle  {color:#003399;
+             font-weight:600;
+             font-size:10pt;
+             text-decoration:none;}
+
+/* task list pane style */
+.tasklist0     {display:none;}
+.tasklist1     {display:block;
+                overflow:auto;}
+#tasklistUI    {font-family:arial;
+                font-size:8pt;}
+.tasklistBorder{border:1px solid #d7e1f5;}
+.tasklistHeader{padding:4px 0px 0px 8px;
+                font-weight:bold;}
+.taskBox0      {padding:0px 0px 2px 2px;
+                display:none;}
+.taskBox1      {padding:0px 0px 2px 2px;
+                display:block;}
+.taskHoverOn   {padding:0px 0px 0px 0px;
+                white-space:normal;
+                color:#6666cc;
+                text-decoration:underline;
+                cursor:pointer;}
+.taskHoverOff  {padding:0px 0px 0px 0px;
+                white-space:normal;
+                color:#6666cc;
+                text-decoration:none;
+                cursor:default;}
+.subtaskBox    {color:#008C00;
+                font-weight:bold;
+                cursor:default;}
+
+/* task player header style */
+.taskName   {color:#000000;
+             font-weight:bold;
+             width:100%;
+             font-size:12pt;
+             padding: 2px 5px 0px 5px;}
+.AddiHelpHeader{padding:0px 0px 2px 2px;
+                font-weight:bold;
+                background-color:#E5E5E5;}
+
+/* task player style */
+.taskPlayer {border:1px solid #adc3ef;
+             overflow:auto;
+             /*margin: 0 5 5 5;*/
+             background:#ffffff;}
+.taskUI0    {display:none;}
+.taskUI1    {display:block;}
+.taskPane0  {display:block;
+             visibility:hidden;}
+.taskPane05 {display:block;
+             visibility:visible;
+             filter:alpha(opacity=10);}
+ /*            -moz-opacity:0.1;   */
+
+.taskPane1  {display:block;
+             visibility:visible;}
+a.returnLink{color:#6666cc;text-decoration:none;}
+a.returnLink:visited{color:#6666cc;text-decoration:none;}
+a.returnLink:hover{color:#6666cc;text-decoration:underline;}
+
+/* step style */
+.stepBox0      {display:none;}
+.stepBox1      {display:block;}
+.step0_NN,
+.step0         {border:1px solid #ffffff;
+                border-width:1px 0px 1px 0px;
+                background:#ffffff;
+                padding: 4px 10px 3px 10px;}
+.step1_NN,
+.step1         {border:1px solid #cccc99;
+                border-width:1px 0px 1px 0px;
+                background:#ffffcc;
+                padding: 4px 10px 3px 10px;}
+.step0Hover    {border:1px solid #cccccc;
+                border-width:1px 0px 1px 0px;
+                background:#f0f0f0;
+                padding: 4px 10px 3px 10px;
+                cursor:default;}
+.step1Hover    {border:1px solid #cccc99;
+                border-width:1px 0px 1px 0px;
+                background:#ffffcc;
+                padding: 4px 10px 3px 10px;
+                cursor:default;}
+.stepCell      {cursor:default;}
+.stepText      {margin:0px 11px 0px 0px;}
+.stepImg0      {display:none;}
+.stepImg1      {display:inline;}
+.stepImg1Hover {display:inline;
+                cursor:pointer;}
+
+/* step link style */
+LABEL a:link,
+LABEL a:hover,
+LABEL a,
+LABEL a:visited{color:#6666cc;font-weight:bold; text-decoration:none;}
+LABEL a:hover{color:#6666cc;font-weight:bold;text-decoration:underline;margin:1px}
+
+/* substep style */
+.substep0      {display:none;}
+.substep1      {font-weight:normal;
+                margin: 0px 5px 0px 0px;
+                display:block;}
+
+/*
+.substep1_NN   {vertical-align:top;
+                font-weight:normal;
+                display:table;}
+.substepNumCell{padding:4 4 2 0;
+                noWrap:true;}
+*/
+.substepCell   {display:table-row;
+                vertical-align:top;
+                font-weight:normal;
+                padding: 0px 5px 1px 5px;
+                cursor:default;}
+
+/* done step style */
+.done0      {padding: 4px 10px 3px 10px;
+             display:none;}
+.done1      {padding: 4px 10px 3px 10px;
+             display:block;}
+
+/* branch step style */
+.branch0    {display:none;}
+.branch1    {padding: 4px 0px 3px 8px;
+             display:block;}
+
+/* TaskMap style */
+.Title {font-weight: bold; font-size: small; color: #3333ff;}
+.SubTitle { font-style: italic;}
+.screenName {font-weight: bold; font-size: small;}

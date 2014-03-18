@@ -1,0 +1,120 @@
+<HTML>
+<HEAD>
+<TITLE>On-Link Sales: Surveyor Main</TITLE>
+<!--   Ver 3.1.14IE3		12/11/98		Jeff Loomans	-->
+<SCRIPT language="Javascript">
+<!--
+var	EventList = new Array();
+var EventCount = 0;
+var Sequence = 1;
+var SurveyorVer = "1.0.0";
+var EventParts = 6;
+var SessionID = 0;
+var Url = "";
+var Active = false;
+function TableRowToData(tableRow, tables)
+{
+var retVal = "";
+if (Active == true)
+{
+if (tables == true)
+{
+retVal = "Tables = <";
+}
+else
+{
+retVal = "Rows = <";
+}
+for (var name in tableRow)
+{
+if (tables == true)
+{
+retVal = retVal + name + ",";
+}
+else
+{
+retVal = retVal + tableRow[name] + ",";
+}
+}
+retVal = retVal + ">";
+}
+return retVal;
+}
+function KeyValueToData(keyIn,valueIn)
+{
+var retVal = "";
+if (Active == true)
+{
+retVal = retVal + keyIn + "=" + valueIn + ";";
+}
+return retVal;
+}
+function RegisterEvent(type, label, data)
+{
+var event = new Array();
+if (Active == true)
+{
+if (Sequence == 1) 
+{
+var newEvent = new Array();
+SessionID = Math.random();
+newEvent[0]=1;
+newEvent[1]=SurveyorVer;
+newEvent[2]="";
+newEvent[3]=Sequence;
+newEvent[4]="";
+newEvent[5]=SessionID;
+EventList[EventCount]=newEvent;
+EventCount++;
+Sequence++;
+}
+event[0]=type;
+event[1]=label;
+event[2]=data;
+event[3]=Sequence;
+event[4]="";
+event[5]=SessionID;
+EventList[EventCount]=event;
+EventCount++;
+Sequence++;
+}	    
+}
+function PostEvents()
+{
+var i,j;
+var tmp = document.EventSubmit.events;
+tmp.value="";
+if (Active == true)
+{
+for (i=0; i < EventCount; i++)
+{
+if (i > 0)
+tmp.value = tmp.value + "\\@";
+for (j=0; j < EventParts;j++)
+{
+if (j == (EventParts-1))
+tmp.value=tmp.value+EventList[i][j];
+else
+tmp.value=tmp.value+EventList[i][j]+"\\~";
+}
+}
+document.forms[0].action = Url;
+document.forms[0].submit();
+EventCount=0;
+}       
+}
+function InitPage()
+{
+Active = top.onlink.config.GetConfigVar("SURVEYOR","ACTIVE");
+Url = top.onlink.config.GetConfigVar("SURVEYOR","URL");
+SurveyorVer = top.onlink.GetConfigVar("CODESET","SURVEYOR_VER");
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgcolor=#000000 onLoad="InitPage()">
+<FORM NAME=EventSubmit  METHOD=POST ACTION="">
+<input type=hidden NAME=events>
+</FORM>
+</BODY>
+</HTML>

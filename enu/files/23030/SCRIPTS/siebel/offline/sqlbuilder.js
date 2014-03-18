@@ -1,0 +1,38 @@
+/*<ORACLECOPYRIGHT>
+* Copyright (C) 1994-2013 Oracle and/or its affiliates. All rights reserved.
+* Oracle and Java are registered trademarks of Oracle and/or its affiliates.
+* Other names may be trademarks of their respective owners.
+* UNIX is a registered trademark of The Open Group.
+*
+* This software and related documentation are provided under a license agreement
+* containing restrictions on use and disclosure and are protected by intellectual property laws.
+* Except as expressly permitted in your license agreement or allowed by law, you may not use, copy,
+* reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform, publish,
+* or display any part, in any form, or by any means. Reverse engineering, disassembly,
+* or decompilation of this software, unless required by law for interoperability, is prohibited.
+*
+* The information contained herein is subject to change without notice and is not warranted to be error-free.
+* If you find any errors, please report them to us in writing.
+*
+* U.S. GOVERNMENT RIGHTS Programs, software, databases, and related documentation and technical data delivered to U.S.
+* Government customers are "commercial computer software" or "commercial technical data" pursuant to the applicable
+* Federal Acquisition Regulation and agency-specific supplemental regulations.
+* As such, the use, duplication, disclosure, modification, and adaptation shall be subject to the restrictions and
+* license terms set forth in the applicable Government contract, and, to the extent applicable by the terms of the
+* Government contract, the additional rights set forth in FAR 52.227-19, Commercial Computer Software License
+* (December 2007). Oracle America, Inc., 500 Oracle Parkway, Redwood City, CA 94065.
+*
+* This software or hardware is developed for general use in a variety of information management applications.
+* It is not developed or intended for use in any inherently dangerous applications, including applications that
+* may create a risk of personal injury. If you use this software or hardware in dangerous applications,
+* then you shall be responsible to take all appropriate fail-safe, backup, redundancy,
+* and other measures to ensure its safe use. Oracle Corporation and its affiliates disclaim any liability for any
+* damages caused by use of this software or hardware in dangerous applications.
+*
+* This software or hardware and documentation may provide access to or information on content,
+* products, and services from third parties. Oracle Corporation and its affiliates are not responsible for and
+* expressly disclaim all warranties of any kind with respect to third-party content, products, and services.
+* Oracle Corporation and its affiliates will not be responsible for any loss, costs,
+* or damages incurred due to your access to or use of third-party content, products, or services.
+</ORACLECOPYRIGHT>*/
+if(typeof(SiebelApp.SqlBuilder)==="undefined"){SiebelJS.Namespace("SiebelApp.SqlBuilder");SiebelApp.SqlBuilder=(function(){var b=SiebelApp.Offlineconstants;var d=b.get("STRINGNULL");var a=b.get("STRINGUNDEFINED");var f=SiebelApp.OfflineUtils;function c(){var g;h=function h(){return g};h.prototype=this;g=new h();g.constructor=h;return g}var e=new c();c.prototype.UpdateRecord=function(s,m,k,g,t,j,h,n){s=f.RemoveNonAlphaChars(s);var p="";var o="UPDATE "+s+" SET ";if(m){var r=m.length;var q=null;for(var l=0;l<r;l++){if(j){q=j.indexOf(m[l])}if(j&&q!==-1){if(h[q]===d||h[q]===a){o+=m[l]+" = ("+m[l]+' || ",'+n[q]+'")';if(l<r-1){o+=", "}}else{o+=" "+m[l];o+=" = REPLACE("+m[l]+',"'+h[q]+'","'+n[q]+'")';if(l<r-1){o+=", "}}}else{o+=" "+m[l];if(k[l]){p=k[l].toString();p=(p)?p.replace(/'/g,"''"):""}else{p=""}o+=" = '"+p+"'";if(l<r-1){o+=", "}}}}o+="  WHERE   ";o+=" "+g;o+=" = ?";o+=";";return o};c.prototype.CreateTable=function(m,k,o,n){var l=0;var g=SiebelJS.Dependency("SiebelApp.Utils").IsEmpty(o)?false:true;m=f.RemoveNonAlphaChars(m);var h="CREATE TABLE IF NOT EXISTS "+m+" (";if(k){h+=" RecordNum INTEGER PRIMARY KEY ASC, ";for(var j=0;j<k.length;j++){h+=" "+k[j];if(l<k.length-1){h+=", ";l++}}if(n){h+=",CONSTRAINT AB UNIQUE (Id)";if(o){h+=",CONSTRAINT ABC UNIQUE ("+o+")"}}h+=")";return h}};c.prototype.DeleteRecords=function(k,j,o,m){var h;k=f.RemoveNonAlphaChars(k);h="DELETE FROM "+k;if(j){var i=" WHERE ";var g=j.length;for(var l=0;l<g;l++){if(l>0){i+=" "+o+" "}if(m){i+=j[l]+"  "+m+" ?"}else{i+=j[l]+"  = ?"}}h=h+i}return h};c.prototype.DeleteMutlipleRecord=function(i,h,j){var g;i=f.RemoveNonAlphaChars(i);g="delete FROM "+i+" WHERE "+h+" IN("+j+")";return g};c.prototype.DeleteTable=function(h){h=f.RemoveNonAlphaChars(h);var g="DROP TABLE IF EXISTS "+h;return g};c.prototype.DeleteFilterRecord=function(h,g,k,j){h=f.RemoveNonAlphaChars(h);var i={};i.query="DELETE  FROM "+h+" WHERE "+g+"  <= (SELECT "+g+" FROM "+h+" WHERE "+k+" = ? )";i.value=[j];return i};c.prototype.SelectFilterRecord=function(h,g,k,i){h=f.RemoveNonAlphaChars(h);var j={};if(i!==""){j.query="SELECT *  FROM "+h+" WHERE "+g+"  > (SELECT "+g+" FROM "+h+" WHERE "+k+" = ? )";j.value=[i]}else{j.query="SELECT *  FROM "+h;j.value=[]}return j};c.prototype.SelectRecord=function(C,h,u,o,x,D){var s;var E="";var p="";var r;var m=[];var k={};var l=[];if(typeof C==="string"){C=[C]}for(var q=0;q<C.length;q++){C[q]=f.RemoveNonAlphaChars(C[q]);if(l){l+=C[q]+","}else{l=C[q]+","}}l=l.substring(0,l.length-1);if(!u||!(u.length)){s="SELECT * FROM "+l}else{var g=u.length;for(var z=0;z<g;z++){if(E){E+=u[z]+","}else{E=u[z]+","}}E=E.substring(0,E.length-1);s="SELECT "+E+" FROM "+l}if(h&&h.length>0){s+=" WHERE ";var y=h.length;for(var v=0;v<y;v++){if(h[v].PreLogic){s+=" "+h[v].PreLogic+" "}if(!h[v].Oper){h[v].Oper="="}if(h[v].IsField){s+=h[v].FieldName+" "+h[v].Oper+" "+h[v].Val+" "}else{if(C.length>1){s+=h[v].FieldName+" "+h[v].Oper+" ? "}else{s+=f.RemoveNonAlphaChars(h[v].FieldName)+" "+h[v].Oper+" ? "}m.push(h[v].Val)}}}if(o&&o.length>0){var A=o.length;var B;for(var w=0;w<A;w++){B=o[w];if(C.length===1){B=f.RemoveNonAlphaChars(B)}if(p){p+=B+","}else{p=B+","}}p=p.substring(0,p.length-1);if(x){r=" ORDER BY "+p+" "+x}else{r=" ORDER BY "+p}s+=r}if(D){s+=" LIMIT "+D[0]+" ,"+D[1]}k.selectQuery=s;k.valList=m;return k};c.prototype.SelectRecordPopulateWS=function(D,h,u,o,z,E){var s;var G="";var p="";var r;var m=[];var k={};var l=[];if(typeof D==="string"){D=[D]}for(var q=0;q<D.length;q++){D[q]=f.RemoveNonAlphaChars(D[q]);if(l){l+=D[q]+","}else{l=D[q]+","}}l=l.substring(0,l.length-1);if(!u||!(u.length)){s="SELECT * FROM "+l}else{var g=u.length;for(var A=0;A<g;A++){if(G){G+=u[A]+","}else{G=u[A]+","}}G=G.substring(0,G.length-1);s="SELECT "+G+" FROM "+l}if(h&&h.length>0){s+=" WHERE ";var w=s;var y=h.length;for(var v=0;v<(y-1);v++){if(h[v].indexOf(b.get("EXISTS"))!=-1){var F=h[v].replace("EXISTS","");s+=(b.get("EXISTS")+" ( "+w+F+" ) AND ")}else{s+=("( "+h[v]+" ) AND ")}}if(h[v].indexOf(b.get("EXISTS"))!=-1){var F=h[v].replace("EXISTS","");s+=(b.get("EXISTS")+" ( "+w+F+" )")}else{s+=("( "+h[v]+" )")}}if(o&&o.length>0){var B=o.length;var C;for(var x=0;x<B;x++){C=o[x];if(p){p+=C+","}else{p=C+","}}p=p.substring(0,p.length-1);if(z){r=" ORDER BY "+p+" "+z}else{r=" ORDER BY "+p}s+=r}if(E){s+=" LIMIT "+E[0]+" ,"+E[1]}k.selectQuery=s;k.valList=m;return k};c.prototype.InsertRecord=function(n,l,g){var m=0;var o={};n=f.RemoveNonAlphaChars(n);var p="INSERT INTO "+n+" (";for(var k=0;k<l.length;k++){p+=" "+l[k];if(m<l.length-1){p+=", ";m++}}p+=") VALUES (";m=0;for(var h=0;h<g.length;h++){p+=" ?";if(m<g.length-1){p+=", ";m++}}p+=")";o.insertquery=p;o.values=g;return o};return e}())};

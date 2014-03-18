@@ -1,0 +1,34 @@
+<HTML>
+<HEAD>  
+<TITLE>Sample Order Template</TITLE>
+<!--   Ver 1.5	4/12/99	Adam Grancell	-->
+<SCRIPT></SCRIPT>
+<SCRIPT src="../cs/po.js">
+</SCRIPT>
+<SCRIPT>
+function InitOrder(){
+	//the following files must load after contents of multi_items
+	window.order_write.location='../order/po_write.htm';
+	window.order_total_ins.location='../order/np_totl.htm';
+}
+</SCRIPT>
+</HEAD>
+
+<FRAMESET rows="0,0,0,0,180,20,*,95" border=0 frameborder=yes framespacing=0 onLoad="InitOrder();" onUnload="CloseOrder();" onResize="InitOrder();">
+
+	<FRAME marginwidth=0 marginheight=0 src="../order/po_items.htm" name="multi_items" scrolling="no">
+	<FRAME marginwidth=0 marginheight=0 src="../order/po_print.htm" name="order_print" scrolling="no">
+	<FRAME marginwidth=0 marginheight=0 src="../order/po_save.htm" name="order_save" scrolling="no">
+	<FRAME marginwidth=0 marginheight=0 src="../order/po_submit.htm" name="order_submit" scrolling="no">
+
+	<FRAME marginwidth=0 marginheight=0 src="../order/np_info.htm" name="order_userinfo" scrolling="auto">
+	<FRAME marginwidth=0 marginheight=0 src="../order/np_ithd.htm" name="title_bar" scrolling="no">
+
+	<FRAME marginwidth=0 marginheight=0 src="../ui/nf_white.htm" name="order_write" scrolling="auto">
+
+	<FRAME marginwidth=0 marginheight=0 src="../ui/nf_white.htm" name="order_total_ins" scrolling="no">
+</FRAMESET>
+<NOFRAMES>
+</NOFRAMES>
+</HTML>
+

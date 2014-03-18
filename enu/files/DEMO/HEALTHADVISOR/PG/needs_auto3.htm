@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<TITLE>Inputs Layout Template</TITLE>
+<!--  Ver xxx -->
+<SCRIPT language="javascript">
+	<!--
+	top.onlink.StartTemplate('needs_auto',true);
+	var FAMILY_DESCR = 'Needs_Auto';
+	var FAMILY_PICT = 'needs_auto.jpg';
+	var FAMILY_PAGE = 'needs_auto';
+
+	//--- SpecialCase Override Points ---//
+	function initPage()
+	{
+		top.onlink.EndTemplate();
+	}
+	//-->
+</SCRIPT>
+</HEAD>
+
+
+<BODY bgcolor="#FFFFFF" onLoad="initPage()">
+<FORM name="WidgetForm" onSubmit="return false;">
+  <table width="360" border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td width="40">&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="40">&nbsp;</td>
+      <td> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="5"><b> 
+          Automobile Insurance</b></font></div>
+      </td>
+    </tr>
+  </table>
+  <table width=360 bgcolor="#e5e5e5" border=0 cellpadding=10 cellspacing=0>
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td> <b><font color="#003399" size="2" face="Arial, Helvetica, sans-serif">(Towing/Rental</font></b><font size="2" face="Arial, Helvetica, sans-serif">)<br>
+        <b>Do you have a Roadside Assistance plan?</b><br>
+        <script>document.write(top.onlink.BuildWidget("CHECKBOX",window,"AUTO_ROADSIDE",0));</script>
+        YES<br>
+        <br>
+        <b>Would you have access to alternative transportation in the event your 
+        auto is damaged?</b><br>
+        <script>document.write(top.onlink.BuildWidget("CHECKBOX",window,"AUTO_RENTAL",0));</script>
+        YES </font></td>
+    </tr>
+  </table>
+
+
+  <table width=360 bgcolor="#e5e5e5" border=0 cellpadding=10 cellspacing=0>
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td> <b><font color="#003399" face="Arial, Helvetica, sans-serif" size="2">(Medical</font></b><font face="Arial, Helvetica, sans-serif" size="2">)<br>
+        <b>Do you and people who are frequent passengers in your car (family, 
+        friends, or others) have health insurance? </b><br>
+        <script language="">
+document.write(top.onlink.BuildWidget("CHECKBOX",window,"MEDICAL_PASSENGER",0));
+</script>
+        YES <br>
+        <br>
+        <b>Select the option that best describes your health coverage: </b><br>
+        <script>document.write(top.onlink.BuildWidget("RADIO",window,"MEDICAL_PERSONAL",0));</script>
+        None<br>
+        <script language="">
+document.write(top.onlink.BuildWidget("RADIO",window,"MEDICAL_PERSONAL",1));
+</script>
+        Covers only emergency medical and dental treatments. <br>
+        <script language="">
+document.write(top.onlink.BuildWidget("RADIO",window,"MEDICAL_PERSONAL",2));
+</script>
+        Covers only some medical and dental treatments. <br>
+        <script language="">
+document.write(top.onlink.BuildWidget("RADIO",window,"MEDICAL_PERSONAL",3));
+</script>
+        Covers almost all medical and dental treatments. </font></td>
+    </tr>
+  </table>
+  <table width="360" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td><font face="Arial, Helvetica, sans-serif"><b><a href="needs_auto2.htm">PREVIOUS</a></b></font></td>
+      <td>&nbsp; </td>
+    </tr>
+  </table>
+</FORM>
+</BODY>
+</HTML>

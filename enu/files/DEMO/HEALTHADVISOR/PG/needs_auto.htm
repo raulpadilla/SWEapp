@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<TITLE>Inputs Layout Template</TITLE>
+<!--  Ver xxx -->
+<SCRIPT language="javascript">
+	<!--
+	top.onlink.StartTemplate('needs_auto',true);
+	var FAMILY_DESCR = 'Needs_Auto';
+	var FAMILY_PICT = 'needs_auto.jpg';
+	var FAMILY_PAGE = 'needs_auto';
+
+	//--- SpecialCase Override Points ---//
+	function initPage()
+	{
+		top.onlink.EndTemplate();
+	}
+	//-->
+</SCRIPT>
+</HEAD>
+
+
+
+<BODY bgcolor="#FFFFFF" onLoad="initPage()">
+	<FORM name="WidgetForm" onSubmit="return false;">
+  <table width="360" border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td>&nbsp;</td>
+    </tr>
+    <tr> 
+      <td> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="5"><b> 
+          Automobile Insurance</b></font></div>
+      </td>
+    </tr>
+  </table>
+  <table width=360 bgcolor="#e5e5e5" border=0 cellpadding=10 cellspacing=0>
+    <tr>
+      <td width="10" bgcolor="#FFFFFF">&nbsp;</td>
+      <td> <font face="Arial, Helvetica, sans-serif" size="2"><b><font color="#003399">(Bodily 
+        Injury/Property Damage)</font><br>
+        Do you lease, finance, or own your vehicle?</b><br>
+        <script>
+document.write(top.onlink.BuildWidget("LISTBOX",window,"AUTO_PURCHASE",1,10,true));
+</script>
+        <br>
+        <br>
+        <b>Do you rent or own your home? </b><br>
+        <script>
+document.write(top.onlink.BuildWidget("LISTBOX",window,"RENT_OWN",1,10,true));
+</script>
+        <br>
+        <br>
+        <b>What range does your salary fall in? </b><br>
+        <script>
+document.write(top.onlink.BuildWidget("LISTBOX",window,"SALARY",1,20,true));
+</script>
+        <br>
+        <br>
+        <b>How much money do you have in your savings account </b><br>
+        <script>
+document.write(top.onlink.BuildWidget("LISTBOX",window,"SAVINGS",1,20,true));
+</script>
+        <br>
+        <br>
+        <b>What is the total value of your other assets</b><br>
+        <script>
+document.write(top.onlink.BuildWidget("LISTBOX",window,"INVESTMENTS",1,20,true));
+</script>
+        </font> </td>
+    </tr>
+  </table>
+        
+  <table width="360" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td> 
+        <div align="right"><a href="needs_auto2.htm"><b><font face="Arial, Helvetica, sans-serif">NEXT</font></b></a></div>
+      </td>
+    </tr>
+  </table>
+       </FORM>
+</BODY>
+</HTML>

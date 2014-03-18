@@ -1,0 +1,33 @@
+<HTML>
+<HEAD>
+<TITLE>OnLink logo frame</TITLE>
+<SCRIPT language="JavaScript">
+<!--
+function swapImage(anImage,newSource) {
+	if (document.images){
+		document.images[anImage].src=newSource;
+	}
+}
+
+function goHome(){
+parent.catpage.location="../pg/p2.htm"
+parent.dynawin.location="../pg/p1.htm"
+}
+function openHelp(){
+window.open('help_window.htm','Help','height=100,width=200,resizable=no,status=no,toolbars=no,menubar=no')
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY>
+<center>
+<A href="http://www.onlink.com/ariba_welcome.html" target="_blank"><IMG src="onlink_powered_animated.gif" border="0"><BR>
+<IMG src="trans.gif" height="10" width="1" border="0"><BR>
+<A href="#top" onClick="goHome();"><IMG src="home.gif" name="Home" border="0"></a><br>
+<IMG src="trans.gif" height="5" width="1" border="0"><BR>
+<A href="#top" onClick="if (top.onlink['BringUpAbout'] != null) { top.onlink.BringUpAbout(); } return false;"><IMG src="about.gif" name="about" border="0"></A><br>
+<IMG src="trans.gif" height="5" width="1" border="0"><BR>
+<A href="javascript:openHelp()"><IMG src="help.gif" border="0"></a><br>
+</center>
+</BODY>
+</HTML>

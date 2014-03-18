@@ -1,0 +1,2172 @@
+<HTML>
+<HEAD>
+<TITLE>OnLink Sales: Internet Explorer Main</TITLE>
+<!--   OnLink Sales: Internet Explorer Main-->
+<!--   Ver 3.4.1 (Build 10)		20000531		-->
+<SCRIPT language="Javascript">
+<!--
+var OL = window.top.onlink;
+var CATPG = null;
+var DYNAPG = null;
+var LISTPG = null;
+var LISTTG = null;
+var ITPG = null;
+var SVPG = null;
+var FLYPG = null;
+var ERRS = null;
+var ERRC = null;
+var LISTTG_scrollX = 0;
+var LISTTG_scrollY = 0;
+var CURR_LOADING_PAGE = "";
+var LOADING_TIMEOUT = 0;
+var caseAnalysis;
+var NEED_TO_CLEAR = false;
+var nExcData      = 0;
+var arrExcData    = new Array(10);
+function SetPragmas()
+{
+DYNAPG = ((OL[OL.OL_UI])[OL.DY] == null) ? null : (OL[OL.OL_UI])[OL.DY];
+CATPG = ((OL[OL.OL_UI])[OL.PG] == null) ? null : (OL[OL.OL_UI])[OL.PG];
+LISTPG = (OL[OL.DL] == null) ? null : OL[OL.DL];
+LISTTG = ((OL[OL.OL_UI])[OL.LTARG] == null) ? DYNAPG : (OL[OL.OL_UI])[OL.LTARG];
+ITPG = (OL[OL.IT] == null) ? null : OL[OL.IT];
+SVPG = (OL[OL.SV] == null) ? null : OL[OL.SV];
+FLYPG = ((OL[OL.OL_UI])[OL.FL] == null) ? null : (OL[OL.OL_UI])[OL.FL];
+ERRS = (OL[OL.ES] == null) ? null : OL[OL.ES];
+ERRC = (OL[OL.EC] == null) ? null : OL[OL.EC];
+}
+OL.SetLoaded(window,false);
+var DYNA_EXC = "";
+var DYNASPEC = null;
+var DYNAFAMILY = null;
+var DYNA_ONLOAD = false;
+var WIDGETS = null;
+var WIDGET_INDEX = null;
+var RADIOBUSY = -1;
+var CURBTN = -1;
+var CS_DIR = window.top.onlink.GetTopDir()+window.top.onlink.CS_LOC;  
+var PG_DIR = window.top.onlink.GetTopDir()+window.top.onlink.PG_LOC;  
+var UI_DIR = window.top.onlink.GetTopDir()+window.top.onlink.UI_LOC;  
+var ORDER_DIR = window.top.onlink.GetTopDir()+window.top.onlink.ORDER_LOC;  
+function undefined(anExpr)
+{
+return (typeof(anExpr)=="undefined");
+}
+function empty(colVal)
+{
+return (colVal==null)||(colVal=='');
+}
+var IPICT = new Array("","pl_bullet1.gif","pl_bullet2.gif","pl_bullet3.gif","pl_bullet4.gif","pl_bullet5.gif");
+var LISTSTATE = new Array(0,0,0,0,0,0);
+var LASTFLY = 0;
+function RefList()
+{
+if (LISTPG&&LISTPG["T"]) {
+return LISTPG["T"];
+}
+else {
+ERRC.ErrAlert(ERRS.NO_ACS_DL);
+return null;
+}
+}
+function ShowList(urlPrefix,scrollX,scrollY) {
+var list = RefList(); if (!list) { return; }
+if (!urlPrefix) {
+urlPrefix = '../ui/';
+}
+var dd = LISTTG.document;
+dd.open('text/html','replace');
+dd.writeln('<HTML><HEAD></HEAD><BODY bgcolor=#FFFFFF link=#000000 vlink=#000000>');
+dd.writeln('<IMG src="',urlPrefix,'trans.gif" height=6 width=1 border=0 hspace=0 vspace=0><BR>');
+dd.writeln('<TABLE border=0 cellspacing=0 cellpadding=0>');
+dd.writeln('<TR>');
+dd.writeln('<TD width=1>');
+dd.writeln('	<IMG src="',urlPrefix,'trans.gif" width=1 height=1 border=0 hspace=0 vspace=0>');
+dd.writeln('</TD>');
+dd.writeln('<TD>');
+dd.writeln('	<IMG src="trans.gif" width=1 height=7 border=0 hspace=0 vspace=0><BR>');
+PaintList(list,dd,urlPrefix);
+dd.writeln('</TD>');
+dd.writeln('	</TABLE>');
+dd.writeln('</TD>');
+dd.writeln('</TR>');
+dd.writeln('</TABLE>');
+dd.writeln('<BR>');
+dd.writeln('</BODY></HTML>');
+dd.close();
+scrollX = LISTTG_scrollX; 
+scrollY = LISTTG_scrollY; 
+LISTTG.scroll(scrollX,scrollY);
+}
+function PaintList(list,dd,urlPrefix) {
+var liststate = GetListState();
+var indentstate = new Array(true);
+var curindent = 0;
+for (var i=0; i<list.length;i++) {
+if (!empty(list[i])) {
+var indent = list[i][0];
+if (indent > curindent) {
+indentstate[indent] = (indentstate[curindent] && liststate[i]);
+}
+curindent = indent;
+if (((curindent==0)||indentstate[curindent-1]) && indent != 0) {
+PaintListItem(i,list[i],dd,urlPrefix);
+}
+}
+}
+}
+function PaintListItem(listID,listItem,dd,urlPrefix) {
+var indent = listItem[0];
+var entry = listItem[1];
+var link = (listItem[2]==null) ? '':listItem[2];
+var flyover = listItem[3];
+var ipict = ((urlPrefix) ? urlPrefix:'') + IPICT[indent];
+dd.writeln('    <TABLE CELLSPACING="0" CELLPADDING="0" BORDER="0">');
+dd.writeln('	<TR valign=top align=left>');
+dd.writeln('	<TD>');
+if (IPICT[indent]&&(IPICT[indent].length>0)) {
+dd.writeln('	<IMG src="',ipict,'">');
+}
+dd.writeln('	</TD>');
+dd.writeln('	<TD>');
+dd.writeln('		<FONT face="verdana,helvetica" size=1>');
+if ((indent==0)&&(entry.length<=0)) {
+dd.writeln('		<IMG src="trans.gif" width=1 height=8 border=0 hspace=0 vspace=0><BR>');
+}
+dd.writeln('		<A href="#" onClick="javascript:window.top.onlink.codeset.SelectListItem(',listID,',\'',link,'\');return false" onMouseOver="window.top.onlink.codeset.Flyover(',listID,')">');
+dd.writeln('		'+entry);
+dd.writeln('		</A>');
+dd.writeln('		</FONT>');
+dd.writeln('	</TD>');
+dd.writeln('	</TR>');
+dd.writeln('    </TABLE>');
+}
+function SelectItem() {
+var scrollx = LISTTG.document.body.scrollLeft;
+var scrolly = LISTTG.document.body.scrollTop;
+ShowList(UI_DIR,scrollx,scrolly);
+}
+function SelectListItem(listID,pageNum) {
+var list = RefList(); if (!list) { return; }
+LISTTG_scrollX = LISTTG.document.body.scrollLeft;
+LISTTG_scrollY = LISTTG.document.body.scrollTop;
+if (SVPG && !undefined(SVPG.RegisterEvent))
+{
+SVPG.RegisterEvent("101",list[listID][1],"");
+}
+if (list[listID+1]&&(list[listID+1][0]>list[listID][0])) {
+LISTSTATE[listID] = !LISTSTATE[listID];
+for (var i=1; list[listID+i] && list[listID+i][0]!=1 && list[listID+i][0]!=list[listID][0] ; i++){
+if(!LISTSTATE[listID]){
+LISTSTATE[listID+i] = false;
+}
+}
+window.top.onlink.setTimeout('window.top.onlink.codeset.SelectItem()',1);
+}
+if (pageNum&&(pageNum.length>0)) {
+if (empty(FAM_INFO.page)){
+FAM_INFO.page = pageNum;
+}
+if(!WC_CALCULATING){
+OL.GotoPage(pageNum,null,listID);
+}
+}
+}
+function GetListState() {
+if (LISTSTATE != null) {
+return LISTSTATE;
+}
+return null;
+}
+function Flyover(flyID,forceFly) {
+if(OL.BTYPE != "IE3"){
+var list = RefList(); if (!list) { return; }
+var fly = parseInt(flyID); if (isNaN(fly)) { return; }
+if ((fly>=0)&&(fly<list.length)&&(list[fly])) {
+if (!forceFly) {
+fly=FindFlyCat(fly,list);
+}
+if ((LASTFLY==fly)||!list[fly]||!list[fly][3]) {
+return;
+}
+if (list[fly][3].length>0) {
+LASTFLY=fly;
+var fobj = RefFlyover();
+if (fobj) {
+fobj.src = PG_DIR+list[fly][3];
+}
+}
+}
+}
+}
+function FindFlyCat(flyID,list) {
+var cat=0;
+for (var i=flyID;i>0;i--) {
+if (list[i][0]&&(list[i][0]==1)) {
+cat = i;
+break;
+}
+}
+return cat;
+}
+function RefFlyover() {
+return (FLYPG&&FLYPG.document["FLYOVER"]&&FLYPG.document.FLYOVER["src"]) ? FLYPG.document.FLYOVER : null;
+}
+function ClearPageLoadArrays() {
+FLYOVERS = new Array(0);
+WIDGETS = new Array(0);
+WIDGET_INDEX = new Array(0);
+}
+function ClearCodeset() {
+CELLFN_CACHE.Clear();
+ClearPageLoadArrays();
+DYNA_EXC = "";
+DYNASPEC = null;
+DYNAFAMILY = null;
+DYNA_ONLOAD = false;
+EXC_CNTR = 1;
+FAM_INFO.Clear();
+GATE_COND = new ConditionTableObj(null,null,null);
+METASTATE_NOT_INITIALIZED = true;
+RADIOBUSY = -1;
+SEL_Q.Clear();
+TABLE_CACHE.Clear();
+if (!empty(WSLAYER)) {
+WSLAYER.Clear();
+}
+}
+function RefWidget(widgetName) {
+return CATPG.document.forms[0][widgetName];
+}
+function SetDynaException(toValue) {
+DYNA_EXC = toValue;
+}
+function ClearDynaException(){
+var dobj = OL.RefDynaObj()
+dobj['OL_EXCEPTIONS'] = "";
+DYNA_EXC = "";
+}
+function SetDynaException(toValue) {
+if (!empty(DYNA_EXC)) {
+return;
+}
+var dobj = OL.RefDynaObj()
+dobj['OL_EXCEPTIONS'] = toValue;
+DYNA_EXC = toValue;
+}
+function RefDynaException() {
+return DYNA_EXC;
+}
+function GiveWindowFocus(winObj) {
+if ((OL.BTYPE!="IE3")&&(winObj != null)) {
+winObj.focus();
+}
+}
+function GetObjConstructor(ancestorName)
+{
+return null;
+}
+function ShowDynaspec()	{
+OL.Debug("- ShowDynaspec");
+if (WC_COLLISION) { OL.Debug("- * SCRAM"); return; }
+if ((DYNAPG == null) || (CATPG == null)) {
+DYNASPEC = null;
+ERRC.ErrAlert(ERRS.NO_ACS_FRM,"ShowDynaspec");
+return;
+}
+var newwin = BringUpDynaspec();
+UpdateDynaspec(newwin, CALC_NUM);
+}
+function BringUpDynaspec() {
+if (DYNASPEC == null) {
+DYNASPEC = DYNAPG;
+return true;
+}
+return false;
+}
+function ExtractPageName(url) {
+arr = url.split(/[\\\/]/);
+return arr[arr.length-1];
+}
+function UpdateDynaspec(isNew, calcNum) {
+if (typeof top.onlink.mac != "undefined" && top.onlink.mac!=null) {
+if (calcNum != CALC_NUM) {
+CURR_LOADING_PAGE = "";
+LOADING_TIMEOUT = 0;
+return;
+}
+if ((LOADING_TIMEOUT < 100) && (CALCULATING == true)) {
+window.top.onlink.setTimeout("window.top.onlink.codeset.UpdateDynaspec("+isNew+", "+calcNum+")", 10);
+LOADING_TIMEOUT++;
+return;
+}
+} else{
+if ((LOADING_TIMEOUT < 100) && ((CURR_LOADING_PAGE != "") && (ExtractPageName(DYNASPEC.document.URL) != ExtractPageName(CURR_LOADING_PAGE))) || (DYNASPEC.document.readyState != "complete")) {
+window.top.onlink.setTimeout("window.top.onlink.codeset.UpdateDynaspec("+isNew+", "+calcNum+")", 10);
+LOADING_TIMEOUT++;
+return;
+}
+}
+CURR_LOADING_PAGE = "";
+LOADING_TIMEOUT = 0;
+var exc = RefDynaException();
+if ((exc != null) && (exc.length > 0)) {
+OL.RefDynaObj().VALID = false;
+PaintException(DYNASPEC,exc);
+return;
+}
+if (CATPG["SpecialCasePaintDynaframe"] != null) {
+CATPG.SpecialCasePaintDynaframe(DYNASPEC,isNew);
+return;
+}
+PaintDynaspec(isNew)
+}
+function PaintDynaspec(isNew) {
+CALCULATING = true;
+var dynapg = CS_DIR+"dyn_none.htm";
+OL.Debug("PaintDynaspec page="+FAM_INFO.page+" |");
+if (FAM_INFO.dyna != null) {
+dynapg = PG_DIR+FAM_INFO.dyna;
+}
+else if (FAM_INFO.page != null) {
+dynapg = PG_DIR+FAM_INFO.page+"_t.htm";
+}
+DYNASPEC.location.replace(dynapg);
+}
+var CALCULATING = false;
+function PaintDynaspecLoading() {
+if (CALCULATING==true) {return;}
+OL.Debug("- PaintLoading");
+if (WC_COLLISION) { OL.Debug("- * SCRAM"); return; }
+if (DYNAPG==null) { return; }
+CALCULATING = true;
+DYNAPG.location.replace(CS_DIR+"frm_calc.htm");
+CURR_LOADING_PAGE = CS_DIR+"frm_calc.htm"; 
+}
+function PaintException(dynaFrame,dynaExc) {
+dynaExc=dynaExc.replace(/\"/g,"&quot;");
+var dd = dynaFrame.document;
+dd.open('text/html','replace');
+dd.writeln('<HTML><HEAD></HEAD>');
+dd.writeln('<BODY bgcolor=#ffffff link=#000000 vlink=#000000>');
+dd.writeln('<TABLE width="100%" border=0 cellpadding=5 cellspacing=0>');
+dd.writeln('<TR>');
+dd.writeln('<TD bgcolor="#ffffff">');
+dd.writeln('	<TABLE border=0 cellpadding=20 cellspacing=0>');
+dd.writeln('	<TR>');
+dd.writeln('	<TD bgcolor="#ffffff" valign=middle align=center>');
+dd.writeln('	<FONT face="verdana,helvetica" size=2>');
+dd.writeln(dynaExc);
+dd.writeln('	</FONT>');
+dd.writeln('	</TD>');
+dd.writeln('	</TR>');
+dd.writeln('	</TABLE>');
+dd.writeln('</TD>');
+dd.writeln('</TR>');
+dd.writeln('</TABLE>');
+dd.writeln('</BODY></HTML>');
+dd.close();
+}
+function OrderingActive()
+{
+var retval = false;
+if (CATPG["SpecialCaseOrderingActive"]) {
+retval = CATPG.SpecialCaseOrderingActive(OL.RefDynaObj().VALID);
+}
+else {
+retval = OL.RefDynaObj().VALID;
+}
+return retval;
+}
+function GenerateQuote()
+{
+OL.ADD_FLAG = true;
+if (!CATPG||!OL.Loaded(OL.PG)||!OL.RefDynaObj()) {
+alert("\nOnLink Sales(tm) Message\nTo generate a quote, \nyou must first configure a product.\n");
+return;
+}
+if (!OrderingActive()) {
+alert("\nOnLink Sales(tm) Message\nTo generate an order, \nyou must first configure a product.\n");
+return;
+}
+FindSubItems();
+OpenQuote();
+}
+function OpenQuote(savedQuote) {
+var qtfile = "np_qt.htm";
+if (FAM_INFO.quote) {
+qtfile = FAM_INFO.quote;
+}
+if(savedQuote){
+qtfile = savedQuote;
+}
+var qw = window.open(ORDER_DIR+qtfile,'SampleQuote','width=560,height=500,toolbar=1,location=0,directories=0,status=1,menubar=1,scrollbars=1,resizable=0');
+qw.focus();
+}
+function RefQuoteObj()
+{
+var item = null;
+if (ITPG&&ITPG["RefQuote"]) {
+item = ITPG.RefQuote();
+}
+else {
+ERRC.ErrAlert(ERRS.NO_ACS_QT,"RefQuoteObj");
+}
+return item;
+}
+function SetQuoteObj()
+{
+var item = null;
+}
+var DYNAPO = null;
+var DYNASRCH = null;
+var ITEMID = null;
+var ITEMOVERRIDE = false;
+var ITEMPG = null;
+function GotoItemPage() {
+if (ITEMPG && (ITEMPG.length > 0)) {
+GiveWindowFocus(top);
+OL.GotoPage(ITEMPG);
+}
+}
+function AddToPO(noshow)
+{
+OL["ADD_FLAG"]=true;
+if (!CATPG||!OL.Loaded(OL.PG)||!OL.RefDynaObj()) {
+alert("\nOnLink Sales(tm) Message\nTo order a product, \nselect a product from the Contents list, \nand configure it.\n");
+return;
+}
+if (!OrderingActive()) {
+alert("\nOnLink Sales(tm) Message\nTo generate an order, \nyou must first configure a product.\n");
+return;
+}
+var items = OL.RefItems();
+var addmsg = "\nOnLink Sales(tm) Confirmation    \n\n";
+if (items.length==0) {
+addmsg += "This will start a new Order";
+}
+else {
+addmsg += "You already have an active Order";
+}
+if(top.onlink.aol!=null && typeof top.onlink.aol!="undefined"){
+addmsg += "\n\nAOL Users\nAfter viewing your order\nplease close the order window\nbefore continuing with your session.";
+}
+addmsg += "\n\nAdd the item(s) you have selected \nto this Order?\n\n";
+if (!confirm(addmsg)) {
+if (items.length > 0) {
+alert("\nOnLink Sales(tm) Message\nTo start a new order, \nbring up the active order \nand click the clear order button.");
+}
+return;
+}
+OpenPO(noshow);
+}
+function OpenPO(noshow)
+{
+if(!OL.items["ITEMS_LOADED"]){return;}
+if (OL.items["ORDER_ACTIVE"]==true){
+alert("\nOnLink Sales(tm) Message\nThe order system is busy!\nYour item has not added.\n");
+return;
+}
+if (OL["ADD_FLAG"]) {
+FindSubItems();
+}
+var winargs = 'width=580,height=500,status=0,menubar=0,scrollbars=1,resizable=1';
+if(window.top.onlink.config["ORDER_CONFIG_LOADED"] && window.top.onlink.config.GetConfigVar("ORDER","WIN_ARGS")!=null){
+winargs = window.top.onlink.config.GetConfigVar("ORDER","WIN_ARGS");
+}
+if(!noshow){
+if(DYNAPO!=null && DYNAPO.top != self.top){
+DYNAPO.top.location.reload();
+}
+else{
+OL.items["ORDER_ACTIVE"] = true;
+var newwin = window.open(ORDER_DIR+"np_po.htm",'',winargs);
+}
+}
+else{
+var itemvar = OL.items.RefItemVars();
+if(!itemvar[0]){
+OL.items["ORDER_ACTIVE"]=true;
+OL.order.location.replace(ORDER_DIR + "np_po.htm");
+}
+else{
+if(DYNAPO!=null && self.top!=DYNAPO.top){
+DYNAPO.top.location.reload();
+}
+else{
+OL.items["ADD_FLAG"] = false;
+OL.items.AddItem("MULTI");
+}
+}
+}
+}
+function POClosed() {
+DYNAPO = null;
+var items = OL.RefItems();
+if (items.length>0) {
+alert("\nOnLink Sales(tm) Message\nThe order is still active. \nIt contains one or more items. \nTo clear the order, \nopen the order window \nand click the clear order button.\n");
+}
+}
+function WidgetObj(inWinObj, inWidgetType, inWidgetName, inTableName, inTableField, inIndex)
+{
+this.winObj = inWinObj;
+this.widgetType = inWidgetType;
+this.widgetName = inWidgetName;
+this.tableName = inTableName;
+this.tableField = inTableField;
+this.index = inIndex;
+}
+function BuildWidget(type)
+{
+var args = BuildWidget.arguments;
+type = type.toUpperCase();
+if (type=="LISTBOX") {
+return BuildListboxWidget(args[1],args[2],args[3],args[4],args[5]);
+}
+else if (type=="TEXT") {
+return BuildTextWidget(args[1],args[2],args[3]);
+}
+else if (type=="TEXTAREA") {
+return BuildTextareaWidget(args[1],args[2],args[3],args[4]);
+}
+else if (type=="GETTEXT") {
+return BuildGetTextWidget(args[1],args[2],args[3]);
+}
+else if (type=="GETTEXTTARGET") {
+return BuildGetTextTargetWidget(args[1],args[2],args[3]);
+}
+else if (type=="RADIO") {
+return BuildRadioWidget(args[1],args[2],args[3]);
+}
+else if (type=="CHECKBOX") {
+return BuildCheckboxWidget(args[1],args[2],args[3]);
+}
+else if (type=="HIDDEN") {
+return BuildInvisibleWidget(args[1]);
+}
+return "";
+}
+function BuildInvisibleWidget(winObj)
+{
+OL.BlockOnLoadFault(winObj);
+var string="";
+return string;
+}
+function BuildListboxWidget(winObj,widgetName,widgetRows,widgetCols,prefill)
+{
+WIDGET_INDEX[widgetName] = WIDGETS.length;
+WIDGETS[WIDGETS.length] = new WidgetObj(winObj,"LISTBOX",widgetName,widgetName,"DESC",0);
+var dt = OL.RefDataTable(widgetName);
+var s = '<SELECT name="'+widgetName;
+s += '" size='+widgetRows;
+s += ' language="JavaScript" onchange=window.top.onlink.codeset.WidgetChanged(';
+s += "'"+widgetName+"',selectedIndex)>";
+var spacer = '';
+var presel = (empty(WSLAYER)) ? null : WSLAYER.GetWidgetState(widgetName);
+if ((widgetCols != null) && (prefill == true)) {
+var numspaces = (2*widgetCols/3)-dt[0]["DESC"].length;
+if (widgetCols > 0) {
+for (count = 0; count < numspaces; count++) {
+spacer = spacer+'&nbsp;';
+}	
+}
+}
+s += ((0==presel) ? "<OPTION SELECTED>":"<OPTION>") + dt[0]["DESC"] + spacer + "</OPTION>";
+for (count=1; count < dt.length; count++)	{
+s += ((count==presel) ? "<OPTION SELECTED>":"<OPTION>") + dt[count]["DESC"] + "</OPTION>";
+}
+s += '</SELECT>';
+return s;
+}
+function RebuildListboxWidget(widgetName,newTable,triggerSel)
+{
+if (undefined(CATPG["document"])||undefined(CATPG.document.forms[0])||undefined(CATPG.document.forms[0][widgetName])) {
+return;
+}
+if (OL.BTYPE=="IE3") {
+DoIE3Rebuild(widgetName,newTable);
+}
+var widget = CATPG.document.forms[0][widgetName];
+var count;
+for (count=widget.length; count > 0; count--)	{
+widget.options[count-1] = null;
+}
+var defwidget = 0;
+var oOption;
+for (count=0; count < newTable.length; count++)	{
+if(OL.BTYPE == "IE5"){
+oOption = CATPG.document.createElement("OPTION");
+oOption.innerText=newTable[count]["DESC"];
+oOption.text=newTable[count]["DESC"];
+oOption.value="";
+widget.appendChild(oOption);
+}
+else {
+widget.options[count] = new Option(newTable[count]["DESC"],"");
+}
+if (newTable[count].IsDefault()) {
+defwidget = count;
+}
+}
+widget.selectedIndex = defwidget;
+}
+function DoIE3Rebuild(widgetName,newTable,triggerSel)
+{
+DYNA_ONLOAD = true;
+if (OL.BTYPE == "IE3") {
+CATPAGE.location = "";
+}
+else {
+CATPAGE.location.reload();
+}
+}
+function BuildTextWidget(winObj, widgetName, widgetSize)	{
+if (OL.RefDynaTable()==null) { return ""; }
+var dt = OL.RefDynaTable()[0];
+WIDGET_INDEX[widgetName] = WIDGETS.length;
+WIDGETS[WIDGETS.length] = new WidgetObj(winObj,"TEXT", widgetName, widgetName, "DESC",0);
+var s = '<INPUT type="TEXT" name="';
+s += widgetName;
+s += '" size=';
+s += widgetSize;
+s += '" value="';
+s += dt[widgetName];
+s += '" language="JavaScript" onchange="window.top.onlink.codeset.WidgetChanged()">';
+return (s);
+}
+function BuildTextareaWidget(winObj, widgetName, widgetRows, widgetCols)	{
+if (OL.RefDynaTable()==null) { return ""; }
+var dt = OL.RefDynaTable()[0];
+WIDGET_INDEX[widgetName] = WIDGETS.length;
+WIDGETS[WIDGETS.length] = new WidgetObj(winObj, "TEXTAREA", widgetName, widgetName, "DESC",0);
+var s = '<TEXTAREA name="';
+s += widgetName;
+s += '" rows=';
+s += widgetRows;
+s += ' cols=';
+s += widgetCols;
+s += '" value="';
+s += dt[widgetName];
+s += '" wrap="virtual" language="JavaScript" onchange="window.top.onlink.codeset.WidgetChanged()">';
+s += '</TEXTAREA>';
+return (s);
+}
+function BuildGetTextWidget(winObj, widgetName, widgetSize)	{
+var dobj = OL.RefDynaObj();
+WIDGET_INDEX[widgetName] = WIDGETS.length;
+WIDGETS[WIDGETS.length] = new WidgetObj(winObj,"GETTEXT", widgetName, widgetName, "DESC",0);
+var presel = (empty(WSLAYER)) ? null : WSLAYER.GetWidgetState(widgetName,true);
+var s = '<INPUT type=text name="'+widgetName+'" size='+widgetSize;
+if (presel != null) {
+s += '" value="'+presel.replace(/\"/g,"&quot;")+'"';
+}else{
+if (dobj[widgetName] != null){
+s += ' value=';
+s += '"' + dobj[widgetName].replace(/\"/g,"&quot;") + '"';
+}
+}
+s += ' language="JavaScript" onChange="window.top.onlink.codeset.WidgetChanged(';
+s += '\''+widgetName+'\',';
+s += 'document.WidgetForm.'+widgetName+'.value';
+s += ',true);">';
+return s;
+}
+function BuildGetTextTargetWidget(winObj, widgetName, widgetSize)	{
+var dobj = OL.RefDynaObj();
+WIDGET_INDEX[widgetName] = WIDGETS.length;
+WIDGETS[WIDGETS.length] = new WidgetObj(winObj,"GETTEXT", widgetName, widgetName, "DESC",0);
+var presel = (empty(WSLAYER)) ? null : WSLAYER.GetWidgetState(widgetName,true);
+var s = '<INPUT type=text name="'+widgetName+'" size='+widgetSize;
+if (presel != null) {
+s += '" value="'+presel+'"';
+}else{
+if (dobj[widgetName] != null){
+s += ' value=';
+s += '"' + dobj[widgetName] + '"';
+}
+}
+s += ' language="JavaScript" onChange=window.top.onlink.setTimeout(\'window.top.onlink.codeset.WidgetChanged(';
+s += '"'+widgetName+'",';
+s += 'document.WidgetForm.'+widgetName+'.value';
+s += ',true)\',1);>';
+return s;
+}
+function BuildRadioWidget(winObj,widgetName,index)
+{
+if (index == 0) {
+WIDGET_INDEX[widgetName] = WIDGETS.length;
+}
+WIDGETS[WIDGETS.length] = new WidgetObj(winObj,"RADIO",widgetName,widgetName,"DESC",index)
+var presel = empty(WSLAYER) ? null : WSLAYER.GetWidgetState(widgetName);
+var s = '<INPUT type=radio name="'+widgetName+'" value='+index;
+if (presel==index) {
+s += ' CHECKED';
+}
+s += ' language="JavaScript" onclick=window.top.onlink.codeset.RadioWidgetChanged(';
+s += '"'+widgetName+'",'+index;
+s += ')>';
+return s;
+}
+function BuildCheckboxWidget(winObj,widgetName,widgetChecked)
+{
+WIDGET_INDEX[widgetName] = WIDGETS.length;
+WIDGETS[WIDGETS.length] = new WidgetObj(winObj,"CHECKBOX", widgetName, widgetName, "DESC",0);
+var presel = (empty(WSLAYER)) ? null : (WSLAYER.GetWidgetState(widgetName)=="1");
+var s = '<INPUT type=checkbox name="'+widgetName+'"';
+if (presel||widgetChecked) {
+s += ' CHECKED';
+}
+s += ' language="JavaScript" onclick="window.top.onlink.codeset.WidgetChanged(';
+s += "'"+widgetName+"',";
+s += '(checked) ? 1:0)">';
+return s;
+}
+function BuildTarget(type,name)
+{
+var args = arguments;
+var dobj = OL.RefDynaObj();
+if (undefined(dobj[name])) {
+return "";
+}
+type = type.toUpperCase();
+if (type=="TEXT") {
+return BuildTextTarget(dobj[name],args[2]);  
+}
+else if (type=="PICT") {
+return BuildPictTarget(dobj[name],args[2],args[3]);
+}
+else if (type=="LINK") {
+return BuildLinkTarget(dobj[name],args[2],args[3]);
+}
+return "";
+}
+function BuildTextTarget(targetVal, formatFunc)  
+{
+var retStr = "";
+if (typeof(formatFunc) == "function") {
+retStr = formatFunc(targetVal);
+}	
+retStr = empty(retStr)? targetVal: retStr;
+return retStr;
+}
+function BuildPictTarget(targetPict, widgetWidth, widgetHeight)
+{
+var retStr = "";
+retStr = '<IMG src="'+targetPict+'" border=0';
+if (!undefined(widgetWidth)) {
+retStr += ' width='+widgetWidth;
+}
+if (!undefined(widgetHeight)) {
+retStr += ' height='+widgetHeight;
+}
+retStr += '>';
+return retStr;
+}
+function BuildLinkTarget(targetHRef, isPage)
+{
+var retStr = "";
+var args = BuildLinkTarget.arguments;
+if (SVPG && !undefined(SVPG.RegisterEvent))
+{
+SVPG.RegisterEvent("4",targetHRef,""); 
+SVPG.PostEvents();
+}
+retStr = '<A href="';
+if (isPage) {
+retStr += 'javascript:window.top.onlink.LinkPage(\'';
+retStr +=  targetHRef + '\'';
+if (args[2] != null) {
+retStr += ', window.top.onlink.TokenStringToObject( \''+ args[2] + '\')';
+}
+retStr +=  ')">';
+}
+else {
+retStr +=  (targetHRef + ((targetHRef.length > 0) && (targetHRef.charAt(targetHRef.length-1)=='"')? '>' : '">'));
+}
+return retStr;
+}
+function LookupTableValue(theTable,theField,theValue)
+{
+var datatable = OL.RefDataTable(theTable);
+if (datatable == null) {
+ERRC.ErrAlert(ERRS.NO_TBL, theTable);
+return -1;
+}
+var i;
+var match = -1;
+for (i = 0; i < datatable.length; i++) {
+if (datatable[i][theField] == theValue) {
+match = i;
+break;
+}
+}
+return match;
+}
+var WSLAYER = null;
+function WidgetState_Obj()
+{
+this.widgetByName = new Array();
+this.StoreFrame = null;
+this.StoreDoc = null;
+this.Register = WidgetState_Register;
+this.Stored = false;
+this.IsStored = WidgetState_IsStored;
+this.AccessStorageForm = WidgetState_AccessStorageForm;
+this.AccessUntabledStorage = WidgetState_AccessUntabledStorage;
+this.SetupPage = WidgetState_SetupPage;
+this.SetupPreconfig = WidgetState_SetupPreconfig;
+this.SetWidgetState = WidgetState_SetWidgetState;
+this.SetUntabledWidgetState = WidgetState_SetUntabledWidgetState;
+this.GetWidgetState = WidgetState_GetWidgetState;
+this.GetUntabledWidgetState = WidgetState_GetUntabledWidgetState;
+this.FillArrays = WidgetState_FillArrays;
+this.FillUntabledArrays = WidgetState_FillUntabledArrays;
+this.Clear = WidgetState_Clear;
+this.Clear();
+}
+function WidgetState_Clear()
+{
+this.Stored = false;
+this.widgetByName = new Array();
+}
+function WidgetState_IsStored()
+{
+return (this.Stored);
+}
+function WidgetState_Register()
+{
+if (undefined(OL[OL.WG])) {
+ERRC.ErrAlert(ERRS.WSL_NOT_HERE);
+return;
+}
+this.StoreFrame = OL[OL.WG];
+this.StoreDoc = this.StoreFrame.document;
+}
+function WidgetState_SetupPage()
+{
+with (this) {
+if (empty(StoreFrame)) {
+ERRC.ErrAlert(ERRS.WSL_UNRGSTRD);
+return;
+}
+var DT = OL.RefDataTables();
+if (DT == null) { 
+ERRC.ErrAlert(ERRS.WSL_NO_ACS_TBL);
+return;
+}
+dd = StoreDoc;
+dd.open('text/html','replace');
+var outstr = '';
+outstr += '<FORM>';
+for (var dt in DT) {
+if(!empty(DT[dt])){
+if(OL.PRECONFIG_OBJ && OL.PRECONFIG_OBJ[dt]){
+var md = LookupTableValue(dt,"CODE",OL.PRECONFIG_OBJ[dt]);
+if (md == -1) md = GetMetaDefault(DT[dt]);
+}
+else{
+var md = GetMetaDefault(DT[dt]);
+}
+outstr += '<INPUT type=hidden name='+dt+' value='+ md +'>';
+widgetByName[dt] = md;
+}
+}
+outstr +=  '<SELECT name=UNTABLED></SELECT>'
+outstr += '</FORM>'
+dd.writeln(outstr);
+dd.close();
+Stored = true;
+SetupPreconfig();
+}
+}
+function WidgetState_SetupPreconfig()
+{
+if (!OL["PRECONFIG_OBJ"]) { return; }
+var Triggers = OL.RefTriggerTable();
+if (Triggers) {
+for (var i=0; i < Triggers.length; i++)	{
+var field = Triggers[i].TRIGGER;
+if (!undefined(OL.PRECONFIG_OBJ[field])) {
+var triggercode = LookupTableValue(field,"CODE",OL.PRECONFIG_OBJ[field]);
+if (triggercode == -1) triggercode = GetMetaDefault(OL.RefDataTable(field));
+OL.DATATABLES[Triggers[i].TARGET] = Triggers[i].TARGTABLE[triggercode];
+Triggers[i].LASTSEL = triggercode;
+if(OL.PRECONFIG_OBJ[Triggers[i].TARGET]){
+var code = LookupTableValue(Triggers[i].TARGET,"CODE",OL.PRECONFIG_OBJ[Triggers[i].TARGET])
+if (code == -1) code = GetMetaDefault(OL.RefDataTable(Triggers[i].TARGET));
+}
+else{
+var code = GetMetaDefault(OL.RefDataTable(Triggers[i].TARGET));
+}
+this.SetWidgetState(Triggers[i].TARGET,code);
+}
+}
+}
+with (this) {
+for (var field in OL.PRECONFIG_OBJ) {
+if ((field.indexOf(".")==-1)&&!undefined(OL.PRECONFIG_OBJ[field])) {
+var untabled = (undefined(OL.RefDataTable(field)));
+if (untabled) {
+SetWidgetState(field,OL.PRECONFIG_OBJ[field],true);
+}
+}
+}
+}
+}
+function WidgetState_AccessStorageForm()
+{
+with (this) {
+if (!Stored) {
+return null;
+}
+if (undefined(StoreDoc["forms"])||undefined(StoreDoc.forms[0])) {
+ERRC.ErrAlert(ERRS.WSL_DOC_EMPTY);
+return null;
+}
+return StoreDoc.forms[0];
+}
+}
+function WidgetState_AccessUntabledStorage(storageForm)
+{
+with (this) {
+if (undefined(storageForm.elements["UNTABLED"])) {
+ERRC.ErrAlert(ERRS.WSL_NOT_DFND, "UNTABLED");
+return null;
+}
+return storageForm.elements["UNTABLED"];
+}
+}
+function WidgetState_SetWidgetState(widgetName,widgetValue,isUntabled)
+{
+with (this) {
+var form = AccessStorageForm();
+if (!form) { return false;	}
+if (isUntabled) {
+widgetByName[widgetName] = widgetValue;
+return SetUntabledWidgetState(widgetName,widgetValue,form);
+}
+if (undefined(form.elements[widgetName])) {
+ERRC.ErrAlert(ERRS.WSL_NOT_DFND, widgetName);
+return false;
+}
+form.elements[widgetName].value = widgetValue;
+widgetByName[widgetName] = widgetValue;
+return true;
+}
+}
+function WidgetState_SetUntabledWidgetState(widgetName,widgetValue,storageForm)
+{
+with (this) {
+var selection = AccessUntabledStorage(storageForm);
+if (!selection || !selection.options) { return false;	}
+var options = selection.options;
+for (var i=0; i < options.length; i++) {
+if (options[i].text==widgetName) {
+options[i].value=widgetValue;
+return true;
+}
+}
+if(OL.BTYPE == "IE5"){
+var oOption;
+oOption = StoreDoc.createElement("OPTION");
+oOption.innerText=widgetName;
+oOption.text=widgetName;
+oOption.value=widgetValue;
+selection.appendChild(oOption);
+}
+else {
+i = options.length;
+options[i] = new Option(widgetName,widgetValue);
+}
+return true;
+}
+}
+function WidgetState_GetWidgetState(widgetName,isUntabled)
+{
+with (this) {
+var form = AccessStorageForm();
+if (!form) { return null;	}
+if (isUntabled) {
+return GetUntabledWidgetState(widgetName,form);
+}
+if (undefined(form.elements[widgetName])) {
+ERRC.ErrAlert(ERRS.WSL_NOT_DFND, widgetName);
+return null;
+}
+return form.elements[widgetName].value;
+}
+}
+function WidgetState_GetUntabledWidgetState(widgetName,storageForm)
+{
+with (this) {
+var selection = AccessUntabledStorage(storageForm);
+if (!selection || !selection.options) { return false;	}
+var options = selection.options;
+for (var i=0; i < options.length; i++) {
+if (options[i].text==widgetName) {
+return options[i].value;
+}
+}
+return null;
+}
+}
+function WidgetState_FillArrays(widgetValues,selectWidgets,widgetByName)
+{
+with (this) {
+var form = AccessStorageForm();
+if (!form) { return null;	}
+var localnum = form.elements.length;
+for (var i = 0; i < localnum-1; i++) {
+elem = form.elements[i];
+selectWidgets[i] = elem.name;
+widgetValues[i] = elem.value;
+widgetByName[elem.name] = elem.value;
+}
+return FillUntabledArrays(widgetValues,selectWidgets,widgetByName,form,form.elements.length-1);
+}
+}
+function WidgetState_FillUntabledArrays(widgetValues,selectWidgets,widgetByName,form,startAt)
+{
+with (this) {
+if (undefined(form.elements[startAt])||(form.elements[startAt].name!="UNTABLED")) {
+ERRC.ErrAlert(ERRS.WSL_NOT_IN_RT_PLS, "UNTABLED", "FillUntabledArrays");
+return false;
+}
+var options = form.elements[startAt].options;
+var localnum = options.length;
+for (var i=0; i < localnum; i++) {
+selectWidgets[startAt+i] = options[i].text;
+widgetValues[startAt+i] = options[i].value;
+widgetByName[options[i].text] = options[i].value;
+}
+return true;
+}
+}
+function	CreateWidgetStateLayer()
+{
+WSLAYER = new WidgetState_Obj();
+WSLAYER.Register();
+}
+function	InitWidgetStateLayer()
+{
+if (empty(WSLAYER)) {
+ERRC.ErrAlert(ERRS.WSL_NOT_CRTD);
+return;
+}
+WSLAYER.SetupPage();
+}
+function	GetMetaDefault(metaTable)
+{
+var retval = 0;
+for (var i = 0; i < metaTable.length; i++) {
+if (metaTable[i].IsDefault()) {
+retval = i;
+}
+}
+return retval;
+}
+function RadioWidgetChanged(widgetName,index,fromBtn) {
+if ((OL.BTYPE!="IE3") || (!fromBtn)) {
+WidgetChanged(widgetName,index);
+}
+else {
+if (RADIOBUSY == 0) {
+RADIOBUSY = 1;
+if (index != CURBTN) {
+CURBTN = index;
+WidgetChanged(widgetName,index);
+}
+else RADIOBUSY = 0;
+}
+else if (RADIOBUSY == -1) {
+RADIOBUSY = 1;
+if (index != CURBTN) {
+CURBTN = index;
+WidgetChanged(widgetName,index);
+}
+RADIOBUSY = 0;
+}
+else RADIOBUSY = 0;
+}
+}
+var WC_COLLISION = false;
+var WC_CALCULATING = false;
+var CALC_NUM = 0;
+function CalcDone() {
+CALCULATING = false;
+}
+function WidgetChanged(widgetName,widgetIndex,optCreate)
+{
+OL.Debug(widgetName+": WidgetChanged");
+if (widgetName && !empty(WSLAYER)) {
+WSLAYER.SetWidgetState(widgetName,widgetIndex,optCreate);
+SEL_Q.AddSelection(widgetName,widgetIndex);
+}
+if ((OL.PAGE)[OL.PG].IsUnloaded() || (OL.PAGE)[OL.DM].IsUnloaded() || (OL.PAGE)[OL.DP].IsUnloaded()){
+OL.Debug("PG, DM, or DP is unloaded");
+return;
+}
+if (WC_CALCULATING) {
+WC_COLLISION = true;
+OL.Debug(widgetName+": * COLLISION");
+return;
+}
+else {
+WC_CALCULATING = true;
+OL.Debug(widgetName+": * CALCULATING");
+}
+CALC_NUM++;
+if (OL.PAINT_LDNG){
+PaintDynaspecLoading();
+}
+if ((typeof widgetIndex == "string") && (widgetIndex.indexOf('"') >= 0)){
+widgetIndex = widgetIndex.replace(/"/g,' ');
+}
+window.top.onlink.setTimeout('window.top.onlink.codeset.Threaded_WidgetChanged("'+widgetName+'","'+widgetIndex+'"'+((optCreate) ? ','+optCreate : '')+')',50);
+}
+function Threaded_WidgetChanged(widgetName,widgetIndex,optCreate)
+{
+OL.Debug("- Threaded_WC");
+if (!WC_COLLISION && (OL.Loaded(OL.DP))) {
+var datatable = OL.RefDataTable(widgetName);
+var data="";
+nExcData=0;
+WidgetChangedCycle(widgetName,widgetIndex,optCreate);
+if (SVPG && !undefined(datatable) && !undefined(SVPG.RegisterEvent))
+{
+data = SVPG.KeyValueToData("Selection",datatable[widgetIndex]["DESC"]) +
+SVPG.TableRowToData(OL.RefCurrentRows(),false);
+SVPG.RegisterEvent("102",widgetName,data);
+if (nExcData > 0) {
+for (i=0;i<nExcData;i++)   
+SVPG.RegisterEvent("3","",arrExcData[i]);
+}
+SVPG.PostEvents();
+if (nExcData > 0) {
+for (i=nExcData;i>0;i--)   
+arrExcData[i - 1] = null;
+nExcData = 0;
+}
+}
+}
+else {
+OL.Debug("- * SCRAM");
+}
+WC_CALCULATING = false;
+OL.Debug(widgetName+": * CLEARED");
+if (WC_COLLISION || (!OL.Loaded(OL.DP))) {
+WC_COLLISION = false;
+OL.Debug(widgetName+": * RE-ENTERING");
+WidgetChanged();
+}
+}
+function WidgetChangedCycle(widgetName,widgetIndex,optCreate)
+{
+if (WC_COLLISION) { OL.Debug("- * SCRAM"); return; }
+ITEMOVERRIDE = false;
+if (CATPG["SpecialCaseChanges"]) {
+if (CATPG.SpecialCaseChanges(widgetName,widgetIndex)) {
+return;
+}
+}
+if (widgetName) {
+HandleTriggerSelections(widgetName,widgetIndex);
+}
+AdjustToState(widgetName,widgetIndex);
+}
+function HandleTriggerSelections(widgetName,widgetIndex)
+{
+OL.Debug("- Handle Triggers");
+if (WC_COLLISION) { OL.Debug("- * SCRAM"); return; }
+var retval = false;
+var Triggers = OL.RefTriggerTable();
+if (Triggers) {
+var i;
+var curTriggers = new Array();
+for (i=0; i < Triggers.length; i++)	{
+if ((Triggers[i].TRIGGER == widgetName) && (widgetIndex != Triggers[i].LASTSEL)) {
+retval = true;
+curTriggers[curTriggers.length] = i;
+OL.DATATABLES[Triggers[i].TARGET] = Triggers[i].TARGTABLE[widgetIndex];
+if (!empty(WSLAYER)) {
+WSLAYER.SetWidgetState(Triggers[i].TARGET,GetMetaDefault(OL.DATATABLES[Triggers[i].TARGET]));
+}
+SEL_Q.AddSelection(Triggers[i].TARGET,GetMetaDefault(OL.DATATABLES[Triggers[i].TARGET]));
+Triggers[i].LASTSEL = widgetIndex;
+}
+}
+if (retval) {
+RebuildAllTriggered(curTriggers,widgetName,widgetIndex);
+}
+}
+return retval;
+}
+function RebuildAllTriggered(curTriggers,widgetName,widgetIndex)
+{
+var i;
+var Triggers = OL.RefTriggerTable();
+for (i=0; i < curTriggers.length; i++)	{
+RebuildListboxWidget(Triggers[curTriggers[i]].TARGET,Triggers[curTriggers[i]].TARGTABLE[widgetIndex]);
+}
+}
+var widgetValues = null;
+var selectWidgets = null;
+var widgetByName = null;
+function AdjustToState(widgetName,widgetIndex)
+{
+OL.Debug("- AdjustToState");
+if (WC_COLLISION) { OL.Debug("- * SCRAM"); return; }
+var widgetValues = new Array();
+var selectWidgets = new Array();
+var widgetByName = new Array();
+AdjustWidgets(widgetValues,selectWidgets,WSLAYER.widgetByName);
+if (window.top.onlink.config.GetConfigVar("APP","CASE_ANALYSIS_FIX_ACTIVE") == true) {
+if (NEED_TO_CLEAR) {
+TABLE_CACHE.Clear();
+TABLE_CACHE.ClearExc();
+NEED_TO_CLEAR = false;
+}
+}
+return;
+if (empty(WSLAYER) || !WSLAYER.FillArrays(widgetValues,selectWidgets,widgetByName)) {
+if (widgetName) {
+ForceDefaultValues(widgetName,widgetIndex);
+}
+var i;
+for (i=0; i < WIDGETS.length; i++)	{
+var wName = WIDGETS[i].widgetName;
+var wType = WIDGETS[i].widgetType;
+if (wType == "LISTBOX") {
+widgetValues[widgetValues.length] = WIDGETS[i].winObj.document.forms[0][wName].selectedIndex;
+if (widgetValues[widgetValues.length-1] == -1) {
+widgetValues[widgetValues.length-1] = 0;
+}
+selectWidgets[selectWidgets.length] = wName;
+widgetByName[wName] = widgetValues[widgetValues.length-1];
+}
+else {
+if ((wType == "RADIO") && WIDGETS[i].winObj.document.forms[0][wName][WIDGETS[i].index].checked) {
+widgetValues[widgetValues.length] = WIDGETS[i].index;
+selectWidgets[selectWidgets.length] = wName;
+widgetByName[wName] = WIDGETS[i].index;
+}
+else {
+if (wType == "GETTEXT") {
+widgetValues[widgetValues.length] = WIDGETS[i].winObj.document.forms[0][wName].value;
+selectWidgets[selectWidgets.length] = wName;
+widgetByName[wName] = widgetValues[widgetValues.length-1];
+}
+else if (wType == "CHECKBOX") {
+widgetValues[widgetValues.length] = (WIDGETS[i].winObj.document.forms[0][wName].checked) ? 1 : 0;
+selectWidgets[selectWidgets.length] = wName;
+widgetByName[wName] = widgetValues[widgetValues.length-1];
+}
+}
+}
+}
+}
+AdjustWidgets(widgetValues,selectWidgets,widgetByName);
+}
+function ForceDefaultValues(widgetName)
+{
+var widget = RefWidget(widgetName);
+if (widget == null) {
+return;
+}
+var deftable = OL.RefDefaultTable(widgetName);
+var datatable = OL.RefDataTable(widgetName);
+if ((deftable == null) || (datatable == null)) {
+return;
+}
+var i;
+for (i = 0; i < deftable.length; i++) {
+var defwidgetname = deftable[i];
+if (WIDGETS[WIDGET_INDEX[defwidgetname]].widgetType != "LISTBOX") {
+ERRC.ErrAlert(DEF_NO_SET, defwidgetname);
+}
+else {
+var defwidget = RefWidget(defwidgetname);
+if (defwidget == null) {
+ERRC.ErrAlert(ERRS.NO_WDGT,defaultWidget,"ForceDefaultValues");
+}
+else {
+var curcode = widget.selectedIndex;
+var defwidgetcode = datatable[curcode][defwidgetname];
+match = LookupTableValue(defwidgetname,"CODE",defwidgetcode);
+if (match < 0) {
+ERRC.ErrAlert(ERRS.NO_CODE,defwidgetcode, defwidgetname);
+return;
+}
+defwidget.selectedIndex = match;
+}
+}
+}
+}
+function AdjustWidgets(widgetValues,selectWidgets,widgetByName)
+{
+OL.Debug("- AdjustWidgets");
+if (WC_COLLISION) { OL.Debug("- * SCRAM"); return; }
+var dtab = OL.RefDynaTable();
+var dobj = OL.RefDynaObj();
+if ((dtab==null)||(dobj==null)) { ERRC.ErrAlert(ERRS.NUL_OBJ,"AdjustWidgets"); return; }
+var selQStartIndex = SEL_Q.StartIndex();
+var selQEndIndex = SEL_Q.EndIndex();
+var objnum = LookupWidgetSelections(widgetValues,selectWidgets,widgetByName,selQStartIndex,selQEndIndex);
+var queuedWidgets = SEL_Q.WidgetNames(selQStartIndex, selQEndIndex);
+OL.Debug("- queuedWidgets" + queuedWidgets.join());
+OL.Debug("- Setting Metastate");
+SetWidgetMetastate(widgetByName,queuedWidgets,dobj);
+if (WC_COLLISION) { OL.Debug("- * SCRAM"); return; }
+OL.Debug("- Calcing DataFns");
+CalculateDataFns(dobj);
+if (objnum >= 0) {
+if ((GATE_COND != null) && (GATE_COND.Passed())) {
+OL.Debug("- Adjusting Dynaspecs");
+if (WC_COLLISION) { OL.Debug("- * SCRAM"); return; }
+AdjustDynaspecs(dtab[objnum],widgetValues,selectWidgets,widgetByName);
+for (count=0; count < WIDGETS.length; count++)	{
+if (WIDGETS[count].widgetType == "GETTEXT") {
+if (widgetByName[WIDGETS[count].widgetName] != null){
+dobj[WIDGETS[count].widgetName] = widgetByName[WIDGETS[count].widgetName];
+}
+}
+}
+dobj["VALID"] = true;
+}
+}
+SetDynaException(TABLE_CACHE.Excs());
+SEL_Q.ProcessedSelTo(selQEndIndex);
+ShowDynaspec();
+OL.Debug("- End AdjustWidgets");
+}
+var TOP_LEVEL_TABLE_NAME = 'DYNATABLE';
+var TOP_LEVEL_COL_NAME = TOP_LEVEL_TABLE_NAME;
+function LookupWidgetSelections(widgetValues,selectWidgets,widgetByName,selQStartIndex,selQEndIndex)
+{
+OL.Debug("- LookupWidgetSelections");
+if (WC_COLLISION) { OL.Debug("- * SCRAM"); return -1; }
+ClearDynaException("");
+if (CATPG["SpecialCasePriorityExceptions"]) {
+var special = CATPG.SpecialCasePriorityExceptions(widgetValues,selectWidgets,widgetByName);
+if (special < 0) {
+HandleBadSelections(widgetValues,selectWidgets,widgetByName,OL.RefMainTable());
+}
+}
+var retval = MatchTable(widgetValues,selectWidgets,widgetByName,OL.RefMainTable(),selQStartIndex,selQEndIndex,TOP_LEVEL_TABLE_NAME,TOP_LEVEL_COL_NAME);
+if (special < 0) {
+return special;
+}
+if (retval < 0) {
+return retval;
+}
+if (CATPG["SpecialCaseExceptions"]) {
+var special = CATPG.SpecialCaseExceptions(widgetValues,selectWidgets,widgetByName);
+if (special < 0) {
+retval = special;
+HandleBadSelections(widgetValues,selectWidgets,widgetByName,OL.RefMainTable());
+}
+}
+return retval;
+}
+var METASTATE_NOT_INITIALIZED = true;
+function SetWidgetMetastate(widgetByName,queuedWidgets,dobj)
+{
+if (METASTATE_NOT_INITIALIZED){
+OL.Debug("- First Pass, Fill Metastate");
+METASTATE_NOT_INITIALIZED = false;
+for (var name in widgetByName) {
+if (!isNaN(parseInt(''+widgetByName[name]))&&(dobj[name]==null)) {
+SetMetaState(dobj,name,null,widgetByName[name]);
+}
+}
+}
+else{
+OL.Debug("- Only Delta the Metastate");
+for (i=0;i<queuedWidgets.length;i++) {
+var name = queuedWidgets[i];
+if (!isNaN(parseInt(''+widgetByName[name]))) {
+SetMetaState(dobj,name,null,widgetByName[name]);
+}
+}
+}
+}
+function CalculateDataFns(dobj)
+{
+for (var field in CELLFN_CACHE.CachedCellFns()){
+dobj[field] = CELLFN_CACHE.Evaluate(field, dobj);
+}
+}
+function CellFnEvalToken(dobj,token)
+{
+var retval = '';
+if (!undefined(dobj[token])) {
+retval = ''+dobj[token];
+retval = (retval.length > 0 && isNaN(retval) && retval.charAt(0) != '"'  
+&&  retval.indexOf("'") != 0  &&  retval.charAt(retval.length-1) != '"'  
+&&  retval.indexOf("'") != retval.length - 1)?'"'+retval+'"':retval;
+if (retval == "")
+retval = "\"\"";
+}
+else {
+retval = token;
+}
+return CleanLiteral(retval);
+}
+function ParseDataFn(str, dobj){
+var evalstr = '';
+var token = '';
+var alphastr = 'abcdedfghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890_,."';
+for (var i=1; i<str.length-1; i++) {
+var nextchar = str.charAt(i);
+if (alphastr.indexOf(nextchar) >= 0) {
+token += nextchar;
+}
+else {
+evalstr += CellFnEvalToken(dobj,token);
+evalstr += nextchar;
+token = '';
+}
+}
+evalstr += CellFnEvalToken(dobj,token);
+return evalstr;
+}
+function EvalDataFn(str, dobj){
+var evalstr = ParseDataFn(str, dobj);
+return(eval(evalstr));
+}
+function EvalToken(dobj,token)
+{
+var retval = '';
+if (!undefined(dobj[token])) {
+retval = ''+dobj[token];
+if (retval == "")
+retval = "\"\"";
+}
+else {
+retval = token;
+}
+return CleanLiteral(retval);
+}
+function CleanLiteral(token)
+{
+if (token.indexOf(',') >=0) {
+var newtoken = '';
+for (var i = 0; i < token.length; i++) {
+if (token.charAt(i) != ',') {
+newtoken += token.charAt(i);
+}
+}
+token = newtoken;
+}
+return token;
+}
+function AdjustDynaspecs(rowObj,widgetValues,selectWidgets,widgetByName) {
+if (rowObj) {
+ClearDynaException("");
+var dobj = OL.RefDynaObj();
+SetDynaDescription(dobj,widgetValues,selectWidgets);
+if (CATPG["SpecialCaseAdjustDynaspecs"] != null) {
+CATPG.SpecialCaseAdjustDynaspecs(rowObj,widgetValues,selectWidgets,widgetByName);
+}
+}
+}
+function SetDynaDescription(dynaObj,widgetValues,selectWidgets) {
+if (dynaObj==null) { ERRC.ErrAlert(ERRS.INVALID_OBJ,"SetDynaDescription"); return; }
+var descr = '';
+if (FAM_INFO.desc == null) {
+ERRC.ErrAlert(ERRS.MS_FAMDESC,CATPG.location);
+}
+else {
+descr = FAM_INFO.desc;
+}
+var line2 = '';
+var count;
+var name;
+if (line2.length > 0) {
+descr = descr + '<BR>&nbsp;&nbsp;' + line2;
+}
+dynaObj.DESCR = descr;
+}
+function FindSubItems() {
+if(!ITPG["ITEMS_LOADED"]){return;}
+OL.Debug("- Finding SubItems");
+var dynaObj = OL.RefDynaObj();	 
+dynaObj.SUBDESCR = null;
+var subvar = OL.items.RefSubvar();
+if(subvar == ""){
+subvar = ".PRM";
+}
+else{
+subvar = "." + subvar;
+}
+var tempprms = new Array();
+var prmcount = 0;
+for (var col in dynaObj) {
+if (typeof(dynaObj[col])!="function") {
+var descpos = col.indexOf('.DESC')
+if (descpos >= 0) {
+var tname = col.substring(0,descpos);
+if (dynaObj[tname+subvar]) {
+prmcount += 1;
+tempprms[tname] = new Array();
+}
+}
+}
+}
+if (prmcount > 0) {
+for (var col in dynaObj) {
+if ((typeof(dynaObj[col])!="function")&&(col.indexOf('.') >= 0)) {
+var tname = col.substring(0,col.indexOf('.'));
+var colname = col.substring(tname.length+1);
+if (tempprms[tname]) {
+tempprms[tname][colname] = dynaObj[col];
+}
+}
+}
+dynaObj.SUBDESCR = tempprms;
+}
+OL.Debug("- Found SubItems");
+}
+function CalcKeyColCellFn (cellFn, widgetColValue) {
+var dobj = OL.RefDynaObj();
+if ((cellFn.length > 0)&&(cellFn.charAt(0)=='(')&&(cellFn.charAt(cellFn.length-1)==')')) {
+if (cellFn.charAt(1)=='=') {
+return (InRange (cellFn.substring(1, (cellFn.length-1)), widgetColValue));
+}
+if (cellFn.indexOf("!=") == 1) {
+return (!InRange (cellFn.substring(2, (cellFn.length-1)), widgetColValue));
+} else {
+return (false);
+}
+}
+else {
+return (false);
+}
+}
+function InRange (range, value) {
+if (range.charAt(0) != '='){
+return (false);
+}
+if (range.charAt(1) == '*') {
+return true;
+}
+if (value.indexOf(", ") != -1) {
+var tempArray = value.split(", ");
+value = tempArray.join(",");
+}
+var oneValue = "";
+var unprocessedValues = range.substring(1);
+var delimIndex = -1;
+var rangeIndex = -1;
+var min = 0;
+var max = 0;
+var moreToParse = true;
+var fValue = parseFloat(value);
+while ( moreToParse ){
+delimIndex = unprocessedValues.indexOf(',')
+if (delimIndex == -1) {
+oneValue = unprocessedValues;
+moreToParse = false;
+}
+else {
+oneValue = unprocessedValues.substring(0, delimIndex);
+unprocessedValues = unprocessedValues.substring(delimIndex + 1);
+}
+rangeIndex = oneValue.indexOf('-');
+if ( rangeIndex != -1 ) {
+min = parseFloat(oneValue.substring(0, rangeIndex));
+max = parseFloat(oneValue.substring(rangeIndex + 1));
+if ( (min <= fValue) && (fValue <= max) ) { return (true); }
+}
+else {
+if ( oneValue == value ) { return (true);}
+}
+}
+return (false);
+}
+function MatchColumns(widgetByName,dynaHeader,dynaRow,dynaVars,isException)
+{
+var retval = new Array(0);
+if ((dynaHeader==null)||(dynaRow==null)||(dynaVars==null)) { ERRC.ErrAlert(ERRS.INVALID_RO,"MatchColumns"); return retval; }
+for (i = 0; i < dynaHeader.length; i++) {
+if (dynaVars[i]) {
+var colname = dynaHeader[i];
+if ((dynaVars[i] == 99)) {
+if (!isException) {
+retval[retval.length] = new Array(dynaRow[i],colname);
+}
+}
+else {
+var datatable = OL.RefDataTable(colname);
+if (((!CalcKeyColCellFn(dynaRow[i], datatable[widgetByName[colname]]["CODE"]))&&(datatable[widgetByName[colname]]["CODE"] != dynaRow[i])) &&
+(!isException || (dynaRow[i]&&(dynaRow[i].length > 0)))) {
+retval.length = 0;
+return retval;
+}
+}
+}
+}
+retval[retval.length] = null;
+return retval;
+}
+function MatchTable(widgetValues, selectWidgets, widgetByName, tableObj, selQStartIndex, selQEndIndex, parentTableName, parentColName)
+{
+OL.Debug("- MatchTable");
+if (WC_COLLISION) { OL.Debug("- * SCRAM"); return -1; }
+TABLE_CACHE.ClearExc(parentTableName, parentColName);
+var retval = -1;
+var count;
+for (count = 0; count < tableObj.TABLE.length; count++)	{
+var match = MatchColumns(widgetByName,tableObj.HEADER,tableObj.TABLE[count],tableObj.VARS);
+if (match.length == 1) {
+retval = count;
+break;
+}
+else if (match.length > 1) {
+var matched = true;
+var orth;
+var orthtable;
+for (orth = 0; orth < match.length-1; orth++) {
+orthtable = GetOrthogonalTable(match[orth][0]);
+if (orthtable == null) {
+ERRC.ErrAlert(ERRS.MS_STBL,match[orth],"MatchTable",OL.GetCurPg());
+matched = false;
+break;
+}
+if (TABLE_CACHE.NeedToDescend(orthtable.NAME, selQStartIndex, selQEndIndex)){
+var orthmatch = MatchTable(widgetValues,selectWidgets,widgetByName,orthtable,selQStartIndex,selQEndIndex,tableObj.NAME,match[orth][1]);
+}
+else {
+var orthmatch = TABLE_CACHE.TableResult(orthtable.NAME);
+}
+if (orthmatch < 0) {
+matched = false;
+}
+}
+if (matched) {
+retval = count; 
+break;
+}
+}
+}
+if (window.top.onlink.config.GetConfigVar("APP","CASE_ANALYSIS_FIX_ACTIVE") == true) {
+if (!undefined(caseAnalysis[tableObj.NAME])) {
+NEED_TO_CLEAR = true;
+}
+}
+if (retval < 0) {
+excMsg = HandleBadSelections(widgetValues,selectWidgets,widgetByName,tableObj);
+TABLE_CACHE.AddExc(parentTableName, parentColName, excMsg);
+} else {
+OL.SetCurrentRows(tableObj.NAME, retval);
+SetStateOnMatch(tableObj,retval,false);
+}
+TABLE_CACHE.CacheTableResult(tableObj.NAME,orthmatch);
+return retval;
+}
+function SetStateOnMatch(tableObj,rowNum,isException)
+{
+var dobj = OL.RefDynaObj();
+var header = tableObj.HEADER;
+var vars = tableObj.VARS;
+var table = tableObj.TABLE;
+for (var i = 0; i < header.length; i++) {
+if (vars[i]==0) {
+var entry;
+if (isException)
+{
+if (undefined(dobj[header[i]])) {
+if (undefined(table[0])) {
+return;
+}
+else {
+entry = (isNaN(table[0][i])) ? "" : 0;
+}
+}
+else
+entry = dobj[header[i]];
+}
+else
+entry = table[rowNum][i];
+if ((entry.length > 0)&&(entry.charAt(0)=='(')&&(entry.charAt(entry.length-1)==')')) {
+CELLFN_CACHE.Add(header[i], entry);
+}
+if (isException && undefined(dobj[header[i]])) {
+dobj[header[i]] = entry;
+var meta = OL.RefDataTable(header[i]);
+if ((meta!=null) && (typeof(meta)=='object')) {
+if (!undefined(meta[0])) {
+for (var field in meta[0]) {
+if (field!='CODE') {
+dobj[header[i]+"."+field]=(isNaN(meta[0][field])) ? "" : 0;
+}
+}
+}
+}
+}
+else {
+dobj[header[i]] = entry;
+SetMetaState(dobj,header[i],entry);
+}
+}
+}
+}
+function SetMetaState(dobj,metaName,codeVal,metaRow)
+{
+var meta = OL.RefDataTable(metaName);
+if ((meta!=null) && (typeof(meta)=='object')) {
+var mrow = ((!undefined(metaRow)) ? metaRow: LookupTableValue(metaName,"CODE",codeVal));
+if ((mrow!=null)&&(mrow >= 0)) {
+OL.SetCurrentRows(metaName, mrow);
+if (undefined(dobj[metaName])||(dobj[metaName]==null)) {
+dobj[metaName] = meta[mrow]['CODE'];
+}
+for (var field in meta[mrow]) {
+var cellValue = meta[mrow][field];
+if (typeof(cellValue)!="function") {
+if ((cellValue.length > 0)&&(cellValue.charAt(0)=='(')&&(cellValue.charAt(cellValue.length-1)==')')) {
+CELLFN_CACHE.Add(metaName+"."+field, cellValue);
+}
+else {
+if (field=='CODE') {
+dobj[metaName]=meta[mrow][field];
+}
+else {
+dobj[metaName+"."+field]=meta[mrow][field];
+}
+}
+}
+}
+}
+}
+}
+function GetOrthogonalTable(subTable)
+{
+var rettable = null;
+var dppg = OL[OL.DP];
+if (!dppg) { ERRC.ErrAlert(ERRS.NO_ACS_OTBL,"GetOrthogonalTable"); return null; }
+rettable = new OL.Table_Obj(subTable);
+if (dppg[subTable+"_T"]==null) { ERRC.ErrAlert(ERRS.MS_SMNTBL,subTable,dppg.location);	}
+else {
+rettable.SetDataTable(dppg[subTable+"_T"]);
+}
+if (dppg[subTable+"_H"]==null) { ERRC.ErrAlert(ERRS.MS_SHD_RO,subTable,dppg.location);	}
+else {
+rettable.SetHeader(dppg[subTable+"_H"]);
+}
+if (dppg[subTable+"_V"]==null) { ERRC.ErrAlert(ERRS.MS_SVR_RO,subTable,dppg.location);	}
+else {
+rettable.SetVars(dppg[subTable+"_V"]);
+}
+if (dppg[subTable+"_X"]==null) { ERRC.ErrAlert(ERRS.MS_SXTBL,subTable,dppg.location);	}
+else {
+rettable.SetExcTable(dppg[subTable+"_X"]);
+}
+return rettable;
+}
+function HandleBadSelections(widgetValues,selectWidgets,widgetByName,tableObj)
+{
+if (!tableObj.EXCTABLE || (tableObj.EXCTABLE.length <= 0)) {
+return;
+}
+dobj = OL.RefDynaObj();
+if (CATPG["SpecialCaseNullDynaValues"] != null) {
+CATPG.SpecialCaseNullDynaValues()
+}
+var line = -1;
+for (count = 0; count < tableObj.EXCTABLE.length; count++)	{
+var matcharray = MatchColumns(widgetByName,tableObj.HEADER,tableObj.EXCTABLE[count],tableObj.VARS,true);
+if (matcharray.length == 1) {
+line = count;
+break;
+}
+}
+SetStateOnMatch(tableObj,0,true);
+var excStr = '';
+if (line >= 0) {
+var xrow = tableObj.EXCTABLE[line];
+if ((!xrow[xrow.length-1]) || (xrow[xrow.length-1].length <= 0)) {
+ERRC.ErrAlert(ERRS.XTBL_EMPTY,tableObj.NAME,line);
+}
+else {
+excStr = xrow[xrow.length-1];
+if (SVPG && !undefined(SVPG.RegisterEvent))
+{
+arrExcData[nExcData] = SVPG.KeyValueToData("Exstring",excStr) +
+SVPG.KeyValueToData("Extable",tableObj.NAME) +
+SVPG.KeyValueToData("Exrow",line);
+nExcData++;
+}
+}
+}
+return excStr;
+}
+function CheckState()
+{
+if (DYNA_ONLOAD) {
+AdjustToState();
+DYNA_ONLOAD = false;
+}
+}
+var FAM_INFO = new FamilyObj();
+function FamilyObj(){
+this.desc = "";
+this.pict = "";
+this.page = "";
+this.quote = "";
+this.itemize = true;
+this.Clear = mClearFamilyObj;
+}
+function mClearFamilyObj(){
+this.desc = "";
+this.pict = "";
+this.page = "";
+this.quote = "";
+this.itemize = true;
+return true;
+}
+function SetFamilyInfoFromPageVars(){
+OL.Debug("SetFamilyInfoFromPageVars");
+var desc = "";
+var dyna = "";
+var pict = "";
+var page = "";
+var quote = "";
+var itemize = true;
+if(CATPG["FAMILY_DESCR"]!=null){
+FAM_INFO.desc = CATPG["FAMILY_DESCR"];
+}
+if(CATPG["FAMILY_DYNA"]!=null){
+FAM_INFO.dyna = CATPG["FAMILY_DYNA"];
+}
+if(CATPG["FAMILY_PICT"]!=null){
+FAM_INFO.pict = CATPG["FAMILY_PICT"];
+}
+if(CATPG["FAMILY_PAGE"]!=null){
+FAM_INFO.page = CATPG["FAMILY_PAGE"];
+}
+if(CATPG["FAMILY_QUOTE"]!=null){
+FAM_INFO.quote = CATPG["FAMILY_QUOTE"];
+}
+if(CATPG["FAMILY_ITEMIZE"]!=null){
+FAM_INFO.itemize = CATPG["FAMILY_ITEMIZE"];
+}
+return true;
+}
+var GATE_COND = new ConditionTableObj(null,null,null);
+function ConditionTableObj(condTableName,conditionCol,messageCol){
+this.tableName = condTableName;
+if (condTableName != null){
+this.tableObj = GetOrthogonalTable(condTableName);
+}else{
+this.tableObj = null;
+}
+this.condCol = conditionCol;
+this.msgCol = messageCol;
+this.Passed = mPassedGateConditions;
+}
+function mPassedGateConditions()
+{
+with(this){
+var retval = true;
+var dobj = OL.RefDynaObj();
+var testIndex = -1;
+var ruleIndex = -1;
+if (tableObj == null) {
+return retval;
+}
+for (col = 0; col < tableObj.HEADER.length; col++){
+if (tableObj.HEADER[col] == condCol){testIndex = col;}
+if (tableObj.HEADER[col] == msgCol){ruleIndex = col;}
+if ((testIndex != -1) && (ruleIndex != -1)){break;}
+}
+if ((testIndex == -1) || (ruleIndex == -1)){
+return retval;
+}
+for (row = 0; row < tableObj.TABLE.length; row++) {
+var currow = tableObj.TABLE[row];
+if (EvalDataFn('' + currow[testIndex], dobj)){
+SetDynaException(currow[ruleIndex]);
+retval = false;
+break;
+}
+}
+}
+return retval;
+}
+var SEL_Q_SIZE = 40;
+var WIDGET_NAME = 0;
+var WIDGET_INDEX = 1;
+SEL_Q = new SelectionQueue_Obj(SEL_Q_SIZE);
+function SelectionQueue_Obj(queueSize){
+this.selQ = new Array(queueSize);
+this.startIndex = 0;
+this.endIndex = SEL_Q_SIZE;
+this.AddSelection = mAddSelection;
+this.ProcessedSelTo = mProcessedSelTo;
+this.ActiveInQueue = mActiveInQueue;
+this.WidgetNames = mGetWidgetNames;
+this.GetWidgetName = mGetWidgetName;
+this.GetWidgetIndex = mGetWidgetIndex;
+this.StartIndex = mStartIndex;
+this.EndIndex = mEndIndex;
+this.Clear = mSelectionQueueClear;
+}
+function mAddSelection(widgetName, widgetIndex){
+this.endIndex++;
+if (this.endIndex > SEL_Q_SIZE){
+this.endIndex = 0;
+}
+this.selQ[this.endIndex] = new Array(widgetName,widgetIndex);
+return true;
+}
+function mProcessedSelTo(lastIndexProcessed){
+this.startIndex = lastIndexProcessed + 1;
+if (this.startIndex > SEL_Q_SIZE){
+this.startIndex = 0;
+}
+}
+function mActiveInQueue(widgetName, startIndex, endIndex){
+for (i=startIndex; i<=endIndex; i++){
+if (this.selQ[i][WIDGET_NAME] == widgetName){
+return true;
+}
+}
+return false;
+}
+function mGetWidgetNames(startIndex, endIndex){
+var retVal = new Array();
+var moreWidgets = true;
+var i = startIndex;
+while (moreWidgets){
+if(!empty(this.selQ[i])){
+retVal[retVal.length] = this.selQ[i][WIDGET_NAME];
+}
+i++;
+if (i == (endIndex + 1)){
+moreWidgets = false;
+}
+if (i > SEL_Q_SIZE){
+i=0;
+}
+}
+return retVal;
+}
+function mGetWidgetName(index){
+return this.selQ[index][WIDGET_NAME];
+}
+function mGetWidgetIndex(index){
+return this.selQ[index][WIDGET_INDEX];
+}
+function mStartIndex(){
+return this.startIndex;
+}
+function mEndIndex(){
+return this.endIndex;
+}
+function mSelectionQueueClear(){
+this.selQ = new Array(SEL_Q_SIZE);
+this.startIndex = 0;
+this.endIndex = SEL_Q_SIZE;
+}
+var CELLFN_CACHE = new CellFnCache_Obj(false);
+function CellFnCache_Obj (cacheTokenizedFns){
+this.cellFns = new Array();
+this.tokenizedFns = new Array();
+this.cachingTokenizedFns = cacheTokenizedFns;
+this.Add = mAddCF;
+this.CachedCellFns = mCachedCFs;
+this.Evaluate = mEvalCF;
+this.Clear = mClrCF;
+}
+function mAddCF (colName, cellFn){
+this.cellFns[colName] = cellFn;
+return true;
+}
+function mCachedCFs (){
+return this.cellFns;
+}
+var DECIMAL_BASE = 100
+function ProcessNumerics(value){
+var initialLength = String(value).length;
+var fltValue = parseFloat(value);
+if (!isNaN(fltValue)&&(initialLength==String(fltValue).length)){
+with(Math){
+value = round(fltValue * DECIMAL_BASE)/DECIMAL_BASE;
+}
+}
+return(value);
+}
+function mEvalCF (field, dobj){
+var cellfn = this.cellFns[field];
+var retValue;
+if (!this.cachingTokenizedFns){
+retValue = ProcessNumerics(EvalDataFn(cellfn, dobj));
+return (retValue);
+}
+if (undefined(this.tokenizedFns[field])){
+var tokenizedCF = ParseDataFn(cellfn, dobj);
+this.tokenizedFns[field] = tokenizedCF;
+}
+retValue = eval(this.tokenizedFns[field]);
+retValue = ProcessNumerics(retValue);
+return(retValue);
+}
+function mClrCF (){
+this.cellFns = new Array();
+this.tokenizedFns = new Array();
+return true;
+}
+var TABLE_CACHE = new TableCache_Obj();
+var EXC_CNTR = 1;
+function TableCache_Obj (){
+this.tableKeyColCache = new Array();
+this.tableResults = new Array();
+this.exceptions = new Array();
+this.CacheTableResult = mStoreTableResult;
+this.TableResult = mGetTableResult;
+this.AddExc = mAddExc;
+this.Excs = mTableExcs;
+this.ClearExc = mClearExc;
+this.NeedToDescend = mNeedToDescend;
+this.AddKeyCols = mAddKeyCols;
+this.CopyKeyCols = mCopyKeyCols;
+this.Clear = mDescentCacheClear;
+}
+function mStoreTableResult(table, matchValue){
+this.tableResults[table] = matchValue;
+return true;
+}
+function mGetTableResult(table){
+if(undefined(this.tableResults[table])){
+return null;
+}
+return this.tableResults[table];
+}
+function ExcTableReference(tableName, colName){
+return (tableName + '_' + colName);
+}
+function mAddExc(tableName, colName, exc){
+var excArrayName = '';
+excArrayName = ExcTableReference(tableName, colName);
+this.exceptions[excArrayName] = new Array(exc, EXC_CNTR);
+EXC_CNTR++;
+return true;
+}
+function ExceptionsByAge(a, b){
+return (a[1] - b[1]);
+}
+function mTableExcs(){
+var excsToDisp = 1;
+var foundExcs = 0;
+var retStr = '';
+var excIndex = 0;
+var exc = '';
+var excByTime = new Array();
+for(exc in this.exceptions){
+var excMsg = this.exceptions[exc][0];
+if (excMsg != null){
+excByTime[excByTime.length] = this.exceptions[exc];
+}
+}
+excByTime.sort(ExceptionsByAge);
+if(excByTime.length == 0){
+this.exceptions = new Array();
+return retStr;
+}
+for(i=0;i<excsToDisp;i++){
+var excMsg = excByTime[i][0];
+if (excMsg != null){
+retStr = retStr + ' ' + excMsg;
+}
+}
+return retStr;
+}
+function mClearExc(tableName, colName){
+if (!undefined(this.exceptions[ExcTableReference(tableName, colName)])){
+this.exceptions[ExcTableReference(tableName, colName)] = new Array(null,0);
+}
+}
+function mNeedToDescend(subTable, selQStartIndex, selQEndIndex){
+if(undefined(this.tableKeyColCache[subTable])||METASTATE_NOT_INITIALIZED){
+return true;
+}
+else {
+var keyCols = this.tableKeyColCache[subTable];
+var queuedWidgets = SEL_Q.WidgetNames(selQStartIndex, selQEndIndex);
+for (j=0;j<queuedWidgets.length;j++){
+for (i=0;i<keyCols.length;i++){
+if (keyCols[i]==queuedWidgets[j]){
+return true;
+}
+}
+}
+}
+return false;
+}
+function mAddKeyCols(subTable, keyColArray){
+if (undefined(this.tableKeyColCache[subTable])){
+this.tableKeyColCache[subTable] = new Array();
+}
+for (i=0;i<keyColArray.length;i++){
+this.tableKeyColCache[subTable][this.tableKeyColCache[subTable].length] = keyColArray[i];
+}
+return true;
+}
+function mCopyKeyCols(fromTable,toTable){
+var fromTableCache = this.tableKeyColCache[fromTable];
+if (!fromTableCache) {
+return 0;
+}
+var toTableCache = this.tableKeyColCache[toTable];
+for (i=0;i<fromTableCache.length;i++){
+toTableCache[toTableCache.length] = fromTableCache[i];
+}
+return fromTableCache.length;
+}
+function mDescentCacheClear(){
+this.tableKeyColCache = new Array();
+this.tableResults = new Array();
+this.exceptions = new Array();
+}
+function RefTableCache(){
+return TABLE_CACHE;
+}
+function WaitExist()
+{
+if ((CATPG == null)||(!OL.Loaded(OL.DP))) {
+return 0;
+}
+return 1;
+}
+function OnTopLoad(urlPrefix)
+{
+SetPragmas();
+CreateWidgetStateLayer();
+ClearCodeset();
+ShowList(urlPrefix);
+}
+function InitPage()
+{
+OL.RegisterCodeset();
+OL.SetLoaded(window,true);
+}
+function KillOrder()
+{
+if(DYNAPO!=null){
+if(DYNAPO.top != self.top)	 {
+DYNAPO.CloseOrder(true);
+}
+}
+}
+function CodeSetFalse(){
+if(typeof top.onlink != "undefined"){
+OL.SetLoaded(window,false);
+}
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgcolor=#000000 onLoad="InitPage()" onUnload="KillOrder();CodeSetFalse()">
+</BODY>
+</HTML>

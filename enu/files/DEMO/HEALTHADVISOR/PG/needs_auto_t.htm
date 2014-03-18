@@ -1,0 +1,145 @@
+<HTML>
+<HEAD>
+<TITLE>Results Layout Template</TITLE>
+</HEAD>
+
+<BODY text="#000000" bgcolor=#FFFFFF onLoad="top.onlink.EndResults()">
+<FORM method="POST" name="targetForm" onSubmit="return false;">
+  <table width="410" align="center">
+    <tr>
+      <td>
+        <table width=400 cellspacing=0 cellpadding=3>
+          <tr>
+            <td> <font face="Arial, Helvetica, sans-serif" size="4" color="#FF0033"><b><i>Advisor</i></b></font></td>
+          </tr>
+        </table>
+        <table width="400">
+          <tr>
+            <td width="260"><font face="Arial, Helvetica, sans-serif" size="2"><b>Bodily
+              Injury </b> </font></td>
+            <td bgcolor="#EFEFEF"><font face="Arial, Helvetica, sans-serif" size="2">
+              <script>
+document.write(top.onlink.BuildTarget("TEXT",window,"BODILY_INJURY"));
+</script>
+              </font></td>
+          </tr>
+          <tr>
+            <td width="260"><font face="Arial, Helvetica, sans-serif" size="2"><b>Property
+              Damage </b> </font></td>
+            <td bgcolor="#EFEFEF"><font face="Arial, Helvetica, sans-serif" size="2">
+              <script>
+document.write(top.onlink.BuildTarget("TEXT",window,"PROPERTY_DAMAGE"));
+</script>
+              </font></td>
+          </tr>
+          <tr>
+            <td width="260"><font face="Arial, Helvetica, sans-serif" size="2"><b>Uninsured/Underinsured
+              Motorist BI:</b> </font></td>
+            <td bgcolor="#EFEFEF"><font face="Arial, Helvetica, sans-serif" size="2">
+              <script>document.write(top.onlink.BuildTarget("TEXT",window,"UNINSURED_BI"));</script>
+              </font></td>
+          </tr>
+          <tr>
+            <td width="260"><font face="Arial, Helvetica, sans-serif" size="2"><b>Uninsured
+              Motorist Property Damage:</b> </font></td>
+            <td bgcolor="#EFEFEF"><font face="Arial, Helvetica, sans-serif" size="2">
+              <script>document.write(top.onlink.BuildTarget("TEXT",window,"UNINSURED_DEDUCTIBLE"));</script>
+              </font></td>
+          </tr>
+        </table>
+        <table width="400">
+          <tr>
+            <td width="40" valign="top"><font face="Arial, Helvetica, sans-serif" size="2">
+              <b><font color="#3333FF">Why:</font></b><br>
+              </font></td>
+            <td><font face="Arial, Helvetica, sans-serif" size="2">
+              <script>
+document.write(top.onlink.BuildTarget("TEXT",window,"MESSAGE"));
+</script>
+              </font></td>
+          </tr>
+        </table>
+        <br>
+        <table width="401">
+          <tr>
+            <td width="260"><font face="Arial, Helvetica, sans-serif" size="2"><b>Collision
+              Coverage:</b> </font></td>
+            <td bgcolor="#EFEFEF"><font face="Arial, Helvetica, sans-serif" size="2">
+              <script>document.write(top.onlink.BuildTarget("TEXT",window,"COLL_DEDUCTIBLE"));</script>
+              </font></td>
+          </tr>
+          <tr>
+            <td width="260"><font face="Arial, Helvetica, sans-serif" size="2"><b>Comprehensive
+              Coverage:</b> </font></td>
+            <td bgcolor="#EFEFEF"><font face="Arial, Helvetica, sans-serif" size="2">
+              <script language="">
+document.write(top.onlink.BuildTarget("TEXT",window,"COMP_DEDUCTIBLE"));
+</script>
+              </font></td>
+          </tr>
+        </table>
+        <table width="400">
+          <tr>
+            <td valign="top" width="40"><font face="Arial, Helvetica, sans-serif" size="2">
+              <b><font color="#3333FF">Why:</font></b><br>
+              </font></td>
+            <td><font face="Arial, Helvetica, sans-serif" size="2">
+              <script language="">
+document.write(top.onlink.BuildTarget("TEXT",window,"COLL_MESSAGE"));
+</script>
+              <br>
+              <br>
+              <script language="">
+document.write(top.onlink.BuildTarget("TEXT",window,"COMP_MESSAGE"));
+</script>
+              </font></td>
+          </tr>
+        </table>
+        <br>
+        <table width="401">
+          <tr>
+            <td width="260"><b>Roadside Assistance:</b> </td>
+            <td bgcolor="#EFEFEF">
+              <script>document.write(top.onlink.BuildTarget("TEXT",window,"ROADSIDE_COVERAGE"));</script>
+            </td>
+          </tr>
+          <tr>
+            <td><b>Rental Car:</b> </td>
+            <td bgcolor="#EFEFEF">
+              <script>document.write(top.onlink.BuildTarget("TEXT",window,"RENTAL_COVERAGE"));</script>
+            </td>
+          </tr>
+        </table>
+        <table width="400">
+          <tr>
+            <td width="40" valign="top"><font face="Arial, Helvetica, sans-serif" size="2">
+              <b><font color="#3333FF">Why:</font></b><br>
+              </font></td>
+            <td><font face="Arial, Helvetica, sans-serif" size="2">
+              <script>document.write(top.onlink.BuildTarget("TEXT",window,"RENT_TOW_MESSAGE"));</script>
+              </font></td>
+          </tr>
+        </table>
+        <br>
+        <table width="400">
+          <tr>
+            <td width="260"><b>Medical Coverage:</b> </td>
+            <td bgcolor="#EFEFEF">
+              <script>document.write(top.onlink.BuildTarget("TEXT",window,"MEDICAL_PAYMENT"));</script>
+            </td>
+          </tr>
+        </table>
+        <table width="400">
+          <tr>
+            <td valign="top" width="40"><font face="Arial, Helvetica, sans-serif" size="2" color="#3333FF"><b>Why:</b></font></td>
+            <td><font face="Arial, Helvetica, sans-serif" size="2">
+              <script>document.write(top.onlink.BuildTarget("TEXT",window,"MEDICAL_INFO"));</script>
+              </font></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  </FORM>
+</BODY>
+</HTML>

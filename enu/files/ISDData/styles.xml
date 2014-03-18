@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<styles>
+  <style>
+    <label>Default</label>
+    <swfPath>styles/oracle.swf</swfPath>
+    <iconPath>styles/iconProject.swf</iconPath>
+  </style>
+  <style>
+    <label>Oracle</label>
+    <swfPath>styles/oracle.swf</swfPath>
+    <iconPath>styles/iconProject.swf</iconPath>
+  </style>
+</styles>

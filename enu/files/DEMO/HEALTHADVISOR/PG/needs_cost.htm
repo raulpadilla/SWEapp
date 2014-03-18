@@ -1,0 +1,154 @@
+<HTML>
+<HEAD>
+<TITLE>Inputs Layout Template</TITLE>
+
+<!--  Ver xxx -->
+
+<SCRIPT language="javascript">
+	<!--
+	top.onlink.StartTemplate('needs',true);
+	var FAMILY_DESCR = 'needs';
+	var FAMILY_PICT = 'needs.jpg';
+	var FAMILY_PAGE = 'needs';
+
+	//--- SpecialCase Override Points ---//
+	function initPage()
+	{
+		top.onlink.EndTemplate();
+	}
+	//-->
+</SCRIPT>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF" onLoad="initPage()">
+	<FORM name="WidgetForm" onSubmit="return false;">
+  <table width="360" border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td width="40">&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="40">&nbsp;</td>
+      <td> 
+        <div align="center"><font face="Arial, Helvetica, sans-serif" size="5"><b>Health 
+          Plan Advisor</b></font></div>
+      </td>
+    </tr>
+  </table>
+  <table width="360" border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td width="40">&nbsp;</td>
+      <td>
+        <div align="center"><font size="3" face="Arial, Univers, Helvetica" color="#ffffff"><b><a href="#" onClick='top.onlink.ol_ui.switch_input_page("needs"); return false;'>Access</a></b></font><img src="../images/trans.gif" width="20" height="10"><font size="3" face="Arial, Univers, Helvetica" color="#ffffff"><b><a href="#" onClick='top.onlink.ol_ui.switch_input_page("needs_cost"); return false;'>Cost</a><img src="../images/trans.gif" width="20" height="10"><a href="#" onClick='top.onlink.ol_ui.switch_input_page("needs_benefits"); return false;'>Benefits</a><img src="../images/trans.gif" width="20" height="10"><a href="#" onClick='top.onlink.ol_ui.switch_input_page("summary"); return false;'>Summary</a></b></font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td width="40">&nbsp;</td>
+      <td bgcolor="#CCCC99"><font face="Arial, Helvetica, sans-serif" size="3" color="#000000"><b>Cost</b></font></td>
+    </tr>
+  </table>
+  <table width="360" border="0" cellpadding="0" cellspacing="0">
+    <tr> 
+      <td width="40">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="40">&nbsp;</td>
+      <td><img src="../images/trans.gif" width="15" height="10"></td>
+      <td><font face="Arial, Univers, Helvetica" size=2><b>Which monthly premium 
+        best fits into your budget?</b></font></td>
+    </tr>
+    <tr> 
+      <td width="40">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td><font face="Arial, Univers, Helvetica" size=2><b><!--monthly premium range widget--> 
+        <script>
+			document.write(top.onlink.BuildWidget("LISTBOX",window,"MONTHLY_PREMIUM_RANGE",1,10,true));
+			</script>
+        </b></font></td>
+    </tr>
+    <tr> 
+      <td width="40">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="40">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td><font face="Arial, Univers, Helvetica" size=2><b>Which primary care 
+        visit copay best fits into your budget?</b></font></td>
+    </tr>
+    <tr> 
+      <td width="40">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td><font face="Arial, Univers, Helvetica" size=2><b><!--primary care copay range widget--> 
+        <script>
+			document.write(top.onlink.BuildWidget("LISTBOX",window,"PRIMARY_CARE_COPAY",1,10,true));
+			</script>
+        </b></font></td>
+    </tr>
+    <tr> 
+      <td width="40">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="40">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td><font face="Arial, Univers, Helvetica" size=2><b>Does your budget allow 
+        for a deductible in return for lower monthly premiums?</b></font></td>
+    </tr>
+    <tr> 
+      <td width="40">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td><font face="Arial, Univers, Helvetica" size=2><b><!--deductible widget--> 
+        <script>
+			document.write(top.onlink.BuildWidget("RADIO",window,"DEDUCTIBLE",0));
+			</script>
+        Yes<br>
+        <script>
+			document.write(top.onlink.BuildWidget("RADIO",window,"DEDUCTIBLE",1));
+			</script>
+        No </b></font></td>
+    </tr>
+    <tr> 
+      <td width="40">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="40">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td><b><font face="Arial, Univers, Helvetica" size=2>Are you looking for 
+        "catastrophic coverage" and your lowest rates?</font> </b></td>
+    </tr>
+    <tr> 
+      <td width="40">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td><font face="Arial, Univers, Helvetica" size=2><b><!--catastrophic coverage widget--> 
+        <script>
+			document.write(top.onlink.BuildWidget("RADIO",window,"CATASTROPHIC_COVERAGE",0));
+			</script>
+        Yes<br>
+        <script>
+			document.write(top.onlink.BuildWidget("RADIO",window,"CATASTROPHIC_COVERAGE",1));
+			</script>
+        No </b></font></td>
+    </tr>
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="40">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td><b><a href="#" onClick='top.onlink.ol_ui.switch_input_page("needs"); return false;'>Previous</a> 
+        <img src="trans.gif" width="200" height="10"> <a href="#" onClick='top.onlink.ol_ui.switch_input_page("needs_benefits"); return false;'>Next</a> 
+        </b></td>
+    </tr>
+  </table>
+  </FORM>
+</BODY>
+</HTML>

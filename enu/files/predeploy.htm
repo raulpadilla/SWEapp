@@ -1,0 +1,164 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <title>Pre-deployment Installer</title>
+      <meta name="description" content="used to pre-deploy Siebel ActiveX controls with deployment automation ">
+   </head>
+   <body>
+      <p>This page deploys available Siebel ActiveX Controls for the Siebel release.  To use, incorporate this page in an automated login script that executes with administrative permissions to the system. Please allow time to download ActiveX controls based on number of controls downloaded, system and network performance.</p>
+      <p>The page may be modified to remove un-needed ActiveX controls.</p>
+
+      <div>
+         <!--Summary: SiebelAx_HI_Client.cab
+         The High interactivity framework provides high levels of usability, performance, and desktop integration.  This framework contains user interface components such as Rich text editors, UI elements etc. and is always required for HI implemenntations.
+         -->
+
+         <object id="SiebelAx_HI_Client.cab" classid="clsid:88b13ade-6d08-4744-b54a-465c433d0e45" codebase="23030/applets/SiebelAx_HI_Client.cab#version=8,1,1,11" width="1" height="1"></object>
+
+         <!--Summary: %ClientAxTaskSimulatorCab%.cab
+         This package contains the ActiveX controls for the task simulator. The multi-column tree controls is included in this package to provide a hierachical tree-view of task properties at runtime. This package is commented out by default.
+         -->
+
+         <!--<object id="%ClientAxTaskSimulatorCab%.cab" classid="clsid:%SSMCTREECTRL_CLSID%" codebase="23030/applets/%ClientAxTaskSimulatorCab%.cab#version=8,1,1,11" width="1" height="1"></object>-->
+
+         <!--Summary: csagent.cab
+         need different name and full description here
+         -->
+
+         <!--<object id="csagent.cab" classid="clsid:DBFF771D-3F92-4C70-9978-508738536F38" codebase="23030/applets/csagent.cab#version=8,1,1,11" width="1" height="1"></object>-->
+
+         <!--Summary: SiebelAx_CTI_Toolbar.cab
+         "Call Center Communications Toolbar control is a helper ActiveX control for the CTI toolbar java applet to access the client side framework. CTI toolbar java applet goes through this ActiveX control to access the client side framework and perform following task:
+         get select text > get active buscomp > ask swe pop the view > issue command back to siebel server."
+         -->
+
+         <object id="SiebelAx_CTI_Toolbar.cab" classid="clsid:615ad2c4-74ca-4f22-a72e-6a0a68d938fb" codebase="23030/applets/SiebelAx_CTI_Toolbar.cab#version=8,1,1,11" width="1" height="1"></object>
+
+         <!--Summary: SiebelAx_Smartscript.cab
+         Control used to render the UI when users invoke SmartScript and navigate through the SmartScript using Next and Previous buttons. This will render the questions, answers and input controls.
+         -->
+
+         <object id="SiebelAx_Smartscript.cab" classid="clsid:eb2fccfa-0e32-4359-955e-93eebfa7a4c1" codebase="23030/applets/SiebelAx_Smartscript.cab#version=8,1,1,11" width="1" height="1"></object>
+
+         <!--Summary: SiebelAx_Prodselection.cab
+         This is a hidden control used to render the SI type applets for HI Product Selection UI Views. Control is used to dynamicaly isert SI           HTML into a span that is a placeholder.
+         -->
+
+         <object id="SiebelAx_Prodselection.cab" classid="clsid:b115b0a3-bdad-4205-b457-4daa37c6faa3"codebase="23030/applets/SiebelAx_Prodselection.cab#version=8,1,1,11"></object>
+
+         <!--Summary: SiebelAx_OutBound_mail.cab
+         This ActiveX Control provides outbound email integration with supported mail clients.
+         -->
+
+         <object id="SiebelAx_OutBound_mail.cab" classid="clsid:cecc827d-2e73-4786-b5af-ef4fe1caaded" codebase="23030/applets/SiebelAx_OutBound_mail.cab#version=8,1,1,11" width="1" height="1"></object>
+
+         <!--Summary: SiebelAx_Marketing_Calendar.cab
+         The SiebelAx_Marketing_Calendar ActiveX Control is used to render the Event schedule and to list relation of Sessions (under an event) With Tracks/Speakers attached to these sessions (and to the event). The Event Calendar schedule shows a monthly/daily/weekly schedule of events in a isolated view. The Track/speaker calendar is a child calendar under event that displays related sessions
+         -->
+
+         <object id="SiebelAx_Marketing_Calendar.cab" classid="clsid:c85f4086-80c5-4c0c-858a-cecf7742c78b" codebase="23030/applets/SiebelAx_Marketing_Calendar.cab#version=8,1,1,11" width="1" height="1"></object>
+
+         <!--Summary: SiebelAx_Gantt_Chart.cab
+         This AcitveX control is implemented when Gantt Charts are deployed. Gantt Chart AX control is used to render the Gantt Chart UI. The control renders 2 panes:  the left pane shows a list of employees and other configurable columns (such as service region, row_id, etc). The right pane shows a grid chart that displays the activities owned by the employees on the background of the employees  schedules (work time, break time, overtime).-->
+
+         <object id="SiebelAx_Gantt_Chart.cab" classid="clsid:b7576bfd-8b80-4168-a4c7-03536a112adb" codebase="23030/applets/SiebelAx_Gantt_Chart.cab#version=8,1,1,11" width="1" height="1"></object>
+
+         <!--Summary: SiebelAx_Marketing_Allocation.cab
+         This Ax Is used with Siebel Analytics.  The Marketing Allocation Control fetches (from Siebel Analytics) and displays the definition of a segment tree associated to a particular stage in a marketing program. The control also displays the list of campaigns from that stage in the form of a matrix against the segment tree nodes such that the Marketing user can allocate customers from a segment tree leaf node to a campaign. The user also gets to specify a capacity/allocation limit that would cap off the total number of customers allocated to that campaign from segment tree nodes as well as standalone segments/lists. The user can navigate to the control by drilling down on a stage icon in the Program Flowchart. This takes the user to the Allocation view that displays the program detail at the top, the stages list applet in the middle and the Allocation Control at the bottom.
+         -->
+
+         <object id="SiebelAx_Marketing_Allocation.cab" classid="clsid:2caa5219-2029-4d6e-9c75-5ce6ed379b46" codebase="23030/applets/SiebelAx_Marketing_Allocation.cab#version=8,1,1,11" width="1" height="1"></object>
+
+         <!--Summary: SiebelAx_Marketing_HTML_Editor.cab
+         This Ax Is used with Siebel Marketing Web Editor. 
+         -->
+
+         <object id="SiebelAx_Marketing_HTML_Editor.cab" classid="clsid:a6a7307c-d2a5-44fe-aca4-8761507b1697" codebase="23030/applets/SiebelAx_Marketing_HTML_Editor.cab#version=8,1,1,11" width="1" height="1"></object>
+
+         <!--Summary: SiebelAx_Calendar.cab
+         Core Calendar is a ActiveX control that used as interface to Siebel client framework and many calendar functions.
+         -->
+
+         <object id="SiebelAx_Calendar.cab" classid="clsid:4aac6220-904f-40bd-b073-c1b8fb022156" codebase="23030/applets/SiebelAx_Calendar.cab#version=8,1,1,11" width="1" height="1" VIEWASTEXT></object>
+
+         <!--Summary: SiebelAx_iHelp.cab
+         This ActiveX is implemented when Siebel IHelp is used.  The control for iHelp is for the iHelp player panel to contain and display the information of iHelp. The information includes the related iHelp items related to the view the user is navigated to as well as the detail of iHelp item when the user opens iHelp.  This control is typically launched or invoked through the iHelp icon on toolbar as well as through Siebel HotKeys.
+         -->
+
+         <object id="SiebelAx_iHelp.cab" classid="clsid:4ddf7cb4-f621-4146-80d8-f922f6dccc81" codebase="23030/applets/SiebelAx_iHelp.cab#version=8,1,1,11" width="1" height="1"></object>
+
+         <!--Summary:SiebelAx_Microsite_Layout.cab
+         The control is used to render a tool for laying out page items in both ERM Microsite pages and templates (this control appears in two different views, see below). This layout tool is used by an administrator to plan the arrangement of page item records on portal pages (for example, the Navigation Menu on the Engineering page of mySiebel) or templates. It renders with a toolbar of icons for creating new items and shows existing items within bounding boxes that represent sections/templates/menus. It is part of the administrative views for ERM Microsite Management. It can be accessed in both the page designer via drilldown from page administration list applet and the template designer via drilldown from the template administration list applet.
+         -->
+
+         <object id="SiebelAx_Microsite_Layout.cab" classid="clsid:bc08da4a-98b5-42dd-a029-8b9b846db635" codebase="23030/applets/SiebelAx_Microsite_Layout.cab#version=8,1,1,11" width="1" height="1"></object>
+
+         <!--Summary: SiebelAx_Desktop_Integration
+         Siebel's COM interface for desktop integration with external applications.
+         -->
+
+         <object id="SiebelAx_Desktop_Integration.cab" classid="clsid:8c244272-1dc1-4ce7-9c6c-fabca09eb543" codebase="23030/applets/SiebelAx_Desktop_Integration.cab#version=8,1,1,111" width="1" height="1"></object>
+
+         <!--Summary: SiebelAx_Test_Automation.cab
+         used as interface for automation. Not usually used for production Siebel Environments
+         -->
+
+         <object id="SiebelAx_Test_Automation.cab" classid="clsid:004352c2-9e52-4f24-95c3-d782bebcddad" codebase="23030/applets/SiebelAx_Test_Automation.cab#version=8,1,1,11" width="1" height="1"></object>
+
+         <!--Summary: ="SiebelAx_ERM_ContentSync.cab
+         Provides offline content syncronization for ERM and eBriefings. Is deployed for installations implementing ERM or eBriefings.
+         -->
+
+         <object id="SiebelAx_ERM_ContentSync.cab" classid="clsid:06314967-EECF-11D2-9D64-0000949887BE" codebase="23030/applets/SiebelAx_ERM_ContentSync.cab#version=8,1,1,11" width="1" height="1" VIEWASTEXT></object>
+
+         <!--Summary: outlctlx.CAB
+         The Outlook ActiveX control is provided by Microsoft to be used in conjunction with the Exchange/Siebel Connector (PIMSE). It is only required for implementations with Outlook 2000, otherwise it is not required.  To download a internet connection is required, if internet connectivity is not available, please download to the applets directory for the SWSE/Siebel Server and modify the link for proper download.
+         -->
+
+         <object id="outlctlx.CAB" classid="clsid:0006F063-0000-0000-C000-000000000046" codebase="http://activex.microsoft.com/activex/controls/office/outlctlx.CAB" width="1" height="1" ></object>
+
+         <!--Summary: SiebelAx_Hospitality_Gantt.CAB
+         Hospitality Gantt Chart control is used to render the Gantt Chart UI. The control renders three major areas. The X-Axis (Time based), the Y-Axis ( Resources ), and the Item Grid ( Allocation of resources over a time period). Control is activated when the user navigates to the Function Space Diary view under eHospitality.
+         -->
+
+         <object id="SiebelAx_Hospitality_Gantt.cab" classid="clsid:a7455e29-5041-4839-a056-2c689c876ad4" codebase="23030/applets/SiebelAx_Hospitality_Gantt.cab#version=8,1,1,11" width="1" height="1" VIEWASTEXT></object>
+
+         <!--Summary: SiebelAx_Container_Control.CAB
+         This control is used to host 3rd party ActiveX controls. The hosted control, its methods and its public members are specified using control user properties. This control is required in conjunction with use of Signature capture features.
+         -->
+
+         <object id="SiebelAx_Container_Control.cab" classid="clsid:56cb589b-fcdc-4183-a125-1bccabc8abd4" codebase="23030/applets/SiebelAx_Container_Control.cab#version=8,1,1,11" width="1" height="1" VIEWASTEXT></object>
+
+         <!--Summary: iTools.CAB
+         This 3rd party ActiveX control is used to capture and encrypt signatures. Used by horizontal and SIA applications.
+         -->
+
+         <object id="iTools.cab" classid="clsid:EFB7D763-97A3-11CF-AE19-00608CEADE00" codebase="23030/applets/iTools.cab" width="1" height="1" VIEWASTEXT></object>
+
+	 <!--Summary: iSign90.CAB
+         This 3rd party ActiveX control is used to capture and encrypt signatures. Introduced in 8.1.1.7.
+         -->
+
+         <object id="iTools.cab" classid="clsid:EFB7D763-97A3-11CF-AE19-00608CEADE00" codebase="23030/applets/iTools.cab" width="1" height="1" VIEWASTEXT></object>
+	 <object id="iSign90.cab" classid="clsid:93E5204A-4344-4381-8912-8A7091E0FAE5" codebase="23030/applets/iSign90.cab" width="1" height="1" VIEWASTEXT></object>
+	 <object id="iSign90" classid="clsid:93E5204A-4344-4381-8912-8A7091E0FAE5" codebase="23030/applets/iSign.cab#version=4,5,0,319"> </object>
+         <object id="SiebelAx_ChatUI.cab" classid="clsid:3abe6310-3a13-4ca6-86fb-1cf5eb6243c3" codebase="23030/applets/SiebelAx_ChatUI.cab#version=8,1,1,11" width="1" height="1" VIEWASTEXT></object>
+
+         <!--Summary: SiebelAx_UInbox.cab
+         An ActiveX control that is used for Universal Inbox Dynamic Buttons.
+         -->
+
+         <object id="SiebelAx_UInbox.cab" classid="clsid:b0d04830-1b47-4ae5-bbbb-57e1534b0ef0" codebase="23030/applets/SiebelAx_UInbox.cab#version=8,1,1,11" width="1" height="1" VIEWASTEXT></object>
+
+         <!--Summary: SiebelAx_ChatUI.cab
+         An ActiveX control used by Chat.
+         -->
+
+         <object id="SiebelAx_ChatUI.cab" classid="clsid:ebee132b-5275-4f59-970a-b453bc350a35" codebase="23030/applets/SiebelAx_ChatUI.cab#version=8,1,1,11" width="1" height="1" VIEWASTEXT></object>
+
+		 </div>
+
+      <p>The download is complete, you may close the window.</p>
+
+   </body>
+</html>
