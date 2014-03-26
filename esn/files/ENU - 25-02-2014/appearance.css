@@ -1,0 +1,71 @@
+/*this file controls the fonts & colors of specific elements appearing within Java applets*/
+
+/*default settings for all Java applets participating in the appearance framework*/
+.javaRoot              { font-family: Arial,Helvetica,Sans-Serif;
+                         font-weight: normal;
+                         font-style: normal;
+                         font-size: 10pt;   }
+
+
+/*settings for all Java menu applets*/						 
+.javaMenu              { font-family: Arial,Helvetica,Sans-Serif;
+                         color: #000000; 
+                         font-size: 11pt;}		           
+.javaMenuTop           { }               
+.javaMenuTopLabel      { }
+.javaMenuTopBranch     { }
+.javaMenuTopItem       { }
+.javaMenuApplet        { }
+.javaMenuAppletItem    { }
+.javaMenuAppletBranch  { }
+
+
+/*settings for all Java message bar applets*/	
+.javaMessageBar        { font-family: Sans-Serif;
+                         font-size: 11pt;}
+.javaMessageBarNormal  { }
+.javaMessageBarHigh    { }
+.javaMessageBarUrgent  { }
+
+
+
+
+/*settings for all Java funnel chart applets*/	
+.javaFunnel               { font-size: 10pt;
+                            background-color: #ffffff;
+                            color: #000000;}
+.javaFunnelBorder         { color: #000000;}
+
+.javaFunnelWedge          { font-size: 10pt;
+                            background-color: #cccccc;}
+.javaFunnelWedgeBase      { color: #999999;}							
+.javaFunnelWedgeBorder    { color: #000000;}
+
+.javaFunnelWedgeBelowPar  { color: #CC3333;}
+.javaFunnelWedgeEvenPar   { color: #F1E87D;}
+.javaFunnelWedgeAbovePar  { color: #7EB679;}
+
+.javaFunnelLegend         { font-size: 9pt;}
+.javaFunnelLegendBorder   { color: #000000;}
+
+.javaFunnelLegendBelowPar { color: #CC3333;}
+.javaFunnelLegendEvenPar  { color: #F1E87D;}
+.javaFunnelLegendAbovePar { color: #7EB679;}
+
+.javaFunnelTitle          { font-size: 12pt;
+                            font-weight: bold; }
+.javaFunnelTitleTop       { font-weight: bold; }
+.javaFunnelTitleLeft      { font-weight: bold; }
+.javaFunnelTitleBottom    { font-weight: bold; }
+
+.javaFunnelBalloon        { background-color:#ffffcc;}
+.javaFunnelBalloonBorder  { color: #000000;}
+
+
+/*???*/
+.javaDummy    { font-family: Arial,Helvetica,Sans-Serif;
+                background-color: #BDBDBD;
+		        color: #000000;
+		        font-weight: bold;
+		        font-style: italic;
+		        font-size: 10pt; }

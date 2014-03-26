@@ -1,0 +1,273 @@
+body {
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+}
+div:focus {
+  outline-style: none;
+}
+input,a,textarea {
+ outline-style : none;
+}
+/************** Application Header - Start *************/
+.siebui-header,
+.siebui-ss-collapsible-header {
+  background: #2857E9;
+  background: -webkit-linear-gradient(bottom left,#2857E9,#C0BBBB);
+  background: -moz-linear-gradient(to bottom right, #2857E9, rgb(192, 187, 187)); 
+  background: -ms-linear-gradient(to bottom right, #2857E9, rgb(192, 187, 187)); 
+  background: -o-linear-gradient(to bottom right, #2857E9, rgb(192, 187, 187)); 
+  background: linear-gradient(to bottom right, #2857E9, rgb(192, 187, 187));
+}
+/*************** Application Header - Emd **************/
+/************ Application Background - Start ***********/
+.siebui-page-container {
+  background: url('../images/baground_ss.png') no-repeat 48.5% -165px;
+}
+.siebui-logo {
+  background-image: url('../images/oracle_logo_ss.jpg');
+  background-repeat: no-repeat;
+}
+/************* Application Background - Emd ************/
+/************* Screenbar Decoration - Start ************/
+#screenTabs #s_sctrl #s_sctrl_tabScreen.ui-tabs ul.ui-tabs-nav li a {
+  cursor: pointer;
+  color: #777;
+  background: transparent;
+  border: 0 solid #CCCCCC;
+  border-right: 1px solid #FFFFFF;
+  border-bottom: 0;
+  font-weight: normal;
+  -webkit-box-shadow: 0 0 0 #f4f4f4 inset;
+  -moz-box-shadow: 0 0 0 #f4f4f4 inset;
+  box-shadow: 0 0 0 #f4f4f4 inset;
+  text-shadow: 0 0.2px 0 #f3f3f3;
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+}
+#screenTabs #s_sctrl #s_sctrl_tabScreen.ui-tabs ul.ui-tabs-nav  .ui-state-hover a,
+#screenTabs #s_sctrl #s_sctrl_tabScreen.ui-tabs ul.ui-tabs-nav  .ui-tabs-active a {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+} 
+#screenTabs #s_sctrl div.ui-tabs,
+#screenTabs #s_sctrl div.ui-tabs ul.ui-tabs-nav,
+#screenTabs #s_sctrl div.ui-tabs ul.ui-tabs-nav li {
+  background: transparent;
+}
+#screenTabs #s_sctrl #s_sctrl_tabScreen.ui-tabs ul.ui-tabs-nav li.ui-tabs-active a {
+  cursor: default;
+  background: transparent;
+}
+#s_sctrl a {
+  color: rgb(255, 255, 255) !important;
+} 
+/************** Screenbar Decoration - End *************/
+.appletButton {
+  border-radius: 0;
+  background: rgb(92, 125, 230);
+  -webkit-box-shadow: 2px 2px 2px #ccc;
+  -moz-box-shadow: 2px 2px 2px #ccc;
+  box-shadow: 2px 2px 2px #ccc;
+}
+.siebui-pageitem a {
+  border-right: 1px solid #fff;
+  text-decoration: none;
+  color: rgb(253, 253, 253);
+}
+/**************** View Container - Start ***************/
+.siebui-view-main {
+  -webkit-box-shadow: 0 0 2px #FFFFFF;
+  -moz-box-shadow: 0 0 2px #FFFFFF;
+  box-shadow: 0 0 2px #FFFFFF;
+  background: none;
+  background-color: #FFFFFF;
+}
+.siebui-view-container {
+  background-color: #FFFFFF;
+  border: 1px solid #D3D3D3;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top: none;
+}
+.siebui-ss-applet-container-col2 {
+  border-left: 1px solid #E7E4E4;
+}
+.siebui-applet-divider {
+  border-bottom: 1px solid #d1d1d1;
+}
+/***************** View Container - End ****************/
+/****************** Form Section - Start ***************/
+.siebui-ss-form-divider {
+  border-bottom: 1px solid #818181;
+}
+.siebui-ss-form-divider-line-ss,
+.siebui-ss-tile-divider-line {
+  border-bottom: 1px solid rgb(129, 129, 129);
+}
+.siebui-line-y {
+  border-right: 1px solid rgb(129, 129, 129);
+}
+.siebui-ss-btn-ctrl-right-align .siebui-ctrl-link a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.siebui-ss-applt-caption,
+.siebui-ss-applt-caption-small {
+  color: rgb(2, 2, 2);
+}
+.siebui-license-placeholder {
+  border: 1px solid #818181;
+}
+.siebui-ss-applt-list .siebui-ctrl-link a,
+.siebui-ss-applt-button .siebui-ctrl-link a,
+.siebui-ss-applt-cust-button1 .siebui-ctrl-link a,
+.siebui-ss-applt-cust-button2 .siebui-ctrl-link a,
+.siebui-ss-applt-list .siebui-ctrl-url a,
+.siebui-ss-applt-button .siebui-ctrl-url a,
+.siebui-ss-applt-cust-button1 .siebui-ctrl-url a,
+.siebui-ss-applt-cust-button2 .siebui-ctrl-url a,
+.siebui-ctrl-link a {
+  text-decoration: none;
+}
+/* Form session END */
+/******************* Form Section - End ****************/
+/******************** esearch - Start ******************/
+.siebui-search-button {
+  -webkit-box-shadow: 0 0 2px rgb(85, 111, 145) inset;
+  -moz-box-shadow: 0 0 2px rgb(85, 111, 145) inset;
+  box-shadow: 0 0 2px rgb(85, 111, 145) inset;
+  border: 1px solid rgb(85, 111, 145);
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzQ2NDY0NiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMyZDJkMmQiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top,  rgb(92, 120, 204) 0%, rgb(85, 111, 145) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgb(92, 120, 204)), color-stop(100%,rgb(85, 111, 145)));
+  background: -webkit-linear-gradient(top, rgb(92, 120, 204) 0%,rgb(85, 111, 145) 100%);
+  background: -o-linear-gradient(top,   rgb(92, 120, 204) 0%,rgb(85, 111, 145) 100%);
+  background: -ms-linear-gradient(top,   rgb(92, 120, 204) 0%,rgb(85, 111, 145) 100%);
+  background: linear-gradient(to bottom,  rgb(92, 120, 204) 0%,rgb(85, 111, 145) 100%);
+}
+.siebui-search-image {
+  background-color: rgb(85, 111, 145);
+}
+.siebui-search-combobox-searchLookin {
+  color: rgb(253,253,253);
+  background-color: rgb(85, 111, 145);
+}
+.siebui-search-textbox-srch {
+  background-color: rgb(85, 111, 145);
+}
+.siebui-search-esearch:hover,
+.siebui-search-esearch:focus,
+.siebui-search-esearch:active {
+   background: none;
+}
+.siebui-search-esearch #srchDivCont {
+  background: linear-gradient(to bottom right, rgb(92, 120, 204), rgb(192, 187, 187));
+}
+.siebui-header .ui-menubar,
+.siebui-header .ui-menubar-link {
+  color: rgb(253, 253, 253);
+}
+.siebui-search-srchheading {
+  color: rgb(253, 253, 253);
+  text-shadow: 2px 2px 2px #806A6A;
+}
+.siebui-search-dropdown-delimeter {
+  color: rgb(14, 243, 14) !important;
+}
+/********************* esearch - End *******************/
+/********************* Tiles - Start *******************/
+.siebui-ss-navlink-applet .siebui-tile-container-navlink,
+.siebui-social-media-links-applet .siebui-social-media-links-container ,
+.siebui-ss-tile-applet .siebui-tile-container-ss {
+  background: none;
+}
+/*Background color of tile name should be black.*/
+.siebui-tile-name-ss,.siebui-tile-name-ss-noellipse {  
+  background-color: #000;  
+}
+.siebui-tile-navlink-img a,
+.siebui-tile-navlink-img a:hover,
+.siebui-tile-navlink-img a:focus,
+.siebui-tile-navlink-img a:active {
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+/* Tile background and shadow*/
+.siebui-tile-container-ss .siebui-tile {
+  -moz-box-shadow: 5px 5px 5px #666 ;
+  -webkit-box-shadow: 5px 5px 5px rgb(165, 162, 162) ;
+  box-shadow: 5px 5px 5px rgb(160, 159, 159) ;
+  background: rgb(218, 218, 218);
+  background: -webkit-linear-gradient(20 bottom, #D2D4D2 4%, #FFFFFF 66%);
+  background: -webkit-gradient( linear, 20 bottom,  left top, color-stop(0.04, #D2D4D2),  color-stop(0.66, #FFFFFF));
+  background: -moz-linear-gradient(20 bottom, #D2D4D2 4%, #FFFFFF 66%);
+  background: -o-linear-gradient(20 bottom, #D2D4D2 4%, #FFFFFF 66%);
+  background: -ms-linear-gradient(20 bottom, #D2D4D2 4%, #FFFFFF 66%);
+  background: linear-gradient(20 bottom, #D2D4D2 4%, #FFFFFF 66%);
+}
+/* Tile selection */
+.siebui-tile-container-ss .siebui-tile-selected {
+  -webkit-box-shadow: 0 0 26px rgb(42, 133, 128);
+  -moz-box-shadow: 0 0 26px rgb(42, 133, 128);
+  box-shadow: 0 0 26px rgb(42, 133, 128);
+  border: 1px solid #ccc;
+}
+.siebui-form-data-ss,
+.siebui-tile-details,
+.siebui-form-data-ss-noellipse {
+  color: rgb(63, 60, 60);
+}
+.siebui-tile-header-data {
+  color: #000;
+}
+.siebui-tile-name-ss,.siebui-tile-name-ss-noellipse {
+  color: #FFF;
+}
+.siebui-tile-name-ss,
+.siebui-form-data-ss,
+.siebui-tile-header-data,
+.siebui-tile-details,
+.siebui-form-data-ss-noellipse,
+.siebui-tile-name-ss-noellipse,
+ #screenTabs #s_sctrl #s_sctrl_tabScreen.ui-tabs ul.ui-tabs-nav li a {
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+}
+ .siebui-tile-label {
+  text-transform: uppercase;
+  padding-left: 5px;
+}
+.siebui-tile-label-small {
+  padding-left: 5px;
+}
+.siebui-tile-divider {
+  border-color: #808080;
+}
+.siebui-tile-details  .siebui-unselected-tile-control-value,
+.siebui-tile-details textarea:hover {
+   background: inherit;
+   border-color: inherit;
+   opacity: 1;
+   cursor: default;
+}
+.siebui-tile-details  .siebui-selected-tile-control-value,
+.siebui-tile-details textarea:focus, 
+.siebui-tile-details textarea:active  {
+  background-color: rgb(250, 252, 253) !important;
+}
+.sisiebui-tile-container-ss .siebui-selected-tile-control-value {
+  background-color: rgb(250, 252, 253) !important;
+  border-color: rgb(252, 250, 250);
+}
+/********************** Tiles - End ********************/
+/****************** Social Link - Start ****************/
+.siebui-tile-sociallink-ss img:hover {
+  box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.3);
+}
+.siebui-ss-navlink-caption {
+  color: rgb(45, 96, 228);
+}
+.siebui-ss-collapsible-caption {
+  color: rgb(255, 255, 255);
+}
+/******************* Social Link - End *****************/

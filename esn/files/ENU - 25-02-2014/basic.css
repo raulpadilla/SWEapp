@@ -1,0 +1,93 @@
+html, body {
+  border: 0;
+  margin: 0;  
+  height: 100%;
+}
+
+#_swe { /*must keep, left over element */
+  display: none;
+}
+
+#_sweclient {
+  height: 100%;
+}
+
+/* Page Mask Div */
+
+.siebui-busy, .siebui-busy * {
+  cursor: wait !important;
+}
+
+/* Mask Layout */
+#mask, #maskoverlay {
+  position: absolute;
+  display: none;
+  align: center;
+  text-align: center;
+}
+
+#maskoverlay { /* screen */
+    height: 100%!important;
+    width: 100%!important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: 0 !important;
+
+    background-color: transparent;
+    z-index: 9000;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+#mask {
+  width: 100% !important;
+  height: 100% !important;
+  left: 0 !important;
+  top: 0 !important;
+  background-color: none;
+  z-index: 9001;
+}
+
+#mask #mask-img{
+  display: none;
+  position: absolute;
+  top: 49%;
+  left: 50%;
+  
+  margin: -48px 0 0 -131px;
+  width: 261px;
+  height: 98px;
+
+  background: url("../images/loadingSplash.gif") no-repeat scroll 50% 50% transparent;
+}
+#mask.siebui-mask-splash #mask-img{
+  display: block;
+}
+/*#mask.siebui-mask-image #mask-img{*/
+#mask #mask-img{ /*for all spinner*/
+  margin: -15px 0 0 -16px;
+  width: 32px;
+  height: 32px;  
+  background: url("../images/loadingAjax.gif") no-repeat scroll 0 0 transparent;
+}
+
+#mask div.siebui-mask-content {  /* "loading text" */
+    display: none;              /* make the loading indicator less obvious */
+    top: 49%;
+    left: 50%;
+    width: 261px;
+    position: absolute;
+    color: #555555;
+    font-family: arial;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 27px 0 0 -130px;
+    text-align: center;
+    text-shadow: 0 1px 0 #FFFFFF;
+}
+
+#mask.siebui-mask-splash div.siebui-mask-content {  
+    /*display: block;*/              /* only show for splash screen */
+}

@@ -1,0 +1,69 @@
+.GanttHeader
+{
+    BORDER-RIGHT: #cccccc 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #cccccc 1px;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    FONT: bold 8pt arial;
+    BORDER-LEFT: #cccccc 1px;
+    COLOR: #000000;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #cccccc 1px;
+    HEIGHT: 0px;
+    BACKGROUND-COLOR: #ccccff
+}
+.GanttChartRed
+{
+    BORDER-RIGHT: #cccccc 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #cccccc 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #cccccc 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #cccccc 1px;
+    BACKGROUND-COLOR: #cc3333
+}
+.GanttChartWorking
+{
+    BACKGROUND-COLOR: white
+}
+.GanttChartNoWork
+{
+    BACKGROUND-COLOR: #cccccc
+}
+.GanttChartConfirmed
+{
+    BACKGROUND-COLOR: #3366cc
+}
+.GanttChartNoSched
+{
+    BACKGROUND-COLOR: #7ab8f6
+}
+.GanttChartDate
+{
+    BORDER-RIGHT: black 1px solid;
+    BORDER-TOP: #A9A9A9 1px solid;
+    BORDER-LEFT: black 1px solid;
+    BORDER-BOTTOM: #A9A9A9 1px solid;
+    BACKGROUND-COLOR: #f0f0f0
+}
+.GanttChartTimeMarks
+{
+    BORDER-RIGHT: #f0f0f0 1px solid;
+    BORDER-LEFT: #f0f0f0 1px solid;
+    BORDER-BOTTOM: #A9A9A9 1px solid;
+    BACKGROUND-COLOR: #f0f0f0
+}
+.GanttTimeTable
+{
+    BORDER-RIGHT: black 1px solid;
+    BORDER-TOP: #A9A9A9 1px solid;
+    BORDER-LEFT: black 1px solid;
+    BORDER-BOTTOM: black 1px solid
+}
+.GanttChartHighlight
+{
+    BACKGROUND-COLOR: #F1E87D
+}

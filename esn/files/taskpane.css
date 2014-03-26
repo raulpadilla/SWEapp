@@ -1,0 +1,24 @@
+/* global style for general feel of task pane */
+body                    {background-color:#f0f4fa; font-family:arial; font-size:9pt;}
+td                      {font-family:arial; font-size:9pt;}
+.click0                 {cursor:default;}
+.click1                 {cursor:pointer;}
+
+td.aligndefault         {text-align:right;}
+td.alignrtl             {text-align:left;}
+
+/* task pane header style for title bar on the top of Task Pane */
+.titlebar               {background-color:#d7e1f5;}
+.taskCaption            {color:#003399; font-weight:600; font-size:10pt; text-decoration:none;}
+
+/* task pane footer style for the links at the bottom of Task Pane */
+.tasklink               {display:block; overflow:auto;}
+
+/* task list pane style for border outside of Task Pane ActiveX control */
+.tasklistBorder         {border:1px solid #d7e1f5;}
+.taskpaneHeader         {padding:4px 0px 0px 8px; font-weight:bold;}
+
+/* task inbox style for Go to Inbox link at the bottom of Task Pane */
+a.returnLink            {color:#6666cc; text-decoration:none;}
+a.returnLink:visited    {color:#6666cc; text-decoration:none;}
+a.returnLink:hover      {color:#6666cc; text-decoration:underline;}
