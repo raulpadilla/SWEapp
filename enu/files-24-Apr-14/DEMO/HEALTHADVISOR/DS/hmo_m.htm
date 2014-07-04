@@ -1,0 +1,39 @@
+<HTML><HEAD><TITLE></TITLE><SCRIPT language=Javascript>
+var OL=top.onlink;
+var IMT=top.onlink.InitMetaTable;
+var IMTS=top.onlink.InitMetaTables;
+var SMT=top.onlink.SetMetaTable;
+OL.StartMeta('hmo');
+
+function ESTIMATED_MONTHLY_PREMIUM(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var ESTIMATED_MONTHLY_PREMIUM_t=new Array(4);
+ESTIMATED_MONTHLY_PREMIUM_t[0]=new ESTIMATED_MONTHLY_PREMIUM('0','$97.00','default');
+ESTIMATED_MONTHLY_PREMIUM_t[1]=new ESTIMATED_MONTHLY_PREMIUM('1','$119.00','');
+ESTIMATED_MONTHLY_PREMIUM_t[2]=new ESTIMATED_MONTHLY_PREMIUM('2','$127.00','');
+ESTIMATED_MONTHLY_PREMIUM_t[3]=new ESTIMATED_MONTHLY_PREMIUM('3','$138.00','');
+
+function DEDUCTIBLE(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var DEDUCTIBLE_t=new Array(3);
+DEDUCTIBLE_t[0]=new DEDUCTIBLE('0','$1500 Single/$3000 Family (Not Aggregate)','default');
+DEDUCTIBLE_t[1]=new DEDUCTIBLE('1','$1500 Single/$3000 Family','');
+DEDUCTIBLE_t[2]=new DEDUCTIBLE('2','None','');
+
+function OUT_OF_POCKET_LIMIT(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var OUT_OF_POCKET_LIMIT_t=new Array(2);
+OUT_OF_POCKET_LIMIT_t[0]=new OUT_OF_POCKET_LIMIT('0','$2500 Single/$5000 Family (Not Aggregate)','default');
+OUT_OF_POCKET_LIMIT_t[1]=new OUT_OF_POCKET_LIMIT('1','$2000 Single/$4000 Family','');
+IMTS(3);
+SMT('ESTIMATED_MONTHLY_PREMIUM',ESTIMATED_MONTHLY_PREMIUM_t);
+SMT('DEDUCTIBLE',DEDUCTIBLE_t);
+SMT('OUT_OF_POCKET_LIMIT',OUT_OF_POCKET_LIMIT_t);
+OL.EndMeta();
+</SCRIPT></HEAD><BODY></BODY></HTML>

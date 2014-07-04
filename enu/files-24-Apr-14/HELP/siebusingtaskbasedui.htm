@@ -1,0 +1,141 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-8"> 
+<link rel="stylesheet" href="siebhelp.css">
+<title>Using the Task-Based UI</title>
+  <!-- HTML Indexer V3.0 - Do not edit this comment block.
+    Target="#"
+        IndexAs="",SortAs="",HelpAs="",HelpTitle=""
+    Target="changingappearanceofhomepage"
+        IndexAs="home page, changing appearance",SortAs="home page, changing appearance",HelpAs="home page, changing appearance",HelpTitle="Untitled"
+    Target="top"
+        IndexAs="",SortAs="",HelpAs="",HelpTitle=""
+    Target="usingeditlayoutfunction"
+        IndexAs="home page, edit layout function",SortAs="home page, edit layout function",HelpAs="home page, edit layout function",HelpTitle="Untitled"
+        IndexAs="layout, changing for home page",SortAs="layout, changing for home page",HelpAs="layout, changing for home page",HelpTitle="Untitled"
+  HTML Indexer -->
+</head>
+
+<body>
+<a name="top"></a>
+<h1>Using the Task UI</h1>
+<p><a href="siebstarthelp.htm" title="Contents">Contents</a> | <a href="siebindex.htm" title="Index">Index</a></p>
+
+<hr>
+
+<p>&nbsp;</p>
+<p>This section describes how to use the task-based user interface in your 
+Siebel application. It includes the following topics:</p>
+<p><a href="#abouttaskbasedui">About Task UI</a></p>
+<p><a href="#usingtasks">Using Task UI</a></p>
+<p><a href="#navigationalbuttonsfortaskbasedui">Navigational Buttons for Task UI</a></p>
+
+<br><p class="BacktoTop" ><a href="#top"><img src="top.gif" border="0" alt="Back to top" title="Back to top"></a></p>
+<hr>
+
+<h2><a name="abouttaskbasedui"></a>About Task UI</h2>
+<p>Task user interface (UI) is a wizard-like user interface that: </p>
+<ul>
+	<li>Guides you through task execution </li>
+	<li>Allows you to navigate back and forward within task execution </li>
+	<li>Allows you to resume or pause task execution at any point</li>
+</ul>
+<p>The Task UI includes the following features that support task execution: </p>
+<table  cellpadding="5" width="667" id="table3" summary="This table describes Task UI features that support task execution.">
+	<tr>
+		<td>Task pane</td>
+		<td width="554">The left side of the screen contains a context-sensitive 
+		listing of the tasks available to you. These tasks relate to the 
+		current context. When you select a given task, the Task Pane shows the 
+		sequence of steps for that task. </td>
+	</tr>
+	<tr>
+		<td>Play bar</td>
+		<td width="554">The Task screen has a standard set of four buttons that 
+		control the navigation in the task flow. It includes buttons to move 
+		forward and back through the steps and provides the ability to pause a 
+		task for later resumption, or cancel a task.</td>
+	</tr>
+	<tr>
+		<td>Radio buttons</td>
+		<td width="554">Radio buttons provide support for decision-making within 
+		a task. Based on the choices within a task, you can access different 
+		branches and different screens.</td>
+	</tr>
+</table>
+
+<br><p class="BacktoTop" ><a href="#top"><img src="top.gif" border="0" alt="Back to top" title="Back to top"></a></p>
+<hr>
+
+<h2><a name="usingtasks"></a>Using the Task UI</h2>
+<p>You can drill down on task items to launch the Task UI wizard and receive detailed instructions for each step in the task.</p>
+<h5>To use Tasks </h5>
+<ol>
+  <li>Click the Tasks button on the application toolbar.</li>
+	<p>The Tasks pane appears on the left side of the application window, and lists the task items related to the current screen. The Tasks pane remains open until you close it. </p>
+	<li>
+	<p align="left">In the Tasks pane, drill down on an item to launch the Tasks wizard.</li>
+	<li>
+	<p align="left">Select one of the radio buttons to choose an option, and click Next.</li>
+	<li>
+	<p align="left">Follow the instructions in the wizard.</li>
+<li>After you complete the task, close the Tasks pane. </li>
+</ol>
+<p><a href="#top">
+<img src="top.gif" border="0" alt="Back to top" title="Back to top"></a></p>
+<hr>
+<h2><a name="navigationalbuttonsfortaskbasedui"></a>Navigational Buttons for the Task UI</h2>
+<p>Many of the buttons described in the following table might appear at the 
+bottom of the Task UI wizard. In addition to these buttons, your Siebel 
+application might contain additional buttons.</p>
+<table  cellpadding="5" width="667" id="table2" summary="This table describes navigational buttons for the Task UI. ">
+	<tr>
+		<td>Previous</td>
+		<td width="554"><font SIZE="1">The Previous button navigates to the 
+		previous step in the task. This button is disabled for the first step. 
+		It might also be disabled for the steps that follow the step when data has been committed to the database.</font></td>
+	</tr>
+	<tr>
+		<td>&nbsp;Next</td>
+		<td width="554"><font SIZE="1">The Next button navigates to the next 
+		step in the task. This button also acts as a validation point and 
+		prevents you from proceeding to the next step until the required 
+		criteria are met. It is&nbsp; relabeled <i>Finish</i> when you reach 
+		the final step of the task. </font> </td>
+	</tr>
+	<tr>
+		<td>Pause</td>
+		<td width="554"><font SIZE="1">The Pause button saves the task in its 
+		current stage and sends the task to your Inbox. You can launch the task 
+		later and resume from where you left off. You can set this option from 
+		User Preferences as follows:<p>From the application-level menu, choose 
+		Tools, then User Preferences. The User Preferences screen appears. <br>
+		On the link bar, click Behavior. The Behavior form appears. <br>
+		Select the check box labeled, Prompt to Pause When a User Interrupts a 
+		Task button. 
+		</font> </td>
+	</tr>
+	<tr>
+		<td>Cancel</td>
+		<td width="554"><font size="1">Cancel deletes the task without saving any data or in 
+		the case of a task that has been previously saved, restores it to its 
+		previous state. The Pause and Cancel buttons are enabled for all steps. 
+		However, the Cancel button is disabled on the last step after data is 
+		committed.</font></td>
+	</tr>
+	<tr>
+		<td>Submit</td>
+		<td width="554"><font SIZE="1">The Submit button indicates that data 
+		is written to the database while in the middle of a task. This action 
+		means that some data is written to the database rather than queued until the end of 
+		the task.</font></td>
+	</tr>
+</table>
+
+<p><a href="siebstarthelp.htm" title="Contents">Contents</a> | <a href="siebindex.htm" title="Index">Index</a></p>
+<p>Copyright © 2013, Oracle. All rights reserved.</p>
+
+
+</body>
+</html>

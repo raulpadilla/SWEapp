@@ -1,0 +1,12 @@
+/*Siebel Employee Portal Specific CSS*/
+
+/**********************/
+/*Unique Screen Colors*/
+/**********************/
+.tabArrow	{	background-color:#6666CC;	}
+
+/*Header Definitions*/
+.ContentHeader 			{font-family:Arial; color:#cccccc; font-weight:normal; font-size:18pt; }
+.header1 				{font-family:Arial; color:#6666CC; font-weight:bold; font-size:12pt; }
+.header2 				{font-family:Arial; color:#6666CC; font-weight:bold; font-size:10pt; }
+.header3 				{font-family:Arial; color:#6666CC; font-weight:bold; font-size:8pt; }

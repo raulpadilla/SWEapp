@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- Copyright 2004 Ektron, Inc. -->
+<!-- Revision Date: 2004-Feb-19 -->
+<html>
+<head>
+<title>eWebEditPro Installation</title>
+<script language="JavaScript1.2" src="parseinstallparams.js"></script>
+<script language="JavaScript1.2" src="../ewebeditpro.js"></script>
+<style>
+P { font-size : small; font-family : verdana, helvetica; }
+H1 { font-family : verdana, helvetica; }
+H2 { font-family : verdana, helvetica; }
+A { font-family : verdana, helvetica; }
+BODY { font-size : small; }
+</style>
+
+<script language="JavaScript1.2">
+<!--
+function OnReadyHandler()
+{
+	document.loadingMsg.style.visibility = "hidden";
+	if (top.opener && !top.opener.closed)
+	{
+		if (top.opener.CallBackFromInstallPopup)
+		{
+			top.opener.CallBackFromInstallPopup ();
+		}
+		else
+		{
+			top.opener.location.reload();
+		}
+
+		setTimeout("self.close()", 5000);
+	}
+}
+//-->
+</script>
+
+</head>
+
+<body>
+
+<p align="center"><h2 align="center">
+eWebEditPro <br>Automatic <br>Download and Installation
+</h2></p>
+
+<form method="post">
+<input type=hidden name="DoneMsg" value="&lt;p&gt; &lt;/p&gt;&lt;p align=center&gt;&lt;font face='Arial' size=4&gt;Installation complete.&lt;/font&gt;&lt;/p&gt;">
+<input type=hidden name="RestartMsg" value="&lt;p&gt; &lt;/p&gt;&lt;p align=center&gt;&lt;font face='Arial' size=4&gt;Please restart Windows to complete the installation.&lt;/font&gt;&lt;/p&gt;">
+
+<p align="center"><font size=-1>
+<img name=loadingMsg src="loading.gif" alt="Downloading, please wait..." width=234 height=30><br>
+If successful, this window will close automatically.
+</font></p>
+<!-- The install object -->
+<script language="JavaScript1.2">
+<!--
+	var sCaption = "Installation complete.";
+	writeLoader(sCaption);
+// -->
+</script>
+
+<p><font size=-1>
+<script language="JavaScript1.2">
+<!--
+	document.write('If a small red <font color="red"><b>X</b></font> appears, try downloading the ');
+	document.write('<a href="' + eWebEditProDefaults.clientInstall + '">');
+	document.write('client installation program</a> and running it. ');
+// -->
+</script>
+</font></p>
+<p><font size=-1>
+For additional assistance, visit <a href="http://www.ektron.com/support" target="_blank">Ektron's support page</a>.
+</font></p>
+</form>
+</body>
+</html>

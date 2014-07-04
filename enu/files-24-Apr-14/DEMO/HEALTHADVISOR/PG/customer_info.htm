@@ -1,0 +1,417 @@
+<HTML>
+<HEAD>
+<TITLE>Inputs Layout Template</TITLE>
+
+<!--  Ver xxx -->
+
+<SCRIPT language="javascript">
+	<!--
+	top.onlink.StartTemplate('customer_info',true);
+	var FAMILY_DESCR = 'customer_info';
+	var FAMILY_PICT = 'customer_info.jpg';
+	var FAMILY_PAGE = 'customer_info';
+
+	//--- SpecialCase Override Points ---//
+	function initPage()
+	{
+		top.onlink.EndTemplate();
+	}
+	//-->
+</SCRIPT>
+</HEAD>
+
+
+<BODY bgcolor="#FFFFFF" onLoad="initPage()">
+	<FORM name="WidgetForm" onSubmit="return false;">
+
+	<TABLE width=400 border=0 cellpadding=2 cellspacing=0>
+	     <tr>
+          <td bgcolor="#006699" colspan="2"><font size="3" face="Arial, Univers, Helvetica"
+          color="#ffffff"><b>Plan Type</b></font></td>
+        </tr>
+        <tr>
+          <td align="right" width="25%" valign="middle"><font size="2" face="Arial, Univers, Helvetica">
+			 Please choose a Health Plan:
+			 </td>
+			 <td align="left">
+			 <SCRIPT>
+			 document.write(top.onlink.BuildWidget("LISTBOX",window,"PLAN_TYPE",1,20,true));
+			 </SCRIPT>
+			 </td>
+	     </tr>
+        <tr>
+          <td bgcolor="#006699" colspan="2"><font size="3" face="Arial, Univers, Helvetica"
+          color="#ffffff"><b>Applicant (required)</b></font></td>
+        </tr>
+        <tr>
+          <td colspan="2"><font size="2" face="Arial, Univers, Helvetica"><table BORDER="0" COLS="2"
+          width="580" align="left">
+            <tr VALIGN="TOP">
+              <td align="right" width="25%" valign="middle">Birth Date: </td>
+              <td align="left" nobreak nowrap valign="middle"><select NAME="imm" MAXLENGTH="2" SIZE="3">
+                <option SELECTED VALUE="00">Month </option>
+                <option VALUE="01">01 </option>
+                <option VALUE="02">02 </option>
+                <option VALUE="03">03 </option>
+                <option VALUE="04">04 </option>
+                <option VALUE="05">05 </option>
+                <option VALUE="06">06 </option>
+                <option VALUE="07">07 </option>
+                <option VALUE="08">08 </option>
+                <option VALUE="09">09 </option>
+                <option VALUE="10">10 </option>
+                <option VALUE="11">11 </option>
+                <option VALUE="12">12 </option>
+              </select> <select NAME="idd" MAXLENGTH="2" SIZE="3">
+                <option SELECTED VALUE="00">Day </option>
+                <option VALUE="01">01 </option>
+                <option VALUE="02">02 </option>
+                <option VALUE="03">03 </option>
+                <option VALUE="04">04 </option>
+                <option VALUE="05">05 </option>
+                <option VALUE="06">06 </option>
+                <option VALUE="07">07 </option>
+                <option VALUE="08">08 </option>
+                <option VALUE="09">09 </option>
+                <option VALUE="10">10 </option>
+                <option VALUE="11">11 </option>
+                <option VALUE="12">12 </option>
+                <option VALUE="13">13 </option>
+                <option VALUE="14">14 </option>
+                <option VALUE="15">15 </option>
+                <option VALUE="16">16 </option>
+                <option VALUE="17">17 </option>
+                <option VALUE="18">18 </option>
+                <option VALUE="19">19 </option>
+                <option VALUE="20">20 </option>
+                <option VALUE="21">21 </option>
+                <option VALUE="22">22 </option>
+                <option VALUE="23">23 </option>
+                <option VALUE="24">24 </option>
+                <option VALUE="25">25 </option>
+                <option VALUE="26">26 </option>
+                <option VALUE="27">27 </option>
+                <option VALUE="28">28 </option>
+                <option VALUE="29">29 </option>
+                <option VALUE="30">30 </option>
+                <option VALUE="31">31 </option>
+              </select> <select NAME="iyy" MAXLENGTH="4" SIZE="3">
+                <option SELECTED VALUE="33">Year </option>
+					 <option VALUE="36">1936 </option>
+                <option VALUE="37">1937 </option>
+                <option VALUE="38">1938 </option>
+                <option VALUE="39">1939 </option>
+                <option VALUE="40">1940 </option>
+                <option VALUE="41">1941 </option>
+                <option VALUE="42">1942 </option>
+                <option VALUE="43">1943 </option>
+                <option VALUE="44">1944 </option>
+                <option VALUE="45">1945 </option>
+                <option VALUE="46">1946 </option>
+                <option VALUE="47">1947 </option>
+                <option VALUE="48">1948 </option>
+                <option VALUE="49">1949 </option>
+                <option VALUE="50">1950 </option>
+                <option VALUE="51">1951 </option>
+                <option VALUE="52">1952 </option>
+                <option VALUE="53">1953 </option>
+                <option VALUE="54">1954 </option>
+                <option VALUE="55">1955 </option>
+                <option VALUE="56">1956 </option>
+                <option VALUE="57">1957 </option>
+                <option VALUE="58">1958 </option>
+                <option VALUE="59">1959 </option>
+                <option VALUE="60">1960 </option>
+                <option VALUE="61">1961 </option>
+                <option VALUE="62">1962 </option>
+                <option VALUE="63">1963 </option>
+                <option VALUE="64">1964 </option>
+                <option VALUE="65">1965 </option>
+                <option VALUE="66">1966 </option>
+                <option VALUE="67">1967 </option>
+                <option VALUE="68">1968 </option>
+                <option VALUE="69">1969 </option>
+                <option VALUE="70">1970 </option>
+                <option VALUE="71">1971 </option>
+                <option VALUE="72">1972 </option>
+                <option VALUE="73">1973 </option>
+                <option VALUE="74">1974 </option>
+                <option VALUE="75">1975 </option>
+                <option VALUE="76">1976 </option>
+                <option VALUE="77">1977 </option>
+                <option VALUE="78">1978 </option>
+                <option VALUE="79">1979 </option>
+					<option VALUE="80">1980 </option>
+					<option VALUE="81">1981 </option>
+					<option VALUE="82">1982 </option>
+					<option VALUE="83">1983 </option>
+					<option VALUE="84">1984 </option>
+					<option VALUE="85">1985 </option>
+					<option VALUE="86">1986 </option>
+					<option VALUE="87">1987 </option>
+					<option VALUE="88">1988 </option>
+					<option VALUE="89">1989 </option>
+					<option VALUE="90">1990 </option>
+					<option VALUE="91">1991 </option>
+					<option VALUE="92">1992 </option>
+					<option VALUE="93">1993 </option>
+					<option VALUE="94">1994 </option>
+					<option VALUE="95">1995 </option>
+					<option VALUE="96">1996 </option>
+					<option VALUE="97">1997 </option>
+					<option VALUE="98">1998 </option>
+					<option VALUE="99">1999 </option>
+             </select>
+</tr>
+<tr VALIGN="TOP">
+              <td align="right" valign="middle">Tobacco Use: </td>
+              <td align="left" valign="middle"><select NAME="itb" MAXLENGTH="3" SIZE="2">
+                <option SELECTED VALUE="1">No </option>
+                <option VALUE="2">Yes </option>
+              </select> </td>
+            </tr>
+            <tr VALIGN="TOP">
+              <td align="right" valign="middle">Sex: </td>
+              <td align="left" valign="middle"><select NAME="isx" MAXLENGTH="2" SIZE="2">
+                <option VALUE="1">Female </option>
+                <option SELECTED VALUE="2">Male </option>
+              </select></font></td>
+            </tr>
+            <tr VALIGN="TOP">
+              <td align="right" valign="middle">State: </td>
+              <td valign="middle"><select NAME="st" MAXLENGTH="2" SIZE="1">
+                <option VALUE="01AL">Alabama </option>
+                <option VALUE="02AK">Alaska </option>
+                <option VALUE="03AZ">Arizona </option>
+                <option VALUE="04AR">Arkansas </option>
+                <option VALUE="05CA">California </option>
+                <option VALUE="06CO">Colorado </option>
+                <option VALUE="07CT">Connecticut </option>
+                <option VALUE="08DE">Delaware </option>
+                <option VALUE="09DC">Dist. of Columbia </option>
+                <option VALUE="10FL">Florida </option>
+                <option VALUE="11GA">Georgia </option>
+                <option VALUE="12HI">Hawaii </option>
+                <option VALUE="13ID">Idaho </option>
+                <option VALUE="14IL" SELECTED>Illinois </option>
+                <option VALUE="15IN">Indiana </option>
+                <option VALUE="16IA">Iowa </option>
+                <option VALUE="17KS">Kansas </option>
+                <option VALUE="18KY">Kentucky </option>
+                <option VALUE="19LA">Louisiana </option>
+                <option VALUE="20ME">Maine </option>
+                <option VALUE="21MD">Maryland </option>
+                <option VALUE="22MA">Massachusetts </option>
+                <option VALUE="23MI">Michigan </option>
+                <option VALUE="24MN">Minnesota </option>
+                <option VALUE="25MS">Mississippi </option>
+                <option VALUE="26MO">Missouri </option>
+                <option VALUE="27MT">Montana </option>
+                <option VALUE="28NE">Nebraska </option>
+                <option VALUE="29NV">Nevada </option>
+                <option VALUE="30NH">New Hampshire </option>
+                <option VALUE="31NJ">New Jersey </option>
+                <option VALUE="32NM">New Mexico </option>
+                <option VALUE="33NY">New York </option>
+                <option VALUE="34NC">North Carolina </option>
+                <option VALUE="35ND">North Dakota </option>
+                <option VALUE="36OH">Ohio </option>
+                <option VALUE="37OK">Oklahoma </option>
+                <option VALUE="38OR">Oregon </option>
+                <option VALUE="39PA">Pennsylvania </option>
+                <option VALUE="40RI">Rhode Island </option>
+                <option VALUE="41SC">South Carolina </option>
+                <option VALUE="42SD">South Dakota </option>
+                <option VALUE="43TN">Tennessee </option>
+                <option VALUE="44TX">Texas </option>
+                <option VALUE="45UT">Utah </option>
+                <option VALUE="46VT">Vermont </option>
+                <option VALUE="47VA">Virginia </option>
+                <option VALUE="48WA">Washington </option>
+                <option VALUE="49WV">West Virginia </option>
+                <option VALUE="50WI">Wisconsin </option>
+                <option VALUE="51WY">Wyoming </option>
+              </select> </td>
+            </tr>
+            <tr VALIGN="TOP">
+              <td align="right" valign="middle">Zip Code: </td>
+              <td valign="middle"><input TYPE="TEXTAREA" NAME="zp" SIZE="5" MAXLENGTH="5"> </td>
+            </tr>
+            <tr VALIGN="TOP">
+              <td align="right" valign="middle">County: </td>
+              <td valign="middle"><input TYPE="TEXTAREA" NAME="cn" SIZE="20" MAXLENGTH="40"> </font></td>
+            </tr>
+          </table>
+          </td>
+        </tr>
+        <tr bgcolor="#ffffff">
+          <td height="20"></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td bgcolor="#006699" colspan="2"><font size="3" face="Arial, Univers, Helvetica"
+          color="#ffffff"><b>Optional Spouse Coverage</b></font></td>
+        </tr>
+        <tr>
+          <td colspan="2"><font size="2" face="Arial, Univers, Helvetica"><table BORDER="0" COLS="2"
+          width="580" align="left">
+            <tr VALIGN="TOP">
+              <td align="right" width="25%" valign="middle">Birth Date: </td>
+              <td align="left" nobreak nowrap valign="middle"><select NAME="smm" MAXLENGTH="2" SIZE="3">
+                <option SELECTED VALUE="00">Month </option>
+                <option VALUE="01">01 </option>
+                <option VALUE="02">02 </option>
+                <option VALUE="03">03 </option>
+                <option VALUE="04">04 </option>
+                <option VALUE="05">05 </option>
+                <option VALUE="06">06 </option>
+                <option VALUE="07">07 </option>
+                <option VALUE="08">08 </option>
+                <option VALUE="09">09 </option>
+                <option VALUE="10">10 </option>
+                <option VALUE="11">11 </option>
+                <option VALUE="12">12 </option>
+              </select> <select NAME="sdd" MAXLENGTH="2" SIZE="3">
+                <option SELECTED VALUE="00">Day </option>
+                <option VALUE="01">01 </option>
+                <option VALUE="02">02 </option>
+                <option VALUE="03">03 </option>
+                <option VALUE="04">04 </option>
+                <option VALUE="05">05 </option>
+                <option VALUE="06">06 </option>
+                <option VALUE="07">07 </option>
+                <option VALUE="08">08 </option>
+                <option VALUE="09">09 </option>
+                <option VALUE="10">10 </option>
+                <option VALUE="11">11 </option>
+                <option VALUE="12">12 </option>
+                <option VALUE="13">13 </option>
+                <option VALUE="14">14 </option>
+                <option VALUE="15">15 </option>
+                <option VALUE="16">16 </option>
+                <option VALUE="17">17 </option>
+                <option VALUE="18">18 </option>
+                <option VALUE="19">19 </option>
+                <option VALUE="20">20 </option>
+                <option VALUE="21">21 </option>
+                <option VALUE="22">22 </option>
+                <option VALUE="23">23 </option>
+                <option VALUE="24">24 </option>
+                <option VALUE="25">25 </option>
+                <option VALUE="26">26 </option>
+                <option VALUE="27">27 </option>
+                <option VALUE="28">28 </option>
+                <option VALUE="29">29 </option>
+                <option VALUE="30">30 </option>
+                <option VALUE="31">31 </option>
+              </select> <select NAME="syy" MAXLENGTH="4" SIZE="3">
+                <option SELECTED VALUE="33">Year </option>
+      <!--          <option VALUE="33">33 </option>
+                <option VALUE="34">34 </option>
+                <option VALUE="35">1935 </option>
+      -->          <option VALUE="36">1936 </option>
+                <option VALUE="37">1937 </option>
+                <option VALUE="38">1938 </option>
+                <option VALUE="39">1939 </option>
+                <option VALUE="40">1940 </option>
+                <option VALUE="41">1941 </option>
+                <option VALUE="42">1942 </option>
+                <option VALUE="43">1943 </option>
+                <option VALUE="44">1944 </option>
+                <option VALUE="45">1945 </option>
+                <option VALUE="46">1946 </option>
+                <option VALUE="47">1947 </option>
+                <option VALUE="48">1948 </option>
+                <option VALUE="49">1949 </option>
+                <option VALUE="50">1950 </option>
+                <option VALUE="51">1951 </option>
+                <option VALUE="52">1952 </option>
+                <option VALUE="53">1953 </option>
+                <option VALUE="54">1954 </option>
+                <option VALUE="55">1955 </option>
+                <option VALUE="56">1956 </option>
+                <option VALUE="57">1957 </option>
+                <option VALUE="58">1958 </option>
+                <option VALUE="59">1959 </option>
+                <option VALUE="60">1960 </option>
+                <option VALUE="61">1961 </option>
+                <option VALUE="62">1962 </option>
+                <option VALUE="63">1963 </option>
+                <option VALUE="64">1964 </option>
+                <option VALUE="65">1965 </option>
+                <option VALUE="66">1966 </option>
+                <option VALUE="67">1967 </option>
+                <option VALUE="68">1968 </option>
+                <option VALUE="69">1969 </option>
+                <option VALUE="70">1970 </option>
+                <option VALUE="71">1971 </option>
+                <option VALUE="72">1972 </option>
+                <option VALUE="73">1973 </option>
+                <option VALUE="74">1974 </option>
+                <option VALUE="75">1975 </option>
+                <option VALUE="76">1976 </option>
+                <option VALUE="77">1977 </option>
+                <option VALUE="78">1978 </option>
+                <option VALUE="79">1979 </option>
+		    <option VALUE="80">1980 </option>
+		    <option VALUE="81">1981 </option>
+		    <option VALUE="82">1982 </option>
+		    <option VALUE="83">1983 </option>
+		    <option VALUE="84">1984 </option>
+	       </select> </td>
+            </tr>
+            <tr VALIGN="TOP">
+              <td align="right" valign="middle">Tobacco Use: </td>
+              <td align="left" valign="middle"><select NAME="stb" MAXLENGTH="3" SIZE="2">
+                <option SELECTED VALUE="1">No </option>
+                <option VALUE="2">Yes </option>
+              </select> </font></td>
+            </tr>
+          </table>
+          </td>
+        </tr>
+        <tr bgcolor="#ffffff">
+          <td height="20"></td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <td bgcolor="#006699" colspan="2"><font size="3" face="Arial, Univers, Helvetica"
+          color="#ffffff"><b>Optional Dependent Children Coverage</b></font></td>
+        </tr>
+        <tr>
+          <td colspan="2"><font size="2" face="Arial, Univers, Helvetica"><table BORDER="0" COLS="2"
+          width="580" align="left">
+            <tr VALIGN="TOP">
+              <td align="right" width="25%" valign="middle"></td>
+              <td align="left" nobreak nowrap><select NAME="chd" MAXLENGTH="2" SIZE="1">
+                <option SELECTED VALUE="00"> Number of Children </option>
+                <option VALUE="00"> 0 </option>
+                <option VALUE="01"> 1 </option>
+                <option VALUE="02"> 2 </option>
+                <option VALUE="03"> 3 </option>
+                <option VALUE="04"> 4 </option>
+                <option VALUE="05"> 5 </option>
+                <option VALUE="06"> 6 </option>
+                <option VALUE="07"> 7 </option>
+                <option VALUE="08"> 8 </option>
+                <option VALUE="09"> 9 </option>
+                <option VALUE="10">10 </option>
+                <option VALUE="11">11 </option>
+                <option VALUE="12">12 </option>
+                <option VALUE="13">13 </option>
+                <option VALUE="14">14 </option>
+                <option VALUE="15">15 </option>
+                <option VALUE="16">16 </option>
+                <option VALUE="17">17 </option>
+                <option VALUE="18">18 </option>
+                <option VALUE="19">19 </option>
+                <option VALUE="20">20 </option>
+              </select></font></td>
+            </tr>
+</table>
+
+</TD></TR></TABLE>
+</FORM>
+</BODY>
+</HTML>

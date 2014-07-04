@@ -1,0 +1,166 @@
+<HTML>
+<HEAD>  
+<TITLE>Order Template - Saveable Order</TITLE>
+<!--   Ver 0.9NS	11/29/98		Jeff Loomans	-->
+<SCRIPT></SCRIPT>
+<SCRIPT src="../cs/po.js">
+</SCRIPT>
+
+</HEAD>
+
+<BODY bgcolor=#FFFFFF link=#000000 vlink=#000000>
+<form name="ordertargetform">
+<BR><BR><BR><BR><BR><BR>
+
+<TEXTAREA NAME="HEADER">
+<TITLE>Saveable Order Template</TITLE>
+
+<TABLE cellspacing=0 cellpadding=0 border=0>
+
+	<TR>
+	<TD><font face="arial,helvetica" size=-1><B>Date:</TD>
+	<TD><font face="arial,helvetica" size=-1>
+	<INFOTARGET VALUE="DATE">
+	</TD>
+	<TD><font face="arial,helvetica" size=-1><B>Customer #:</TD>
+	<TD><font face="arial,helvetica" size=-1>
+	<INFOTARGET VALUE="CUSTNUM">
+	</TD></TR>
+
+	<TR>
+	<TD align=left valign=top><font face="arial,helvetica" size=-1><B>Quote #:</TD>
+	<TD align=left valign=top><font face="arial,helvetica" size=-1>
+	<INFOTARGET VALUE="QUOTENUM">
+	</TD>
+	<TD align=left valign=top><font face="arial,helvetica" size=-1><B>Admin:</TD>
+	<TD align=left valign=top><font face="arial,helvetica" size=-1>
+	<INFOTARGET VALUE="ADMIN">
+	</TD></TR>
+
+
+	<TR><TD colspan=4><HR noshade></TD></TR>
+
+	<TR>
+	<TD align=left colspan=2 valign=top><font face="arial,helvetica" size=-1><B>Bill To:</B><BR>
+	<INFOTARGET VALUE="BILL_TO">
+	</TD>
+	<TD align=left colspan=2 valign=top><font face="arial,helvetica" size=-1><B>Ship To:</B><BR>
+	<INFOTARGET VALUE="SHIP_TO">
+	&nbsp;</TD>
+	</TR>
+
+	<TR><TD colspan=4><HR noshade></TD></TR>
+
+	<TR>
+	<TD colspan=2 align=left valign=top><font face="arial,helvetica" size=-1><B>Special Instructions:</B><BR>
+	<INFOTARGET VALUE="SPECIAL">
+	</TD>
+	<TD colspan=2 align=left valign=top><font face="arial,helvetica" size=-1><B>Purchase Order Total:</B><BR>$
+	<INFOTARGET VALUE="TOTAL">
+	</TD>
+	</TR>
+
+	<TR><TD colspan=4><HR noshade></TD></TR>
+
+
+<TR><TD colspan=4>
+
+<TABLE cellpadding=2 cellspacing=0 border=2 bordercolor="black">
+
+	<TR><TD align=left valign=top><font face="arial,helvetica" size=-1>
+	<img src="trans.gif" height=1 width=34><BR><B>Qty</B></TD>
+	<TD align=left valign=top><font face="arial,helvetica" size=-1>
+	<img src="trans.gif" height=1 width=288 border=0><BR><B>Description</B></TD>
+	<TD align=left valign=top><font face="arial,helvetica" size=-1>
+	<img src="trans.gif" height=1 width=180><BR><B>Part #</B></TD>
+	<TD align=left valign=top><font face="arial,helvetica" size=-1>
+	<img src="trans.gif" height=1 width=54><BR><B>Price</B></TD>
+	<TD align=left valign=top><font face="arial,helvetica" size=-1>
+	<img src="trans.gif" height=1 width=62><BR><B>ExtPrice</B></TD></TR>
+</TEXTAREA>
+
+
+
+<TEXTAREA NAME="ROW">		
+	<TR><TD colspan=6><BR><BR></TD><TR>
+
+	<TR><TD ALIGN=left valign=top><font face="arial,helvetica" size=-1>
+	<ORDERTARGET NAME="QTY" VALUE="QTY">
+	</TD>
+	<TD ALIGN=left valign=top><font face="arial,helvetica" size=-1><B>
+	<ORDERTARGET NAME="DESC" VALUE="DESC">
+	<BR></B>Text Entry:&nbsp;
+	<ORDERTARGET NAME="TEXTFIELD" VALUE="TEXTFIELD">
+	</TD>
+	<TD ALIGN=left valign=top><font face="arial,helvetica" size=-1>
+	<ORDERTARGET NAME="PRM" VALUE="PRM">
+	&nbsp;
+	</TD>
+	<TD ALIGN=right valign=top><font face="arial,helvetica" size=-1>$
+	<ORDERTARGET NAME="SUBPRICE" VALUE="SUBPRICE">
+	</TD>
+	<TD ALIGN=right valign=top><font face="arial,helvetica" size=-1>$
+	<ORDERTARGET NAME="EXTSUBPRICE" VALUE="EXTSUBPRICE">	
+	</TD></TR>
+	<ORDERTARGET TYPE="SUBROW" NAME="SUBITEMS">
+	
+</TEXTAREA>
+
+
+
+<TEXTAREA NAME="SUBITEMS">
+<TR><TD ALIGN=left valign=top><font face="arial,helvetica" size=-1>
+	<ORDERTARGET NAME="QTY" VALUE="QTY">
+	</TD>
+	<TD ALIGN=left valign=top><font face="arial,helvetica" size=-1>
+	<ORDERTARGET NAME="DESC" VALUE="DESC">
+	</TD>
+	<TD ALIGN=left valign=top><font face="arial,helvetica" size=-1>
+	<ORDERTARGET NAME="PRM" VALUE="PRM">
+	</TD>
+	<TD ALIGN=right valign=top><font face="arial,helvetica" size=-1>$
+	<ORDERTARGET NAME="UNITPRICE" VALUE="UNITPRICE">
+	</TD>
+	<TD ALIGN=right valign=top>&nbsp;
+	</TD></TR>
+</TEXTAREA>
+
+
+<TEXTAREA NAME="FOOTER">
+</TABLE>
+</TD></TR>
+<TR><TD colspan=4>
+<TABLE cellspacing=0 cellpadding=0 border=0>
+	<TR><TD><img src="trans.gif" height=1 width=456></TD>
+	<TD><img src="trans.gif" height=1 width=100></TD>
+	<TD><img src="trans.gif" height=1 width=100></TD></TR>
+
+	<TR><TD rowspan=3></TD>
+	<TD align=right><BR><font face="arial,helvetica" size=-1><B>Subtotal:<BR><BR></TD>
+	<TD align=right><BR><font face="arial,helvetica" size=-1>$
+	<INFOTARGET VALUE="SUBPRICETOTAL">
+	<BR><BR></TD></TR>
+
+	<TR>
+	<TD align=right><font face="arial,helvetica" size=-1><B>Discount:<BR><BR></TD>
+	<TD align=right><font face="arial,helvetica" size=-1>
+	<INFOTARGET VALUE="DISCOUNT">
+	%<BR><BR></TD></TR>
+
+	<TR>
+	<TD align=right><font face="arial,helvetica" size=-1><B>Total:<BR><BR></TD>
+	<TD align=right><font face="arial,helvetica" size=-1>$
+	<INFOTARGET VALUE="DISCSUBPRICE">
+	<BR><BR></TD></TR>
+
+	</TABLE></TD></TR></TABLE>
+
+
+
+</TEXTAREA>
+</form>
+
+
+</BODY>
+</HTML>
+

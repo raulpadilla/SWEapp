@@ -1,0 +1,118 @@
+<HTML>
+<HEAD>
+<TITLE>On-Link Sales: Error Strings</TITLE>
+<!--   On-Link Sales: Error Strings   -->
+<!--   Ver 3.4.1 (Build 10)		20000531		-->
+<SCRIPT language="JavaScript">
+<!--
+var INVALID_OBJ = 0;
+var INVALID_MT = 1;
+var UDEF_PGNUM = 2;
+var UDEF_PG  = 3;
+var INV_WDOBJ = 4;
+var UNDEF_WDLD = 5;
+var MS_HD_RO = 6;
+var MS_VR_RO = 7;
+var MS_MNTBL = 8;
+var MS_XTBL  = 9;
+var PRNT_CLSD = 10;
+var NUL_VAL  = 11;
+var THD_FL  = 12;
+var NO_ACS_IT = 13;
+var NO_LD_CS = 14;
+var NO_ACS_DL = 15;
+var MS_FAMDESC = 16;
+var NO_ACS_FRM = 17;
+var NO_ACS_QT = 18;
+var NO_ADITM_PO = 19;
+var NO_ADITM_QT = 20;
+var UDEF_TRG_NM = 21;
+var NO_TBL  = 22;
+var NO_WDGT = 23;
+var NO_CODE  = 24;
+var NUL_OBJ  = 25;
+var INVALID_RO = 26;
+var MS_STBL  = 27;
+var NO_ACS_OTBL = 28;
+var MS_SHD_RO = 29;
+var MS_SVR_RO = 30;
+var MS_SMNTBL = 31;
+var MS_SXTBL = 32;
+var XTBL_EMPTY = 33;
+var NO_WDGT_RBL = 34;
+var DEF_NO_SET = 35;
+var THD_PRNT_CLSD = 36;
+var WSL_NOT_HERE = 37;
+var WSL_UNRGSTRD = 38;
+var WSL_NO_ACS_TBL = 39;
+var WSL_DOC_EMPTY = 40;
+var WSL_NOT_DFND = 41;
+var WSL_NOT_IN_RT_PLS = 42;
+var WSL_NOT_CRTD = 43;
+var BAD_ARG = 44;
+var CALC_WAIT_MSG = 995;
+var LOAD_WAIT_MSG = 996;
+var ONLNK_ALRT = 997;
+var TEST_MSG1 = 998;
+var TEST_MSG2 = 999;
+var str = new Array(39);
+str[INVALID_OBJ]= "Invalid object in %1"
+str[INVALID_MT] = "Invalid Feature table in %1";
+str[UDEF_PGNUM] = "Undefined page number %2 in %1";
+str[UDEF_PG] = "Undefined page fetch in %1";
+str[INV_WDOBJ] = "Invalid window object in %1";
+str[UNDEF_WDLD] = "Undefined window %1 load in %2";
+str[MS_HD_RO] = "Missing header row in %1";
+str[MS_VR_RO] = "Missing variables row in %1";
+str[MS_MNTBL] = "Missing main configuration table in %1";
+str[MS_XTBL] = "Missing exception table in %1";
+str[PRNT_CLSD] = "Parent closed in %1";
+str[NUL_VAL] = "Null Value in %1";
+str[THD_FL] = "Thread failure in %1";
+str[THD_PRNT_CLSD] = "Parent closed in %1";
+str[NO_ACS_IT] = "Unable to access items";
+str[NO_LD_CS] = "Unable to load OnLink Sales(tm) code set";
+str[NO_ACS_DL] = "Unable to access Contents list";
+str[MS_FAMDESC] = "Missing variable FAMILY_DESCR in page %1";
+str[NO_ACS_FRM] = "Unable to access frame in %1";
+str[NO_ACS_QT] = "Unable to access Quote in %1";
+str[NO_ADITM_PO] = "Unable to add item to PO window in %1";
+str[NO_ADITM_QT] = "Unable to add item to Quote window in %1";
+str[UDEF_TRG_NM] = "Undefined target name: %1";
+str[NO_TBL] = "Table %1 does not exist";
+str[NO_WDGT] = "Unable to locate widget %1 in %2";
+str[NO_CODE] = "Unable to locate code %1 in widget %2";
+str[NUL_OBJ] = "Null Object in %1";
+str[INVALID_RO] = "Invalid table row";
+str[MS_STBL] = "Missing subtable %1 in function %2 for page %3";
+str[NO_ACS_OTBL] = "Unable to access data page in %1";
+str[MS_SHD_RO] = "Missing header row for subtable %1 in page %2";
+str[MS_SVR_RO] = "Missing variables row for subtable %1 in page %2";
+str[MS_SMNTBL] = "Missing Configuration table for subtable %1 in page %2";
+str[MS_SXTBL] = "Missing Exception table for subtable %1 in page %2";
+str[XTBL_EMPTY] = "Exception table %1 has empty line number %2";
+str[NO_WDGT_RBL] = "No such widget %1 to rebuild!";
+str[DEF_NO_SET] = "Unable to set default. %1 is not a listbox.";
+str[WSL_NOT_HERE] = "Widget State Layer not present in application kernel";
+str[WSL_UNRGSTRD] = "Widget State Layer unregistered in Setup Page - attempting direct UI access";
+str[WSL_NO_ACS_TBL] = "Unable to access lookup tables in Setup Page - attempting direct UI access"
+str[WSL_DOC_EMPTY] = "Widget State Layer document empty";
+str[WSL_NOT_DFND] = "%1 not defined in Widget State Layer";
+str[WSL_NOT_IN_RT_PLS] = "%1 not stored in the correct place in %2";
+str[WSL_NOT_CRTD] = "Widget State Layer not created at initialization";
+str[BAD_ARG] = "Invalid argument in %1 - %2";
+str[CALC_WAIT_MSG] = "<TABLE height=50% width=100%><TR><TD valign=middle align=center><FONT size=3 color=#AAAAAA><B>Calculating...</B></FONT></TD></TR></TABLE>";
+str[LOAD_WAIT_MSG] = "<BODY bgcolor=#FFFFFF><TABLE height=50% width=100%><TR><TD valign=middle align=center><FONT size=3 color=#AAAAAA><B>Loading Requested Page...</B></FONT></TD></TR></TABLE></BODY>";
+str[ONLNK_ALRT] = "\nOnLink Sales(tm) Error\n\n";
+str[TEST_MSG1] = "%1 Arg 1-Pos 0, 2nd Arg %2 Fouth Arg %4 and Third arg at end %3";
+str[TEST_MSG2] = "One arg %1 and the arg %2 as number two.";
+function InitPage()
+{
+top.onlink.RegisterErrorStrings();
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgcolor=#000000 onload="InitPage();">
+</BODY>
+</HTML>

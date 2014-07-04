@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<TITLE>Inputs Layout Template</TITLE>
+
+<!--  Ver xxx -->
+
+<SCRIPT language="javascript">
+	<!--
+	top.onlink.StartTemplate('auto_coverage',true);
+	var FAMILY_DESCR = 'auto_coverage';
+	var FAMILY_PICT = 'auto_coverage.jpg';
+	var FAMILY_PAGE = 'auto_coverage';
+
+	//--- SpecialCase Override Points ---//
+	function initPage()
+	{
+		top.onlink.EndTemplate();
+	}
+	//-->
+</SCRIPT>
+</HEAD>
+
+
+<BODY bgcolor="#FFFFFF" onLoad="initPage()">
+	<FORM name="WidgetForm" onSubmit="return false;">
+
+	<TABLE width=300 border=0 cellpadding=0 cellspacing=5>
+	<TR><TD>
+
+		<TABLE width=300 border=1 cellpadding=0 cellspacing=0><TR><TD>
+		<TABLE width=300 bgcolor="#e5e5e5" border=0 cellpadding=10 cellspacing=0><TR>
+		  <TD> <FONT face=verdana size=1> <B>Select Coverage</B><BR>
+                    <Img src=trans.gif width=10><BR>
+                    Bodily Injury<BR>
+                    <SCRIPT>
+document.write(top.onlink.BuildWidget("LISTBOX",window,"BODILY_INJ",1,10,true));
+</SCRIPT>
+                    <br>
+                    <br>
+                    Property Damage<br>
+                    <script>
+document.write(top.onlink.BuildWidget("LISTBOX",window,"PROPERTY_DAMAGE",1,10,true));
+</script>
+                    <BR>
+                    <BR>
+                    Collision<BR>
+                    <SCRIPT>
+document.write(top.onlink.BuildWidget("LISTBOX",window,"COLLISION",1,10,true));
+</SCRIPT>
+                    <BR>
+                    <BR>
+                    Collision Deductible Waiver<BR>
+                    <SCRIPT>
+document.write(top.onlink.BuildWidget("LISTBOX",window,"COLLISION_DED_WAIVER",1,10,true));
+</SCRIPT>
+                    <BR>
+                    <BR>
+                    Comprehensive<BR>
+                    <SCRIPT>
+document.write(top.onlink.BuildWidget("LISTBOX",window,"COMPREHENSIVE",1,10,true));
+</SCRIPT>
+                    <BR>
+                    <BR>
+                    Medical Payments<BR>
+                    <SCRIPT>
+document.write(top.onlink.BuildWidget("LISTBOX",window,"MEDICAL_PAYMENTS",1,10,true));
+</SCRIPT>
+                    <BR>
+                    <BR>
+                    Rental Car Reimbursement<BR>
+                    <SCRIPT>
+document.write(top.onlink.BuildWidget("LISTBOX",window,"RENTAL_CAR",1,10,true));
+</SCRIPT>
+                    <BR>
+                    <BR>
+                    Uninsured Motorist Property Damage<BR>
+                    <SCRIPT>
+document.write(top.onlink.BuildWidget("LISTBOX",window,"UNINSURED_PROP_DAM",1,10,true));
+</SCRIPT>
+                    <BR>
+                    <BR>
+                    Uninsured/Underinsured Motorist Bodily Injury<BR>
+                    <SCRIPT>
+document.write(top.onlink.BuildWidget("LISTBOX",window,"UNINSURED_BODILY_INJ",1,10,true));
+</SCRIPT>
+                    </font></TD>
+		</TR></TABLE>
+		</TD></TR></TABLE>
+
+	</TD></TR></TABLE>
+</FORM>
+</BODY>
+</HTML>

@@ -1,0 +1,132 @@
+<HTML>
+<HEAD>  
+<TITLE>Template - Informational Header</TITLE>
+<!--   Ver xxx 4/6/99	-->
+<SCRIPT></SCRIPT>
+<script src="../cs/po.js">
+</script>
+</HEAD>
+
+<BODY bgcolor=#FFFFFF link=#000000 vlink=#000000>
+<FORM name="widgetForm" onSubmit="return false;">
+<TABLE width="550" border=0 cellpadding=0 cellspacing=0>
+	<TR><TD>
+	<IMG src="trans.gif" height=5 width=15><BR>
+	</TD><TD colspan=3></TD></TR>
+
+	<TR>
+	<TD></TD>
+
+	<TD width="250" align="left">
+	<TABLE border=3 bordercolor=#000000 cellpadding=0 cellspacing=0>
+		<TR><TD>
+
+		<TABLE border=0 cellpadding=3 cellspacing=0>
+		<TR>
+		<TD width=90>
+		<FONT FACE="verdana,arial" color="#000000" size=1>
+		<B>Date</B>
+		</TD>
+
+		<TD align=right>
+		<FONT FACE="verdana,arial" color="#000000" size=1>
+		<IMG src="trans.gif" height=1 width=1 border=0 hspace=0 vspace=0>
+		<SCRIPT>
+		document.writeln(BuildOrderWidget("MULTI","TEXT", "DATE", "","15","0"));
+		</SCRIPT>
+		</TD>
+		</TR>
+			
+		<TR>
+		<TD>
+		<FONT FACE="verdana,arial" color="#000000" size=1>
+		<B>Customer #</B>
+		</TD>
+
+		<TD align=right>
+		<FONT FACE="verdana,arial" color="#000000" size=1>
+		<IMG src="trans.gif" height=1 width=1 border=0 hspace=0 vspace=0>
+		<SCRIPT>
+		document.writeln(BuildOrderWidget("MULTI","TEXT", "CUSTNUM","", "15"));
+		</SCRIPT>
+		</TD>
+		</TR>
+			
+		<TR>
+		<TD>
+		<FONT FACE="verdana,arial" color="#000000" size=1>
+		<B>Quote #</B>
+		</TD>
+
+		<TD align=right>
+		<FONT FACE="verdana,arial" color="#000000" size=1>
+		<IMG src="trans.gif" height=1 width=1 border=0 hspace=0 vspace=0>
+		<SCRIPT>
+		document.writeln(BuildOrderWidget("MULTI","TEXT", "QUOTENUM","", "15"));
+		</SCRIPT>
+		</TD>
+		</TR>
+			
+		<TR>
+		<TD>
+		<FONT FACE="verdana,arial" color="#000000" size=1>
+		<B>Admin</B>
+		</TD>
+
+		<TD align=right>
+		<FONT FACE="verdana,arial" color="#000000" size=1>
+		<IMG src="trans.gif" height=1 width=1 border=0 hspace=0 vspace=0>
+		<SCRIPT>
+		document.writeln(BuildOrderWidget("MULTI","TEXT", "ADMIN","", "15"));
+		</SCRIPT>
+		</TD>
+		</TR>
+		</TABLE></TD></TR>
+
+	</TABLE>
+	</TD>
+
+	<TD>
+	<IMG src="trans.gif" height=1 width=15 border=0 hspace=0 vspace=0>
+	</TD>
+
+	<TD width=250>
+	<FONT FACE="verdana,arial" color="#000000" size=1>
+	<B>Ship To:<BR></FONT>
+	<IMG src="trans.gif" height=1 width=1 border=0 hspace=0 vspace=0>
+	<SCRIPT>
+	document.writeln(BuildOrderWidget("MULTI","TEXTAREA", "SHIP_TO", "","25", "5"));
+	</SCRIPT>
+	</TD>
+	</TR>
+
+	<TR><TD colspan=4>
+	<IMG src="trans.gif" height=1 width=1>
+	</TD></TR>
+
+	<TR>
+	<TD></TD>
+	<TD>
+	<FONT FACE="verdana,arial" color="#000000" size=1>
+	<IMG src="trans.gif" height=1 width=5 border=0 hspace=0 vspace=0>
+	<B>Special Instructions:<BR></FONT>
+	<IMG src="trans.gif" height=1 width=10 border=0 hspace=0 vspace=0>
+	<SCRIPT>
+	document.writeln(BuildOrderWidget("MULTI","TEXTAREA", "SPECIAL","", "25", "5"));
+	</SCRIPT>
+	</TD><TD></TD>
+
+	<TD>
+	<FONT FACE="verdana,arial" color="#000000" size=1>
+	<B>Bill To:<BR></FONT>
+	<IMG src="trans.gif" height=1 width=1 border=0 hspace=0 vspace=0>
+	<SCRIPT>
+	document.writeln(BuildOrderWidget("MULTI","TEXTAREA", "BILL_TO","", "25", "5"));
+	</SCRIPT>
+	</TD></TR>
+</TABLE>
+
+</FORM>
+</BODY>
+</HTML>
+

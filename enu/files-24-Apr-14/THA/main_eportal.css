@@ -1,0 +1,250 @@
+/* ePortal Specific CSS */
+
+
+/* overriding main.css */
+
+.Top                    { color: #ffffff; font-weight: bold; font-size: 10pt; }
+.Top A,
+.Top A:visited,
+.Top A:hover              { color: #ffffff; text-decoration: underline; }
+
+/*Scrolling Menu IDs*/
+#divBg{position:absolute; z-index:10; width:200px; left:0px; height:100px; clip:rect(0,10,10,0)}
+#divMenu{position:absolute; left:15px; top:6px; font-weight:bold}
+#divArrowLeft{position:absolute; width:20px; height:20px; left:0px; top:7px}
+#divArrowRight{position:absolute; width:20px; height:20px; top:7px}
+
+/*Banner Definitions*/
+.Banner { background-color: #003366; }
+
+.banner,
+.banner TD A,
+.banner TD A:visited,
+.banner TD A:hover { font-family:Arial,Helvetica,Sans-Serif; font-size:8pt; color: #ffffff; text-decoration:none; font-weight:bold;}
+.banner TD A:hover { font-family:Arial,Helvetica,Sans-Serif; font-size:8pt; color:#ffffcc; text-decoration:underline;}
+
+.BannerDiv {background-color:#60679F;}
+.BannerDiv2 {background-color:#cccc99;}
+.BannerDiv3 {}
+
+/*Search Applet Definitions*/
+.BasicSearchClear {background-color:#ffffff;}
+.BasicSearchLite {background-color:#ffffff;}
+.BasicSearchDark {background-color:#999999;}
+
+/*Form Applet Definitions*/
+.BasicFormClear {background-color:#ffffff;}
+
+/*Screenbar Definitions*/
+.Screenbar { color: #ffffff; font-weight: bold; text-decoration:none; }
+.Screenbar A,
+.Screenbar A:Visited { color: #FFFFFF; font-weight: bold; text-decoration:none; }
+.Screenbar A:Hover { color: #9999FF; font-weight: bold; text-decoration:none; }
+
+.tabArrow{background-color:#999966;}
+
+TR.tabOn,
+TD.tabOn,
+TD.tabOn A,
+TD.tabOn A:visited,
+TD.tabOn A:hover {
+ font-family:Arial,Helvetica,Sans-Serif;
+ font-size: 9pt;
+ color: #000000;
+ background-color: #ffffff;
+ font-weight: bold;
+ background-image : none;
+ text-decoration: none;
+ }
+
+TR.tabOff,
+TD.tabOff,
+TD.tabOff A,
+TD.tabOff A:visited,
+TD.tabOff A:hover { font-family:Arial,Helvetica,Sans-Serif;
+ font-size: 8pt;
+ color: #ffffff;
+ text-decoration: none;
+ font-weight: bold;
+ }
+
+
+
+.tabOn { font-family:Arial,Helvetica,Sans-Serif;
+ font-size: 8pt;
+ color: #000000;
+ background-color: #ffffff;
+ text-decoration: none;
+ font-weight: bold; }
+
+
+.tabOff,
+.tabOff A,
+.tabOff A:visited,
+.tabOff A:hover { font-family:Arial,Helvetica,Sans-Serif;
+ font-size: 8pt;
+ color: #996600;
+ text-decoration: none;
+ font-weight: bold; }
+
+.tabOff A:hover { font-family:Arial,Helvetica,Sans-Serif; color: #60679F; color:#ffffff;}
+
+/*Viewbar Definitions*/
+.Viewbar, .Viewbar A { background-color:#ffffff; text-decoration:none; line-height : 130%; }
+.Viewbar A:hover { background-color:#ffffff; text-decoration:underline; line-height : 130%; }
+
+.viewOn,
+TR.viewOn,
+TD.viewOn,
+TD.viewOn A,
+TD.viewOn A:link,
+TD.viewOn A:visited,
+TD.viewOn A:hover { font-size: 9pt;
+ color: #6666cc;
+ background-color: #ffffff;
+ font-weight: bold;
+ text-decoration: none; }
+TD.viewOn A:hover {text-decoration: underline; }
+
+
+.viewOff,
+.viewOff A,
+.viewOff A:link,
+.viewOff A:visited,
+TR.viewOff,
+TD.viewOff,
+TD.viewOff A,
+TD.viewOff A:link,
+TD.viewOff A:visited,
+TD.viewOff A:hover { font-size: 9pt;
+ color: #6666cc;
+ background-color: #ffffff;
+ text-decoration: none;
+ font-weight: normal; }
+TD.viewOff A:hover {text-decoration: underline;}
+
+/*Subview Definitions*/
+.SubViewbar, .SubViewbar A { background-color:#ffffff; text-decoration:none; }
+
+.sub2viewOn {font-family:Arial; color:#000000; font-weight:bold; font-size:8pt;}
+.sub2viewOff,
+.sub2viewOff A,
+.sub2viewOff A:visited
+{font-family:Arial;
+ color:#6666cc;
+ font-weight:normal;
+ font-size:8pt;
+ text-decoration:underline;}
+
+.sub3viewOn {font-family:Arial; color:#000000; font-weight:bold; font-size:10pt;}
+.sub3viewOff {font-family:Arial; color:#6666cc; font-weight:normal; font-size:10pt; text-decoration:none;}
+
+.SubviewOn,
+.SubviewOn A,
+.SubviewOn A:link,
+.SubviewOn A:visited,
+.SubviewOn A:hover { font-size: 8pt;
+ color: #6666cc;
+ background-color: #ffffff;
+ font-weight: normal;
+ text-decoration: none; }
+.SubviewOn A:hover {text-decoration: underline; }
+
+
+.SubviewOff,
+.SubviewOff A,
+.SubviewOff A:link,
+.SubviewOff A:visited,
+.SubviewOff A:hover { font-size: 8pt;
+ color: #6666cc;
+ background-color: #ffffff;
+ font-weight: normal;
+ text-decoration: none; }
+.SubviewOff A:hover {text-decoration: underline; }
+
+/*View Definitions*/
+.viewRule {background-color:#cccccc;}
+.viewBlank {}
+.viewDivider {background-color:#cccccc;}
+
+/*Applet Tab Definitions*/
+TD.appTabBlank { }
+
+TD.appTabLabel,
+TD.appTabLabel A,
+TD.appTabLabel A:visited,
+TD.appTabLabel A:hover { font-size:10pt; font-weight:bold; color: #000000; text-decoration: none; }
+
+TD.appTabBorder { background-color:#cccc99; }
+
+/*List Definitions*/
+.Header { background-color: #cccc99; color: #000000; font-weight: bold; font-size: 8pt }
+.HeaderDiv { background-color: #666600; width : 1px; }
+.Header A,
+.Header A:visited { text-decoration: none; color: #000000; }
+.Header A:hover { text-decoration: none; color: #333399; }
+.Header td { background-color: #cccc99; color: #000000; font-weight: bold; font-size: 8pt }
+
+
+/*Content Definitions*/
+.ContentHeader {font-family:Verdana; color:#cccccc; font-weight:normal; font-size:18pt;}
+.header1 {font-family:Verdana; color:#cc0000; font-weight:bold; font-size:12pt;}
+.header2 {font-family:Verdana; color:#cc0000; font-weight:bold; font-size:10pt;}
+.header3 {font-family:Verdana; color:#cc0000; font-weight:bold; font-size:8pt;}
+
+/*Calendar Definitions*/
+.calendarBorder {background-color:#cccc99; color:#000000; font-weight:bold; font-size:10pt;}
+.calendarBorder2 {background-color:#cccccc; color:#000000; font-weight:bold; font-size:10pt;}
+.calendarTitle {background-color:#cccc99; color:#000000; font-weight:bold; font-size:10pt;}
+.calendarLabel {background-color:#ffffff; color:#000000; font-weight:bold; font-size:8pt; text-align:right; }
+.calendarField {background-color:#ffffff; color:#000000; font-weight:normal; font-size:8pt;}
+.calendarBlank {background-color:#ffffff; color:#000000; font-weight:bold; font-size:8pt;}
+.calendarHeader {background-color:#cccc99; color:#000000; font-weight:bold; font-size:8pt;}
+.calendarRow {background-color:#ffffff; color:#000000; font-weight:normal; font-size:8pt;}
+.calendarSelect {font-family:arial, helvetica,sans-serif;color:#000000; font-weight:normal; font-size:9pt;}
+
+/*Misc. Definitions*/
+.Border1 {background-color: #cccc99; }
+
+/*Tier2 Definitions*/
+.tier2Back {background-color:#333399; }
+
+.tier2Arrow{background-color:#339900;}
+TD.tier2Rule {background-color:#cccccc; }
+
+TR.tier2On, TD.tier2On,
+TD.tier2on A,
+TD.tier2on A:visited,
+TD.tier2on A:hover
+{ font-family:arial, helvetica,sans-serif;
+ font-size: 9pt;
+ color:#6666cc;
+ background-color: #ffffff;
+ text-decoration:none;
+ font-weight:bold; }
+TD.tier2on A:hover{text-decoration:underline;}
+
+
+TR.tier2OnLabel, TD.tier2OnLabel,
+TD.tier2OnLabel A,
+TD.tier2OnLabel A:visited,
+TD.tier2OnLabel A:hover
+{ font-family:arial, helvetica,sans-serif;
+ font-size: 9pt;
+ color:#333399;
+ font-weight:bold; }
+
+
+
+TR.tier2Off,
+TD.tier2Off,
+TD.tier2Off A,
+TD.tier2Off A:visited,
+TD.tier2Off A:hover
+{ font-family:arial, helvetica,sans-serif;
+ font-size: 9pt;
+ color:#6666cc;
+ background-color:#ffffff;
+ text-decoration:none;
+ font-weight:normal; }
+ TD.tier2off A:hover{text-decoration:underline;}

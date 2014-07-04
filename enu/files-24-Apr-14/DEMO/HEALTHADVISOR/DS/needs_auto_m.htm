@@ -1,0 +1,151 @@
+<HTML><HEAD><TITLE></TITLE><SCRIPT language=Javascript>
+var OL=top.onlink;
+var IMT=top.onlink.InitMetaTable;
+var IMTS=top.onlink.InitMetaTables;
+var SMT=top.onlink.SetMetaTable;
+OL.StartMeta('needs_auto');
+
+function AGE(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var AGE_t=new Array(3);
+AGE_t[0]=new AGE('1625','16-25','');
+AGE_t[1]=new AGE('2645','26-45','DEFAULT');
+AGE_t[2]=new AGE('46','46 and over','');
+
+function RENT_OWN(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var RENT_OWN_t=new Array(2);
+RENT_OWN_t[0]=new RENT_OWN('R','Rent','DEFAULT');
+RENT_OWN_t[1]=new RENT_OWN('O','Own','');
+
+function AUTO_PURCHASE(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var AUTO_PURCHASE_t=new Array(3);
+AUTO_PURCHASE_t[0]=new AUTO_PURCHASE('L','Lease','');
+AUTO_PURCHASE_t[1]=new AUTO_PURCHASE('F','Finance','DEFAULT');
+AUTO_PURCHASE_t[2]=new AUTO_PURCHASE('O','Own','');
+
+function AUTO_ROADSIDE(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var AUTO_ROADSIDE_t=new Array(2);
+AUTO_ROADSIDE_t[0]=new AUTO_ROADSIDE('N','No','DEFAULT');
+AUTO_ROADSIDE_t[1]=new AUTO_ROADSIDE('Y','Yes','');
+
+function AUTO_RENTAL(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var AUTO_RENTAL_t=new Array(2);
+AUTO_RENTAL_t[0]=new AUTO_RENTAL('N','No','DEFAULT');
+AUTO_RENTAL_t[1]=new AUTO_RENTAL('Y','Yes','');
+
+function SALARY(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var SALARY_t=new Array(5);
+SALARY_t[0]=new SALARY('20K','Under $20,000','');
+SALARY_t[1]=new SALARY('50K','$20,000-50,000','DEFAULT');
+SALARY_t[2]=new SALARY('75K','$50,000-75,000','');
+SALARY_t[3]=new SALARY('100K','$75,000-100,000','');
+SALARY_t[4]=new SALARY('100UP','Over $100,000','');
+
+function INVESTMENTS(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var INVESTMENTS_t=new Array(3);
+INVESTMENTS_t[0]=new INVESTMENTS('low','Under $100,000','DEFAULT');
+INVESTMENTS_t[1]=new INVESTMENTS('mid','$100,000-300,000','');
+INVESTMENTS_t[2]=new INVESTMENTS('hi','Over $300,000','');
+
+function SAVINGS(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var SAVINGS_t=new Array(3);
+SAVINGS_t[0]=new SAVINGS('low','Under $10,000','');
+SAVINGS_t[1]=new SAVINGS('mid','$10,000-$50,000','DEFAULT');
+SAVINGS_t[2]=new SAVINGS('hi','Over $50,000','');
+
+function YEARS_INSURED(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var YEARS_INSURED_t=new Array(5);
+YEARS_INSURED_t[0]=new YEARS_INSURED('01','0-1','');
+YEARS_INSURED_t[1]=new YEARS_INSURED('25','2-5','DEFAULT');
+YEARS_INSURED_t[2]=new YEARS_INSURED('610','6-10','');
+YEARS_INSURED_t[3]=new YEARS_INSURED('1120','11-20','');
+YEARS_INSURED_t[4]=new YEARS_INSURED('21','21 and higher','');
+
+function MEDICAL_PASSENGER(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var MEDICAL_PASSENGER_t=new Array(2);
+MEDICAL_PASSENGER_t[0]=new MEDICAL_PASSENGER('0','No','');
+MEDICAL_PASSENGER_t[1]=new MEDICAL_PASSENGER('1','Yes','DEFAULT');
+
+function MEDICAL_PERSONAL(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var MEDICAL_PERSONAL_t=new Array(4);
+MEDICAL_PERSONAL_t[0]=new MEDICAL_PERSONAL('0','No health insurance','');
+MEDICAL_PERSONAL_t[1]=new MEDICAL_PERSONAL('1','Only emergency medical and dental','');
+MEDICAL_PERSONAL_t[2]=new MEDICAL_PERSONAL('2','Some medical and dental','DEFAULT');
+MEDICAL_PERSONAL_t[3]=new MEDICAL_PERSONAL('3','Covers almost all medical and dental','');
+
+function COLLISION(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var COLLISION_t=new Array(4);
+COLLISION_t[0]=new COLLISION('0','Minimize premiums','');
+COLLISION_t[1]=new COLLISION('1','Balance premium with moderate deductible','DEFAULT');
+COLLISION_t[2]=new COLLISION('2','Minimize deductible','');
+COLLISION_t[3]=new COLLISION('3','No Collision','');
+
+function COMPREHENSIVE(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var COMPREHENSIVE_t=new Array(4);
+COMPREHENSIVE_t[0]=new COMPREHENSIVE('0','Minimize premiums','');
+COMPREHENSIVE_t[1]=new COMPREHENSIVE('1','Balance premium with moderate deductable','DEFAULT');
+COMPREHENSIVE_t[2]=new COMPREHENSIVE('2','Minimize deductable','');
+COMPREHENSIVE_t[3]=new COMPREHENSIVE('3','No Comprehensive','');
+
+function UNINSURED_PROPERTY(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var UNINSURED_PROPERTY_t=new Array(2);
+UNINSURED_PROPERTY_t[0]=new UNINSURED_PROPERTY('N','No','DEFAULT');
+UNINSURED_PROPERTY_t[1]=new UNINSURED_PROPERTY('Y','Yes','');
+IMTS(14);
+SMT('AGE',AGE_t);
+SMT('RENT_OWN',RENT_OWN_t);
+SMT('AUTO_PURCHASE',AUTO_PURCHASE_t);
+SMT('AUTO_ROADSIDE',AUTO_ROADSIDE_t);
+SMT('AUTO_RENTAL',AUTO_RENTAL_t);
+SMT('SALARY',SALARY_t);
+SMT('INVESTMENTS',INVESTMENTS_t);
+SMT('SAVINGS',SAVINGS_t);
+SMT('YEARS_INSURED',YEARS_INSURED_t);
+SMT('MEDICAL_PASSENGER',MEDICAL_PASSENGER_t);
+SMT('MEDICAL_PERSONAL',MEDICAL_PERSONAL_t);
+SMT('COLLISION',COLLISION_t);
+SMT('COMPREHENSIVE',COMPREHENSIVE_t);
+SMT('UNINSURED_PROPERTY',UNINSURED_PROPERTY_t);
+OL.EndMeta();
+</SCRIPT></HEAD><BODY></BODY></HTML>

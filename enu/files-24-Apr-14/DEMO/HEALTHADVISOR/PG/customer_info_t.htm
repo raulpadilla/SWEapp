@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+<TITLE>Results Layout Template</TITLE>
+</HEAD>
+
+<BODY text="#000000" bgcolor=#FFFFFF onLoad="top.onlink.EndResults()">
+<FORM method="POST" name="targetForm" onSubmit="return false;">
+
+<TABLE width=250 border=0 cellpadding=0 cellspacing=15><TR><TD>
+	<TABLE bgcolor="#f0f0f0" width=250 border=1 cellpadding=0 cellspacing=0><TR><TD>
+		<TABLE width=250 border=0 cellpadding=5 cellspacing=0>
+			<TR>
+			<TD align=center valign=middle>
+			<FONT face="verdana,helvetica" size=2><B>
+			Price:</B>
+			<IMG src="trans.gif" height=1 width=1>
+			$<SCRIPT language="JavaScript"><!--
+			document.write(top.onlink.BuildTarget("TEXT",window,"PRICE"));
+			//--></SCRIPT><BR>
+			</TD>
+			<TD align=center valign=middle>
+			<A href="#" onClick="top.onlink.BringUpPO(); return false;">
+			<IMG src="../ui/btn_ord.gif" border=0 alt="Click here to order" hspace=0 vspace=0></A><BR>
+			</TD>
+			</TR>
+		</TABLE>
+		</TD></TR>
+	</TABLE></TD></TR>
+
+	<TR><TD><img src="trans.gif" height=10 width=1></TD></TR>
+
+<TR><TD>
+	<TABLE width="250" border=0 cellpadding=0 cellspacing=0>
+		<TR>
+		<TD align=center valign=top>
+		<img src="product.gif" width=120 alt="Product Image" height=150 ><BR>
+		<FONT face=verdana size=3><BR><B>
+		Product Description
+		</TD></TR>
+	</TABLE></TD></TR>
+
+	<TR><TD>
+	<TABLE width=250 border=1 cellspacing=0 cellpadding=3>
+		<TR><TD>
+		Information about valid configured product, such as features or calculated values.
+		</TD></TR>
+	</TABLE>
+	</TD></TR>
+</TABLE>
+
+</FORM>
+</BODY>
+</HTML>

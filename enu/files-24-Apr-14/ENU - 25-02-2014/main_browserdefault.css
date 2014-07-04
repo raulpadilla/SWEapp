@@ -1,0 +1,1286 @@
+/*-------------------------*/
+/*Std. HTML Tag Definitions*/
+/*-------------------------*/
+body,
+td,
+input,
+select,
+textarea     {  font-family: ""; font-size: ""; }
+
+a            {  color: ""; text-decoration:none; }
+a:visited    {  color: "";  text-decoration:none;}
+a:active     {  text-decoration:none; }
+a:hover      {  text-decoration:underline; }
+
+/*closes up white-space around form tags in NS*/
+FORM    {display:inline;}
+/*-------------------------------------------*/
+/*  spacer image size for popup labels       */
+/*-------------------------------------------*/
+IMG.popupLabelSize {width:200px;}
+
+/*------------------------*/
+/*  Layout Classes        */
+/*------------------------*/
+.pad4   {padding:4px 4px 4px 4px;}
+
+
+/*------------------------*/
+/*Special Form Definitions*/
+/*------------------------*/
+.FormSection        {background-color: "";}
+
+/*------------------------*/
+/* MVG Format Definitions */
+/*------------------------*/
+.mvgBorder {width:200px;background-color:"";}
+.mvgBack   {background-color:"";}
+
+/*----------------------*/
+/*globalMenu Definitions*/
+/*----------------------*/
+TR.globalMenu, TD.globalMenu,
+TD.globalMenu A,
+TD.globalMenu A:visited,
+TD.globalMenu A:hover
+{   font-size: "";
+    color: "";
+    background-color: "";
+    font-weight:normal; }
+
+/*----------------*/
+/*Screenbar Styles*/
+/*----------------*/
+.screenbar  {  background:#CDD5EE;  }
+
+/*------------------*/
+/*Tier 1 Definitions*/
+/*------------------*/
+#tier1Selected{}
+.tier1Back      {background-color:""; }
+TD.tier1Rule {background-color:""; }
+
+
+.tier1On A:visited,
+.tier1On A:link,
+.tier1On A:hover { font-size: ""; font-weight:bold; height:20px; border-color:#ffffff #333399 #ffffff #ffffff; border-style: groove; border-width: 2px 1px 0px 2px; margin: 4px 0px 0px 0px; padding: 0px 4px 0px 4px; background-color:""; color:""; text-decoration:none; }
+
+.tier1On A:hover {color:"";}
+
+
+.tier1Off A,
+.tier1Off A:visited,
+.tier1Off A:link,
+.tier1Off A:hover{ font-size: ""; font-weight:bold; height:20px; border-color:#ffffff #ffffff #ffffff #ffffff; border-style: groove; border-width: 2px 1px 0px 2px; margin:4px 0px 0px 0px; padding: 0px 4px 0px 4px; background-color:""; color:""; text-decoration:none; }
+
+.tier1Off A:hover {background-color:"";color:"";}
+
+/*-----------------*/
+/*Tier2 Definitions*/
+/*-----------------*/
+#tier2Selected{}
+.tier2Back      {background-color:"";   }
+TD.tier2Rule {background-color:""; }
+
+TR.tier2On, TD.tier2On,
+TD.tier2on A,
+TD.tier2on A:visited,
+TD.tier2on A:hover
+{   font-size: "";
+    color:"";
+    background-color: "";
+    font-weight:bold;
+    text-decoration:none;
+}
+
+TD.tier2On A:hover {    color:"";   }
+
+TR.tier2Off,
+TD.tier2Off,
+TD.tier2Off A,
+TD.tier2Off A:visited,
+TD.tier2Off A:hover
+{   font-size: "";
+    background-color:"";
+    text-decoration:none;
+    font-weight:bold;       }
+
+TD.tier2Off A:hover {   color:"";   }
+
+/*--------------*/
+/*Toolbar Styles*/
+/*--------------*/
+.toolbar         {  background:#e0e5f5  }
+
+/*--------------*/
+/*  ERM toolbar */
+/*--------------*/
+
+TR.ermTier2On, TD.ermTier2On,
+TD.ermTier2OnNormal
+{   font-size: "";
+    color:"";
+    text-decoration:none;
+    background-color: "";
+    font-weight:bold;   }
+
+TD.ermTier2On A,
+TD.ermTier2On A:visited,
+TD.ermTier2On A:hover
+{   font-size: "";
+    color:"";
+    background-color: "";
+    font-weight:bold;
+    text-decoration:none;}
+
+TD.ermTier2On A:hover
+{   text-decoration:underline;}
+
+
+/*--------------*/
+/* Threadbar    */
+/*--------------*/
+.threadbar { color:""; }
+.threadbar A,
+.threadbar A:link,
+.threadbar A:visited,
+.threadbar A:hover { color:""; }
+.threadbardiv {color:"";}
+.threadbarBack { background:#adbee4; }
+
+/*--------*/
+/* Tier 3 */
+/*--------*/
+#tier3Selected  {}
+.tier3Back  {background-color:"";}
+.tier3Div   {text-align:left; }
+
+TD.tier3Rule    {background-color:""; }
+
+.tier3on { background-color:""; font-size: ""; font-weight:bold;}
+.tier3on A,
+.tier3on A:visited,
+.tier3on A:hover
+{ font-size: ""; font-weight:bold; height:19px; border-color:#ffffff #333399 #ffffff #ffffff; border-style: groove groove groove groove;  border-width: 2px 1px 0px 2px; padding: 2px 8px 2px 8px; background-color:""; color:""; text-decoration:none; width:100%;}
+.tier3On A:hover {color:"";}
+
+.tier3Off { background-color:""; font-family:""; color:""; font-size:""; font-weight:bold;}
+.tier3Off A,
+.tier3Off A:visited,
+.tier3Off A:hover
+{ font-size: ""; font-weight:normal; height:19px; border-color:#ffffff #ffffff #ffffff #ffffff; border-style: groove groove groove groove; border-width: 2px 1px 0px 2px; padding: 0px 4px 0px 4px; background-color:""; font-family:""; color:""; text-decoration:none; width:100%; }
+.tier3Off A:hover {background-color:"";color:"";}
+
+
+/*----------------*/
+/*List Definitions*/
+/*----------------*/
+.Row                { background-color: ""; border-bottom: 1px solid #c0c0c0; border-top: 0px; border-left: 0px; border-right: 0px; }
+.RowCenter          { background-color: ""; text-align:center; }
+.RowRight           { background-color: ""; text-align:right; }
+.RowChevron         { border-bottom: 1px solid #c0c0c0; border-right: 1px solid #c6c6c6; border-top: 0px; border-left: 0px; }
+
+TR.listRowOff       TD.Row  { background-color: "";}
+TR.listRowOn        TD.Row  { background-color: "";}
+TR.listRowError     TD.Row  { background-color: "";}
+TR.listRowEven      TD.Row  { background-color: "";}
+TR.listRowOdd       TD.Row  { background-color: "";}
+
+.ListBorder         { background-color:"";  }
+
+.Header,
+TH.Header TD        { background-color: ""; color: ""; font-weight: bold; font-size:""; text-align:left; }
+TH.Header           { background-color: ""; color: ""; font-weight: bold; font-size:""; text-align:left; border-right: 1px solid #f0f0f0; border-top: 0px; border-left: 0px; border-bottom: 0px; }
+
+.Header TABLE       { }
+
+.Header A,
+.Header A:visited   { text-decoration: none;color: "";}
+.Header A:hover     { text-decoration: none;color: "";}
+
+
+/*----------*/
+/*Login Page*/
+/*----------*/
+.loginFirstRow
+{
+        BACKGROUND-COLOR: ""
+}
+.loginSecondRow
+{
+    BACKGROUND-COLOR: ""
+}
+.loginThirdRow
+{
+    height: 10px; width: 689px; BACKGROUND-COLOR: ""; border-top: #FFFFFF 1px solid; border-bottom: #ffffff 1px solid
+}
+.loginFourthRow
+{
+    BACKGROUND-COLOR: ""
+}
+.loginImage
+{
+    border: solid 1px #003399
+}
+
+.loginAppTitle              {HEIGHT: 149px; width: 391px; FONT-WEIGHT: bold; FONT-FAMILY: ""; FONT-SIZE: ""; COLOR: ""}
+.loginError {
+    FONT-WEIGHT: bold; FONT-FAMILY: ""; font-size: ""; COLOR: ""
+}
+
+.loginCopy
+{
+    font-size: ""; color: ""
+}
+.loginCopy A {
+    COLOR: ""; WHITE-SPACE: nowrap; text-decoration: underline
+}
+.loginCopy A:link {
+    COLOR: ""; WHITE-SPACE: nowrap; text-decoration: underline
+}
+.loginCopy A:visited {
+    COLOR: ""; WHITE-SPACE: nowrap; text-decoration: underline
+}
+.loginCopy A:hover {
+    COLOR: ""; WHITE-SPACE: nowrap
+}
+
+
+.loginBody          {background-color:""}
+
+.loginText,.loginText A,.loginText A:link,.loginText A:visited
+{color:""; font-size:"";}
+
+.loginLabel {
+    text-align:right; width: 158px; FONT-WEIGHT: bold; FONT-SIZE: ""; COLOR: ""
+}
+.loginField INPUT {
+    WIDTH: 138px; font-size: "";
+}
+
+
+/*------------------*/
+/*Banner Definitions*/
+/*------------------*/
+.bannerHI               { background-color: ""; }
+.banner,
+.bannerHybrid         { background-color: ""; }
+.bannerHybrid .banner { background-color: ""; }
+.bannerHI,
+.banner,
+TD.banner TD A,
+TD.banner TD A:visited,
+TD.banner TD A:hover { color: ""; text-decoration:none; font-weight:bold;}
+TD.banner TD A:hover {color: "";}
+.bannerDiv  { font-size:"";color:""; }
+.bannerDiv2 {background-color:""}
+.bannerDiv3 {background-color:""}
+.bannerScreenHomepage { background-image:url("../images/view_banner_fade_d.gif"); background-repeat : repeat-y; }
+
+.applicationMenu        {  background:#123783;  }
+.applicationMenu OPTION {  background-color: ""; }
+.applicationMenu SELECT {  width:100px; }
+.applicationMenuFade    {  background-image:url("../images/appmenu_fade_d.gif"); background-repeat : repeat-y;  }
+.poweredBy              {  background:#123783;  }
+
+#MsgLayer
+{ font-weight:normal; }
+.Message
+{ width:98%; font-weight:bold; color:""; border-top:1px solid #333399;border-left:1px solid #333399;border-bottom:1px solid #ffffff; border-right:1px solid #ffffff;}
+
+/*----------------------------*/
+/*Alpha Tabs Definitions*/
+/*----------------------------*/
+.alphaTabParentAppletOn A,
+.alphaTabParentAppletOn A:link
+{padding:0px 3px 0px 3px; font-family:""; font-size:""; color:""; text-decoration:none;width:12px; height:16px;}
+
+.alphaTabParentAppletOn A:hover
+{padding:0px 2px 0px 2px; color:""; font-family:""; font-size:""; border:solid; background-color:""; border-color:#FFFFFF; border-width:1px; text-decoration:none; width:11px; height:16px;}
+
+.alphaTabParentAppletOff    A,
+.alphaTabParentAppletOff    A:link
+{padding:0px 3px 0px 3px; font-family:""; font-size:""; color:""; text-decoration:none;width:12px; height:16px;}
+
+.alphaTabFocus A,
+.alphaTabFocus  A:link,
+.alphaTabFocus  A:visited,
+.alphaTabFocus  A:hover
+{padding:0px 2px 0px 2px; color:""; font-family:""; font-size:""; border:solid; background-color:""; border-color:#336699; border-width:1px; text-decoration:none; width:11px; height:16px;}
+
+/*----------------------------*/
+/*Alpha Tabs Definitions*/
+/*----------------------------*/
+.alphaTabFocus A
+{padding:0px 2px 0px 2px; color:""; font-family:""; font-size:""; text-decoration:none;width:12px; height:16px;}
+
+.alphaTabFocus  A:hover,
+.alphaTabFocus  A:active
+{color:""; border:solid; text-decoration:none; background-color:""; border-width:1px;}
+
+
+/*----------------------------*/
+/*HTML Mini-Button Definitions*/
+/*----------------------------*/
+.minibutton         {}
+
+.minibuttonFocus  A,
+.minibuttonFocus  A:link,
+.minibuttonFocus  A:visited,
+.minibuttonFocus  A:hover
+{padding:0px 5px 0px 5px; color:""; border:thin black solid; background-color:""; text-decoration:none; height:16px;}
+
+.minibuttonHighlight,
+.minibuttonOn       {   font-size: ""; color: ""; text-decoration:none; }
+
+.minibuttonHighlight A,
+.minibuttonHighlight A:link,
+.minibuttonHighlight A:visited,
+.minibuttonOn A,
+.minibuttonOn A:link,
+.minibuttonOn A:visited
+{padding:0px 5px 0px 5px; color:""; border-color:#BDD3FF; background-image:url("../images/bkgrnd_minibtn.GIF"); border-width:1px; border-style:solid; background-color:""; text-decoration:none; font-family: ""; height:16px;white-space:nowrap}
+
+.minibuttonHighlight A:hover,
+.minibuttonOn A:hover
+ {border-color:#F8B330; background-image:url("../images/bkgrnd_minibtn.GIF"); }
+
+.minibuttonHighlight A,
+.minibuttonHighlight A:link,
+.minibuttonHighlight A:visited,
+.minibuttonHighlight A:hover
+{background-color:""; background-image:url("../images/bkgrnd_minibtn_highlight.GIF");}
+
+.minibuttonOff
+{font-size:""; padding:0px 5px 0px 5px; color:""; border-width:1px; border-style:solid; border-color:#C4C3BF; background-color:""; height:16px;}
+
+.miniButtonTable{}
+
+.miniBtnUICTop{}
+.miniBtnUIC{}
+
+.miniBtnUICTop .miniBtnUIC A,
+.miniBtnUICTop .miniBtnUIC A:link,
+.miniBtnUICTop .miniBtnUIC A:hover,
+.miniBtnUICTop .miniBtnUIC A:visited,
+.miniBtnUICTopFocus .miniBtnUICFocus A,
+.miniBtnUICTopFocus .miniBtnUICFocus A:link,
+.miniBtnUICTopFocus .miniBtnUICFocus A:hover,
+.miniBtnUICTopFocus .miniBtnUICFocus A:visited,
+.miniBtnUICTopHover .miniBtnUICHover A,
+.miniBtnUICTopHover .miniBtnUICHover A:link,
+.miniBtnUICTopHover .miniBtnUICHover A:hover,
+.miniBtnUICTopHover .miniBtnUICHover A:visited,
+.miniBtnUICTopDown .miniBtnUICDown A,
+.miniBtnUICTopDown .miniBtnUICDown A:link,
+.miniBtnUICTopDown .miniBtnUICDown A:hover,
+.miniBtnUICTopDown .miniBtnUICDown A:visited
+{color:""; font-size: "";text-decoration:none; font-family: ""; white-space:nowrap}
+
+
+.miniBtnUIC A,
+.miniBtnUIC A:link,
+.miniBtnUIC A:hover,
+.miniBtnUIC A:visited,
+.miniBtnUICFocus A,
+.miniBtnUICFocus A:link,
+.miniBtnUICFocus A:hover,
+.miniBtnUICFocus A:visited,
+.miniBtnUICHover A,
+.miniBtnUICHover A:link,
+.miniBtnUICHover A:hover,
+.miniBtnUICHover A:visited,
+.miniBtnUICDown A,
+.miniBtnUICDown A:link,
+.miniBtnUICDown A:hover,
+.miniBtnUICDown A:visited
+{color:""; font-size: "";text-decoration:none; font-family: ""; white-space:nowrap}
+
+.miniButtonTD{}
+
+.miniButtonTable td.miniButtonTD A,
+.miniButtonTable td.miniButtonTD A:link,
+.miniButtonTable td.miniButtonTD A:hover,
+.miniButtonTable td.miniButtonTD A:visited,
+.miniButtonTableHover td.miniButtonTDHover A,
+.miniButtonTableHover td.miniButtonTDHover A:link,
+.miniButtonTableHover td.miniButtonTDHover A:hover,
+.miniButtonTableHover td.miniButtonTDHover A:visited,
+.miniButtonTableDown td.miniButtonTDDown A,
+.miniButtonTableDown td.miniButtonTDDown A:link,
+.miniButtonTableDown td.miniButtonTDDown A:hover,
+.miniButtonTableDown td.miniButtonTDDown A:visited,
+.miniButtonTableFocus td.miniButtonTDFocus A,
+.miniButtonTableFocus td.miniButtonTDFocus A:link,
+.miniButtonTableFocus td.miniButtonTDFocus A:hover,
+.miniButtonTableFocus td.miniButtonTDFocus A:visited,
+.miniButtonTableOff TD,
+.miniButtonTableOff TD:link,
+.miniButtonTableOff TD:hover,
+.miniButtonTDOff
+{color:""; font-size: "";text-decoration:none; font-family: "";  white-space:nowrap}
+
+.miniButtonTableOff TD,
+.miniButtonTableOff TD:link,
+.miniButtonTableOff TD:hover,
+.miniButtonTDOff
+{color:""}
+
+.miniButtonTable
+{border-width:1px; border-style:solid; border-color:#BDD3FF;height:16px;}
+
+.miniBtnUICTop
+{border-width:1px; border-style:solid; border-color:#BDD3FF;height:16px;}
+
+.miniBtnUIC
+{ background-image:url("../images/bkgrnd_minibtn.GIF"); height:14px;padding:1px 6px 1px 6px; color:""}
+
+.miniButtonTD
+{ background-image:url("../images/bkgrnd_minibtn.GIF"); height:14px;padding:1px 6px 1px 6px; color:""}
+
+.miniButtonTableHover
+{border-width:1px; border-style:solid; border-color:#003C74;height:16px;}
+
+.miniBtnUICTopHover
+{border-width:1px; border-style:solid; border-color:#003C74;height:16px;}
+
+.miniButtonTDHover
+{border-width:1px; border-style:solid; border-color:#F8B330; height:14px;padding:0px 5px 0px 5px;background-image:url("../images/bkgrnd_minibtn_hover.GIF"); color:""}
+
+.miniBtnUICHover
+{border-width:1px; border-style:solid; border-color:#F8B330; height:14px; background-image:url("../images/bkgrnd_minibtn_hover.GIF");padding:0px 5px 0px 5px;background-image:url("../images/bkgrnd_minibtn_hover.GIF");}
+
+.miniButtonTableDown
+{border-width:1px; border-style:solid; border-color:#003C74;  height:16px;}
+
+.miniBtnUICTopDown
+{border-width:1px; border-style:solid; border-color:#003C74;  height:16px;}
+
+.miniBtnUICDown
+{border-width:1px; border-style:dotted; border-color:#000000 ;background-color: "";height:14px;padding:0px 5px 0px 5px;color:""}
+
+.miniButtonTDDown
+{border-width:1px; border-style:dotted; border-color:#000000 ;background-color: "";height:14px;padding:0px 5px 0px 5px;color:""}
+
+.miniButtonTableFocus
+{border:thin black solid; height:16px;}
+
+.miniBtnUICTopFocus
+{border:thin black solid; height:16;}
+
+.miniBtnUICFocus
+{ background-image:url("../images/bkgrnd_minibtn.GIF"); height:14px;padding:0px 5px 0px 5px;color:"";}
+
+.miniButtonTDFocus
+{ background-image:url("../images/bkgrnd_minibtn.GIF"); height:14px;padding:0px 5px 0px 5px; color:""}
+
+.miniButtonTableOff
+{border-width:1px; border-style:solid; border-color:#DEE3E7;  height:16px;}
+
+.miniBtnUICTopOff
+{font-size: "";text-decoration:none; font-family: ""; color:""; border-width:1px; border-style:solid; border-color:#DEE3E7;  height:16px;}
+
+.miniBtnUICOff
+{border-width:1px; border-style:solid; border-color:#FFFFFF ;background-color: ""; color: ""; height:14px;padding:0px 5px 0px 5px}
+
+.miniButtonTDOff
+{border-width:1px; border-style:solid; border-color:#FFFFFF ;background-color: ""; color: ""; height:14px;padding:0px 5px 0px 5px}
+
+/*-----------------------*/
+/*SmartScript Definitions*/
+/*-----------------------*/
+.smartDialog {  background-color: "";   font-weight:bold;   }
+
+.questLabel
+{ color:""; text-align:left;  font-weight : bold; text-decoration : none; margin: 2px 0px 0px 0px; }
+
+.ssminibuttonOn
+{font-size: ""; padding:0px 5px 0px 5px; color:""; border-width:1px;border-style:solid; border-color:#666666; background-color:""; text-decoration:none; height:16px;}
+.ssminibuttonOn A,
+.ssminibuttonOn A:link,
+.ssminibuttonOn A:visited,
+.ssminibuttonOn A:hover
+{color:""; background-color:""; text-decoration:none; }
+.ssminibuttonOn A:hover
+{border-color:#000000; background-color:"";}
+
+/*-------------------------*/
+/*Search Applet Definitions*/
+/*-------------------------*/
+.SrchCntrTitle {font-size:"";font-weight:bold}
+
+
+
+
+/*-------------------------------------*/
+/*Single-Column (sc) Form Mode*/
+/*-------------------------------------*/
+.scLabel,
+.scLabel A,
+.scLabel A:visited,
+.scLabel A:hover
+{ color:""; text-align:left;  font-weight : bold; text-decoration : none; margin: 2px 0px 0px 0px; }
+
+.scLabelRight,
+.scLabelRight A,
+.scLabelRight A:visited,
+.scLabelRight A:hover
+{   color:"";  text-align:right; font-weight : bold; text-decoration : none;    }
+
+.scField
+{ color:""; font-weight:normal; font-size:""; }
+
+.scField INPUT,
+.scField TEXTAREA,
+.scField SELECT
+{}
+
+
+/*-------------------------------------*/
+/*Multi-Column Editable (mce) Form Mode*/
+/*-------------------------------------*/
+.mceButtons     {   background-color : ""; }
+.mceBorder      {   background-color : ""; }
+.mceBack        {   background-color : ""; }
+.mceBlank       {    }
+
+.mceTitle     {
+background-color:"";
+color : "";
+font-weight:bold;
+font-size:"";
+}
+
+.mceLabel,
+.mceLabel A,
+.mceLabel A:visited,
+.mceLabel A:hover {
+color:"";
+vertical-align : middle;
+font-weight : normal;
+text-align: right;
+text-decoration : none;
+margin: 2px 0px 0px 0px;
+}
+
+.mceLabel2,
+.mceLabel2 A,
+.mceLabel2 A:visited,
+.mceLabel2 A:hover {
+color:"";
+vertical-align : middle;
+font-weight : normal;
+text-align: right;
+text-decoration : none;
+}
+
+.mceFieldFormat{
+color:"";
+font-weight:normal;
+font-size:"";
+}
+
+
+
+.mceReadOnly
+{   color:"";   font-weight:normal; font-size:"";   }
+
+.mceReadOnlyTextArea
+{
+padding-top:5px;
+overflow-y: auto;
+}
+
+Table.mceWideFields Select,
+Table.mceWideFields TextArea,
+Table.mceWideFields Input,
+TD.mceWideFields Select,
+TD.mceWideFields TextArea,
+TD.mceWideFields Input
+{   width:95%;  }
+
+.mceWideFields INPUT[type="checkbox"]
+{ width:auto;}
+
+.mceWideFields INPUT[type="radio"]
+{ width:auto;}
+
+/*-------------------------------------*/
+/*Quick Print Form Mode*/
+/*-------------------------------------*/
+.qpLabel,
+.qpLabel A,
+.qpLabel A:visited,
+.qpLabel A:hover {
+color:"";
+vertical-align : middle;
+font-weight : bold;
+text-decoration : none;
+margin: 2px 0px 0px 0px;
+}
+
+.qpField
+{ color:""; font-weight:normal;}
+
+
+/*------------------------------*/
+/*  Rich Text Component Classes */
+/*------------------------------*/
+.rtcEmbedded {font-family:""; font-size:"";  border:1px solid #cccccc; width:600px; height:138px; border-bottom : 4px solid #ccccff; }
+.rtcPopup   {font-family:""; font-size:"";  border:1px solid #cccccc; width:600px; height:138px; border-bottom : 4px solid #ccccff; }
+.rtcReadOnly    {font-family:""; font-size:"";  border:1px solid #cccccc; width:600px; height:138px; border-bottom : 4px solid #cccccc;}
+.rtcTextarea    {font-family:""; font-size:"";  border:1px solid #cccccc; width:600px; height:138px; border-bottom : 4px solid #cccccc;}
+
+
+
+
+
+/*-----------------------*/
+/*   Layout Styles       */
+/*-----------------------*/
+.LayoutButtonOn     {background-color:""}
+.LayoutButtonOff    {background-color:""}
+
+.LayoutView                      {  background-color : ""; color:""; }
+.LayoutView  .AppletButtons      {  background-color:""; color:""; }
+.LayoutView  .AppletBorder       {  background-color : ""; }
+.LayoutView  .AppletBack         {  background-color : ""; }
+.LayoutView  .AppletBlank        {  background-color : ""; }
+.LayoutView  .AppletTitle        {  background-color: "";   color : ""; font-weight:bold; font-size:""; text-decoration:none;}
+
+.LayoutStyleHide                 { background-color:""; color:""; }
+.LayoutStyleHide .AppletButtons  { background-color:""; color:""; }
+.LayoutStyleHide .AppletBorder   { background-color:""; }
+.LayoutStyleHide .AppletBack     { background-color:""; }
+.LayoutStyleHide .AppletBlank    { background-color:""; }
+.LayoutStyleHide .AppletTitle    { background-color:""; color:""; font-weight:bold; font-size:""; text-decoration:none;}
+
+.LayoutStyleMax                  { background-color:""; color:""; }
+.LayoutStyleMax .AppletButtons   { background-color:""; color:""; }
+.LayoutStyleMax .AppletBorder    { background-color:""; }
+.LayoutStyleMax .AppletBack      { background-color:""; }
+.LayoutStyleMax .AppletBlank     { background-color:""; }
+.LayoutStyleMax .AppletTitle     { background-color:""; color:""; font-weight:bold; font-size:""; text-decoration:none;}
+
+
+.LayoutStyleMin                  { background-color:""; color:""; }
+.LayoutStyleMin .AppletButtons   { background-color:""; color:""; }
+.LayoutStyleMin .AppletBorder    { background-color:""; }
+.LayoutStyleMin .AppletBack      { background-color:""; }
+.LayoutStyleMin .AppletBlank     { background-color:""; }
+.LayoutStyleMin .AppletTitle     { background-color:""; color:""; font-weight:bold; font-size:""; text-decoration:none;}
+
+
+/*-------------------*/
+/*Applet Styles      */
+/*-------------------*/
+
+/*-------------------*/
+/*Applet Styles      */
+/*-------------------*/
+
+/*Applet Pointer*/
+.AppletBottomPntr                   {position:relative; top:-2px; }
+.NotSelected .AppletBottomPntr  .AppletButtons  {background-color:"" }
+.NotSelected  TD.AppletHIListBorder             {border-style: solid; border-color: #E0DFE3; border-width: 2px 2px 2px 2px; }
+.NotSelected  DIV.AppletHIListBorder            {border-style: solid; border-color: #E0DFE3; border-width: 2px 2px 2px 2px; }
+.NotSelected  TD.AppletHIFormBorder             {border-style: solid; border-color: #E0DFE3; border-width: 2px 2px 2px 2px; }
+.NotSelected  DIV.AppletHIFormBorder            {border-style: solid; border-color: #E0DFE3; border-width: 2px 2px 2px 2px; }
+.NotSelected TR.AppletButtons TD.AppletTitle,
+.NotSelected  TR.AppletButtons TD.AppletTitle A,
+.NotSelected  TR.AppletButtons TD.AppletTitle A:link,
+.NotSelected  TR.AppletButtons TD.AppletTitle A:visited,
+.NotSelected  TR.AppletButtons TD.AppletTitle A:hover   {color:"";  }
+.NotSelected  TR.AppletButtons TD.AppletTitle TABLE.miniButtonTable TD.miniButtonTd {background-image:none; background-color:"";}
+.NotSelected  TR.AppletButtons TD.AppletTitle TABLE.miniButtonTableHover TD.miniButtonTDHover {background-image:none; background-color:"";}
+.NotSelected  TR.AppletButtons TD.AppletTitle .miniBtnUICTop .miniBtnUICHover {background-image:none; background-color:"";}
+.NotSelected  TR.AppletButtons TD.AppletTitle .miniBtnUICTop .miniBtnUIC {background-image:none; color:""; background-color:"";}
+.NotSelected  TR.AppletButtons TD.AppletTitle .miniBtnUICHover {background-image:none; background-color:"";}
+.NotSelected  TR.AppletButtons TD.AppletTitle .miniBtnUIC {background-image:none; color:""; background-color:"";}
+
+/*Applet Select*/
+.Selected  TD.AppletHIListBorder            {   border-style: solid; border-color: #658AC3; border-width: 2px 2px 2px 2px; }
+.Selected  DIV.AppletHIListBorder           {   border-style: solid; border-color: #658AC3; border-width: 2px 2px 2px 2px; }
+.Selected  TD.AppletHIFormBorder            {   border-style: solid; border-color: #658AC3; border-width: 2px 2px 2px 2px; }
+.Selected  DIV.AppletHIFormBorder           {   border-style: solid; border-color: #658AC3; border-width: 2px 2px 2px 2px; }
+.Selected  .AppletBottomPntr .AppletButtons {   background-color:#658AC3;       }
+.Selected  TR.AppletButtons                 {   background-color:#658AC3; color:"";     }
+.Selected  TR.AppletButtons TD.AppletTitle,
+.Selected  TR.AppletButtons TD.AppletTitle A,
+.Selected  TR.AppletButtons TD.AppletTitle A:link,
+.Selected  TR.AppletButtons TD.AppletTitle A:visited,
+.Selected  TR.AppletButtons TD.AppletTitle A:hover  {   background-color:""; color:"";  }
+.Selected  TR.AppletButtons TD.AppletTitle TABLE.miniButtonTable TD.miniButtonTd {background-image:none; background-color:"";}
+.Selected  TR.AppletButtons TD.AppletTitle TABLE.miniButtonTableHover TD.miniButtonTDHover {background-image:none; background-color:"";}
+.Selected  TR.AppletButtons TD.AppletTitle .miniBtnUICTop .miniBtnUIC {background-image:none; color:""; background-color:"";}
+.Selected  TR.AppletButtons TD.AppletTitle .miniBtnUICTop .miniBtnUICHover {background-image:none; background-color:"";}
+.Selected  TR.AppletButtons TD.AppletTitle .miniBtnUIC {background-image:none; color:""; background-color:"";}
+.Selected  TR.AppletButtons TD.AppletTitle .miniBtnUICHover {background-image:none; background-color:"";}
+
+
+/*Parent Applet Style*/
+.AppletStyle1                   {   background-color : ""; color:""; }
+.AppletStyle1 .AppletButtons    {   background-color : ""; color:""; }
+.AppletStyle1 .AppletBorder     {   background-color : ""; }
+.AppletStyle1 .AppletHIFormBorder   {   border : 2px solid #cccccc; }
+.AppletStyle1 .AppletHIListBorder   {   border : 2px solid #cccccc; }
+.AppletStyle1 .AppletBlank      {   background-color : ""; }
+.AppletStyle1 .AppletBack       {   background-color : "";   }
+.AppletStyle1 .AppletTD1    {   color:""; font-weight:bold; font-size:""; }
+
+.AppletStyle1 .AppletTitle,
+.AppletStyle1 TD.AppletTitle A,
+.AppletStyle1 TD.AppletTitle A:link,
+.AppletStyle1 TD.AppletTitle A:visited,
+.AppletStyle1 TD.AppletTitle A:hover
+{ background-color:"";  color : ""; font-weight:bold; font-size:""; text-decoration:none;}
+
+.AppletStyle1 TD.AppletTitle A:hover
+{ text-decoration:underline; }
+
+/*Search Center Applet Style*/
+.AppletStyle2                   {   background-color : ""; color:""; }
+.AppletStyle2 .AppletButtons    {   background-color : ""; color:""; }
+.AppletStyle2 .AppletBorder     {   background-color : ""; }
+.AppletStyle2 .AppletHIFormBorder   {   border : 2px solid #cccccc; }
+.AppletStyle2 .AppletHIListBorder   {   border : 2px solid #cccccc; }
+.AppletStyle2 .AppletBlank      {   background-color : ""; }
+.AppletStyle2 .AppletBack       {   background-color : ""; }
+
+.AppletStyle2 .AppletTitle
+{background-color:""; color : "";font-weight:bold;font-size:"";}
+
+
+/*Child Applet Style*/
+.AppletStyle3                   {   background-color : ""; }
+
+.AppletStyle3 .AppletButtons    {   background-color : ""; color:"";    }
+.AppletStyle3 .AppletBorder     {   background-color : ""; }
+.AppletStyle3 .AppletHIFormBorder   {   border : 2px solid #cccccc; }
+.AppletStyle3 .AppletHIListBorder   {   border : 2px solid #cccccc; }
+.AppletStyle3 .AppletBack       {   background-color : ""; }
+.AppletStyle3 .AppletBlank      {   background-color : ""; }
+.AppletStyle3 .AppletBack       {   background-color : "";  }
+
+.AppletStyle3 .AppletTitle
+{background-color:""; color : ""; font-weight:bold; font-size:""; }
+
+/*Reserved Applet Style*/
+.AppletStyle4                   {   background-color : ""; }
+.AppletStyle4 .AppletButtons    {   background-color : ""; color:"";    }
+.AppletStyle4 .AppletBorder     {   background-color : ""; }
+.AppletStyle4 .AppletHIFormBorder   {   border : 2px solid #cccccc; }
+.AppletStyle4 .AppletHIListBorder   {   border : 2px solid #cccccc; }
+.AppletStyle4 .AppletBlank      {    background-color : "";}
+.AppletStyle4 .AppletBack       {   background-color : "";   }
+
+.AppletStyle4 .AppletTitle
+{ background-color:"";  color : ""; font-weight:bold; font-size:""; text-decoration:none;}
+
+.AppletStyle5                   {   background-color : ""; }
+.AppletStyle5Bound              {    text-align:right; width:90%; background-color : ""; }
+.AppletStyle5 .AppletButtons    {   background-color : ""; color: ""; }
+.AppletStyle5 .AppletBorder     {   background-color : ""; }
+.AppletStyle5 .AppletHIFormBorder   {   border : 2px solid #cccccc; }
+.AppletStyle5 .AppletHIListBorder   {   border : 2px solid #cccccc; }
+.AppletStyle5 .AppletBlank      {    background-color : "";}
+.AppletStyle5 .AppletBack       {   background-color : "";   }
+
+.AppletStyle5 .AppletTitle,
+.AppletStyle5 .AppletTitle A,
+.AppletStyle5 .AppletTitle A:Visited
+{ background-color:""; color:""; font-weight:bold; font-size:""; text-decoration:none;}
+
+/*Reserved Applet Style*/
+.AppletStyle6                   {    background-color : ""; }
+.AppletStyle6Bound              {    width:90%; background-color : ""; }
+.AppletStyle6 .AppletButtons    {   background-color : ""; }
+.AppletStyle6 .AppletBorder     {   background-color : ""; }
+.AppletStyle6 .AppletHIFormBorder   {   border : 2px solid #cccccc; }
+.AppletStyle6 .AppletHIListBorder   {   border : 2px solid #cccccc; }
+.AppletStyle6 .AppletBlank      {   background-color : ""; }
+.AppletStyle6 .AppletBack       {   background-color : "";   }
+
+.AppletStyle6 .AppletTitle
+{background-color:"";   color : ""; font-weight:bold; font-size:""; }
+
+
+/*Grandchild Applet Style*/
+.AppletStyle7                   {   background-color : ""; }
+.AppletStyle7 .AppletButtons    {   background-color : ""; color: ""; }
+.AppletStyle7 .AppletBorder     {   background-color : ""; }
+.AppletStyle7 .AppletHIFormBorder   {   border : 2px solid #cccccc; }
+.AppletStyle7 .AppletHIListBorder   {   border : 2px solid #cccccc; }
+.AppletStyle7 .AppletBlank      {   background-color : ""; }
+.AppletStyle7 .AppletBack       {   background-color : "";  }
+
+.AppletStyle7 .AppletTitle
+{ background-color:"";  color : ""; font-weight:bold; font-size:""; }
+
+/*Portal Graphical Applet Style*/
+.AppletStyle8                   {   background-color : ""; color: ""; }
+.AppletStyle8 .AppletButtons    {   background-color : ""; color: ""; }
+.AppletStyle8 .AppletBorder     {   background-color : ""; }
+.AppletStyle8 .AppletHIFormBorder   {   border : 2px solid #cccccc; }
+.AppletStyle8 .AppletHIListBorder   {   border : 2px solid #cccccc; }
+.AppletStyle8 .AppletBlank      {   background-color : ""; }
+.AppletStyle8 .AppletBack       {   background-color : "";   }
+
+.AppletStyle8 .AppletTitle,
+.AppletStyle8 TD.AppletTitle A,
+.AppletStyle8 TD.AppletTitle A:link,
+.AppletStyle8 TD.AppletTitle A:visited,
+.AppletStyle8 TD.AppletTitle A:hover
+{ color : ""; font-weight:bold;  font-size:""; text-decoration:none;}
+
+.AppletStyle8 TD.AppletTitle A:hover
+{ text-decoration:underline; }
+
+/* 7.7 Parent Applet Style */
+.AppletStyleParent77            {background-color : ""; }
+.AppletStyleParent77 .AppletButtons {background-color : ""; color: ""; }
+.AppletStyleParent77 .AppletBorder  {background-color : ""; }
+.AppletStyleParent77 .AppletHIFormBorder {border-style: solid; border-color: #cccccc; border-width: 2px 2px 2px 2px;}
+.AppletStyleParent77 .AppletHIListBorder {border-style: solid; border-color: #cccccc; border-width: 2px 2px 2px 2px;}
+.AppletStyleParent77 .AppletBlank   {background-color : ""; }
+.AppletStyleParent77 .AppletBack    {background-color : ""; }
+.AppletStyleParent77 .AppletTitle   {background-color:""; color : ""; font-weight:bold; font-size:""; }
+.AppletStyleParent77 .AppletMenu OPTION {   background-color : ""; }
+
+/* 7.7 Child Applet Style */
+.AppletStyleChild77         {background-color : ""; }
+.AppletStyleChild77 .AppletButtons  {background-color : ""; color: ""; }
+.AppletStyleChild77 .AppletBorder   {background-color : ""; }
+.AppletStyleChild77 .AppletHIFormBorder {border-style: solid; border-color: #cccccc; border-width: 2px 2px 2px 2px;}
+.AppletStyleChild77 .AppletHIListBorder {border-style: solid; border-color: #cccccc; border-width: 2px 2px 2px 2px;}
+.AppletStyleChild77 .AppletBlank    {background-color : ""; }
+.AppletStyleChild77 .AppletBack     {background-color : ""; }
+.AppletStyleChild77 .AppletTitle    {background-color:""; color : ""; font-weight:bold; font-size:""; }
+.AppletStyleChild77 .AppletMenu OPTION {   background-color : ""; }
+.AppletBackTable { border-color: #DBDBDB; border-style: solid; border-width: 1px 0px 0px 0px;}
+
+/* Popup Applet Style */
+.AppletStylePopup                         {  background-color : "";  }
+.AppletStylePopup .AppletButtons          {  background-color : ""; color:""; }
+.AppletStylePopup .AppletBorder           {  background-color : ""; }
+.AppletStylePopup .AppletBlank            {  background-color : ""; }
+.AppletStylePopup .AppletBack             {  background-color : ""; }
+.AppletStylePopup .AppletTitle            {  background-color : ""; color : ""; font-weight:bold; font-size:""; }
+.AppletStylePopup .AppletBttm             {  background-color : ""; }
+.AppletStylePopup .AppletTD1              {  background-color : ""; color : ""; }
+.AppletStylePopup .AppletTD2              {  color : ""; font-weight : bold; font-size:""; }
+.AppletStylePopup .AppletTD3              {  color : ""; }
+
+/*--------------------*/
+/*Calendar Definitions*/
+/*--------------------*/
+.calendarBorder             {background-color:"";}
+.calendarActivityBorder     {background-color:"";}
+.calendarActivityBack       {background-color:"";}
+.calendarActivity           {background-color:"";}
+.calendarMultiDayActivity   {background-color:"";}
+.calendarInterval
+{
+    BORDER-RIGHT: #cccccc 1px solid;
+    BORDER-TOP: #cccccc 1px;
+    FONT-WEIGHT: bold;
+    FONT-SIZE: "";
+    BORDER-LEFT: #cccccc 1px;
+    COLOR: "";
+    BORDER-BOTTOM: #cccccc 1px solid;
+    BACKGROUND-COLOR: "";
+}
+.calendarDayBar             {background-color:"";}
+.calendarDay                {background-color:"";}
+
+.calendarTileEmpty
+{   BORDER-RIGHT: #cccccc 1px;
+    BORDER-TOP: #c0c0c0 1px solid;
+    BORDER-LEFT: #cccccc 1px;
+    BORDER-BOTTOM: #ffffe6 1px solid;
+    BACKGROUND-COLOR: "";
+}
+.calendarBusHrsTileEmpty
+{   BORDER-RIGHT: #cccccc 1px;
+    BORDER-TOP: #c0c0c0 1px solid;
+    BORDER-LEFT: #cccccc 1px;
+    BORDER-BOTTOM: #ffffe6 1px solid;
+    BACKGROUND-COLOR: "";
+}
+.calendarTileSolid
+{
+    BORDER-RIGHT: black 1px solid;
+    BORDER-TOP: black 1px;
+    BORDER-LEFT: black 1px solid;
+    BORDER-BOTTOM: black 1px;
+    BACKGROUND-COLOR: "";
+}
+.calendarTileSolidTop
+{
+    BORDER-RIGHT: black 1px solid;
+    BORDER-TOP: black 1px solid;
+    BORDER-LEFT: black 1px solid;
+    BORDER-BOTTOM: #cccccc 1px;
+    BACKGROUND-COLOR: "";
+}
+.calendarTileSolidBottom
+{
+    BORDER-RIGHT: black 1px solid;
+    BORDER-TOP: #cccccc 1px;
+    BORDER-LEFT: black 1px solid;
+    BORDER-BOTTOM: black 1px solid;
+    BACKGROUND-COLOR: "";
+}
+.calendarTileSolidTopBottom
+{
+    BORDER-RIGHT: black 1px solid;
+    BORDER-TOP: black 1px solid;
+    BORDER-LEFT: black 1px solid;
+    BORDER-BOTTOM: black 1px solid;
+    BACKGROUND-COLOR: "";
+}
+.calendarBorder2            {   BACKGROUND-COLOR: ""; COLOR: ""; FONT-SIZE: ""; FONT-WEIGHT: bold}
+.calendarTitle              {   BACKGROUND-COLOR: ""; COLOR: ""; FONT-SIZE: ""; FONT-WEIGHT: bold}
+.calendarLabel              {   BACKGROUND-COLOR: ""; COLOR: ""; FONT-SIZE: ""; FONT-WEIGHT: bold; TEXT-ALIGN: right}
+.calendarField              {   BACKGROUND-COLOR: ""; COLOR: ""; FONT-SIZE: ""; FONT-WEIGHT: normal}
+.calendarBlank              {   BACKGROUND-COLOR: ""; COLOR: ""; FONT-SIZE: ""; FONT-WEIGHT: bold}
+.calendarHeader             {   BACKGROUND-COLOR: ""; COLOR: ""; FONT-SIZE: ""; FONT-WEIGHT: bold}
+.calendarRow                {   BACKGROUND-COLOR: ""; COLOR: ""; FONT-SIZE: ""; FONT-WEIGHT: normal}
+.calendarSelect             {   COLOR: ""; FONT-SIZE: ""; FONT-WEIGHT: normal}
+.calendarDayBarDark,.calendarDayBarDark A,.calendarDayBarDark A:link,.calendarDayBarDark A:visited
+                            {   background-color:""; color:""; }
+.calendarIntervalDark,.calendarIntervalDark A,.calendarIntervalDark A:link,.calendarIntervalDark A:visited
+                            {   background-color:""; color:"";  }
+
+/*----------------------*/
+/*Service Calendar Style*/
+/*----------------------*/
+.ServiceCalRow                  {background-color:"";}
+.calendarServiceBorder          {background-color:"";}
+.calendarServiceActivityOn      {background-color:"";}
+.calendarServiceActivityOff     {background-color:"";}
+.calendarServiceInterval        {background-color:""; color:""; font-weight:bold; font-size:"";}
+
+
+/*----------------------*/
+/*HI Calendar GanttChart*/
+/*----------------------*/
+.GCcurrentappoinment {background-color:""; height:15px; width:20px; border:2px solid black;}
+.GCworkinghours {background-color:""; height:15px; width:20px; border:2px solid black;}
+.GCnonworkinghours {background-color:""; height:15px; width:20px; border:2px solid black;}
+.GCconfirmedappoinments {background-color:""; height:15px; width:20px; border:2px solid black;}
+.GCnotavailableschedule {background-color:""; height:15px; width:20px; border:2px solid black;}
+
+
+/*-----------------*/
+/*Tree Style*/
+/*-----------------*/
+
+.treeBack {}
+.treeInactive {}
+
+.treeActive,
+.treeActive A,
+.treeActive A:link,
+.treeActive A:visited,
+ {  background-color : ""; color:"";    }
+
+
+
+/*----------------------*/
+/* Dot-Com Definitions  */
+/*----------------------*/
+
+.dCCItemTitle {font-size:""; font-weight:bold;}
+.dCCItemLabel {color:"";font-size:""; font-weight:bold; vertical-align:middle; text-align:right;}
+.dCCItemLabelLeft {color:"";font-size:""; font-weight:bold; }
+.dCCItemValue {font-size:""; vertical-align:middle; height:24px; }
+.dCCItemValue150 {font-size:""; width:150px}
+
+.dCCTab {background-color:"";}
+
+.dCCAppletRule1 {background-color:"";}
+.dCCAppletShade1    {background-color:"";}
+.dCCAppletBorder1   {background-color:"";}
+
+.dCCAppletTitle ,
+.dCCAppletTitle A,
+.dCCAppletTitle A:visited,
+.dCCAppletTitle A:hover   {
+font-family: "";
+color : "";
+font-weight:bold;
+font-size:"";
+}
+
+/*---------------------*/
+/*Dashboard Definitions*/
+/*---------------------*/
+.dashbrdBorder {background-color:"";}
+.dashbrdBack {background-color:"";}
+
+
+/*---------------------*/
+/*Site Map Definitions */
+/*---------------------*/
+.screenName1    {font-size:""; font-weight:bold;}
+.screenName2    {font-size:""; font-weight:bold;}
+.viewName       {font-size:"";}
+.fader          {background-color:""}
+
+/*-----------------------------*/
+/*Table of Contents Definitions*/
+/*-----------------------------*/
+.TOCRule    {color:"" }
+.TOCTitle   {font-weight:bold; color:""}
+
+/*-----------------------------*/
+/*Page Header Definitions*/
+/*-----------------------------*/
+.PageHeader {font-family:"";font-size:"";font-weight:bold;color:"";}
+.PageRule   {color:"";}
+
+
+/*-----------------*/
+/*Misc. Definitions*/
+/*-----------------*/
+.Required       { color: "";    font-weight : bold; font-size : ""; }
+.Welcome        { font-size: "";}
+.CmdTxt         { color:""; font-weight: bold; font-size: ""; }
+.CmdTxtNormal   { color:""; font-weight: normal; font-size: ""; }
+.error          { color: "";    }
+.Border1        { background-color:"";  }
+.divider        {   border-left:    1px solid #ffffff; border-top:  1px solid #ffffff; border-right:    1px solid #6666cc; border-bottom:   1px solid #6666cc;  }
+.RealTimeCart   {   background-color:"" }
+
+
+
+
+/*----------------------*/
+/*External Content (EC) */
+/*----------------------*/
+
+/*EC:News*/
+.NewsTable              {}
+.NewsCompanyName    A   { font-weight:bold; font-size:""; }
+.NewsTimeStamp          {}
+.NewsBullet             { list-style : Square ;  }
+.NewsHeadline           {}
+.NewsSource             { font-style:italic }
+.NewsSummary            {}
+.NewsTotalStories       {}
+.NewsPageControl        {}
+.NewsColumnLogo         {}
+.NewsLegalCopyRight     {}
+
+
+/*--------------------------------------*/
+/*   ISS - eConfigurator Definitions    */
+/*--------------------------------------*/
+
+ .eCfgOptionAvailable { color:""}
+ .eCfgOptionExcluded {color:""}
+ .eCfgRadioAvailable { color:""}
+ .eCfgRadioExcluded {color:""}
+ .eCfgSpanAvailable { color:""}
+ .eCfgSpanExcluded {color:""}
+ .eCfgSpanSelected {}
+ .eCfgSpanWarning {color:""}
+
+ .eCfgProductTitle {font-size:""; font-weight:bold;}
+ .eCfgAuxText {color:""}
+
+ .eCfgContent {position:absolute;top:-100000px;left:-100000px;visibility:hidden;z-index:4}
+ .eCfgdCCSection0 {background-color:""; font-size:""; font-weight:bold; color:"";border-left: 1px solid #808080; border-top: 1px solid #808080}
+ .eCfgdCCSection0if {background-color:""; font-size:""; font-weight:bold; color:"";border: 1px solid #808080; border-right: none}
+ .eCfgdCCSection1 {background-color:""; font-size:""; font-weight:bold; color:""; border: 1px solid #808080; border-left: none}
+ .eCfgdCCSection2 {background-color:""; font-size:""; font-weight:bold; color:""; border-left: 1px solid #808080; border-bottom: 1px solid #808080}
+
+ .eCfgDivStyle {position:absolute;top:-100000px;left:-100000px;visibility:hidden;z-index:2}
+ .eCfgSectionTitle0 {background-color:""; font-size:""; font-weight:bold; color:""; border-left: 1solid #808080; border-top: 1px solid #808080}
+ .eCfgSectionTitle0if {background-color:""; font-size:""; font-weight:bold; color:""; border: 1px solid #808080; border-right: none}
+ .eCfgSectionTitle1 {background-color:""; font-size:""; font-weight:bold; color:""; border: 1px solid #808080; border-left: none}
+ .eCfgSectionTitle2 {background-color:""; font-size:""; font-weight:bold; color:""; border-left: 1px solid #808080; border-bottom: 1px solid #808080}
+
+ .eCfgSumStyle {position:absolute;top:-100000px;left:-100000px;visibility:hidden;z-index:4}
+
+ .eCfgHelp
+ {
+      background : #6666cc;
+      font-weight : bold;
+      color : "";
+      padding : 2px 4px 2px 4px;
+ }
+
+ .eCfgHelpPos {position:absolute;top:-100000;left:-100000;visibility:hidden;z-index:5}
+ .eCfgHelpPos2 {position:absolute;visibility:hidden;z-index:3}
+ .eCfgAppBorder {background-color : "";border-left: 1px solid #808080; border-top: 1px solid #808080;border-right: 1px solid #808080; border-top: 1px solid #808080; border-bottom: 1px solid #808080}
+
+ .eCfgPosAbs {position:absolute;}
+ .eCfgVisHid {visibility:hidden;}
+
+/*---------------------------------------------*/
+/*   End of ISS - eConfigurator Definitions    */
+/*---------------------------------------------*/
+
+/*--------------------------*/
+/*   ePortal Definitions    */
+/*--------------------------*/
+
+/*Search Pages*/
+.ExSearchTable {background-color:"";}
+.ExSearchLabel { font-weight: bold; text-align: left }
+.ExSearchField { color:""; font-weight:normal; font-size:""; }
+.ExSearchField INPUT,
+.ExSearchField TEXTAREA
+{ width:200px; }
+
+/*Company Header*/
+.CompanyName                    {font-size:""; font-weight:bold;}
+.CompanyLink                    {}
+
+/*Profile Data Definitions*/
+.ProfCopyright     {}
+.ProfLabel      {background-color:""; color:""; font-weight:bold; text-align:right;}
+.ProfData       {background-color:"";}
+.ProfSection    {background-color:""; color:""; font-size:""; font-weight:bold;}
+
+/*Subsidiary*/
+.SubsidCompanyName      { font-weight:bold; }
+.SubsidSubsidName       { background-color:""; }
+.SubsidCopyright        {  }
+.SubsidDisclaimer       {  }
+.SubsidCompleteList             {  }
+
+/*Add Info*/
+.AddInfoBullet                  {}
+.AddInfoHeader                  {}
+.AddInfoWebSite                 {}
+.AddInfoDescr                   {}
+
+/*Search*/
+.CnsHead     {text-align:left; font-weight:bold; font-size: ""}
+.CnsRow      {text-align:left; font-size: "" }
+.CnsLink     { color:""}
+
+/*PMD Reports*/
+.reportTxtLarge         {   font-size:""; font-weight:bold;}
+.reportTxtMedium        {   font-size:""; font-weight:bold;}
+.reportBox              {   border-top:1px solid #000000;   border-bottom:1px solid #000000;}
+.reportLbl,
+.reportLblBtmBorder,
+.reportLblTopBorder     {   font-weight:bold; white-space:nowrap;   font-size:"";}
+.reportLblBtmBorder     {   border-bottom:1px solid #000000;    }
+.reportLblTopBorder     {   border-top:1px solid #000000;   }
+.reportFld              {   font-size:"";       }
+.reportObjNum           {   width:auto;height:auto;font-weight:bold;margin:0px 5px 0px 0px;border:1px solid #000000;background-color:"";padding:3px 3px 3px 3px;    }
+.reportObjTitle         {   width:auto;height:auto;font-weight:bold;margin:0px 5px 0px 0px;border:1px solid #cccccc;background-color:"";padding:3px 3px 3px 3px;    }
+.reportAllObjTitle      {   font-size:"";font-weight:bold;color:""      }
+.reportAllObjSubtitle   {   font-size:"";font-weight:bold;  }
+
+/*--------------------------------------------------------*/
+/* The following definitions are for Siebel Internal Use. */
+/* Do not modify or remove.                               */
+/*--------------------------------------------------------*/
+
+.GridBorder         { border : 0px solid #cccccc; background-color : ""; padding-bottom: 4px; padding-right: 4px; }
+.Selected  .GridBorder  {border-color:#333399;}
+.GridBack       {background-color : "";}
+
+/* Field Display */
+.mceGridField,
+.mceField
+{ color:""; font-weight:normal; font-size:""; padding-bottom:2px; }
+
+.mceGridField INPUT,
+.mceField INPUT
+{ width:120px; padding-top:3px; }
+
+.mceGridField TEXTAREA,
+.mceGridField SELECT,
+.mceField TEXTAREA,
+.mceField SELECT
+{ width:120px; padding-top:2px; }
+
+.mceGridField INPUT[type="checkbox"],
+.mceField INPUT[type="checkbox"]
+{ width:auto;}
+
+.mceGridField INPUT[type="radio"],
+.mceField INPUT[type="radio"]
+{ width:auto;}
+
+/* Label Display (used in grid layout) */
+.mceGridLabel,
+.mceGridLabel A,
+.mceGridLabel A:visited,
+.mceGridLabel A:hover {
+color:"";
+vertical-align : middle;
+padding-bottom: 2px;
+margin: 0px 2px 0px 0px;
+font-weight : normal;
+text-decoration : none;
+}
+
+
+/*For ePortalNavBarDeptPage_LeftNav applet  */
+/* Root Level Menu Items */
+TABLE.mmRootLevel { BACKGROUND-COLOR: "";}
+TABLE.mmRootLevel FONT{ COLOR: "";}
+TABLE.mmRootLevel A, TABLE.mmRootLevel A:active, TABLE.mmRootLevel A:visited { COLOR: ""; text-decoration: none }
+TD.mmRootLevel TD { COLOR: ""; HEIGHT: 20px;}
+
+/* Child Level Menu Items */
+TABLE.mmChildLevel { BACKGROUND-COLOR: "" ;}
+TABLE.mmChildLevel A, TABLE.mmChildLevel A:active, TABLE.mmChildLevel A:visited { COLOR: ""; text-decoration: none }
+TD.mmChildLevel TD { COLOR: ""; HEIGHT: 20px;}
+
+/* Menu Item currently selected */
+TABLE.mmSelected { BACKGROUND-COLOR: "" ;}
+TABLE.mmSelected A, TABLE.mmSelected A:active, TABLE.mmSelected A:visited { COLOR: ""; text-decoration: none }
+TD.mmSelected TD { COLOR: ""; HEIGHT: 20px;}
+
+/* Row Height of the seperator white line */
+TR.menuTR TR {HEIGHT: 1px;}
+TD.menuTD {BACKGROUND-COLOR: "";}
+TD.whiteLine {BACKGROUND-COLOR: ""; DISPLAY: none}
+
+/*for CCESS player Applet */
+.scLabel1,
+.scLabel1 A,
+.scLabel1 A:visited,
+.scLabel1 A:hover 
+{ color:""; text-align:left;  font-weight : bold; text-decoration : none; margin: 2px 0px 0px 0px; }
+
+.scLabelRight1,
+.scLabelRight1 A,
+.scLabelRight1 A:visited,
+.scLabelRight1 A:hover 
+{ color:"";  text-align:right; font-weight : bold; text-decoration : none;     } 
+
+/*For ePortal Login applet */
+.LoginTxt { color:""; font-size:""; font-weight:bold; text-decoration:none; }
+.LoginTxt A:visited { color:""; font-size:""; font-weight:bold; text-decoration:none; }
+.LoginBnnr{ background-color:""; }
+.SpanStyle {color:""; font-size:""; font-weight:normal;}
+.SpanStyle1 {font-size:""; font-weight:normal;}
+
+/*For ePortal Salutation Applet */
+.Salutation {font-size:""; font-weight:bold;}
+
+/*For App Homepage Applet */
+.AppHomePageTitle {font-size:""; color:""; font-weight:bold;}
+.AppHomePageSaluation {font-size:"";color:"";}
+
+/*For Screen Homepage Applet */
+.ScreenHomePageTitle {color:""; font-size:""; font-weight:bold; vertical-align:middle;}
+.ScreenHomePageBannerTitle {color:""; font-size:""; font-weight:bold;}
+
+/*--------------*/
+/*--------------*/
+/*  Deprecated  */
+/*--------------*/
+/*--------------*/
+
+

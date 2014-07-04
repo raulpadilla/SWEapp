@@ -1,0 +1,1 @@
+(function(){if(typeof(SiebelAppFacade.FacadeConstants)!="undefined"){return}Namespace("SiebelAppFacade.FacadeConstants");var a=SiebelApp.Utils.DefineConstants;SiebelAppFacade.FacadeConstants=a();var b=SiebelAppFacade.FacadeConstants;b.set("LIST_RENDERER","LIST");b.set("CAL_RENDERER","CAL")}());

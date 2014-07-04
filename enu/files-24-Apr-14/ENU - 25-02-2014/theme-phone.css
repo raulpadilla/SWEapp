@@ -1,0 +1,305 @@
+html,body {
+  font-size: 12px !important;
+}
+#_sweappmenu,
+.siebui-StateButton,
+.siebui_SignatureHeader  .mceGridLabel,
+.siebui-popup-action,
+.siebui-popup-header-text,
+.siebui-popup-header-text #LabelFind_Label,
+.siebui-popup-header-text #Labelstartingwith_Label,
+.ui-btn-recnav-prev,
+.ui-btn-recnav-next {
+  display : none !important;
+}
+.ui-btn-text,
+.aSwipeBtn .ui-btn-text,
+#_FormAppletH2,
+#_FormAppletH3,
+.siebui-msgbar-msg-high,
+.siebui-msgbar-msg-normal,
+.siebui-msgbar-msg-urgent,
+.email-ControlId,
+.tel-ControlId,
+.url-ControlId,
+.map-ControlId,
+.textArea,
+.pdqitem li,
+.menuitem li,
+.jqmgrid_label_bar,
+#_FormAppletMobileSection1 .FormAppletText > span,
+#_FormAppletMobileSection2 .FormAppletText > span,
+#_FormAppletMobileSection3 .FormAppletText > span,
+.mobileCalDatePicker,
+.ui-li-desc,
+.ui-li-static.ui-li {
+  font-size: 12px !important;
+}
+.ToolbarButton,
+.ToolbarButton a,
+.ToolbarButton a:hover{
+  width: 40px;
+  height: 40px;
+}
+.ToolbarButton a img,
+.siebui-mobile-msgbar h5 {
+  margin: 5px !important;
+}
+#_sweviewbar,
+#_swescrnbar.simplenavBarStyle {
+  height: 40px;
+}
+#_swecontent.maxWidth{
+  top: 40px;
+}
+#_swescrnbar {
+  max-width: 211px;
+  left: 0 !important;
+}
+#_swescrnbar div.ui-controlgroup-controls {
+  margin: 0 !important;
+}
+.ui-popup-pos-landscape{
+  top:70px !important;
+  left:75px !important;
+}
+.ui-popup-pos-portrait{
+  top:110px !important;
+  left:50px !important;
+}
+div.ui-btn-inline {
+  min-height: 27px;
+}
+.ui-li-heading,
+.siebui-mobile-msgbrdcst-heading h4 {
+  font-size: 16px !important;
+}
+.ui-simpledialog-container .ui-listview{
+  height : 100% !important;
+}
+.ui-btn {
+  margin: 2px;
+}
+.ui-field-contain {
+  border: 0;
+  display: table-row;
+  padding: 0;
+}
+label.ui-select, label.ui-input-text,
+.ui-field-contain input.ui-input-text, .ui-field-contain textarea.ui-input-text,
+.ui-field-contain img.applet-form-pick {
+  float: left;
+}
+/*Search Container*/
+.AppletSearchContainer div.ui-select {
+  z-index: 0;
+  height: 24px;
+}
+.AppletSearchContainer div.ui-input-search.ui-input-search input.ui-input-text{
+  font-size: 12px;
+  padding-top: 8px;
+}
+.AppletSearchContainer div.ui-select > div.ui-btn .ui-btn-inner .ui-btn-text{
+  padding: 5px 5px 4px 5px;
+  font-size: 12px;
+}
+div.NotSelected tr.AppletButtons,div>table>tbody>tr.AppletButtons,tr.AppletStylePopup>td>table>tbody>tr>td>table>tbody>tr,td.AppletHIFormBorder>span>table>tbody>tr.AppletButtons,
+.SiebelContentListContainer tr.AppletButtons, .SiebelDetailParentContainerRelatedItems .form-applet-header {
+  font-size: 20px !important;
+}
+input.ui-input-text,
+textarea.ui-input-text,
+.ui-select .ui-btn select {
+  min-height: 24px;
+  height: 24px;
+}
+.jqmgrid_row_bar input.ui-input-text,
+.jqmgrid_row_bar textarea.ui-input-text,
+.jqmgrid_row_bar select.jqmgrid_select,
+.jqmgrid_row_bar .ui-select,
+.jqmgrid_row_bar .ui-checkbox .ui-btn-inner,
+.jqmgrid_row_bar .ui-checkbox .ui-btn,
+.ui-checkbox, .ui-radio {
+  font-size: 12px;
+  padding: 0;
+}
+.ui-checkbox {
+  z-index: 0;
+}
+.jqmgrid_row_bar .ui-select .ui-btn-icon-right .ui-icon {
+  zoom: 0.8;
+}
+.jqmgrid_row_bar {
+  height: 30px !important;
+}
+.AppletButtons, .form-applet-header {
+  font-size: 20px !important ;
+  height: 4px !important;
+}
+.SiebelContentDetailContainer {
+  min-width: 100% !important;
+}
+.ui-btn-inner {
+  padding: 5px;
+}
+#_AppletFormBody .ui-btn-inner {
+  padding: 5px;
+}
+.ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li {
+  padding: .2em 15px;
+}
+.ui-controlgroup-horizontal .ui-btn .ui-btn-inner {
+  padding: 0;
+  border: 0;
+}
+.ui-select .ui-btn-inner {
+  padding-right: 45px !important;
+}
+.ui-field-contain label.ui-select,
+.ui-field-contain label.ui-input-text{
+  margin-top: .5em;
+}
+h5 {
+  margin: 0;
+  font-weight: normal;
+}
+#_FormAppletH1 .FormAppletText {
+  font-size:16px !important;
+}
+.SiebelMobileViewTabContainer #s_vctrl_div a {
+  height: 26px;
+  width: 120px;
+}
+@media all and (orientation:portrait)
+{
+  #_FormAppletMobileSection3 tr{
+    height: 25px !important;
+  }
+}
+@media all and (orientation:landscape)
+{
+  .SiebelContentListContainer{
+    width:100% !important;
+    height:100% !important;
+  }
+  .SiebelContentDetailContainer, .SiebelContentListContainerRelatedItemsOuterCont{
+    width:100% !important;
+    height:100% !important;
+    overflow-x: hidden !important;
+    overflow-y: scroll !important;
+  }
+  #_swescrnbar.simplenavBarStyle {
+    width: auto !important;
+    left :0% !important;
+    right : 40% !important;
+    min-width:400px;
+  }
+  #_swecontent.maxWidth{
+    height : 100% !important;
+  }
+  .ui-field-contain label.ui-select {
+    height: auto;
+  }
+  .ui-checkbox .ui-btn{
+    width:100% !important;
+  }
+  .SiebelContentListContainerRelatedItemsOuterCont #_AppletFormBody {
+    overflow-y:scroll !important;
+  }
+}
+.SiebelContentDetailContainer, .SiebelContentListContainerRelatedItemsOuterCont  {
+  overflow-x: hidden !important;
+  overflow-y: scroll !important;
+  min-width: 240px;
+}
+.SiebelContentListContainerRelatedItemsOuterCont #_AppletFormBody {
+   height : 250px !important;
+}
+.siebui-mobile-msgbrdcst-heading li {
+  padding : 6px !important;
+}
+.siebui-jqmNavbar{
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  min-width: 450px !important;
+}
+.ui-icon-check {
+  height: 16px !important;
+}
+.siebui-SiebelDetailParentContainerRelatedItemsOuterCont-sign{
+  height : 100%;
+  position : absolute;
+  top:-45px;
+  width : 100%;
+}
+.siebui-SiebelContentListContainerRelatedItemsOuterCont-sign{
+  height : 100%;
+  position : absolute;
+  top:-45px;
+}
+.siebui_SignatureHeader p {
+  margin-left :0%;
+}
+.siebui-SiebelContentListContainerRelatedItemsOuterCont-sign .form-applet-header td {
+  position : relative;
+  right : 70%;
+}
+.menuitem {
+  max-width: 150px;
+  right: -70%;
+}
+.siebui-popup-select-columns {
+  padding: 0;
+}
+.siebui-MsgBrdCst-Details-phone {
+  width : 70% !important;
+}
+.siebui-MsgBrdCst-Heading-phone {
+  left : 10% !important;
+  width : 70% !important;
+}
+.siebui-mobile-msgbrdcst_details {
+  margin-right: 2px;
+}
+.siebui-popup-filter{
+  font-size: 12px;
+  float: right;
+}
+.siebui-popup-button{
+  margin-right : 5px;
+}
+.jqmpopup_title{
+  font-size : 18px;
+}
+.Checkbox_Label .ui-controlgroup-label {
+  font-size: 12px !important;
+  padding-top:13px !important;
+}
+.SiebelContentListContainerRelatedItems #_AppletFormBody,
+.SiebelContentDetailContainer #_AppletFormBody {
+  overflow-y :scroll !important;
+  padding: 0 1.5em;
+}
+.SiebelContentListContainerRelatedItemsOuterCont tr.AppletButtons > .AppletTitle {
+  font-size : 18px !important;
+}
+.siebui_ServiceSignatureHeader  .mceGridLabel {
+  display : inline
+}
+.ui-selectmenu li {
+  height : 23.36px !important;
+}
+.ui-selectmenu {
+  overflow-y: auto!important;
+}
+.ui-grid-d .ui-block-e,
+.ui-grid-c .ui-block-d {
+  width: 15px;
+}
+.SiebelDetailParentContainerRelatedItemsOuterCont {
+   width:100%;
+   float:left;
+   height:100%;
+   -ms-touch-action: none;
+}

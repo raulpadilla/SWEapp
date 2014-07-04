@@ -20,3 +20,21 @@ SiebelApp.ThemeManager.addResource(
     }
 );
 */
+
+/*BADLIS theme testing*/
+/*SiebelApp.ThemeManager.addResource(
+ 
+    "SBL-MOBILE",
+ 
+    {
+ 
+        css : {
+ 
+            "ss-theme" : "files/custom/Bootstrap.css"
+ 
+        }
+ 
+    }
+ 
+ );
+*/

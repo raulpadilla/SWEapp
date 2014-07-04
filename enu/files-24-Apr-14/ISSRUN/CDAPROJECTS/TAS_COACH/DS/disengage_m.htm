@@ -1,0 +1,18 @@
+﻿<HTML><HEAD><TITLE></TITLE><SCRIPT></SCRIPT>
+<SCRIPT language=Javascript src="../jd/header.js"></SCRIPT>
+<SCRIPT language=Javascript src="../ds/disengage_x.js"></SCRIPT>
+<SCRIPT>
+var IMT=OL.InitMetaTable;
+var IMTS=OL.InitMetaTables;
+var SMT=OL.SetMetaTable;
+OL.StartMeta('disengage');
+
+function TAS_DISENGAGE(inC,inD,inDFT)
+{
+IMT(this, inC, inD, inDFT);
+}
+var TAS_DISENGAGE_t=new Array(1);
+TAS_DISENGAGE_t[0]=new TAS_DISENGAGE('10','Yes','DEFAULT');
+IMTS(1);
+SMT('TAS_DISENGAGE',TAS_DISENGAGE_t);
+</SCRIPT></HEAD><BODY onload="OL.EndMeta('disengage')"></BODY></HTML>

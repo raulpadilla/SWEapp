@@ -1,0 +1,4551 @@
+html,body {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    /*min-height: 768px;*/ /* 16599912*/
+    min-width: 1024px;
+}
+
+body {
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+/* General Overrides */
+
+img, a, input, textarea, select, label, button {
+    outline: none;
+}
+
+img{
+    border: 0;
+}
+
+img[src*="images/icon_normal"], /*service / agents*/
+img[src*="images/icon_low"], /*service / agents*/
+img[src*="images/icon_medium"], /*service / agents*/
+img[src*="images/icon_high"], /*service / agents*/
+img[src*="images/icon_critical"], /*service / agents*/
+img[src*="images/collab_ts_none.gif"],
+img[src*="images/icon_inboxtype_task.gif"],
+img[src*="images/icon_approval.gif"],
+img[src*="images/asterisk.gif"]{ /*??? should be done properly */
+    display: block;
+    margin: 0 auto;
+}
+img[src="images/spacer.gif"],
+img[src="images/btn_div_gray.gif"],
+img[src="images/btn_div.gif"] {
+    display:none;
+}
+
+input:focus[type="checkbox"]{
+  outline-width:1px; 
+  outline-style:solid;
+}
+
+
+select[name="HiddenItems"], select[name="ShownItems"]{
+    height:auto;
+    width:auto;
+}
+
+textarea{
+    min-width: 136px;
+}
+
+
+/* Widget Overrides */
+
+    .ui-widget,
+    .ui-menubar-item,
+    .ui-menu .ui-menu-item a {
+        font-size: 1em;
+    }
+
+    .ui-widget input, .ui-widget textarea, .ui-widget select, .ui-widget button,  /*font fam fix for buttons*/
+    input, textarea, select, button { 
+        font-family: inherit;
+    } 
+
+    .ui-dialog .ui-dialog-buttonpane button {
+        padding: 4px 5px;
+    }
+    .ui-dialog .ui-dialog-buttonpane .ui-button-text-only .ui-button-text {
+        padding: inherit;
+    }
+    .ui-dialog .ui-dialog-buttonpane .ui-button .ui-button-text {
+        __line-height: 1em;
+        padding:0;
+    }
+
+
+/* Dynatree Overrides */
+
+    ul.dynatree-container {
+        font-family: inherit;
+        font-size: inherit;
+    }
+
+/* HEADER */
+
+    #_sweappmenu {
+        height: 40px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+        clear: both;
+    }
+
+    .applicationMenu {
+        margin-left: 10px;
+        float: left;
+    }
+    .header-top {
+        float: right;
+    }
+    .header-middle {
+        float: left;
+        white-space: nowrap;
+    }
+    .header-middle #logo {
+        float: left;
+        margin-left: 2px;
+        margin-top: 8px;
+    }
+
+/* Top Menu */
+
+    .ui-menubar {
+        list-style: none;
+        padding-left: 0;
+        background: none;
+        border: 0px;
+    }
+    .ui-menubar .ui-button {
+        font-size: 0.8em;
+    }
+    .ui-menubar-item .ui-corner-all, .ui-menubar-item .ui-corner-bottom, .ui-menubar-item .ui-corner-right, .ui-menubar-item .ui-corner-br {
+        border-radius: 0 0 2px 2px;
+    }
+    .ui-menubar-item {
+    }
+    .ui-menubar-item:first-child {
+        border-left: 1px solid #262626;
+        border-left: 1px solid rgba(0, 0, 0, 0.2);
+    }
+    .ui-menubar-item:last-child {
+        border-right: 1px solid #4E4E4E;
+        border-right: 1px solid rgba(255, 255, 255, 0.07);
+    }
+    .ui-menubar-item, .siebui-appletmenu-item {
+        float: left;
+    }
+    .bannerDiv {
+        border-left: 1px solid #262626;
+        border-left: 1px solid rgba(0, 0, 0, 0.2);
+
+        float: right;
+        font-size: 0.8em;
+        height: 40px;
+        line-height: 40px;
+        margin: 0 0 0 10px;
+    }
+    .bannerDiv a,
+    .ui-menubar .ui-menubar-link {
+        border-left: 1px solid #4E4E4E;
+        border-left: 1px solid rgba(255, 255, 255, 0.07);
+        border-right: 1px solid #262626;
+        border-right: 1px solid rgba(0, 0, 0, 0.2);
+        height: 40px;
+        line-height: 40px;
+        overflow: hidden;
+    }
+
+    .bannerDiv a,
+    .ui-menubar .ui-button-text-only .ui-button-text {
+        font-weight: bold;
+        height: 40px;
+        line-height: 34px;
+        padding: 0 10px;
+    }
+    .bannerDiv a {
+        display: block;
+        text-decoration: none;
+        line-height: 40px;
+    }
+    /**/
+    .siebui-appletmenu.ui-menu .ui-menu-item a{
+    }
+    .siebui-appletmenu .ui-corner-all, .siebui-appletmenu .ui-corner-bottom, .siebui-appletmenu .ui-corner-right, .siebui-appletmenu .ui-corner-br {
+        border-radius: 2px;
+    }
+    .siebui-appletmenu.ui-menu .ui-menu-item a {
+        font-size: 0.8em;
+        padding: 4px 1em;
+        text-shadow:none;
+    }
+    .siebui-appletmenu {
+        left: auto !important;  /* ??? overruling centering of drop down menu, important for LHS nav! */
+    }
+
+    /* Top Menu : Drop Downs / Children */
+
+        #s_vctrl_div ul.dynatree-container ul,
+        #s_svctrl_div ul.dynatree-container ul,
+        .ui-menu{
+            -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.7), 0 2px 2px rgba(0, 0, 0, 0.4) inset;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.7), 0 2px 2px rgba(0, 0, 0, 0.4) inset;
+            border: 0;
+        }
+        .ui-menu .ui-corner-all, .ui-menu .ui-corner-bottom, .ui-menu .ui-corner-right, .ui-menu .ui-corner-br {
+            border-radius: 0;
+        }
+        .ui-menu li.siebui-appmenu-separator, .ui-menu li.siebui-appletmenu-separator {
+            padding-bottom:0;
+            border-top: 1px solid #262626;
+            border-top: 1px solid rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid #4E4E4E;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+        .ui-menu li.siebui-appmenu-separator a, .ui-menu li.siebui-appletmenu-separator a {
+            display: none;
+        }
+        .ui-menu .ui-menu-item a {
+            font-size: 0.9em;
+            padding: 4px 1em;
+            border: 0 none;
+            line-height: 1.3em;
+        }
+        #s_vctrl_div ul.dynatree-container ul a,
+        #s_svctrl_div ul.dynatree-container ul a{
+            padding: 4px 1em;
+            border: 0 none;
+        }
+        .ui-menu .ui-menu-item a.ui-state-hover, .ui-menu .ui-menu-item a.ui-state-focus, .ui-menu .ui-menu-item a.ui-state-active {
+            margin: 0 ; 
+        }
+        .ui-menu .ui-menu-item a.ui-state-disabled {
+            opacity: 1;
+        }
+        .ui-menu.ui-widget .ui-widget {
+            margin: -7px 0 0 2px;  /* submenus*/
+        }
+
+
+/* Header Msg String  */
+
+    #MsgLayer {
+        float: left;
+        height: 34px;
+        line-height: 1em;
+        margin: 2px 0 0;
+        overflow: hidden;
+        max-width: 210px;
+        line-height: 31px;
+    }
+    .CommStatusMessage {
+        box-shadow: 0 0 2px #000000 inset;
+        -webkit-box-shadow: 0 0 2px #000000 inset;
+        display: inline-block;
+        font-size: 0.8em;
+        font-weight: bold;
+        line-height: 1.5em;
+        padding: 3px 10px;
+    }
+
+    /* HTML Popup Msg Bar  */
+
+    #MsgBar{
+        box-shadow: 0 0 4px #000000;
+        -webkit-box-shadow: 0 0 4px #000000;
+        border-radius: 2px 2px 2px 2px;
+        display: block;
+        font-size: 0.75em;
+        font-weight: bold;
+        height: 18px;
+        line-height: 18px;
+        margin-top: 10px;
+        padding: 0;
+        text-align: center;
+        text-decoration: none;
+        width: 17px;
+    }
+
+    .header-top > span.ui-icon.ui-icon-info {
+        display: none;
+    }
+
+
+    .PDQToolbarContainer {
+        font-size: 0.9em;
+        float: right;
+        height: 40px;
+        line-height: 40px;
+        overflow: hidden;
+        padding-left: 10px;
+    }
+
+
+/* Header Search */
+    .siebui-search-esearch
+    {
+        float:left;
+        position:relative;
+        border-left:none;
+        margin-left:0px;
+    }
+    .siebui-search-icon
+    {
+        margin-top:-3px;
+        margin-right:8px;
+        margin-left:6px;
+        cursor:pointer;
+    }
+    .siebui-search-mover
+    {       
+        height:14px;
+        vertical-align:middle;
+        cursor:pointer;
+    }
+    .siebui-search-icon .ToolbarButtonOn
+    {
+        height:12px;
+    }
+    .siebui-search-esearch #srchDivCont
+    {
+        margin-top:2px;
+        margin-left:-2px;       
+        -moz-border-radius:0 0 6px 6px;
+        border-radius:0 0 6px 6px;
+        padding:0 10px!important;
+        line-height:28px;
+        min-height:30px;
+        width:auto;
+        overflow:hidden !important;
+        position:absolute;
+        white-space:nowrap;
+        z-index:9;
+    }
+    .siebui-search-srchheading
+    {
+        margin-left:3px;
+        font-size:1em;
+        font-weight:bold;
+        border: none !important;
+        vertical-align:middle;
+        cursor:pointer;
+    }
+    .siebui-search-heading
+    {
+        display: block;
+        list-style-type:none;
+        float:left;
+        font-weight: bold;
+        padding-left:5px;
+    }
+    .siebui-search-summary-heading
+    {
+        display: block;
+        list-style-type:none;
+        padding-left:2px;
+    }
+    .siebui-search-row-heading
+    {
+        border-width:2px;
+        border-collapse:separate;
+    }
+           .siebui-search-combobox-searchLookin 
+           {
+        border: none;
+        height:20px;
+        vertical-align: middle;
+        font-size: 1.1em;
+        padding:2px;
+        border-radius:2px 2px 2px 2px;
+        -webkit-border-radius:2px 2px 2px 2px;
+        -moz-border-radius:2px 2px 2px 2px;
+    }
+    
+    .siebui-search-textbox-srch {
+        margin-left:5px;
+        top:4px;
+        border: none;
+        padding:0 5px;
+        height:20px;
+        line-height:20px;
+        vertical-align: middle;
+        font-size: 1.1em;
+        border-radius:2px 2px 2px 2px;
+        -webkit-border-radius:2px 2px 2px 2px;
+        -moz-border-radius:2px 2px 2px 2px;
+    }
+    .siebui-search-dialog
+    {
+        font-size: 0.9em;
+    }
+    .siebui-search-button
+    {
+        border-radius:2px;
+        -webkit-border-radius:2px;
+        vertical-align: middle;
+        font-size: 1.1em;
+        height: 20px;
+        margin-top: 1px;
+        margin-left: 6px;
+        padding: 0 3px;
+        overflow: hidden;
+        cursor: pointer;
+        line-height: 20px;
+    }
+    .searchButton .siebui-search-image
+    {
+        vertical-align: top !important;
+    }
+    .siebui-search-headingtext-dialog
+    {
+        padding: 0 10px 0 0;
+        font-size: 1em;
+        font-weight: normal;
+    }
+
+    .siebui-search-newline-dialog, .siebui-search-refine-newline-dialog
+    {
+        display: block;
+        font-size: 0;
+        height: 0;
+        line-height: 0;
+        margin: 6px 0;
+        overflow: hidden; 
+    }
+
+    .siebui-popup-form-section
+    {   
+        margin: 2px 0 10px;
+        max-height: 200px;
+        overflow: auto;    
+    }
+    .siebui-popup-form-action
+    {  
+        display: inline-block;
+        overflow: hidden;
+        vertical-align: top;
+        width: 100px;
+    }
+    .siebui-search-source .siebui-popup-form-action
+    {
+        display: block;
+        width: 100%;
+    }
+
+    .siebui-popup-form-action input[type=text]{
+        margin-right: 7px;
+    }
+    .siebui-popup-form-action input[type="checkbox"] {
+        margin: -1px 4px 0 0;
+        vertical-align: middle;
+    }
+    .siebui-popup-form-action label {
+        line-height: 1em;
+        vertical-align: middle;
+    }
+    .siebui-popup-action-bar {  
+        display: block;
+        text-align: right;
+    }
+    .siebui-search-bigheadingtext-dialog
+    {
+        font-size: 1.2em;
+        font-weight:bold;
+    }
+    .siebui-search-text-dialog
+    {
+        font-size: 0.9em;
+    }
+    .siebui-search-bigtext-dialog
+    {
+        font-size: 1em;
+        font-weight:bold;
+    }
+    .siebui-search-colorbigtext-dialog
+    {
+        font-size: 0.9em;
+        font-weight:bold;
+    }
+    .siebui-search-itallictext-dialog
+    {
+        font-size: 0.9em;
+        font-style:italic;
+    }
+    .siebui-search-bigitallictext-dialog
+    {
+        font-size: 1em;
+        font-weight:bold;
+        font-style:italic;
+    }
+    .refineappletButton
+    {
+        position:relative;
+        float:left;
+    }
+    .paginationappletButton
+    {
+        position:relative;
+        float:right;
+    }
+    .siebui-search-refine-results-table
+    {
+        position:absolute;
+        left:1100px;
+    }
+/*end Search */
+
+    .PageItem {
+        float: left;
+    }
+
+    .PageItem select{
+        min-width: 60px;
+        border-radius: 2px 2px 2px 2px;
+        box-shadow: 0 0 5px #000000 inset;
+        -webkit-box-shadow: 0 0 5px #000000 inset;
+        font-size: 1em;
+        font-weight: bold;
+        line-height: 1em;
+        padding: 3px;  
+    }
+    .PageItem select option{
+        padding: 0 5px;
+    }
+
+    .PDQWidth {
+        padding-right: 5px;
+    }
+
+    .PageItemLabel {
+        padding-right: 5px;
+        float: left;
+    }
+
+/* Button Bar */
+
+    .siebui-button-toolbar{
+        clear: both;
+        height: 33px;
+        overflow-y: auto;
+        padding: 0 1px;
+    }
+
+    #Toolbar1,
+    #Toolbar1aaa, /* ??? */
+    #Toolbar1cccc, /* ??? */
+    #_sweviewbar {
+        font-size: 0;
+        float: left;
+        height: 30px;
+        max-width: 450px;
+        overflow: hidden;
+        padding: 3px 0 0 0;
+    }
+
+    #Toolbar1cccc, /* ??? */
+    #Toolbar1aaa, /* ??? */
+    #Toolbar1 {
+        font-size: inherit !important;
+        float: right;
+        clear: right;
+        max-width: 100%;
+        width: auto;  
+    }
+
+    .Tier2ToolbarContainer {
+        float: left;
+    }
+
+    .ToolbarButton { /* ??? */
+        float: left;
+    }
+    .ToolbarButton a {
+        padding: 2px 5px;
+        margin: 0 5px;
+        display: inline-block;
+    }
+
+    #Toolbar2 { /*???*/
+        clear: both;
+        display: none;
+    }
+
+    /*---------------------*/
+    /*Dashboard Definitions*/
+    /*---------------------*/
+    
+    .siebui-dashboard-container{
+        display:table;
+        width:100%;
+    }
+    
+    .siebui-dashboard-row {
+        display:table-row;
+    }
+    
+    .siebui-dashboard-cell {
+        display:table-cell;
+        min-width: 80px;
+        width:25%;
+    }
+    
+    .siebui-dashboard-navigation {
+        display:table-cell;
+        min-width: 200px;
+        width:20%;
+    }   
+    
+    .siebui-dashboard-update {
+        display:table-cell;
+        min-width: 150px;
+    }   
+    
+    .siebui-dashboard-content-indent {
+        height:87% !important;
+    }
+    
+    .siebui-dashboard-cell input
+    {
+        border:none !important;
+        background-color:Transparent !important;
+        font-size:1.0em;
+    }                   
+
+/* CTI Toolbar Begin */
+    
+    /* Toolbar Buttons (main menu!) / Shortcuts */ 
+
+    .com_siebel_applets_toolbar_CSSToolBarApplet_class {
+        overflow: auto;
+        white-space: nowrap;
+        display: inline;
+        opacity: 1;
+    }
+
+    /* CTI DIV Layout */
+    .com_siebel_applets_toolbar_CSSToolBarApplet_class > div {
+        float: left;
+        height: 26px;
+        line-height: 26px;
+    }
+
+    .com_siebel_applets_toolbar_CSSToolBarApplet_class > div:last-child {
+        clear: right;
+    }
+
+    .com_siebel_applets_toolbar_CSSToolBarApplet_class > div img,
+    img.ToolbarButtonOff,
+    img.ToolbarButtonOn,
+    .ToolbarButton a  {
+        cursor: pointer;
+        display: block;
+        float: left;
+        height: 16px;
+
+        border-radius: 2px;
+        -webkit-box-shadow: 0 1px 1px rgba(255,255,255,0.6);
+        box-shadow:         0 1px 1px rgba(255,255,255,0.6);
+        font-weight: bold;
+        padding: 3px;
+        margin: 0 1px 0 0;
+        vertical-align: middle;
+        cursor: pointer;
+        opacity: 0.8;
+
+        -webkit-transition: all 0.25s ease 0s;
+        -moz-transition: all 0.25s ease 0s;
+        transition: all 0.25s ease 0s;      
+    }
+    .com_siebel_applets_toolbar_CSSToolBarApplet_class > div img{
+    }
+    img.ToolbarButtonOff {
+        opacity: 0.3;
+    }
+    
+    ul.siebui-toolbar{  
+        padding: 0 1px;
+    }
+
+    ul.siebui-toolbar li{
+        float: left;
+        display: inline;
+    }
+
+    .com_siebel_applets_toolbar_CSSToolBarApplet_class > div img:hover,
+    .com_siebel_applets_toolbar_CSSToolBarApplet_class > div img:focus,
+    img.ToolbarButtonOn:hover,
+    img.ToolbarButtonOn:focus,
+    .ToolbarButton a:hover,
+    .ToolbarButton a:focus {
+        opacity: 1;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.25), inset 0 0 3px #fff;
+        box-shadow:         0 1px 2px rgba(0,0,0,0.25), inset 0 0 3px #fff;
+    }
+    .com_siebel_applets_toolbar_CSSToolBarApplet_class > div img:active,
+    img.ToolbarButtonOn:active,
+    .ToolbarButton a:active  {
+        opacity: 1;
+        -webkit-box-shadow: inset 0 1px 2px #aaa;
+        box-shadow:         inset 0 1px 2px #aaa;
+    }
+
+    img.ToolbarButtonOff:hover,
+    img.ToolbarButtonOff:focus{
+    }
+
+    .com_siebel_applets_toolbar_CSSToolBarApplet_class > div.siebui-commbtn-disabled img,
+    .com_siebel_applets_toolbar_CSSToolBarApplet_class > div div.siebui-commbtn-disabled img{
+        opacity: 0.45;
+        cursor: default!important;
+        -webkit-box-shadow: none!important;
+        box-shadow: none!important;
+        background: none!important;
+    }
+
+
+    #Media_Indicator, #InQueue_Time {  /* must overrule button defs, these are static! */
+        cursor: default;
+        -webkit-box-shadow: none!important;
+        box-shadow: none!important;
+        background: none!important;
+        border: 1px solid transparent!important;
+        opacity: 1!important;
+    }
+
+
+    /* CTI Top Level Button Container */
+    .commTopBtnContainer {
+    }
+
+    /* CTI Sideway Button Container */
+    .commSidewayBtnContainer {
+    }
+
+    /* CTI Subcommand DIV */
+    .com_siebel_applets_toolbar_CSSToolBarApplet_class>div>div {
+        float: left;
+    }
+
+    /* Separator Container */
+    .commSepContainer {
+        margin: 0 3px;
+    }
+
+    /* CTI Separator */
+    .commSep {
+        display: inline-block;
+        height: 18px;
+        line-height: 18px;
+        vertical-align: middle;
+    }
+
+    /* CTI Timer Container */
+    .commTimerContainer {
+        margin: 0 0 0 3px;
+    }
+
+    /* CTI Timer */
+    .commTimerSpan {
+        border-radius: 2px 2px 2px 2px;
+        display: inline-block;
+        font-family: monospace,verdana;
+        font-size: 11px;
+        height: 17px;
+        line-height: 16px;
+        padding: 0 5px;
+        vertical-align: middle;
+    }
+
+    /* CTI Edit Container */
+    .commEditContainer {
+    }
+    input.commEdit {
+        vertical-align: middle;
+        font-size: 10px;
+
+        border-radius: 2px;
+
+        margin-left: 4px;
+        padding: 2px 5px 
+    }
+    input.commEdit:active,
+    input.commEdit:focus,
+    input.commEdit:hover{
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1) inset;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1) inset;
+    }
+
+    /* CTI Combo Container */
+    .commComboContainer {
+        margin: 0 2px;
+    }
+    .commCombo {
+        vertical-align: middle;
+        border-radius: 2px 2px 2px 2px;
+        font-size: 10px;
+        font-weight: bold;
+        line-height: 1em;
+        padding: 2px;
+        width:15em!important;
+    }
+
+
+    /* CTI Image */
+
+    .com_siebel_applets_toolbar_CSSToolBarApplet_class>div>img {
+        padding: 3px 1px;
+    }
+
+    .com_siebel_applets_toolbar_CSSToolBarApplet_class>div>div>img {
+        __margin: 2px 1px;
+        __padding: 3px;
+    }
+
+    .commStatusBox {
+        font-weight:bold;
+        color:black;
+        font-size: 0.8em;
+        text-decoration:none;
+    }
+
+    /* floated */
+
+    .floatToolbar {
+        border-radius: 2px;
+        position: absolute;
+        z-index:9999;
+        width:250px;
+        padding: 10px;
+        white-space:nowrap;
+
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+        -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+        white-space:nowrap;
+        overflow:hidden !important;
+    }
+
+    .floatToolbar.com_siebel_applets_toolbar_CSSToolBarApplet_class > div {
+        margin: 2px 0;
+    }
+
+    .floatToolbar .commSepContainer{
+        display: none;
+    }
+
+    .floatToolbar #CommBtn_Initiate_Work_Item{
+        clear:left;
+    }
+    .floatToolbar .commComboContainer {
+        width: 98% !important;
+    }
+    .floatToolbar .commCombo {
+        width: 98% !important;
+    }
+
+    .siebui-call-from-ui-disabled {
+      text-decoration: none;
+      cursor: default;
+    }
+
+    .siebui-call-from-ui-enabled {
+      text-decoration: underline;
+      cursor: auto;
+    }
+    
+    .commMakeCallFromUIPopup {
+      /*user could change the size of make call popup here with !important*/
+    }
+    
+    #ui-dialog-title-comm_makecall_popup {
+      font-weight: bold;
+    }
+    /* CTI Toolbar End */
+
+
+/* Threadbar */
+
+
+    #_swethreadbar {
+        clear: both;
+        margin: 0;
+        height: 25px;
+        overflow: hidden;
+        padding: 0;
+    }
+
+    #_swethreadbar #siebui-threadbar {
+        float: left;
+        font-size: 10px;
+        margin: 0;
+        padding: 0 6px 0 0;
+    }
+
+    #_swethreadbar #siebui-threadbar li {
+        float: left;
+        list-style: none outside none;
+        margin-left: -10px;
+        padding-left: 10px;
+    }
+
+    #_swethreadbar .siebui-crumb {
+        text-shadow: 0 1px 0 #FFFFFF;
+        display: block;
+        line-height: 18px;
+        padding: 0 6px;
+    }
+
+    #_swethreadbar .siebui-crumb > a {
+        padding: 2px 6px 2px 0;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+    #_swethreadbar li:first-child .siebui-crumb > a {
+        padding-left:0;
+    }
+
+/* Screenbar */
+
+
+    #_swescrnbar {
+        width: auto;
+        height: 44px;
+
+        border-radius: 0;
+        background: none;
+
+        -webkit-box-shadow: none;
+        box-shadow: none;
+
+        padding: 0;
+
+        margin: 0 7px;
+        border: 0;
+        background: 0;
+    }
+
+    /* App Menu / Tab Bar - 1st level */
+
+    #s_sctrl {}
+
+    #s_sctrl div.ui-tabs,
+    #s_sctrl div.ui-tabs ul.ui-tabs-nav,
+    #s_sctrl div.ui-tabs ul.ui-tabs-nav li{
+        background: transparent;
+        border: 0 none;
+        border-radius: 0 0 0 0;
+        margin: 0;
+        padding: 0;
+    }
+
+    #s_sctrl #s_sctrl_tabScreen.ui-tabs ul.ui-tabs-nav{
+        font-size: 0.8em;
+    }
+
+    #s_sctrl #s_sctrl_tabScreen.ui-tabs ul.ui-tabs-nav li{
+        margin: 0 2px 0 0;
+    }
+
+    #s_sctrl #s_sctrl_tabScreen.ui-tabs ul.ui-tabs-nav li a{
+        cursor: pointer;
+        border-radius: 4px 4px 0 0;
+        height: 22px;
+        line-height: 22px;
+        padding: 0 10px;
+        vertical-align: middle;
+        -webkit-box-shadow: 0 1px 0 #f4f4f4 inset;
+        box-shadow: 0 1px 0 #f4f4f4 inset;
+        text-shadow: 0 1px 0 #f3f3f3;
+    }
+    #s_sctrl #s_sctrl_tabScreen.ui-tabs ul.ui-tabs-nav li.ui-state-hover a,
+    #s_sctrl #s_sctrl_tabScreen.ui-tabs ul.ui-tabs-nav li.ui-tabs-active a{
+        -webkit-box-shadow: 0 1px 0 #777777 inset;
+        box-shadow: 0 1px 0 #777777 inset;
+        text-shadow: 0 -1px 0 #000;
+
+        position: relative;
+        z-index: 2;  /*to hide the box shadow of sub menu bar*/
+    }
+
+    #s_sctrl #s_sctrl_tabScreen.ui-tabs ul.ui-tabs-nav li.ui-tabs-active a{
+        cursor: default;
+    }
+
+
+    /* 2nd level */
+
+
+    #s_sctrl #s_sctrl_tabView.siebui-empty-tabs,
+    #s_sctrl #s_sctrl_tabView{
+        height: 21px;
+        position: relative;
+        z-index: 3;
+        -webkit-box-shadow: 0 2px 2px #CCCCCC;
+        box-shadow: 0 2px 2px #CCCCCC;
+    }
+    #s_sctrl #s_sctrl_tabView.ui-tabs ul.ui-tabs-nav{
+        font-size: 0.8em;
+    }
+
+    #s_sctrl #s_sctrl_tabView.ui-tabs ul.ui-tabs-nav li a{
+        font-weight: bold;
+        padding: 0 7px;
+        height: 21px;
+        line-height: 21px;
+        position: relative;
+        font-weight: normal;
+    }
+    #s_sctrl #s_sctrl_tabView.ui-tabs ul.ui-tabs-nav li a:hover{
+        text-decoration: underline;
+    }
+
+    #s_sctrl #s_sctrl_tabView.ui-tabs ul.ui-tabs-nav li.ui-tabs-active a{
+        cursor: default;
+    }
+    #s_sctrl #s_sctrl_tabView.ui-tabs ul.ui-tabs-nav li.ui-tabs-active a:hover{
+        text-decoration: none;
+    }
+
+    #s_sctrl #s_sctrl_tabView.ui-tabs ul.ui-tabs-nav li.ui-tabs-active a:after{
+        font-size: 0;
+        height: 6px;
+        left: 50%;
+        line-height: 6px;
+        margin-left: -7px;
+        position: absolute;
+        top: 21px;
+        width: 15px;
+    }
+
+    #s_sctrl #s_sctrl_tabScreen.ui-tabs ul.ui-tabs-nav li a img{
+        display: inline-block;
+        font-size: 0;
+        height: 16px;
+        line-height: 22px;
+        margin: -3px 4px 0 0;
+        padding: 0;
+        vertical-align: middle;     
+    }   
+
+
+    /* Applet Menu 3rd level */ /*s_svctrl is for 4th level*/
+
+        #s_vctrl_div,
+        #s_svctrl_div{
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        #s_vctrl_div ul.dynatree-container,
+        #s_sctrl div.ui-tabs,
+        #s_vctrl_div div.ui-tabs ul.ui-tabs-nav,
+        #s_vctrl_div div.ui-tabs ul.ui-tabs-nav li{
+            background: none;
+            border: none;
+            border-radius: 0 0 0 0;
+            margin: 0;
+            padding: 0;
+        }
+        
+        #s_svctrl_div ul.dynatree-container,
+        #s_svctrl_div div.ui-tabs ul.ui-tabs-nav,
+        #s_svctrl_div div.ui-tabs ul.ui-tabs-nav li{
+            background: #F0F0F0;
+            border: none;
+            border-radius: 0 0 0 0;
+            margin: 0;
+            padding: 0;
+        }
+        
+        #s_vctrl_div ul.dynatree-container,
+        #s_vctrl_div #s_vctrl_div_tabScreen,
+        #s_svctrl_div ul.dynatree-container,
+        #s_svctrl_div #s_svctrl_div_tabView{
+            border: none;
+            margin: 0;
+            padding: 0;
+            border-radius: 0;
+        }
+
+        #s_vctrl_div ul.dynatree-container > li,
+        #s_vctrl_div #s_vctrl_div_tabScreen.ui-tabs ul.ui-tabs-nav,
+        #s_svctrl_div ul.dynatree-container > li,
+        #s_svctrl_div #s_svctrl_div_tabView.ui-tabs ul.ui-tabs-nav{
+            font-size: 0.8em;
+        }
+
+        #s_vctrl_div ul.dynatree-container > li,
+        #s_vctrl_div #s_vctrl_div_tabScreen.ui-tabs ul.ui-tabs-nav li,
+        #s_svctrl_div ul.dynatree-container > li,
+        #s_svctrl_div #s_svctrl_div_tabView.ui-tabs ul.ui-tabs-nav li{
+            margin: 0 1px 0 0;
+        }
+
+        #s_vctrl_div ul.dynatree-container > li > span > a,
+        #s_vctrl_div #s_vctrl_div_tabScreen.ui-tabs ul.ui-tabs-nav li a,
+        #s_svctrl_div ul.dynatree-container > li > span > a,
+        #s_svctrl_div #s_svctrl_div_tabView.ui-tabs ul.ui-tabs-nav li a{
+            cursor: pointer;
+            border-radius: 4px 4px 0 0;
+            height: 19px;
+            line-height: 18px;
+            padding: 0 10px;
+            vertical-align: middle;
+            -webkit-box-shadow: 0 1px 0 #f4f4f4 inset;
+            box-shadow: 0 1px 0 #f4f4f4 inset;
+            text-shadow: 0 1px 0 #f3f3f3;
+        }
+        
+        #s_vctrl_div ul.dynatree-container > li > span > a:hover,
+        #s_vctrl_div ul.dynatree-container > li > span > a:focus,
+        #s_vctrl_div ul.dynatree-container > li > span.screen-tab-selected > a,
+        #s_vctrl_div #s_vctrl_div_tabScreen.ui-tabs ul.ui-tabs-nav li.ui-state-hover a,
+        #s_vctrl_div #s_vctrl_div_tabScreen.ui-tabs ul.ui-tabs-nav li.ui-tabs-active a,
+        #s_svctrl_div ul.dynatree-container > li > span > a:hover,
+        #s_svctrl_div ul.dynatree-container > li > span > a:focus,
+        #s_svctrl_div ul.dynatree-container > li > span.screen-tab-selected > a,
+        #s_svctrl_div #s_svctrl_div_tabView.ui-tabs ul.ui-tabs-nav li.ui-state-hover a,
+        #s_svctrl_div #s_svctrl_div_tabView.ui-tabs ul.ui-tabs-nav li.ui-tabs-active a{
+            -webkit-box-shadow: 0 1px 0 #777777 inset;
+            box-shadow: 0 1px 0 #777777 inset;
+            text-shadow: 0 -1px 0 #000;
+        }
+
+        #s_vctrl_div ul.dynatree-container > li > span.screen-tab-selected a,
+        #s_vctrl_div #s_vctrl_div_tabScreen.ui-tabs ul.ui-tabs-nav li.ui-tabs-active a,
+        #s_svctrl_div ul.dynatree-container > li > span.screen-tab-selected a,
+        #s_svctrl_div #s_svctrl_div_tabView.ui-tabs ul.ui-tabs-nav li.ui-tabs-active a{
+            cursor: default;
+        }
+
+        #s_vctrl_div #s_vctrl_div_tabScreen.ui-tabs ul.ui-tabs-nav li a img,
+        #s_svctrl_div #s_svctrl_div_tabView.ui-tabs ul.ui-tabs-nav li a img{
+            display: inline-block;
+            font-size: 0;
+            height: 16px;
+            line-height: 22px;
+            margin: -3px 4px 0 0;
+            padding: 0;
+            vertical-align: middle;     
+        }
+
+
+        /* Applet Menu 4th level */
+
+
+        #s_vctrl_div #s_vctrl_div_tabView.siebui-empty-tabs{
+            display: none;
+        }
+        #s_vctrl_div #s_vctrl_div_tabView{
+            padding: 3px 2px;
+            border-radius: 0;
+            border-width: 0 1px 0 1px;
+        }
+        #s_vctrl_div #s_vctrl_div_tabView.ui-tabs ul.ui-tabs-nav{
+            font-size: 0.8em;
+        }
+
+        #s_vctrl_div #s_vctrl_div_tabView.ui-tabs ul.ui-tabs-nav li{
+            margin: 0 1px 0 0;
+        }
+
+        #s_vctrl_div #s_vctrl_div_tabView.ui-tabs ul.ui-tabs-nav li a{
+            padding: 0 4px;
+            height: 18px;
+            line-height: 18px;
+            position: relative;
+            font-weight: normal;
+            border-radius: 2px;
+        }
+        #s_vctrl_div #s_vctrl_div_tabView.ui-tabs ul.ui-tabs-nav li a:hover,
+        #s_vctrl_div #s_vctrl_div_tabView.ui-tabs ul.ui-tabs-nav li.ui-tabs-active a{
+            text-decoration: none;
+        }
+
+        .siebui-sub-applets{  
+            margin-top: 1px;
+            margin-bottom: 6px;
+            padding: 5px 3px 0;
+            min-width: 100%;
+            clear: left;
+            float: left;  /* horiz. Scrollbar */
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+
+
+    /* LHS TREE NAV Applet Menu 3rd level */
+
+        #s_vctrl_div ul.dynatree-container,
+        #s_svctrl_div ul.dynatree-container {
+            background: none;
+            border: none;
+            float: left;
+            overflow: visible;
+            font-size: 0.9em;
+        }
+        #s_vctrl_div ul.dynatree-container > li,
+        #s_svctrl_div ul.dynatree-container > li {
+            float: left;
+            padding: 0;
+        }
+        #s_vctrl_div span.dynatree-node,
+        #s_svctrl_div span.dynatree-node {
+            display: block;
+        }
+        #s_vctrl_div ul.dynatree-container > li li > span > a,
+        #s_vctrl_div ul.dynatree-container > li > span > a,
+        #s_svctrl_div ul.dynatree-container > li li > span > a,
+        #s_svctrl_div ul.dynatree-container > li > span > a{
+            display: block;
+            height: 2em;
+            line-height: 2em;
+            margin: 0;
+            padding: 0 10px;
+        }
+
+        #s_vctrl_div ul.dynatree-container > li ul,
+        #s_svctrl_div ul.dynatree-container > li ul {
+            font-weight: bold;
+            display: none;
+            z-index: 1;
+            margin: 0;
+            padding: 3px;
+            position: absolute;
+            border-radius: 0 4px 4px 4px;
+            -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5), 0 -1px 0 #888888 inset;
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5), 0 -1px 0 #888888 inset;
+        }
+        #s_vctrl_div ul.dynatree-container > li:hover ul,
+        #s_svctrl_div ul.dynatree-container > li:hover ul {
+            display: block;
+        }
+        #s_vctrl_div ul.dynatree-container > li li span.view-tab-selected,
+        #s_svctrl_div ul.dynatree-container > li li span.view-tab-selected {
+            background: url(../images/sitemapBullet.png) no-repeat 3px center;      
+        }
+        #s_vctrl_div ul.dynatree-container > li li span.view-tab-selected a,
+        #s_svctrl_div ul.dynatree-container > li li span.view-tab-selected a {
+            background: rgba(255, 255, 255, 0.2) !important;
+            cursor: default;
+        }
+
+/*  Main Content */
+
+
+    #_swecontent {
+        clear: both;
+        min-width: 1010px;
+        left: 7px;
+        right: 7px;
+        top: 141px;
+        bottom: 10px;
+        overflow: hidden;
+        position: absolute;
+        -webkit-box-shadow: 0 5px 4px #DDDDDD;
+        box-shadow: 0 5px 4px #DDDDDD;
+    }
+
+    #_sweview {
+        font-size: 1em;
+        padding: 0 2px 0;
+        height:100%;
+        overflow:auto;
+    }
+    #_sweview.siebui-indent-content {
+        padding-left: 2px;
+    }
+    #_sweview > div{
+        height: auto!important;  /* inline style override */
+    }
+
+    #_svf0 {
+        __overflow: auto;  /* ??? removed b/c of sitemap */
+        __overflow: hidden; /* ??? removed for horizontal SB */
+    }
+    #_svf0 > div{ /* ??? not good fix for horizontal SB */
+/*
+    float: left;
+    width: 100%;
+*/
+    }
+
+
+/* UI Widget overrides */
+
+
+    .ui-widget {
+      font-family: Arial;
+      font-size: 1em;
+    }
+
+
+/* Applet Styles */
+/* Normal Applet, Pick, MVG */
+
+    .siebui-applet,
+    .LayoutStyleMin,
+    .LayoutStyleMax,
+    .LayoutStyleHide,
+    .siebui-applet,
+    .AppletBlock,
+    div.siebui-screen-hp-applet,
+    div.NotSelected, 
+    div.Selected {
+        margin: 2px 2px 10px 2px;
+        -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        outline: none!important;
+    }
+    
+    div[role="form"],   /* ??? really bad, but I need to catch all of them; must be fixed in the webtmpl !!!  */
+    .siebui-applet-minimize,
+    .siebui-applet-maximize{
+        outline: none!important;
+    }
+
+    .siebui-applet,
+    div.siebui-screen-hp-applet,
+    div.NotSelected, div.Selected{
+        border-radius: 10px;
+    }
+    
+    .ui-dialog div.Selected,
+    .ui-dialog div.NotSelected{
+        border:none; 
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    .AppletStylePopup .siebui-applet-active, /*popups*/
+    .AppletStylePopup .siebui-applet-nonactive{
+        border-radius: 0;
+    }
+
+
+    div.NotSelected .NotSelected,   /* because of nesting */
+    div.Selected .Selected {
+        border: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    div.Selected .Selected {        /* because of nesting */
+        border: none;
+    }
+
+    .AppletBlock{
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        padding: 10px 20px 10px 35px;
+        border-radius: 10px;
+        font-style: italic;
+        cursor: help;
+        position:relative;
+        min-height: 1em;
+    }   
+
+    .siebui-screen-hp-content,
+    .AppletHIFormBorder{  /* eg. Homepage */
+        border-radius: 0 0 10px 10px;
+    }
+
+    .LayoutStyleMin,
+    .LayoutStyleMax,
+    .LayoutStyleHide,
+    .AppletBack .AppletHIFormBorder{   /* bottom applets require fullly rounded borders */
+        border-radius: 10px;
+    }
+
+    table.fc-header, /* cal */
+    tr.siebui-applet-buttons,
+    tr.AppletButtons{
+        border-radius: 10px 10px 0 0;
+        font-weight: normal;
+        font-size: 1em;
+        white-space: nowrap;
+        display: table;
+        width: 100%;
+    }
+
+    tr.siebui-applet-buttons td,
+    tr.AppletButtons td{
+        height: 40px;
+        padding: 1px 0;
+        vertical-align: middle;
+        text-align: left;
+    }
+    tr td.siebui-align-right{
+        text-align: right;
+    }
+
+    tr.siebui-applet-buttons .siebui-screen-hp-title,
+    tr.AppletButtons .AppletTitle:first-child {  /* ??? bad hack */
+        font-size: 1.3em;
+        padding: 0 10px 0 15px;
+    }
+
+    tr.AppletButtons td .searchContainer {
+        padding-right: 20px;
+    }
+    .SearchCtrl {
+        position: relative;
+    }   
+    div.searchButton{ /*popup search button*/
+        height: 23px;
+        line-height: 23px;
+        padding: 0 3px!important;       
+    }
+    div.searchButton img{
+        vertical-align: middle;
+    }
+    .floatToolbar.searchButton{
+        width: auto;
+        border: 1px solid #999;
+        border-radius: 4px 4px 4px 4px;
+        min-height: 30px;
+        line-height: 28px;
+    }
+
+    tr.AppletButtons .AppletTitle .siebui-ctrl-link a {
+        text-decoration: none;
+    }
+    tr.AppletButtons .AppletTitle .siebui-ctrl-link a:hover {
+        text-decoration: underline;
+    }
+
+
+    table.AppletBack .AppletHIFormBorder {
+        padding-bottom: 15px /* space to border */
+    }
+
+    .siebui-applet-minimize div.NotSelected tr.AppletButtons,
+    .siebui-applet-minimize div.Selected tr.AppletButtons{
+        border-radius: 9px;  /* fits better to parent's 10px */
+        border: none;
+    }
+
+    /* TASK UI */
+
+    .siebui-applet-taskui-h{
+        top: 0;
+        position: absolute;
+        z-index: 2;
+
+        margin-left: 8px;
+        border-radius: 0 0 4px 4px;
+        font-size: 1.4em;
+        height: 2em;
+        line-height: 2em;
+        padding: 0 1em;
+        text-shadow: 0 -1px #000000;
+        -webkit-box-shadow: 1px 0 7px #aaa;
+        box-shadow: 1px 0 7px #aaa;
+    }
+    .siebui-applet-taskui-spacer{
+        height: 2em;
+        width: 1px;
+    }
+    .siebui-taskui-title{
+        padding-left: 0.5em;
+    }
+    /**/
+    .siebui-view-main{
+        margin: 10px;
+        padding: 2px;
+        border-radius: 10px;
+        -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        outline: none!important;
+    }
+    .siebui-view-main > div{
+        padding: 0 10px;
+    }
+    .siebui-view-main > div:last-child { /* for bottom controls if inside DIV vs. TABLE */
+        padding: 0;
+    }   
+
+    /**/
+    .siebui-taskui-playbar-bottom,
+    .siebui-taskui-playbar-top {
+        text-align: right;
+    }
+    .siebui-taskui-playbar-bottom {
+        margin-top: 20px;
+    }
+    .siebui-view-main .siebui-taskui-playbar-bottom .siebui-applet-button,
+    .siebui-view-main .siebui-taskui-playbar-top .siebui-applet-button{
+        margin: 0 0 0 5px;
+    }
+    .siebui-taskui-playbar-bottom button,
+    .siebui-taskui-playbar-top button{
+        padding: 1px 4px;
+    }
+    .siebui-taskui-playbar-top .siebui-applet-button:last-child button{
+        border-radius:2px 8px 2px 2px; 
+    }
+    .siebui-taskui-playbar-bottom .siebui-applet-button:last-child button{
+        border-radius:2px 2px 8px 2px; 
+    }
+    .siebui-view-controls {
+        border: 0 none;
+        border-spacing: 0;
+        padding: 0;
+    }
+    /**/
+    .siebui-view-main .NotSelectedForm{
+        border: 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    .siebui-view-main .NotSelectedForm .AppletHIFormBorder{ 
+        background: none;
+        border-radius: none;
+        padding: 0 10px 20px;
+    }
+
+    .siebui-view-main .NotSelectedForm .FormSection {
+        margin: 10px 0 3px 0;
+        font-weight: bold;
+    }
+
+    .siebui-view-main .NotSelectedForm .mceGridField {
+        line-height: 1.3em;
+        margin-top: 2px;
+    }
+
+
+    /* Random Applet Stuff */
+
+        .AppletBottom {         /*??? Spacer only ???*/
+            display: none;
+        }
+
+        td#siebui-sideapplet{
+            padding-left: 5px;
+        }
+        td#siebui-sideapplet > div{
+            __width: auto!important; 
+        }
+
+    /* HOME PAGE Calendar */
+
+        .calendarBorder tr.AppletButtons td{
+            height: auto;
+            padding-bottom: 2px;
+        }   
+        .calendarBorder .calendarField {
+            padding: 1px 0;
+        }
+        .calendarBorder .calendarField button{
+            margin-top: -1px;
+            padding: 3px 4px;
+        }
+        .calendarBorder tr.AppletButtons button{
+            margin-top: 1px;
+            padding: 0 4px 1px;     
+        }
+        .siebui-inp-popup-parent{
+            position: relative;
+        }
+        .siebui-cal-pickrange .calendarField input{
+            margin: 0;
+        }
+        td.calendarLabel,
+        tr.AppletButtons td.siebui-cal-daterange{
+            padding-left: 10px;
+            font-size: 0.9em;
+        }
+        
+        .siebui-button-sep-05{
+            padding: 0 0 0 0.2em;
+        }
+        .siebui-button-sep-10{
+            padding: 0 0 0 0.5em;
+        }
+        td.siebui-button-seperator,
+        .AppletButtons.siebui-appbutton-seperator {
+            padding: 0 3px;
+        }
+
+        /**/
+
+        #dvPortalCalendarDayScroll{
+            border-radius: 0 0 10px 10px;
+            -webkit-box-shadow: 0 1px 1px #ddd inset;
+            box-shadow: 0 1px 1px #ddd inset;
+        }
+        .calendarBorder2{
+            padding: 5px 2px;
+        }
+        .calendarBorder2 td.calendarInterval{
+            padding: 2px 2px 4px 2px;
+        }
+        .calendarBorder2 td.calendarInterval a{
+            font-size: 0.9em;
+        }
+        .calendarBorder2 td.calendarTileSolidTop,
+        .calendarBorder2 td.calendarTileSolidTopBottom{
+            padding: 2px 5px 4px 2px;
+        }
+        .calendarBorder2 td.calendarTileSolidTop img,
+        .calendarBorder2 td.calendarTileSolidTopBottom img{
+            padding-right: 1px;
+            opacity: 0.2;
+            vertical-align: middle;
+        }
+        .calendarBorder2 td.calendarTileSolidTop a,
+        .calendarBorder2 td.calendarTileSolidTopBottom a{
+            font-size: 0.9em;
+            text-decoration: none;
+        }
+        .calendarBorder2 td.calendarTileSolidTop a:hover,
+        .calendarBorder2 td.calendarTileSolidTopBottom a:hover{
+            text-decoration: underline;
+        }
+
+
+    /* Applet Button Row */
+
+
+        .siebui-button-secondary a, /* eCfg */
+        .fc-button.fc-button-prev, /* cal */
+        .fc-button.fc-button-next, /* cal */
+        .siebui-editLayout button.appletButton,
+        .ui-jqgrid .ui-pg-button,
+        span.siebui-link-icon-d a,
+        span.siebui-link-icon-e a,
+        span.siebui-btn-icon-d a,
+        span.siebui-btn-icon-e a{
+            height: 16px;
+            border-radius: 2px;
+            -webkit-box-shadow: 0 1px 1px rgba(255,255,255,0.6);
+            box-shadow:         0 1px 1px rgba(255,255,255,0.6);
+            font-weight: bold;
+            padding: 0 7px;
+            margin-right: 7px;
+            vertical-align: middle;
+            cursor: pointer;
+            display: inline-block;
+            -webkit-transition: all 0.25s ease 0s;
+            -moz-transition: all 0.25s ease 0s;
+            transition: all 0.25s ease 0s;
+        }
+        .siebui-editLayout button.appletButton{
+            -webkit-box-shadow: 0 1px 1px #FFFFFF;
+            box-shadow: 0 1px 1px #FFFFFF;
+            font-weight: normal;
+            height: auto;
+        }
+
+        .siebui-button-secondary a:hover, /* eCfg */
+        .siebui-button-secondary a:focus, /* eCfg */
+        .fc-button.fc-button-prev:hover,
+        .fc-button.fc-button-prev:focus, /* cal */
+        .fc-button.fc-button-next:hover,
+        .fc-button.fc-button-next:focus, /* cal */
+        .siebui-editLayout button.appletButton:hover,
+        .ui-jqgrid .ui-pg-button.ui-state-hover,
+        span.siebui-link-icon-e a:hover,
+        span.siebui-link-icon-e a:focus,
+        span.siebui-btn-icon-e a:hover,
+        span.siebui-btn-icon-e a:focus{
+            -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.25), inset 0 0 3px #fff;
+            box-shadow:         0 1px 2px rgba(0,0,0,0.25), inset 0 0 3px #fff;
+        }
+
+        .siebui-button-secondary a:active, /* eCfg */
+        .fc-button.fc-button-prev:active, /* cal */
+        .fc-button.fc-button-next:active, /* cal */
+        .siebui-editLayout button.appletButton:active,
+        span.siebui-link-icon-e a:active,
+        span.siebui-btn-icon-e a:active{
+            -webkit-box-shadow: inset 0 1px 2px #aaa;
+            box-shadow:         inset 0 1px 2px #aaa;
+        }       
+        span.siebui-link-icon-d a img,
+        span.siebui-link-icon-e a img,
+        span.siebui-btn-icon-d a img,
+        span.siebui-btn-icon-e a img{
+            vertical-align: top;
+        }
+        tr.AppletButtons td > button,
+        tr.AppletBack td > button {
+            margin: 0 2px;
+        }
+
+        span.siebui-link-icon-d a,
+        span.siebui-btn-icon-d a{
+            opacity: 0.25;
+            -webkit-box-shadow: none!important;
+            box-shadow: none!important;
+            cursor: default!important;
+        }
+        
+
+        div.AppletHIListBorder {
+            position: relative;         /*???*/
+        }
+
+
+        table.AppletBackTable {
+            margin-top: 7px;
+        }
+        table.AppletBackTable tr.AppletBack > td {
+            padding: 1px 0;
+        }
+
+        tr.AppletBack td.AppletMenu:first-child,
+        tr.AppletButtons td.AppletMenu:first-child {
+            padding: 1px 10px;
+        }
+
+        table.GridBack{
+            margin-right: 10px;             
+        }
+
+
+        /* Buttons */
+
+            .cke_skin_kama .cke_dialog_ui_hbox a.cke_dialog_ui_button,
+            .ui-dialog .ui-dialog-buttonset button,
+            .fc-button, /* cal */
+            .AppletMenu span.miniBtnUIC > button,
+            span.miniBtnUIC > a, /*???*/
+            .appletButton,
+            .appletButtonDis{
+                white-space: nowrap;
+
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+
+                -webkit-border-radius: 2px;
+                -moz-border-radius: 2px;
+                border-radius: 2px;
+                cursor: pointer;
+                display: inline-block;
+                font-family: tahoma;
+                font-size: 0.9em;
+                font-weight: normal;
+
+                padding: 4px 5px;
+                text-align: center;
+                text-decoration: none;
+                
+                transition: all 0.25s ease;
+                -moz-transition: all 0.25s ease;
+                -webkit-transition: all 0.25s ease;
+
+                -webkit-box-shadow: 0 0 1px rgba(0,0,0,0.2);
+                box-shadow: 0 0 1px rgba(0,0,0,0.2);
+                vertical-align: middle;
+            }
+            .AppletMenu span.miniBtnUIC > button{
+                margin: 0 10px;
+            }
+
+            .cke_skin_kama .cke_dialog_ui_hbox a.cke_dialog_ui_button:hover,
+            .ui-dialog .ui-dialog-buttonset button.ui-state-hover,
+            .fc-button:hover,
+            .fc-button:focus, /* cal */
+            .AppletMenu span.miniBtnUIC > button:hover,
+            .AppletMenu span.miniBtnUIC > button:focus,
+            span.miniBtnUIC > a:hover,
+            span.miniBtnUIC > a:focus,
+            .appletButton:hover,
+            .appletButton:focus{
+                -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.25), inset 0 1px 1px #eee;
+                box-shadow: 0 1px 2px rgba(0,0,0,0.25), inset 0 1px 1px #eee;
+            }
+
+            .cke_skin_kama .cke_dialog_ui_hbox a.cke_dialog_ui_button:active,
+            .ui-dialog .ui-dialog-buttonset button.ui-state-active,
+            .fc-button:active, /* cal */
+            .AppletMenu span.miniBtnUIC > button:active,
+            span.miniBtnUIC > a:active, /*???*/
+            .appletButton:active {
+                -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.3) inset;
+                box-shadow: 0 1px 2px rgba(0,0,0,0.3) inset;            
+            }
+
+            .fc-button.fc-state-disabled, /* cal */
+            .appletButtonDis {
+                cursor: default!important;
+                -webkit-box-shadow: 1px 1px 0px 0px rgba(255, 255, 255, 0.5)!important;
+                box-shadow: 1px 1px 0px 0px rgba(255, 255, 255, 0.5)!important;
+                text-shadow: none!important;
+            }
+
+            .AppletMenu span.miniBtnUIC button:after{
+                position: relative;
+                top: -1px;
+                right: -3px;
+            }
+
+
+/* jQuery Grid */
+
+    .ListAppletRow,         /* needs to be set jctrls.css!! */      
+    .ListAppletHeader{
+    }
+    .siebui-list-textareactrl-nofocus {
+        height: 20px;
+    }
+
+    .ui-jqgrid {
+        border: none;
+        border-radius: 0 0 10px 10px;
+    }
+    .ui-jqgrid .ui-jqgrid-view {
+        font-size: 1em;
+    }
+
+    .ui-jqgrid .ui-corner-all, .ui-jqgrid .ui-corner-bottom,.ui-jqgrid  .ui-corner-right, .ui-jqgrid .ui-corner-br,
+    .ui-jqgrid .ui-jqgrid-titlebar{
+        border-radius: 0;
+    }
+
+    .ui-jqgrid .ui-jqgrid-title {
+        margin: 0 0 0 7px;
+        line-height: 24px;
+        font-weight: normal;
+        font-size: 0.9em;
+    }
+
+    .ui-jqgrid .ui-jqgrid-titlebar-close {
+        width: 25px;
+        height: 24px;
+    }
+
+    .ui-jqgrid .ui-jqgrid-titlebar-close .ui-icon {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .ui-jqgrid .ui-jqgrid-titlebar-close.ui-state-hover,.ui-jqgrid .ui-jqgrid-titlebar-close {
+        background: none;
+        border: 0;
+        padding: 0 !important;
+    }
+
+    .ui-jqgrid .ui-jqgrid-titlebar-close span {
+        margin: 2px 0 0 6px;
+        background: url(../images/moduleOpenClose.png) no-repeat -15px 5px;
+    }
+
+    .ui-jqgrid .ui-jqgrid-titlebar-close span:focus,.ui-jqgrid .ui-jqgrid-titlebar-close span:hover {
+        background: url(../images/moduleOpenClose.png) no-repeat 4px 5px
+    }
+
+    .ui-jqgrid .ui-jqgrid-titlebar-close span.ui-icon-circle-triangle-s:focus,.ui-jqgrid .ui-jqgrid-titlebar-close span.ui-icon-circle-triangle-s:hover {
+        background: url(../images/moduleOpenClose.png) no-repeat 4px -18px
+    }
+
+    .ui-jqgrid .ui-jqgrid-titlebar-close span.ui-icon-circle-triangle-s {
+        background: url(../images/moduleOpenClose.png) no-repeat -15px -18px
+    }
+
+    /* TH */
+
+    .ui-jqgrid .ui-jqgrid-htable th {
+    }
+    .ui-jqgrid .ui-jqgrid-htable th:last-child {
+        __border-right-color: transparent; /*may leave an open cell!*/
+    }
+
+    .ui-jqgrid .ui-jqgrid-htable th div {
+        line-height: 22px; /* matches inline style! */
+        height: 22px;
+        font-size: 0.8em;
+    }
+    
+    .ui-jqgrid .ui-jqgrid-htable th div .s-ico {
+        position: absolute;
+        top: 3px;
+        right: 14px;
+    }
+    .ui-jqgrid .ui-icon-asc {
+        margin-left: 1px;  /* fix for top sort arrow */
+    }
+
+
+    /* BODY */
+
+    .ui-jqgrid .ui-jqgrid-bdiv {
+        font-size: 0.9em;
+        overflow-x: scroll;
+    }
+
+    .ui-jqgrid .ui-jqgrid-btable {
+    }
+
+    .ui-jqgrid tr.ui-row-ltr {
+        height: 20px; /* = matches inline ROW height style */
+    }
+
+    .ui-jqgrid tr.ui-row-ltr td {
+        height: 100%;
+        line-height: 20px; /* matches inline ROW height style */
+        padding: 0;
+        text-overflow: ellipsis;    
+    }
+    .ui-jqgrid tr.ui-row-ltr td:last-child {
+        __border-right-color: transparent;
+    }
+    .ui-jqgrid tr.ui-row-ltr td.edit-cell {
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1) inset;
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1) inset;
+        opacity: 1;
+        padding: 0 0 0 2px;
+        text-align: center;
+    }
+    .ui-jqgrid .ui-state-disabled:hover {
+        padding: 0;
+    }
+    .ui-jqgrid tr.ui-row-ltr td.edit-cell.ui-state-disabled {
+        background: inherit;
+        box-shadow: none;
+    }
+
+    .ui-jqgrid tr.ui-row-ltr td img[src*="check_d"] { /*workaround to center chkbox img ??? */
+        display: block;
+        margin: 0 auto;
+    }
+
+    .ui-jqgrid .ui-widget-content a.drilldown {
+        text-decoration: none;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+    }
+    .ui-jqgrid .ui-widget-content a.drilldown:hover{
+        text-decoration: underline;
+    }
+
+    /* Grid Fields */
+
+        .ui-jqgrid .ui-widget-content input,
+        .ui-jqgrid .ui-widget-content select,
+        .ui-jqgrid .ui-widget-content textarea {
+            background: none;
+            border: none;
+            padding: 0 0 2px;
+            font-weight: normal;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .ui-jqgrid .ui-widget-content input[type=password],
+        .ui-jqgrid .ui-widget-content input[type=text]{
+            width: 100% !important;
+            height: 100%;
+            text-overflow:ellipsis;
+        }
+        .ui-jqgrid .ui-widget-content input[type=checkbox]{
+            vertical-align: middle;
+        }
+        .ui-jqgrid .ui-widget-content input.siebui-input-popup{
+            padding-right: 21px;
+        }
+
+        .ui-jqgrid .ui-widget-content input:hover,
+        .ui-jqgrid .ui-widget-content input:focus,
+        .ui-jqgrid .ui-widget-content input:active,
+        .ui-jqgrid .ui-widget-content select:hover,
+        .ui-jqgrid .ui-widget-content select:focus,
+        .ui-jqgrid .ui-widget-content select:active,
+        .ui-jqgrid .ui-widget-content textarea:hover,
+        .ui-jqgrid .ui-widget-content textarea:focus,
+        .ui-jqgrid .ui-widget-content textarea:active{
+            color: #333333;
+        }
+
+        .ui-jqgrid .ui-widget-content select {
+            padding: 1px 2px 1px 6px;
+        }
+
+        .ui-jqgrid .ui-widget-content input[readonly="readonly"], 
+        .ui-jqgrid .ui-widget-content select[readonly="readonly"]{
+            opacity: 1;
+            cursor: default;
+        }
+
+        .edit-cell .applet-list-mvg,
+        .edit-cell .applet-list-pick,
+        .edit-cell .applet-list-date,
+        .edit-cell .applet-list-datetime,
+        .edit-cell .applet-list-currency ,
+        .edit-cell .applet-list-calculator,
+        .edit-cell .applet-list-effdat,
+        .edit-cell .applet-list-combo{
+            font-size: 0;
+            cursor: pointer;
+            margin: 0 0 0 -17px;
+            vertical-align: middle;
+            display: inline!important; /* better safe than sorry */
+        }
+        
+        .ui-jqgrid .tree-wrap,
+        .ui-jqgrid .tree-leaf {
+            height: 20px;
+        }
+        .ui-icon-radio-off {
+            background-position: -96px -142px;
+        }
+        .ui-icon-radio-on {
+            background-position: -112px -142px;
+        }
+        .ui-icon-triangle-1-s {
+            background-position: -64px -14px;
+        }
+        .ui-icon-triangle-1-e {
+            background-position: -32px -14px;
+        }
+
+    /* Grid Paging */
+
+        .ui-jqgrid .ui-state-default.ui-jqgrid-pager {
+            border-radius: 0 0 10px 10px;
+        }
+
+        .ui-jqgrid .ui-pager-control {
+            height: 100%;
+        }
+
+        .ui-jqgrid .ui-pg-table {
+            border-spacing: 3px 0;
+            padding-bottom: 0;
+        }
+
+        .ui-jqgrid .ui-pager-control > .ui-pg-table > tbody > tr > td { /* just first lv TDs */
+            width: auto !important;
+            padding: 0;
+        }
+
+        .ui-jqgrid .ui-pg-table td.ui-state-disabled {
+            border: 0;
+        }
+
+        .ui-jqgrid .ui-jqgrid-pager .ui-pg-button {
+            width: auto !important;
+            height: 15px !important;
+            border-color:transparent;
+            background: none;
+            margin-right: 0;
+            padding: 0 2px;     
+            display: table-cell;
+        }
+        .ui-jqgrid .ui-jqgrid-pager.ui-state-hover .ui-pg-button {
+             padding: 0 3px;
+        }
+
+        .ui-jqgrid .ui-jqgrid-pager .ui-pg-button span {
+            margin: 0;
+        }
+
+        .ui-jqgrid .ui-jqgrid-pager .ui-pg-button span.ui-separator {
+            height: 17px;
+            display: none;
+        }
+
+        .ui-jqgrid .ui-paging-info {
+            font-size: 0.9em;
+            line-height: 2em;
+            margin: 0 7px 0 0;
+            padding: 0;
+            display: inline;
+        }
+
+    /* Grid Icons */
+
+        .ui-widget-content .ui-pager-control  .ui-icon {
+            background-image: url(../images/gridIcons_os.png)
+        }
+
+        .ui-icon-search {
+            background-position: 0 -17px
+        }
+
+        .ui-state-hover .ui-icon-search {
+            background-position: 0 -1px
+        }
+
+        .ui-icon-refresh {
+            background-position: -15px -17px
+        }
+
+        .ui-state-hover  .ui-icon-refresh {
+            background-position: -15px -1px
+        }
+
+        .ui-icon-seek-first {
+            background-position: -81px -18px
+        }
+
+        .ui-state-hover .ui-icon-seek-first {
+            background-position: -81px -2px
+        }
+
+        .ui-icon-seek-prev {
+            background-position: -49px -18px
+        }
+
+        .ui-state-hover .ui-icon-seek-prev {
+            background-position: -49px -2px
+        }
+
+        .ui-icon-seek-next {
+            background-position: -32px -18px
+        }
+
+        .ui-state-hover .ui-icon-seek-next {
+            background-position: -32px -2px
+        }
+
+        .ui-icon-seek-end {
+            background-position: -64px -18px
+        }
+
+        .ui-state-hover .ui-icon-seek-end {
+            background-position: -64px -2px
+        }
+
+
+/* Popup Widgets */
+    
+    .ui-dialog {
+        border-radius: 4px;
+        padding: 0px;
+        border-image: initial;
+    }
+    .ui-dialog-content.minWidthContainer{ 
+        min-width: 650px;
+        min-height: 150px ;
+        overflow-x: hidden;
+    }
+    .ui-dialog-content.maxWidthContainer{ 
+        __max-width: 900px;
+    }
+    /* ??? bad fix to overwrite server determined width */
+
+/*  .ui-dialog-content.minWidthContainer > div,
+    .ui-dialog-content.minWidthContainer > div > div { 
+        width: auto!important;
+    }*/
+
+    .AppletStylePopup table,
+    .ui-dialog .ui-dialog-buttonpane {
+        padding: 0;
+        background: none;
+        border:0; 
+        margin: 0;
+        border-spacing: 0;
+    }
+    .ui-dialog .ui-dialog-buttonpane {
+        margin-top: -1em;
+        padding: 0 7px 6px 0;
+    }
+
+    .AppletStylePopup div.NotSelected, 
+    .AppletStylePopup div.Selected { /* for popup grids */
+        margin: 0px;
+        border: medium none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        margin: 0;      
+    }
+
+    .AppletStylePopup div.ui-jqgrid {
+        border-radius: 0;
+        overflow: hidden;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    /**/
+
+    .ui-dialog .ui-dialog-content {
+        overflow: visible;
+        padding: 1em;
+        height: auto!important; /* !!! need to overwrite inline style */
+    /*  -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;*/
+    }
+
+    .AppletStylePopup .AppletBttm td{
+        padding: 6px;
+    }
+
+    .ui-dialog .siebui-popup-error-text{
+        line-height: 30px;
+    }
+
+    .ui-dialog .ui-dialog-titlebar-close.ui-state-hover,
+    .ui-dialog .ui-dialog-titlebar-close.ui-state-focus,
+    .ui-dialog .ui-dialog-titlebar-close.ui-state-active {
+      padding: 1px;
+      border:0;
+      background:none; 
+    }
+    .ui-dialog .ui-dialog-titlebar-close span{
+       background-position: -52px 3px;
+       background-image: url("../images/oui_Sprite.png");
+    }
+    .siebui-popup-header-text{
+        margin-left: 7px;
+        font-size: 1em;
+        text-shadow: 0 1px 0 #FFFFFF;
+    }
+    .ui-dialog td.siebui-popup-filter{
+        text-align: right;
+    }
+    .ui-dialog td.siebui-popup-filter input{
+        width: 80px!important;  /*overrule inline*/
+    }
+    .siebui-applet-action .siebui-applet-button,
+    .ui-dialog .siebui-popup-action .siebui-popup-button{
+        margin-right: 5px;
+    }
+    .ui-dialog .siebui-popup-filter .siebui-popup-button button,
+    .ui-dialog .siebui-popup-action .siebui-popup-button button{
+        font-size: 0.9em;
+        padding: 3px;
+        vertical-align: middle;
+    }
+    .siebui-popup-query-msg,
+    .ui-dialog .siebui-popup-query-msg{
+        margin-left: 5px;
+        font-size: 0.9em;
+    }
+    span.siebui-row-counter {
+        font-size: 0.9em;
+        padding-left: 20px;
+    }
+
+    /**/
+
+    .siebui-popup-input-row {
+        margin: 5px 10px;
+        white-space: nowrap;
+    }
+
+    .ui-dialog .siebui-popup-label{ /* eg. labels for eg. currency...*/
+        display: inline-block;
+        width: 100px;
+    }
+
+    .ui-dialog .siebui-popup-select-columns{ 
+        padding: 0 50px; 
+    }
+
+    .ui-dialog .siebui-popup-column{ 
+        text-align: center;
+    }
+    .ui-dialog .siebui-popup-column{ 
+        min-width: 130px;
+    }
+    .ui-dialog .siebui-popup-column .siebui-popup-label{ 
+        width: auto;
+        display: block;
+        text-shadow: 0 1px 0 #FFFFFF;
+        font-size:0.9em;
+        font-weight: bold;
+        text-align: left;
+        padding-left: 3px;
+    }
+    .ui-dialog .siebui-popup-ctrl{ 
+        text-align: center;
+        width: 20px;
+        padding:0 10px; 
+    }
+    .ui-dialog .siebui-popup-ctrl .siebui-btn-icon-e {
+        display: block;
+        margin-top: 2px; 
+    }
+
+    /**/
+
+    .ui-dialog .siebui-popup-btm{
+        margin-top: 4px;
+        text-align: right;
+    }
+    .ui-dialog .siebui-popup-btm .siebui-popup-button{
+        margin-left: 5px;
+    }
+
+    /* MVG */
+
+    #sieb-ui-popup-mvg-selected,
+    #sieb-ui-popup-mvg-available{
+        display: none;
+    }
+    td.siebui-popup-title {
+        padding: 6px;
+        font-size: 0.9em;
+        text-shadow: 0 1px 0 #FFFFFF;
+    }
+
+    /* OLD, should be removed */
+
+    .scLabelRight{
+        vertical-align: middle;
+    }
+
+    .scLabelRight img{
+        vertical-align: top;
+    }
+
+
+    /* File Attachments */
+
+
+        .siebui-file-label{
+            padding: 5px;
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .siebui-file-input{
+            font-size: 100px !important; /*BUG - 14245592: Fix for "Text Disappears" part*/
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            border: solid transparent;
+            border-width: 0 0 100px 200px;
+            cursor: pointer;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            -ms-filter:'progid:DXImageTransform.Microsoft.Alpha(opacity=0)';
+            -moz-transform: translate(-300px, 0) scale(4);
+            -o-transform: 'translate(250px, -50px) scale(1)';
+        }
+
+/* jQuery Tooltips */
+
+    .ui-tooltip {
+        border-radius: 3px;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+        padding: 4px 7px;
+    }
+
+    .ui-tooltip-content {
+        font-size: 0.9em;
+    }
+
+/* Form Input Fields */
+
+    table.GridBack .FormSection {
+        display: block;
+        font-size: 1.1em;
+        margin: 13px 0 10px;
+    }
+    .FormSection > span {
+        display: block;
+        padding-bottom: 1px;
+    }
+
+    div.mceGridLabel {
+        white-space: pre-wrap;
+        font-weight: normal;
+        margin-right: 7px;
+        text-shadow: none;
+        font-size: 0.9em;
+    }
+    .mceGridLabel > img {
+        vertical-align: top;
+    }   
+
+    #SSQuestionList input,
+    .ui-widget-content select,
+    .ui-dialog-content input,
+    .siebui-ecfg-editfield input,
+    .siebui-ecfg-editfield select,
+    .siebui-form-data input,
+    .siebui-cal-pickrange .calendarField input,
+    .mceField    input, /*??? mceField = old*/
+    .mceField    textarea,
+    .mceField    select,
+    .mceGridField    input,
+    .mceGridField    textarea,
+    .mceGridField    select,
+    div.SearchCtrl      input,
+    div.searchContainer input,
+    tr.AppletButtons    select,
+    div.vis-dropdown    select {     /* Applet Title drop down */
+        font-size: 0.9em;
+        vertical-align: middle;
+        margin: 2px;
+        padding: 4px 5px;
+        text-overflow: ellipsis;
+    }
+
+    #SSQuestionList input,
+    .ui-dialog-content input,
+    .siebui-form-data input,
+    .siebui-cal-pickrange .calendarField input,
+    .mceField    input, /*??? mceField = old*/
+    .mceGridField    input,
+    div.searchContainer input{     
+        height: auto !important; /*??? currently inline styled!*/
+    }
+
+    .ui-dialog td.edit-cell input,
+    .ui-dialog td.edit-cell select,
+    .ui-dialog td.edit-cell textarea{
+        font-size: 1em;
+    }
+
+
+    #SSQuestionList input.siebui-input-popup,
+    .ui-dialog-content input.siebui-input-popup,
+    .mceField input.siebui-input-popup,
+    .mceGridField input.siebui-input-popup{
+        padding-right: 21px;
+        height: auto !important; /*??? currently inline styled!*/
+    }
+
+    .mceGridField textarea,
+    .mceField textarea{
+        /*max-width: 200px;*/
+    }
+    .ui-dialog .mceGridField textarea,
+    .ui-dialog .mceField textarea{
+        max-width: 100%;
+        height: 100px!important;
+    }
+
+    #SSQuestionList input:hover,
+    #SSQuestionList input:focus,
+    #SSQuestionList input:active,
+    .siebui-cal-pickrange .calendarField input:hover,
+    .siebui-cal-pickrange .calendarField input:focus,
+    .siebui-cal-pickrange .calendarField input:active,
+    .siebui-ecfg-editfield select:hover,
+    .siebui-ecfg-editfield select:focus,
+    .siebui-ecfg-editfield select:active,
+    .siebui-ecfg-editfield input:hover,
+    .siebui-ecfg-editfield input:focus,
+    .siebui-ecfg-editfield input:active,
+    .siebui-form-data input:hover,
+    .siebui-form-data input:focus,
+    .siebui-form-data input:active,
+    .mceGridField    input:hover,
+    .mceGridField    input:focus,
+    .mceGridField    input:active,
+    .mceGridField    textarea:hover,
+    .mceGridField    textarea:focus,
+    .mceGridField    textarea:active,
+    .mceGridField    select:hover,
+    .mceGridField    select:focus,
+    .mceGridField    select:active,
+    div.SearchCtrl      input:hover,
+    div.SearchCtrl      input:focus,
+    div.SearchCtrl      input:active,
+    div.searchContainer input:hover,
+    div.searchContainer input:focus,
+    div.searchContainer input:active,
+    tr.AppletButtons        select:hover,
+    tr.AppletButtons        select:focus,
+    tr.AppletButtons        select:active,
+    div.vis-dropdown        select:hover,
+    div.vis-dropdown        select:focus,
+    div.vis-dropdown        select:active{
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1) inset;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1) inset;
+    }
+
+    tr.AppletButtons    select,
+    div.searchContainer select.searchField, 
+    .vis-dropdown > select {
+        padding: 3px 5px;
+    }
+
+    .siebui-cal-pickrange .calendarField input,
+    div.searchContainer input {
+        padding: 4px 5px;
+        vertical-align: middle;
+    }
+
+    .ui-widget-content select[readonly="readonly"],
+    .ui-dialog-content input[readonly="readonly"],
+    .siebui-form-data input[readonly="readonly"],
+    .mceGridField input[readonly="readonly"],
+    .mceGridField textarea[readonly="readonly"],
+    .mceGridField select[readonly="readonly"],
+    .mceField input[readonly="readonly"],
+    .mceField textarea[readonly="readonly"],
+    .mceField select[readonly="readonly"]{
+        cursor: default;
+        box-shadow: none!important;
+        -webkit-box-shadow: none!important;
+    }
+    .ui-widget-content textarea[readonly="readonly"] {
+        display: block;
+    }
+
+    /* Styles for Icons in Input Fields */
+
+        .mceGridField {
+            white-space : pre-wrap;
+        }
+        
+        img.applet-form-mvg,
+        img.applet-form-pick,
+        img.applet-form-date,
+        img.applet-form-datetime,
+        img.applet-form-currency ,
+        img.applet-form-calculator,
+        img.applet-form-effdat,
+        img.applet-form-combo,
+        img.applet-form-phone{
+                font-size: 0;
+                cursor: pointer;
+                margin: 0 0 0 -20px;
+                vertical-align: middle;
+                display: inline!important; /* better safe than sorry */
+        }
+
+        .siebui-applet-menu-item { /*???*/
+            padding: 2px 10px 2px 10px !important;
+            white-space: pre-wrap !important;
+        }
+
+    
+
+/* HOME SCREENS */
+
+    .siebui-screen-hp-applet{}
+    .siebui-screen-applet-head,
+    .siebui-screen-applet-head table,
+    .siebui-screen-hp-content table{
+        border-spacing: 0;
+        margin: 0;
+        padding: 0;
+    }
+    .siebui-screen-applet-head td{
+        padding: 0;
+    }
+    .siebui-screen-hp-title{
+        width: 100%;
+    }
+    .siebui-screen-hp-desc input{
+        border: 0 none;
+        font-size: 0.9em;
+        font-style: italic;
+        padding-left: 12px;
+        margin-top: -2px;
+    }
+    .siebui-screen-hp-content{
+        padding: 10px;
+        min-height: 3em;
+    }
+
+    .siebui-applet-minimize .siebui-screen-hp-content{
+        display: none;
+    }
+    .siebui-applet-minimize .siebui-screen-applet-head .siebui-applet-buttons{
+        border-radius: 10px;
+    }
+
+    .siebui-screen-hp-content a.siebui-ctrl-drilldown,
+    .siebui-bullet-item a.siebui-ctrl-drilldown{
+        display: inline-block;
+        padding: 1px 0 1px 12px;
+        text-decoration: none;
+        background: url(../images/sitemapBullet.png) no-repeat 3px 0.6em;       
+    }
+    .siebui-screen-hp-content a.siebui-ctrl-drilldown:hover,
+    .siebui-bullet-item a:hover{
+        text-decoration: underline;
+    }
+    .siebui-screen-hp-table{} /*???*/
+
+    .siebui-bullet-item input,
+    .siebui-screen-hp-content .siebui-screen-hp-title input{  /* ??? not ideal but those input fields flickr otherwise */
+        display: none;
+    }
+
+
+    /**/
+
+    .siebui-form-label{
+        white-space: nowrap;
+        line-height: 24px;
+        padding: 0;
+        width: 20%;
+        vertical-align: middle;
+    }
+    .siebui-form-label img{
+        vertical-align: top;
+    }
+
+    /*??? workaround for now, until parent  SPANs added */
+    /*
+    .siebui-form-data img{
+        position: static!important; 
+        vertical-align: middle;
+        }
+    */
+
+    td.siebui-form-data > input {
+        padding: 5px;
+        margin: 0;
+    }
+    td.siebui-form-data input.siebui-input-popup{
+        padding-right: 21px;
+    }
+    .siebui-error-txt{
+        line-height: 30px;
+    } 
+    .siebui-form-help{}
+    .siebui-form-section{}
+
+
+/* Bullet List Applets */
+
+    ul.siebui-bullet-childlist,
+    ul.siebui-bullet-list{
+        list-style: none outside none;
+        margin: 0;
+        padding: 0;
+    }
+    ul.siebui-bullet-list{
+        margin-top: 5px;
+    }
+    .siebui-bullet-item{
+
+    }
+    .siebui-bullet-childlist a,
+    .siebui-bullet-item-ctrl1 a{
+        line-height: 1.3em;
+        text-decoration: none;
+        font-size: 0.9em;
+        font-weight: bold;      
+    }
+    .siebui-bullet-item-ctrl2{
+    }
+    ul.siebui-bullet-childlist{
+        padding-bottom: 5px;
+    }
+    .siebui-bullet-childlist a {
+        font-weight: normal;        
+    }
+
+/* EDIT LAYOUT */
+
+    .LayoutView {
+        margin: 15px 1% 0;
+    }   
+    .LayoutView tr.AppletButtons .AppletTitle:first-child{ /* overrule reg. statement */
+        padding-left: 0;
+    }
+    .siebui-layout-content {
+        border-radius: 10px 10px 10px 10px;
+        margin: 0 1%;
+        padding: 5px;
+        width: 98%;
+    }
+    .siebui-layout-content .AppletBlock {
+        margin: 3px 0;
+        min-height: 1.8em;
+    }
+    .LayoutStyleMin,
+    .LayoutStyleMax,
+    .LayoutStyleHide{
+        margin: 3px 0;
+    }
+    .LayoutStyleMin table,
+    .LayoutStyleMax table,
+    .LayoutStyleHide table {
+        border-spacing: 0;
+        padding: 0;
+    }   
+    .LayoutStyleMin .AppletTitle,
+    .LayoutStyleMax .AppletTitle,
+    .LayoutStyleHide .AppletTitle{
+        width: 100%;
+    }
+    .LayoutStyleMin tr.siebui-screen-hp-layoutbuttons,
+    .LayoutStyleMax tr.siebui-screen-hp-layoutbuttons,
+    .LayoutStyleHide tr.siebui-screen-hp-layoutbuttons{
+       padding: 11px 0;
+    }
+    .LayoutStyleHide{
+        opacity: 0.3;
+    }
+
+/* Page Layouts */
+
+    #Applet1{
+        width: 24.5%;
+        float: left;
+        padding-right: 6px;
+        margin-top: 2px;
+        -webkit-box-sizing:border-box;
+        -moz-box-sizing:border-box;
+        box-sizing:border-box;
+    }
+    #Applet2{
+        width: 75%;
+        float:right;
+        -webkit-box-sizing:border-box;
+        -moz-box-sizing:border-box;
+        box-sizing:border-box;
+    }
+
+
+    .siebui-main-template2575,
+    .siebui-main-template6633{
+        overflow: hidden;
+    }
+
+    .siebui-main-template2575 > div,
+    .siebui-main-template6633 > div{
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 5px;
+    }
+
+    /* Page Layout 66:33 */
+
+        .siebui-main-column66{
+            float: left;
+            width: 66%;
+        }
+        .siebui-main-column33{
+            float: right;
+            width: 33.5%;
+        }
+
+    /* Page Layout 25:75 FOR Smartscript */  /*NEW!!!*/
+
+        .siebui-main-template2575 .siebui-main-column25{
+            float: left;
+            width: 270px;
+        }
+        .siebui-main-template2575 .siebui-main-column75{
+            padding-left: 280px;
+        }
+        .siebui-main-template2575.siebui-rtl .siebui-main-column25{
+            float: right;
+        }
+        .siebui-main-template2575.siebui-rtl .siebui-main-column75{
+            padding-right: 280px;
+        }
+
+/*---------------------------------------------------------------------------*/
+/*-----------------------TBUI LHS PANE---------------------------------------*/
+/*---------------------------------------------------------------------------*/
+    .siebui-report-pane,
+    div.SmartScript,
+    div.TaskAssistant,
+    #SS_TaskUIPane,
+    .siebui-dashboard-container {
+        position: relative;
+        z-index: 3;
+        font-size: 0.9em;   
+        float: left;
+        margin: 3px 5px 0 -3px;
+        border-radius: 0 4px 4px 0;
+        -webkit-box-shadow: 0 2px 8px #777777;
+        box-shadow: 0 2px 8px #777777;
+    }
+    .siebui-dashboard-container {
+        margin: -5px 0 0 0px;
+        border-radius: 0 0 4px 4px;
+        overflow: hidden;
+    }
+    .siebui-dashboard-cell, 
+    .siebui-dashboard-navigation, 
+    .siebui-dashboard-update{
+        padding-right: 3px;
+        padding-top: 5px;
+    }
+    #SS_OpenUIReportPane > div,
+    div.TaskAssistant > div,
+    #SS_TaskUIPane > div{
+        width: 245px;
+        overflow: hidden;
+    }
+    .siebui-report-header,
+    #taskpaneHeader,
+    #taskList,
+    #taskpaneFooter {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    .siebui-report-header,
+    #taskpaneHeader{
+        font-weight: bold;
+        text-shadow: 0 -1px 0 #000000;
+        height: 2em;
+        line-height: 2em;
+        padding-left: 5px;
+    }
+
+    .siebui-report-header #s_reportclose,
+    #taskpaneHeader #s_close, #s_dashboardclose {
+        cursor: pointer;
+        float: right;
+        width: 2em;
+        height: 2em;
+        background: url(../images/btn_aplt_hide_inv_1.gif) no-repeat center center;
+    }
+    #reportList,
+    #taskList {
+        padding: 4px 0;
+    }
+    .siebui-report-footer,
+    #schedulebuttonCtrl,
+    #taskpaneFooter {
+        text-align: right;
+    }
+    /**/
+
+    #taskpaneFooter .tasklink{
+        float: right;
+        font-size: 0.8em;
+    }
+    #taskpaneFooter .tasklink a.returnLink {
+    }
+
+    /**/
+
+    #s_TaskPane ul.dynatree-container,
+    #s_TaskPane ul.dynatree-container ul,
+    #s_TaskPane ul.dynatree-container li {
+        padding: 0;
+        margin: 0;
+        border: 0;
+        border-radius: 0;
+        background: none;
+        list-style: none;
+    }
+
+    #s_TaskPane ul.dynatree-container ul{
+    }
+    #s_TaskPane ul.dynatree-container li,
+    #s_TaskPane ul.dynatree-container .dynatree-folder {
+        padding: 2px 0;
+        overflow: hidden;
+    }
+    #s_TaskPane ul.dynatree-container .dynatree-node{
+        cursor: pointer;
+        position: relative;
+        display: block;
+        padding-left: 5px;
+    }
+    
+    /**/
+    
+    #taskpaneFooter a.returnLink,
+    #s_TaskPane ul.dynatree-container .dynatree-node .dynatree-title {
+        white-space: pre-wrap;
+        line-height: 1em;
+        margin: 0;
+        padding: 2px 0;
+        text-decoration: none;
+    }
+
+    #s_TaskPane ul.dynatree-container .dynatree-node .dynatree-title:focus,
+    #s_TaskPane ul.dynatree-container .dynatree-node .dynatree-title:hover,
+    #s_TaskPane ul.dynatree-container .dynatree-active .dynatree-title {
+        background: none!important;
+        border: none!important;
+    }
+    #s_TaskPane ul.dynatree-container .dynatree-node .dynatree-title:hover {
+        text-decoration: underline;
+    }
+
+    /**/
+
+    #s_TaskPane ul.dynatree-container span.dynatree-expander {
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+        display: block;
+        width: 2em;
+        height: 2em;
+        background: url(../images/mainMenuArrowsInv.png) no-repeat 7px 5px;
+    }
+    #s_TaskPane ul.dynatree-container .dynatree-node:hover span.dynatree-expander {    
+        background-position: 7px -18px; 
+    }
+    #s_TaskPane ul.dynatree-container .dynatree-expanded  span.dynatree-expander {    
+        background-position: -15px 5px; 
+    }
+    #s_TaskPane ul.dynatree-container .dynatree-expanded:hover  span.dynatree-expander {    
+        background-position: -15px -18px; 
+    }
+
+    /*#s_TaskPane ul.dynatree-container span.dynatree-active a {
+        background: none !important;
+        color: inherit !important;
+    }
+*/  
+    /**/
+    #s_TaskPane ul.dynatree-container .dynatree-node > img {
+        display: none;
+    }
+    #s_TaskPane ul.dynatree-container span.dynatree-connector {
+        display: none;
+    }   
+    #s_TaskPane ul.dynatree-container li.dynatree-lastsib {    
+    }
+
+    /* nth level */
+
+    #s_TaskPane ul.dynatree-container ul {
+        padding-left: 10px;
+    }   
+    #s_TaskPane ul.dynatree-container ul .dynatree-node a.dynatree-title {
+        padding: 2px 0;
+    }
+
+    /**/
+
+    #taskpaneFooter a.returnLink {
+        cursor: pointer;
+        height: 2em;
+        line-height: 2em;
+        padding: 0 20px 0 0;
+        background: transparent url("../images/oui_Sprite.png") no-repeat 20px -33px;
+    }
+    #taskpaneFooter a.returnLink label {
+        cursor: pointer;
+    }
+
+/*---------------------------------------------------------------------------*/
+/*-------------Message broadcasting Message theming - Start------------------*/
+/*---------------------------------------------------------------------------*/
+    #HTMLMessageBar   :first-child {
+      display: none;
+    }
+    .siebui-deletemsgbtn {
+      background : transparent !important;
+      border : 0px !important;
+    }
+    .siebui-msgbrdcst-drilldown {
+        text-decoration : underline;
+    }
+    /* POPUP BOX */
+
+    #Msg_Summary{
+        min-height: 1%!important; /* need to overwrite inline Style */
+        padding: 0px;
+        max-height: 550px;
+        overflow-y: auto;
+    }
+    .siebui-msgbrdcst-heading ul {
+        font-size: 0.9em;
+        padding: 0px;
+        margin : 0px;
+    }
+    .siebui-msgbrdcst-heading li {
+        cursor: pointer;
+        position:relative;
+        list-style: none outside none;
+        padding: 10px 30px 10px 10px;
+    }
+    .siebui-msgbrdcst-heading li:after {
+        content: url("../images/messageBarArrowOn.png");
+        height: 20px;
+        margin-top: -5px;
+        overflow: hidden;
+        position: absolute;
+        right: 12px;
+        top: 50%;
+    }
+    .siebui-msgbrdcst-heading li.readmessage:after {
+        content: url("../images/messageBarArrowOff.png");
+    }
+
+    .siebui-msgbrdcst-heading li span {
+        display: block;
+        font-weight: bold;
+        padding-left: 2px;
+        text-shadow: 0 1px 0 #FFFFFF;
+    }
+
+
+    .siebui-msgbrdcst-heading li.readmessage span {
+        font-weight: normal;
+        font-style: italic;
+        text-shadow: none;
+    }
+
+    .siebui-msgbrdcst_details{
+        padding: 10px;
+    }
+
+    .siebui-msgbrdcst-heading li.deletemessage { /*NEW*/
+        display : none;
+    }
+    .siebui-msg-expired{
+        font-weight : bold;
+        color : red;
+        font-style : italic;
+        padding : 10px;
+    }
+
+
+/*---------------------------------------------------------------------------*/
+/*------------------------- Generic Tree | Explorer -------------------------*/
+/*---------------------------------------------------------------------------*/
+
+    .jstree-default {
+        border-radius: 10px 10px 10px 10px;
+        margin-bottom: 10px;
+        padding: 10px;
+        min-height: 300px;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    }
+    .jstree-default li, 
+    .jstree-default ins {
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-image: url(../images/smartScriptTreeLight.png);
+    }
+
+
+    .jstree-default li {
+        overflow: hidden;
+        background-position: -187px 0;
+        background-repeat: repeat-y!important;
+        white-space: inherit!important;
+    }
+    .jstree-default li.jstree-last {
+        background:none!important;
+    }       
+    .jstree-default li.jstree-last.jstree-closed {
+        background:none;
+    }
+
+    .jstree-default li.jstree-last li.jstree-last {
+        background-position: -169px 0;
+    }       
+    .jstree-default li.jstree-last li.jstree-last.jstree-closed {
+        background-position: -158px 0;
+    }   
+
+
+    .jstree-default li.jstree-open > ins {
+        background-position: -169px 2px;
+    }   
+    .jstree-default li.jstree-open a ins {
+        background-position: -19px -2px;
+    }
+    .jstree-default li.jstree-closed > ins{
+        background-position: -151px 2px;
+    }   
+    .jstree-default li.jstree-closed a ins {
+        background-position: -1px -1px;
+    }
+
+    /**/
+
+    .jstree-default ul:first-child li.jstree-open:first-child > ins { /*check with SS*/
+        background-position: -133px 2px;
+    }
+    .jstree-default li.jstree-leaf.jstree-last {
+        background: none;
+    }
+
+    /**/
+
+    .jstree-default a {
+        width: 190px;
+        font-size: 0.9em;
+        overflow: hidden;
+        padding: 0 2px;
+        text-overflow: ellipsis;
+        vertical-align: middle;
+        outline: none!important;
+    }
+    .jstree-default li.jstree-leaf {
+        background-position: -187px 0;
+    }
+    .jstree-default li.jstree-leaf a {
+        font-weight: normal;
+    }
+    .jstree-default li.jstree-leaf a ins { /* check */
+        background-position: -39px -1px;
+    }
+    .jstree-default li.jstree-leaf > ins{
+        background-position: -133px 0;
+    }
+
+    .jstree-default li.jstree-open > a,
+    .jstree-default .jstree-hovered,
+    .jstree-default .jstree-clicked {
+        background: none;
+        text-decoration: underline;
+    }
+
+    .jstree-default a .jstree-icon { /*check with SS*/
+        background-position: -1px 0px;
+    }   
+
+    .jstree-default .jstree-clicked,
+    .jstree-default .siebel-selectednode {
+        font-weight: bold;
+    }
+
+/*---------------------------------------------------------------------------*/
+/*------------------------- SmartScript styling -----------------------------*/
+/*---------------------------------------------------------------------------*/
+
+    #siebui-applet-1{
+    }
+
+    div.SmartScript {
+        border: none;
+        margin: 2px 0 0;
+        float: none;
+        border-radius: 4px;
+        padding: 20px 10px;
+        min-height: 1%;
+    }
+    
+    .SmartScript.jstree-default li, 
+    .SmartScript.jstree-default ins {
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-image: url(../images/smartScriptTree.png);
+    }
+    .SmartScript.jstree-default ul:first-child li.jstree-open:first-child > ins,
+    .SmartScript.jstree-default li.jstree-open > ins {
+        background-position: -169px 0;
+    }
+    .SmartScript.jstree-default li.jstree-closed > ins {
+        background-position: -151px 0;
+    }
+    .SmartScript.jstree-default li.jstree-closed a ins {
+        background-position: 0 -2px;
+    }
+    .SmartScript.jstree-default li.jstree-leaf {
+        background-position: -189px 0;
+    }
+    .SmartScript.jstree-default li.jstree-leaf > ins {
+        background-position: -135px 0;
+    }           
+    .SmartScript.jstree-default li.jstree-leaf.siebel-icon-1 a ins {
+        background-position: -176px -1px;
+    }
+    .SmartScript.jstree-default li.jstree-leaf.siebel-icon-2 a ins {
+        background-position: -57px -1px;
+    }
+    .SmartScript.jstree-default li.jstree-leaf.siebel-icon-3 a ins {
+        background-position: -39px -1px;
+    }
+    .SmartScript.jstree-default li.jstree-leaf.siebel-icon-4 a ins {
+        background-position: -73px -1px;
+    }
+    .SmartScript.jstree-default a {
+        font-size: 1em;
+        font-weight: bold;
+    }
+
+    /**/
+
+    .siebui-applet table,
+    .siebui-applet td{
+        padding: 0;
+        margin: 0;
+        border-spacing: 0;
+    }
+
+    .siebui-applet-title-row{
+        border-radius: 10px 10px 0 0;
+        height: 40px;
+        padding: 1px 0;
+        vertical-align: middle;
+    }
+    .siebui-applet-title{
+        font-size: 1.3em;
+        padding-left: 15px;
+        line-height: 40px
+    }
+    .siebui-applet-content{
+        padding: 15px;
+        min-height: 100px;
+    }
+    .siebui-applet-btm-buttons{
+        border-radius: 0 0 10px 10px;
+    }
+    .siebui-applet-btm-buttons tr td:first-child button{
+        border-radius: 2px 2px 2px 8px;
+    }
+    .siebui-applet-btm-buttons tr td:last-child button{
+        border-radius: 2px 2px 8px 2px;
+    }
+    .siebui-applet-btm-buttons button {
+        margin: 0 2px;
+    }
+    
+    .siebui-td-sep100{
+        width: 100%;
+    }
+    .siebui-td-sep10{
+        width: 10px;
+    }
+    .siebui-smsc-title{
+        font-size: 1.2em;
+        font-weight: bold;
+        text-shadow: 0 1px 0 #FFFFFF;
+    }
+    .siebui-smsc-title-req{
+        vertical-align: top;
+        float: right; 
+        font-size: 0.8em;
+        font-weight: normal;
+    }
+    .siebui-smsc-title-req img{
+        vertical-align: top;
+    }
+    .siebui-applet-btm-buttons{
+        padding: 5px; 
+    }
+    #SSQuestionList{
+        display: block;
+        margin: 20px 10%;       
+    }
+    #SSQuestionList .AppletBack{
+        margin: 10px 0; 
+    }
+    #SSQuestionList .scField{
+        display: block;
+    }
+    .ssRequiredIndicator img{
+        vertical-align: top;
+    }
+
+/* UI Autocomplete Plugin */
+
+
+    .ui-autocomplete {
+        margin-left: -9px !important;
+        margin-top: 2px !important;
+        position: absolute;
+        border-radius: 2px;
+
+        max-height: 100px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        width:auto;
+    }
+    .ui-autocomplete .ui-menu-item a {
+        padding: 2px 1em;
+        padding-right: 10px;
+  }
+
+
+/*---------------------------------------------------------------------------*/
+/*---------------------------------- Sitemap --------------------------------*/
+/*---------------------------------------------------------------------------*/
+
+    .sitemapPage{
+        background: url(../images/sitemapGlobeBG.png) no-repeat -70px 50px;
+        margin: 0;
+        padding: 20px;
+        min-height: 300px;
+    }
+    #sitemapFilter{
+        position: relative;
+    }
+    #sitemapFilterInput{
+        width: 20em;
+        margin-left: 30px;
+        padding: 7px 30px 7px 10px;  
+    }
+    #sitemapFilterInput:active,
+    #sitemapFilterInput:focus,
+    #sitemapFilterInput:hover{
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) inset;
+        -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) inset;
+    }
+    #filterReset{
+        display: none;
+        background: url("../images/filterSitemap.png") no-repeat scroll 0 -40px transparent;
+        height: 20px;
+        left: -28px;
+        position: relative;
+        top: 4px;
+        width: 20px;
+    }
+    .filterResult{
+        display: none;
+        font-style: italic;
+        font-size: 1em;
+    }
+    #filterResultCount{
+        padding-left: 3px;
+    }
+    .sitemapSection{
+        font-size: 1em;
+        margin: 15px 30px 0 30px;
+    }
+    #sitemapSection2{
+        margin-top: 40px;
+    }
+    table.sitemapIndexSection{
+        width: 80%;
+        margin-top: 15px;
+    }
+
+    .sitemapSectionTitle{
+        text-shadow: 0 1px 0 #f2f2f2;
+        font-size: 3em;
+    }
+    .sitemapSectionInfo{
+        padding-bottom: 12px;
+    }
+    ul.sitemapMain{
+        margin: -10px 0 0 30px;
+        padding: 0;
+    }
+    .filtered ul.sitemapMain{
+        margin-top: 0;
+    }
+    ul.sitemapMain > a {   /* anchor <a> tag */
+        left: -25px;
+        position: relative;
+        top: 27px;
+    }
+    ul.sitemapMain li {
+        list-style: none outside none;
+    }
+    ul.sitemapMain > li {
+        padding-bottom: 20px;
+    }
+    .filtered ul.sitemapMain > li {
+        padding-top: 15px;
+    }
+    ul.sitemapCat{
+        margin-left:30px;
+        padding: 0;
+    }
+    ul.sitemapDetail{
+        margin-left:30px;
+        padding: 0;
+    }
+    ul.sitemapSubview{
+        margin-left:30px;
+        padding: 0;
+    }
+
+    .anchorLI{}
+
+    .screenName2 a{
+        font-weight: bold;
+        font-size: 1.2em;
+    }
+
+    .viewName a,
+    .screenName2 a{
+        display: inline-block;
+        padding: 2px 20px;
+        text-decoration: none;
+    }
+
+    .screenName1 a{
+        clear: left;
+        display: block;
+        float: left;
+        padding: 3px 20px;
+        text-decoration: none;
+    }
+
+/* Calculator-Popup */
+
+
+    .calculator-popup {
+        z-index: 9999 !important;
+        -webkit-box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.3), 0 1px 1px #888 inset;
+        box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.3), 0 1px 1px #888 inset;
+        padding:5px;
+        border-radius: 2px;
+    }
+
+    .calculator-result {
+        border-radius: 2px 2px 2px 2px;
+        -webkit-box-shadow: 0 0 2px #000000 inset;
+        box-shadow: 0 0 2px #000000 inset;
+        font-size: 1.3em;
+
+        height: 2em;
+        line-height: 2em;
+
+        padding-right: 5px;
+        margin-bottom: 8px;
+    }
+
+    .calculator-popup button {
+        overflow: visible;
+        outline: none;
+        border-radius: 2px 2px 2px 2px;
+        -webkit-box-shadow: 0 1px 2px #000000, 0 1px 1px #888888 inset;
+        box-shadow: 0 1px 2px #000000, 0 1px 1px #888888 inset;
+        text-shadow: 0 -1px 0 #000000;
+        height: 28px;
+        width: 31px;
+    }   
+    .calculator-row button.calculator-key-down {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+    .calculator-keystroke {
+        border: medium none;
+        -webkit-box-shadow: 0 0 5px #000000;
+        box-shadow: 0 0 5px #000000;
+        font-weight: normal;
+        height: 1.7em;
+        line-height: 1.7em;
+        padding: 0 1px;
+        text-shadow: none;
+    }
+    img.calculator-trigger {
+        display: inline !important; /*calculator hide/display fix*/
+    }
+
+
+/* Calendar Popup */
+
+    .ui-datepicker {
+        z-index: 1005 !important;
+        -webkit-box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.3);
+        box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.3);
+        padding:5px;
+        border-radius: 2px;
+        width: auto;
+        min-width: 17em;
+    }
+
+    .ui-datepicker .ui-datepicker-header {
+        font-size: 1em;
+        height: 2em;
+        line-height: 2em;
+        border: 0; 
+        background: none;
+    }
+    .ui-datepicker .ui-datepicker-calendar{
+        margin: 0;
+        padding: 2px;
+        border-radius: 2px;
+    }
+
+    .ui-datepicker .ui-datepicker-title select {
+        border-radius: 2px 2px 2px 2px;
+        -webkit-box-shadow: 0 1px 1px #666666 inset;
+        box-shadow: 0 1px 1px #666666 inset;
+        font-size: 0.8em;
+        font-weight: bold;
+        line-height: 1em;
+        min-width: 60px;
+        margin: 0 1px;
+        padding: 3px;
+    }
+    .ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year {
+        width: 47%;
+    }
+    .ui-datepicker .ui-datepicker-title select option{
+        border: 0;
+        padding: 0 5px;
+        font-weight: normal;
+        background: none;
+    }
+    .ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next{
+        height: 20px;
+        position: absolute;
+        top: 4px;
+        width: 20px;
+        border: 0;
+    }
+    .ui-datepicker .ui-datepicker-next-hover {
+        top: 4px;
+        right: 2px;
+        cursor: pointer;
+    }
+    .ui-datepicker .ui-datepicker-prev-hover {
+        top: 4px;
+        left: 2px;
+        cursor: pointer;
+    }
+
+    .ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span {
+        display: block;
+        height: 16px;
+        width: 16px;
+        margin: 2px 0 0 2px;
+        position: static;
+    }
+    .ui-datepicker .ui-icon-circle-triangle-w {
+        background-position: -37px -15px;
+    }
+    .ui-datepicker .ui-icon-circle-triangle-e {
+        background-position: -37px -31px;
+    }
+    .ui-datepicker .ui-state-hover .ui-icon-circle-triangle-w {
+        background-position: -53px -15px;
+    }
+    .ui-datepicker .ui-state-hover .ui-icon-circle-triangle-e {
+        background-position: -53px -31px;
+    }
+
+    /**/
+
+    .ui-datepicker th {
+        font-weight: normal;
+        text-shadow: 1px 1px 0 #000000;
+        text-transform: lowercase;
+        padding: 10px 0 2px;
+    }
+
+    /**/
+
+    .ui-datepicker td {
+        padding: 0;
+        width: 2.8em;
+    }
+
+    .ui-datepicker .ui-state-default{
+        height: 2.3em;
+        line-height: 2.3em;
+
+        border: none;
+        -webkit-box-shadow: 0 1px 1px #626262 inset;
+        box-shadow: 0 1px 1px #626262 inset;
+        outline: medium none;
+        padding: 0;
+        text-align: center;
+        text-shadow: 0 -1px 0 #000000;
+    }   
+
+    .ui-datepicker .ui-state-default.ui-state-hover {
+        -webkit-box-shadow: 0 1px 3px #000000, 0 1px 1px #626262 inset;
+        box-shadow: 0 1px 3px #000000, 0 1px 1px #626262 inset;
+        __position: relative;
+    }
+    .ui-datepicker .ui-state-default.ui-state-active {
+        -webkit-box-shadow: 0 1px 2px #222 inset;
+        box-shadow: 0 1px 2px #222 inset;
+    }
+
+
+    .ui-datepicker .ui-state-disabled {
+        border: 0 none;
+    }
+
+    /**/
+
+    .ui-datepicker .ui-datepicker-buttonpane {
+        border: 0 none;
+        margin: 10px 0 0;
+        padding: 0;
+    }   
+
+    .ui-datepicker .ui-datepicker-buttonpane button {
+        border-radius: 2px 2px 2px 2px;
+        cursor: pointer;
+        float: right;
+        font-size: 0.9em;
+        margin: 0;
+        overflow: visible;
+        padding: 0 0.4em;
+        width: auto;
+    }
+
+    /**/
+
+    .ui-datepicker .ui-timepicker-div{
+        font-size: 0.9em;
+    }
+    .ui-datepicker .ui_tpicker_second,
+    .ui-datepicker .ui_tpicker_millisec{
+        display: none!important;
+    }
+
+    .ui-datepicker .ui-timepicker-div > dl > dt,
+    .ui-datepicker .ui-timepicker-div > dl > dd{
+        color: #AAAAAA;
+        display: inline-block;
+        width: 25%;
+        line-height: 2.5em;
+        margin: 0;
+        padding: 0;
+        vertical-align: middle;
+    }
+    .ui-datepicker .ui-timepicker-div > dl > dd{
+        width: 70%;
+        padding: 0;
+    }
+    .ui-datepicker .ui-slider{
+        border: 0 none;
+        border-radius: 2px 2px 2px 2px;     
+        margin-top: 0.3em;
+    }
+    .ui-datepicker .ui-slider-horizontal .ui-slider-handle {
+        height: 2em;
+        top: -0.6em;
+        -webkit-box-shadow: 1px 1px 0 #999999 inset, 0 0 2px #555;
+        box-shadow: 1px 1px 0 #999999 inset, 0 0 2px #555;
+    }
+    .ui-datepicker .ui-slider-handle.ui-state-hover {
+        -webkit-box-shadow: 1px 1px 0px #999 inset, 0 0 3px #333333;
+        box-shadow: 1px 1px 0px #999 inset, 0 0 3px #333333;
+    }
+    .ui-datepicker .ui-slider-handle.ui-state-active {
+        -webkit-box-shadow: 1px 1px 0px #999 inset;
+        box-shadow: 1px 1px 0px #999 inset;
+    }   
+
+
+/*---------------------------------------------------------------------------*/
+/*--------------------- eConfigurator ---------------------------------------*/
+/*---------------------------------------------------------------------------*/
+
+        #_sweclient.siebui-ecfg-fullsize #_swecontent{
+            top:0;
+            bottom:0;
+            left:0;
+            right:0;
+            padding-left: 0;
+        }
+        #_sweclient.siebui-ecfg-fullsize #_swecontent > div{
+            padding: 0;
+            border: 0;
+            background: none;
+        }
+        #_sweclient.siebui-ecfg-fullsize #_swescrnbar{
+            display: none;
+        }
+        #_sweclient.siebui-ecfg-fullsize #_sweview {
+            height: 100%;
+            padding: 0;
+        }
+
+        #CfgMainFrame {
+            padding: 0 5% 50px;
+        }
+        #toggle-eCFG{
+            display: block;
+            top:10px;
+            position: absolute;
+            text-indent: -9000px;
+            margin-left: -20px;
+            width: 16px;
+            height: 16px;
+            background: url(../images/ecfg_maximize.gif) no-repeat 0 0;         
+        }
+        #_sweclient.siebui-ecfg-fullsize #toggle-eCFG{
+            background-position: -16px 0;
+        }
+
+        #CfgTip{
+            position:absolute;
+            z-index:1000;
+            top:-100px;
+        }
+
+        /* vvvvvvv ??? */
+
+            .eCfgContent,
+            .eCfgDivStyle,
+            .eCfgSumStyle,
+            .eCfgHelpPos {
+                position: absolute;
+                top: -100000px;
+                left: -100000px;
+                visibility: hidden;
+            }
+            .eCfgContent { 
+                z-index: 4
+            }
+            .eCfgDivStyle {
+                z-index: 2
+            }
+            .eCfgSumStyle {
+                z-index: 4
+            }
+            .eCfgHelp {
+            }
+            .eCfgHelpPos {
+                z-index: 5
+            }
+            .eCfgHelpPos2 {
+                position: absolute;
+                visibility: hidden;
+                z-index: 3
+            }
+            .eCfgAppBorder {
+            }
+            .eCfgPosAbs {
+                position: absolute;
+            }
+            .eCfgVisHid {
+                visibility: hidden;
+            }
+
+        /* ^^^^^^^ ??? */
+        
+        /* General */
+
+        .cxBaseTheme table tr.siebui-align-top td{
+            vertical-align: top;
+        }
+
+        /* Thread */
+
+        .cxThread {
+            height: 30px;
+        }       
+        .cxThread > div{
+            background: url(../images/eCfgthreadbarCrumbArrow.png) no-repeat 0 0;
+            padding-left: 9px;
+        }
+        .cxThread > div > a{
+            background: url(../images/eCfgthreadbarCrumbBG.png) repeat-x scroll 0 0 transparent;
+            display: inline-block;
+            font-size: 0.8em;
+            height: 16px;
+            line-height: 16px;
+            overflow: hidden;
+            padding: 0 7px 0 0;
+            text-decoration: none;
+            white-space: nowrap;
+            vertical-align: top;
+        }
+        .cxThread > div > a:focus,
+        .cxThread > div > a:hover{
+            text-decoration: underline;
+        }
+
+        /* Buttons */
+
+        #CfgMainFrame .siebui-applet-action .siebui-applet-button{
+            display: block;
+            float: left;
+        }
+
+        /* Row 1 */
+
+        .cxBaseTheme td#imageHolder{
+            padding-bottom: 20px;
+            vertical-align: bottom;
+        }
+
+        .siebui-applet.siebui-ecfg-item-summary {
+            margin-right: 20px;
+        }
+        .siebui-applet.cxStatusTempl .siebui-applet-title-row,
+        .siebui-applet.siebui-ecfg-item-summary .siebui-applet-title-row,
+        .siebui-applet#siebui-ecfg-messages .siebui-applet-title-row{
+            height: 15px;
+            padding: 5px 10px;
+        }       
+        .siebui-applet.siebui-ecfg-item-summary .siebui-applet-title-row > div{
+            display: none;
+        }
+        .siebui-ecfg-item-summary .siebui-applet-content{
+            min-height: 1%;
+            padding: 0;
+        }
+        table.siebui-ecfg-bill{
+            width: 100%;
+        }
+        table.siebui-ecfg-bill td{
+            padding: 6px 6px 6px 12px;
+        }
+        table.siebui-ecfg-bill .siebui-table-td2{
+            font-weight: bold;
+            padding: 6px 12px 6px 6px;
+            width: 25%;
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        span#CfgLessBtn {
+            float: right;
+            margin-right: -10px;
+            margin-top: -2px;
+        }
+        #siebui-ecfg-messages .siebui-applet-title-row{
+            text-align: left;
+        }
+        #siebui-ecfg-messages .siebui-applet-content{
+            min-height: 59px;
+            padding: 4px;
+        }
+        #siebui-ecfg-messages .siebui-applet-content > div{
+            margin: 4px 0;
+        }
+        #siebui-ecfg-messages .div-table-col.siebui-ecfg-bullet{
+            text-align: left;
+            font-size: 0.9em;
+            padding-left: 10px;
+            background: url(../images/sitemapBullet.png) no-repeat 0 5px;       
+        }
+        .siebui-ecfg-globalsignal-ctrl {
+            text-align: right;
+        }
+        .siebui-ecfg-globalsignal-ctrl.siebui-button-secondary > span {
+            display: inline-block;
+            font-size: 0.9em;
+            height: 18px;
+            line-height: 18px;
+            padding: 0 10px;
+        }
+        .siebui-ecfg-globalsignal-ctrl.siebui-button-secondary > span b{
+            font-weight: normal;
+        }
+        .siebui-ecfg-globalsignal-ctrl.siebui-button-secondary > span a {
+            font-weight: normal;
+            margin: 0 -11px;
+            text-decoration: none;
+            vertical-align: top;
+        }
+        .siebui-ecfg-globalsignal-ctrl.siebui-button-secondary > span:first-child,
+        .siebui-ecfg-globalsignal-ctrl.siebui-button-secondary > span:first-child a{
+            border-radius: 6px 0 0 0;
+        }
+        .siebui-ecfg-globalsignal-ctrl.siebui-button-secondary > span:last-child,
+        .siebui-ecfg-globalsignal-ctrl.siebui-button-secondary > span:last-child a{
+            border-radius: 0 0 10px 0;
+        }
+
+        /* Row 2 */
+
+        .siebui-applet.siebui-ecfg-price-details,
+        .siebui-applet.siebui-ecfg-product-details{
+            border-radius: 4px;
+            margin-right: 20px;
+        }
+        .siebui-ecfg-product-details .siebui-applet-title-row{
+            height: auto;
+            padding: 5px 7px 5px 10px;
+            min-height: 15px;
+            border-radius: 4px 4px 0 0;
+            border-bottom: 0;
+        }
+        .siebui-ecfg-product-details .siebui-applet-content{
+            padding: 0;
+            min-height: 0;
+        }
+        #CfgObjDetails{
+            position: relative;
+            padding: 10px;
+        }
+        #CfgObjDetails > a{
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: url(../images/btn_aplt_hide_1.gif) no-repeat 0 0;       
+        }       
+        dl#CfgProdDetails{
+            margin: 0;
+        }
+        dl#CfgProdDetails dt{
+            font-size: 0.8em;
+        }
+        dl#CfgProdDetails dd{
+            margin: 0;
+            padding-bottom: 4px;
+            font-weight: bold;
+        }   
+        .siebui-float-right{
+            float: right;
+        }
+        #siebui-ecfg-toggleProdDetails{
+            margin: -2px -3px 0 0;
+            padding: 0 5px;
+        }
+        .siebui-applet.siebui-ecfg-price-details {
+            min-height: 15px;
+            padding: 5px 10px;
+        }
+
+
+        /* Conflict & Explanation */
+        
+        #ConflictPage,
+        #ExplanationPage{
+            margin: 20px auto;
+            width: 75%;
+        }
+        #ConflictPage .listRowOff td,
+        #ExplanationPage .listRowOff td{
+            padding: 3px; 
+        }
+
+        #ConflictPage .siebui-applet-content,
+        #ExplanationPage .siebui-applet-content {
+            min-height: 1%;
+            overflow: hidden;
+        }
+
+
+        /* Tabs */
+
+        #MainPage {
+            border-radius: 10px 10px 10px 10px;
+        }
+        .siebui-ecfg-tabs {
+            border-radius: 10px 10px 0 0;
+            overflow: hidden;
+            padding: 0 4px;
+        }       
+        .cxProdTheme .siebui-ecfg-tab {
+            float: left;
+            margin: 5px 2px;
+            font-size: 0; /* ??? fix for uneccessary &nbsp; !!! */
+        }
+        .cxProdTheme .siebui-ecfg-tab div{
+            vertical-align: middle;
+
+        }
+        .cxProdTheme .siebui-ecfg-tab a{
+            font-size: 15px;
+            display: block;
+            height: 23px;
+            line-height: 23px;
+            text-decoration: none;
+            border-radius: 2px;
+            padding: 1px 15px;
+        }
+        .cxProdTheme .siebui-ecfg-tab:first-child a{
+            border-radius: 6px 2px 2px 2px; 
+        }
+        .siebui-ecfg-feature-group .siebui-link-icon-e a{
+            padding: 2px 10px;
+        }   
+
+        #cxProdRaw,
+        .siebui-ecfg-products {
+            clear: left;
+            padding: 0 10px;
+        }
+
+        /* Attributes */
+
+        .siebui-ecfg-feature-group{
+            margin: 12px 0;
+        }
+
+        .siebui-ecfg-module table{
+            border-spacing: 0;
+            padding:0;
+        }
+        .siebui-ecfg-module .AppletButtons td{
+            vertical-align: top;
+        }
+        .siebui-ecfg-header-title {
+            font-size: 1.2em;
+            padding: 10px 10px 0 10px;
+        }
+        .siebui-ecfg-header-label,
+        .siebui-ecfg-header-label-ext{
+            float: left;
+        }
+        .siebui-ecfg-header-label-ext{
+            padding-left: 10px;
+        }
+
+        .siebui-ecfg-header-subtitle{
+            clear: left;
+            font-size: 0.9em;
+            padding: 2px 10px 10px 10px;
+        }
+        .siebui-ecfg-header-subtitle img{
+            vertical-align: middle;
+        }
+
+        /* Modules */
+        
+        .div-table {
+            display: table;
+            width: 100%;
+        }
+
+        .div-table-caption {
+            display: table-caption;
+        }
+
+        .div-table-row {
+            display: table-row;
+        }
+        .div-table-col {
+            display: table-cell;
+            vertical-align: middle;
+        }       
+
+        .siebui-ecfg-module-content .siebui-ecfg-th > .div-table-col{
+            text-align: center;
+            height: auto;
+        }
+        .siebui-ecfg-header{
+            display: inline-block;
+            font-size: 0.8em;
+            font-weight: bold;
+            line-height: 1em;
+            vertical-align: middle;
+            padding-bottom: 4px;
+        }
+        .siebui-ecfg-module-content .siebui-ecfg-th2 .div-table-col {
+            font-size: 0.9em;
+            font-weight: bold;
+            padding: 0 0 0 10px;
+        }       
+
+        .siebui-ecfg-module-content td{
+            padding: 0 0 10px;
+        }
+        .siebui-ecfg-module-content .div-table-col{
+            height: 28px;
+            padding: 3px 2px;
+        }
+        .div-table-col.siebui-ecfg-cell-1 {
+            width: 1%;
+            padding-left: 10px;
+        }
+        .div-table-col.siebui-ecfg-cell-1 input{
+            text-align: right;
+        }
+
+        .div-table-col input {
+            vertical-align: middle;
+            margin:  0 2px;
+        }
+        .div-table-col input[type="radio"],
+        .div-table-col input[type="checkbox"] {
+            padding: 0;
+            margin: -2px 2px 0;
+        }
+
+        /**/
+        .siebui-ecfg-linked-items-label,
+        .siebui-ecfg-resource-items-label{
+            font-size: 1.2em;
+            margin: 12px 12px 25px;
+            padding: 0 0 2px 23px;
+            background: url(../images/linked-items.gif) no-repeat 0 0;      
+        }
+        .siebui-ecfg-resource-items-label{
+            background: url(../images/resoure-items.gif) no-repeat 0 0;     
+        }
+
+/*---------------------------------------------------------------------------*/
+/*--------------------- RTE Editor ------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+    .mceGridField .cke_skin_kama span.cke_browser_webkit, 
+    .mceGridField .cke_skin_kama span.cke_browser_gecko18,
+    html .cke_skin_kama {
+        outline: none;
+    }
+    .mceGridField span.cke_skin_kama {
+    n-radius: 2px;
+    margin-left: 2px;
+    margin-top: 2px;
+    padding: 0;     
+    }
+    .mceGridField .cke_skin_kama .cke_wrapper {
+        border-radius: 2px;
+        padding: 3px;
+        background: #eee;
+    }
+
+    .mceGridField .cke_skin_kama .cke_rcombo .cke_openbutton .cke_icon {
+        background: url("../images/jumpTabSelectBG.png") no-repeat 0 0;
+        cursor: pointer;
+        height: 16px;
+        margin: 3px 2px;
+    }
+    .mceGridField .cke_skin_kama .cke_rcombo .cke_text {
+        height: 24px;
+        line-height: 24px;
+        width: auto;    
+    }
+    .mceGridField .cke_skin_kama *, .mceGridField .cke_skin_kama a:hover, .mceGridField .cke_skin_kama a:link, .mceGridField .cke_skin_kama a:visited, .mceGridField .cke_skin_kama a:active{
+        font-size:11px;
+
+    }
+    .mceGridField .cke_skin_kama .cke_rcombo a, .mceGridField .cke_skin_kama .cke_rcombo a:active, .mceGridField .cke_skin_kama .cke_rcombo a:hover {
+        height: 23px;
+        margin-bottom: 4px;
+        margin-right: 4px;
+        padding: 0; 
+        border-bottom: 0;
+        border-radius: 2px;
+    }
+
+    .mceGridField .cke_skin_kama .cke_toolgroup {
+        background:none;
+        border-radius: 0 0 0 0;
+        margin-right: 4px;
+        padding: 0;
+    }
+
+
+    .mceGridField .cke_skin_kama .cke_button a.cke_on:hover,
+    .mceGridField .cke_skin_kama .cke_button a.cke_on:focus,
+    .mceGridField .cke_skin_kama .cke_button a.cke_on:active,
+    .mceGridField .cke_skin_kama .cke_button a.cke_off:hover, 
+    .mceGridField .cke_skin_kama .cke_button a.cke_off:focus, 
+    .mceGridField .cke_skin_kama .cke_button a.cke_off:active {
+        padding: 3px;
+    }
+
+    .mceGridField .cke_skin_kama .cke_button a, 
+    .mceGridField .cke_skin_kama .cke_button a:hover, 
+    .mceGridField .cke_skin_kama .cke_button a:focus,
+    .mceGridField .cke_skin_kama .cke_button a:active,
+    .mceGridField .cke_skin_kama .cke_button a.cke_off{ 
+        cursor: pointer;
+        display: block;
+        float: left;
+        height: 16px;
+
+        border-radius: 2px;
+        font-weight: bold;
+        padding: 3px;
+        margin: 0 1px 0 0;
+        vertical-align: middle;
+        cursor: pointer;
+        opacity: 0.8;
+
+        -webkit-box-shadow: 0 1px 1px rgba(255,255,255,0.6);
+        box-shadow:         0 1px 1px rgba(255,255,255,0.6);
+
+        -webkit-transition: all 0.25s ease 0s;
+        -moz-transition: all 0.25s ease 0s;
+        transition: all 0.25s ease 0s;  
+    }
+    
+    .mceGridField .cke_skin_kama .cke_button a:hover, 
+    .mceGridField .cke_skin_kama .cke_button a:focus{ 
+        opacity: 1;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.25), inset 0 0 3px #fff;
+        box-shadow:         0 1px 2px rgba(0,0,0,0.25), inset 0 0 3px #fff;
+    }
+    .mceGridField .cke_skin_kama .cke_button a:active{
+        opacity: 1;
+        -webkit-box-shadow: inset 0 1px 2px #aaa;
+        box-shadow:         inset 0 1px 2px #aaa;
+    }
+    .mceGridField .cke_skin_kama .cke_button a.cke_disabled{    
+        -webkit-box-shadow: none!important;
+        box-shadow: none!important;
+        background: none!important;
+    }
+
+    .mceGridField .cke_skin_kama .cke_rcombo .cke_off a:hover .cke_openbutton,
+    .mceGridField .cke_skin_kama .cke_rcombo .cke_off a:focus .cke_openbutton,
+    .mceGridField .cke_skin_kama .cke_rcombo .cke_off a:active .cke_openbutton,
+    .mceGridField .cke_skin_kama .cke_rcombo .cke_on .cke_openbutton{
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+    .mceGridField .cke_skin_kama .cke_button .cke_icon{
+        margin-top: 0;
+    }
+    .mceGridField .cke_skin_kama .cke_button a.cke_on {
+        opacity: 1;
+        padding: 3px;
+    }
+    .mceGridField .cke_skin_kama .cke_path a, 
+    .mceGridField .cke_skin_kama .cke_path .cke_empty {
+        font-size: 10px;
+    }
+    .mceGridField .cke_skin_kama .cke_menuitem .cke_icon,
+    .mceGridField .cke_skin_kama .cke_button .cke_icon{
+        background-image: url("../images/icons.png");
+    }
+    .mceGridField .cke_skin_kama .cke_rtl .cke_button .cke_icon,
+    .mceGridField .cke_rtl .cke_skin_kama .cke_menuitem .cke_icon{
+        background-image: url("../images/icons_rtl.png");
+    }
+
+    /**/
+
+    .cke_skin_kama .cke_dialog .cke_dialog_body .cke_dialog_close_button {
+        background-image: url("../images/oui_Sprite.png")!important;
+        background-position: -50px 4px!important;
+    }
+    .cke_skin_kama .cke_dialog_ui_hbox.cke_dialog_footer_buttons span.cke_dialog_ui_button {
+        margin: 0;
+    }   
+    .cke_skin_kama .cke_dialog_ui_hbox > td {
+        padding: 5px 10px 5px 5px!important;
+    }
+    .cke_skin_kama .cke_dialog_ui_hbox a.cke_dialog_ui_button_ok span, 
+    .cke_skin_kama .cke_dialog_ui_hbox a.cke_dialog_ui_button_cancel span {
+        padding: 2px 10px;
+    }
+
+    .cke_skin_kama .cke_dialog_ui_hbox a.cke_dialog_ui_button:hover, 
+    .cke_skin_kama .cke_dialog_ui_hbox a.cke_dialog_ui_button:focus, 
+    .cke_skin_kama .cke_dialog_ui_hbox a.cke_dialog_ui_button:active {
+        background-position: 0 0;
+    }
+
+/*---------------------------------------------------------------------------*/
+/*--------------------- Report Pane -----------------------------------------*/
+/*---------------------------------------------------------------------------*/
+    
+    #s_ReportPane{
+    }
+
+    #reportList{
+    padding: 4px;
+    }
+
+    #reportList .mceGridLabel,#reportParameter .mceGridLabel {
+        padding-right: 3px;
+        text-align: right;
+        width: 90px;  
+        float:left;
+        color:inherit;
+    }
+    
+    #reportList .mceGridLabel > span,
+    #reportParameter .mceGridLabel > span,
+    #ScheduleHeader .mceGridLabel > span{
+        white-space: pre-wrap;
+        font-weight: bold;
+    }
+
+    #reportList table, #reportList table td {
+        border: 0 none;
+        border-spacing: 0;
+        padding: 0;
+    }
+    #reportList input, #reportList select,#reportParameter input, #reportParameter select {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 132px!important;
+        background: none repeat scroll 0 0 #FDFDFD;
+    }
+ 
+
+    #reportFooter, .siebui-report-button {
+        padding: 3px;
+        display: block;
+        text-align: right;
+    }
+    #reportFooter, .siebui-report-button  button{
+        margin-left:3px !important; 
+    }
+    .siebui-report-button
+    {
+        border-top: 1px solid #595959;  
+        
+    }
+    .siebui-report-button .appletButton
+    {
+        width:inherit !important;
+        border-width: 1px !important;
+        border-style: outset;
+        border-radius: 4px;
+        height:21px;
+        background-color:transparent !important;
+    }
+    
+    .siebui-report-button .appletButtonDis
+    {
+        width:inherit !important;
+        border-width: 1px !important;
+        border-style: inset;    
+        border-radius: 4px;
+        height:21px;
+        background-color:transparent !important;
+    }
+    
+    #ScheduleHeader .mceGridLabel {
+        display: inline-block;
+        padding-right: 7px;
+        text-align: right;
+        width: 90px; 
+        float:left;
+        white-space: pre-wrap;
+        font-weight: bold;
+        color:inherit;
+    }
+    #ScheduleHeader .mceGridField{
+        margin-right: 7px;
+        display:table-cell !important;
+        text-align:left !important;
+    }
+    #reportList .mceGridField{
+        display:table-cell !important;        
+    }
+    
+    .siebui-report-row
+    {
+        display:table-row;
+    }
+    
+    .siebui-report-mon .appletButton
+    {
+        float: left;
+        margin: 1px;
+        width: 30.5px !important;
+        height: 18px !important;
+        margin-right: 2px;
+        background-color: inherit !important;
+        border-width: 1px;
+        border-style: outset;
+        border-radius: 4px;
+    }
+    
+    .siebui-report-mon .appletButtonDis
+    {
+        float: left;
+        margin: 1px;
+        width: 30.5px !important;
+        height: 18px !important;
+        margin-left: 2px;
+        background-color: inherit !important;
+        border-width: 1px !important;
+        border-style: inset;
+        border-radius: 4px;
+    }
+    
+    .siebui-report-weekdays .appletButton
+    {
+        float: left;
+        margin: 2px;
+        width: 29.5px !important;
+        height: 18px !important;
+        margin-right: 2px;
+        background-color: inherit !important;
+        border-width: 1px;
+        border-style: outset;
+        border-radius: 4px;
+    }
+    
+    .siebui-report-weekdays .appletButtonDis
+    {
+        float: left;
+        margin: 2px;
+        width: 29.5px !important;
+        height: 18px !important;
+        margin-right: 2px;
+        background-color: inherit !important;
+        border-width: 1px !important;
+        border-style: inset;
+        border-radius: 4px;
+    }
+    
+    .siebui-report-runhour select,.siebui-report-runmin select{
+        width:51px !important;      
+    } 
+      
+   .siebui-report-freq select {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 132px!important;
+        background: none repeat scroll 0 0 #FDFDFD;
+    }
+       
+   #ScheduleHeader input {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 132px!important;
+        background: none repeat scroll 0 0 #FDFDFD;
+    }
+    
+    #ReportRunTimeHour input{
+        width: 50px !important;
+    }    
+        
+    #ReportRunTimeMinute input{
+        width: 50px !important;
+        margin-left: -56px;
+    }
+    
+    .siebui-reportmon-label {
+         display: table-cell !important;
+         margin-bottom:57px;
+    } 
+    .siebui-reportwkdays-label{
+            display: table-cell !important;
+            margin-bottom:49px;
+    }
+   
+    #ScheduleHeader .appletButton
+    {
+            height: 22px;
+            width: 41px;
+            vertical-align: middle;
+            background:inherit;
+            border-color: inherit;
+    }
+    
+    .siebui-check{
+        margin-top: -27px;
+        margin-left: -9px;
+    }
+    .siebui-accordion{
+        text-align: left;
+    }
+
+    .siebui-report-margin{
+        text-align: left;
+        padding-left: inherit;
+        height: inherit;
+    }
+    
+    #reportParameter img.applet-form-date,
+    #reportParameter img.applet-form-datetime,
+    #reportParameter img.applet-form-currency,
+    #reportParameter img.applet-form-calculator,
+    #ScheduleHeader img.applet-form-date,
+    #ScheduleHeader img.applet-form-datetime,
+    #ScheduleHeader img.applet-form-currency,
+    #ScheduleHeader img.applet-form-combo,
+    #ScheduleHeader img.applet-form-calculator{
+        margin:0 0 0 -26px;
+    }
+    
+    #reportParameter .mceGridLabel{
+        float:left;
+        display:table-cell !important;
+        padding-right:7px;
+        line-height:1em;
+    }
+    
+    #reportParameter input[type="checkbox"]{
+        margin-left: 1px;
+        width:inherit !important;
+    } 
+    
+    #reportParameter textarea {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 132px!important;
+        min-width: 132px;
+    }
+    
+    #reportParameter .mceGridField {
+        display:table-cell !important;
+    }
+    
+    #ScheduleHeader .mceGridLabel,
+    #reportList .mceGridLabel {
+        line-height:1em;
+        display:table-cell !important;
+    }
+    
+    .siebui-rptaccordion-exp
+    {
+        cursor: pointer;
+        float: right;
+        width: 2em;
+        height: 2em;
+        background: url(../images/icon_sort_up.gif) no-repeat center center;
+        margin-right: 9px;
+        -webkit-transform:rotate(90deg);
+        -moz-transform:rotate(90deg);
+        -ms-transform:rotate(90deg);
+    }
+    
+    .siebui-rptaccordion-collap
+    {
+        cursor: pointer;
+        float: right;
+        width: 2em;
+        height: 2em;
+        background: url(../images/icon_sort_up.gif) no-repeat center center;
+        margin-right: 9px;
+        -webkit-transform:rotate(180deg);
+        -moz-transform:rotate(180deg);
+        -ms-transform:rotate(180deg);
+    }
+    
+    .siebui-report-header #s_reportclose
+    {
+        margin-right:9px;
+    }
+    
+    .siebui-report-checkbox
+    {
+        width:0px !important;
+    }
+/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+/*------------ THE BELOW NEEDS TO BE REVISITED OR REMOVED -------------------*/
+/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+
+    #HTMLToolbar { /* ??? */
+        display: none
+    }
+
+    /**/
+
+    div.siebui-perf-bar {
+        position: absolute;
+        left: 120px;
+        top: 10px;
+        width: 50%;
+        font-weight: bold;
+    }
+
+    div.siebui-perf-data {
+        float: left;
+        padding-left: 5px;
+        padding-right: 5px;
+        border: 1px solid #acacac;
+        background-color: red;
+    }
+
+    /* SweTimer Log floating div*/
+
+    #swe-timer-content{   /*???*/
+        position : absolute;
+        width : 20%;
+        height : 50%;
+        top : 5px;
+        right : 5px;
+        border: 1px solid red;
+        overflow : scroll;
+        background-color : #acacac;
+    }
+/* Bug 16846097 - Start */
+div.siebui-drilldown-input {
+  float: left;
+  font-size: 0.9em; 
+  margin: 0 2px;
+  padding-left: 5px; 
+  padding-right: 21px;
+  text-overflow: ellipsis;
+}
+div.siebui-drilldown-input a {
+  line-height: 2em;
+}
+/* Bug 16846097 - End */

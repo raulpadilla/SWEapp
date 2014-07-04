@@ -1,0 +1,702 @@
+/* Application title */
+.simplenavBarStyle, .siebui-toolbar-sitemap-mobile {
+  border: 0px;
+  background: #363636 url(../images/menuDropDownBGnoise.png) repeat-x 0 bottom;
+}
+.siebui-toolbar-sitemap-mobile {
+  border-right: 1px inset #898989;
+}
+.siebui-toolbar-mobilesettings img {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  border: 1px inset #898989;
+  -moz-box-shadow: 1px 1px 1px #898989;
+  -webkit-box-shadow: 1px 1px 1px #898989;
+  box-shadow: 1px 1px 1px #898989;
+}
+.siebui-logo {
+  background-image: url(../images/logo.png);
+  background-position: center;
+}
+.siebui-logo-large {
+  background-image: url(../images/oracleWhite.png);
+  background-repeat: no-repeat;
+  width: 140px;
+}
+.ui-btn-up-a,
+.ui-btn-hover-a,
+.ui-btn-down-a {
+  border: 0px;
+  background: none;
+}
+.ui-corner-top,
+.ui-corner-bottom,
+.ui-btn-corner-all,
+.miniBtnUIC {
+  border-radius: 0px;
+}
+.ui-btn-icon-center,
+.miniBtnUIC {
+  background: none;
+  border: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.ui-slider.ui-btn-corner-all,
+.ui-slider > .ui-btn-corner-all,
+.ui-slider-inneroffset > .ui-btn-corner-all {
+  border-radius: 3em;
+}
+.ui-btn-text, .miniBtnUIC {
+  font-weight: normal;
+}
+.ui-corner-all,
+.ui-corner-bottom,
+.ui-corner-right,
+.ui-corner-br {
+  border-radius: 4px;
+}
+.ui-body-b,
+.ui-body-c,
+.ui-body-f,
+.ui-dialog.ui-overlay-b,
+.ui-dialog.ui-overlay-c,
+.ui-dialog.ui-overlay-f {
+  text-shadow: none;
+}
+.siebui-formappletmobile.ui-body-f,
+.siebui-formappletmobilesection2.ui-body-f,
+.siebui-formappletmobilesection3.ui-body-f,
+.SiebelContentListContainer.ui-body-b,
+.SiebelContentListContainerRelatedItems.ui-body-b,
+.SiebelContentDetailContainerRelatedItems.ui-body-e,
+.SiebelContentDetailContainerRelatedItems1.ui-body-e {
+  border: 0px;
+}
+
+/* Field label styling */
+.siebui-mb-label {
+  color: #98B3CF;
+}
+
+/* Custom icons */
+.ui-icon-custom-gear,
+.ui-icon-custom-trashcan,
+.ui-icon-custom-plus,
+.ui-icon-custom-save,
+.ui-icon-custom-edit,
+.ui-icon-custom-cancel,
+.ui-icon-small-marker,
+.ui-icon-marker,
+.ui-icon-custom-close,
+.ui-icon-sign,
+.ui-icon-submit,
+.siebui-mobile-msgclosedialog span.ui-btn-inner,
+.ui-icon-open {
+  background-color: transparent;
+  background-position: center center;
+  background-repeat:no-repeat;
+}
+.ui-icon-custom-gear {
+  background-image: url(../images/custom_gear.png);
+}
+.ui-icon-custom-trashcan{
+  background-image: url(../images/custom_trashcan.png);
+}
+.ui-icon-custom-plus {
+  background-image: url(../images/plus.png);
+}
+.ui-icon-custom-save {
+  background-image: url(../images/custom_save.png);
+}
+.ui-icon-custom-edit {
+  background-image: url(../images/custom_edit.png);
+}
+.ui-icon-custom-cancel {
+  background-image: url(../images/custom_cancel.png);
+}
+.ui-icon-small-marker {
+  background-image: url(../images/small_marker.png);
+}
+.ui-icon-custom-close,
+.siebui-mobile-msgclosedialog span.ui-btn-inner {
+  background-image: url(../images/close.png);
+}
+.ui-icon-open {
+  background-image: url(../images/open.png);
+}
+.ui-icon-marker {
+  background-image: url(../images/marker.png);
+}
+.ui-icon-submit {
+  background-image: url(../images/submit.png);
+}
+.ui-icon-sign{
+  background-image: url(../images/sign.png);
+}
+
+/* Icon for Logout button */
+.logoutlink {
+  background: url(../images/logoutSwitch.png) no-repeat 0 0;
+}
+
+/* Link icons */
+a.email {
+  background: url(../images/email_icon.png) no-repeat 0 0;
+  background-position: center center;
+}
+a.tel {
+  background: url(../images/phone_icon.png) no-repeat 0 0;
+  background-position: center center;
+}
+a.url {
+  background: url(../images/url_icon.png) no-repeat 0 0;
+  background-position: center center;
+}
+a.mapLink {
+  background: url(../images/marker.png) no-repeat 0 0;
+  background-position: center center;
+}
+.ui-icon-siebui-drilldown {
+  background: url(../images/drilldown_icon.png) no-repeat 0 0;
+  background-position: center center;
+}
+
+/* Search Container */
+.ui-input-search .ui-input-clear {
+  background: none;
+  border: 0px;
+}
+.ui-li-desc > span {
+  color: #505050;
+}
+
+/* pdq styling */
+.ui-li-static.ui-li.hilight,
+.menuitem li:hover,
+.pdqitem li:hover {
+  border-left: 5px solid red;
+  padding-left: 15px;
+}
+.ui-li-static.ui-li {
+  border-bottom-width: 0px;
+  padding-left: 19px;
+  text-shadow:  0 2px 2px #ECECEC;
+}
+.ui-li-static.ui-li:last-child {
+  border-bottom-width: 1px;
+}
+.menuitem {
+  background-image: -webkit-gradient(linear, left top, left bottom, from( #DFDFDF /*{c-body-background-start}*/), to( #DADADA /*{c-body-background-end}*/)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient( #DFDFDF /*{c-body-background-start}*/, #DADADA /*{c-body-background-end}*/); /* Chrome 10+, Saf5.1+ */
+  background-image:    -moz-linear-gradient( #DFDFDF /*{c-body-background-start}*/, #DADADA /*{c-body-background-end}*/); /* FF3.6 */
+  background-image:     -ms-linear-gradient( #DFDFDF /*{c-body-background-start}*/, #DADADA /*{c-body-background-end}*/); /* IE10 */
+  background-image:      -o-linear-gradient( #DFDFDF /*{c-body-background-start}*/, #DADADA /*{c-body-background-end}*/); /* Opera 11.10+ */
+  background-image:         linear-gradient( #DFDFDF /*{c-body-background-start}*/, #DADADA /*{c-body-background-end}*/);
+}
+.pdqitem > .ui-listview > .ui-li,
+.menuitem > .ui-listview > .ui-li {
+  background-color: #F9F9F9;
+  background-image: -webkit-gradient(linear, left top, left bottom, from( #F9F9F9 /*{c-body-background-start}*/), to( #EEE /*{c-body-background-end}*/)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient( #F9F9F9 /*{c-body-background-start}*/, #EEE /*{c-body-background-end}*/); /* Chrome 10+, Saf5.1+ */
+  background-image:    -moz-linear-gradient( #F9F9F9 /*{c-body-background-start}*/, #EEE /*{c-body-background-end}*/); /* FF3.6 */
+  background-image:     -ms-linear-gradient( #F9F9F9 /*{c-body-background-start}*/, #EEE /*{c-body-background-end}*/); /* IE10 */
+  background-image:      -o-linear-gradient( #F9F9F9 /*{c-body-background-start}*/, #EEE /*{c-body-background-end}*/); /* Opera 11.10+ */
+  background-image:         linear-gradient( #F9F9F9 /*{c-body-background-start}*/, #EEE /*{c-body-background-end}*/);
+}
+
+.jqmNoRecord {
+  font-style: italic;
+  text-shadow: -2px 2px 3px #DADADA;
+  color: #ECECEC;
+}
+
+/* jqm Grid */
+.hilight .jqmgrid_row_bar{
+  border: 1px inset red;
+  border-radius: 5px;
+}
+.jqmgrid_label_bar {
+  font-weight: normal;
+}
+.ui-bar-d, .jqmgrid_row > .ui-bar-b {
+  background: none;
+}
+
+.AppletButtons > .AppletTitle,
+.SiebelDetailParentContainerRelatedItems .form-applet-header > .AppletTitle,
+.form-applet-header > .AppletTitle,
+.SiebelContentListContainerRelatedItemsOuterCont tr.AppletButtons > .AppletTitle,
+.siebui-mb-applet-header .AppletTitle {
+  font-weight: normal;
+  color: #8C8C8C;
+}
+
+.ui-scrollview-clip,
+.SiebelContentDetailContainer,
+.SiebelDetailParentContainerRelatedItemsOuterCont,
+.siebui-SiebelDetailParentContainerRelatedItemsOuterCont-sign,
+.siebui-SiebelContentListContainerRelatedItems-sign,
+.siebui-SiebelContentDetailContainerRelatedItems-sign,
+.siebui-SiebelContentListContainerRelatedItemsOuterCont-sign {
+  background-image: -webkit-gradient(linear, left top, left bottom, from( #DFDFDF /*{c-body-background-start}*/), to( #DADADA /*{c-body-background-end}*/)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient( #DFDFDF /*{c-body-background-start}*/, #DADADA /*{c-body-background-end}*/); /* Chrome 10+, Saf5.1+ */
+  background-image:    -moz-linear-gradient( #DFDFDF /*{c-body-background-start}*/, #DADADA /*{c-body-background-end}*/); /* FF3.6 */
+  background-image:     -ms-linear-gradient( #DFDFDF /*{c-body-background-start}*/, #DADADA /*{c-body-background-end}*/); /* IE10 */
+  background-image:      -o-linear-gradient( #DFDFDF /*{c-body-background-start}*/, #DADADA /*{c-body-background-end}*/); /* Opera 11.10+ */
+  background-image:         linear-gradient( #DFDFDF /*{c-body-background-start}*/, #DADADA /*{c-body-background-end}*/);
+  background-attachment: fixed;
+}
+
+.SiebelMobileViewTabContainer a.selectedviewmobile {
+  border: 1px solid #4A76A5;
+  color: #FFF;
+  text-shadow: 0 1px 0 #000;
+  background: #4A76A5;
+}
+
+.screen-cntrl-readonly {
+  border: none;
+  text-shadow: none;
+  background-color: transparent !important;
+  color: white;
+}
+
+/* List record select indicator */
+div.Selected {
+  border-top: 1px solid transparent !important;
+}
+div.NotSelected, div.Selected, td.AppletStylePopup, tr.AppletStylePopup > td {
+  border-top: 1px solid #D0D0D0;
+}
+
+/* List records styling */
+.ui-controlgroup-vertical .ui-btn .ui-btn-inner .ui-btn-text h5 {
+  font-weight: normal !important;
+}
+
+/* Calendar buttons styling */
+.ui-btn-PrevDay,
+.ui-btn-NxtDay,
+.ui-btn-ShowMap,
+.ui-btn-PrevDay > span,
+.ui-btn-NxtDay > span,
+.ui-btn-ShowMap > span {
+  box-shadow: none;
+  border: none;
+  background: transparent;
+}
+
+/* NOTIFICATIONS STYLING */
+.siebui-mobile-msgbrdcst-drilldown-icon{
+  background: url(../images/drilldown_icon.png) no-repeat 0 0;
+ }
+.siebui-mobile-msgbrdcst-attachment-icon{
+  background: url(../images/attachment_download.png) no-repeat 0 0;
+}
+.siebui-mobile-msgbar {
+  text-decoration: none;
+}
+.siebui-mobile-msgbar h5{
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .3);
+  box-shadow: 0 0 4px black;
+  -webkit-box-shadow: 0 0 4px black;
+  border-radius: 2px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.siebui-mb-msg-summary-heading {
+  font-size: 20px;
+  color: #8C8C8C;
+  font-weight: normal;
+}
+.siebui-mb-msgbrdcst-summary li,
+.siebui-mobile-msgbrdcst_details li {
+  border-bottom: 1px solid #E5E5E5;
+  border-top: 1px solid white;
+  border-left: 6px solid transparent;
+  cursor: pointer;
+  list-style: none outside none;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZkZmRmZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmOGY4ZjgiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top, #FDFDFD 0%, #F8F8F8 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FDFDFD), color-stop(100%,#F8F8F8));
+  background: -webkit-linear-gradient(top, #FDFDFD 0%,#F8F8F8 100%);
+  background: -o-linear-gradient(top, #FDFDFD 0%,#F8F8F8 100%);
+  background: -ms-linear-gradient(top, #FDFDFD 0%,#F8F8F8 100%);
+  background: linear-gradient(to bottom, #FDFDFD 0%,#F8F8F8 100%);
+}
+.siebui-mb-msgbrdcst-details {
+  background-image : -webkit-gradient(linear, left top, left bottom, from(#F0F0F0), to(#ECECEC)) !important;
+}
+.siebui-mb-msgbrdcst-details div {
+  box-shadow: none !important;
+}
+.siebui-mobile-deletemsgbtn {
+  background: transparent;
+  border-left-width: 0px;
+}
+.siebui-mobile-msgclosedialog {
+  background: none;
+  border: 0;
+  box-shadow: none;
+}
+.siebui-mobile-msgclosedialog span.ui-btn-inner{
+  width: 40px;
+  height: 20px;
+}
+.siebui-mobile-deletemsgbtn  span.ui-btn-icon-notext .ui-btn-inner {
+  padding: 0px !important;
+}
+.siebui-mb-msgbrdcst-summary li.readmessage span {
+  font-weight: normal;
+  font-style: italic;
+  color: #999;
+  text-shadow: none;
+}
+.siebui-mb-msgbrdcst-summary li.unreadmessage {
+  color: #000 !important;
+}
+.siebui-mb-msgbrdcst-summary li.readmessage div.ui-li {
+  border-top-width: 0px;
+}
+.siebui-mb-msgbrdcst-summary li.readmessage.siebui-msgbar-row-normal{
+  border-left-color: #DFDFDF;
+}
+.siebui-mb-msgbrdcst-summary li.readmessage.siebui-msgbar-row-high{
+  border-left-color: #F9F5D1;
+}
+.siebui-mb-msgbrdcst-summary li.readmessage.siebui-msgbar-row-urgent{
+  border-left-color: #F9DFDF;
+}
+.siebui-mb-msgbrdcst-summary li.siebui-msgbar-row-normal,
+.siebui-mobile-msgbrdcst_details li.siebui-msgbar-row-normal{
+  border-left-color: #ccc;
+  border-left-color: rgba(0, 0, 0, 0.3);
+  font-weight: normal;
+  color: #000;
+}
+.siebui-mb-msgbrdcst-summary li.siebui-msgbar-row-high,
+.siebui-mobile-msgbrdcst_details li.siebui-msgbar-row-high{
+  border-left-color: #FFEE3A;
+  border-left-color: rgba(255, 238, 58, 0.9);
+  font-weight: normal;
+  color: #000;
+}
+.siebui-mb-msgbrdcst-summary li.siebui-msgbar-row-urgent,
+.siebui-mobile-msgbrdcst_details li.siebui-msgbar-row-urgent{
+  border-left-color: #FF4949;
+  border-left-color: rgba(255, 0, 0, 0.7);
+  font-weight: normal;
+  color: #000;
+}
+.siebui-msgbar-bkgrnd-msg-normal {
+  background: #1d559a !important;
+  color: #000 !important;
+  font-weight:normal;
+}
+.siebui-msgbar-bkgrnd-msg-high {
+  background: #FFCC33 !important;
+  color: #000 !important;
+  font-weight: normal;
+}
+.siebui-msgbar-bkgrnd-msg-urgent {
+  background: #ff0000 !important;
+  color: #fff !important;
+  font-weight: normal;
+}
+.siebui-msgbarbkgrnd-msgread-nomsgs {
+  background: #808080 !important;
+  color: #fff !important;
+  font-weight: normal;
+}
+.siebui-msgbar-msg-high {
+  color: #ffee3a;
+  text-shadow: none;
+}
+.siebui-msgbar-msg-urgent {
+  color: #FF4949;
+  text-shadow: none;
+}
+.siebui-msgbar-msg-normal {
+  color: #000;
+  text-shadow: none;
+}
+.siebui-mobile-msg-expired {
+  font-weight: normal;
+  color: red;
+  font-style: italic;
+}
+.siebui-msgbar-msg-secured {
+  pointer-events: none;
+}
+.siebui-mobile-msgbar h5.msgblinkstylemobi {
+  opacity: .3 !important;
+}
+.siebui-mb-deletemsgbtn{
+  background-image  : url(../images/custom_cancel.png);
+}
+
+.AppletBlock{
+  border: 1px dashed #ccc;
+  border-radius: 5px;
+  font-style: italic;
+  background: url(../images/icon_configure_conflict.gif) no-repeat center;
+  background-position: left;
+  cursor: help;
+}
+
+.ui-selectmenu li.ui-btn-active {
+  color: #ECECEC;
+  background: #4A76A5;
+  border: 1px solid #4A76A5;
+}
+.ui-selectmenu .ui-header .ui-title,
+.ui-selectmenu .ui-bar-b {
+  background: transparent;
+  border: none;
+}
+.ui-selectmenu .ui-header .ui-btn-inner {
+  border: none;
+}
+
+/* File Attachments */
+.siebui-file-label {
+  cursor: pointer;
+}
+.siebui-file-input {
+  cursor: pointer;
+  opacity: 0;
+  -moz-opacity: 0;
+  filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0)
+}
+
+.ToolbarButton a {
+  cursor: pointer;
+}
+
+.ui-br {
+  border: 0;
+}
+
+/* Swipe (Delete) Button */
+.aSwipeBtn {
+  -moz-box-shadow: inset 0 1px 0 0 #F29C93;
+  -webkit-box-shadow: inset 0 1px 0 0 #F29C93;
+  box-shadow: inset 0 1px 0 0 #F29C93;
+  background: -webkit-gradient(linear,left top,left bottom,color-stop(0.05,#FE1A00),color-stop(1,#CE0100));
+  background: -moz-linear-gradient(center top,#FE1A00 5%,#CE0100 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FE1A00',endColorstr='#CE0100');
+  background-color: #FE1A00;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #D83526;
+  color: #ECECEC!important;
+  text-shadow: 0 1px 0 #D0D0D0;
+  background-image: none;
+}
+/* Expand Collpase buttons styles in form applet */
+.ui-icon-btn_more,
+.ui-icon-btn_less {
+  background: transparent;
+  border-radius: 10px;
+}
+.ui-icon-btn_more:after {
+  content: url(../images/actionLauncherArrowDown.png);
+}
+.ui-icon-btn_less:after {
+  content: url(../images/actionLauncherArrowUp.png);
+}
+/* JQM Table */
+.jqmtable tr td {
+  background: transparent;
+}
+.jqmtable tr {
+  background: #fff;
+  background: -moz-linear-gradient(top,  #fff 0%, #efefef 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fff), color-stop(100%,#efefef));
+  background: -webkit-linear-gradient(top,  #fff 0%,#efefef 100%);
+  background: -o-linear-gradient(top,  #fff 0%,#efefef 100%);
+  background: -ms-linear-gradient(top,  #fff 0%,#efefef 100%);
+  background: linear-gradient(to bottom,  #fff 0%,#efefef 100%);
+}
+.jqmtable tr.hilight{
+  background: #fffcef;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmNlZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZlYjUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top,  #fffcef 0%, #fffeb5 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fffcef), color-stop(100%,#fffeb5));
+  background: -webkit-linear-gradient(top,  #fffcef 0%,#fffeb5 100%);
+  background: -o-linear-gradient(top,  #fffcef 0%,#fffeb5 100%);
+  background: -ms-linear-gradient(top,  #fffcef 0%,#fffeb5 100%);
+  background: linear-gradient(to bottom,  #fffcef 0%,#fffeb5 100%);
+}
+/****************** Disconnected Siebel Mobile - Start ******************/
+img.goOffline,
+img.appCacheProgress1 {
+  background:url(../images/progress_meter.png) 0 72px;
+}
+img.appCacheProgress2 {
+  background:url(../images/progress_meter.png) 0 60px;
+}
+img.metadataDone,
+img.appCacheProgress3 {
+  background:url(../images/progress_meter.png) 0 48px;
+}
+img.offlineDataEnd,
+img.appCacheProgress4 {
+  background:url(../images/progress_meter.png) 0 36px;
+}
+img.cachingData,
+img.appCacheProgress5 {
+  background:url(../images/progress_meter.png) 0 24px;
+}
+img.offlinePackageEnd,
+img.appCacheProgress6 {
+  background:url(../images/progress_meter.png) 0 12px;
+}
+img.statusFullDownLoad  {
+  background : url(../images/syncStati.png) 192px 0;
+}
+img.statusFullDownLoadFailed {
+  background : url(../images/syncStati.png) 176px 0;
+}
+img.statusSyncPending {
+  background : url(../images/syncStati.png) 144px 0;
+}
+img.statusIncDataDownLoad {
+  background : url(../images/syncStati.png) 112px 0;
+}
+img.statusIncDownLoadFailed {
+  background : url(../images/syncStati.png) 96px 0;
+}
+img.statusUpSync {
+  background : url(../images/syncStati.png) 80px 0;
+}
+img.statusUpSyncFailed {
+  background : url(../images/syncStati.png) 48px 0;
+}
+img.statusUpSyncDataConflict {
+  background : url(../images/syncStati.png) 32px 0;
+}
+img.statusUpSyncDone {
+  background : url(../images/syncStati.png) 16px 0;
+}
+img.statusOnline {
+  background : url(../images/syncStati.png) 0 0;
+}
+/******************* Disconnected Siebel Mobile - End *******************/
+/*************************** Site Map - Start ***************************/
+#_sweclient {
+  background: rgb(137,137,137);
+  background: -moz-radial-gradient(50% 20%, circle cover, #898989 0%, #5B5B5B 100%);
+  background: -webkit-gradient(radial, 50% 20%, 0px, 50% 20%, 100%, color-stop(0%,#898989), color-stop(100%,#5B5B5B));
+  background: -webkit-radial-gradient(50% 20%, circle cover, #898989 0%,#5B5B5B 100%);
+  background: -o-radial-gradient(50% 20%, circle cover, #898989 0%,#5B5B5B 100%);
+  background: -ms-radial-gradient(50% 20%, circle cover, #898989 0%,#5B5B5B 100%);
+  background: radial-gradient(circle at 50% 20%, #898989 0%,#5B5B5B 100%);
+}
+.siebui-showing-sitemap {
+  color: #444;
+}
+.siebui-showing-sitemap .simplenavBarStyle {
+  background: transparent;
+  -webkit-transition: background .2s ease-in-out;
+  -moz-transition: background .2s ease-in-out;
+  -o-transition: background .2s ease-in-out;
+  transition: background .2s ease-in-out;
+}
+.siebui-showing-sitemap #s_pdq.ToolbarButton {
+  display: none;
+}
+.siebui-showing-sitemap .siebui-toolbar-sitemap-mobile {
+  visibility: hidden;
+  -webkit-transition: visibility .2s ease-in-out;
+  -moz-transition: visibility .2s ease-in-out;
+  -o-transition: visibility .2s ease-in-out;
+  transition: visibility .2s ease-in-out;
+}
+.siebui-sitemap-item {
+  background-color: #393939;
+  background-image: -moz-linear-gradient(0% 100% 90deg, #393939, #898989);
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#898989), to(#393939));
+  -moz-box-shadow: 2px 2px 2px #393939;
+  -webkit-box-shadow: 2px 2px 2px #393939;
+  box-shadow: 2px 2px 2px #393939;
+}
+.siebui-sitemap-item:hover,
+.siebui-toolbar-sitemap-mobile:active {
+  background-color: #393939;
+  background-image: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.siebui-sitemap-item-link a {
+  text-decoration: none;
+  color: #fcfcfc !important;
+  font-weight: normal !important;
+  font-size: 12px;
+  text-shadow: 1px 1px 1px #222;
+}
+/**************************** Site Map - End ****************************/
+/************************** Signature - Start ***************************/
+.siebui-signatureHeader  textarea,
+.siebui-signatureHeader  input,
+.siebui-signatureHeader p {
+  color: #333;
+}
+/*************************** Signature - End ****************************/
+/************************ Flex Style List - Start ***********************/
+.siebui-ui-li-heading {
+  font-size: 20px;
+  font-weight: bold;
+}
+.siebui-ui-li-desc {
+  font-size: inherit;
+  font-weight: normal;
+}
+/************************* Flex Style List - End ************************/
+/************************** Inline Edit - Start *************************/
+.jqmform_JText input,
+.jqmform_Pick input,
+.jqmform_Phone input,
+.jqmform_Mailto input,
+.jqmform_URL input,.jqmform_JCalculator input,
+.jqmform_JCurrencyCalc input,
+.jqmform_JPassword input,
+.jqmform_JTextArea textarea {
+  background: #ffffff !important;
+  color: #4A76A5;
+}
+/*************************** Inline Edit - End **************************/
+/********************* CG App Custom Styling - Start ********************/
+.siebui-cg-call-list-custom-aside > :last-child {
+  color: #0000FF;
+}
+ .siebui-calls-status {
+  float: right;
+  width: 45%;
+  text-align: right;
+  margin: -2.2em 0;
+}
+.siebui-calls-name {
+  margin: .6em 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+/********************** CG App Custom Styling - End *********************/
+.siebui-ipe-enabled {
+  padding-left: 12px;
+  background: url(../images/task_bullet.gif) no-repeat 0 top;
+}
+.AppletButtons .siebui-ipe-enabled {
+  padding-left: 0;
+  background: none;
+}
+.custom_select.siebui-ipe-enabled {
+  padding-left: 0;
+  background: none;
+}

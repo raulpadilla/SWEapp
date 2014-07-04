@@ -1,0 +1,108 @@
+<HTML>
+<HEAD>
+<TITLE>Welcome</TITLE>
+<script language="JavaScript">
+<!--
+function MM_swapImgRestore() { //v2.0
+  if (document.MM_swapImgData != null)
+    for (var i=0; i<(document.MM_swapImgData.length-1); i+=2)
+      document.MM_swapImgData[i].src = document.MM_swapImgData[i+1];
+}
+
+function MM_preloadImages() { //v2.0
+  if (document.images) {
+    var imgFiles = MM_preloadImages.arguments;
+    if (document.preloadArray==null) document.preloadArray = new Array();
+    var i = document.preloadArray.length;
+    with (document) for (var j=0; j<imgFiles.length; j++) if (imgFiles[j].charAt(0)!="#"){
+      preloadArray[i] = new Image;
+      preloadArray[i++].src = imgFiles[j];
+  } }
+}
+
+function MM_swapImage() { //v2.0
+  var i,j=0,objStr,obj,swapArray=new Array,oldArray=document.MM_swapImgData;
+  for (i=0; i < (MM_swapImage.arguments.length-2); i+=3) {
+    objStr = MM_swapImage.arguments[(navigator.appName == 'Netscape')?i:i+1];
+    if ((objStr.indexOf('document.layers[')==0 && document.layers==null) ||
+        (objStr.indexOf('document.all[')   ==0 && document.all   ==null))
+      objStr = 'document'+objStr.substring(objStr.lastIndexOf('.'),objStr.length);
+    obj = eval(objStr);
+    if (obj != null) {
+      swapArray[j++] = obj;
+      swapArray[j++] = (oldArray==null || oldArray[j-1]!=obj)?obj.src:oldArray[j];
+      obj.src = MM_swapImage.arguments[i+2];
+  } }
+  document.MM_swapImgData = swapArray; //used for restore
+}
+//-->
+</script>
+</HEAD>
+
+
+<BODY bgcolor="#FFFFFF" onLoad="MM_preloadImages('../images/healthcare_on.jpg','#960505610572');MM_preloadImages('../images/automobile_on.jpg','#960505631352');MM_preloadImages('../images/life_on.jpg','#960505645612');MM_preloadImages('../images/homeowners_on.jpg','#960505665841')">
+<table width="400" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td><img src="../images/trans.gif" width="60" height="10"></td>
+    <td bgcolor="#FFFFFF">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td bgcolor="#FFFFFF"><font face="Arial, Helvetica, sans-serif" size="4" color="#000000"><img src="../images/free_quote.jpg" width="346" height="28"></font></td>
+  </tr>
+</table>
+<table width="400">
+  <tr> 
+    <td><img src="../images/trans.gif" width="60" height="10"></td>
+    <td bgcolor="#FFFFFF"><a href="javascript:top.onlink.GotoPage('needs');" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('document.healthcare','document.healthcare','../images/healthcare_on.jpg','#960505610572')"><img name="healthcare" border="0" src="../images/healthcare.jpg" width="240" height="44"></a></td>
+  </tr>
+  <tr> 
+    <td>&nbsp; </td>
+    <td bgcolor="#FFFFFF"><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('document.automobile','document.automobile','../images/automobile_on.jpg','#960505631352')"><img name="automobile" border="0" src="../images/automobile.jpg" width="240" height="44"></a></td>
+  </tr>
+  <tr> 
+    <td>&nbsp; </td>
+    <td><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('document.life','document.life','../images/life_on.jpg','#960505645612')"><img name="life" border="0" src="../images/life.jpg" width="240" height="44"></a></td>
+  </tr>
+  <tr> 
+    <td>&nbsp; </td>
+    <td><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('document.homeowners','document.homeowners','../images/homeowners_on.jpg','#960505665841')"><img name="homeowners" border="0" src="../images/homeowners.jpg" width="240" height="44"></a></td>
+  </tr>
+  <tr> 
+    <td>&nbsp; </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<table width="400" border="0" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td rowspan="3"><img src="../images/trans.gif" width="60" height="10"></td>
+    <td> <font face="Arial, Helvetica, sans-serif" size="3" color="#003366"><b><img src="../images/spotlite.gif" width="78" height="37"></b></font></td>
+    <td> 
+      <hr>
+    </td>
+    <td rowspan="3"><img src="../images/spot_image1.gif" width="62" height="62"></td>
+  </tr>
+  <tr> 
+    <td colspan="2"> 
+      <div align="right"><font face="Arial, Helvetica, sans-serif" size="2" color="#003366"><b>Good 
+        Living has been awarded the top healthplan website of 2000</b></font><font face="Arial, Helvetica, sans-serif" size="3" color="#003366">. 
+        </font></div>
+    </td>
+  </tr>
+  <tr> 
+    <td width="20"> <font face="Verdana, Arial, Helvetica, sans-serif" size="1"><img src="../images/trans.gif" width="20" height="10"></font></td>
+    <td> <font face="Arial, Helvetica, sans-serif" size="1">Independent consumer 
+      study finds Good Living to be the best consumer insurance site ever created!</font></td>
+  </tr>
+</table>
+<table width="400" border="0">
+  <tr> 
+    <td><img src="../images/trans.gif" width="65" height="10"></td>
+    <td>
+      <div align="right"><font face="Arial, Helvetica, sans-serif" size="3" color="#003366"><img src="../images/account2.gif" width="168" height="86"></font></div>
+    </td>
+    <td><font face="Arial, Helvetica, sans-serif" size="3" color="#003366"><img src="../images/telesales.gif" width="109" height="75"></font></td>
+  </tr>
+</table>
+</BODY>
+</HTML>

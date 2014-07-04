@@ -1,0 +1,50 @@
+<HTML>
+<HEAD>
+<TITLE>On-Link Sales: Error Codeset</TITLE>
+<!--   On-Link Sales: Error Codeset   -->
+<!--   Ver 3.4.1 (Build 10)		20000531		-->
+<SCRIPT language="JavaScript">
+<!--
+var CS = "codeset";
+var OL = top.onlink;
+var ES = "errorstrings";
+function ErrAlert(errorCode){
+var errMsg = "";
+var extStr = "";
+var args = ErrAlert.arguments;
+errMsg = '(' + errorCode + '): ';
+extStr += ExtString(errorCode);
+if ((args.length > 1)&&(extStr.indexOf("%") != -1)){
+var tempArray = extStr.split(" ");
+for (i=0;i<tempArray.length;i++){
+if (tempArray[i].indexOf("%") != -1){
+argIndex = tempArray[i].substring(1);
+if (typeof(parseInt(argIndex)) == "number"){
+errMsg += args[argIndex];
+}
+}
+else {
+errMsg += tempArray[i];
+}
+errMsg += " ";
+}
+}
+else {
+errMsg += extStr;
+}
+alert(ExtString(OL[ES].ONLNK_ALRT)+errMsg);
+}
+function ExtString (strCode){
+var str = OL[ES].str[strCode];
+return str;
+}
+function InitPage()
+{
+top.onlink.RegisterErrorCodeset();
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY bgcolor=#000000 onload="InitPage();">
+</BODY>
+</HTML>

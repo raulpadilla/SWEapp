@@ -1,0 +1,165 @@
+<HTML>
+<HEAD>
+<TITLE>DynaSpec - Hurd Wood Windows</TITLE>
+<!--   Ver 3.4.1 (Build 10)		20000531		-->
+<SCRIPT language=Javascript>
+<!--Hide from older browsers
+var LOADED = 0;
+function ForceDecimals(curValue) {
+var retStr = new String();
+with (Math) {
+if (ceil(curValue) == floor(curValue)) {
+retStr = curValue + '.00';
+}
+else if(ceil(curValue*10) == floor(curValue*10)) {
+retStr = curValue +'0';
+}
+else retStr = curValue;
+}
+return retStr;
+}
+function OpenFrame(bakColor)
+{
+this.dyn_btn.document.open();
+this.dyn_btn.document.writeln('<HTML><HEAD></HEAD>');
+this.dyn_btn.document.writeln('<BODY bgcolor=',bakColor,'>');
+}
+function CloseFrame()
+{
+this.dyn_btn.document.writeln('</BODY></HTML>');
+this.dyn_btn.document.close();
+}
+function WriteButtonFrame(hasFamily,hasSet,hasGoto,hasOrder)
+{
+OpenFrame('#CCCCCC');
+hasOrder = false;
+var hasDelete = false;
+if (window.opener.ITEMOVERRIDE) {
+hasDelete = true;
+hasGoto = true;
+hasFamily = false;
+hasSet = false;
+}
+this.dyn_btn.document.writeln('<TABLE border=0 width="100%" height="100%" cellpadding=0 cellspacing=0>');
+this.dyn_btn.document.writeln('<TR valign=middle>');
+this.dyn_btn.document.writeln('<TD width=50% align=left>');
+if (hasGoto) {
+this.dyn_btn.document.writeln('	<A HREF="javascript:parent.GotoItemPage()">');
+this.dyn_btn.document.writeln('		<IMG src="dyn_goto.gif" alt="Order This Item" border=0 hspace=0 vspace=0>');
+this.dyn_btn.document.writeln('	</A>');
+}
+if (hasSet) {
+this.dyn_btn.document.writeln('	<A HREF="javascript:parent.GotoSetPage()">');
+this.dyn_btn.document.writeln('		<IMG src="dyn_set.gif" alt="Order This Item" border=0 hspace=0 vspace=0>');
+this.dyn_btn.document.writeln('	</A>');
+}
+this.dyn_btn.document.writeln('</TD>');
+this.dyn_btn.document.writeln('<TD width=30% align=left>');
+if (hasFamily) {
+this.dyn_btn.document.writeln('	<A HREF="javascript:parent.GotoFamilyPage()">');
+this.dyn_btn.document.writeln('		<IMG src="dyn_fam.gif" alt="Order This Item" border=0 hspace=0 vspace=0>');
+this.dyn_btn.document.writeln('	</A>');
+}
+this.dyn_btn.document.writeln('</TD>');
+this.dyn_btn.document.writeln('<TD width=20% align=right>');
+if (hasDelete) {
+this.dyn_btn.document.writeln('	<A HREF="javascript:parent.DeleteFromPO()">');
+this.dyn_btn.document.writeln('		<IMG src="dyn_del.gif" alt="Delete This Item" border=0 hspace=0 vspace=0>');
+this.dyn_btn.document.writeln('	</A>');
+}
+else {
+if (hasOrder) {
+this.dyn_btn.document.writeln('	<A HREF="javascript:parent.AddToPO()">');
+this.dyn_btn.document.writeln('		<IMG src="dyn_ord.gif" alt="Order This Item" border=0 hspace=0 vspace=0>');
+this.dyn_btn.document.writeln('	</A>');
+}
+}
+this.dyn_btn.document.writeln('</TD>');
+this.dyn_btn.document.writeln('</TR>');
+this.dyn_btn.document.writeln('</TABLE>');
+CloseFrame();
+}
+function GotoItemPage(alreadyOpen)
+{
+if (!CheckOpener()) {
+return;
+}
+if (opener.top.Loaded(opener.top.CS)) {
+opener.top.codeset.GotoItemPage();
+}
+}
+function GotoSetPage(alreadyOpen)
+{
+if (!CheckOpener()) {
+return;
+}
+alert("\nOnLink Sales(tm) Message\nFunctionality not available in \nversion 3.0\n");
+}
+function GotoFamilyPage(alreadyOpen)
+{
+if (!CheckOpener()) {
+return;
+}
+alert("\nOnLink Sales(tm) Message\nFunctionality not available in \nversion 3.0\n");
+}
+function AddToPO(alreadyOpen)
+{
+if (!CheckOpener()) {
+return;
+}
+if (opener.top.Loaded(opener.top.CS)) {
+opener.top.codeset.AddToPO(alreadyOpen);
+}
+}
+function DeleteFromPO()
+{
+if (!CheckOpener() || !CheckPO()) {
+return;
+}
+if (opener.top.Loaded(opener.top.CS)) {
+opener.top.codeset.DeleteFromPO(window);
+}
+}
+function CheckOpener()
+{
+if (!opener || !opener.top || opener.closed) {
+alert("\nOnLink Sales(tm) Message\nUnable to complete request.\nThe product catalog is closed.\n");
+return false;
+}
+return true;
+}
+function CheckPO()
+{
+if (!opener.top.codeset.DYNAPO || opener.top.codeset.DYNAPO.closed) {
+alert("\nOnLink Sales(tm) Message\nUnable to complete request.\nThe order window closed\n");
+return false;
+}
+return true;
+}
+var LOADTIMER = null;
+function CheckLoad()
+{
+if ((window["LOADED"] == null) || (window["LOADED"] <= 0)) {
+alert("\nOnLink Sales(tm) Message\nPage not loaded in "+window.name);
+}
+else {
+window.opener.LoadDynaspec(window);
+}
+}
+function initPage()
+{
+LOADTIMER = setTimeout('CheckLoad()',1000);
+LOADED += 1;
+}
+//-->
+</SCRIPT>
+</HEAD>
+<FRAMESET rows="22,60,45,*" border=0 frameborder=NO framespacing=0 onLoad="initPage()">
+<FRAME marginwidth=0 marginheight=0 src="dyn_btn.htm" name="dyn_btn" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="frm_wht.htm" name="dyn_info" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="frm_wht.htm" name="dyn_set" scrolling="no">
+<FRAME marginwidth=0 marginheight=0 src="frm_wht.htm" name="dyn_pict" scrolling="auto">
+</FRAMESET>
+<NOFRAMES>
+</NOFRAMES>
+</HTML>

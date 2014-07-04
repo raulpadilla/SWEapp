@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- Copyright 2004 Ektron, Inc. -->
+<!-- Revision Date: 2004-Feb-19 -->
+<html>
+<head>
+<title>eWebEditPro Installatie</title>
+<script language="JavaScript1.2" src="parseinstallparams.js"></script>
+<script language="JavaScript1.2" src="../ewebeditpro.js"></script>
+<style>
+P { font-size : small; font-family : verdana, helvetica; }
+H1 { font-family : verdana, helvetica; }
+H2 { font-family : verdana, helvetica; }
+A { font-family : verdana, helvetica; }
+BODY { font-size : small; }
+</style>
+ <script language="JavaScript1.2">
+<!--
+function OnReadyHandler()
+{
+	document.loadingMsg.style.visibility = "hidden";
+	if (top.opener && !top.opener.closed)
+	{
+		top.opener.location.reload();
+		setTimeout("self.close()", 5000);
+	}
+}
+//-->
+</script>
+ </head>
+ <body>
+ <p align="center"><h2 align="center">
+eWebEditPro <br>Automatische <br>download en installatie </h2></p>
+ <form method="post">
+<input type=hidden name="DoneMsg" value="&lt;p&gt; &lt;/p&gt;&lt;p align=center&gt;&lt;font face='Arial' size=4&gt;Installatie voltooid.&lt;/font&gt;&lt;/p&gt;">
+<input type=hidden name="RestartMsg" value="&lt;p&gt; &lt;/p&gt;&lt;p align=center&gt;&lt;font face='Arial' size=4&gt;Herstart Windows om de installatie te voltooien.&lt;/font&gt;&lt;/p&gt;">
+ <p align="center"><font size=-1>
+<img name=loadingMsg src="loading.gif" alt="Bezig met downloaden, even geduld s.v.p...." width=234 height=30><br>
+Indien succesvol, verschijnen de woorden "Installatie voltooid" in het venster hieronder. </font></p>
+<script language="JavaScript1.2">
+	var sCaption = "Installatie voltooid";
+	writeLoader(sCaption);
+</script>
+
+<p><font size=-1>
+<script language="JavaScript1.2">
+<!--
+	document.write('Wanneer er een kleine rode <font color="red"><b>X</b></font> verschijnt, probeer dan het ');
+	document.write('<a href="' + eWebEditProDefaults.clientInstall + '">');
+	document.write('client installatie programma</a> te downloaden en dit te laten draaien.');
+// -->
+</script>
+</font></p>
+<p><font size=-1>
+Bezoek <a href="http://www.ektron.com/support" target="_blank">Ektron's help pagina</a>voor verdere assistentie. </font></p>
+</form>
+ </body>
+</html>

@@ -1,0 +1,64 @@
+
+.TaskTitle  {  font-family: Arial; font-size: 13pt; font-weight:bold; color:#666666;  }
+
+.TaskStepTitle  {  font-family: Arial; font-size: 13pt; font-weight:bold; color:#000000;  }
+
+
+
+/*------------------------*/
+/*Special Form Definitions*/
+/*------------------------*/
+.FormSection        {background-color: #cddbef;}
+
+/*-------------------*/
+/*Applet Styles      */
+/*-------------------*/
+
+/* This style is used by inactive List applets in Task UI */
+.NotSelected .AppletBottomPntr  .AppletButtons  {background-color:#cccccc }
+.NotSelected  TD.AppletHIListBorder             {border-style: solid; border-color: #cccccc; border-width: 2px 2px 2px 2px; }
+.NotSelected  DIV.AppletHIListBorder            {border-style: solid; border-color: #cccccc; border-width: 2px 2px 2px 2px; }
+.NotSelected  TD.AppletHIFormBorder             {border-style: solid; border-color: #cccccc; border-width: 2px 2px 2px 2px; }
+.NotSelected  DIV.AppletHIFormBorder            {border-style: solid; border-color: #cccccc; border-width: 2px 2px 2px 2px; }
+
+
+/* This style is used by Form applets in Task UI (both active and inactive) */
+.NotSelectedForm .AppletBottomPntr  .AppletButtons  {background-color:#cccccc }
+.NotSelectedForm  TD.AppletHIListBorder             {border-style: solid; border-color: #ffffff; border-width: 2px 2px 2px 2px; }
+.NotSelectedForm  DIV.AppletHIListBorder            {border-style: solid; border-color: #ffffff; border-width: 2px 2px 2px 2px; }
+.NotSelectedForm  TD.AppletHIFormBorder             {border-style: solid; border-color: #ffffff; border-width: 2px 2px 2px 2px; }
+.NotSelectedForm  DIV.AppletHIFormBorder            {border-style: solid; border-color: #ffffff; border-width: 2px 2px 2px 2px; }
+
+/*Applet Select*/
+/* This style is used by active List applets in Task UI
+   this is set to same color as active list applet as per requirement*/
+
+.Selected  TD.AppletHIListBorder            {   border-style: solid; border-color: #cccccc; border-width: 2px 2px 2px 2px; }
+.Selected  DIV.AppletHIListBorder           {   border-style: solid; border-color: #cccccc; border-width: 2px 2px 2px 2px; }
+.Selected  TD.AppletHIFormBorder            {   border-style: solid; border-color: #cccccc; border-width: 2px 2px 2px 2px; }
+.Selected  DIV.AppletHIFormBorder           {   border-style: solid; border-color: #cccccc; border-width: 2px 2px 2px 2px; }
+.Selected  .AppletBottomPntr .AppletButtons {   background-color:#ffffff;   }
+.Selected  TR.AppletButtons                 {   background-color:#ffffff;       }
+.Selected  TR.AppletButtons TD.AppletTitle,
+.Selected  TR.AppletButtons TD.AppletTitle A,
+.Selected  TR.AppletButtons TD.AppletTitle A:link,
+.Selected  TR.AppletButtons TD.AppletTitle A:visited,
+.Selected  TR.AppletButtons TD.AppletTitle A:hover  {   background-color:#ffffff; color:#999999;    }
+
+/*--------------------------------------------------------*/
+/* The following definitions are for Siebel Internal Use. */
+/* Do not modify or remove.                               */
+/*--------------------------------------------------------*/
+
+.GridBorder         { border : 0px solid #ffffff; background-color : #ffffff; padding-bottom: 4px; padding-right: 4px; }
+.Selected  .GridBorder  {border-color:#ffffff;}
+.GridBack       {background-color : #ffffff;}
+
+
+
+
+
+
+
+
+    

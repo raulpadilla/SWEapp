@@ -1,0 +1,760 @@
+.GanttHeader
+{
+    BORDER-RIGHT: #cccccc 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #cccccc 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    FONT: bold 8pt arial;
+    BORDER-LEFT: #cccccc 1px solid;
+    COLOR: #000000;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #cccccc 1px;
+    HEIGHT: 20px;
+    BACKGROUND-COLOR: #f0f0f0
+}
+.GanttRow
+{
+    BORDER-RIGHT: #cccccc 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #cccccc 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #cccccc 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #cccccc 1px;
+    BACKGROUND-COLOR: #dedede
+}
+.GanttYAxisRow
+{
+    BORDER-RIGHT: #cccccc 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #cccccc 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    FONT: bold 8pt arial;
+    BORDER-LEFT: #cccccc 1px solid;
+    COLOR: #999999;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #cccccc 1px;
+    HEIGHT: 21px;
+    BACKGROUND-COLOR: #ffffff
+}
+.GanttChartEmpty
+{
+    BORDER-RIGHT: #cccccc 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #cccccc 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #cccccc 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #cccccc 1px;
+    BACKGROUND-COLOR: #ffffff
+}
+.GanttChartOT
+{
+    BORDER-RIGHT: #cccccc 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #cccccc 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #cccccc 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #cccccc 1px;
+    BACKGROUND-COLOR: #cc9933
+}
+.GanttChartExtendedOT
+{
+    BORDER-RIGHT: #cccccc 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #cccccc 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #cccccc 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #cccccc 1px;
+    BACKGROUND-COLOR: #996600
+}
+.GanttChartOff
+{
+    BORDER-RIGHT: #cccccc 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #cccccc 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #cccccc 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #cccccc 1px;
+    BACKGROUND-COLOR: #ffffff
+}
+.GanttChartOn
+{
+    BORDER-RIGHT: #cccccc 0px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #cccccc 0px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    FONT: 8pt arial;
+    BORDER-LEFT: #cccccc 0px solid;
+    COLOR: black;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #cccccc 0px;
+    HEIGHT: 20px;
+    BACKGROUND-COLOR: #f1e87d
+}
+.GanttChartBlue
+{
+    BORDER-RIGHT: #cccccc 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #cccccc 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #cccccc 1px solid;
+    COLOR: black;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #cccccc 1px;
+    BACKGROUND-COLOR: #6699CC
+}
+.GanttChartBlueMiddle
+{
+    BORDER-RIGHT: #cccccc 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #cccccc 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #cccccc 1px;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #cccccc 1px;
+    BACKGROUND-COLOR: #6699CC
+}
+.GanttChartRed
+{
+    BORDER-RIGHT: #cccccc 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #cccccc 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #cccccc 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #cccccc 1px;
+    BACKGROUND-COLOR: #cc3333
+}
+.GanttChartRedMiddle
+{
+    BORDER-RIGHT: #cccccc 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #cccccc 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #cccccc 1px;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #cccccc 1px;
+    BACKGROUND-COLOR: #cc3333
+}
+.GanttChartGreen
+{
+    BORDER-RIGHT: #cccccc 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #cccccc 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #cccccc 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #cccccc 1px;
+    BACKGROUND-COLOR: #7EB679
+}
+.GanttChartGreenMiddle
+{
+    BORDER-RIGHT: #cccccc 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #cccccc 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #cccccc 1px;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #cccccc 1px;
+    BACKGROUND-COLOR: #7EB679
+}
+.GanttChartYellow
+{
+    BORDER-RIGHT: #cccccc 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #cccccc 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #cccccc 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #cccccc 1px;
+    BACKGROUND-COLOR: #f1e87d
+}
+.GanttChartYellowMiddle
+{
+    BORDER-RIGHT: #cccccc 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #cccccc 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #cccccc 1px;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #cccccc 1px;
+    BACKGROUND-COLOR: #f1e87d
+}
+.GanttChartYellowLt
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #f1e87d
+}
+.GanttChartYellowLtMiddle
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #f1e87d
+}
+.GanttChartYellowLtMiddle
+{
+    BORDER-TOP-STYLE: solid;
+    BORDER-RIGHT-STYLE: none;
+    BORDER-LEFT-STYLE: none;
+    BORDER-BOTTOM-STYLE: none
+}
+.GanttChartYellowMd
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #cc9933
+}
+.GanttChartYellowMdMiddle
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #cc9933
+}
+.GanttChartYellowMdMiddle
+{
+    BORDER-TOP-STYLE: solid;
+    BORDER-RIGHT-STYLE: none;
+    BORDER-LEFT-STYLE: none;
+    BORDER-BOTTOM-STYLE: none
+}
+.GanttChartYellowDk
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #996600
+}
+.GanttChartYellowDkMiddle
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #996600
+}
+.GanttChartYellowDkMiddle
+{
+    BORDER-TOP-STYLE: solid;
+    BORDER-RIGHT-STYLE: none;
+    BORDER-LEFT-STYLE: none;
+    BORDER-BOTTOM-STYLE: none
+}
+.GanttChartOrangeLt
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #ff9933
+}
+.GanttChartOrangeLtMiddle
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #ff9933
+}
+.GanttChartOrangeLtMiddle
+{
+    BORDER-TOP-STYLE: solid;
+    BORDER-RIGHT-STYLE: none;
+    BORDER-LEFT-STYLE: none;
+    BORDER-BOTTOM-STYLE: none
+}
+.GanttChartOrangeMd
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #cc6600
+}
+.GanttChartOrangeMdMiddle
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #cc6600
+}
+.GanttChartOrangeMdMiddle
+{
+    BORDER-TOP-STYLE: solid;
+    BORDER-RIGHT-STYLE: none;
+    BORDER-LEFT-STYLE: none;
+    BORDER-BOTTOM-STYLE: none
+}
+.GanttChartOrangeDk
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #993300
+}
+.GanttChartOrangeDkMiddle
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #993300
+}
+.GanttChartOrangeDkMiddle
+{
+    BORDER-TOP-STYLE: solid;
+    BORDER-RIGHT-STYLE: none;
+    BORDER-LEFT-STYLE: none;
+    BORDER-BOTTOM-STYLE: none
+}
+.GanttChartBlueLt
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #6699cc
+}
+.GanttChartBlueLtMiddle
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #6699cc
+}
+.GanttChartBlueLtMiddle
+{
+    BORDER-TOP-STYLE: solid;
+    BORDER-RIGHT-STYLE: none;
+    BORDER-LEFT-STYLE: none;
+    BORDER-BOTTOM-STYLE: none
+}
+.GanttChartBlueMd
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #336699
+}
+.GanttChartBlueMdMiddle
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #336699
+}
+.GanttChartBlueMdMiddle
+{
+    BORDER-TOP-STYLE: solid;
+    BORDER-RIGHT-STYLE: none;
+    BORDER-LEFT-STYLE: none;
+    BORDER-BOTTOM-STYLE: none
+}
+.GanttChartBlueDk
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #003366
+}
+.GanttChartBlueDkMiddle
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #003366
+}
+.GanttChartBlueDkMiddle
+{
+    BORDER-TOP-STYLE: solid;
+    BORDER-RIGHT-STYLE: none;
+    BORDER-LEFT-STYLE: none;
+    BORDER-BOTTOM-STYLE: none
+}
+.GanttChartPurpleLt
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #9999cc
+}
+.GanttChartPurpleLtMiddle
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #9999cc
+}
+.GanttChartPurpleLtMiddle
+{
+    BORDER-TOP-STYLE: solid;
+    BORDER-RIGHT-STYLE: none;
+    BORDER-LEFT-STYLE: none;
+    BORDER-BOTTOM-STYLE: none
+}
+.GanttChartPurpleMd
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #666699
+}
+.GanttChartPurpleMdMiddle
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #666699
+}
+.GanttChartPurpleMdMiddle
+{
+    BORDER-TOP-STYLE: solid;
+    BORDER-RIGHT-STYLE: none;
+    BORDER-LEFT-STYLE: none;
+    BORDER-BOTTOM-STYLE: none
+}
+.GanttChartPurpleDk
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #333366
+}
+.GanttChartPurpleDkMiddle
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #333366
+}
+.GanttChartPurpleDkMiddle
+{
+    BORDER-TOP-STYLE: solid;
+    BORDER-RIGHT-STYLE: none;
+    BORDER-LEFT-STYLE: none;
+    BORDER-BOTTOM-STYLE: none
+}
+.GanttChartGrayLt1
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #ffffff
+}
+.GanttChartGrayLt1Middle
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #ffffff
+}
+.GanttChartGrayLt1Middle
+{
+    BORDER-TOP-STYLE: solid;
+    BORDER-RIGHT-STYLE: none;
+    BORDER-LEFT-STYLE: none;
+    BORDER-BOTTOM-STYLE: none
+}
+.GanttChartGrayLt2
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #f0f0f0
+}
+.GanttChartGrayLt2Middle
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #f0f0f0
+}
+.GanttChartGrayLt2Middle
+{
+    BORDER-TOP-STYLE: solid;
+    BORDER-RIGHT-STYLE: none;
+    BORDER-LEFT-STYLE: none;
+    BORDER-BOTTOM-STYLE: none
+}
+.GanttChartGrayMd1
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #cccccc
+}
+.GanttChartGrayMd1Middle
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #cccccc
+}
+.GanttChartGrayMd1Middle
+{
+    BORDER-TOP-STYLE: solid;
+    BORDER-RIGHT-STYLE: none;
+    BORDER-LEFT-STYLE: none;
+    BORDER-BOTTOM-STYLE: none
+}
+.GanttChartGrayMd2
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #999999
+}
+.GanttChartGrayMd2Middle
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #999999
+}
+.GanttChartGrayMd2Middle
+{
+    BORDER-TOP-STYLE: solid;
+    BORDER-RIGHT-STYLE: none;
+    BORDER-LEFT-STYLE: none;
+    BORDER-BOTTOM-STYLE: none
+}
+.GanttChartGrayDk1
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #848484
+}
+.GanttChartGrayDk1Middle
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #848484
+}
+.GanttChartGrayDk1Middle
+{
+    BORDER-TOP-STYLE: solid;
+    BORDER-RIGHT-STYLE: none;
+    BORDER-LEFT-STYLE: none;
+    BORDER-BOTTOM-STYLE: none
+}
+.GanttChartGrayDk2
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #666666
+}
+.GanttChartGrayDk2Middle
+{
+    BORDER-RIGHT: #999999 1px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP: #999999 1px solid;
+    PADDING-LEFT: 0px;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: #999999 1px solid;
+    PADDING-TOP: 0px;
+    BORDER-BOTTOM: #999999 1px;
+    BACKGROUND-COLOR: #666666
+}
+.GanttChartGrayDk2Middle
+{
+    BORDER-TOP-STYLE: solid;
+    BORDER-RIGHT-STYLE: none;
+    BORDER-LEFT-STYLE: none;
+    BORDER-BOTTOM-STYLE: none
+}

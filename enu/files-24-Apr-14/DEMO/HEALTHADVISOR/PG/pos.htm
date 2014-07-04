@@ -1,0 +1,106 @@
+<HTML>
+<HEAD>
+<TITLE>Inputs Layout Template</TITLE>
+
+<!--  Ver xxx -->
+
+<SCRIPT language="javascript">
+	<!--
+	top.onlink.StartTemplate('pos',true);
+	var FAMILY_DESCR = 'pos';
+	var FAMILY_PICT = 'pos.jpg';
+	var FAMILY_PAGE = 'pos';
+
+	//--- SpecialCase Override Points ---//
+	function initPage()
+	{
+		top.onlink.EndTemplate();
+	}
+	//-->
+</SCRIPT>
+</HEAD>
+
+
+<BODY bgcolor="#FFFFFF" onLoad="initPage()">
+	<FORM name="WidgetForm" onSubmit="return false;">
+
+	<TABLE width=350 border=0 cellpadding=0 cellspacing=5>
+	 <TR>
+      <TD align=center bgcolor="#FFFFF"><img src="tabs_POS.gif" usemap="#tabs" border="0">
+    </TR>
+
+	<TR><TD>
+
+		<TABLE width=350 border=1 cellpadding=0 cellspacing=0>
+		<TR><TD>
+			<TABLE width=350 bgcolor="#e5e5e5" border=0 cellpadding=10 cellspacing=0>
+
+			<TR><TD>
+			<FONT size="3" face="Arial, Univers, Helvetica" color="#000000"><B>
+				Let Us Help You Customize Your POS Plan</FONT><BR><BR>
+				<FONT face="Arial, Univers, Helvetica" size=1>
+				<B><U>PLAN SUMMARY</U></B>
+				<BR>
+
+				<FONT face="Arial, Univers, Helvetica" size=1>
+				<B>Estimated Monthly Premium:</B>
+				<BR>
+				<SCRIPT>
+				document.write(top.onlink.BuildWidget("LISTBOX",window,"ESTIMATED_MONTHLY_PREMIUM",1,20,true));
+				</SCRIPT>
+			</TD></TR>
+			<TR><TD>
+				<FONT face="Arial, Univers, Helvetica" size=1>
+				<B>Office Visit:</B>
+				<BR>
+				<SCRIPT>
+				document.write(top.onlink.BuildWidget("LISTBOX",window,"OFFICE_VISIT",1,20,true));
+				</SCRIPT>
+			</TD></TR>
+			<TR><TD>
+				<FONT face="Arial, Univers, Helvetica" size=1>
+				<B>Deductible:</B>
+				<BR>
+				<SCRIPT>
+				document.write(top.onlink.BuildWidget("LISTBOX",window,"DEDUCTIBLE",1,20,true));
+				</SCRIPT>
+			</TD></TR>
+			<TR><TD>
+				<FONT face="Arial, Univers, Helvetica" size=1>
+				<B>Coinsurance:</B>
+				<BR>
+				<SCRIPT>
+				document.write(top.onlink.BuildWidget("LISTBOX",window,"COINSURANCE",1,20,true));
+				</SCRIPT>
+			</TD></TR>
+			<TR><TD>
+				<FONT face="Arial, Univers, Helvetica" size=1>
+				<B>Out of Pocket Limit:</B>
+				<BR>
+				<SCRIPT>
+				document.write(top.onlink.BuildWidget("LISTBOX",window,"OUT_OF_POCKET_LIMIT",1,20,true));
+				</SCRIPT>
+			</TD></TR>
+
+			</TABLE>
+		</TD></TR>
+		</TABLE>
+
+	</TD></TR>
+	</TABLE>
+
+<MAP name="tabs">
+        <!-- HMO -->
+        <area shape="rect" coords="6,0,112,42" alt="(Health Maintenance Organization Plan)" A href="nf_white.htm" onClick="top.onlink.ol_ui.catpage.location = 'HMO.htm'; top.onlink.ol_ui.dynawin.location = 'HMO_t.htm'; return false;">
+
+        <!-- PPO -->
+        <area shape="rect" coords="113,0,222,42" alt="(Preferred Provider Organization Plan)" A href="nf_white.htm" onClick="top.onlink.ol_ui.catpage.location = 'PPO.htm'; top.onlink.ol_ui.dynawin.location = 'PPO_t.htm'; return false;">
+
+        <!-- POS -->
+        <area shape="rect" coords="225,0,346,42" alt="(Point-of-Service Plan)" A href="nf_white.htm" onClick="top.onlink.ol_ui.catpage.location = 'POS.htm'; top.onlink.ol_ui.dynawin.location = 'POS_t.htm'; return false;">
+
+</MAP>
+
+</FORM>
+</BODY>
+</HTML>

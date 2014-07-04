@@ -1,0 +1,688 @@
+/*************** Tile Drill Down - Start **************/
+.appletButton {
+  padding: 6px 14px;
+  font-weight: bold;
+  font-size: 0.8em;
+}
+/**************** Tile Drill Down - End ***************/
+/************* Web Page Container - Start *************/
+.siebui-page-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+/************** Web Page Container - End **************/
+/*************** Page Container - Start ***************/
+.siebui-app-container {
+  position: relative;
+  margin: 0 auto;
+  width: 974px;
+  overflow: hidden;
+  z-index: 1;
+}
+/*** siebel top banner style ***/
+.siebui-header {
+  height: 70px;
+}
+.siebui-logo {
+  width: 230px;
+  height: 30px;
+}
+.siebui-header .siebui-logo,
+.siebui-ss-applet-container-col1 {
+  float: left;
+}
+.siebui-pageitem,
+.siebui-ss-applet-container-col2,
+.siebui-ss-btn-ctrl-right-align {
+  float: right;
+}
+.siebui-header .siebui-logo {
+  margin-top: 0;
+  margin-left: 0;
+}
+.siebui-pageitem {
+  padding-top: 5px;
+}
+.siebui-pageitem a {
+  height: 40px;
+  line-height: 20px;
+  overflow: hidden;
+  padding: 0 10px;
+}
+.siebui-pageitem a:last-child {
+  border-right: 0;
+}
+/*** Existing Open UI uses ID based css for screen tabs chaning the existing style ***/
+/*** hide the view link under the scren tab ***/
+#screenTabs #s_sctrl_tabView {
+  display: none;
+}
+/*** change the background color of the screen tab bar to match with the top banner ***/
+#screenTabs #s_sctrl div.ui-tabs,
+#screenTabs #s_sctrl div.ui-tabs ul.ui-tabs-nav,
+#screenTabs #s_sctrl div.ui-tabs ul.ui-tabs-nav li {
+  margin-top: 20px;
+}
+/*** increase the font size of the screen tabs ***/
+#screenTabs #s_sctrl #s_sctrl_tabScreen.ui-tabs ul.ui-tabs-nav li {
+  margin: 0 2px 0 0;
+}
+/*** screen tab decoration. need the vertical line after the scren tab name ***/
+#screenTabs #s_sctrl #s_sctrl_tabScreen.ui-tabs ul.ui-tabs-nav li a {
+  border-radius: 0;
+  height: 20px;
+  line-height: 10px;
+  vertical-align: middle;
+  font-size: 1.1em;
+}
+/**************** Page Container - End ****************/
+/*************** View Container - Start ***************/
+.siebui-view-main {
+  padding-top: 0;
+  margin-top: 0;
+  border-radius: 0;
+  overflow: hidden;
+}
+.siebui-view-main > div {
+  padding: 0;
+}
+.siebui-view-main > div:last-child { /* for bottom controls if inside DIV vs. TABLE */
+  padding: 0;
+}
+/* Remove the horizental scroll bar for view */
+#_sweview {
+  overflow: hidden;
+}
+/*************** Home page view - Start ***************/
+.siebui-ss-applet-container,
+.siebui-ss-col-applet-container {
+  width: 100%;
+}
+.siebui-ss-applet-container  > div:last-child {
+  display: none;
+}
+.siebui-ss-applet-container-col1 {
+  width: 50%;
+}
+.siebui-ss-applet-container-col2 {
+  width: 48%;
+}
+.siebui-applet-divider {
+  width: 100%;
+  min-height: 1px;
+  padding-top: 5px;
+  margin: 5px 20px;
+  clear: both;
+}
+.siebui-ss-applet-container {
+  margin-top: 5px;
+}
+/**************** Home page view - End ****************/
+/**************** View Container - End ****************/
+/************ Form Control Section - Start ************/
+.siebui-unordered-list,
+.siebui-list-section1,
+.siebui-list-section2 {
+  list-style-type: none;
+}
+.siebui-unordered-list {
+  margin: 0;
+  padding: 0;
+}
+.siebui-list-section1 {
+  padding: 0.2em 0.2em 0.2em 1em;
+}
+.siebui-list-section2 {
+  padding: 0.3em 0.3em 0.3em 4em;
+}
+.siebui-report-row,
+.siebui-ss-tbl-row  {
+  display: table-row;
+}
+.siebui-ss-tbl-cell {
+  display: table-cell;
+}
+.siebui-ss-label {
+  width: 200px;
+}
+.siebui-ss-field {
+  text-align: left;
+}
+.siebui-ss-field-right {
+  text-align: right;
+}
+.siebui-ss-row-middle-align {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  text-align: center;
+  display: block;
+}
+div.mceGridLabel {
+  line-height: 1em;
+}
+.mceGridLabelOnly {
+  padding-top: 1em;
+  font-weight: bold;
+}
+div.mceGridField {
+  margin-right: 7px;
+}
+/*** Form Section Divider Styles ***/
+.siebui-ss-form-divider {
+  clear: both; 
+  width: 380px;
+  height: 1px; 
+  margin: 5px 0 5px 10px;
+  min-height: 1px;
+}
+.siebui-ss-btn-ctrl-right-align {
+  height: 100%;
+}
+.siebui-ss-btn-ctrl-right-align .siebui-ss-rightbutton {
+  display: block;
+  padding-top: 10px;
+  padding-right: 50px;
+  text-align: right !important;
+}
+.siebui-ss-rightbutton img {
+  width: 30px;
+  height: 30px;
+  border: 1px;
+  overflow: hidden;
+}
+.siebui-clear-all {
+  clear: both;
+}
+.siebui-ss-applt-caption {
+  margin: 0;
+  padding: 7px;
+  overflow: hidden;
+}
+.siebui-ss-applt-helptext {
+  margin: 1em;
+}
+.siebui-license-placeholder {
+  margin: 1em auto;
+  display: block;
+  width: 50em;
+  height: 10em;
+  overflow-y: scroll;
+}
+.siebui-licence-text {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+.siebui-ss-applt-list,
+.siebui-ss-applt-button,
+.siebui-ss-applt-cust-button1,
+.siebui-ss-applt-cust-button2 {
+  display: inline;
+  text-align: center;
+  padding: 3px;
+}
+.siebui-ss-applt-button {
+  margin: 0 30px;
+}
+.siebui-ss-applt-list-left-align {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 1.2em;
+}
+.siebui-ss-applt-list-middle-align {
+  margin: 1em auto;
+  display: block;
+  text-align: center;
+}
+.siebui-applt-button-ctrl,
+.siebui-applt-cust-button-ctrl1,
+.siebui-applt-cust-button-ctrl2 {
+  padding: 0 20px;
+  margin: 1em auto;
+  text-align: center;
+}
+.siebui-ss-newuser-fgtpwd {
+  white-space: nowrap;
+}
+.siebui-ss-newuser-fgtpwd > span:first-child {
+  padding-right: 25px;
+}
+.mceGridLabel-fixed-width {
+  width: 160px;
+}
+/* label width for the controls that are placed row wise */
+.siebui-ss-label-small {
+  width: 100px;
+}
+.siebui-ss-tbl-ctrl {
+  width: 200px;
+}
+.siebui-list-padding {
+  padding-top: 0.1em;
+}
+.siebui-ss-applt-caption-small {
+  margin: 0;
+  overflow: hidden;
+}
+/*********** SR Details Form Applet - Start ***********/
+/************ SR Details Form Applet - End ************/
+.siebui-form-col {
+  width: 100%;
+  margin-top: 15px;
+  display: table;
+}
+.siebui-form-col1 {
+  float: left;
+  width: 30%;
+}
+.siebui-form-col2 {
+  float: left;
+  width: 40%;
+}
+.siebui-form-col3 {
+  float: left;
+}
+/************ SR Details Form Applet - End ************/
+/************* Form Control Section - End *************/
+/******************* esearch - Start ******************/
+#screenTabs {
+  float: left;
+  width: 80%;
+}
+.siebui-search-esearch {
+  line-height: 25px;
+  height: 20px;
+  top: 0;
+  left: 0;
+  border-right: none;
+  float: right;
+}
+span.siebui-search-srchheading {
+  font-weight: normal;        
+}
+.siebui-search-combobox-searchLookin {
+  font-size: 0.9em;
+}
+.siebui-search-icon {
+  top: 8px;
+  left: 0;
+}
+.siebui-search-esearch #srchDivCont {
+  position: absolute;
+  right: 100px;
+  top: 2px;
+}
+.siebui-header .siebui-search-srchheading {
+  font-size: 1em;
+}
+/******************** esearch - End *******************/
+/**************** Generic Tile CSS - Start ************/
+.siebui-ss-navlink-applet .Selected, 
+.siebui-ss-navlink-applet .NotSelected,
+.siebui-ss-tile-applet .Selected,
+.siebui-ss-tile-applet .NotSelected,
+.siebui-social-media-links-applet .Selected,
+.siebui-social-media-links-applet .NotSelected,
+.siebui-ss-newscroll-applet .Selected,
+.siebui-ss-newscroll-applet .NotSelected,
+.siebui-ss-newscroll-applet .siebui-tile,
+.siebui-ss-newscroll-applet .siebui-tile-selected,
+.siebui-ss-navlink-applet  .siebui-tile,
+.siebui-ss-navlink-applet  .siebui-tile-selected,
+.siebui-social-media-links-applet .siebui-tile, 
+.siebui-social-media-links-applet .siebui-tile-selected {
+  box-shadow: none;
+  border: 0;
+  background: none;
+}
+.siebui-ss-applt-header,.siebui-ss-view-title {
+  font-weight: bold;
+  height: 2em;
+  line-height: 2em;
+  padding-left: 5px;
+}
+.siebui-ss-navlink-applet .siebui-tile-container-navlink,
+.siebui-social-media-links-applet .siebui-social-media-links-container ,
+.siebui-ss-tile-applet .siebui-tile-container-ss {
+  width: 98%;
+}
+.siebui-ss-navlink-applet .siebui-tile-container-navlink .clearfix,
+.siebui-ss-newscroll-applet .clearfix {
+  margin-right: 30px;
+}
+/*************** Generic Tile CSS - End ****************/
+/*********** News Scroll Tile Applet - Start ***********/
+.siebui-ss-applet-container .siebui-tile-newsscroll {
+  padding: 5px;
+  background: none;
+  width: 99%;
+} 
+.siebui-ss-newscroll-applet .siebui-tile,
+.siebui-ss-newscroll-applet .siebui-tile-selected {
+  width: 100%;
+  margin: 0;
+}
+.siebui-tile-newsscroll-img {
+  margin: 0 auto;
+}
+.siebui-tile-newsscroll-img img{
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+.siebui-tile-newsscroll-desc {
+  text-align: center;
+  height: 200px;
+  position: relative;
+  top: -200px;
+  left: 0;
+}
+.siebui-tile-newsscroll-desc a.siebui-ctrl-drilldown-tile {
+  padding: 200px 470px;
+}
+.siebui-tile-newsscroll-desctext a.siebui-ctrl-drilldown-tile,
+.siebui-tile-media-link-desctext a.siebui-ctrl-drilldown-tile {
+  line-height: 0; 
+  font-size: 0;
+  color: transparent;
+  text-indent: -9999px;
+ }
+.siebui-tile-newsscroll .siebui-tile-scrollarea {
+  left: 5px;
+  width: 99%;
+}
+/************ News Scroll Tile Applet - End ************/
+/********* Navigation Link Tile Applet - Start *********/
+/********** Navigation Link Tile Applet - End **********/
+.siebui-ss-navlink-applet .siebui-collapsible-applet-content {
+  clear: both;
+}
+.siebui-ss-navlink-applet  .siebui-tile,
+.siebui-ss-navlink-applet  .siebui-tile-selected {
+  width: 200px;
+}
+.siebui-tile-container-navlink {
+  overflow: hidden !important;
+}
+.siebui-tile-navlink-img {
+  margin:0 20px;
+  padding: 5px 10px;
+  height: 150px;
+}
+.siebui-tile-navlink-img  img {
+  width: 130px;
+  height: 130px;
+  overflow: hidden;
+} 
+.siebui-tile-navlink-desc {
+  text-align: center;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.siebui-tile-navlink-desc a.siebui-ctrl-drilldown-tile {
+  padding-top: 170px;
+}
+.siebui-tile-navlink-desctext {
+  font-weight: bold;
+}
+/** Nav Link on Applets other than Anonymous Home Page - Start **/
+.siebui-ss-navlink-help-header {
+  text-align: right;
+}
+.siebui-ss-navlink-help-header .siebui-ss-navlink-caption {
+  width: 80%;
+  display: inline-block;
+}
+.siebui-ss-navlink-help-header .siebui-collapsible-applet-container {
+  width: 19%;
+  margin: 0;
+  display: inline-block;
+}
+.siebui-ss-collapsible-header .siebui-ss-navlink-img {
+  margin: 5px auto;
+}
+.siebui-ss-list,
+.siebui-ss-navlink-list {
+  float: left;
+}
+.siebui-ss-navlink-caption,
+.siebui-ss-view-title {
+  font-weight: bold;
+  padding-right: 5px;
+}
+.siebui-ss-navlink-caption span:first-child {
+  border-left: 1px solid #0000FF;
+  padding-left: 4px; 
+}
+/** Nav Link on Applets other than Anonymous Home Page - Start **/
+/********** Navigation Link Tile Applet - End **********/
+/************** Social Media Link - Start **************/
+.siebui-social-media-links-applet .siebui-social-media-links-container {
+  background: none;
+}
+.siebui-social-media-links-applet {
+  float: right;
+}
+.siebui-social-media-links-applet .siebui-tile-scrollarea,
+.siebui-social-media-links-applet .siebui-tile-slider-label {
+  display: none;
+}
+.siebui-social-media-links-applet .siebui-tile-list {
+  height: 30px !important;
+}
+.siebui-social-media-links-applet .siebui-tile, 
+.siebui-social-media-links-applet .siebui-tile-selected {
+  margin: 0;
+  width: 20px;
+  height: 100%;
+  margin-right: 1px;
+}
+.siebui-social-media-links-applet .siebui-social-media-links-container .clearfix,
+.siebui-social-media-links-applet .clearfix {
+  margin-right: 30px;
+}
+.siebui-social-media-link-img img {
+  height: 20px;
+  width: 20px;
+  overflow: hidden;
+}
+.siebui-tile-media-link-desc {
+  text-align: center;
+  position: relative;
+  top: -23px;
+  left: 0;
+}
+.siebui-tile-media-link-desc a.siebui-ctrl-drilldown-tile {
+  padding: 11px 9px; 
+}
+/*************** Social Media Link - End ***************/
+/***************** Other Tiles - Start *****************/
+ .siebui-form-data-ss,
+ .siebui-form-data-ss-noellipse {
+  width: 95% ;
+  line-height: 1.2;
+  margin: 2px 0;
+  text-shadow: none;
+}
+.siebui-tile-details {
+  height: 95px;
+  margin: 5px;
+  line-height: 1.2em;
+  text-decoration: none;
+  text-shadow: none;
+}
+.siebui-form-data-ss:hover,
+.siebui-tile-details:hover,
+.siebui-tile-name-ss:hover,
+.siebui-tile-header-data:hover {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: ellipsis;
+}
+.siebui-tile-name-ss,
+.siebui-tile-header-data,
+.siebui-form-data-ss,
+.siebui-tile-details  {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.siebui-tile-name-ss-noellipse {
+  white-space: normal;
+  overflow: visible;
+}
+.siebui-tile-name-ss,.siebui-tile-name-ss-noellipse {
+  font-weight : bold;
+  text-transform: uppercase;
+  padding: 5px;
+  height: 30px;
+}
+.siebui-tile-header-data {
+  line-height: 1.2em;
+  text-shadow: none;
+  float: left;
+  width: 80%;
+}
+.siebui-form-margin-provider {
+  padding-left: 1px;
+  padding-right: 2px;
+}
+.siebui-line-y {
+  margin: 4px;
+  vertical-align: middle;
+}
+/*service request tile divider changes*/
+.siebui-ss-form-divider-line-ss {
+  min-height: 1px;
+  float: left;
+  width: 180px;
+  margin: 5px 30px;
+  clear: both;
+}
+.siebui-ss-tile-divider-line {
+  float: left;
+  width: 95%;
+  margin: 2px;
+}
+ .siebui-tile-title-ss {
+  margin-left: 5px;
+  line-height: 27px;
+  padding: 0;
+  vertical-align: middle;
+  float: left;
+}
+.siebui-tile-header {
+  height: 50px;
+  margin: 5px;
+}
+.siebui-tile-header-icon {
+  float: left;
+  width: 20%;
+}
+.siebui-tile-icon-image img {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+}
+.siebui-tile-divider {
+  margin: 5px 25px 0 25px;
+  border-top: 1px solid;
+}
+.siebui-ss-static-label-right-align {
+  height: 100%;
+  margin-top: 50px;
+  margin-right: 60px;
+  float: right;
+  text-align: right;
+}
+/**** Font Sizes for all PS eService Applets - Start ***/
+.siebui-search-srchheading,
+.siebui-ss-newuser-fgtpwd a,
+.siebui-applt-button-ctrl,
+.siebui-applt-cust-button-ctrl1,
+.siebui-applt-cust-button-ctrl2,
+.siebui-licence-text,
+div.mceGridField,
+div.mceGridLabel,
+.siebui-ss-static-label-right-align,
+#screenTabs #s_sctrl #s_sctrl_tabScreen.ui-tabs ul.ui-tabs-nav,
+.siebui-pageitem {
+  font-size: 1.3em;
+}
+.siebui-ss-applt-caption-small,
+.siebui-tile-name-ss, 
+.siebui-tile-navlink-desctext,
+.siebui-tile-details,
+.siebui-tile-name-ss-noellipse {
+  font-size: 1.2em;
+}
+.siebui-header .bannerDiv,
+.siebui-ss-applt-helptext-spn,
+.siebui-ss-btn-ctrl-right-align .siebui-ctrl-link a,
+.mceGridLabelOnly,.siebui-ss-navlink-caption  {
+  font-size: 1.4em;
+}
+.siebui-ss-applt-helptext {
+  font-size: 1em;
+}
+.siebui-ss-applt-caption,
+.siebui-form-data-ss,
+.siebui-tile-header-data,
+.siebui-ss-collapsible-caption,
+.siebui-form-data-ss-noellipse,
+.siebui-ss-tile-aplt-btn {
+  font-size: 1.3em;
+}
+.siebui-ss-applt-header,
+.siebui-ss-view-title {
+  font-size: 1.6em;
+}
+/***** Font Sizes for all PS eService Applets - End ****/
+/****************** Other Tiles - End ******************/
+/************* Service Request Tiles - Start ***********/
+.siebui-ss-tile-aplt-btns-container {
+  float: right;
+  margin: 6px 50px 6px 0;
+}
+.siebui-ss-collapsible-header {
+  margin: 10px 0 5px 0;
+  height: 30px;
+}
+.siebui-ss-collapsible-caption {
+  vertical-align: middle;
+  padding: 6px;
+  text-transform: uppercase;
+}
+.siebui-ss-tile-aplt-btn {
+  margin: 0 10px;
+  float: right;
+}
+.siebui-ss-tile-aplt-header {
+  width: 40%;
+  float: left;
+}
+/************* Service Request Tiles - End *************/
+/********* Tile Attachment Description - Start *********/
+.siebui-tile-details textarea {
+  height: 72px !important;
+  width: 100% !important;
+  font-size: 1.2em;
+}
+/********** Tile Attachment Description - End **********/
+/****************** Form 2 col - Start *****************/
+.siebui-ss-form2col-col1,
+.siebui-ss-form2col-col2 {
+  float: left;
+  width: 50%;
+}
+.siebui-ss-form2col-label {
+  width: 180px;
+  text-align: right;
+}
+/******************* Form 2 col - End ******************/

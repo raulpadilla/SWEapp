@@ -1,0 +1,1006 @@
+<HTML>
+<HEAD>
+<TITLE>Order Items</TITLE>
+<!--      nc_items  Ver 3.4.1 (Build 10)	20000531		Laura Klein	-->
+<SCRIPT>
+top.onlink.pipeline = self;
+var ORDER_ACTIVE = false;
+var SINGLEITEMS = new Array();
+var SSITEMS = new Array();
+function RefSubSingleItems()
+{
+return SSITEMS;
+}
+function RefSingle()
+{
+return SINGLEITEMS;
+}
+function NewSubSingleItem()
+{
+var ss = RefSubSingleItems();
+ss[ss.length] = new Array;
+return ss;
+}
+var ITEMS = new Array();
+var SUBITEMS = new Array();
+function RefSubItems()
+{
+return SUBITEMS;
+}
+function AddSubToEnd()
+{
+var subitem = RefSubItems();
+subitem[subitem.length] = new Array();
+return subitem;
+}
+function GetSubItem(itemNo)
+{
+var subitem = RefSubItems();
+return subitem[itemNo];
+}
+function RefItems()
+{
+return ITEMS;
+}
+function CreateItem(inDYNAOBJ)
+{
+var item = new Object();
+for(var key in inDYNAOBJ){
+if(typeof inDYNAOBJ[key] != "function"){
+inDYNAOBJ[key]==null ? 	item[key] = "" : item[key] = inDYNAOBJ[key];
+}
+}
+return item;
+}
+var ITEM_VARS = new Array;
+function RefItemVars()
+{
+return ITEM_VARS;
+}
+function GetItemVar(i)
+{
+return ITEM_VARS[i];
+}
+function ITEM_OBJ(inDYNAOBJ,inFAMILY,inPAGE,inFLYOVER,inVERSION,inDESC,inQTY,inUNITPRICE,inCREATE)
+{
+this.DYNAOBJ = inDYNAOBJ;
+this.ITEM = inCREATE;
+this.FAMILY = inFAMILY;
+this.PAGE = inPAGE;
+this.FLYOVER = inFLYOVER;
+this.FAMILY_VERSION = inVERSION["FAMILY"];
+this.APP_DATA_VERSION = inVERSION["APP"];
+this.QTY = inQTY;
+this.DESC = inDESC;
+this.FULLPRICE = inUNITPRICE;
+this.UNITPRICE = inUNITPRICE;
+this.SUBPRICE = 0;
+this.EXTSUBPRICE = 0;
+this.LINEDISC = 0;
+this.SUBITEMTOTAL=0;
+this.DISCPRICE = inUNITPRICE;
+this.INDEX = 0;
+this.EXTPRICE = forceDecimals(this.QTY*this.UNITPRICE);
+this.VALID = true;
+}
+function ConstructItem(inDynaObj,inFamily,inPage,inFlyover,inVersion,inDescr,inQty,inPrice)
+{
+var inCreate = CreateItem(inDynaObj);
+var newitem = new ITEM_OBJ(inDynaObj,inFamily,inPage,inFlyover,inVersion,inDescr,inQty,inPrice,inCreate);
+return newitem;
+}
+var SAVESTR = "";
+var MULTIINFO = new Object();
+function StoreMultiInfo(KEY, VALUE)
+{
+MULTIINFO[KEY]=VALUE;
+}
+function GetMultiInfo(key)
+{
+if(MULTIINFO[key]){
+return MULTIINFO[key];
+}
+else{
+return "";
+}
+}
+function RefMultiInfo()
+{
+return MULTIINFO;
+}
+var SINGLEINFO = new Object();
+function StoreSingleInfo(KEY, VALUE)
+{
+SINGLEINFO[KEY]=VALUE;
+}
+function GetSingleInfo(key)
+{
+if(SINGLEINFO[key]){
+return SINGLEINFO[key];
+}
+else{
+return "";
+}
+}
+function RefSingleInfo()
+{
+return SINGLEINFO;
+}
+function GetInfo(orderType, key)
+{
+var retval = ""
+orderType.toUpperCase() == 'MULTI' ? retval = GetMultiInfo(key) : retval = GetSingleInfo(key);
+return retval;
+}
+function StoreInfo(orderType, key, value)
+{
+orderType.toUpperCase() == "MULTI" ? StoreMultiInfo(key, value) : StoreSingleInfo(key,value);
+}
+function LoadOrderData()
+{
+if(window.parent.top.opener != null && window.parent.top.opener.name == "NewMulti"){
+var items = RefItems();
+var subitems = RefSubItems();
+var orderinfo = RefMultiInfo();
+ORDER_TYPE = "MULTI";
+}
+else if (window.parent.top.opener != null && window.parent.top.opener.name == "NewSingle"){
+var items = RefSingle();
+var subitems = RefSubSingleItems();
+var orderinfo = RefSingleInfo();
+ORDER_TYPE = "SINGLE";
+}
+else{return}
+var savedOrder = "";
+savedOrder = window.parent.top.opener;
+var subarray = false;
+for(var i=0; savedOrder.document.forms[i] != null; i++){
+var frm = savedOrder.document.forms[i];
+if(frm.name.indexOf("ITEM") != -1){
+LoadItemArray(items, frm);
+}
+if(frm.name.indexOf("SUB") != -1){
+LoadSubArray(subitems, frm);
+subarray = true;
+}
+if(frm.name.indexOf("ORDERINFO") != -1){
+LoadInfoArray(orderinfo, frm);
+var savedSingle = orderinfo["QTFAM"];
+}
+}
+if(subarray == false){
+for(var i=0; i<items.length; i++){
+subitems[i]=new Array();
+subitems[i][0]="";
+}
+}
+if(savedOrder.name == "NewMulti"){
+setTimeout('top.onlink.BringUpPO(true)',20);
+}
+else{
+top.onlink.codeset.OpenQuote(savedSingle);
+}
+window.parent.top.opener = null;
+savedOrder = null;
+}
+function LoadItemArray(items, frm)
+{
+var formNum = parseInt(frm.name.substring(frm.name.indexOf(".") +1,frm.name.length));
+items[formNum]=new Object;
+items[formNum]["ITEM"] = new Object;
+for(var count=0; count < frm.length; count++){
+if(frm.elements[count].name.indexOf("ITEM") == -1){
+items[formNum][frm.elements[count].name] = frm.elements[count].value;
+}
+else{
+var name = frm.elements[count].name;
+name = name.substring(name.indexOf(".") + 1, name.length);
+items[formNum]["ITEM"][name] = frm.elements[count].value;
+}
+}
+}
+function LoadSubArray(subitems,frm)
+{
+var itemNum = parseInt(frm.name.substring(frm.name.indexOf(".") +1,frm.name.lastIndexOf(".")));
+var subitemNum = parseInt(frm.name.substring(frm.name.lastIndexOf(".") +1,frm.name.length));
+if(!subitems[itemNum]){
+subitems[itemNum] = new Array();
+}
+subitems[itemNum][subitemNum]=new Object;
+for(var count=0; count < frm.length; count++){
+if(frm.elements[count].name.indexOf("ITEM") == -1){
+subitems[itemNum][subitemNum][frm.elements[count].name] = frm.elements[count].value;
+}
+}
+}
+function LoadInfoArray(orderinfo, frm)
+{
+for(var i=0; i<frm.length; i++){
+orderinfo[frm.elements[i].name] = frm.elements[i].value;
+}
+}
+var ORDER_TYPE = "";
+var SUBVAR = "";
+var TOTALVAR = new Array();
+function RefTotalVar()
+{
+return TOTALVAR;
+}
+function RefSubvar()
+{
+return SUBVAR;
+}
+var OL = top.onlink;
+function AddItem(order)
+{
+DONEADDING=false;
+ORDER_TYPE = order;
+var dobj = OL.RefDynaObj();
+if (!OL.Loaded(OL.PG) || (dobj==null)) {
+alert("\nOnLink Sales(tm) Message\nUnable to access order item in \n"+window.name);
+return;
+}
+if (dobj["VALID"]) {
+var pg = OL[OL.OL_UI][OL.PG];
+if (!pg) {
+alert("\nOnLink Sales(tm) Message\nUnable to access current page in \n"+window.name);
+return;
+}
+var familyitemize = pg["FAMILY_ITEMIZE"];
+var familydescr = pg["FAMILY_DESCR"];
+var familypg = pg["FAMILY_PAGE"];
+var familypict = '../pg/'+pg["FAMILY_PICT"];
+var familyversion = GetVersionInfo(pg);
+if(!familyitemize){
+var item = "";
+var descr = "";
+if (dobj["DESCR"]) {
+descr += dobj.DESCR;
+}
+var qty = 1;
+if (dobj["QUANTITY"]) {
+qty = dobj.QUANTITY;
+}
+var price = "";
+if (dobj["PRICE"]) {
+price = forceDecimals(dobj.PRICE);
+}
+var data="";
+if (top.onlink.surveyor && typeof(top.onlink.surveyor.RegisterEvent)!="undefined")
+{
+data = top.onlink.surveyor.KeyValueToData("Price",price) +
+top.onlink.surveyor.KeyValueToData("Descr",descr) +
+top.onlink.surveyor.KeyValueToData("Qty",qty) +
+top.onlink.surveyor.TableRowToData(OL.RefCurrentRows(),false);
+top.onlink.surveyor.RegisterEvent("201","",data);  
+top.onlink.surveyor.PostEvents();
+}
+if (DoAddItem(dobj,familydescr,familypg,familypict,familyversion,descr,qty,price)) {
+AddSubItems(dobj,familydescr,familypg,familypict,familyversion);
+}
+}
+else{
+AddItemized(dobj,familydescr,familypg,familypict,familyversion);
+}
+}
+DONEADDING = true;
+}
+var DONEADDING=false;
+function GetVersionInfo(pg)
+{
+var familyversion = new Object;
+pg["FAMILY_VERSION"] ? familyversion["FAMILY"] = pg["FAMILY_VERSION"] : familyversion["FAMILY"] = "";
+OL.config["GetConfigVar"] ? familyversion["APP"] = OL.config.GetConfigVar("APP", "DATA_VERSION") : familyversion["APP"] = "";
+return familyversion;
+}
+function AddSubItems(dobj,familyDescr,itemPage,flyoverPict,familyVersion)
+{
+if(ORDER_TYPE == 'MULTI'){
+var subitems = AddSubToEnd();
+}
+else if (ORDER_TYPE == 'SINGLE'){
+var subitems = NewSubSingleItem();
+}
+var sortargs = new Array();
+for (var col in dobj.SUBDESCR) {
+if (dobj.SUBDESCR[col][SUBVAR]) {
+sortargs[sortargs.length] = col;
+}
+}
+sortargs.sort();
+for (var i = 0; i < sortargs.length; i++) {
+var col = sortargs[i];
+var item = dobj.SUBDESCR[col];
+var newsubitem = new Object();
+var descr = ((typeof(dobj.SUBDESCR[col]['EXTDESC'])=="undefined") ? dobj.SUBDESCR[col]['DESC'] : dobj.SUBDESCR[col]['EXTDESC']);
+var qty = (typeof(dobj.SUBDESCR[col]['QTY'])=="undefined") ? 1 : dobj.SUBDESCR[col]['QTY'];
+var price = forceDecimals((typeof(dobj.SUBDESCR[col]['PRICE'])=="undefined") ? 0 : dobj.SUBDESCR[col]['PRICE']);
+newsubitem = ConstructItem(dobj.SUBDESCR[col],familyDescr,itemPage,flyoverPict,familyVersion,descr,qty,price);
+AddItemVars(dobj, dobj.SUBDESCR[col],newsubitem,col);
+subitems[subitems.length-1][i] = newsubitem;
+}
+}
+function AddItemized(dobj,familyDescr,itemPage,flyoverPict,familyVersion)
+{
+if(ORDER_TYPE == 'MULTI'){
+var items = RefItems();
+var subitems = RefSubItems();
+}
+else if (ORDER_TYPE == 'SINGLE'){
+var items = RefSingleItems();
+var subitems = RefSubSingleItems();
+}
+var sortargs = new Array();
+for (var col in dobj.SUBDESCR) {
+if (dobj.SUBDESCR[col][SUBVAR]) {
+sortargs[sortargs.length] = col;
+}
+}
+sortargs.sort();
+for (var i = 0; i < sortargs.length; i++) {
+var col = sortargs[i];
+var item = dobj.SUBDESCR[col];
+subitems[subitems.length] = new Array;
+var newitem = new Object();
+var descr = ""; 
+descr = descr + ((typeof(dobj.SUBDESCR[col]['EXTDESC'])=="undefined") ? dobj.SUBDESCR[col]['DESC'] : dobj.SUBDESCR[col]['EXTDESC']);
+var qty = (typeof(dobj.SUBDESCR[col]['QTY'])=="undefined") ? 1 : dobj.SUBDESCR[col]['QTY'];
+var price = forceDecimals((typeof(dobj.SUBDESCR[col]['PRICE'])=="undefined") ? 0 : dobj.SUBDESCR[col]['PRICE']);
+var itemobj = new Object;
+for (var colname in dobj){
+if(colname.indexOf(col) != -1){
+itemobj[colname] = dobj[colname];
+}
+}
+itemobj["VALID"] = true;
+newitem = ConstructItem(itemobj,familyDescr,itemPage,flyoverPict,familyVersion,descr,qty,price);
+AddItemVars(dobj, dobj.SUBDESCR[col],newitem);
+items[items.length] = newitem;
+subitems[subitems.length-1][0] =new Object();
+}
+}
+function DoAddItem(dynaObj,familyDescr,itemPage,flyoverPict,familyVersion,inDescr,inQty,inPrice)
+{
+if(ORDER_TYPE == 'MULTI'){
+var items = RefItems();
+}
+else if(ORDER_TYPE == 'SINGLE'){
+var items = RefSingle();
+items.length=0;
+}
+if (items==null) { return false; }
+var newitem = new Object();
+newitem = ConstructItem(dynaObj,familyDescr,itemPage,flyoverPict,familyVersion,inDescr,inQty,inPrice);
+AddItemVars(dynaObj, dynaObj, newitem);
+items[items.length] = newitem;
+return newitem;
+}
+function AddItemVars(topDobj,dynaObj, item, tablename)
+{
+var ext_items = RefItemVars();
+var newvar = "";
+for(var i=0;i<ext_items.length;i++){
+newvar=GetItemVar(i);
+if(newvar && typeof topDobj[newvar] != "undefined"){
+item[newvar]=topDobj[newvar];
+}
+else if(newvar && typeof dynaObj[newvar] != "undefined"){
+item[newvar]=dynaObj[newvar];
+}
+else{
+item[newvar] = "";
+}
+item.ITEM[newvar] = topDobj[newvar]; 
+}
+if(tablename != null){
+item["TABLENAME"]=tablename;
+}
+}
+function forceDecimals(curValue) {
+var retStr = new String();
+with (Math) {
+curValue = round(curValue*100)/100;
+if (ceil(curValue) == floor(curValue)) {
+retStr = curValue + '.00';
+}
+else if(ceil(curValue*10) == floor(curValue*10)) {
+retStr = curValue +'0';
+}
+else retStr = curValue;
+}
+return retStr;
+}
+var ITEMSTR_ARRAY = new Array;
+function RefItemStr()
+{
+return ITEMSTR_ARRAY;
+}
+function AddNewItemStr(newindex)
+{
+var items = RefItemStr();
+items[newindex] = new Object;
+items[newindex]["VALID"] = true;
+items[newindex]["STRING"] = "";
+return newindex;
+}
+function DeleteItemStr(itemno)
+{
+var items = RefItemStr();
+items[itemno]["VALID"] = false;
+items[itemno]["STRING"] = "";
+}
+function ChangeItemStr(itemno)
+{
+CreateItemStr(itemno, "multi_items");
+}
+function GetItemStr(itemno)
+{
+var retstr = "";
+var items = RefItemStr();
+if(items[itemno] && items[itemno]["VALID"] && items[itemno]["STRING"]){
+retstr = items[itemno]["STRING"];
+}
+return retstr;
+}
+function GetAllItems()
+{
+var retstr = "";
+var items = RefItemStr();
+for(var i=0; i<items.length; i++){
+retstr += GetItemStr(i);
+}
+return retstr;
+}
+function SynchItemStr(template_name)
+{
+var item_array = RefItems();
+var str_array = RefItemStr();
+for(var i=0; i<item_array.length; i++){
+if(!str_array[i]){
+CreateItemStr(i,template_name);
+}
+if(str_array[i] && str_array[i]["VALID"] && item_array[i]["QTY"]<1){
+DeleteItemStr(i);
+}
+}
+}
+function CreateItemStr(itemno,template_name)
+{
+if(!OL.codeset.DYNAPO){return false}
+var item_array = RefItems();
+var subitem_array = RefSubItems();
+var subvar = RefSubvar();
+var str_array = RefItemStr();
+var tmp_table = GetTemplate(template_name);
+var retstr = "";
+for(var i in tmp_table){
+if(tmp_table[i]["TOP"] && tmp_table[i]["TOP"] == true){
+var top_section = tmp_table[i]["TEMPLATE"];
+}
+}
+var returnstr = "";
+if(item_array[itemno] && item_array[itemno]["QTY"] && item_array[itemno]["QTY"] > 0){
+if(!str_array[itemno]){
+AddNewItemStr(itemno);
+}
+retstr = BuildSection(itemno,-1,top_section,item_array, subitem_array,subvar,str_array,tmp_table);
+}
+if(str_array[itemno]){
+str_array[itemno]["STRING"] = "";
+str_array[itemno]["STRING"] = retstr;
+}
+return retstr;
+}
+function BuildSection(itemno,subitem,section,item_array, subitem_array,subvar,str_array,tmp_table)
+{
+var retstr = "";
+for(var count=0; count<section.length; count++){
+if(section[count].indexOf("SUBROW") != -1){
+var subname = OL.codeset.DYNAPO.GetAttribute(section[count], "NAME");
+if(subitem_array[itemno] != null){
+for(var sub_count=0; sub_count<subitem_array[itemno].length; sub_count++){
+if(subitem_array[itemno][sub_count] && subitem_array[itemno][sub_count][subvar]){
+retstr += BuildSection(itemno,sub_count,tmp_table[subname]["TEMPLATE"],item_array, subitem_array,subvar,str_array,tmp_table);
+}
+}
+}
+}
+else if(section[count].indexOf("ORDERTARGET") != -1){
+retstr += OL.codeset.DYNAPO.BuildOrderTarget(section[count],itemno,subitem);
+}
+else{
+retstr += section[count].substring(0,section[count].length-1);
+}
+}
+return retstr;
+}
+var TEMPLATES = new Object;
+function RefTemplates()
+{
+return TEMPLATES;
+}
+function GetTemplate(template_name)
+{
+tmp_obj = RefTemplates();
+if(!tmp_obj[template_name]){return -1}
+else{
+return tmp_obj[template_name];
+}
+}
+function AddTemplateSection(template_name, section_name, section_str)
+{
+var tmp_obj = RefTemplates();
+if(tmp_obj[template_name] && tmp_obj[template_name]["LOADED"] == true){
+if(!tmp_obj[template_name][section_name]){
+tmp_obj[template_name][section_name] = new Object();
+}
+tmp_obj[template_name][section_name]["TEMPLATE"] = new Array();
+tmp_obj[template_name][section_name]["TEMPLATE"] = section_str.split("\n");
+}
+else{
+alert("\nOnLink Sales(tm) Message\nPage not loaded!\n");
+}
+return tmp_obj[template_name][section_name];
+}
+function LoadTemplate(template_name, topsect)
+{
+var tmp_obj = RefTemplates();
+for(var i in tmp_obj){
+if(template_name == i){
+return tmp_obj[template_name];
+}
+}
+tmp_obj[template_name] = new Object;
+tmp_obj[template_name]["LOADED"] = true;
+tmp_obj[template_name][topsect] = new Object();
+tmp_obj[template_name][topsect]["TOP"] = true;
+return tmp_obj[template_name];
+}
+var ORDER_TYPE = new String();
+function RefOrderType()
+{
+return ORDER_TYPE;
+}
+var WINARGS = new Object();
+function RefWinArgs()
+{
+return WINARGS;
+}
+function BuildMultiTableWidget(po_doc)
+{
+var newpage = "";
+var items = RefItems();
+var subitems = RefSubItems();
+if (items == null || subitems == null){return newpage;}
+SynchItemStr("multi_items");
+for(var i=0;i<items.length;i++){
+if(items[i] && items[i]["QTY"]>0){
+newpage += GetItemStr(i);
+}
+if(newpage.length >10000){
+po_doc.writeln(newpage);
+newpage = "";
+}
+}
+po_doc.writeln(newpage); 	
+return newpage;
+}						
+function TotalAll()
+{
+TotalVar();
+Totalling();
+LineDiscount();
+TotalVar();
+if(OL.ol_ui["SpecialCaseTotalAll"]){
+OL.ol_ui.SpecialCaseTotalAll();			
+}
+DiscountTotal();
+}
+function TotalVar(retval)
+{
+var items = RefItems();
+if(items == null){return -1}
+var var_array = RefTotalVar();
+for(var count=0; count<var_array.length; count++){
+var varname = var_array[count];
+var item_total = "";
+var item_total_name = varname + "_TOTAL";
+var total = 0;
+for(i=0;i<items.length;i++){
+if(items[i] && items[i][varname]){
+item_total = (items[i]["QTY"]) * parseFloat(items[i][varname]);
+if(item_total.toString().indexOf('.') != -1){
+item_total = forceDecimals(item_total);
+}
+items[i][item_total_name] = items[i][varname];
+total += item_total;
+}
+else if(items[i]){
+item_total =TotalSubvar(varname,i);
+if(item_total.toString().indexOf('.') != -1){
+item_total = forceDecimals(item_total);
+}
+items[i][item_total_name]=item_total;
+if(item_total != 0 && items[i]["QTY"] != 0){
+total +=  (items[i]["QTY"] * item_total);
+}
+}
+}
+if(total.toString().indexOf('.') != -1){
+total = forceDecimals(total);
+}
+StoreInfo("MULTI", item_total_name, total.toString());
+if(retval && retval == var_array[count]){
+return total;
+}
+}
+return 0;
+}
+function TotalSubvar(varname, itemno)
+{
+subitems = RefSubItems();
+if(subitems == null){return -1}
+var total=0;
+for(subcount=0;subcount<subitems[itemno].length;subcount++){
+if(subitems[itemno][subcount] && subitems[itemno][subcount][varname]){
+total += parseFloat(subitems[itemno][subcount][varname]) * parseInt(subitems[itemno][subcount]["QTY"]);
+}
+}
+return total;
+}
+function DiscountTotal()
+{
+var subtotal=GetInfo("MULTI","SUBTOTAL");
+var discprice = GetInfo("MULTI","DISCTOTAL");
+var discount = GetInfo("MULTI","DISCOUNT");
+var subpricetotal = GetInfo("MULTI","SUBPRICETOTAL");
+if(discount == null){
+discount = 100;
+}
+if(discount>100 || discount<0 || isNaN(discount)){
+discount = 0;
+StoreInfo("MULTI", "DISCOUNT", discount);
+}
+var subdisc = forceDecimals(subpricetotal - (subpricetotal * (discount/100)));
+var disctotal = forceDecimals(discprice - (discprice * (discount/100)));
+var total = forceDecimals(subtotal - (subtotal * (discount/100)));
+StoreInfo("MULTI", "DISCSUBPRICE",subdisc);
+StoreInfo("MULTI","DISCTOTAL", disctotal);
+StoreInfo("MULTI","TOTAL", total);
+return total;
+}
+function LineDiscount()
+{
+var item = RefItems();
+var subitem = RefSubItems();
+if(item == null || subitem == null){return}
+for(var count=0;count<item.length;count++){
+if(item[count]["LINEDISC"] != null){
+var discount = item[count]["LINEDISC"];
+if(!(discount<=100 && discount>=0) || isNaN(discount)){
+item[count]["LINEDISC"] = 0;
+}
+item[count]["DISCPRICE"] = forceDecimals(parseFloat(item[count]["UNITPRICE"] - (item[count]["UNITPRICE"] * (item[count]["LINEDISC"]/100))));
+item[count]["DISCSUBPRICE"] = forceDecimals(parseFloat(item[count]["SUBPRICE"] - (item[count]["SUBPRICE"] * (item[count]["LINEDISC"]/100))));
+item[count]["EXTDISCPRICE"] = forceDecimals(parseFloat(item[count]["EXTPRICE"] - (item[count]["EXTPRICE"] * (item[count]["LINEDISC"]/100))));
+item[count]["EXTDISCSUBPRICE"] = forceDecimals(parseFloat(item[count]["EXTSUBPRICE"] - (item[count]["EXTSUBPRICE"] * (item[count]["LINEDISC"]/100))));
+}
+}
+}
+function Totalling()
+{
+var items=RefItems();
+var subitems=RefSubItems();
+var subtotal = 0;
+var disctotal = 0;  
+var subpricetotal = 0;
+var index_count = 1;
+var var_array = RefTotalVar();
+if(items==null){return}
+for(var i=0;i<items.length;i++){
+if(items[i]){
+items[i]["EXTPRICE"] = forceDecimals(parseFloat(items[i]["QTY"])*parseFloat(items[i]["UNITPRICE"]));
+subtotal += parseFloat(items[i]["EXTPRICE"]);
+disctotal += parseFloat(items[i]["DISCPRICE"]);
+if(items[i] && items[i]["QTY"] > 0){
+items[i]["INDEX"] = index_count;
+index_count++;
+var subindex = 1;
+}
+var subprice = 0;
+if(subitems[i] && subitems[i].length < 1){
+subprice = items[i]["UNITPRICE"];
+}
+if(subitems==null || subitems=="" || !subitems[i]){continue}
+for(x=0;x<subitems[i].length;x++){
+if(subitems[i] && subitems[i][x] && subitems[i][x]["EXTPRICE"]){
+subitems[i][x]["EXTPRICE"] = forceDecimals(parseFloat(subitems[i][x]["QTY"]*subitems[i][x]["UNITPRICE"]));
+}
+else{
+if(items[i] && items[i]["UNITPRICE"]){
+subprice =parseFloat(items[i]["UNITPRICE"]);
+}
+}
+if(subitems[i][x] && subitems[i][x]["UNITPRICE"]!=null && subitems[i][x]["QTY"]){
+subprice += parseFloat(subitems[i][x]["UNITPRICE"] * subitems[i][x]["QTY"]);
+}
+if(subitems[i][x] && subitems[i][x]["QTY"] >0){
+subitems[i][x]["INDEX"] = parseInt(index_count-1) + "." + subindex;
+subindex++;
+}
+}
+items[i]["SUBPRICE"] = forceDecimals(subprice);
+subprice *= items[i]["QTY"];
+items[i]["EXTSUBPRICE"]	= forceDecimals(subprice);
+subpricetotal+=subprice;
+}
+}
+disctotal = forceDecimals(disctotal);
+subtotal = forceDecimals(subtotal);
+StoreInfo("MULTI","DISCTOTAL",disctotal);
+StoreInfo("MULTI","SUBTOTAL", subtotal);
+StoreInfo("MULTI", "SUBPRICETOTAL", forceDecimals(subpricetotal));
+}
+function GetAttribute(targ, att,item_count, sub_count)
+{
+order = RefOrderType();
+if(order == 'MULTI'){
+items = RefItems();
+subitems = RefSubItems();
+}
+else{
+items = RefSingle();
+subitems = RefSubSingleItems();
+}
+var returnstring = "";
+var ptr = targ.indexOf("\"",targ.indexOf(att));
+var returnstring = targ.substring(ptr+1, targ.indexOf("\"",ptr+1));
+if(att.indexOf("VALUE") != -1){
+if(sub_count == -1){
+if(items[item_count]){
+returnstring = items[item_count][returnstring];
+}
+}
+else{
+if(subitems[item_count] && subitems[item_count][sub_count]){
+returnstring = subitems[item_count][sub_count][returnstring];
+}
+}
+}
+return returnstring;
+}
+function AttributeChanged(entryName, item_count, orderType, sub_count,newValue)
+{
+var name = entryName.substring(0,entryName.lastIndexOf('.'));
+name.toUpperCase();
+if (orderType == 'MULTI'){
+var items = RefItems();
+var subitems = RefSubItems();
+}
+else if (orderType == 'SINGLE'){
+var items = RefSingle();
+var subitems = RefSubSingleItems();
+}
+if (items==null) {return}
+if(name == 'QTY'){
+if(isNaN(newValue) || (newValue!=0 && newValue<1)){
+newValue = 1;
+}
+if(parseInt(newValue) != newValue){
+newValue = parseInt(newValue);
+}
+}
+if((name.indexOf('PRICE') != -1 || name.indexOf('QTY') != -1) && isNaN(newValue)){
+newValue = 0;
+}
+if (item_count>items.length){return;}
+if(sub_count < 0){
+if(items[item_count]){
+items[item_count][name] = newValue;
+}
+}
+else {
+if (subitems == null){return}
+subitems[item_count][sub_count][name] = newValue;
+}
+if(name=='QTY' || name.indexOf('PRICE')!=-1){
+TOTALLED=false;
+}
+TotalAll();
+CreateItemStr(item_count, "multi_items");
+}
+function DeleteAllOrderItems()
+{
+var items = RefItems();
+var subitems = RefSubItems();
+var itemstr = RefItemStr();
+if ((items==null)||(items.length<=0)) { return; }
+items.length = 0;
+subitems.length=0;
+itemstr.length=0;
+StoreInfo("MULTI","TOTAL", 0);
+OL.BringUpPO(true);
+}
+function WriteInvisible(orderType, items, subitems, orderinfo,doc,orderwin)
+{
+var str = "";
+for (var i=0;i<items.length;i++){
+if(items[i] && items[i]["QTY"] != 0){
+str += WriteItemArray(items, i);
+if(subitems[i]){
+for (var sub=0;sub<subitems[i].length; sub++){
+str += WriteSubItemArray(subitems, i, sub);
+}
+}
+}
+}
+str += WriteInfoArray(orderinfo);
+return str;
+}
+function WriteItemArray(items,i)
+{
+var str="";
+var htmlstr="";
+str += '<FORM NAME="ITEMS.' + i + '">';
+for (var col in items[i]){
+if(typeof items[i][col] != "object"){
+typeof items[i][col] == "string" ? htmlstr=ProtectHTMLString(items[i][col]) : htmlstr = items[i][col];
+str += '<INPUT TYPE=HIDDEN NAME="' + col + '" VALUE=\'' + htmlstr + '\'>\n';
+}
+else {
+if(col == "ITEM"){
+for(var obj in items[i]["ITEM"]){
+if(obj.indexOf('.') == -1){
+typeof items[i]["ITEM"][obj] == "string" ? htmlstr=ProtectHTMLString(items[i][col][obj]) : htmlstr = items[i][col][obj];
+if(htmlstr!='""' && htmlstr!=null){
+str += '<INPUT TYPE=HIDDEN NAME="ITEM.' + obj + '" VALUE=\'' + htmlstr + '\'>\n';
+}
+}
+}
+}
+}
+}
+str += '</FORM>';
+return str;
+}
+function ProtectQuotes(value)
+{
+value = value.toString();
+var retstr=value;
+if(value.indexOf('"')!=-1){
+retstr = value.replace(/"/g, "&quot;");
+}
+return retstr;
+}
+function WriteInfoArray(info)
+{
+var str = '<FORM NAME="ORDERINFO">';
+for(var val in info){
+str += '<INPUT TYPE=HIDDEN NAME=\"' + val + '\" VALUE=\"' + StrProtectCR(info[val].toString()) + '\">\n'
+}
+str += '</FORM>';
+return str;
+}
+function WriteSubItemArray(subitems,count, sub_count)
+{
+var str="";
+var htmlstr="";
+str += '<FORM NAME="SUB.' + count + '.' + sub_count + '">';
+for (var col in subitems[count][sub_count]){
+if(typeof subitems[count][sub_count][col] != "object"){
+typeof subitems[count][sub_count][col] == "string" ? htmlstr=ProtectHTMLString(subitems[count][sub_count][col]) : htmlstr = subitems[count][sub_count][col];
+str += '<INPUT TYPE=HIDDEN NAME="' + col + '" VALUE=\'' + htmlstr + '\'>\n';
+}
+}
+str += '</FORM>';
+return str;
+}
+function PrintTable(table, table_array,item_count,sub_count,orderType,html,powin)
+{
+var order = RefOrderType();
+if(order == 'MULTI'){
+var items=RefItems();
+var subitems=RefSubItems();
+}
+else{
+var items = RefSingle();
+var subitems = RefSubSingleItems();
+}
+var returnstr = "";
+var subvar = RefSubvar();
+for (var i=0; i<table_array.length; i++){
+if(table_array[i].indexOf("SUBROW") != -1){
+var subname=powin.GetAttribute(table_array[i], "NAME");
+if(subitems[item_count] != null){
+for(var count=0;count<subitems[item_count].length;count++){
+if(subitems[item_count][count] && subitems[item_count][count][subvar]){
+returnstr += PrintTable(table, table[subname],item_count,count,orderType,html,powin);
+}
+}
+}
+}
+else if(table_array[i].indexOf("ORDERTARGET") != -1){
+returnstr += powin.BuildOrderTarget(table_array[i],item_count,sub_count);
+}
+else{
+returnstr += table_array[i].substring(0,table_array[i].length-1);
+}
+}
+if(html.toUpperCase() == "TEXT"){
+returnstr = StripHTML(returnstr);
+}
+return returnstr;
+}
+function ProtectHTMLString(htmlstr)
+{
+if(!htmlstr){
+htmlstr="";
+}
+if(htmlstr.indexOf(">") != -1){
+for(var i=0;i<htmlstr.length;i++){
+if(htmlstr.charAt(i) == '"'){
+htmlstr = htmlstr.substring(0,i) + "&quot;" + htmlstr.substring(i+1,htmlstr.length);
+}
+else if(htmlstr.charAt(i) == ">"){
+htmlstr = htmlstr.substring(0,i) + "&gt;" + htmlstr.substring(i+1, htmlstr.length);
+}
+}
+}
+return htmlstr;
+}
+function StrProtectCR(aStr)
+{
+var retstr = "";
+var nextpos = aStr.indexOf('\n');
+while (nextpos >= 0) {
+retstr += aStr.substring(0,nextpos-1);
+aStr = aStr.substring(nextpos+1,aStr.length);
+nextpos = aStr.indexOf('\n')
+}
+retstr += aStr;
+return retstr;
+}
+function StripHTML(str)
+{
+var ptr = 0;
+var newstr = "";
+ptr = str.indexOf("<");
+var br = str.substring(ptr,ptr + 4);
+newstr = str.substring(0, ptr) + " ";
+if(br.toUpperCase() == "<BR>"  && OL.BTYPE.indexOf("IE") != -1){
+newstr += "\n";
+}
+else{
+newstr += "&lt;BR&gt;";
+}
+ptr = str.indexOf(">");
+newstr += str.substring(ptr+1, str.length);
+ptr = newstr.indexOf("<");
+if (ptr != -1 && ptr < newstr.length){
+newstr = StripHTML(newstr);
+}
+return newstr;
+}
+function InitConfigVariables()
+{
+var subvar = top.onlink.config.GetConfigVar("ORDER", "SUBVAR");
+var itemvars = top.onlink.config.GetConfigVar("ORDER", "ITEMVARS");
+var totalvar = top.onlink.config.GetConfigVar("ORDER", "TOTALVAR");	  
+if(subvar != null && subvar != ""){
+SUBVAR = subvar;
+}
+if(itemvars != null && itemvars != ""){
+ITEM_VARS = itemvars;
+}
+if(totalvar != null && totalvar != ""){
+TOTALVAR = totalvar;
+}
+}	   
+var ITEMS_LOADED = true;
+</SCRIPT>
+<SCRIPT src="pipeline_po.js">
+</SCRIPT>
+</HEAD>
+<BODY bgcolor=#FFFFFF onLoad="InitConfigVariables();LoadOrderData();">
+</BODY>
+</HTML>
