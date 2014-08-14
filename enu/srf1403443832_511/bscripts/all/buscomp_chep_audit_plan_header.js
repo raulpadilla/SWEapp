@@ -1,7 +1,7 @@
 function Chep_Audit_Plan_Header_BusComp_PreSetFieldValue (fieldName, value)
 {
 
-	return (ContinueOperation);
+	return ("ContinueOperation");
 }
 
 function Chep_Audit_Plan_Header_BusComp (busComp)

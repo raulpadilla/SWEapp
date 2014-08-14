@@ -6,7 +6,7 @@ this.SetSearchExpr(SearchExpr);
    
 this.ExecuteQuery();
 
-	return (ContinueOperation);
+	return ("ContinueOperation");
 }
 
 function LS_CIM_Action_BusComp (busComp)

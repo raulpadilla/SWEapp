@@ -7,18 +7,18 @@ function Account_Quick_Search_BusComp_PreSetFieldValue (fieldName, value)
 		{
 			l_MsgText = "Please check Products are inactive when making an Account inactive";
 			TheApplication().SWEAlert(l_MsgText);
-			return (ContinueOperation);
+			return ("ContinueOperation");
 		}
 		else if(this.GetFieldValue("Account Status") == "Active" && value == "Closed")
 		{
 			l_MsgText = "Please check Products are inactive when making an Account Closed";
 			TheApplication().SWEAlert(l_MsgText);
-			return (ContinueOperation);
+			return ("ContinueOperation");
 		}
 	}
 	else
 	{
-		return (ContinueOperation);
+		return ("ContinueOperation");
 	}
       
 }

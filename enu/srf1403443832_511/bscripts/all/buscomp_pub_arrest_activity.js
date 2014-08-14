@@ -6,7 +6,7 @@ this.SetSearchExpr(SearchExpr);
    
 this.ExecuteQuery();
 
-	return (ContinueOperation);
+	return ("ContinueOperation");
 }
 
 function PUB_Arrest_Activity_BusComp (busComp)

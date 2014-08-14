@@ -6,7 +6,7 @@ this.SetSearchExpr(SearchExpr);
    
 this.ExecuteQuery();
 
-	return (ContinueOperation);
+	return ("ContinueOperation");
 }
 
 function FINS_Action_Claims_BusComp (busComp)
